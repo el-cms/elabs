@@ -1,0 +1,17 @@
+// Card side list
+.card-description{
+	ul{
+		list-style: none;
+		padding:0px;
+		li{
+			padding:$grid-gutter 0px;
+		}
+	}
+}
+
+// Card content list
+ul.card-inner-list{
+	list-style: none;
+	padding:0px;
+	margin:0px;
+}
