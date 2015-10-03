@@ -70,6 +70,14 @@ Router::scope('/', function ($routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
+    $routes->fallbacks('InflectedRoute');
+});
+
+Router::prefix('admin', function ($routes) {
+    $routes->fallbacks('DashedRoute');
+});
+
+Router::prefix('user', function ($routes) {
     $routes->fallbacks('DashedRoute');
 });
 
