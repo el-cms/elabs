@@ -7,5 +7,6 @@
 # Netbeans IDE project dir
 /nbproject/private/
 
-# Material source code
-/Sources/Sass/common/material
+# Sass external sources
+/Sources/Sass/common/material-master
+/Sources/Sass/common/Font-Awesome-master
