@@ -1,4 +1,11 @@
+# Cake PHP
 /vendor/*
 /config/app.php
 /tmp/*
 /logs/*
+
+# Netbeans IDE project dir
+/nbproject/private/
+
+# Material source code
+/Sources/Sass/common/material
