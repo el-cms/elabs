@@ -204,6 +204,3 @@ Type::build('datetime')->useLocaleParser();
 
 // Bootstrap widgets
 Plugin::load('Bootstrap');
-
-// Cakeadmin
-Plugin::load('CakeAdmin', ['bootstrap' => true, 'routes' => true]);

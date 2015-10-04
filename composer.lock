@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8405aa650efb8eafaeb8adf868e8128e",
+    "hash": "ebbecb3220de19287f422ddc4d191a9e",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -124,181 +124,6 @@
                 "localization"
             ],
             "time": "2014-08-24 00:00:00"
-        },
-        {
-            "name": "cakemanager/cakeadmin-lightstrap",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakemanager/cakeadmin-lightstrap.git",
-                "reference": "435814fe12fd1c0a0fe8ceeed325518aae73f15c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakemanager/cakeadmin-lightstrap/zipball/435814fe12fd1c0a0fe8ceeed325518aae73f15c",
-                "reference": "435814fe12fd1c0a0fe8ceeed325518aae73f15c",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": "~3.1",
-                "holt59/cakephp3-bootstrap-helpers": "dev-master",
-                "php": ">=5.4.16"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "*"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "LightStrap\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "LightStrap theme for the CakeAdmin Plugin",
-            "time": "2015-09-28 09:30:49"
-        },
-        {
-            "name": "cakemanager/cakephp-cakeadmin",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakemanager/cakephp-cakeadmin.git",
-                "reference": "05225f824ca6f3fc6621698b35ed502cb3bddd61"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakemanager/cakephp-cakeadmin/zipball/05225f824ca6f3fc6621698b35ed502cb3bddd61",
-                "reference": "05225f824ca6f3fc6621698b35ed502cb3bddd61",
-                "shasum": ""
-            },
-            "require": {
-                "cakemanager/cakeadmin-lightstrap": "dev-master",
-                "cakemanager/cakephp-notifier": "dev-master",
-                "cakemanager/cakephp-settings": "dev-master",
-                "cakemanager/cakephp-utils": "dev-master",
-                "cakephp/cakephp": "~3.1",
-                "php": ">=5.4.16"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "*"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "CakeAdmin\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "CakeAdmin plugin for CakePHP",
-            "time": "2015-09-28 09:56:44"
-        },
-        {
-            "name": "cakemanager/cakephp-notifier",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakemanager/cakephp-notifier.git",
-                "reference": "05a92348ad95b76d86018ae16ff991874d5beb5e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakemanager/cakephp-notifier/zipball/05a92348ad95b76d86018ae16ff991874d5beb5e",
-                "reference": "05a92348ad95b76d86018ae16ff991874d5beb5e",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": "~3.0",
-                "php": ">=5.4.16"
-            },
-            "require-dev": {
-                "cakephp/cakephp-codesniffer": "2.*",
-                "phpunit/phpunit": "*"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Notifier\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Notifier plugin for CakePHP",
-            "time": "2015-09-30 14:45:09"
-        },
-        {
-            "name": "cakemanager/cakephp-settings",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakemanager/cakephp-settings.git",
-                "reference": "6c5d20da50d4d1996d02ffe1b1cbe8009d1fe712"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakemanager/cakephp-settings/zipball/6c5d20da50d4d1996d02ffe1b1cbe8009d1fe712",
-                "reference": "6c5d20da50d4d1996d02ffe1b1cbe8009d1fe712",
-                "shasum": ""
-            },
-            "require": {
-                "cakemanager/cakephp-utils": "dev-master",
-                "cakephp/cakephp": "~3.0",
-                "cakephp/plugin-installer": "*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": " 4.6.*@dev"
-            },
-            "type": "cakephp-plugin",
-            "extra": {
-                "installer-name": "Settings"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Settings\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Settings plugin for CakePHP",
-            "time": "2015-09-29 08:59:00"
-        },
-        {
-            "name": "cakemanager/cakephp-utils",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakemanager/cakephp-utils.git",
-                "reference": "161824d639382f9417bd856c0befac259b0e8243"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakemanager/cakephp-utils/zipball/161824d639382f9417bd856c0befac259b0e8243",
-                "reference": "161824d639382f9417bd856c0befac259b0e8243",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": "~3.0",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "*"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Utils\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bob Mulder",
-                    "email": "bobmulder@outlook.com"
-                }
-            ],
-            "description": "Plugin for CakePHP 3.x with useful components and behaviors",
-            "time": "2015-09-29 18:21:03"
         },
         {
             "name": "cakephp/cakephp",
@@ -1404,7 +1229,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "holt59/cakephp3-bootstrap-helpers": 20,
-        "cakemanager/cakephp-cakeadmin": 20,
         "psy/psysh": 0
     },
     "prefer-stable": true,
