@@ -73,13 +73,12 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
-							<?= $this->Flash->render() ?>
 							<h1 class="heading"><?= $this->fetch('title') ?></h1>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			<?= $this->Flash->render() ?>
 			<?= $this->fetch('content') ?>
 			
 		</div>
