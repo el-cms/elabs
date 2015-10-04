@@ -1,0 +1,33 @@
+.alert{
+	@extend .card;
+	padding:$grid-gutter;
+}
+.alert-dismissible{
+	.close{
+		@extend .btn;
+		@extend .btn-flat;
+		width: $line-height;
+		padding:0px;
+		margin-right: $grid-gutter;
+	}
+}
+
+.alert-danger{
+	background-color:$palette-red-700;
+	color:$white-text;
+}
+
+.alert-warning{
+	background-color:$palette-amber-700;
+	color:$white-text;
+}
+
+.alert-info{
+	background-color:$palette-blue-700;
+	color:$white-text;
+}
+
+.alert-success{
+	background-color:$palette-green-700;
+	color:$white-text;
+}
