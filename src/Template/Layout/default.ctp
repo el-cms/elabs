@@ -24,47 +24,38 @@
 	<body class="page-amber avoid-fout">
 		<?= $this->element('layout/pageloader') ?>
 		<header class="header header-transparent header-waterfall">
-			<ul class="nav nav-list pull-left">
+			<ul class="nav nav-list pull-left visible-only-sm">
 				<li>
 					<a data-toggle="menu" href="#menu">
 						<span class="icon icon-lg">menu</span>
 					</a>
 				</li>
 			</ul>
-			<a class="header-logo margin-left-no" href="#">ExperimentsLabs</a>
-			<!--			<ul class="nav nav-list pull-right">
-							<li>
-								<a data-toggle="menu" href="#profile">
-									<span class="access-hide">John Smith</span>
-									<span class="avatar">avatar</span>
-								</a>
-							</li>
-						</ul>-->
+			<a class="header-logo" href="#">ExperimentsLabs</a>
+			<?php
+			if (!is_null($authUser)):
+				?>
+				<ul class="nav nav-list pull-right">
+					<li>
+						<a data-toggle="menu" href="#profile">
+							<span class="access-hide">John Smith</span>
+							<span class="fa fa-user text-red"></span>
+						</a>
+					</li>
+				</ul>
+				<?php
+			endif;
+			?>
+			<ul class="nav nav-list hidden-only-sm">
+				<li><a href="#">Test</a></li>
+			</ul>
+
 		</header>
 		<nav aria-hidden="true" class="menu" id="menu" tabindex="-1">
 			<div class="menu-scroll">
 				<div class="menu-content">
 					<a class="menu-logo" href="#">ExperimentsLabs</a>
-					<ul class="nav">
-						<li>
-							<?= $this->Html->link('Home', ['controller'=>'pages', 'action'=>'home'],['class'=>'waves-attach']) ?>
-						</li>
-						<li>
-							<?= $this->Html->link('News', ['controller'=>'pages', 'action'=>'news'],['class'=>'waves-attach']) ?>
-						</li>
-						<li>
-							<?= $this->Html->link('Projects', ['controller'=>'pages', 'action'=>'projects'],['class'=>'waves-attach']) ?>
-						</li>
-						<li>
-							<?= $this->Html->link('Files', ['controller'=>'pages', 'action'=>'files'],['class'=>'waves-attach']) ?>
-						</li>
-					</ul>
-					<hr>
-					<ul class="nav">
-						<li>
-							<a class="waves-attach" href="#">About</a>
-						</li>
-					</ul>
+					<?= $this->element('layout/mainmenu') ?>
 				</div>
 			</div>
 		</nav>
@@ -78,9 +69,14 @@
 					</div>
 				</div>
 			</div>
-			<?= $this->Flash->render() ?>
-			<?= $this->fetch('content') ?>
-			
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<?= $this->Flash->render() ?>
+						<?= $this->fetch('content') ?>
+					</div>
+				</div>
+			</div>
 		</div>
 		<footer class="footer">
 			<div class="container">
@@ -98,7 +94,7 @@
 						</div>
 					</div>
 				</div>-->
-		
+
 		<!-- Javascript at the end -->
 		<?= $this->Html->script('lib/jquery-1.11.3.min.js') ?>
 		<?= $this->Html->script('material.min.js') ?>

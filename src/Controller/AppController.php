@@ -55,14 +55,14 @@ class AppController extends Controller {
 		$this->loadComponent('RequestHandler');
 		$this->loadComponent('Flash');
 		$this->loadComponent('Auth', [
-				'authenticate'=>['Form'=>['fields'=>['username'=>'email']]],
-				'loginAction'=>['controller'=>'Users', 'action'=>'login'],
-				'authError'=>'You are not allowed to view this page.',
+				'authenticate' => ['Form' => ['fields' => ['username' => 'email']]],
+				'loginAction' => ['controller' => 'Users', 'action' => 'login'],
+				'authError' => 'You are not allowed to view this page.',
 				'loginRedirect' => ['controller' => 'pages', 'action' => 'display', 'home'],
 				'logoutRedirect' => ['controller' => 'pages', 'action' => 'display', 'home']
 		]);
 	}
-	
+
 	public function beforeFilter(Event $event) {
 		parent::beforeFilter($event);
 		$this->Auth->allow(['index', 'view']);
@@ -86,7 +86,7 @@ class AppController extends Controller {
 		if(!is_null($this->Auth->user('id'))){
 			$authUser=$this->Auth->user();
 		}
-		$this->set('authUser');
+		$this->set('authUser', $authUser);
 	}
 
 }
