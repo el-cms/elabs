@@ -21,23 +21,8 @@
 			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body class="page-amber">
-		<!--	<body class="avoid-fout">-->
-		<!--		<div class="avoid-fout-indicator avoid-fout-indicator-fixed">
-					<div class="progress-circular progress-circular-alt progress-circular-center">
-						<div class="progress-circular-wrapper">
-							<div class="progress-circular-inner">
-								<div class="progress-circular-left">
-									<div class="progress-circular-spinner"></div>
-								</div>
-								<div class="progress-circular-gap"></div>
-								<div class="progress-circular-right">
-									<div class="progress-circular-spinner"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>-->
+	<body class="page-red avoid_fout">
+		<?=$this->element('layout/pageloader') ?>
 		<header class="header header-transparent header-waterfall">
 			<ul class="nav nav-list pull-left">
 				<li>
@@ -83,12 +68,11 @@
 				</div>
 			</div>
 		</nav>
-		<?= $this->Flash->render() ?>
 		<div class="content">
 			<div class="content-heading">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="heading"><?= $this->fetch('title') ?></h1>
+						<h1 class="heading"><span class="fa fa-wrench"></span>&nbsp;<?= $this->fetch('title') ?></h1>
 					</div>
 				</div>
 			</div>
@@ -102,9 +86,9 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 				<div class="col-sm-10">
+					<?= $this->Flash->render() ?>
 					<?= $this->fetch('content', 'empty') ?>
 				</div>
 			</div>
@@ -115,7 +99,7 @@
 			</div>
 			<!--<a class="fbtn fbtn-lg upbtn"><span class="icon">add</span></a>-->
 		</footer>
-		<!--		<div class="fbtn-container">
+<!--				<div class="fbtn-container">
 					<div class="fbtn-inner">
 						<a class="fbtn fbtn-red fbtn-lg" data-toggle="dropdown"><span class="fbtn-text">Links</span><span class="fbtn-ori icon">add</span><span class="fbtn-sub icon">close</span></a>
 						<div class="fbtn-dropdown">
