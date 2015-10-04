@@ -201,3 +201,9 @@ DispatcherFactory::add('ControllerFactory');
  */
 Type::build('date')->useLocaleParser();
 Type::build('datetime')->useLocaleParser();
+
+// Bootstrap widgets
+Plugin::load('Bootstrap');
+
+// Cakeadmin
+Plugin::load('CakeAdmin', ['bootstrap' => true, 'routes' => true]);
