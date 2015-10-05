@@ -1,0 +1,11 @@
+// Meta class to display element on sm or smaller
+.visible-only-sm{
+	@extend .hidden-lg;
+	@extend .hidden-md;
+}
+// Meta class to hide element on sm or smaller
+.hidden-only-sm{
+	@extend .hidden-xx;
+	@extend .hidden-xs;
+	@extend .hidden-sm;
+}

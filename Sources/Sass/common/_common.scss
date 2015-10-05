@@ -9,6 +9,7 @@
 @import "Font-Awesome-master/scss/font-awesome.scss";
 
 // Common modifications
+@import "custom/base/grid.scss";
 @import "custom/base/layout.scss";
 @import "custom/base/typo.scss";
 @import "custom/components/alerts.scss";
