@@ -1,10 +1,60 @@
+//
+// Meta classes to show an element on a certain display only.
+// The element will be hidden on other display sizes
+//
+
+// Meta class to display element on lg ONLY
+.visible-lg-only{
+	@extend .hidden-xx;
+	@extend .hidden-xs;
+	@extend .hidden-sm;
+	@extend .hidden-md;
+}
+// Meta class to display element on md ONLY
+.visible-md-only{
+	@extend .hidden-xx;
+	@extend .hidden-xs;
+	@extend .hidden-sm;
+	@extend .hidden-lg;
+}
+// Meta class to display element on sm ONLY
+.visible-sm-only{
+	@extend .hidden-xx;
+	@extend .hidden-xs;
+	@extend .hidden-md;
+	@extend .hidden-lg;
+}
+// Meta class to display element on xs ONLY
+.visible-xs-only{
+	@extend .hidden-xx;
+	@extend .hidden-sm;
+	@extend .hidden-md;
+	@extend .hidden-lg;
+}
+// Meta class to display element on xx ONLY
+.visible-xx-only{
+	@extend .hidden-xs;
+	@extend .hidden-sm;
+	@extend .hidden-md;
+	@extend .hidden-lg;
+}
+
+//
+// Meta classes to show an element on a certain display size OR SMALLER
+//
+
 // Meta class to display element on sm or smaller
-.visible-only-sm{
+.visible-sm-or-smaller{
 	@extend .hidden-lg;
 	@extend .hidden-md;
 }
+
+//
+// Meta classes to hide an element on a certain display size OR SMALLER
+//
+
 // Meta class to hide element on sm or smaller
-.hidden-only-sm{
+.hidden-s-or-smaller{
 	@extend .hidden-xx;
 	@extend .hidden-xs;
 	@extend .hidden-sm;
