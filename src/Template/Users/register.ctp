@@ -1,27 +1,33 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Events'), ['controller' => 'Events', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Event'), ['controller' => 'Events', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Register') ?></legend>
-        <?php
-            echo $this->Form->input('email');
-            echo $this->Form->input('username');
-            echo $this->Form->input('realname');
-            echo $this->Form->input('password');
-            echo $this->Form->input('role',['options'=>['admin'=>'Admin', 'author'=>'Author', 'user'=>'User']]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<div class="row">
+	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div class="card">
+			<div class="card-main">
+				<div class="card-header">
+					<div class="card-inner">
+						<?= __('Register') ?>
+						<span class="visible-lg-only">lg</span>
+						<span class="visible-md-only">md</span>
+						<span class="visible-sm-only">sm</span>
+						<span class="visible-xs-only">xs</span>
+						<span class="visible-xx-only">xx</span>
+					</div>
+				</div>
+				<div class="card-inner">
+					<div class="row">
+						<div class="col-xs-2 text-center">
+							<span class="fa-stack fa-2x">
+								<i class="fa fa-circle-o fa-stack-2x"></i>
+								<i class="fa fa-user-plus fa-stack-1x text-brand"></i>
+							</span>
+						</div>
+						<div class="col-xs-10">
+							<?= $this->element('users/manifest') ?>
+						</div>
+					</div>
+					<?= $this->element('users/registerform') ?>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
