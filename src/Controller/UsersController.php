@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Users Controller
@@ -49,12 +50,24 @@ class UsersController extends AppController {
 	public function register() {
 		$user = $this->Users->newEntity();
 		if ($this->request->is('post')) {
+
+			//Adding defaults
+			$this->request->data['see_nsfw'] = Configure::read('cms.defaultSeeNSFW');
+			$this->request->data['role'] = Configure::read('cms.defaultRole');
+			$this->request->data['status'] = Configure::read('cms.defaultActivateUser');
+			$this->request->data['locked'] = Configure::read('cms.defaultLockedUser');
+
 			$user = $this->Users->patchEntity($user, $this->request->data);
+//			die('<pre>' . var_export($user, true) . '</pre>');
 			if ($this->Users->save($user)) {
-				$this->Flash->success(__('The user has been saved.'));
+				$this->Flash->success(__d('elabs', 'Your account has been created. An email will be sent to you when active'));
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error(__('The user could not be saved. Please, try again.'));
+				$errors=$user->errors();
+				$errorMessages=[];
+				array_walk_recursive($errors, function($a) use (&$errorMessages) { $errorMessages[] = $a; });
+//				die('<pre>' . var_export($errorMessages, true) . '</pre>');
+				$this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
 			}
 		}
 		$this->set(compact('user'));
