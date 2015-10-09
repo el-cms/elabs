@@ -7,6 +7,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Core\Configure;
 
 /**
  * Users Model
@@ -27,7 +28,7 @@ class UsersTable extends Table {
 		parent::initialize($config);
 
 		$this->table('users');
-		$this->displayField('id');
+		$this->displayField('username');
 		$this->primaryKey('id');
 
 		$this->addBehavior('Timestamp');
@@ -57,18 +58,45 @@ class UsersTable extends Table {
 		$validator
 						->add('email', 'valid', ['rule' => 'email'])
 						->requirePresence('email', 'create')
-						->notEmpty('email');
+						->notEmpty('email', 'Your email is needed for login');
 
 		$validator
 						->requirePresence('username', 'create')
-						->notEmpty('username', 'You should provide a user name');
+						->notEmpty('username', 'You should provide a user name')
+						->add('username', [
+								'minLength' => [
+										'rule' => ['minLength', Configure::read('cms.defaultMinUserNameLenght')],
+										'message' => sprintf('User names must be %d characters min.', Configure::read('cms.defaultMinUserNameLenght')),
+								]
+		]);
 
 		$validator
-						->allowEmpty('realname', 'Your real name would be great');
+						->allowEmpty('realname');
 
 		$validator
 						->requirePresence('password', 'create')
-						->notEmpty('password');
+						->notEmpty('password', 'Without a password, you can\'t login.')
+						->add('password', [
+								'minLength' => [
+										'rule' => ['minLength', Configure::read('cms.defaultMinPassLenght')],
+										'message' => sprintf('Passwords must be %d characters min.', Configure::read('cms.defaultMinPassLenght')),
+								]
+						])
+						->add('password', 'compare', [
+								'rule' => function ($value, $context) {
+									if ($value != $context['data']['password_confirm']) {
+										return false;
+									}
+									return true;
+								},
+								'message' => __d('elabs', 'Your password does not match your confirm password. Please try again'),
+								'on' => ['create', 'update'],
+								'allowEmpty' => false
+		]);
+
+		$validator
+						->requirePresence('password_confirm', 'create')
+						->notEmpty('password_confirm');
 
 		$validator
 						->allowEmpty('website');
@@ -89,6 +117,9 @@ class UsersTable extends Table {
 		$validator
 						->add('status', 'valid', ['rule' => 'boolean'])
 						->allowEmpty('status');
+		$validator
+						->add('locked', 'valid', ['rule' => 'boolean'])
+						->allowEmpty('locked');
 
 		return $validator;
 	}
@@ -101,8 +132,8 @@ class UsersTable extends Table {
 	 * @return \Cake\ORM\RulesChecker
 	 */
 	public function buildRules(RulesChecker $rules) {
-		$rules->add($rules->isUnique(['email']));
-		$rules->add($rules->isUnique(['username']));
+		$rules->add($rules->isUnique(['email'], __d('elabs', 'This email address is already in use.')));
+		$rules->add($rules->isUnique(['username'], __d('elabs', 'This username is already taken.')));
 		return $rules;
 	}
 
