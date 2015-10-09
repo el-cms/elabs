@@ -202,5 +202,12 @@ DispatcherFactory::add('ControllerFactory');
 Type::build('date')->useLocaleParser();
 Type::build('datetime')->useLocaleParser();
 
+
+/**
+ * Custom configuration files
+ */
+//Configure::config('default', new PhpConfig());
+Configure::load('siteconfig', 'default');
+
 // Bootstrap widgets
 Plugin::load('Bootstrap');
