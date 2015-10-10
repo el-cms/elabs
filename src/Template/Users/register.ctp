@@ -5,11 +5,6 @@
 				<div class="card-header">
 					<div class="card-inner">
 						<?= __('Register') ?>
-						<span class="visible-lg-only">lg</span>
-						<span class="visible-md-only">md</span>
-						<span class="visible-sm-only">sm</span>
-						<span class="visible-xs-only">xs</span>
-						<span class="visible-xx-only">xx</span>
 					</div>
 				</div>
 				<div class="card-inner">
