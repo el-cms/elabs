@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -11,6 +12,7 @@
  * @since     3.0.0
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\View;
 
 use Cake\View\View;
@@ -22,19 +24,36 @@ use Cake\View\View;
  *
  * @link http://book.cakephp.org/3.0/en/views.html#the-app-view
  */
-class AppView extends View
-{
+class AppView extends View {
 
-    /**
-     * Initialization hook method.
-     *
-     * Use this method to add common initialization code like loading helpers.
-     *
-     * e.g. `$this->loadHelper('Html');`
-     *
-     * @return void
-     */
-    public function initialize()
-    {
-    }
+	/**
+	 * Initialization hook method.
+	 *
+	 * Use this method to add common initialization code like loading helpers.
+	 *
+	 * e.g. `$this->loadHelper('Html');`
+	 *
+	 * @return void
+	 */
+	public function initialize() {
+		/**
+		 * Helpers
+		 * 
+		 * @var type array
+		 */
+		$this->loadHelper(
+						'Form', [
+				'className' => 'Bootstrap.BootstrapForm' // instead of 'Bootstrap3.BootstrapForm'
+						]
+		);
+
+		$this->Form->templates([
+				'inputContainer' => '<div class="form-group form-group-label form-group-brand {{required}}">{{content}}</div>',
+				'inputContainerError' => '<div class="form-group form-group-label form-group-red{{required}}">{{content}}<span class="form-help form-help-msg text-red">{{error}}<span class="fa fa-warning-sign form-help-icon"></span></span></div>',
+				// Sadly, this one is overriden in input() method from BootstrapFormHelper...
+				'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
+				'nestingLabel' => '{{hidden}}<label class="floating-label {{attrs.class}}" {{attrs}}>{{input}}{{text}}</label>',
+		]);
+	}
+
 }

@@ -30,17 +30,6 @@ use Cake\Event\Event;
 class AppController extends Controller {
 
 	/**
-	 * Helpers
-	 * 
-	 * @var type array
-	 */
-	public $helpers = [
-			'Form' => [
-					'className' => 'Bootstrap.BootstrapForm' // instead of 'Bootstrap3.BootstrapForm'
-			]
-	];
-
-	/**
 	 * Initialization hook method.
 	 *
 	 * Use this method to add common initialization code like loading components.
