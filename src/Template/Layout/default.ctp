@@ -9,7 +9,7 @@
     </title>
 		<?= $this->Html->meta('icon') ?>
 
-		<?= $this->Html->css('style.min.css', array('media' => 'screen,projection')) ?>
+		<?= $this->Html->css('frontend.css', array('media' => 'screen,projection')) ?>
 
 		<?= $this->fetch('meta') ?>
 		<?= $this->fetch('css') ?>
@@ -32,20 +32,14 @@
 				</li>
 			</ul>
 			<a class="header-logo" href="#">ExperimentsLabs</a>
-			<?php
-			if (!is_null($authUser)):
-				?>
+			
 				<ul class="nav nav-list pull-right">
 					<li>
 						<a data-toggle="menu" href="#profile">
-							<span class="access-hide">John Smith</span>
-							<span class="fa fa-user text-red"></span>
+							<span class="avatar"><span class="fa fa-user fa-3x<?=(!is_null($authUser))?' text-red':'';?>"></span></span>
 						</a>
 					</li>
 				</ul>
-				<?php
-			endif;
-			?>
 			<ul class="nav nav-list hidden-only-sm">
 				<li><a href="#">Test</a></li>
 			</ul>
@@ -59,6 +53,13 @@
 				</div>
 			</div>
 		</nav>
+		<?php
+		if (!is_null($authUser)):
+			echo $this->element('layout/usermenu');
+		else:
+			echo $this->element('layout/loginmenu');
+		endif;
+		?>
 		<div class="content">
 			<div class="content-heading">
 				<div class="container">
