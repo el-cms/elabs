@@ -1293,13 +1293,14 @@ th {
   thead {
     display: table-header-group; }
 
-  .card,
+  .card, .alert,
   .card-img,
   .tile-full,
+  .card-full,
   .card-side {
     border-radius: 0 !important; }
 
-  .card,
+  .card, .alert,
   .tile {
     border: 1px solid rgba(0, 0, 0, 0.38); }
 
@@ -1697,7 +1698,7 @@ body.el-loading {
   display: none !important; }
 
 @media only screen and (max-width: 479px) {
-  .hidden-xx {
+  .hidden-xx, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xs-only, .hidden-s-or-smaller {
     display: none !important; }
 
   .visible-xx-block {
@@ -1709,7 +1710,7 @@ body.el-loading {
   .visible-xx-inline-block {
     display: inline-block !important; } }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  .hidden-xs {
+  .hidden-xs, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xx-only, .hidden-s-or-smaller {
     display: none !important; }
 
   .visible-xs-block {
@@ -1721,7 +1722,7 @@ body.el-loading {
   .visible-xs-inline-block {
     display: inline-block !important; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .hidden-sm {
+  .hidden-sm, .visible-lg-only, .visible-md-only, .visible-xs-only, .visible-xx-only, .hidden-s-or-smaller {
     display: none !important; }
 
   .visible-sm-block {
@@ -1733,7 +1734,7 @@ body.el-loading {
   .visible-sm-inline-block {
     display: inline-block !important; } }
 @media only screen and (min-width: 992px) and (max-width: 1439px) {
-  .hidden-md {
+  .hidden-md, .visible-lg-only, .visible-sm-only, .visible-xs-only, .visible-xx-only, .visible-sm-or-smaller {
     display: none !important; }
 
   .visible-md-block {
@@ -1745,7 +1746,7 @@ body.el-loading {
   .visible-md-inline-block {
     display: inline-block !important; } }
 @media only screen and (min-width: 1440px) {
-  .hidden-lg {
+  .hidden-lg, .visible-md-only, .visible-sm-only, .visible-xs-only, .visible-xx-only, .visible-sm-or-smaller {
     display: none !important; }
 
   .visible-lg-block {
@@ -1869,7 +1870,7 @@ body.el-loading {
       cursor: text;
       text-decoration: none; }
 
-.btn, ul.pagination li {
+.btn, .alert-dismissible .close, ul.pagination li {
   background-color: #f5f5f5;
   background-image: none;
   background-position: 50% 50%;
@@ -1893,20 +1894,20 @@ body.el-loading {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap; }
-  .btn:active, ul.pagination li:active, .btn:focus, ul.pagination li:focus, .btn:hover, ul.pagination li:hover {
+  .btn:active, .alert-dismissible .close:active, ul.pagination li:active, .btn:focus, .alert-dismissible .close:focus, ul.pagination li:focus, .btn:hover, .alert-dismissible .close:hover, ul.pagination li:hover {
     color: rgba(0, 0, 0, 0.87);
     outline: 0;
     text-decoration: none; }
-  .btn:active, ul.pagination li:active, .btn:focus, ul.pagination li:focus {
+  .btn:active, .alert-dismissible .close:active, ul.pagination li:active, .btn:focus, .alert-dismissible .close:focus, ul.pagination li:focus {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 1px rgba(0, 0, 0, 0.15), 0 3px 9px rgba(0, 0, 0, 0.3); }
-  .btn:active, ul.pagination li:active {
+  .btn:active, .alert-dismissible .close:active, ul.pagination li:active {
     background-color: #e0e0e0; }
-  .btn.disabled, ul.pagination li.disabled, .btn[disabled], ul.pagination li[disabled], fieldset[disabled] .btn, fieldset[disabled] ul.pagination li, ul.pagination fieldset[disabled] li {
+  .btn.disabled, .alert-dismissible .disabled.close, ul.pagination li.disabled, .btn[disabled], .alert-dismissible [disabled].close, ul.pagination li[disabled], fieldset[disabled] .btn, fieldset[disabled] .alert-dismissible .close, .alert-dismissible fieldset[disabled] .close, fieldset[disabled] ul.pagination li, ul.pagination fieldset[disabled] li {
     background-color: rgba(154, 154, 154, 0.18) !important;
     box-shadow: none !important;
     color: rgba(0, 0, 0, 0.38) !important;
     cursor: not-allowed; }
-    .btn.disabled .waves-ripple, ul.pagination li.disabled .waves-ripple, .btn[disabled] .waves-ripple, ul.pagination li[disabled] .waves-ripple, fieldset[disabled] .btn .waves-ripple, fieldset[disabled] ul.pagination li .waves-ripple, ul.pagination fieldset[disabled] li .waves-ripple {
+    .btn.disabled .waves-ripple, .alert-dismissible .disabled.close .waves-ripple, ul.pagination li.disabled .waves-ripple, .btn[disabled] .waves-ripple, .alert-dismissible [disabled].close .waves-ripple, ul.pagination li[disabled] .waves-ripple, fieldset[disabled] .btn .waves-ripple, fieldset[disabled] .alert-dismissible .close .waves-ripple, .alert-dismissible fieldset[disabled] .close .waves-ripple, fieldset[disabled] ul.pagination li .waves-ripple, ul.pagination fieldset[disabled] li .waves-ripple {
       display: none; }
 
 .btn-brand {
@@ -1949,40 +1950,40 @@ body.el-loading {
   white-space: normal;
   width: 100%; }
 
-.btn-flat, ul.pagination li {
+.btn-flat, .alert-dismissible .close, ul.pagination li {
   background-color: transparent;
   box-shadow: none; }
-  .btn-flat:active, ul.pagination li:active, .btn-flat:focus, ul.pagination li:focus, .btn-flat:hover, ul.pagination li:hover {
+  .btn-flat:active, .alert-dismissible .close:active, ul.pagination li:active, .btn-flat:focus, .alert-dismissible .close:focus, ul.pagination li:focus, .btn-flat:hover, .alert-dismissible .close:hover, ul.pagination li:hover {
     background-color: rgba(154, 154, 154, 0.18);
     box-shadow: none; }
-  .btn-flat:active, ul.pagination li:active {
+  .btn-flat:active, .alert-dismissible .close:active, ul.pagination li:active {
     background-color: rgba(154, 154, 154, 0.36); }
-  .btn-flat.disabled, ul.pagination li.disabled, .btn-flat[disabled], ul.pagination li[disabled], fieldset[disabled] .btn-flat, fieldset[disabled] ul.pagination li, ul.pagination fieldset[disabled] li {
+  .btn-flat.disabled, .alert-dismissible .disabled.close, ul.pagination li.disabled, .btn-flat[disabled], .alert-dismissible [disabled].close, ul.pagination li[disabled], fieldset[disabled] .btn-flat, fieldset[disabled] .alert-dismissible .close, .alert-dismissible fieldset[disabled] .close, fieldset[disabled] ul.pagination li, ul.pagination fieldset[disabled] li {
     background-color: transparent !important; }
 
-.btn-flat.btn-brand, ul.pagination li.btn-brand {
+.btn-flat.btn-brand, .alert-dismissible .btn-brand.close, ul.pagination li.btn-brand {
   color: #3f51b5; }
-  .btn-flat.btn-brand[disabled], ul.pagination li.btn-brand[disabled], fieldset[disabled] .btn-flat.btn-brand, fieldset[disabled] ul.pagination li.btn-brand, ul.pagination fieldset[disabled] li.btn-brand {
+  .btn-flat.btn-brand[disabled], .alert-dismissible .btn-brand[disabled].close, ul.pagination li.btn-brand[disabled], fieldset[disabled] .btn-flat.btn-brand, fieldset[disabled] .alert-dismissible .btn-brand.close, .alert-dismissible fieldset[disabled] .btn-brand.close, fieldset[disabled] ul.pagination li.btn-brand, ul.pagination fieldset[disabled] li.btn-brand {
     color: #7986cb; }
 
-.btn-flat.btn-brand-accent, ul.pagination li.btn-brand-accent {
+.btn-flat.btn-brand-accent, .alert-dismissible .btn-brand-accent.close, ul.pagination li.btn-brand-accent {
   color: #ff4081; }
-  .btn-flat.btn-brand-accent[disabled], ul.pagination li.btn-brand-accent[disabled], fieldset[disabled] .btn-flat.btn-brand-accent, fieldset[disabled] ul.pagination li.btn-brand-accent, ul.pagination fieldset[disabled] li.btn-brand-accent {
+  .btn-flat.btn-brand-accent[disabled], .alert-dismissible .btn-brand-accent[disabled].close, ul.pagination li.btn-brand-accent[disabled], fieldset[disabled] .btn-flat.btn-brand-accent, fieldset[disabled] .alert-dismissible .btn-brand-accent.close, .alert-dismissible fieldset[disabled] .btn-brand-accent.close, fieldset[disabled] ul.pagination li.btn-brand-accent, ul.pagination fieldset[disabled] li.btn-brand-accent {
     color: #ff80ab; }
 
-.btn-flat.btn-amber, ul.pagination li.btn-amber {
+.btn-flat.btn-amber, .alert-dismissible .btn-amber.close, ul.pagination li.btn-amber {
   color: #ffc107; }
-  .btn-flat.btn-amber[disabled], ul.pagination li.btn-amber[disabled], fieldset[disabled] .btn-flat.btn-amber, fieldset[disabled] ul.pagination li.btn-amber, ul.pagination fieldset[disabled] li.btn-amber {
+  .btn-flat.btn-amber[disabled], .alert-dismissible .btn-amber[disabled].close, ul.pagination li.btn-amber[disabled], fieldset[disabled] .btn-flat.btn-amber, fieldset[disabled] .alert-dismissible .btn-amber.close, .alert-dismissible fieldset[disabled] .btn-amber.close, fieldset[disabled] ul.pagination li.btn-amber, ul.pagination fieldset[disabled] li.btn-amber {
     color: #ffecb3; }
 
-.btn-flat.btn-green, ul.pagination li.btn-green {
+.btn-flat.btn-green, .alert-dismissible .btn-green.close, ul.pagination li.btn-green {
   color: #4caf50; }
-  .btn-flat.btn-green[disabled], ul.pagination li.btn-green[disabled], fieldset[disabled] .btn-flat.btn-green, fieldset[disabled] ul.pagination li.btn-green, ul.pagination fieldset[disabled] li.btn-green {
+  .btn-flat.btn-green[disabled], .alert-dismissible .btn-green[disabled].close, ul.pagination li.btn-green[disabled], fieldset[disabled] .btn-flat.btn-green, fieldset[disabled] .alert-dismissible .btn-green.close, .alert-dismissible fieldset[disabled] .btn-green.close, fieldset[disabled] ul.pagination li.btn-green, ul.pagination fieldset[disabled] li.btn-green {
     color: #81c784; }
 
-.btn-flat.btn-red, ul.pagination li.btn-red {
+.btn-flat.btn-red, .alert-dismissible .btn-red.close, ul.pagination li.btn-red {
   color: #f44336; }
-  .btn-flat.btn-red[disabled], ul.pagination li.btn-red[disabled], fieldset[disabled] .btn-flat.btn-red, fieldset[disabled] ul.pagination li.btn-red, ul.pagination fieldset[disabled] li.btn-red {
+  .btn-flat.btn-red[disabled], .alert-dismissible .btn-red[disabled].close, ul.pagination li.btn-red[disabled], fieldset[disabled] .btn-flat.btn-red, fieldset[disabled] .alert-dismissible .btn-red.close, .alert-dismissible fieldset[disabled] .btn-red.close, fieldset[disabled] ul.pagination li.btn-red, ul.pagination fieldset[disabled] li.btn-red {
     color: #e57373; }
 
 .fbtn {
@@ -2181,7 +2182,7 @@ body.el-loading {
   .touch .fbtn-inner.open .fbtn-text {
     display: block; }
 
-.card {
+.card, .alert {
   background-color: #ffffff;
   border-radius: 2px;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.06), 0 0 3px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.18);
@@ -2191,15 +2192,15 @@ body.el-loading {
   margin-bottom: 24px;
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative; }
-  .card:focus, .card:hover {
+  .card:focus, .alert:focus, .card:hover, .alert:hover {
     text-decoration: none; }
-  .card-wrap .card {
+  .card-wrap .card, .card-wrap .alert {
     margin-top: 0; }
-  .no-flexbox .card:after, .no-flexbox .card:before {
+  .no-flexbox .card:after, .no-flexbox .alert:after, .no-flexbox .card:before, .no-flexbox .alert:before {
     content: "";
     display: table;
     line-height: 0; }
-  .no-flexbox .card:after {
+  .no-flexbox .card:after, .no-flexbox .alert:after {
     clear: both; }
 
 .card-brand {
@@ -2258,7 +2259,7 @@ body.el-loading {
 .card-action-btn, .tile-footer-btn {
   margin: 6px 8px;
   white-space: nowrap; }
-  .card-action-btn .btn + .btn, .tile-footer-btn .btn + .btn, .card-action-btn ul.pagination li + .btn, ul.pagination .card-action-btn li + .btn, .tile-footer-btn ul.pagination li + .btn, ul.pagination .tile-footer-btn li + .btn, .card-action-btn ul.pagination .btn + li, ul.pagination .card-action-btn .btn + li, .tile-footer-btn ul.pagination .btn + li, ul.pagination .tile-footer-btn .btn + li, .card-action-btn ul.pagination li + li, ul.pagination .card-action-btn li + li, .tile-footer-btn ul.pagination li + li, ul.pagination .tile-footer-btn li + li {
+  .card-action-btn .btn + .btn, .tile-footer-btn .btn + .btn, .card-action-btn .alert-dismissible .close + .btn, .alert-dismissible .card-action-btn .close + .btn, .tile-footer-btn .alert-dismissible .close + .btn, .alert-dismissible .tile-footer-btn .close + .btn, .card-action-btn ul.pagination li + .btn, ul.pagination .card-action-btn li + .btn, .tile-footer-btn ul.pagination li + .btn, ul.pagination .tile-footer-btn li + .btn, .card-action-btn .alert-dismissible .btn + .close, .alert-dismissible .card-action-btn .btn + .close, .tile-footer-btn .alert-dismissible .btn + .close, .alert-dismissible .tile-footer-btn .btn + .close, .card-action-btn .alert-dismissible .close + .close, .alert-dismissible .card-action-btn .close + .close, .tile-footer-btn .alert-dismissible .close + .close, .alert-dismissible .tile-footer-btn .close + .close, .card-action-btn ul.pagination .alert-dismissible li + .close, .alert-dismissible .card-action-btn ul.pagination li + .close, ul.pagination .card-action-btn .alert-dismissible li + .close, .alert-dismissible ul.pagination .card-action-btn li + .close, .tile-footer-btn ul.pagination .alert-dismissible li + .close, .alert-dismissible .tile-footer-btn ul.pagination li + .close, ul.pagination .tile-footer-btn .alert-dismissible li + .close, .alert-dismissible ul.pagination .tile-footer-btn li + .close, .card-action-btn ul.pagination .btn + li, ul.pagination .card-action-btn .btn + li, .tile-footer-btn ul.pagination .btn + li, ul.pagination .tile-footer-btn .btn + li, .card-action-btn .alert-dismissible ul.pagination .close + li, ul.pagination .card-action-btn .alert-dismissible .close + li, .alert-dismissible .card-action-btn ul.pagination .close + li, ul.pagination .alert-dismissible .card-action-btn .close + li, .tile-footer-btn .alert-dismissible ul.pagination .close + li, ul.pagination .tile-footer-btn .alert-dismissible .close + li, .alert-dismissible .tile-footer-btn ul.pagination .close + li, ul.pagination .alert-dismissible .tile-footer-btn .close + li, .card-action-btn ul.pagination li + li, ul.pagination .card-action-btn li + li, .tile-footer-btn ul.pagination li + li, ul.pagination .tile-footer-btn li + li {
     margin-left: 8px; }
 
 .card-header {
@@ -2300,15 +2301,15 @@ body.el-loading {
     margin-top: 0;
     margin-bottom: 0; }
 
-.card-img, .tile-full {
+.card-img, .tile-full, .card-full {
   display: block;
   overflow: hidden;
   position: relative; }
-  .card-img:first-child, .tile-full:first-child {
+  .card-img:first-child, .tile-full:first-child, .card-full:first-child {
     border-radius: 2px 2px 0 0; }
-  .card-img:last-child, .tile-full:last-child {
+  .card-img:last-child, .tile-full:last-child, .card-full:last-child {
     border-radius: 0 0 2px 2px; }
-  .card-img img, .tile-full img {
+  .card-img img, .tile-full img, .card-full img {
     display: block;
     height: auto;
     margin-right: auto;
@@ -2326,17 +2327,17 @@ body.el-loading {
   left: 0;
   width: 100%; }
 
-.card-inner {
+.card-inner, .card-description {
   margin: 24px 16px;
   min-width: 0;
   position: relative; }
-  .card-header .card-inner {
+  .card-header .card-inner, .card-header .card-description {
     flex: 1;
     font-size: 16px;
     line-height: 24px;
     margin-top: 16px;
     margin-bottom: 16px; }
-  .no-flexbox .card-header-side + .card-inner, .no-flexbox .tile-side + .card-inner {
+  .no-flexbox .card-header-side + .card-inner, .no-flexbox .tile-side + .card-inner, .no-flexbox .card-header-side + .card-description, .no-flexbox .tile-side + .card-description {
     overflow: hidden; }
 
 .card-main {
@@ -2722,7 +2723,7 @@ textarea.picker__select--year {
 
 .form-group-btn {
   margin-bottom: 24px; }
-  .form-group-btn .btn, .form-group-btn ul.pagination li, ul.pagination .form-group-btn li {
+  .form-group-btn .btn, .form-group-btn .alert-dismissible .close, .alert-dismissible .form-group-btn .close, .form-group-btn ul.pagination li, ul.pagination .form-group-btn li {
     margin-top: 24px;
     margin-right: 16px; }
 
@@ -3354,11 +3355,7 @@ input[type="checkbox"]:checked + .switch-toggle-red:active:after, input[type="ra
     height: 100%;
     height: calc(100% - 96px); }
     .modal-dialog.modal-full .modal-content {
-      height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar; }
+      height: 100%; }
   .modal.fade .modal-dialog {
     transform: scale(0, 0);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -3382,9 +3379,9 @@ input[type="checkbox"]:checked + .switch-toggle-red:active:after, input[type="ra
 .modal-footer {
   padding-right: 32px;
   padding-left: 32px; }
-  .modal-footer .btn + .btn, .modal-footer ul.pagination li + .btn, ul.pagination .modal-footer li + .btn, .modal-footer ul.pagination .btn + li, ul.pagination .modal-footer .btn + li, .modal-footer ul.pagination li + li, ul.pagination .modal-footer li + li {
+  .modal-footer .btn + .btn, .modal-footer .alert-dismissible .close + .btn, .alert-dismissible .modal-footer .close + .btn, .modal-footer ul.pagination li + .btn, ul.pagination .modal-footer li + .btn, .modal-footer .alert-dismissible .btn + .close, .alert-dismissible .modal-footer .btn + .close, .modal-footer .alert-dismissible .close + .close, .alert-dismissible .modal-footer .close + .close, .modal-footer ul.pagination .alert-dismissible li + .close, .alert-dismissible .modal-footer ul.pagination li + .close, ul.pagination .modal-footer .alert-dismissible li + .close, .alert-dismissible ul.pagination .modal-footer li + .close, .modal-footer ul.pagination .btn + li, ul.pagination .modal-footer .btn + li, .modal-footer .alert-dismissible ul.pagination .close + li, ul.pagination .modal-footer .alert-dismissible .close + li, .alert-dismissible .modal-footer ul.pagination .close + li, ul.pagination .alert-dismissible .modal-footer .close + li, .modal-footer ul.pagination li + li, ul.pagination .modal-footer li + li {
     margin-right: 16px; }
-  .modal-footer .text-right .btn + .btn, .modal-footer .text-right ul.pagination li + .btn, ul.pagination .modal-footer .text-right li + .btn, .modal-footer .text-right ul.pagination .btn + li, ul.pagination .modal-footer .text-right .btn + li, .modal-footer .text-right ul.pagination li + li, ul.pagination .modal-footer .text-right li + li {
+  .modal-footer .text-right .btn + .btn, .modal-footer .text-right .alert-dismissible .close + .btn, .alert-dismissible .modal-footer .text-right .close + .btn, .modal-footer .text-right ul.pagination li + .btn, ul.pagination .modal-footer .text-right li + .btn, .modal-footer .text-right .alert-dismissible .btn + .close, .alert-dismissible .modal-footer .text-right .btn + .close, .modal-footer .text-right .alert-dismissible .close + .close, .alert-dismissible .modal-footer .text-right .close + .close, .modal-footer .text-right ul.pagination .alert-dismissible li + .close, .alert-dismissible .modal-footer .text-right ul.pagination li + .close, ul.pagination .modal-footer .text-right .alert-dismissible li + .close, .alert-dismissible ul.pagination .modal-footer .text-right li + .close, .modal-footer .text-right ul.pagination .btn + li, ul.pagination .modal-footer .text-right .btn + li, .modal-footer .text-right .alert-dismissible ul.pagination .close + li, ul.pagination .modal-footer .text-right .alert-dismissible .close + li, .alert-dismissible .modal-footer .text-right ul.pagination .close + li, ul.pagination .alert-dismissible .modal-footer .text-right .close + li, .modal-footer .text-right ul.pagination li + li, ul.pagination .modal-footer .text-right li + li {
     margin-right: auto;
     margin-left: 16px; }
 
@@ -6745,6 +6742,36 @@ em.subtitle {
   font-size: 0.9em;
   color: rgba(0, 0, 0, 0.38); }
 
+.alert {
+  padding: 16px; }
+
+.alert-dismissible .close {
+  width: 20px;
+  padding: 0px;
+  margin-right: 16px; }
+
+.alert-danger {
+  background-color: #d32f2f;
+  color: white; }
+
+.alert-warning {
+  background-color: #ffa000;
+  color: white; }
+
+.alert-info {
+  background-color: #1976d2;
+  color: white; }
+
+.alert-success {
+  background-color: #388e3c;
+  color: white; }
+
+ul.pagination {
+  text-align: center;
+  padding: 0px; }
+  ul.pagination li {
+    display: inline; }
+
 .card-description ul {
   list-style: none;
   padding: 0px; }
@@ -6755,12 +6782,6 @@ ul.card-inner-list {
   list-style: none;
   padding: 0px;
   margin: 0px; }
-
-ul.pagination {
-  text-align: center;
-  padding: 0px; }
-  ul.pagination li {
-    display: inline; }
 
 .tile-full {
   /*width:100%;*/
@@ -6773,4 +6794,21 @@ ul.pagination {
 .tile-sub pre {
   overflow-x: hidden; }
 
-/*# sourceMappingURL=style.min.css.map */
+.card-full {
+  /*width:100%;*/
+  margin-left: -16px;
+  margin-right: -16px; }
+  .card-full audio {
+    padding-top: 16px;
+    width: 100%; }
+
+.card-description {
+  font-size: 0.9em;
+  margin: 0px;
+  padding: 16px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12); }
+
+.card-sub pre {
+  overflow-x: hidden; }
+
+/*# sourceMappingURL=frontend.css.map */
