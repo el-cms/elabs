@@ -1,5 +1,5 @@
 <!-- notice -->
-<div class="tile">
+<div class="tile tile-brand">
 	<div class="pull-left tile-side">
 		<i class="fa fa-info-circle text-blue"></i>
 	</div>
