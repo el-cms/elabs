@@ -1,43 +1,25 @@
-<?= $this->Form->create('User', ['controller' => 'Users', 'action' => 'register']) ?>
-<div class="form-group form-group-label form-group-brand">
-	<label class="floating-label" for="email"><?= __('Email') ?></label>
-	<?= $this->Form->input('email', ['id' => 'email', 'required', 'label' => false, 'inputGroup' => false]) ?>
-	<span class="form-help form-help-msg text-brand">
-		<?= __d('elabs', 'You will need this to login. It won\'t be sold, I promise.') ?>
-		<span class="form-help-icon fa fa-info-circle"></span>&nbsp;
-	</span>
-</div>
-<div class="form-group form-group-label form-group-brand">
-	<label class="floating-label" for="username"><?= __('User Name') ?></label>
-	<?= $this->Form->input('username', ['id' => 'username', 'required', 'label' => false, 'inputGroup' => false]) ?>
-	<span class="form-help form-help-msg text-brand">
-	<?= __d('elabs', 'The user name should be a pseudo or whatever you want with no spaces in it.') ?>
-		<span class="form-help-icon fa fa-info-circle"></span>&nbsp;
-	</span>
-</div>
-<div class="form-group form-group-label form-group-brand">
-	<label class="floating-label" for="realname"><?= __('Your name') ?></label>
-<?= $this->Form->input('realname', ['id' => 'realname', 'required', 'label' => false, 'inputGroup' => false]) ?>
-	<span class="form-help form-help-msg text-brand">
-	<?= __d('elabs', 'Your real name') ?>
-		<span class="form-help-icon fa fa-info-circle"></span>&nbsp;
-	</span>
-</div>
-<div class="form-group form-group-label form-group-brand">
-	<label class="floating-label" for="password"><?= __('Password') ?></label>
-<?= $this->Form->input('password', ['id' => 'password', 'required', 'label' => false, 'inputGroup' => false]) ?>
-</div>
-<div class="form-group form-group-label form-group-brand">
-	<label class="floating-label" for="password_confirm"><?= __('Confirm your password') ?></label>
-<?= $this->Form->input('password_confirm', ['type' => 'password', 'id' => 'password_confirm', 'required', 'label' => false, 'inputGroup' => false]) ?>
-</div>
-<div class="form-group form-group-label">
-	<label class="floating-label" for="bio"><?= __('A little bit about yourself') ?></label>
-<?= $this->Form->input('bio', ['type' => 'textarea', 'id' => 'bio', 'label' => false, 'inputGroup' => false]) ?>
-	<span class="form-help form-help-msg">
-	<?= __d('elabs', 'Why do you want to be on this site ?') ?>
-		<span class="form-help-icon fa fa-info-circle"></span>&nbsp;
-	</span>
-</div>
-<?= $this->Form->submit(__('Register'), ['class' => 'btn-block']) ?>
-<?= $this->Form->end() ?>
+<?php
+
+echo $this->Form->create('User', ['controller' => 'Users', 'action' => 'register']);
+$this->Form->templates([
+		'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
+		'inputContainer' => '<div class="form-group form-group-label form-group-brand {{required}}">{{content}}'
+		. '<span class="form-help form-help-msg">{{help}}'
+		. '<span class="fa fa-info form-help-icon"></span>'
+		. '</span></div>',
+		'inputContainerError' => '<div class="form-group form-group-label form-group-red{{required}}">{{content}}'
+		. '<span class="form-help form-help-msg">{{help}}x'
+		. '<span class="fa fa-info form-help-icon"></span>'
+		. '</span></div>'
+		. '<span class="form-help form-help-msg text-red">{{error}}'
+		. '<span class="fa fa-warning-sign form-help-icon"></span>'
+		. '</span></div>',
+]);
+echo $this->Form->input('email', ['label'=>'E-Mail', 'required', 'templateVars' => ['help' => __d('elabs', 'Your email won\'t be given/sold to third-parties' )]]);
+echo $this->Form->input('username', ['label'=>'User name', 'required', 'templateVars' => ['help' => __d('elabs', 'User name should be small caps, alphanumeric and underscores only' )]]);
+echo $this->Form->input('realname', ['label'=>'Real name', 'required', 'templateVars' => ['help' => __d('elabs', 'Your real name, if you don\'t mind' )]]);
+echo $this->Form->input('password',['required', 'templateVars' => ['help' => __d('elabs', 'A strong password is a good start.' )]]);
+echo $this->Form->input('password_confirm', ['label'=>'Password confirmation', 'type' => 'password', 'required', 'templateVars' => ['help' => __d('elabs', 'Verify you didn\'t made a typo' )]]);
+echo $this->Form->input('bio', ['label'=>'About...', 'type' => 'textarea', 'templateVars' => ['help' => __d('elabs', 'Tell us why you want to come here' )]]);
+echo$this->Form->submit(__('Register'), ['class' => 'btn-block']);
+echo $this->Form->end();

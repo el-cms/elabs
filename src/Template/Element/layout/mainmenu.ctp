@@ -1,7 +1,4 @@
 <ul class="nav">
-</ul>
-<hr>
-<ul class="nav">
 	<li>
 		<?= $this->Html->link('Home', ['controller' => 'pages', 'action' => 'home'], ['class' => 'waves-attach']) ?>
 	</li>
