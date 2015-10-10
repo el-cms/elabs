@@ -1,0 +1,23 @@
+// Images in tiles content
+.card-full{
+	@extend .card-img;
+	/*width:100%;*/
+	margin-left:-$grid-gutter;
+	margin-right:-$grid-gutter;
+	audio{
+		padding-top:$grid-gutter;
+		width:100%;
+	}
+}
+
+.card-description{
+	font-size:0.9em;
+	@extend .card-inner;
+	margin:0px;
+	padding:$grid-gutter;
+	border-bottom: 1px dashed $black-divider;
+}
+
+.card-sub pre{
+	overflow-x: hidden;
+}
