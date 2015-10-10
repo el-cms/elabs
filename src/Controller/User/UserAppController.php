@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
@@ -18,7 +18,7 @@ class UserAppController extends AppController {
 	 */
 	public function beforeRender(Event $event) {
 		parent::beforeRender($event);
-		$this->viewBuilder()->layout('admin');
+		$this->viewBuilder()->layout('default');
 	}
 
 }
