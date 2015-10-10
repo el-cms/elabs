@@ -63,9 +63,11 @@ class UsersController extends AppController {
 				$this->Flash->success(__d('elabs', 'Your account has been created. An email will be sent to you when active'));
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$errors=$user->errors();
-				$errorMessages=[];
-				array_walk_recursive($errors, function($a) use (&$errorMessages) { $errorMessages[] = $a; });
+				$errors = $user->errors();
+				$errorMessages = [];
+				array_walk_recursive($errors, function($a) use (&$errorMessages) {
+					$errorMessages[] = $a;
+				});
 //				die('<pre>' . var_export($errorMessages, true) . '</pre>');
 				$this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
 			}
@@ -86,6 +88,7 @@ class UsersController extends AppController {
 	}
 
 	public function logout() {
+		$this->Flash->success(__d('elabs', 'You are logged out. See you later !'));
 		return $this->redirect($this->Auth->logout());
 	}
 
