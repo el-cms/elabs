@@ -44,7 +44,12 @@ class AppController extends Controller {
 		$this->loadComponent('RequestHandler');
 		$this->loadComponent('Flash');
 		$this->loadComponent('Auth', [
-				'authenticate' => ['Form' => ['fields' => ['username' => 'email']]],
+				'authenticate' => [
+						'Form' => [
+								'fields' => ['username' => 'email'],
+								'scope' => ['status' => 1, 'locked' => 0],
+						],
+				],
 				'loginAction' => ['prefix' => false, 'controller' => 'Users', 'action' => 'login'],
 				'authError' => 'You are not allowed to view this page.',
 				'loginRedirect' => ['prefix' => false, 'controller' => 'pages', 'action' => 'display', 'home'],
