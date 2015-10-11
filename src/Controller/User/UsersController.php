@@ -40,7 +40,6 @@ class UsersController extends UserAppController {
 	 * Edit the current user
 	 *
 	 * @return void Redirects on successful edit, renders view otherwise.
-	 * @throws \Cake\Network\Exception\NotFoundException When record not found.
 	 */
 	public function edit() {
 		$user = $this->Users->get($this->Auth->user('id'));
