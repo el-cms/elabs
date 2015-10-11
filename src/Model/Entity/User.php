@@ -20,7 +20,7 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property string $role
  * @property bool $see_nsfw
  * @property bool $status
- * @property \App\Model\Entity\Event[] $events
+ * @property \App\Model\Entity\Act[] $acts
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
  */

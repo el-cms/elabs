@@ -5,8 +5,8 @@
         <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Events'), ['controller' => 'Events', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Event'), ['controller' => 'Events', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Acts'), ['controller' => 'Acts', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Act'), ['controller' => 'Acts', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?> </li>
@@ -66,8 +66,8 @@
         <?= $this->Text->autoParagraph(h($user->bio)); ?>
     </div>
     <div class="related">
-        <h4><?= __('Related Events') ?></h4>
-        <?php if (!empty($user->events)): ?>
+        <h4><?= __('Related Acts') ?></h4>
+        <?php if (!empty($user->acts)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
@@ -77,19 +77,19 @@
                 <th><?= __('User Id') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($user->events as $events): ?>
+            <?php foreach ($user->acts as $acts): ?>
             <tr>
-                <td><?= h($events->id) ?></td>
-                <td><?= h($events->model) ?></td>
-                <td><?= h($events->fkid) ?></td>
-                <td><?= h($events->type) ?></td>
-                <td><?= h($events->user_id) ?></td>
+                <td><?= h($acts->id) ?></td>
+                <td><?= h($acts->model) ?></td>
+                <td><?= h($acts->fkid) ?></td>
+                <td><?= h($acts->type) ?></td>
+                <td><?= h($acts->user_id) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Events', 'action' => 'view', $events->id]) ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'Acts', 'action' => 'view', $acts->id]) ?>
 
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Events', 'action' => 'edit', $events->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Acts', 'action' => 'edit', $acts->id]) ?>
 
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Events', 'action' => 'delete', $events->id], ['confirm' => __('Are you sure you want to delete # {0}?', $events->id)]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Acts', 'action' => 'delete', $acts->id], ['confirm' => __('Are you sure you want to delete # {0}?', $acts->id)]) ?>
 
                 </td>
             </tr>

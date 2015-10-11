@@ -12,7 +12,7 @@ use Cake\Core\Configure;
 /**
  * Users Model
  *
- * @property \Cake\ORM\Association\HasMany $Events
+ * @property \Cake\ORM\Association\HasMany $Acts
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
  */
@@ -33,7 +33,7 @@ class UsersTable extends Table {
 
 		$this->addBehavior('Timestamp');
 
-		$this->hasMany('Events', [
+		$this->hasMany('Acts', [
 				'foreignKey' => 'user_id'
 		]);
 		$this->hasMany('Posts', [
