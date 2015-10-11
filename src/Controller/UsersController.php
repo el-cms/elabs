@@ -76,6 +76,11 @@ class UsersController extends AppController {
 		$this->set('_serialize', ['user']);
 	}
 
+	/**
+	 * Simple user login
+	 * 
+	 * @return void Redirect
+	 */
 	public function login() {
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
@@ -87,6 +92,11 @@ class UsersController extends AppController {
 		}
 	}
 
+	/**
+	 * User logout
+	 * 
+	 * @return void Redirect
+	 */
 	public function logout() {
 		$this->Flash->success(__d('elabs', 'You are logged out. See you later !'));
 		return $this->redirect($this->Auth->logout());
