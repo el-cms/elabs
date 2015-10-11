@@ -2,3 +2,16 @@ body{
 	// Margin to avoid footer covering content
 	margin-bottom: 50px;
 }
+
+//
+// Login form in right menu
+//
+
+//Title
+.menu-top-info.plain{
+	font-size: 1.5em;
+}
+// Content1
+.menu-content.plain{
+	padding:$margin-sm;
+}

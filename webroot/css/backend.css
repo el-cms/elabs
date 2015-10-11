@@ -8528,6 +8528,14 @@ div[data-toggle="tile"] {
 body {
   margin-bottom: 50px; }
 
+/* line 11, ../../Sources/Sass/common/custom/base/_layout.scss */
+.menu-top-info.plain {
+  font-size: 1.5em; }
+
+/* line 15, ../../Sources/Sass/common/custom/base/_layout.scss */
+.menu-content.plain {
+  padding: 12px; }
+
 /* line 2, ../../Sources/Sass/common/custom/base/_typo.scss */
 em.subtitle {
   font-size: 0.9em;

@@ -6738,6 +6738,12 @@ div[data-toggle="tile"] {
 body {
   margin-bottom: 50px; }
 
+.menu-top-info.plain {
+  font-size: 1.5em; }
+
+.menu-content.plain {
+  padding: 12px; }
+
 em.subtitle {
   font-size: 0.9em;
   color: rgba(0, 0, 0, 0.38); }
