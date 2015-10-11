@@ -44,4 +44,8 @@ class User extends Entity {
 		return (new DefaultPasswordHasher)->hash($password);
 	}
 
+	public function comparePassword($password) {
+		return (new DefaultPasswordHasher)->check($password, $this->password);
+	}
+
 }
