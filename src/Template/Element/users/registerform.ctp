@@ -1,6 +1,6 @@
 <?php
 
-echo $this->Form->create('User', ['controller' => 'Users', 'action' => 'register']);
+echo $this->Form->create('User', ['prefix' => false, 'controller' => 'Users', 'action' => 'register']);
 $this->Form->templates([
 		'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
 		'inputContainer' => '<div class="form-group form-group-label form-group-brand {{required}}">{{content}}'
@@ -15,11 +15,11 @@ $this->Form->templates([
 		. '<span class="fa fa-warning-sign form-help-icon"></span>'
 		. '</span></div>',
 ]);
-echo $this->Form->input('email', ['label'=>'E-Mail', 'required', 'templateVars' => ['help' => __d('elabs', 'Your email won\'t be given/sold to third-parties' )]]);
-echo $this->Form->input('username', ['label'=>'User name', 'required', 'templateVars' => ['help' => __d('elabs', 'User name should be small caps, alphanumeric and underscores only' )]]);
-echo $this->Form->input('realname', ['label'=>'Real name', 'required', 'templateVars' => ['help' => __d('elabs', 'Your real name, if you don\'t mind' )]]);
-echo $this->Form->input('password',['required', 'templateVars' => ['help' => __d('elabs', 'A strong password is a good start.' )]]);
-echo $this->Form->input('password_confirm', ['label'=>'Password confirmation', 'type' => 'password', 'required', 'templateVars' => ['help' => __d('elabs', 'Verify you didn\'t made a typo' )]]);
-echo $this->Form->input('bio', ['label'=>'About...', 'type' => 'textarea', 'templateVars' => ['help' => __d('elabs', 'Tell us why you want to come here' )]]);
+echo $this->Form->input('email', ['label' => 'E-Mail', 'required', 'templateVars' => ['help' => __d('elabs', 'Your email won\'t be given/sold to third-parties')]]);
+echo $this->Form->input('username', ['label' => 'User name', 'required', 'templateVars' => ['help' => __d('elabs', 'User name should be small caps, alphanumeric and underscores only')]]);
+echo $this->Form->input('realname', ['label' => 'Real name', 'required', 'templateVars' => ['help' => __d('elabs', 'Your real name, if you don\'t mind')]]);
+echo $this->Form->input('password', ['required', 'templateVars' => ['help' => __d('elabs', 'A strong password is a good start.')]]);
+echo $this->Form->input('password_confirm', ['label' => 'Password confirmation', 'type' => 'password', 'required', 'templateVars' => ['help' => __d('elabs', 'Verify you didn\'t made a typo')]]);
+echo $this->Form->input('bio', ['label' => 'About...', 'type' => 'textarea', 'templateVars' => ['help' => __d('elabs', 'Tell us why you want to come here')]]);
 echo$this->Form->submit(__('Register'), ['class' => 'btn-block']);
 echo $this->Form->end();
