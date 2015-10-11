@@ -52,7 +52,11 @@ class AppView extends View {
 				'inputContainerError' => '<div class="form-group form-group-label form-group-red{{required}}">{{content}}<span class="form-help form-help-msg text-red">{{error}}<span class="fa fa-warning-sign form-help-icon"></span></span></div>',
 				// Sadly, this one is overriden in input() method from BootstrapFormHelper...
 				'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
-				'nestingLabel' => '{{hidden}}<label class="floating-label {{attrs.class}}" {{attrs}}>{{input}}{{text}}</label>',
+				//Don't work either
+				'submitContainer' => '<div class="form-group-btn">{{content}}</div>',
+				'checkbox' => '<input type="checkbox" name="{{name}}" class="access-hide" value="{{value}}"{{attrs}}><span class="switch-toggle switch-toggle-brand"></span>',
+				'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
+				
 		]);
 	}
 
