@@ -10,3 +10,7 @@
 # Sass external sources
 /Sources/Sass/common/material-master
 /Sources/Sass/common/Font-Awesome-master
+
+# .htaccess files
+.htaccess
+/webroot/.htaccess
