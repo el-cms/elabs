@@ -1,47 +1,43 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Act'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="acts index large-9 medium-8 columns content">
-    <h3><?= __('Acts') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('model') ?></th>
-                <th><?= $this->Paginator->sort('fkid') ?></th>
-                <th><?= $this->Paginator->sort('type') ?></th>
-                <th><?= $this->Paginator->sort('user_id') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($acts as $act): ?>
-            <tr>
-                <td><?= $this->Number->format($act->id) ?></td>
-                <td><?= h($act->model) ?></td>
-                <td><?= $this->Number->format($act->fkid) ?></td>
-                <td><?= h($act->type) ?></td>
-                <td><?= $act->has('user') ? $this->Html->link($act->user->username, ['controller' => 'Users', 'action' => 'view', $act->user->id]) : '' ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $act->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $act->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $act->id], ['confirm' => __('Are you sure you want to delete # {0}?', $act->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
-    </div>
+<?php
+$this->assign('title', __d('elabs', 'Recent activity'));
+?>
+
+<div class="col-sm-3">
+	<div class="dropdown-wrap">
+		<div class="dropdown  dropdown-inline">
+			<a aria-expanded="false" class="btn dropdown-toggle-btn waves-attach waves-effect" data-toggle="dropdown"><?= __d('elabs', 'Order by...') ?><span class="icon margin-left-sm">keyboard_arrow_down</span></a>
+			<ul class="dropdown-menu nav">
+				<li><?= $this->Paginator->sort('id', 'Date', ['class' => 'waves-attach waves-effect']) ?></li>
+				<li><?= $this->Paginator->sort('model', 'Type', ['class' => 'waves-attach waves-effect']) ?></li>
+				<li><?= $this->Paginator->sort('type', 'Action', ['class' => 'waves-attach waves-effect']) ?></li>
+				<li><?= $this->Paginator->sort('user_id', 'User', ['class' => 'waves-attach waves-effect']) ?></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="col-sm-9">
+	<?php
+	foreach ($acts as $act):
+		// Check for valid action. If action is not on the list, it's ignored
+		if (in_array($act['type'], ['add', 'edit', 'delete'])) :
+			switch ($act['type']):
+				case 'add':
+					$element = strtolower($act['model']) . '/card';
+					break;
+				default:
+					$element = 'acts/tile';
+					break;
+			endswitch;
+		endif;
+		echo $this->element($element, ['data' => $items[$act['id']], 'config' => $config, 'item' => $act]);
+	endforeach;
+	?>
+	<div class="paginator">
+		<p class='pull-right'><?= $this->Paginator->counter() ?></p>
+		<ul class="pagination">
+			<?= $this->Paginator->prev('< ' . __('previous')) ?>
+			<?= $this->Paginator->numbers() ?>
+			<?= $this->Paginator->next(__('next') . ' >') ?>
+		</ul>
+	</div>
 </div>
