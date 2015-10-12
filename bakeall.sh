@@ -2,6 +2,14 @@
 #./bin/cake bake all acts --prefix admin -q -f
 #./bin/cake bake all acts --prefix user -q -f
 #
+#./bin/cake bake all files -q -f
+#./bin/cake bake all files --prefix admin -q -f
+#./bin/cake bake all files --prefix user -q -f
+#
+#./bin/cake bake all itemfiles -q -f
+#./bin/cake bake all itemfiles --prefix admin -q -f
+#./bin/cake bake all itemfiles --prefix user -q -f
+#
 #./bin/cake bake all itemtags -q -f
 #./bin/cake bake all itemtags --prefix admin -q -f
 #./bin/cake bake all itemtags --prefix user -q -f
