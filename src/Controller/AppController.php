@@ -42,6 +42,7 @@ class AppController extends Controller {
 		parent::initialize();
 
 		$this->loadComponent('RequestHandler');
+		$this->loadComponent('Act');
 		$this->loadComponent('Flash');
 		$this->loadComponent('Auth', [
 				'authenticate' => [
