@@ -32,6 +32,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - [ ] ...
   - [ ] **Files management**
     - [ ] Create a dir for new users
+    - [ ] Create a Component to handle the different filetypes on add
+    - [ ] Create a Helper to handle the different filetypes in views
   - [ ] **Licenses management**
   - [ ] **Tags management**
   - [ ] **Report management**
