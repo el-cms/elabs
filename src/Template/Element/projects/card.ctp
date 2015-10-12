@@ -1,7 +1,32 @@
+<?php
+/**
+ * Used vars:
+ * 
+ * $item[
+ *   fkid => Item ID
+ *   user[
+ *     username
+ *     id
+ *   ]
+ * ]
+ *
+ * $data[
+ *   name
+ *   created
+ *   updated
+ *   short_description
+ *   license[
+ *     name
+ *     id
+ *   ]
+ * ] 
+ * 
+ */
+?>
 <div class="card">
 	<div class="card-side pull-left">
 		<span class="card-heading">
-			<?= $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $item['fkid']], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
+			<?= $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
 		</span>
 	</div>
 	<div class="card-main">
@@ -14,13 +39,20 @@
 			<!-- Title -->
 			<div class="card-inner">
 				<div class="text-overflow"><?= h($data['name']) ?></div>
-				<em class="subtitle"> <?= __d('elabs', 'Pub: {0}', h($data['created'])) ?></em>
+				<em class="subtitle">
+					<?php
+					echo __d('elabs', 'Created on: {0}', h($data['created']));
+					if ($data['created'] != $data['modified']):
+						echo ' - ' . __d('elabs', 'Updated on: {0}', h($data['modified']));
+					endif;
+					?>
+				</em>
 			</div>
 		</div>
 		<!-- Content -->
 		<div class="card-description">
-			<?= __d('elabs', '{0}&nbsp;Author: {1}', '<i class="fa fa-user"></i>', $this->Html->link($item['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $item['user']['id']])) ?><br/>
-			<?= __d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link($data['license']['name'], ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']])) ?>
+			<?= __d('elabs', '{0}&nbsp;Creator: {1}', '<i class="fa fa-user"></i>', $this->Html->link($item['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $this->Number->format($item['user']['id'])])) ?><br/>
+			<?= __d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link($data['license']['name'], ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $this->Number->format($data['license']['id'])])) ?>
 		</div>
 		<div class="card-inner">
 			<p>

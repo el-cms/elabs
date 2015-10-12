@@ -38,7 +38,14 @@
 			<!-- Title -->
 			<div class="card-inner">
 				<div class="text-overflow"><?= h($data['title']) ?></div>
-				<em class="subtitle"> <?= __d('elabs', 'Pub: {0}', h($data['publication_date'])) ?></em>
+				<em class="subtitle">
+					<?php
+					echo __d('elabs', 'Published on: {0}', h($data['publication_date']));
+					if ($data['publication_date'] < $data['modified']):
+						echo ' - ' . __d('elabs', 'Updated on: {0}', h($data['modified']));
+					endif;
+					?>
+				</em>
 			</div>
 		</div>
 		<!-- Content -->
