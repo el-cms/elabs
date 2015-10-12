@@ -1,18 +1,16 @@
 <li>
-	<?= $this->Html->link('Home', ['controller' => 'pages', 'action' => 'home'], ['class' => 'waves-attach']) ?>
+	<?= $this->Html->link('Home', '/', ['class' => 'waves-attach']) ?>
 </li>
 <li>
-	<?= $this->Html->link('News', ['controller' => 'posts', 'action' => 'news'], ['class' => 'waves-attach']) ?>
+	<?= $this->Html->link('News', ['controller' => 'posts', 'action' => 'index'], ['class' => 'waves-attach']) ?>
 </li>
 <li>
-	<?= $this->Html->link('Projects', ['controller' => 'projects', 'action' => 'projects'], ['class' => 'waves-attach']) ?>
+	<?= $this->Html->link('Projects', ['controller' => 'projects', 'action' => 'index'], ['class' => 'waves-attach']) ?>
 </li>
 <li>
-	<?= $this->Html->link('Files', ['controller' => 'files', 'action' => 'files'], ['class' => 'waves-attach']) ?>
+	<?= $this->Html->link('Files', ['controller' => 'files', 'action' => 'index'], ['class' => 'waves-attach']) ?>
 </li>
 
-<!--<div class="dropdown-wrap">
-	<div class="dropdown dropdown-inline">-->
 <li class="dropdown dropdown-inline">
 	<a class="dropdown-toggle-btn btn btn-flat" data-toggle="dropdown">Testing layout<span class="icon margin-left-sm">keyboard_arrow_down</span></a>
 	<ul class="dropdown-menu nav">
@@ -30,5 +28,3 @@
 		</li>
 	</ul>
 </li>
-<!--	</div>
-</div>-->
