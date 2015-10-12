@@ -1,110 +1,98 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Acts Controller
  *
  * @property \App\Model\Table\ActsTable $Acts
  */
-class ActsController extends AppController
-{
+class ActsController extends AppController {
 
-    /**
-     * Index method
-     *
-     * @return void
-     */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Users']
-        ];
-        $this->set('acts', $this->paginate($this->Acts));
-        $this->set('_serialize', ['acts']);
-    }
+	/**
+	 * Config value, like strings and model names.
+	 * Filled in initialize();
+	 * @var array
+	 */
+	public $config = [
+			'strings' => [],
+			'models' => [],
+	];
 
-    /**
-     * View method
-     *
-     * @param string|null $id Act id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $act = $this->Acts->get($id, [
-            'contain' => ['Users']
-        ]);
-        $this->set('act', $act);
-        $this->set('_serialize', ['act']);
-    }
+	/**
+	 * Minimum fields to get for information tiles
+	 * 
+	 * @var array
+	 */
+	public $fields = [
+//			'Files' => ['title'=>'name', 'modified'],
+			'Posts' => ['title', 'modified', 'modified', 'publication_date'],
+			'Projects' => ['title'=>'name', 'modified'],
+	];
 
-    /**
-     * Add method
-     *
-     * @return void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $act = $this->Acts->newEntity();
-        if ($this->request->is('post')) {
-            $act = $this->Acts->patchEntity($act, $this->request->data);
-            if ($this->Acts->save($act)) {
-                $this->Flash->success(__('The act has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The act could not be saved. Please, try again.'));
-            }
-        }
-        $users = $this->Acts->Users->find('list', ['limit' => 200]);
-        $this->set(compact('act', 'users'));
-        $this->set('_serialize', ['act']);
-    }
+	/**
+	 * Loads additionnal models and create the configuration array
+	 * 
+	 * @return void
+	 */
+	public function initialize() {
+		parent::initialize();
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Act id.
-     * @return void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $act = $this->Acts->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $act = $this->Acts->patchEntity($act, $this->request->data);
-            if ($this->Acts->save($act)) {
-                $this->Flash->success(__('The act has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The act could not be saved. Please, try again.'));
-            }
-        }
-        $users = $this->Acts->Users->find('list', ['limit' => 200]);
-        $this->set(compact('act', 'users'));
-        $this->set('_serialize', ['act']);
-    }
+		// Create config strings
+		$this->config = [
+				'strings' => [
+						'edit' => __d('elabs', 'has been updated'),
+						'delete' => __d('elabs', 'has been removed'),
+				],
+				'models' => [
+//						'Files' => __d('elabs', 'File'),
+						'Posts' => __d('elabs', 'Article'),
+						'Projects' => __d('elabs', 'Project'),
+				]
+		];
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Act id.
-     * @return void Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $act = $this->Acts->get($id);
-        if ($this->Acts->delete($act)) {
-            $this->Flash->success(__('The act has been deleted.'));
-        } else {
-            $this->Flash->error(__('The act could not be deleted. Please, try again.'));
-        }
-        return $this->redirect(['action' => 'index']);
-    }
+		// Load models
+		foreach ($this->config['models'] as $model => $item) {
+			$this->$model = TableRegistry::get($model);
+		}
+	}
+
+	/**
+	 * Index method
+	 *
+	 * @return void
+	 */
+	public function index() {
+		// Get the list of items
+		$this->paginate = [
+				'contain' => ['Users'],
+				'fields' => ['id', 'type', 'fkid', 'model', 'Users.id', 'Users.username'],
+				'limit' => 30,
+        'order' => [
+            'id' => 'desc'
+        ]
+		];
+		$acts = $this->paginate($this->Acts);
+
+		// Get items content
+		$itemsContent = [];
+		foreach ($this->paginate() as $item) {
+			// Get full content for new items
+			if ($item['type'] === 'add') {
+				$itemsContent[$item['id']] = $this->$item['model']->get($item['fkid'], ['contain' => ['Licenses']]);
+			} else { // Get partial content for update/delete
+				$itemsContent[$item['id']] = $this->$item['model']->get($item['fkid'], ['fields' => $this->fields[$item['model']]]);
+			}
+		}
+
+		// Pass variables to view
+		$this->set('acts', $acts);
+		$this->set('items', $itemsContent);
+		$this->set('config', $this->config);
+		$this->set('_serialize', ['acts']);
+	}
+
 }
