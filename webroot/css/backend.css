@@ -2162,7 +2162,7 @@ body.el-loading {
 
 @media only screen and (max-width: 479px) {
   /* line 21, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
-  .hidden-xx, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xs-only, .hidden-s-or-smaller {
+  .hidden-xx, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xs-only, .hidden-sm-or-smaller {
     display: none !important; }
 
   /* line 24, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
@@ -2178,7 +2178,7 @@ body.el-loading {
     display: inline-block !important; } }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   /* line 37, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
-  .hidden-xs, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xx-only, .hidden-s-or-smaller {
+  .hidden-xs, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xx-only, .hidden-sm-or-smaller {
     display: none !important; }
 
   /* line 40, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
@@ -2194,7 +2194,7 @@ body.el-loading {
     display: inline-block !important; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* line 53, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
-  .hidden-sm, .visible-lg-only, .visible-md-only, .visible-xs-only, .visible-xx-only, .hidden-s-or-smaller {
+  .hidden-sm, .visible-lg-only, .visible-md-only, .visible-xs-only, .visible-xx-only, .hidden-sm-or-smaller {
     display: none !important; }
 
   /* line 56, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */

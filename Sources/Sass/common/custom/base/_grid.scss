@@ -54,7 +54,7 @@
 //
 
 // Meta class to hide element on sm or smaller
-.hidden-s-or-smaller{
+.hidden-sm-or-smaller{
 	@extend .hidden-xx;
 	@extend .hidden-xs;
 	@extend .hidden-sm;

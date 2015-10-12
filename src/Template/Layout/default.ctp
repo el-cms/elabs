@@ -24,7 +24,7 @@
 	<body class="page-amber avoid-fout">
 		<?= $this->element('layout/pageloader') ?>
 		<header class="header header-transparent header-waterfall">
-			<ul class="nav nav-list pull-left visible-only-sm">
+			<ul class="nav nav-list pull-left visible-sm-or-smaller">
 				<li>
 					<a data-toggle="menu" href="#menu">
 						<span class="icon icon-lg">menu</span>
@@ -32,16 +32,16 @@
 				</li>
 			</ul>
 			<a class="header-logo" href="#">ExperimentsLabs</a>
-			
-				<ul class="nav nav-list pull-right">
-					<li>
-						<a data-toggle="menu" href="#profile">
-							<span class="avatar"><span class="fa fa-user fa-3x<?=(!is_null($authUser))?' text-red':'';?>"></span></span>
-						</a>
-					</li>
-				</ul>
-			<ul class="nav nav-list hidden-only-sm">
-				<li><a href="#">Test</a></li>
+
+			<ul class="nav nav-list pull-right">
+				<li>
+					<a data-toggle="menu" href="#profile">
+						<span class="avatar"><span class="fa fa-user fa-3x<?= (!is_null($authUser)) ? ' text-red' : ''; ?>"></span></span>
+					</a>
+				</li>
+			</ul>
+			<ul class="nav nav-list hidden-sm-or-smaller">
+				<?= $this->element('layout/mainmenu') ?>
 			</ul>
 
 		</header>
@@ -49,7 +49,15 @@
 			<div class="menu-scroll">
 				<div class="menu-content">
 					<a class="menu-logo" href="#">ExperimentsLabs</a>
-					<?= $this->element('layout/mainmenu') ?>
+					<ul class="nav">
+						<?= $this->element('layout/mainmenu') ?>
+					</ul>
+					<hr>
+					<ul class="nav">
+						<li>
+							<a class="waves-attach" href="#">About</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</nav>
