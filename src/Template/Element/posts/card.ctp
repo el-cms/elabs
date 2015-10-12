@@ -1,7 +1,31 @@
+<?php
+/**
+ * Used vars:
+ * 
+ * $item[
+ *   fkid => Item ID
+ *   user[
+ *     username
+ *     id
+ *   ]
+ * ]
+ *
+ * $data[
+ *   title
+ *   publication date
+ *   excerpt
+ *   license[
+ *     name
+ *     id
+ *   ]
+ * ] 
+ *   
+ */
+?>
 <div class="card">
 	<div class="card-side pull-left">
 		<span class="card-heading">
-			<?= $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $item['fkid']], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
+			<?= $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
 		</span>
 	</div>
 	<div class="card-main">
@@ -19,8 +43,26 @@
 		</div>
 		<!-- Content -->
 		<div class="card-description">
-			<?= __d('elabs', '{0}&nbsp;Author: {1}', '<i class="fa fa-user"></i>', $this->Html->link($item['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $item['user']['id']])) ?><br/>
-			<?= __d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link($data['license']['name'], ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']])) ?>
+			<?=
+			__d('elabs', '{0}&nbsp;Author: {1}', '<i class="fa fa-user"></i>', $this->Html->link(
+											h($item['user']['username']), [
+									'prefix' => false,
+									'controller' => 'Users',
+									'action' => 'view',
+									$this->Number->format($item['user']['id'])
+							])
+			)
+			?><br/>
+			<?=
+			__d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link(
+											h($data['license']['name']), [
+									'prefix' => false,
+									'controller' => 'Licenses',
+									'action' => 'view',
+									$this->Number->format($data['license']['id'])
+							])
+			)
+			?>
 		</div>
 		<div class="card-inner">
 			<p>
