@@ -29,8 +29,8 @@ class ActsController extends AppController {
 	 */
 	public $fields = [
 //			'Files' => ['title'=>'name', 'modified'],
-			'Posts' => ['title', 'modified', 'modified', 'publication_date'],
-			'Projects' => ['title'=>'name', 'modified'],
+			'Posts' => ['title', 'modified', 'publication_date'],
+			'Projects' => ['title'=>'name', 'modified', 'created'],
 	];
 
 	/**
