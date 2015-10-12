@@ -79,10 +79,12 @@
 				</div>
 			</div>
 			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<?= $this->Flash->render() ?>
-						<?= $this->fetch('content') ?>
+				<div class="content-inner">
+					<div class="row">
+						<div class="col-sm-12">
+							<?= $this->Flash->render() ?>
+							<?= $this->fetch('content') ?>
+						</div>
 					</div>
 				</div>
 			</div>
