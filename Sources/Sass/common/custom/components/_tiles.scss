@@ -1,0 +1,15 @@
+.tile-danger{
+	@extend .alert-danger;
+}
+
+.tile-warning{
+	@extend .alert-warning;
+}
+
+.tile-info{
+	@extend .alert-info;
+}
+
+.tile-success{
+	@extend .alert-success;
+}

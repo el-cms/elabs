@@ -15,19 +15,31 @@
 .alert-danger{
 	background-color:$palette-red-700;
 	color:$white-text;
+	a{
+		color:$offwhite-dark;
+	}
 }
 
 .alert-warning{
 	background-color:$palette-amber-700;
 	color:$white-text;
+	a{
+		color:$offwhite-dark;
+	}
 }
 
 .alert-info{
 	background-color:$palette-blue-700;
 	color:$white-text;
+	a{
+		color:$offwhite-dark;
+	}
 }
 
 .alert-success{
 	background-color:$palette-green-700;
 	color:$white-text;
+	a{
+		color:$offwhite-dark;
+	}
 }

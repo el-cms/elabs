@@ -6756,21 +6756,29 @@ em.subtitle {
   padding: 0px;
   margin-right: 16px; }
 
-.alert-danger {
+.alert-danger, .tile-danger {
   background-color: #d32f2f;
   color: white; }
+  .alert-danger a, .tile-danger a {
+    color: #e0e0e0; }
 
-.alert-warning {
+.alert-warning, .tile-warning {
   background-color: #ffa000;
   color: white; }
+  .alert-warning a, .tile-warning a {
+    color: #e0e0e0; }
 
-.alert-info {
+.alert-info, .tile-info {
   background-color: #1976d2;
   color: white; }
+  .alert-info a, .tile-info a {
+    color: #e0e0e0; }
 
-.alert-success {
+.alert-success, .tile-success {
   background-color: #388e3c;
   color: white; }
+  .alert-success a, .tile-success a {
+    color: #e0e0e0; }
 
 ul.pagination {
   text-align: center;

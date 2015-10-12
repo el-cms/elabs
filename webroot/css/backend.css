@@ -8552,24 +8552,36 @@ em.subtitle {
   margin-right: 16px; }
 
 /* line 15, ../../Sources/Sass/common/custom/components/_alerts.scss */
-.alert-danger {
+.alert-danger, .tile-danger {
   background-color: #d32f2f;
   color: white; }
+  /* line 18, ../../Sources/Sass/common/custom/components/_alerts.scss */
+  .alert-danger a, .tile-danger a {
+    color: #e0e0e0; }
 
-/* line 20, ../../Sources/Sass/common/custom/components/_alerts.scss */
-.alert-warning {
+/* line 23, ../../Sources/Sass/common/custom/components/_alerts.scss */
+.alert-warning, .tile-warning {
   background-color: #ffa000;
   color: white; }
+  /* line 26, ../../Sources/Sass/common/custom/components/_alerts.scss */
+  .alert-warning a, .tile-warning a {
+    color: #e0e0e0; }
 
-/* line 25, ../../Sources/Sass/common/custom/components/_alerts.scss */
-.alert-info {
+/* line 31, ../../Sources/Sass/common/custom/components/_alerts.scss */
+.alert-info, .tile-info {
   background-color: #1976d2;
   color: white; }
+  /* line 34, ../../Sources/Sass/common/custom/components/_alerts.scss */
+  .alert-info a, .tile-info a {
+    color: #e0e0e0; }
 
-/* line 30, ../../Sources/Sass/common/custom/components/_alerts.scss */
-.alert-success {
+/* line 39, ../../Sources/Sass/common/custom/components/_alerts.scss */
+.alert-success, .tile-success {
   background-color: #388e3c;
   color: white; }
+  /* line 42, ../../Sources/Sass/common/custom/components/_alerts.scss */
+  .alert-success a, .tile-success a {
+    color: #e0e0e0; }
 
 /* line 1, ../../Sources/Sass/common/custom/components/_pagination.scss */
 ul.pagination {
