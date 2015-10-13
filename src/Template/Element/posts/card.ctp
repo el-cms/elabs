@@ -13,6 +13,7 @@
  * $data[
  *   title
  *   publication date
+ *   modified
  *   excerpt
  *   license[
  *     name

@@ -21,7 +21,7 @@ foreach ($posts as $post):
 //			'sfw' => $post->sfw,
 //			'anon' => $post->anon,
 			'publication_date' => $post->publication_date,
-//			'modified' => $post->modified,
+			'modified' => $post->modified,
 			'license' => $post['license'],
 	];
 	$item = [
