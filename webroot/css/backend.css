@@ -8583,6 +8583,17 @@ em.subtitle {
   .alert-success a, .tile-success a {
     color: #e0e0e0; }
 
+/* line 1, ../../Sources/Sass/common/custom/components/_navs.scss */
+nav li.title {
+  display: block;
+  padding: 8px 16px;
+  font-weight: bold;
+  size: 1.2em;
+  position: relative; }
+  /* line 7, ../../Sources/Sass/common/custom/components/_navs.scss */
+  nav li.title:focus, nav li.title:hover {
+    text-decoration: none; }
+
 /* line 1, ../../Sources/Sass/common/custom/components/_pagination.scss */
 ul.pagination {
   text-align: center;
