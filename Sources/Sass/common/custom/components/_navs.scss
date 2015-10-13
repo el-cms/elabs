@@ -4,8 +4,5 @@ nav li.title{
 	font-weight:bold;
 	size:1.2em;
 	position: relative;
-	&:focus,
-		&:hover {
-		text-decoration: none;
-	}
+	background-color:$white-sec-solid;
 }
