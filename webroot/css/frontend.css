@@ -6794,6 +6794,9 @@ ul.pagination {
   ul.pagination li {
     display: inline; }
 
+pre code {
+  border: none; }
+
 .card-description ul {
   list-style: none;
   padding: 0px; }
