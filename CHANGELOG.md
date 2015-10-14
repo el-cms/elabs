@@ -26,6 +26,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - [ ] Markdown support
       - [ ] File export from DB
       - [ ] Tool to link to projects and/or files
+      - [x] Render markdown properly (almost)
     - [ ] ...
   - [ ] **Projects management**
     - [ ] Team management
