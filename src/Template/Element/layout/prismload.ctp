@@ -1,9 +1,12 @@
 <?php
-echo $this->Html->script('lib/prism.js');
 echo $this->Html->css('prism.css', ['block' => true]);
+$this->append('pageBottomScripts');
+echo $this->Html->script('lib/prism.js');
 ?>
 <script>
 	$(document).ready(function () {
-		$("[class*='language']").addClass('line-numbers');
+		$("code[class*='language']").addClass('line-numbers');
 	});
 </script>
+<?php
+$this->end();
