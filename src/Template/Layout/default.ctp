@@ -81,10 +81,10 @@
 			<div class="container">
 				<div class="content-inner">
 					<div class="row">
-						<div class="col-sm-12">
+						<!--<div class="col-sm-12">-->
 							<?= $this->Flash->render() ?>
 							<?= $this->fetch('content') ?>
-						</div>
+						<!--</div>-->
 					</div>
 				</div>
 			</div>
@@ -111,5 +111,6 @@
 		<?= $this->Html->script('material.min.js') ?>
 		<!-- Custom scripts -->
 		<?= $this->Html->script('custom.js') ?>
+		<?= $this->fetch('pageBottomScripts') ?>
 	</body>
 </html>

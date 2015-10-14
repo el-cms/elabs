@@ -55,6 +55,8 @@ class AppView extends View {
 				//Don't work either
 				'submitContainer' => '<div class="form-group-btn">{{content}}</div>',
 				'checkbox' => '<input type="checkbox" name="{{name}}" class="access-hide" value="{{value}}"{{attrs}}><span class="switch-toggle switch-toggle-brand"></span>',
+				// This one too
+				'checkboxWrapper' => '<div class="checkbox switch">{{label}}</div>',
 				'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
 				
 		]);
