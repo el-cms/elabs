@@ -1,0 +1,20 @@
+{
+	"mappings": [
+		{
+			"src": "",
+			"dest": "../../webroot/css"
+		}
+	],
+	"ignores": ["*.css", "*.less", "common/material-master", "common/Font-Awesome-master"],
+	"options": {
+		"outputStyle": "nested",
+		"lineComments": true,
+		"debugInfo": false,
+		"sourceMap": true,
+		"unixNewlines": false,
+		"autoprefix": false
+	},
+	"customOptions": [],
+	"includePaths": [],
+	"requireLibs": []
+}
