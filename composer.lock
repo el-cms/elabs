@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ebbecb3220de19287f422ddc4d191a9e",
+    "hash": "885282a06d8055509b7e89f43d9cd8db",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -284,6 +284,66 @@
             ],
             "description": "A composer installer for CakePHP 3.0+ plugins.",
             "time": "2015-06-10 10:35:13"
+        },
+        {
+            "name": "cebe/markdown",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cebe/markdown.git",
+                "reference": "f681fee8303310415b746f3758eeda0a7ad08bda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/f681fee8303310415b746f3758eeda0a7ad08bda",
+                "reference": "f681fee8303310415b746f3758eeda0a7ad08bda",
+                "shasum": ""
+            },
+            "require": {
+                "lib-pcre": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "cebe/indent": "*",
+                "facebook/xhprof": "*@dev",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "bin": [
+                "bin/markdown"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "cebe\\markdown\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "http://cebe.cc/",
+                    "role": "Creator"
+                }
+            ],
+            "description": "A super fast, highly extensible markdown parser for PHP",
+            "homepage": "https://github.com/cebe/markdown#readme",
+            "keywords": [
+                "extensible",
+                "fast",
+                "gfm",
+                "markdown",
+                "markdown-extra"
+            ],
+            "time": "2015-03-06 05:21:16"
         },
         {
             "name": "holt59/cakephp3-bootstrap-helpers",
@@ -768,6 +828,49 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2015-09-14 14:14:09"
+        },
+        {
+            "name": "tanuck/cakephp-markdown",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tanuck/cakephp-markdown.git",
+                "reference": "f5a7cf4faa0a30f45b13a741df09e2346bbaf5c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tanuck/cakephp-markdown/zipball/f5a7cf4faa0a30f45b13a741df09e2346bbaf5c6",
+                "reference": "f5a7cf4faa0a30f45b13a741df09e2346bbaf5c6",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/plugin-installer": "*",
+                "cebe/markdown": "1.0.x",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "cakephp/cakephp": "3.0.*-dev",
+                "cakephp/cakephp-codesniffer": "dev-master",
+                "phpunit/phpunit": "*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Tanuck\\Markdown\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tanuck",
+                    "email": "tanuck@gmail.com"
+                }
+            ],
+            "description": "Cakephp Markdown plugin for CakePHP 3.",
+            "time": "2015-03-03 22:07:25"
         }
     ],
     "packages-dev": [
@@ -1224,6 +1327,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "holt59/cakephp3-bootstrap-helpers": 20,
+        "tanuck/cakephp-markdown": 20,
         "psy/psysh": 0
     },
     "prefer-stable": true,

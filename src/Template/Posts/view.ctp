@@ -61,6 +61,6 @@
     </table>
     <div class="row">
         <h4><?= __('Text') ?></h4>
-        <?= $this->Text->autoParagraph(h($post->text)); ?>
+        <?= $this->Markdown->transform($post->text); ?>
     </div>
 </div>

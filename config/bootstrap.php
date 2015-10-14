@@ -211,3 +211,6 @@ Configure::load('siteconfig', 'default');
 
 // Bootstrap widgets
 Plugin::load('Bootstrap');
+
+// Markdown renderer
+Plugin::load('Tanuck/Markdown');

@@ -11,6 +11,10 @@ use App\Controller\AppController;
  */
 class PostsController extends AppController {
 
+	public $helpers = [
+			'Tanuck/Markdown.Markdown' => ['parser' => 'GithubMarkdown']
+	];
+
 	/**
 	 * Index method
 	 *
