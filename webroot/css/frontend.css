@@ -6785,9 +6785,8 @@ nav li.title {
   padding: 8px 16px;
   font-weight: bold;
   size: 1.2em;
-  position: relative; }
-  nav li.title:focus, nav li.title:hover {
-    text-decoration: none; }
+  position: relative;
+  background-color: #bcbcbc; }
 
 ul.pagination {
   text-align: center;
