@@ -64,3 +64,7 @@
         <?= $this->Markdown->transform($post->text); ?>
     </div>
 </div>
+<?php 
+$this->start('pageBottomScripts');
+echo $this->element('layout/prismload');
+$this->end();
