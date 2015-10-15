@@ -10,6 +10,7 @@
 # Sass external sources
 /Sources/Sass/common/material-master
 /Sources/Sass/common/Font-Awesome-master
+/Sources/Sass/common/codemirror-5.7
 
 # .htaccess files
 .htaccess
