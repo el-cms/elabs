@@ -214,3 +214,6 @@ Plugin::load('Bootstrap');
 
 // Markdown renderer
 Plugin::load('Tanuck/Markdown');
+
+// Gravatar helper
+Plugin::load('Gravatar');

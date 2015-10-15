@@ -30,7 +30,8 @@ use Cake\Event\Event;
 class AppController extends Controller {
 	
 	public $helpers = [
-			'Tanuck/Markdown.Markdown' => ['parser' => 'GithubMarkdown']
+			'Tanuck/Markdown.Markdown' => ['parser' => 'GithubMarkdown'],
+			'Gravatar.Gravatar'
 	];
 
 	/**
