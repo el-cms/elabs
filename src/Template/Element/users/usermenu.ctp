@@ -5,7 +5,11 @@ $linkConfig = ['class' => 'waves-attach waves-effect', 'escape' => false];
 	<div class="menu-scroll">
 		<div class="menu-top">
 			<div class="menu-top-info">
-				<span class="fa fa-user fa-3x"></span>&nbsp;<?= $authUser['username'] ?>
+				<div class="menu-top-user">
+					<span class="avatar pull-left">
+						<?php echo $this->Gravatar->generate($authUser['email']); ?>
+					</span>&nbsp;<?= $authUser['username'] ?>
+				</div>
 			</div>
 		</div>
 		<div class="menu-content">
