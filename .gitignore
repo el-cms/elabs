@@ -15,3 +15,6 @@
 # .htaccess files
 .htaccess
 /webroot/.htaccess
+
+# Additionnal plugins
+/plugins/Gravatar
