@@ -1,0 +1,12 @@
+//
+// This file contains all styles specific to the rendered markdown-texts
+//
+
+.rendered-text{
+	
+	//
+	// Tables
+	table{
+		@extend .table;
+	}
+}

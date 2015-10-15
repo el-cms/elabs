@@ -1,0 +1,26 @@
+.CodeMirror {border: 1px solid silver; border-width: 1px 2px; }
+.cm-header { font-family: arial; }
+.cm-header-1 { font-size: 150%; }
+.cm-header-2 { font-size: 130%; }
+.cm-header-3 { font-size: 120%; }
+.cm-header-4 { font-size: 110%; }
+.cm-header-5 { font-size: 100%; }
+.cm-header-6 { font-size: 90%; }
+.cm-strong { font-weight:bold; }
+
+//
+// Elegant theme
+//
+.cm-s-elegant span.cm-number, .cm-s-elegant span.cm-string, .cm-s-elegant span.cm-atom { color: #762; }
+.cm-s-elegant span.cm-comment { color: #262; line-height: 1em; }
+.cm-s-elegant span.cm-meta { color: #555; font-style: italic; line-height: 1em; }
+.cm-s-elegant span.cm-variable { color: black; }
+.cm-s-elegant span.cm-variable-2 { color: #b11; }
+.cm-s-elegant span.cm-qualifier { color: #555; }
+.cm-s-elegant span.cm-keyword { color: #730; }
+.cm-s-elegant span.cm-builtin { color: #30a; }
+.cm-s-elegant span.cm-link { color: #762; }
+.cm-s-elegant span.cm-error { background-color: #fdd; }
+
+.cm-s-elegant .CodeMirror-activeline-background { background: #e8f2ff; }
+.cm-s-elegant .CodeMirror-matchingbracket { outline:1px solid grey; color:black !important; }

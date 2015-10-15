@@ -5,7 +5,7 @@
 			"dest": "../../webroot/css"
 		}
 	],
-	"ignores": ["*.css", "*.less", "common/material-master", "common/Font-Awesome-master"],
+	"ignores": ["*.css", "*.less", "common/material-master", "common/Font-Awesome-master", "common/codemirror-5.7"],
 	"options": {
 		"outputStyle": "nested",
 		"lineComments": true,

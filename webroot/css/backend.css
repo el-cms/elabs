@@ -8524,6 +8524,95 @@ div[data-toggle="tile"] {
 .fa-fonticons:before {
   content: ""; }
 
+/* line 1, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.CodeMirror {
+  border: 1px solid silver;
+  border-width: 1px 2px; }
+
+/* line 2, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-header {
+  font-family: arial; }
+
+/* line 3, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-header-1 {
+  font-size: 150%; }
+
+/* line 4, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-header-2 {
+  font-size: 130%; }
+
+/* line 5, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-header-3 {
+  font-size: 120%; }
+
+/* line 6, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-header-4 {
+  font-size: 110%; }
+
+/* line 7, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-header-5 {
+  font-size: 100%; }
+
+/* line 8, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-header-6 {
+  font-size: 90%; }
+
+/* line 9, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-strong {
+  font-weight: bold; }
+
+/* line 14, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-number, .cm-s-elegant span.cm-string, .cm-s-elegant span.cm-atom {
+  color: #762; }
+
+/* line 15, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-comment {
+  color: #262;
+  line-height: 1em; }
+
+/* line 16, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-meta {
+  color: #555;
+  font-style: italic;
+  line-height: 1em; }
+
+/* line 17, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-variable {
+  color: black; }
+
+/* line 18, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-variable-2 {
+  color: #b11; }
+
+/* line 19, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-qualifier {
+  color: #555; }
+
+/* line 20, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-keyword {
+  color: #730; }
+
+/* line 21, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-builtin {
+  color: #30a; }
+
+/* line 22, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-link {
+  color: #762; }
+
+/* line 23, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant span.cm-error {
+  background-color: #fdd; }
+
+/* line 25, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant .CodeMirror-activeline-background {
+  background: #e8f2ff; }
+
+/* line 26, ../../Sources/Sass/common/custom/addons/_codemirror.scss */
+.cm-s-elegant .CodeMirror-matchingbracket {
+  outline: 1px solid grey;
+  color: black !important; }
+
 /* line 1, ../../Sources/Sass/common/custom/base/_layout.scss */
 body {
   margin-bottom: 50px; }
