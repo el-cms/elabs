@@ -74,7 +74,7 @@
 		</div>
 		<div class="card-inner">
 			<p>
-				<?= h($data['excerpt']) ?>
+				<?= $this->Markdown->transform($data['excerpt']) ?>
 			</p>
 		</div>
 	</div>

@@ -56,7 +56,7 @@
 		</div>
 		<div class="card-inner">
 			<p>
-				<?= h($data['short_description']) ?>
+				<?= $this->Markdown->transform($data['short_description']) ?>
 			</p>
 		</div>
 	</div>
