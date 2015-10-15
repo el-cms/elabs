@@ -36,7 +36,14 @@
 			<ul class="nav nav-list pull-right">
 				<li>
 					<a data-toggle="menu" href="#profile">
-						<span class="avatar"><span class="fa fa-user fa-3x<?= (!is_null($authUser)) ? ' text-red' : ''; ?>"></span></span>
+						<span class="avatar">
+							<?php
+							if (!is_null($authUser)):
+								echo $this->Gravatar->generate($authUser['email']);
+							else:
+								?><span class="fa fa-user fa-3x"></span></span><?php
+							endif;
+							?>
 					</a>
 				</li>
 			</ul>
@@ -63,9 +70,9 @@
 		</nav>
 		<?php
 		if (!is_null($authUser)):
-			echo $this->element('layout/usermenu');
+			echo $this->element('users/usermenu');
 		else:
-			echo $this->element('layout/loginmenu');
+			echo $this->element('users/loginmenu');
 		endif;
 		?>
 		<div class="content">
@@ -82,8 +89,8 @@
 				<div class="content-inner">
 					<div class="row">
 						<!--<div class="col-sm-12">-->
-							<?= $this->Flash->render() ?>
-							<?= $this->fetch('content') ?>
+						<?= $this->Flash->render() ?>
+						<?= $this->fetch('content') ?>
 						<!--</div>-->
 					</div>
 				</div>
