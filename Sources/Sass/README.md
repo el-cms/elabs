@@ -11,6 +11,10 @@ rm master.zip
 wget https://github.com/FortAwesome/Font-Awesome/archive/master.zip
 unzip master.zip
 rm master.zip
+
+wget http://codemirror.net/codemirror.zip
+unzip codemirror.zip
+rm codemirror.zip
 ```
 
 ## The files
