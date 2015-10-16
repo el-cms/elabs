@@ -31,6 +31,11 @@ class PostsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+				
+				$this->addBehavior('CounterCache',[
+						'Users'=>['post_count'=>['conditions'=>['published'=>true]]],
+						'Licenses'=>['post_count'=>['conditions'=>['published'=>true]]],
+				]);
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
