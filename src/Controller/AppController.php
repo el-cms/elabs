@@ -53,7 +53,7 @@ class AppController extends Controller {
 				'authenticate' => [
 						'Form' => [
 								'fields' => ['username' => 'email'],
-								'scope' => ['status' => 1, 'locked' => 0],
+								'scope' => ['enabled' => 1, 'locked' => 0, 'deleted'=>0],
 						],
 				],
 				'loginAction' => ['prefix' => false, 'controller' => 'Users', 'action' => 'login'],
