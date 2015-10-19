@@ -55,17 +55,16 @@ class UsersController extends AppController {
 						],
 						'Projects' => [
 								'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id'],
-								'conditions'=>[ // SFW is made after
-										
+								'conditions' => [ // SFW is made after
 								]
 						],
 						'Files' => [],
 				],
 				'conditions' => ['enabled' => true],
 		];
-		
+
 		// SFW options
-		if ($this->request->session()->read('see_nsfw') === 0) {
+		if ($this->request->session()->read('see_nsfw') === false) {
 			$options['contain']['Posts']['conditions']['sfw'] = 1;
 			$options['contain']['Projects']['conditions']['sfw'] = 1;
 //			$options['contain']['Files']['conditions']['sfw'] = 1;
@@ -118,6 +117,7 @@ class UsersController extends AppController {
 			$user = $this->Auth->identify();
 			if ($user) {
 				$this->Auth->setUser($user);
+				$this->request->session()->write('see_nsfw', $this->Auth->User('see_nsfw'));
 				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error(__('Invalid username or password, try again'));
