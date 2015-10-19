@@ -18,6 +18,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -29,6 +30,12 @@ use Cake\Event\Event;
  */
 class AppController extends Controller {
 	
+	
+	/**
+	 * List of helpers with their configuration
+	 * 
+	 * @var array
+	 */
 	public $helpers = [
 			'Tanuck/Markdown.Markdown' => ['parser' => 'GithubMarkdown'],
 			'Gravatar.Gravatar'
@@ -53,7 +60,7 @@ class AppController extends Controller {
 				'authenticate' => [
 						'Form' => [
 								'fields' => ['username' => 'email'],
-								'scope' => ['enabled' => 1, 'locked' => 0, 'deleted'=>0],
+								'scope' => ['enabled' => 1, 'locked' => 0, 'deleted' => 0],
 						],
 				],
 				'loginAction' => ['prefix' => false, 'controller' => 'Users', 'action' => 'login'],
@@ -63,9 +70,20 @@ class AppController extends Controller {
 		]);
 	}
 
+	/**
+	 * Before filter callback
+	 * 
+	 * @param Event $event
+	 * @return void
+	 */
 	public function beforeFilter(Event $event) {
 		parent::beforeFilter($event);
 		$this->Auth->allow(['index', 'view']);
+		
+		// SFW State
+		if (empty($this->request->session()->read('see_nsfw'))) {
+			$this->request->session()->write('see_nsfw', Configure::read('cms.see_nsfw'));
+		}
 	}
 
 	/**
