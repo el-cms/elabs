@@ -23,14 +23,44 @@ class ActsController extends AppController {
 	];
 
 	/**
-	 * Minimum fields to get for information tiles
-	 * 
+	 * Options used in queries for cards (add content)
 	 * @var array
 	 */
-	public $fields = [
-//			'Files' => ['title'=>'name', 'modified'],
-			'Posts' => ['title', 'modified', 'publication_date'],
-			'Projects' => ['title'=>'name', 'modified', 'created'],
+	public $findCardOptions = [
+			'Posts' => [
+					'fields' => ['id', 'title', 'excerpt', 'sfw', 'publication_date', 'modified'],
+					'conditions' => [
+							'published' => 1,
+					],
+					'contain' => 'Licenses',
+			],
+			'Projects' => [
+					'fields' => ['id', 'name', 'sfw', 'modified', 'short_description'],
+					'contain' => 'Licenses',
+			],
+			'Files' => [
+					'fields' => ['id', 'name', 'filename', 'descripiton', 'modified'],
+					'contain' => 'Licenses',
+			]
+	];
+
+	/**
+	 * List of option used in queries for tiles (update/delete content)
+	 * @var array
+	 */
+	public $findTileOptions = [
+			'Posts' => [
+					'fields' => ['id', 'title', 'modified'],
+					'conditions' => [
+							'published' => 1,
+					],
+			],
+			'Projects' => [
+					'fields' => ['id', 'title' => 'name', 'modified'],
+			],
+			'Files' => [
+					'fields' => ['id', 'name', 'modified'],
+			]
 	];
 
 	/**
@@ -66,26 +96,42 @@ class ActsController extends AppController {
 	 * @return void
 	 */
 	public function index() {
+		$conditions = null;
+		if (!$this->request->session()->read('see_nsfw')) {
+			$conditions['sfw'] = false;
+		}
+
 		// Get the list of items
 		$this->paginate = [
 				'contain' => ['Users'],
 				'fields' => ['id', 'type', 'fkid', 'model', 'Users.id', 'Users.username'],
 				'limit' => 30,
-        'order' => [
-            'id' => 'desc'
-        ]
+				'order' => [
+						'id' => 'desc'
+				]
 		];
 		$acts = $this->paginate($this->Acts);
 
+		// SFW state
+		$sfw = [];
+		if (!$this->request->session()->read('see_nsfw')) {
+			$sfw['conditions']['sfw'] = true;
+		}
 		// Get items content
 		$itemsContent = [];
 		foreach ($this->paginate() as $item) {
-			// Get full content for new items
 			if ($item['type'] === 'add') {
-				$itemsContent[$item['id']] = $this->$item['model']->get($item['fkid'], ['contain' => ['Licenses']]);
-			} else { // Get partial content for update/delete
-				$itemsContent[$item['id']] = $this->$item['model']->get($item['fkid'], ['fields' => $this->fields[$item['model']]]);
+				// Get full content for new items
+				$options = $this->findCardOptions[$item['model']];
+			} else {
+				// Get partial content for update/delete
+				$options = $this->findTileOptions[$item['model']];
 			}
+			// Additionnal conditions
+			$options['conditions'][$item['model'] . '.id'] = $item['fkid'];
+			//Sfw option:
+			$options = array_merge($sfw, $options);
+			$itemsContent[$item['id']] = $this->$item['model']->find('all', $options)->first();
 		}
 
 		// Pass variables to view
