@@ -29,8 +29,7 @@ use Cake\Core\Configure;
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	
-	
+
 	/**
 	 * List of helpers with their configuration
 	 * 
@@ -64,7 +63,7 @@ class AppController extends Controller {
 						],
 				],
 				'loginAction' => ['prefix' => false, 'controller' => 'Users', 'action' => 'login'],
-				'authError' => 'You are not allowed to view this page.',
+				'authError' => __d('elabs', 'You are not allowed to view this page.'),
 				'loginRedirect' => ['prefix' => false, 'controller' => 'pages', 'action' => 'display', 'home'],
 				'logoutRedirect' => ['prefix' => false, 'controller' => 'pages', 'action' => 'display', 'home']
 		]);
@@ -78,12 +77,9 @@ class AppController extends Controller {
 	 */
 	public function beforeFilter(Event $event) {
 		parent::beforeFilter($event);
-		$this->Auth->allow(['index', 'view']);
-		
-		// SFW State
-		if (empty($this->request->session()->read('see_nsfw'))) {
-			$this->request->session()->write('see_nsfw', Configure::read('cms.see_nsfw'));
-		}
+		$this->Auth->allow(['index', 'view', 'switchSFW']);
+
+		$this->set('see_nsfw', $this->request->session()->read('see_nsfw'));
 	}
 
 	/**
@@ -105,6 +101,15 @@ class AppController extends Controller {
 			$authUser = $this->Auth->user();
 		}
 		$this->set('authUser', $authUser);
+	}
+
+	/**
+	 * Switch the value of SFW state.
+	 * @param type $state
+	 */
+	public function switchSFW($state = 'hide') {
+		$this->request->session()->write('see_nsfw', ($state === 'show') ? true : false);
+		$this->redirect($this->referer());
 	}
 
 }
