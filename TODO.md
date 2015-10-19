@@ -3,19 +3,19 @@
 Validations    [ ]       [ ]       [ ]       [ ]  
                 C   V     C   V     C   V     C   V     C   V
 Public
-  Index        [ ] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]      
+  Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]      
     Anon                     [ ]       [ ]       [ ]       [ ]   
     SFW                  [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
     Published            [ ] [ ]
-    Filters    [ ]       [ ] [ ]   [ ] [ ]   [ ] [ ] 
-  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
+    Filters    [x]       [ ] [ ]   [ ] [ ]   [ ] [ ] 
+  View         [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
     Anon                     [ ]       [ ]       [ ]
     SFW                  [ ] [ ]   [ ] [ ]   [ ] [ ]   
     Published            [ ] [ ]
 
 User
   Add          [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
-    Self       [ ]       [ ]       [ ]       [ ]
+    Self                 [ ]       [ ]       [ ]
     Markdown Ed.   [ ]       [ ]       [ ]       [ ]
     Act                  [ ]       [ ]       [ ]
   Edit         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
