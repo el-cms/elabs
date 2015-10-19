@@ -1,29 +1,4 @@
-<?php
-/**
- * Used vars:
- * 
- * $item[
- *   fkid => Item ID
- *   user[
- *     username
- *     id
- *   ]
- * ]
- *
- * $data[
- *   name
- *   created
- *   updated
- *   short_description
- *   license[
- *     name
- *     id
- *   ]
- * ] 
- * 
- */
-?>
-<div class="card">
+<div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
 	<div class="card-side pull-left">
 		<span class="card-heading">
 			<?= $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>

@@ -1,18 +1,4 @@
-<?php
-/**
- * Used vars:
- *
- * $data[
- *   id
- *   title
- *   publication date
- *   modified
- *   excerpt
- * ] 
- *   
- */
-?>
-<div class="card">
+<div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
 	<div class="card-side pull-left">
 		<span class="card-heading">
 			<?= $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($data['id'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
