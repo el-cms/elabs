@@ -49,6 +49,7 @@
 			</ul>
 			<ul class="nav nav-list hidden-sm-or-smaller">
 				<?= $this->element('layout/mainmenu') ?>
+				<li><?php echo $this->Html->Link(($see_nsfw===true)?__d('elabs', 'Hide NSFW'):__d('elabs', 'Show NSFW'), ['action' => 'switchSFW', ($see_nsfw === true) ? 'hide' : 'show']) ?></li>
 			</ul>
 
 		</header>
