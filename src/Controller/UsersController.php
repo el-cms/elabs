@@ -23,6 +23,15 @@ class UsersController extends AppController {
 	 * @return void
 	 */
 	public function index() {
+		$this->paginate = [
+				'sortWhiteList' => ['username', 'realname', 'created'],
+				'order' => ['Users.realname' => 'asc'],
+				'conditions' => [
+						'locked' => false,
+						'enabled' => true,
+				],
+				'fields' => ['id', 'username', 'realname', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',]
+		];
 		$this->set('users', $this->paginate($this->Users));
 		$this->set('_serialize', ['users']);
 	}
@@ -35,9 +44,34 @@ class UsersController extends AppController {
 	 * @throws \Cake\Network\Exception\NotFoundException When record not found.
 	 */
 	public function view($id = null) {
-		$user = $this->Users->get($id, [
-				'contain' => ['Acts', 'Files', 'Posts', 'Projects']
-		]);
+		$options = [
+				'fields' => ['id', 'username', 'realname', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',],
+				'contain' => [
+						'Posts' => [
+								'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
+								'conditions' => [ // SFW is made after
+										'published' => true,
+								],
+						],
+						'Projects' => [
+								'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id'],
+								'conditions'=>[ // SFW is made after
+										
+								]
+						],
+						'Files' => [],
+				],
+				'conditions' => ['enabled' => true],
+		];
+		
+		// SFW options
+		if ($this->request->session()->read('see_nsfw') === 0) {
+			$options['contain']['Posts']['conditions']['sfw'] = 1;
+			$options['contain']['Projects']['conditions']['sfw'] = 1;
+//			$options['contain']['Files']['conditions']['sfw'] = 1;
+		}
+
+		$user = $this->Users->get($id, $options);
 		$this->set('user', $user);
 		$this->set('_serialize', ['user']);
 	}
@@ -58,7 +92,6 @@ class UsersController extends AppController {
 			$this->request->data['locked'] = Configure::read('cms.defaultLockedUser');
 
 			$user = $this->Users->patchEntity($user, $this->request->data);
-//			die('<pre>' . var_export($user, true) . '</pre>');
 			if ($this->Users->save($user)) {
 				$this->Flash->success(__d('elabs', 'Your account has been created. An email will be sent to you when active'));
 				return $this->redirect(['action' => 'index']);
@@ -68,7 +101,6 @@ class UsersController extends AppController {
 				array_walk_recursive($errors, function($a) use (&$errorMessages) {
 					$errorMessages[] = $a;
 				});
-//				die('<pre>' . var_export($errorMessages, true) . '</pre>');
 				$this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
 			}
 		}
