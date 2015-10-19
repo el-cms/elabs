@@ -21,3 +21,7 @@
 .card-sub pre{
 	overflow-x: hidden;
 }
+
+.card.nsfw{
+	@extend .card-red;
+}

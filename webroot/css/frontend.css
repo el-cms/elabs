@@ -2846,13 +2846,17 @@ body.el-loading {
     color: inherit; }
 
 /* line 28, ../../Sources/Sass/common/material-master/assets/sass/components/_card.scss */
-.card-red {
+.card-red, .card.nsfw, .nsfw.alert {
   background-color: #f44336;
   color: white; }
   /* line 31, ../../Sources/Sass/common/material-master/assets/sass/components/_card.scss */
-  .card-red a,
+  .card-red a, .card.nsfw a, .nsfw.alert a,
   .card-red a:focus,
-  .card-red a:hover {
+  .card.nsfw a:focus,
+  .nsfw.alert a:focus,
+  .card-red a:hover,
+  .card.nsfw a:hover,
+  .nsfw.alert a:hover {
     color: inherit; }
 
 /* line 39, ../../Sources/Sass/common/material-master/assets/sass/components/_card.scss */
