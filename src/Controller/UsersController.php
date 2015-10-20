@@ -30,6 +30,7 @@ class UsersController extends AppController {
 						'locked' => false,
 						'enabled' => true,
 				],
+				'sortWhitelist'=>['username', 'realname', 'created'],
 				'fields' => ['id', 'username', 'realname', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',]
 		];
 		$this->set('users', $this->paginate($this->Users));
