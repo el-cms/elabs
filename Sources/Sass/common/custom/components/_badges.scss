@@ -1,0 +1,17 @@
+.badge{
+	border-radius: 5px;
+	border:1px solid $black-sec-solid;
+	background-color:$black-hint-solid;
+	color:$black-text-solid;
+	display:inline-block;
+	padding:0px ($line-height - 4)/2;
+	/*margin:0px;*/
+	font-weight:bold;
+	font-size:0.8em;
+}
+.badge-sfw{
+	background-color:$palette-green-400;
+}
+.badge-nsfw{
+	background-color:$palette-red-400;
+}
