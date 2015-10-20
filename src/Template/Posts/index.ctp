@@ -7,7 +7,6 @@ $this->start('pageOrderMenu');
 <ul class="dropdown-menu nav">
 	<li><?= $this->Paginator->sort('title') ?></li>
 	<li><?= $this->Paginator->sort('publication_date') ?></li>
-	<li><?= $this->Paginator->sort('modified') ?></li>
 </ul>
 <?php
 $this->end();
@@ -18,8 +17,7 @@ foreach ($posts as $post):
 	$data = [
 			'title' => $post->title,
 			'excerpt' => $post->excerpt,
-//			'sfw' => $post->sfw,
-//			'anon' => $post->anon,
+			'sfw' => $post->sfw,
 			'publication_date' => $post->publication_date,
 			'modified' => $post->modified,
 			'license' => $post['license'],

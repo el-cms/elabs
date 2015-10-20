@@ -17,9 +17,21 @@ class PostsController extends AppController {
 	 * @return void
 	 */
 	public function index() {
-		$this->paginate = [
-				'contain' => ['Users', 'Licenses']
+		$findOptions = [
+				'fields' => [
+						'id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id',
+						'Users.id', 'Users.username', 'Users.realname',
+						'Licenses.id', 'Licenses.name'],
+				'conditions' => ['published' => 1],
+				'contain' => ['Users', 'Licenses'],
+				'order'=>['publication_date'=>'desc'],
+				'sortWhitelist'=>['publication_date', 'title'],
 		];
+		// SFW
+		if (!$this->request->session()->read('see_nsfw')) {
+			$findOptions['conditions']['sfw'] = true;
+		}
+		$this->paginate = $findOptions;
 		$this->set('posts', $this->paginate($this->Posts));
 		$this->set('_serialize', ['posts']);
 	}

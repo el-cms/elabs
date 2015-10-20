@@ -1,15 +1,17 @@
----
+# Todo
+
+## Main
+
+```
                Users     Posts     Projects  Files     Acts    
 Validations    [ ]       [ ]       [ ]       [ ]  
                 C   V     C   V     C   V     C   V     C   V
 Public
-  Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]      
-    Anon                     [ ]       [ ]       [ ]       [ ]   
-    SFW                  [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-    Published            [ ] [ ]
-    Filters    [x]       [ ] [ ]   [ ] [ ]   [ ] [ ] 
+  Index        [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]      
+    SFW                  [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
+    Published            [x] [x]
+    Filters    [x]       [x] [x]   [ ] [ ]   [ ] [ ] 
   View         [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
-    Anon                     [ ]       [ ]       [ ]
     SFW                  [ ] [ ]   [ ] [ ]   [ ] [ ]   
     Published            [ ] [ ]
 
@@ -37,3 +39,11 @@ Admin
     Anon           [ ]       [ ]       [ ]       [ ]
   Delete       [ ]       [ ]       [ ]       [ ]
     Act                  [ ]       [ ]       [ ]
+```
+
+## Other
+
+### Site config
+
+  - Options:
+    - [ ] Default field to display about authors (username or realname)
