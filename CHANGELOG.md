@@ -22,7 +22,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - [ ] Handle deleted/unpublished items
     - [x] Component to add items to flow
   - [ ] **Article management**
-    - [ ] Filters for indexes
+    - [x] Filters for indexes
     - [ ] Markdown support
       - [ ] File export from DB
       - [ ] Tool to link to projects and/or files
@@ -33,7 +33,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - [ ] ...
   - [ ] **Files management**
     - [ ] Create a dir for new users
-    - [ ] Create a Component to handle the different filetypes on add
+    - [ ] Create a Component to handle the different filetypes on add/update
     - [ ] Create a Helper to handle the different filetypes in views
   - [ ] **Licenses management**
   - [ ] **Tags management**
@@ -42,5 +42,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - [ ] **NSFW mechanism**
     - [ ] **Anon posting**
     - [ ] **...**
-  - [ ] :red_circle: Make this CHANGELOG following Semantic versioning as soon as possible
+  - [ ] :red_circle: Make this CHANGELOG follow Semantic versioning as soon as possible
   
