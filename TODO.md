@@ -11,9 +11,9 @@ Public
     SFW                  [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
     Published            [x] [x]
     Filters    [x]       [x] [x]   [ ] [ ]   [ ] [ ] 
-  View         [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
-    SFW                  [ ] [ ]   [ ] [ ]   [ ] [ ]   
-    Published            [ ] [ ]
+  View         [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]   
+    SFW                  [x] [x]   [ ] [ ]   [ ] [ ]   
+    Published            [x] [x]
 
 User
   Add          [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
@@ -47,3 +47,6 @@ Admin
 
   - Options:
     - [ ] Default field to display about authors (username or realname)
+
+### Before going public
+  - [ ] Add a db dump for database creation
