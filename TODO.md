@@ -7,8 +7,8 @@
 Validations    [ ]       [ ]       [ ]       [ ]  
                 C   V     C   V     C   V     C   V     C   V
 Public
-  Index        [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]      
-    SFW                  [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
+  Index        [x] [x]   [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]      
+    SFW                  [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]
     Published            [x] [x]
     Filters    [x]       [x] [x]   [ ] [ ]   [ ] [ ] 
   View         [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]   
