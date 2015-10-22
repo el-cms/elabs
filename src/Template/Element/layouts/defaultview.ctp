@@ -3,7 +3,7 @@
 	<?= $this->fetch('pageInfos') ?>
 </div>
 
-<div class="col-sm-9">
+<div class="col-sm-9 rendered-text">
 
 	<?= $this->fetch('pageContent'); ?>
 
