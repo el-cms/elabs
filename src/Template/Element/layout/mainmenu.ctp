@@ -1,30 +1,31 @@
+<?php
+$this->start('mainMenu');
+?>
 <li>
-	<?= $this->Html->link('Home', '/', ['class' => 'waves-attach']) ?>
+  <?= $this->Html->link('Home', '/', ['class' => 'waves-attach']) ?>
 </li>
 <li>
-	<?= $this->Html->link('News', ['controller' => 'posts', 'action' => 'index'], ['class' => 'waves-attach']) ?>
+  <?= $this->Html->link('News', ['prefix' => false, 'controller' => 'posts', 'action' => 'index'], ['class' => 'waves-attach']) ?>
 </li>
 <li>
-	<?= $this->Html->link('Projects', ['controller' => 'projects', 'action' => 'index'], ['class' => 'waves-attach']) ?>
+  <?= $this->Html->link('Projects', ['prefix' => false, 'controller' => 'projects', 'action' => 'index'], ['class' => 'waves-attach']) ?>
 </li>
 <li>
-	<?= $this->Html->link('Files', ['controller' => 'files', 'action' => 'index'], ['class' => 'waves-attach']) ?>
+  <?= $this->Html->link('Files', ['prefix' => false, 'controller' => 'files', 'action' => 'index'], ['class' => 'waves-attach']) ?>
+</li>
+<li>
+  <?= $this->Html->link('Authors', ['prefix' => false, 'controller' => 'users', 'action' => 'index'], ['class' => 'waves-attach']) ?>
 </li>
 
-<li class="dropdown dropdown-inline">
-	<a class="dropdown-toggle-btn btn btn-flat" data-toggle="dropdown">Testing layout<span class="icon margin-left-sm">keyboard_arrow_down</span></a>
-	<ul class="dropdown-menu nav">
-		<li>
-			<?= $this->Html->link('Home', ['controller' => 'pages', 'action' => 'home'], ['class' => 'waves-attach']) ?>
-		</li>
-		<li>
-			<?= $this->Html->link('News', ['controller' => 'pages', 'action' => 'news'], ['class' => 'waves-attach']) ?>
-		</li>
-		<li>
-			<?= $this->Html->link('Projects', ['controller' => 'pages', 'action' => 'projects'], ['class' => 'waves-attach']) ?>
-		</li>
-		<li>
-			<?= $this->Html->link('Files', ['controller' => 'pages', 'action' => 'files'], ['class' => 'waves-attach']) ?>
-		</li>
-	</ul>
+<?php
+$this->end();
+$this->start('secondMenu');
+?>
+<li>
+  <?php echo $this->Html->Link(($see_nsfw === true) ? __d('elabs', 'Hide NSFW') : __d('elabs', 'Show NSFW'), ['action' => 'switchSFW', ($see_nsfw === true) ? 'hide' : 'show']) ?>
 </li>
+<li>
+  <?= $this->Html->link('About', ['prefix' => false, 'controller' => 'pages', 'action' => 'display', 'about'], ['class' => 'waves-attach']) ?>
+</li>
+<?php
+$this->end();
