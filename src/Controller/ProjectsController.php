@@ -49,7 +49,13 @@ class ProjectsController extends AppController
         $project = $this->Projects->get($id, [
             'contain' => ['Licenses', 'Users', 'ProjectUsers']
         ]);
-        $this->set('project', $project);
-        $this->set('_serialize', ['project']);
+
+        //SFW state
+        if (!$project->sfw && !$this->request->session()->read('see_nsfw')) {
+            $this->viewBuilder()->template('nsfw');
+        } else {
+            $this->set('project', $project);
+            $this->set('_serialize', ['project']);
+        }
     }
 }

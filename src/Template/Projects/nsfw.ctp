@@ -1,0 +1,2 @@
+<?php $this->assign('title', __d('elabs', 'Something went wrong.'));?>
+<h2>This content is not suitable for everyone.</h2> If you really want to see it, please click on the "Show NSFW" button in the menu.
