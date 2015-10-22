@@ -52,9 +52,9 @@ class PostsController extends AppController
             'conditions' => ['published' => true],
         ]);
 
-        // It will be great when i'll find a whay to nicely handle exceptions/errors
+        // It will be great when i'll find a way to nicely handle exceptions/errors
         if (!$post->sfw && !$this->request->session()->read('see_nsfw')) {
-//            throw new NotSafeForWorkException('Plip', 403);
+            // And make a proper common error page
             $this->viewBuilder()->template('nsfw');
         } else {
             $this->set('post', $post);
