@@ -27,11 +27,12 @@ class UsersController extends AppController {
 				'sortWhiteList' => ['username', 'realname', 'created'],
 				'order' => ['Users.realname' => 'asc'],
 				'conditions' => [
-						'locked' => false,
+//						'locked' => false,
 						'enabled' => true,
 				],
 				'sortWhitelist'=>['username', 'realname', 'created'],
-				'fields' => ['id', 'username', 'realname', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',]
+                // Email should only be used for Gravatar.
+				'fields' => ['id', 'username', 'realname', 'email', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',]
 		];
 		$this->set('users', $this->paginate($this->Users));
 		$this->set('_serialize', ['users']);
