@@ -16,9 +16,9 @@ Public
     Published            [x] [x]
 
 User
-  Add          [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
+  Add                    [ ] [ ]   [ ] [ ]   [ ] [ ]   
     Self                 [ ]       [ ]       [ ]
-    Markdown Ed.   [ ]       [ ]       [ ]       [ ]
+    Markdown Ed.   [x]       [ ]       [ ]       [ ]
     Act                  [ ]       [ ]       [ ]
   Edit         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
     Self       [ ]       [ ]       [ ]       [ ]
