@@ -22,21 +22,6 @@ class UsersController extends UserAppController {
 	}
 
 	/**
-	 * View method
-	 *
-	 * @param string|null $id User id.
-	 * @return void
-	 * @throws \Cake\Network\Exception\NotFoundException When record not found.
-	 */
-	public function view($id = null) {
-		$user = $this->Users->get($id, [
-				'contain' => ['Acts', 'Files', 'Posts', 'Projects']
-		]);
-		$this->set('user', $user);
-		$this->set('_serialize', ['user']);
-	}
-
-	/**
 	 * Edit the current user
 	 *
 	 * @return void Redirects on successful edit, renders view otherwise.
