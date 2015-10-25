@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Post;
@@ -31,11 +32,11 @@ class PostsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-				
-				$this->addBehavior('CounterCache',[
-						'Users'=>['post_count'=>['conditions'=>['published'=>true]]],
-						'Licenses'=>['post_count'=>['conditions'=>['published'=>true]]],
-				]);
+
+        $this->addBehavior('CounterCache', [
+            'Users' => ['post_count' => ['conditions' => ['published' => true]]],
+            'Licenses' => ['post_count' => ['conditions' => ['published' => true]]],
+        ]);
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
@@ -56,38 +57,38 @@ class PostsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'numeric'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('title', 'create')
-            ->notEmpty('title');
+                ->requirePresence('title', 'create')
+                ->notEmpty('title');
 
         $validator
-            ->requirePresence('excerpt', 'create')
-            ->notEmpty('excerpt');
+                ->requirePresence('excerpt', 'create')
+                ->notEmpty('excerpt')
+                ->add('excerpt', [
+                    'maxLength' => [
+                        'rule' => ['maxLength', 250],
+                        'message' => 'Comments cannot be too long.']
+        ]);
 
         $validator
-            ->allowEmpty('text');
+                ->notEmpty('text');
 
         $validator
-            ->add('sfw', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->add('sfw', 'valid', ['rule' => 'boolean'])
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->add('anon', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('anon', 'create')
-            ->notEmpty('anon');
+                ->add('published', 'valid', ['rule' => 'boolean'])
+                ->requirePresence('published', 'create')
+                ->notEmpty('published');
 
         $validator
-            ->add('published', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('published', 'create')
-            ->notEmpty('published');
-
-        $validator
-            ->add('publication_date', 'valid', ['rule' => 'datetime'])
-            ->allowEmpty('publication_date');
+                ->add('publication_date', 'valid', ['rule' => 'datetime'])
+                ->allowEmpty('publication_date');
 
         return $validator;
     }

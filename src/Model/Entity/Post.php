@@ -11,7 +11,6 @@ use Cake\ORM\Entity;
  * @property string $excerpt
  * @property string $text
  * @property bool $sfw
- * @property bool $anon
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property bool $published
