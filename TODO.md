@@ -3,11 +3,11 @@
 ## Main
 
 ```
-               Users     Posts     Projects  Files     Acts    
-Validations    [ ]       [ ]       [ ]       [ ]  
+               Users     Posts     Projects  Files     Acts
+Validations    [ ]       [ ]       [ ]       [ ]
                 C   V     C   V     C   V     C   V     C   V
 Public
-  Index        [x] [x]   [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]      
+  Index        [x] [x]   [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ] 
     SFW                  [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]
     Published            [x] [x]
     Filters    [x]       [x] [x]   [x] [x]   [ ] [ ] 
@@ -16,26 +16,26 @@ Public
     Published            [x] [x]
 
 User
-  Add                    [ ] [ ]   [ ] [ ]   [ ] [ ]   
-    Self                 [ ]       [ ]       [ ]
-    Markdown Ed.   [x]       [ ]       [ ]       [ ]
-    Act                  [ ]       [ ]       [ ]
-  Edit         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
+  Add                    [x] [x]   [ ] [ ]   [ ] [ ]
+    Self                 [x]       [ ]       [ ]
+    Markdown Ed.   [x]       [x]       [ ]       [ ]
+    Act                  [X]       [ ]       [ ]
+  Edit         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
     Self       [ ]       [ ]       [ ]       [ ]
     Markdown Ed.   [ ]       [ ]       [ ]       [ ]
     Act                  [ ]       [ ]       [ ]
-  Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
+  Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
     Self       [ ]       [ ]       [ ]       [ ]
-  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
-    Self       [ ]       [ ]       [ ]       [ ]
+  View         [ ] [ ]
+    Self       [ ]
   Delete       [ ]       [ ]       [ ]       [ ]
     Self       [ ]       [ ]       [ ]       [ ]
     Act                  [ ]       [ ]       [ ]
 Admin
   Lock         [ ]       [ ]       [ ]       [ ]
-  Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
+  Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
     Anon           [ ]       [ ]       [ ]       [ ]
-  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
+  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
     Anon           [ ]       [ ]       [ ]       [ ]
   Delete       [ ]       [ ]       [ ]       [ ]
     Act                  [ ]       [ ]       [ ]

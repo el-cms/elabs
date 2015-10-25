@@ -10,7 +10,7 @@ use Cake\i18n\Time;
  *
  * @property \App\Model\Table\PostsTable $Posts
  */
-class PostsController extends AppController {
+class PostsController extends UserAppController {
 
 	/**
 	 * Index method
@@ -58,6 +58,9 @@ class PostsController extends AppController {
 			$post = $this->Posts->patchEntity($post, $dataSent);
 			if ($this->Posts->save($post)) {
 				$this->Flash->success(__('The post has been saved.'));
+                if($post->published){
+                    $this->Act->add($post->id, 'add', 'Posts');
+                }
 				return $this->redirect(['action' => 'index']);
 			} else {
 				$errors = $post->errors();
