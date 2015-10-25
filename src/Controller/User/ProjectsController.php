@@ -16,7 +16,7 @@ class ProjectsController extends AppController
      *
      * @return void
      */
-    public function index()
+    public function manage()
     {
         $this->paginate = [
             'contain' => ['Licenses', 'Users']

@@ -11,8 +11,8 @@ $this->Form->templates($formTemplate);
 <div class="col-sm-3">
   <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-      <li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
-      <li><?= $this->Html->link(__('List available licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?></li>
+      <li><?= $this->Html->link(__('List Posts'), ['action' => 'manage']) ?></li>
+      <li><?= $this->Html->link(__('List available licenses'), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index']) ?></li>
     </ul>
   </nav>
 </div>
