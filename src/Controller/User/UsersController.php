@@ -10,17 +10,6 @@ use App\Controller\User\UserAppController;
  * @property \App\Model\Table\UsersTable $Users
  */
 class UsersController extends UserAppController {
-
-	/**
-	 * Index method
-	 *
-	 * @return void
-	 */
-	public function index() {
-		$this->set('users', $this->paginate($this->Users));
-		$this->set('_serialize', ['users']);
-	}
-
 	/**
 	 * Edit the current user
 	 *
