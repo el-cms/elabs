@@ -60,7 +60,12 @@ class PostsController extends AppController {
 				$this->Flash->success(__('The post has been saved.'));
 				return $this->redirect(['action' => 'index']);
 			} else {
-				$this->Flash->error(__('The post could not be saved. Please, try again.'));
+				$errors = $post->errors();
+				$errorMessages = [];
+				array_walk_recursive($errors, function($a) use (&$errorMessages) {
+					$errorMessages[] = $a;
+				});
+				$this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
 			}
 		}
 		$users = $this->Posts->Users->find('list', ['limit' => 200]);
