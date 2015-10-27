@@ -1,35 +1,48 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?php echo __('Actions') ?></li>
-        <li><?php echo $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $post->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $post->id)]
-            )
-        ?></li>
-        <li><?php echo $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?php echo $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="posts form large-9 medium-8 columns content">
-    <?php echo $this->Form->create($post) ?>
-    <fieldset>
-        <legend><?php echo __('Edit Post') ?></legend>
-        <?php
-            echo $this->Form->input('title');
-            echo $this->Form->input('excerpt');
-            echo $this->Form->input('text');
-            echo $this->Form->input('sfw');
-            echo $this->Form->input('anon');
-            echo $this->Form->input('published');
-            echo $this->Form->input('publication_date');
-            echo $this->Form->input('user_id', ['options' => $users]);
-            echo $this->Form->input('license_id', ['options' => $licenses]);
-        ?>
-    </fieldset>
-    <?php echo $this->Form->button(__('Submit')) ?>
-    <?php echo $this->Form->end() ?>
+<?php
+$this->assign('title', __d('posts', 'Edit an article'));
+
+$formTemplate = [
+    'label' => '<label class="form-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
+    'checkboxContainer' => '<div class="form-group"><div class="checkbox switch">{{content}}</div></div>',
+    'submitContainer' => '{{content}}',
+];
+
+$this->loadHelper('CodeMirror');
+?>
+<div class="col-sm-3">
+  <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
+      <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'btn']) ?>
+  <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
+      <?php echo $this->Html->link(__('List Posts'), ['action' => 'manage'], ['class' => 'btn']) ?>
+      <?php echo $this->Html->link(__('List available licenses'), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], ['class' => 'btn']) ?>
 </div>
+<?php
+echo $this->Form->create($post);
+$this->Form->templates($formTemplate);
+?>
+<div class="col-sm-6">
+  <?php
+  // Required fields are still set to required=>false as there is an issue with codeMirror
+  echo $this->Form->input('title', ['required' => false, 'label' => ['class' => 'floating-label']]);
+  echo $this->Form->input('excerpt', ['required' => false, 'id' => 'excerptArea', 'label' => __d('posts', 'Introduction')]);
+  echo $this->Form->input('text', ['required' => false, 'id' => 'textArea', 'label' => __d('posts', 'Article contents')]);
+  $this->CodeMirror->add('excerptArea', [], ['%s.setSize(null, "150")']);
+  $this->CodeMirror->add('textArea');
+  $this->append('pageBottomScripts');
+  echo $this->CodeMirror->scripts();
+  $this->end();
+  ?>
+</div>
+<div class="col-sm-3">
+  <?php
+  echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]);
+  echo $this->Form->input('published', ['class' => 'access_hide', 'label' => __d('posts', 'Published')]);
+  echo $this->Form->input('license_id', ['options' => $licenses]);
+  ?>
+  <div class="form-group-btn">
+    <?php echo $this->Form->submit(__('Submit')); ?>
+  </div>
+</div>
+<?php
+$this->Form->end();
+

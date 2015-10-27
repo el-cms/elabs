@@ -53,7 +53,7 @@ class PostsController extends UserAppController
                 if ($post->published) {
                     $this->Act->add($post->id, 'add', 'Posts');
                 }
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'manage']);
             } else {
                 $errors = $post->errors();
                 $errorMessages = [];
@@ -79,15 +79,39 @@ class PostsController extends UserAppController
     public function edit($id = null)
     {
         $post = $this->Posts->get($id, [
+//            'fields' => ['id','title', 'excerpt', 'text', 'sfw', 'published', 'license_id'],
+            'conditions' => ['user_id' => $this->Auth->user('id')],
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            // Old publication state
+            $oldState = $post->published;
+            $this->request->data['user_id'] = $this->Auth->user('id');
+
             $post = $this->Posts->patchEntity($post, $this->request->data);
             if ($this->Posts->save($post)) {
-                $this->Flash->success(__('The post has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                if ($oldState === false && $post->published === true) {
+                    // New publication
+                    $this->Act->add($post->id, 'add', 'Posts');
+                    $this->Flash->success(__d('posts', 'Your article has been published.'));
+                } elseif ($oldState === true && $post->published === false) {
+                    // Removed from publication
+                    $this->Act->remove($post->id);
+                    $this->Flash->success(__d('posts', 'Your article has been unpublished.'));
+                } else {
+                    // Updated
+                    $this->Act->add($post->id, 'edit', 'Posts');
+                    $this->Flash->success(__d('posts', 'Your article has been updated.'));
+                }
+                return $this->redirect(['action' => 'manage']);
             } else {
-                $this->Flash->error(__('The post could not be saved. Please, try again.'));
+                $errors = $post->errors();
+                $errorMessages = [];
+                array_walk_recursive($errors, function ($a) use (&$errorMessages) {
+                    $errorMessages[] = $a;
+                });
+                $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
         $users = $this->Posts->Users->find('list', ['limit' => 200]);

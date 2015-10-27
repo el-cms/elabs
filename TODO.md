@@ -20,10 +20,10 @@ User
     Self                 [x]       [ ]       [ ]
     Markdown Ed.   [x]       [x]       [ ]       [ ]
     Act                  [X]       [ ]       [ ]
-  Edit         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-    Self       [ ]       [ ]       [ ]       [ ]
-    Markdown Ed.   [ ]       [ ]       [ ]       [ ]
-    Act                  [ ]       [ ]       [ ]
+  Edit         [ ] [ ]   [x] [x]   [ ] [ ]   [ ] [ ]
+    Self       [ ]       [x]       [ ]       [ ]
+    Markdown Ed.   [ ]       [x]       [ ]       [ ]
+    Act                  [x]       [ ]       [ ]
   Index/Manage           [x] [x]   [ ] [ ]   [ ] [ ]
     Self                 [x]       [ ]       [ ]
   View         [ ] [ ]
@@ -53,6 +53,7 @@ Admin
   - [x] Reformat code for PSR-2
   - [x] Remove short tags <?= being deprecated in PHP6
   - [x] Review \__d('elabs','...') and change their respective modules
-  - [ ] Review page titles to follow Material guidelines (My/Your,...)
+  - [ ] Review ALL page titles to follow Material guidelines (My/Your,...)
   - [x] Add a dl-horizontal style for definition lists
   - [ ] Review all paginator links and add a \__d() translation on them
+  - [ ] Add icons on action buttons
