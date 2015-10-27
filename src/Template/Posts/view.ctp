@@ -14,7 +14,7 @@ $this->start('pageInfos');
   <dt><?= __('Updated on') ?></dt>
   <dd><?= h($post->modified) ?></dd>
   <dt><?= __('Safe content') ?></dt>
-  <dd class="badge badge-<?php echo $post->sfw ? 'sfw' : 'nsfw'; ?>"><?= $post->sfw ? __d('elabs', '{0}&nbsp;Yes', '<span class="fa fa-check-circle"></span>') : __d('elabs', '{0}&nbsp;No', '<span class="fa fa-times-circle"></span>'); ?></dd>
+  <dd class="label label-<?php echo $post->sfw ? 'green' : 'red'; ?>"><?= $post->sfw ? __d('elabs', '{0}&nbsp;Yes', '<span class="fa fa-check-circle"></span>') : __d('elabs', '{0}&nbsp;No', '<span class="fa fa-times-circle"></span>'); ?></dd>
 </dl>
 
 <?php

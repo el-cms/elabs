@@ -13,7 +13,7 @@ $this->start('pageInfos');
   <dt><?= __('Modified on') ?></dt>
   <dd><?= h($project->modified) ?></tr>
   <dt><?= __('Safe content') ?></dt>
-  <dd class="badge badge-<?php echo $project->sfw ? 'sfw' : 'nsfw'; ?>"><?= $project->sfw ? __('Yes') : __('No'); ?></dd>
+  <dd class="label label-<?php echo $project->sfw ? 'green' : 'red'; ?>"><?= $project->sfw ? __('Yes') : __('No'); ?></dd>
 </dl>
 
 <div class="content-sub-heading"><?= __('Members') ?></div>
