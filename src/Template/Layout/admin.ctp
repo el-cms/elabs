@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<?= $this->Html->charset() ?>
+		<?php echo $this->Html->charset() ?>
 		<meta content="IE=edge" http-equiv="X-UA-Compatible">
 		<meta content="initial-scale=1.0, width=device-width" name="viewport">
     <title>
-			<?= $this->fetch('title') ?>
+			<?php echo $this->fetch('title') ?>
     </title>
-		<?= $this->Html->meta('icon') ?>
+		<?php echo $this->Html->meta('icon') ?>
 
-		<?= $this->Html->css('admin_style.min.css', array('media' => 'screen,projection')) ?>
+		<?php echo $this->Html->css('admin_style.min.css', array('media' => 'screen,projection')) ?>
 
-		<?= $this->fetch('meta') ?>
-		<?= $this->fetch('css') ?>
-		<?= $this->fetch('script') ?>
+		<?php echo $this->fetch('meta') ?>
+		<?php echo $this->fetch('css') ?>
+		<?php echo $this->fetch('script') ?>
 
 		<!-- ie -->
 		<!--[if lt IE 9]>
@@ -22,7 +22,7 @@
 		<![endif]-->
 	</head>
 	<body class="page-red avoid_fout">
-		<?=$this->element('layout/pageloader') ?>
+		<?php echo$this->element('layout/pageloader') ?>
 		<header class="header header-transparent header-waterfall">
 			<ul class="nav nav-list pull-left">
 				<li>
@@ -47,16 +47,16 @@
 					<a class="menu-logo" href="#">ExperimentsLabs</a>
 					<ul class="nav">
 						<li>
-							<?= $this->Html->link('Home', ['controller' => 'pages', 'action' => 'home'], ['class' => 'waves-attach']) ?>
+							<?php echo $this->Html->link('Home', ['controller' => 'pages', 'action' => 'home'], ['class' => 'waves-attach']) ?>
 						</li>
 						<li>
-							<?= $this->Html->link('News', ['controller' => 'pages', 'action' => 'news'], ['class' => 'waves-attach']) ?>
+							<?php echo $this->Html->link('News', ['controller' => 'pages', 'action' => 'news'], ['class' => 'waves-attach']) ?>
 						</li>
 						<li>
-							<?= $this->Html->link('Projects', ['controller' => 'pages', 'action' => 'projects'], ['class' => 'waves-attach']) ?>
+							<?php echo $this->Html->link('Projects', ['controller' => 'pages', 'action' => 'projects'], ['class' => 'waves-attach']) ?>
 						</li>
 						<li>
-							<?= $this->Html->link('Files', ['controller' => 'pages', 'action' => 'files'], ['class' => 'waves-attach']) ?>
+							<?php echo $this->Html->link('Files', ['controller' => 'pages', 'action' => 'files'], ['class' => 'waves-attach']) ?>
 						</li>
 					</ul>
 					<hr>
@@ -72,7 +72,7 @@
 			<div class="content-heading">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="heading"><span class="fa fa-wrench"></span>&nbsp;<?= $this->fetch('title') ?></h1>
+						<h1 class="heading"><span class="fa fa-wrench"></span>&nbsp;<?php echo $this->fetch('title') ?></h1>
 					</div>
 				</div>
 			</div>
@@ -81,15 +81,15 @@
 					<div class="card">
 						<div class="card-main">
 							<div class="card-inner">
-								<p class="card-heading"><?= __('Actions') ?></p>
-								<?= $this->fetch('actionMenu', 'empty') ?>
+								<p class="card-heading"><?php echo __('Actions') ?></p>
+								<?php echo $this->fetch('actionMenu', 'empty') ?>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-10">
-					<?= $this->Flash->render() ?>
-					<?= $this->fetch('content', 'empty') ?>
+					<?php echo $this->Flash->render() ?>
+					<?php echo $this->fetch('content', 'empty') ?>
 				</div>
 			</div>
 		</div>
@@ -111,9 +111,9 @@
 				</div>-->
 
 		<!-- Javascript at the end -->
-		<?= $this->Html->script('lib/jquery-1.11.3.min.js') ?>
-		<?= $this->Html->script('material.min.js') ?>
+		<?php echo $this->Html->script('lib/jquery-1.11.3.min.js') ?>
+		<?php echo $this->Html->script('material.min.js') ?>
 		<!-- Custom scripts -->
-		<?= $this->Html->script('custom.js') ?>
+		<?php echo $this->Html->script('custom.js') ?>
 	</body>
 </html>

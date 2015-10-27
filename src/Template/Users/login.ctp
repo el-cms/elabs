@@ -3,7 +3,7 @@
 		<div class="card">
 			<div class="card-main">
 				<div class="card-header">
-					<div class="card-inner"><?= __('Login') ?></div>
+					<div class="card-inner"><?php echo __('Login') ?></div>
 				</div>
 				<div class="card-inner">
 					<div class="text-center">
@@ -12,7 +12,7 @@
 							<i class="fa fa-user fa-stack-1x text-brand"></i>
 						</span>
 					</div>
-					<?= $this->element('users/loginform') ?>
+					<?php echo $this->element('users/loginform') ?>
 				</div>
 			</div>
 		</div>

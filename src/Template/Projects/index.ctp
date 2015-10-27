@@ -5,9 +5,9 @@ $this->assign('title', __d('projects', 'Projects'));
 $this->start('pageOrderMenu');
 ?>
 <ul class="dropdown-menu nav">
-	<li><?= $this->Paginator->sort('name') ?></li>
-	<li><?= $this->Paginator->sort('created') ?></li>
-	<li><?= $this->Paginator->sort('modified') ?></li>
+	<li><?php echo $this->Paginator->sort('name') ?></li>
+	<li><?php echo $this->Paginator->sort('created') ?></li>
+	<li><?php echo $this->Paginator->sort('modified') ?></li>
 </ul>
 <?php
 $this->end();

@@ -4,4 +4,4 @@ if (!empty($params['class'])) {
     $class .= '  alert-' . $params['class'];
 }
 ?>
-<div class="alert<?= h($class) ?>"><?= h($message) ?></div>
+<div class="alert<?php echo h($class) ?>"><?php echo h($message) ?></div>

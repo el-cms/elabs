@@ -4,7 +4,7 @@
 			<div class="card-main">
 				<div class="card-header">
 					<div class="card-inner">
-						<?= __('Register') ?>
+						<?php echo __('Register') ?>
 					</div>
 				</div>
 				<div class="card-inner">
@@ -16,10 +16,10 @@
 							</span>
 						</div>
 						<div class="col-xs-10">
-							<?= $this->element('users/manifest') ?>
+							<?php echo $this->element('users/manifest') ?>
 						</div>
 					</div>
-					<?= $this->element('users/registerform') ?>
+					<?php echo $this->element('users/registerform') ?>
 				</div>
 			</div>
 		</div>

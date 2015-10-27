@@ -8,13 +8,13 @@ $formTemplate = [
 <nav class="tab-nav tab-nav-amber">
   <ul class="nav nav-justified">
     <li class="active">
-      <a class="waves-attach waves-effect" data-toggle="tab" href="#tab-general" aria-expanded="true"><span class="fa fa-user"></span>&nbsp;<?= __d('users', 'Main informations') ?></a>
+      <a class="waves-attach waves-effect" data-toggle="tab" href="#tab-general" aria-expanded="true"><span class="fa fa-user"></span>&nbsp;<?php echo __d('users', 'Main informations') ?></a>
     </li>
     <li>
-      <a class="waves-attach waves-effect" data-toggle="tab" href="#tab-password" aria-expanded="false"><span class="fa fa-lock"></span>&nbsp;<?= __d('users', 'Change password') ?></a>
+      <a class="waves-attach waves-effect" data-toggle="tab" href="#tab-password" aria-expanded="false"><span class="fa fa-lock"></span>&nbsp;<?php echo __d('users', 'Change password') ?></a>
     </li>
     <li>
-      <a class="waves-attach waves-effect" data-toggle="tab" href="#tab-close" aria-expanded="false"><span class="fa fa-times text-red"></span>&nbsp;<?= __d('users', 'Close account') ?></a>
+      <a class="waves-attach waves-effect" data-toggle="tab" href="#tab-close" aria-expanded="false"><span class="fa fa-times text-red"></span>&nbsp;<?php echo __d('users', 'Close account') ?></a>
     </li>
   </ul>
   <div class="tab-nav-indicator" style="left: 303px; right: 289px;"></div>
@@ -47,9 +47,9 @@ $formTemplate = [
           ?>
         </fieldset>
         <div class="form-group-btn">
-          <?= $this->Form->submit(__('Save changes')) ?>
+          <?php echo $this->Form->submit(__('Save changes')) ?>
         </div>
-        <?= $this->Form->end() ?>
+        <?php echo $this->Form->end() ?>
       </div>
     </div>
   </div>
@@ -73,9 +73,9 @@ $formTemplate = [
         echo $this->Form->input('password_confirm', ['type' => 'password', 'value' => '', 'label' => __d('users', 'Confirmation')]);
         ?>
         <div class="form-group-btn">
-          <?= $this->Form->button(__('Update')) ?>
+          <?php echo $this->Form->button(__('Update')) ?>
         </div>
-        <?= $this->Form->end() ?>
+        <?php echo $this->Form->end() ?>
       </div>
     </div>
   </div>
@@ -97,9 +97,9 @@ $formTemplate = [
         echo $this->Form->input('current_password', ['type' => 'password', 'label' => __d('users', 'Current password')]);
         ?>
         <div class="form-group-btn">
-          <?= $this->Form->button(__d('users', 'Close your account'), ['class' => 'btn-red']) ?>
+          <?php echo $this->Form->button(__d('users', 'Close your account'), ['class' => 'btn-red']) ?>
         </div>
-        <?= $this->Form->end() ?>
+        <?php echo $this->Form->end() ?>
       </div>
     </div>
   </div>

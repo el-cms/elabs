@@ -1,17 +1,17 @@
 <div class="card">
 	<div class="card-main">
-		<?= $this->Form->create($model) ?>
+		<?php echo $this->Form->create($model) ?>
 		<div class="card-header">
-			<div class="card-inner"><?= $title ?></div>
+			<div class="card-inner"><?php echo $title ?></div>
 		</div>
 		<div class="card-inner">
-			<?= $this->fetch('cardFormFields'); ?>
+			<?php echo $this->fetch('cardFormFields'); ?>
 		</div>
 	</div>
 	<div class="card-action">
 		<div class="card-action-btn pull-left">
-			<?= $this->fetch('cardFormButtons'); ?>
+			<?php echo $this->fetch('cardFormButtons'); ?>
 		</div>
 	</div>
-	<?= $this->Form->end() ?>
+	<?php echo $this->Form->end() ?>
 </div>

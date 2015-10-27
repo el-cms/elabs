@@ -5,9 +5,9 @@ $this->assign('title', __d('users', 'Authors'));
 $this->start('pageOrderMenu');
 ?>
 <ul class="dropdown-menu nav">
-	<li><?= $this->Paginator->sort('realname', __d('users', 'Real name')) ?></li>
-	<li><?= $this->Paginator->sort('username', __d('users', 'User name')) ?></li>
-	<li><?= $this->Paginator->sort('created', __d('users', 'Join date')) ?></li>
+	<li><?php echo $this->Paginator->sort('realname', __d('users', 'Real name')) ?></li>
+	<li><?php echo $this->Paginator->sort('username', __d('users', 'User name')) ?></li>
+	<li><?php echo $this->Paginator->sort('created', __d('users', 'Join date')) ?></li>
 </ul>
 <?php
 $this->end();

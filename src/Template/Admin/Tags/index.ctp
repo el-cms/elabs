@@ -1,30 +1,30 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Tag'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Itemtags'), ['controller' => 'Itemtags', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Itemtag'), ['controller' => 'Itemtags', 'action' => 'add']) ?></li>
+        <li class="heading"><?php echo __('Actions') ?></li>
+        <li><?php echo $this->Html->link(__('New Tag'), ['action' => 'add']) ?></li>
+        <li><?php echo $this->Html->link(__('List Itemtags'), ['controller' => 'Itemtags', 'action' => 'index']) ?></li>
+        <li><?php echo $this->Html->link(__('New Itemtag'), ['controller' => 'Itemtags', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tags index large-9 medium-8 columns content">
-    <h3><?= __('Tags') ?></h3>
+    <h3><?php echo __('Tags') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('name') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
+                <th><?php echo $this->Paginator->sort('id') ?></th>
+                <th><?php echo $this->Paginator->sort('name') ?></th>
+                <th class="actions"><?php echo __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($tags as $tag): ?>
             <tr>
-                <td><?= $this->Number->format($tag->id) ?></td>
-                <td><?= h($tag->name) ?></td>
+                <td><?php echo $this->Number->format($tag->id) ?></td>
+                <td><?php echo h($tag->name) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $tag->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tag->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $tag->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id)]) ?>
+                    <?php echo $this->Html->link(__('View'), ['action' => 'view', $tag->id]) ?>
+                    <?php echo $this->Html->link(__('Edit'), ['action' => 'edit', $tag->id]) ?>
+                    <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $tag->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -32,10 +32,10 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?php echo $this->Paginator->prev('< ' . __('previous')) ?>
+            <?php echo $this->Paginator->numbers() ?>
+            <?php echo $this->Paginator->next(__('next') . ' >') ?>
         </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+        <p><?php echo $this->Paginator->counter() ?></p>
     </div>
 </div>

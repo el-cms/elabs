@@ -1,7 +1,7 @@
 <div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
 	<div class="card-side pull-left">
 		<span class="card-heading">
-			<?= $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $this->Number->format($data['id'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
+			<?php echo $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $this->Number->format($data['id'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
 		</span>
 	</div>
 	<div class="card-main">
@@ -13,7 +13,7 @@
 			</div>
 			<!-- Title -->
 			<div class="card-inner">
-				<div class="text-overflow"><?= h($data['name']) ?></div>
+				<div class="text-overflow"><?php echo h($data['name']) ?></div>
 				<em class="subtitle">
 					<?php
 					echo __d('elabs', 'Created on: {0}', h($data['created']));
@@ -27,7 +27,7 @@
 		<!-- Content -->
 		<div class="card-inner">
 			<p>
-				<?= $this->Markdown->transform($data['short_description']) ?>
+				<?php echo $this->Markdown->transform($data['short_description']) ?>
 			</p>
 		</div>
 	</div>

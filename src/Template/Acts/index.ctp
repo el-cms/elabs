@@ -5,10 +5,10 @@ $this->assign('title', __d('acts', 'Recent activity'));
 $this->start('pageOrderMenu');
 ?>
 <ul class="dropdown-menu nav">
-	<li><?= $this->Paginator->sort('id', 'Date', ['class' => 'waves-attach waves-effect']) ?></li>
-	<li><?= $this->Paginator->sort('model', 'Type', ['class' => 'waves-attach waves-effect']) ?></li>
-	<li><?= $this->Paginator->sort('type', 'Action', ['class' => 'waves-attach waves-effect']) ?></li>
-	<li><?= $this->Paginator->sort('user_id', 'User', ['class' => 'waves-attach waves-effect']) ?></li>
+	<li><?php echo $this->Paginator->sort('id', 'Date', ['class' => 'waves-attach waves-effect']) ?></li>
+	<li><?php echo $this->Paginator->sort('model', 'Type', ['class' => 'waves-attach waves-effect']) ?></li>
+	<li><?php echo $this->Paginator->sort('type', 'Action', ['class' => 'waves-attach waves-effect']) ?></li>
+	<li><?php echo $this->Paginator->sort('user_id', 'User', ['class' => 'waves-attach waves-effect']) ?></li>
 </ul>
 <?php
 $this->end();

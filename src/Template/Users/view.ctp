@@ -4,14 +4,14 @@ $this->assign('title', h($user->realname));
 $this->start('pageInfos');
 ?>
 <dl>
-	<dt><?= __('Username') ?></dt>
-	<dd><?= h($user->username) ?></dd>
-	<dt><?= __('Name') ?></dt>
-	<dd><?= h($user->realname) ?></dd>
-	<dt><?= __('Website') ?></dt>
-	<dd><?= h($user->website) ?></dd>
-	<dt><?= __('Member since') ?></dt>
-	<dd><?= h($user->created) ?></dd>
+	<dt><?php echo __('Username') ?></dt>
+	<dd><?php echo h($user->username) ?></dd>
+	<dt><?php echo __('Name') ?></dt>
+	<dd><?php echo h($user->realname) ?></dd>
+	<dt><?php echo __('Website') ?></dt>
+	<dd><?php echo h($user->website) ?></dd>
+	<dt><?php echo __('Member since') ?></dt>
+	<dd><?php echo h($user->created) ?></dd>
 </dl>
 <?php
 $this->end();
@@ -24,13 +24,13 @@ echo h($user->bio);
 <nav class="tab-nav tab-nav-brand">
 	<ul class="nav nav-justified">
 		<li class="active">
-			<a class="waves-attach waves-effect" data-toggle="tab" href="#posts-tab"><?= __d('posts', 'Articles') ?></a>
+			<a class="waves-attach waves-effect" data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles') ?></a>
 		</li>
 		<li>
-			<a class="waves-attach waves-effect" data-toggle="tab" href="#projects-tab"><?= __d('projects', 'Projects') ?></a>
+			<a class="waves-attach waves-effect" data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects') ?></a>
 		</li>
 		<li>
-			<a class="waves-attach waves-effect" data-toggle="tab" href="#files-tab"><?= __d('files', 'Files') ?></a>
+			<a class="waves-attach waves-effect" data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files') ?></a>
 		</li>
 	</ul>
 	<div class="tab-nav-indicator"></div>

@@ -51,7 +51,7 @@ Admin
 ### Before going public
   - [ ] Add a db dump for database creation
   - [x] Reformat code for PSR-2
-  - [ ] Remove short tags <?= being deprecated in PHP6
+  - [x] Remove short tags <?= being deprecated in PHP6
   - [x] Review \__d('elabs','...') and change their respective modules
   - [ ] Review page titles to follow Material guidelines (My/Your,...)
   - [x] Add a dl-horizontal style for definition lists

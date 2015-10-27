@@ -5,8 +5,8 @@ $this->assign('title', __d('posts', 'Articles'));
 $this->start('pageOrderMenu');
 ?>
 <ul class="dropdown-menu nav">
-	<li><?= $this->Paginator->sort('title') ?></li>
-	<li><?= $this->Paginator->sort('publication_date') ?></li>
+	<li><?php echo $this->Paginator->sort('title') ?></li>
+	<li><?php echo $this->Paginator->sort('publication_date') ?></li>
 </ul>
 <?php
 $this->end();

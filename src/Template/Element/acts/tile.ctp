@@ -17,11 +17,11 @@ endswitch;
 // Title link
 $link = $this->Html->link($data['title'], ['prefix' => false, 'controller' => $item['model'], 'action' => 'view', $item['fkid']]);
 ?>
-<div class="tile tile-<?= $class ?>">
+<div class="tile tile-<?php echo $class ?>">
 	<div class="pull-left tile-side">
-		<i class="fa fa-<?= $icon ?>"></i>
+		<i class="fa fa-<?php echo $icon ?>"></i>
 	</div>
 	<div class="tile-inner">
-		<strong><?= $data['modified'] ?>: </strong><?= __d('acts', '{0} {1} {2}', [$config['models'][$item['model']], $link, $config['strings'][$item['type']]]) ?>
+		<strong><?php echo $data['modified'] ?>: </strong><?php echo __d('acts', '{0} {1} {2}', [$config['models'][$item['model']], $link, $config['strings'][$item['type']]]) ?>
 	</div>
 </div>

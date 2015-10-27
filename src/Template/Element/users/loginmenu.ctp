@@ -2,7 +2,7 @@
 	<div class="menu-scroll">
 		<div class="menu-top">
 			<div class="menu-top-info plain">
-				<?= __('Login') ?>
+				<?php echo __('Login') ?>
 			</div>
 		</div>
 		<div class="menu-content text-center plain">
@@ -10,7 +10,7 @@
 				<i class="fa fa-circle-o fa-stack-2x"></i>
 				<i class="fa fa-user fa-stack-1x text-brand"></i>
 			</span>
-			<?= $this->element('users/loginform') ?>
+			<?php echo $this->element('users/loginform') ?>
 		</div>
 	</div>
 </nav>
