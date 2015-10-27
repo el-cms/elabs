@@ -19,6 +19,6 @@ class UserAppController extends AppController
     public function beforeRender(Event $event)
     {
         parent::beforeRender($event);
-        $this->viewBuilder()->layout('default');
+        $this->viewBuilder()->layout('user');
     }
 }
