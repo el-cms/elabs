@@ -9,7 +9,7 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\ProjectsTable $Projects
  */
-class ProjectsController extends AppController
+class ProjectsController extends UserAppController
 {
     /**
      * Index method

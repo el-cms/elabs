@@ -9,7 +9,7 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\FilesTable $Files
  */
-class FilesController extends AppController
+class FilesController extends UserAppController
 {
     /**
      * Index method
