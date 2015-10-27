@@ -8689,25 +8689,29 @@ em.subtitle {
   .alert-success a, .tile-success a {
     color: #e0e0e0; }
 
-/* line 1, ../../Sources/Sass/common/custom/components/_badges.scss */
-.badge {
-  border-radius: 5px;
-  border: 1px solid #727272;
-  background-color: #9a9a9a;
-  color: #212121;
-  display: inline-block;
-  padding: 0px 8px;
-  /*margin:0px;*/
-  font-weight: bold;
-  font-size: 0.8em; }
-
-/* line 12, ../../Sources/Sass/common/custom/components/_badges.scss */
-.badge-sfw {
-  background-color: #66bb6a; }
-
-/* line 15, ../../Sources/Sass/common/custom/components/_badges.scss */
-.badge-nsfw {
-  background-color: #ef5350; }
+/* line 6, ../../Sources/Sass/common/material-master/assets/sass/mixin/_utilities.scss */
+.dl-horizontal dd:after, .dl-horizontal dd:before {
+  content: "";
+  display: table;
+  line-height: 0; }
+/* line 12, ../../Sources/Sass/common/material-master/assets/sass/mixin/_utilities.scss */
+.dl-horizontal dd:after {
+  clear: both; }
+@media (min-width: 768px) {
+  /* line 16, ../../Sources/Sass/common/custom/components/_dls.scss */
+  .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    clear: left;
+    text-align: right;
+    display: block;
+    line-height: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  /* line 23, ../../Sources/Sass/common/custom/components/_dls.scss */
+  .dl-horizontal dd {
+    margin-left: 180px; } }
 
 /* line 1, ../../Sources/Sass/common/custom/components/_navs.scss */
 nav li.title {

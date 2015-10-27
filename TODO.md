@@ -54,5 +54,5 @@ Admin
   - [ ] Remove short tags <?= being deprecated in PHP6
   - [x] Review \__d('elabs','...') and change their respective modules
   - [ ] Review page titles to follow Material guidelines (My/Your,...)
-  - [ ] Add a dl-horizontal style for definition lists
+  - [x] Add a dl-horizontal style for definition lists
   - [ ] Review all paginator links and add a \__d() translation on them

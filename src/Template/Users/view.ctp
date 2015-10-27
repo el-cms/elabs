@@ -12,8 +12,6 @@ $this->start('pageInfos');
 	<dd><?= h($user->website) ?></dd>
 	<dt><?= __('Member since') ?></dt>
 	<dd><?= h($user->created) ?></dd>
-	<dt></dt>
-	<dd></dd>
 </dl>
 <?php
 $this->end();

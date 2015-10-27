@@ -1,0 +1,27 @@
+// Bootstrap variables. Needed for an easy update
+$grid-float-breakpoint: $screen-sm !default;
+$dl-horizontal-offset: 180px !default;
+
+// Horizontal description lists 
+// https://github.com/twbs/bootstrap-sass/blob/e15eef6a47ab94b15f80d44507859e4bc08ae965/assets/stylesheets/bootstrap/_type.scss#L200
+//
+// Defaults to being stacked without any of the below styles applied, until the
+// grid breakpoint is reached (default of ~768px).
+.dl-horizontal {
+  dd {
+    @include clearfix; // Clear the floated `dt` if an empty `dd` is present
+  }
+
+  @media (min-width: $grid-float-breakpoint) {
+    dt {
+      float: left;
+      width: ($dl-horizontal-offset - 20);
+      clear: left;
+      text-align: right;
+      @include text-overflow;
+    }
+    dd {
+      margin-left: $dl-horizontal-offset;
+    }
+  }
+}

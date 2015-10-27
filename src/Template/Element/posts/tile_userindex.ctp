@@ -34,7 +34,7 @@
   </div>
   <div style="height: 0px;" class="tile-active-show collapse" id="<?php echo $tileId . $post->id ?>">
     <div class="tile-sub">
-      <dl>
+      <dl class="dl-horizontal">
         <dt><?php echo __('Id') ?></dt>
         <dd><?= $this->Number->format($post->id) ?></dd>
         <?php if ($post->published): ?>
