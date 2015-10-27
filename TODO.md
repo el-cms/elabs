@@ -50,7 +50,9 @@ Admin
 
 ### Before going public
   - [ ] Add a db dump for database creation
-  - [ ] Reformat code for PSR-2
+  - [x] Reformat code for PSR-2
   - [ ] Remove short tags <?= being deprecated in PHP6
-  - [ ] Review \__d('elabs','...') and change their respective modules
+  - [x] Review \__d('elabs','...') and change their respective modules
   - [ ] Review page titles to follow Material guidelines (My/Your,...)
+  - [ ] Add a dl-horizontal style for definition lists
+  - [ ] Review all paginator links and add a \__d() translation on them

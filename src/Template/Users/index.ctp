@@ -1,13 +1,13 @@
 <?php
-$this->assign('title', __d('elabs', 'Authors'));
+$this->assign('title', __d('users', 'Authors'));
 
 // Pagination order links
 $this->start('pageOrderMenu');
 ?>
 <ul class="dropdown-menu nav">
-	<li><?= $this->Paginator->sort('username') ?></li>
-	<li><?= $this->Paginator->sort('realname') ?></li>
-	<li><?= $this->Paginator->sort('created', __d('elabs', 'Join date')) ?></li>
+	<li><?= $this->Paginator->sort('realname', __d('users', 'Real name')) ?></li>
+	<li><?= $this->Paginator->sort('username', __d('users', 'User name')) ?></li>
+	<li><?= $this->Paginator->sort('created', __d('users', 'Join date')) ?></li>
 </ul>
 <?php
 $this->end();

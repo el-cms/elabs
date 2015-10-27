@@ -20,14 +20,14 @@
     </div>
     <div class="tile-inner cell-title">
       <?php if ($post->sfw): ?>
-          <span class="label label-green fixed-font"><?php echo __('Safe') ?></span>
+          <span class="label label-green fixed-font"><?php echo __d('elabs', 'Safe') ?></span>
       <?php else: ?>
-          <span class="label label-red fixed-font"><?php echo __('NSFW') ?></span>
+          <span class="label label-red fixed-font"><?php echo __d('elabs', 'NSFW') ?></span>
       <?php endif; ?>&nbsp;
       <?php if ($post->published): ?>
-          <span class="label label-green"><?php echo __('Published') ?></span>
+          <span class="label label-green"><?php echo __d('posts','Published') ?></span>
       <?php else: ?>
-          <span class="label label-red"><?php echo __('Draft') ?></span>
+          <span class="label label-red"><?php echo __d('posts','Draft') ?></span>
       <?php endif; ?>&nbsp;
       <?= h($post->title) ?>
     </div>
@@ -38,7 +38,7 @@
         <dt><?php echo __('Id') ?></dt>
         <dd><?= $this->Number->format($post->id) ?></dd>
         <?php if ($post->published): ?>
-            <dt><?php echo __d('elabs', 'Publication date') ?></dt>
+            <dt><?php echo __d('posts', 'Publication date') ?></dt>
             <dd><?php echo h($post->publication_date) ?></dd>
         <?php endif; ?>
         <dt><?php echo __d('elabs', 'Creation date') ?></dt>

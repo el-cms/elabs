@@ -20,8 +20,8 @@ $this->Form->templates($formTemplate);
   <?php
   // Required fields are still set to required=>false as there is an issue with codeMirror
   echo $this->Form->input('title', ['required' => false, 'label' => ['class' => 'floating-label']]);
-  echo $this->Form->input('excerpt', ['required' => false, 'id' => 'excerptArea', 'label' => __d('elabs', 'Introduction')]);
-  echo $this->Form->input('text', ['required' => false, 'id' => 'textArea', 'label' => __d('elabs', 'Article contents')]);
+  echo $this->Form->input('excerpt', ['required' => false, 'id' => 'excerptArea', 'label' => __d('posts', 'Introduction')]);
+  echo $this->Form->input('text', ['required' => false, 'id' => 'textArea', 'label' => __d('posts', 'Article contents')]);
   $this->CodeMirror->add('excerptArea', [], ['%s.setSize(null, "150")']);
   $this->CodeMirror->add('textArea');
   $this->append('pageBottomScripts');
@@ -32,7 +32,7 @@ $this->Form->templates($formTemplate);
 <div class="col-sm-3">
   <?php
   echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is NSFW')]);
-  echo $this->Form->input('published', ['class' => 'access_hide', 'label' => __d('elabs', 'Published')]);
+  echo $this->Form->input('published', ['class' => 'access_hide', 'label' => __d('posts', 'Published')]);
   echo $this->Form->input('license_id', ['options' => $licenses]);
   ?>
   <div class="form-group-btn">

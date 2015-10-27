@@ -26,13 +26,13 @@ echo h($user->bio);
 <nav class="tab-nav tab-nav-brand">
 	<ul class="nav nav-justified">
 		<li class="active">
-			<a class="waves-attach waves-effect" data-toggle="tab" href="#posts-tab"><?= __d('elabs', 'Articles') ?></a>
+			<a class="waves-attach waves-effect" data-toggle="tab" href="#posts-tab"><?= __d('posts', 'Articles') ?></a>
 		</li>
 		<li>
-			<a class="waves-attach waves-effect" data-toggle="tab" href="#projects-tab"><?= __d('elabs', 'Projects') ?></a>
+			<a class="waves-attach waves-effect" data-toggle="tab" href="#projects-tab"><?= __d('projects', 'Projects') ?></a>
 		</li>
 		<li>
-			<a class="waves-attach waves-effect" data-toggle="tab" href="#files-tab"><?= __d('elabs', 'Files') ?></a>
+			<a class="waves-attach waves-effect" data-toggle="tab" href="#files-tab"><?= __d('files', 'Files') ?></a>
 		</li>
 	</ul>
 	<div class="tab-nav-indicator"></div>

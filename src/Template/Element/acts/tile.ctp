@@ -22,6 +22,6 @@ $link = $this->Html->link($data['title'], ['prefix' => false, 'controller' => $i
 		<i class="fa fa-<?= $icon ?>"></i>
 	</div>
 	<div class="tile-inner">
-		<strong><?= $data['modified'] ?>: </strong><?= __d('elabs', '{0} {1} {2}', [$config['models'][$item['model']], $link, $config['strings'][$item['type']]]) ?>
+		<strong><?= $data['modified'] ?>: </strong><?= __d('acts', '{0} {1} {2}', [$config['models'][$item['model']], $link, $config['strings'][$item['type']]]) ?>
 	</div>
 </div>

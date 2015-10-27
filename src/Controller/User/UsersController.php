@@ -59,11 +59,11 @@ class UsersController extends UserAppController
                     return $this->redirect(['action' => 'edit']);
                 }
             } else {
-                $this->Flash->error(__d('elabs', 'Sorry, you have entered the wrong password.'));
+                $this->Flash->error(__d('users', 'Sorry, you have entered the wrong password.'));
                 return $this->redirect(['action' => 'edit']);
             }
         } else {
-            $this->Flash->error(__d('elabs', 'To access this page, you need to fill the form first.'));
+            $this->Flash->error(__d('users', 'To access this page, you need to fill the form first.'));
             return $this->redirect(['action' => 'edit']);
         }
     }
@@ -81,14 +81,14 @@ class UsersController extends UserAppController
                 $user->status = false;
                 $user->locked = true;
                 $this->Users->save($user);
-                $this->Flash->Success(__d('elabs', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
+                $this->Flash->Success(__d('users', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
                 return $this->redirect($this->Auth->logout());
             } else {
-                $this->Flash->error(__d('elabs', 'Sorry, you have entered the wrong password.'));
+                $this->Flash->error(__d('users', 'Sorry, you have entered the wrong password.'));
                 return $this->redirect(['action' => 'edit']);
             }
         } else {
-            $this->Flash->error(__d('elabs', 'To access this page, you need to fill the form first.'));
+            $this->Flash->error(__d('users', 'To access this page, you need to fill the form first.'));
             return $this->redirect(['action' => 'edit']);
         }
     }

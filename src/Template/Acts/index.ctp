@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', __d('elabs', 'Recent activity'));
+$this->assign('title', __d('acts', 'Recent activity'));
 
 // Pagination order links
 $this->start('pageOrderMenu');

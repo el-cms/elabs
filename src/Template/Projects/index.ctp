@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', __d('elabs', 'Projects'));
+$this->assign('title', __d('projects', 'Projects'));
 
 // Pagination order links
 $this->start('pageOrderMenu');

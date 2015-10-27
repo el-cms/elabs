@@ -95,7 +95,7 @@ class UsersTable extends Table
                         }
                         return true;
                     },
-                    'message' => __d('elabs', 'Your password does not match your confirm password. Please try again'),
+                    'message' => __d('users', 'Your password does not match your confirm password. Please try again'),
                     'on' => ['create', 'update'],
                     'allowEmpty' => false
         ]);
@@ -139,8 +139,8 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email'], __d('elabs', 'This email address is already in use.')));
-        $rules->add($rules->isUnique(['username'], __d('elabs', 'This username is already taken.')));
+        $rules->add($rules->isUnique(['email'], __d('users', 'This email address is already in use.')));
+        $rules->add($rules->isUnique(['username'], __d('users', 'This username is already taken.')));
         return $rules;
     }
 }

@@ -9,4 +9,4 @@ echo $this->Form->button(__('Login'), ['class' => 'btn-block btn-green']);
 echo $this->Form->end();
 ?>
 <div class="text-center"><?= __d('elabs', 'or') ?></div>
-<?= $this->Html->link(__d('elabs', 'Register'), ['prefix' => false, 'controller' => 'users', 'action' => 'register'], ['class' => 'btn btn-flat btn-block']) ?>
+<?= $this->Html->link(__d('users', 'Register'), ['prefix' => false, 'controller' => 'users', 'action' => 'register'], ['class' => 'btn btn-flat btn-block']) ?>
