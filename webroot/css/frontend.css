@@ -8630,11 +8630,34 @@ div[data-toggle="tile"] {
 body {
   margin-bottom: 50px; }
 
-/* line 11, ../../Sources/Sass/common/custom/base/_layout.scss */
+/* line 7, ../../Sources/Sass/common/custom/base/_layout.scss */
+.dev-block {
+  color: #9e9e9e;
+  border: 1px dashed #757575;
+  text-align: center;
+  line-height: 100%;
+  border-radius: 5px;
+  height: 100%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
+  padding: 15px; }
+
+/* line 19, ../../Sources/Sass/common/custom/base/_layout.scss */
+.dev-inline {
+  color: #9e9e9e;
+  border: 1px dashed #757575;
+  display: inline-block;
+  /*text-align: center;*/
+  /*line-height:100%;*/
+  border-radius: 2px;
+  /*height:100%;*/
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
+  /*padding:15px;*/ }
+
+/* line 38, ../../Sources/Sass/common/custom/base/_layout.scss */
 .menu-top-info.plain {
   font-size: 1.5em; }
 
-/* line 15, ../../Sources/Sass/common/custom/base/_layout.scss */
+/* line 42, ../../Sources/Sass/common/custom/base/_layout.scss */
 .menu-content.plain {
   padding: 12px; }
 
