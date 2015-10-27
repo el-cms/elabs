@@ -11,7 +11,6 @@ use App\Controller\AppController;
  */
 class PostsController extends AppController
 {
-
     /**
      * Index method
      *

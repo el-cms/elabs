@@ -59,7 +59,7 @@ class CodeMirrorHelper extends Helper
             'lineNumbers' => true,
             'lineWrapping' => true,
             'mode' => 'markdown',
-            'styleActiveline'=>true,
+            'styleActiveline' => true,
             'theme' => 'elegant',
         ];
         foreach ($options as $k => $v) {

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\License;
@@ -15,7 +16,6 @@ use Cake\Validation\Validator;
  */
 class LicensesTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -47,18 +47,18 @@ class LicensesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'numeric'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+                ->requirePresence('name', 'create')
+                ->notEmpty('name');
 
         $validator
-            ->allowEmpty('short_description');
+                ->allowEmpty('short_description');
 
         $validator
-            ->allowEmpty('link');
+                ->allowEmpty('link');
 
         return $validator;
     }

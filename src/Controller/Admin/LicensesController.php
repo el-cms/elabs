@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
@@ -10,7 +11,6 @@ use App\Controller\AppController;
  */
 class LicensesController extends AppController
 {
-
     /**
      * Index method
      *

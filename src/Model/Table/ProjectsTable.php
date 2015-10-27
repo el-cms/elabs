@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Project;
@@ -16,7 +17,6 @@ use Cake\Validation\Validator;
  */
 class ProjectsTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -55,26 +55,26 @@ class ProjectsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'numeric'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+                ->requirePresence('name', 'create')
+                ->notEmpty('name');
 
         $validator
-            ->allowEmpty('short_description');
+                ->allowEmpty('short_description');
 
         $validator
-            ->allowEmpty('description');
+                ->allowEmpty('description');
 
         $validator
-            ->add('sfw', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->add('sfw', 'valid', ['rule' => 'boolean'])
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->allowEmpty('download');
+                ->allowEmpty('download');
 
         return $validator;
     }

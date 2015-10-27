@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Report;
@@ -13,7 +14,6 @@ use Cake\Validation\Validator;
  */
 class ReportsTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -27,7 +27,6 @@ class ReportsTable extends Table
         $this->table('reports');
         $this->displayField('name');
         $this->primaryKey('id');
-
     }
 
     /**
@@ -39,26 +38,26 @@ class ReportsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'numeric'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('name');
+                ->allowEmpty('name');
 
         $validator
-            ->add('email', 'valid', ['rule' => 'email'])
-            ->allowEmpty('email');
+                ->add('email', 'valid', ['rule' => 'email'])
+                ->allowEmpty('email');
 
         $validator
-            ->requirePresence('url', 'create')
-            ->notEmpty('url');
+                ->requirePresence('url', 'create')
+                ->notEmpty('url');
 
         $validator
-            ->requirePresence('reason', 'create')
-            ->notEmpty('reason');
+                ->requirePresence('reason', 'create')
+                ->notEmpty('reason');
 
         $validator
-            ->allowEmpty('session');
+                ->allowEmpty('session');
 
         return $validator;
     }

@@ -53,3 +53,4 @@ Admin
   - [ ] Reformat code for PSR-2
   - [ ] Remove short tags <?= being deprecated in PHP6
   - [ ] Review \__d('elabs','...') and change their respective modules
+  - [ ] Review page titles to follow Material guidelines (My/Your,...)

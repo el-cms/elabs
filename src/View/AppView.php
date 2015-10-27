@@ -24,42 +24,41 @@ use Cake\View\View;
  *
  * @link http://book.cakephp.org/3.0/en/views.html#the-app-view
  */
-class AppView extends View {
+class AppView extends View
+{
+    /**
+     * Initialization hook method.
+     *
+     * Use this method to add common initialization code like loading helpers.
+     *
+     * e.g. `$this->loadHelper('Html');`
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        /**
+         * Helpers
+         * 
+         * @var type array
+         */
+        $this->loadHelper(
+                'Form', [
+            'className' => 'Bootstrap.BootstrapForm' // instead of 'Bootstrap3.BootstrapForm'
+                ]
+        );
 
-	/**
-	 * Initialization hook method.
-	 *
-	 * Use this method to add common initialization code like loading helpers.
-	 *
-	 * e.g. `$this->loadHelper('Html');`
-	 *
-	 * @return void
-	 */
-	public function initialize() {
-		/**
-		 * Helpers
-		 * 
-		 * @var type array
-		 */
-		$this->loadHelper(
-						'Form', [
-				'className' => 'Bootstrap.BootstrapForm' // instead of 'Bootstrap3.BootstrapForm'
-						]
-		);
-
-		$this->Form->templates([
-				'inputContainer' => '<div class="form-group form-group-label form-group-brand {{required}}">{{content}}</div>',
-				'inputContainerError' => '<div class="form-group form-group-label form-group-red{{required}}">{{content}}<span class="form-help form-help-msg text-red">{{error}}<span class="fa fa-warning-sign form-help-icon"></span></span></div>',
-				// Sadly, this one is overriden in input() method from BootstrapFormHelper...
-				'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
-				//Don't work either
-				'submitContainer' => '<div class="form-group-btn">{{content}}</div>',
-				'checkbox' => '<input type="checkbox" name="{{name}}" class="access-hide" value="{{value}}"{{attrs}}><span class="switch-toggle switch-toggle-brand"></span>',
-				// This one too
-				'checkboxWrapper' => '<div class="checkbox switch">{{label}}</div>',
-				'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
-				
-		]);
-	}
-
+        $this->Form->templates([
+            'inputContainer' => '<div class="form-group form-group-label form-group-brand {{required}}">{{content}}</div>',
+            'inputContainerError' => '<div class="form-group form-group-label form-group-red{{required}}">{{content}}<span class="form-help form-help-msg text-red">{{error}}<span class="fa fa-warning-sign form-help-icon"></span></span></div>',
+            // Sadly, this one is overriden in input() method from BootstrapFormHelper...
+            'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
+            //Don't work either
+            'submitContainer' => '<div class="form-group-btn">{{content}}</div>',
+            'checkbox' => '<input type="checkbox" name="{{name}}" class="access-hide" value="{{value}}"{{attrs}}><span class="switch-toggle switch-toggle-brand"></span>',
+            // This one too
+            'checkboxWrapper' => '<div class="checkbox switch">{{label}}</div>',
+            'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
+        ]);
+    }
 }

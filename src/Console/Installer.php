@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -12,6 +13,7 @@
  * @since     3.0.0
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Console;
 
 use Composer\Script\Event;
@@ -23,7 +25,6 @@ use Exception;
  */
 class Installer
 {
-
     /**
      * Does some routine installation tasks so people don't have to.
      *
@@ -49,10 +50,7 @@ class Installer
                 throw new Exception('This is not a valid answer. Please choose Y or n.');
             };
             $setFolderPermissions = $io->askAndValidate(
-                '<info>Set Folder Permissions ? (Default to Y)</info> [<comment>Y,n</comment>]? ',
-                $validator,
-                10,
-                'Y'
+                    '<info>Set Folder Permissions ? (Default to Y)</info> [<comment>Y,n</comment>]? ', $validator, 10, 'Y'
             );
 
             if (in_array($setFolderPermissions, ['Y', 'y'])) {

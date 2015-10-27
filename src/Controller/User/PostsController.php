@@ -12,7 +12,6 @@ use Cake\i18n\Time;
  */
 class PostsController extends UserAppController
 {
-
     /**
      * Index method
      *
@@ -21,11 +20,11 @@ class PostsController extends UserAppController
     public function manage()
     {
         $this->paginate = [
-            'fields'=>['id', 'title', 'sfw', 'published', 'publication_date', 'created', 'modified', 'license_id'],
+            'fields' => ['id', 'title', 'sfw', 'published', 'publication_date', 'created', 'modified', 'license_id'],
             'contain' => [
-                'Licenses'=>['fields'=>['id', 'name']]],
-            'conditions' =>['user_id'=>$this->Auth->user('id')],
-            'order'=>['id'=>'desc'],
+                'Licenses' => ['fields' => ['id', 'name']]],
+            'conditions' => ['user_id' => $this->Auth->user('id')],
+            'order' => ['id' => 'desc'],
             'sortWhitelist' => ['title', 'published', 'publication_date', 'created', 'modified', 'sfw'],
         ];
         $this->set('posts', $this->paginate($this->Posts));
@@ -58,7 +57,7 @@ class PostsController extends UserAppController
             } else {
                 $errors = $post->errors();
                 $errorMessages = [];
-                array_walk_recursive($errors, function($a) use (&$errorMessages) {
+                array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
                 });
                 $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);

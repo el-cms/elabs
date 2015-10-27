@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\File;
@@ -15,7 +16,6 @@ use Cake\Validation\Validator;
  */
 class FilesTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -50,23 +50,23 @@ class FilesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'numeric'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('name');
+                ->allowEmpty('name');
 
         $validator
-            ->requirePresence('filename', 'create')
-            ->notEmpty('filename');
+                ->requirePresence('filename', 'create')
+                ->notEmpty('filename');
 
         $validator
-            ->add('weight', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('weight', 'create')
-            ->notEmpty('weight');
+                ->add('weight', 'valid', ['rule' => 'numeric'])
+                ->requirePresence('weight', 'create')
+                ->notEmpty('weight');
 
         $validator
-            ->allowEmpty('description');
+                ->allowEmpty('description');
 
         return $validator;
     }

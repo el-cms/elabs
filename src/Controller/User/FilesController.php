@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\User;
 
 use App\Controller\AppController;
@@ -10,7 +11,6 @@ use App\Controller\AppController;
  */
 class FilesController extends AppController
 {
-
     /**
      * Index method
      *
