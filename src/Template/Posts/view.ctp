@@ -32,3 +32,6 @@ $this->start('pageContent');
 <?php
 echo $this->element('layout/loader_prism');
 $this->end();
+
+echo $this->element('layouts/defaultview');
+
