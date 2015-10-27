@@ -79,7 +79,6 @@ class PostsController extends UserAppController
     public function edit($id = null)
     {
         $post = $this->Posts->get($id, [
-//            'fields' => ['id','title', 'excerpt', 'text', 'sfw', 'published', 'license_id'],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'contain' => []
         ]);
@@ -130,12 +129,18 @@ class PostsController extends UserAppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $post = $this->Posts->get($id);
+        $post = $this->Posts->get($id, [
+            'conditions' => [
+                'id' => $id,
+                'user_id' => $this->Auth->user('id')
+            ]
+        ]);
         if ($this->Posts->delete($post)) {
             $this->Flash->success(__('The post has been deleted.'));
+            $this->Act->remove($id);
         } else {
             $this->Flash->error(__('The post could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'manage']);
     }
 }
