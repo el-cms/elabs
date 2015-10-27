@@ -44,13 +44,13 @@ class ActComponent extends Component
     /**
      * Adds an element to the Acts table
      * 
-     * @param mixed $foreign_key Target foreign key
+     * @param mixed $foreignKey Target foreign key
      * @param string $type Target action
      * @param string $model Target model
      * 
      * @return bool
      */
-    public function add($foreign_key, $type = null, $model = null)
+    public function add($foreignKey, $type = null, $model = null)
     {
         // Checking params
         if (is_null($model)) {
@@ -60,12 +60,16 @@ class ActComponent extends Component
             $type = $this->Controller->request->params['action'];
         }
         $uid = $this->Auth->user('id');
-        debug(['fk' => $foreign_key, 'model' => $model, 'action' => $type]);
-        $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $foreign_key, 'model' => $model, 'type' => $type, 'user_id' => $uid]);
+        $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $foreignKey, 'model' => $model, 'type' => $type, 'user_id' => $uid]);
         if ($this->Acts->save($act)) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public function remove($foreignKey)
+    {
+        return $this->Acts->deleteAll(['fkid' => $foreignKey, ['user_id' => $uid = $this->Auth->user('id')]]);
     }
 }
