@@ -2164,7 +2164,7 @@ body.el-loading {
 
 @media only screen and (max-width: 479px) {
   /* line 21, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
-  .hidden-xx, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xs-only, .hidden-sm-or-smaller {
+  .hidden-xx, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xs-only, .hidden-sm-or-smaller, .hidden-xs-or-smaller {
     display: none !important; }
 
   /* line 24, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
@@ -2180,7 +2180,7 @@ body.el-loading {
     display: inline-block !important; } }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   /* line 37, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
-  .hidden-xs, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xx-only, .hidden-sm-or-smaller {
+  .hidden-xs, .visible-lg-only, .visible-md-only, .visible-sm-only, .visible-xx-only, .hidden-sm-or-smaller, .hidden-xs-or-smaller {
     display: none !important; }
 
   /* line 40, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
@@ -2196,7 +2196,7 @@ body.el-loading {
     display: inline-block !important; } }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* line 53, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
-  .hidden-sm, .visible-lg-only, .visible-md-only, .visible-xs-only, .visible-xx-only, .hidden-sm-or-smaller {
+  .hidden-sm, .visible-lg-only, .visible-md-only, .visible-xs-only, .visible-xx-only, .visible-xs-or-smaller, .hidden-sm-or-smaller {
     display: none !important; }
 
   /* line 56, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
@@ -2212,7 +2212,7 @@ body.el-loading {
     display: inline-block !important; } }
 @media only screen and (min-width: 992px) and (max-width: 1439px) {
   /* line 69, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
-  .hidden-md, .visible-lg-only, .visible-sm-only, .visible-xs-only, .visible-xx-only, .visible-sm-or-smaller {
+  .hidden-md, .visible-lg-only, .visible-sm-only, .visible-xs-only, .visible-xx-only, .visible-sm-or-smaller, .visible-xs-or-smaller {
     display: none !important; }
 
   /* line 72, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
@@ -2228,7 +2228,7 @@ body.el-loading {
     display: inline-block !important; } }
 @media only screen and (min-width: 1440px) {
   /* line 85, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
-  .hidden-lg, .visible-md-only, .visible-sm-only, .visible-xs-only, .visible-xx-only, .visible-sm-or-smaller {
+  .hidden-lg, .visible-md-only, .visible-sm-only, .visible-xs-only, .visible-xx-only, .visible-sm-or-smaller, .visible-xs-or-smaller {
     display: none !important; }
 
   /* line 88, ../../Sources/Sass/common/material-master/assets/sass/utilities/_utilities-responsive.scss */
@@ -8642,6 +8642,10 @@ body {
 em.subtitle {
   font-size: 0.9em;
   color: rgba(0, 0, 0, 0.38); }
+
+/* line 7, ../../Sources/Sass/common/custom/base/_typo.scss */
+.fixed-font {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace; }
 
 /* line 1, ../../Sources/Sass/common/custom/components/_alerts.scss */
 .alert {

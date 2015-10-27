@@ -48,6 +48,11 @@
 	@extend .hidden-lg;
 	@extend .hidden-md;
 }
+.visible-xs-or-smaller{
+	@extend .hidden-lg;
+	@extend .hidden-md;
+	@extend .hidden-sm;
+}
 
 //
 // Meta classes to hide an element on a certain display size OR SMALLER
@@ -58,4 +63,10 @@
 	@extend .hidden-xx;
 	@extend .hidden-xs;
 	@extend .hidden-sm;
+}
+
+// Meta class to hide element on xs or smaller
+.hidden-xs-or-smaller{
+	@extend .hidden-xx;
+	@extend .hidden-xs;
 }
