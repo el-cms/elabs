@@ -31,7 +31,7 @@ $this->Form->templates($formTemplate);
 </div>
 <div class="col-sm-3">
   <?php
-  echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is NSFW')]);
+  echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]);
   echo $this->Form->input('published', ['class' => 'access_hide', 'label' => __d('posts', 'Published')]);
   echo $this->Form->input('license_id', ['options' => $licenses]);
   ?>
