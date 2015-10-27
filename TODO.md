@@ -24,8 +24,8 @@ User
     Self       [ ]       [ ]       [ ]       [ ]
     Markdown Ed.   [ ]       [ ]       [ ]       [ ]
     Act                  [ ]       [ ]       [ ]
-  Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-    Self       [ ]       [ ]       [ ]       [ ]
+  Index/Manage           [x] [x]   [ ] [ ]   [ ] [ ]
+    Self                 [x]       [ ]       [ ]
   View         [ ] [ ]
     Self       [ ]
   Delete       [ ]       [ ]       [ ]       [ ]
@@ -50,3 +50,6 @@ Admin
 
 ### Before going public
   - [ ] Add a db dump for database creation
+  - [ ] Reformat code for PSR-2
+  - [ ] Remove short tags <?= being deprecated in PHP6
+  - [ ] Review \__d('elabs','...') and change their respective modules

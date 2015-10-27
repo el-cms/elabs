@@ -21,7 +21,12 @@ class PostsController extends UserAppController
     public function manage()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Licenses']
+            'fields'=>['id', 'title', 'sfw', 'published', 'publication_date', 'created', 'modified', 'license_id'],
+            'contain' => [
+                'Licenses'=>['fields'=>['id', 'name']]],
+            'conditions' =>['user_id'=>$this->Auth->user('id')],
+            'order'=>['id'=>'desc'],
+            'sortWhitelist' => ['title', 'published', 'publication_date', 'created', 'modified', 'sfw'],
         ];
         $this->set('posts', $this->paginate($this->Posts));
         $this->set('_serialize', ['posts']);
