@@ -5,11 +5,11 @@ $this->start('pageOrderMenu');
 ?>
 <ul class="dropdown-menu nav">
   <li><?php echo $this->Paginator->sort('title') ?></li>
-  <li><?php echo $this->Paginator->sort('published', __d('elabs','Publication date')) ?></li>
-  <li><?php echo $this->Paginator->sort('publication_date', __d('elabs','Publication date')) ?></li>
-  <li><?php echo $this->Paginator->sort('created', __d('elabs','Creation date')) ?></li>
-  <li><?php echo $this->Paginator->sort('modified', __d('elabs','Update date')) ?></li>
-  <li><?php echo $this->Paginator->sort('sfw', __d('elabs','Safe flag')) ?></li>
+  <li><?php echo $this->Paginator->sort('published', __d('elabs', 'Publication date')) ?></li>
+  <li><?php echo $this->Paginator->sort('publication_date', __d('elabs', 'Publication date')) ?></li>
+  <li><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></li>
+  <li><?php echo $this->Paginator->sort('modified', __d('elabs', 'Update date')) ?></li>
+  <li><?php echo $this->Paginator->sort('sfw', __d('elabs', 'Safe flag')) ?></li>
 </ul>
 <?php
 $this->end();
@@ -32,4 +32,3 @@ $this->start('pageContent');
 $this->end();
 
 echo $this->element('layouts/defaultindex');
-?>
