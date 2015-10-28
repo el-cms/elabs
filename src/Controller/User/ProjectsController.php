@@ -109,12 +109,17 @@ class ProjectsController extends UserAppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $project = $this->Projects->get($id);
+        $project = $this->Projects->get($id,[
+            'conditions' => [
+                'user_id' => $this->Auth->user('id')
+            ]
+        ]);
         if ($this->Projects->delete($project)) {
             $this->Flash->success(__('The project has been deleted.'));
+            $this->Act->remove($id);
         } else {
             $this->Flash->error(__('The project could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'manage']);
     }
 }

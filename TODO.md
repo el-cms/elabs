@@ -26,9 +26,9 @@ User
     Act                  [x]       [ ]       [ ]
   Index/Manage           [x] [x]   [x] [x]   [ ] [ ]
     Self                 [x]       [x]       [ ]
-  Delete       [ ]       [x]       [ ]       [ ]
-    Self       [ ]       [x]       [ ]       [ ]
-    Act                  [x]       [ ]       [ ]
+  Delete       [ ]       [x]       [x]       [ ]
+    Self       [ ]       [x]       [x]       [ ]
+    Act                  [x]       [x]       [ ]
 Admin
   Lock         [ ]       [ ]       [ ]       [ ]
   Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
