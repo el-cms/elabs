@@ -127,7 +127,7 @@ class UsersController extends AppController
                 $this->request->session()->write('see_nsfw', $this->Auth->User('see_nsfw'));
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            $this->Flash->error(__('users', 'Invalid username or password, try again. Is your accound active ?'));
         }
     }
 
