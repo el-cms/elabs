@@ -92,13 +92,12 @@ class PostsController extends UserAppController
     {
         $post = $this->Posts->get($id, [
             'conditions' => ['user_id' => $this->Auth->user('id')],
-            'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             // Old publication state
             $oldState = $post->published;
-            $this->request->data['user_id'] = $this->Auth->user('id');
+//            $this->request->data['user_id'] = $this->Auth->user('id');
 
             $post = $this->Posts->patchEntity($post, $this->request->data);
             if ($this->Posts->save($post)) {
@@ -122,7 +121,7 @@ class PostsController extends UserAppController
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
                 });
-                $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
+                $this->Flash->error(__d('elabs','Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
@@ -142,7 +141,6 @@ class PostsController extends UserAppController
         $this->request->allowMethod(['post', 'delete']);
         $post = $this->Posts->get($id, [
             'conditions' => [
-                'id' => $id,
                 'user_id' => $this->Auth->user('id')
             ]
         ]);

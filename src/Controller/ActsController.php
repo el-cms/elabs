@@ -35,7 +35,7 @@ class ActsController extends AppController
             'contain' => 'Licenses',
         ],
         'Projects' => [
-            'fields' => ['id', 'name', 'sfw', 'modified', 'short_description'],
+            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'short_description'],
             'contain' => 'Licenses',
         ],
         'Files' => [

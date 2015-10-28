@@ -23,7 +23,7 @@ $this->Form->templates($formTemplate);
 <div class="col-sm-6">
   <?php
   // Required fields are still set to required=>false as there is an issue with codeMirror
-  echo $this->Form->input('title', ['required' => false, 'label' => ['class' => 'floating-label']]);
+  echo $this->Form->input('title', ['label' => ['class' => 'floating-label']]);
   echo $this->Form->input('excerpt', ['required' => false, 'id' => 'excerptArea', 'label' => __d('posts', 'Introduction')]);
   echo $this->Form->input('text', ['required' => false, 'id' => 'textArea', 'label' => __d('posts', 'Article contents')]);
   $this->CodeMirror->add('excerptArea', [], ['%s.setSize(null, "150")']);
