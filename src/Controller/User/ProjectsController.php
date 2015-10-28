@@ -50,7 +50,7 @@ class ProjectsController extends UserAppController
         $project = $this->Projects->newEntity();
         if ($this->request->is('post')) {
             // New values :
-            $this->request->data['user_id']=$this->Auth->user('id');
+            $this->request->data['user_id'] = $this->Auth->user('id');
             // Preparing data
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
@@ -82,19 +82,25 @@ class ProjectsController extends UserAppController
     public function edit($id = null)
     {
         $project = $this->Projects->get($id, [
-            'contain' => []
+            'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
-                $this->Flash->success(__('The project has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__d('project', 'The project has been saved.'));
+                $this->Act->add($project->id, 'edit', 'Projects');
+                return $this->redirect(['action' => 'manage']);
             } else {
-                $this->Flash->error(__('The project could not be saved. Please, try again.'));
+                $this->Flash->error(__d('project', 'The project could not be saved. Please, try again.'));
+                $errors = $project->errors();
+                $errorMessages = [];
+                array_walk_recursive($errors, function ($a) use (&$errorMessages) {
+                    $errorMessages[] = $a;
+                });
+                $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
         $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $users = $this->Projects->Users->find('list', ['limit' => 200]);
         $this->set(compact('project', 'licenses', 'users'));
         $this->set('_serialize', ['project']);
     }
@@ -109,7 +115,7 @@ class ProjectsController extends UserAppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $project = $this->Projects->get($id,[
+        $project = $this->Projects->get($id, [
             'conditions' => [
                 'user_id' => $this->Auth->user('id')
             ]
