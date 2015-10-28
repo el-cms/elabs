@@ -76,7 +76,6 @@ class PostsController extends UserAppController
                 $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $users = $this->Posts->Users->find('list', ['limit' => 200]);
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
         $this->set(compact('post', 'users', 'licenses'));
         $this->set('_serialize', ['post']);
@@ -126,7 +125,6 @@ class PostsController extends UserAppController
                 $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $users = $this->Posts->Users->find('list', ['limit' => 200]);
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
         $this->set(compact('post', 'users', 'licenses'));
         $this->set('_serialize', ['post']);
