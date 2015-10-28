@@ -11,17 +11,30 @@ use App\Controller\AppController;
  */
 class ProjectsController extends UserAppController
 {
+
     /**
      * Index method
      *
      * @return void
      */
-    public function manage()
+    public function manage($nsfw = 'all')
     {
         $this->paginate = [
-            'contain' => ['Licenses', 'Users']
+            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
+            'contain' => ['Licenses'=>['fields'=>['id', 'name']]],
+            'conditions' => ['user_id' => $this->Auth->user('id')],
+            'order' => ['id' => 'desc'],
+            'sorWhiteList' => ['name', 'created', 'published'],
         ];
+
+        if ($nsfw === 'safe') {
+            $this->paginate['conditions']['sfw'] = 1;
+        } elseif ($nsfw === 'unsafe') {
+            $this->paginate['conditions']['sfw'] = 0;
+        }
+
         $this->set('projects', $this->paginate($this->Projects));
+        $this->set('filterNSFW', $nsfw);
         $this->set('_serialize', ['projects']);
     }
 
