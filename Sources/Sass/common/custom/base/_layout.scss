@@ -28,8 +28,6 @@ body{
 	/*padding:15px;*/
 }
 
-
-
 //
 // Login form in right menu
 //
@@ -41,4 +39,10 @@ body{
 // Content1
 .menu-content.plain{
 	padding:$margin-sm;
+}
+
+legend{
+	@extend .content-sub-heading;
+	font-size:$font-size-h5;
+	margin-bottom: 0px;
 }

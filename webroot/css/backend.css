@@ -5290,29 +5290,29 @@ div[data-toggle="tile"] {
   margin-bottom: 48px; }
 
 /* line 33, ../../Sources/Sass/common/material-master/assets/sass/elements/_content.scss */
-.content-sub-heading {
+.content-sub-heading, legend {
   font-size: 20px;
   font-weight: 500;
   line-height: 28px; }
 
 /* line 43, ../../Sources/Sass/common/material-master/assets/sass/elements/_content.scss */
-.page-brand .content-sub-heading {
+.page-brand .content-sub-heading, .page-brand legend {
   color: #3f51b5; }
 
 /* line 43, ../../Sources/Sass/common/material-master/assets/sass/elements/_content.scss */
-.page-brand-accent .content-sub-heading {
+.page-brand-accent .content-sub-heading, .page-brand-accent legend {
   color: #ff4081; }
 
 /* line 43, ../../Sources/Sass/common/material-master/assets/sass/elements/_content.scss */
-.page-amber .content-sub-heading {
+.page-amber .content-sub-heading, .page-amber legend {
   color: #ffc107; }
 
 /* line 43, ../../Sources/Sass/common/material-master/assets/sass/elements/_content.scss */
-.page-green .content-sub-heading {
+.page-green .content-sub-heading, .page-green legend {
   color: #4caf50; }
 
 /* line 43, ../../Sources/Sass/common/material-master/assets/sass/elements/_content.scss */
-.page-red .content-sub-heading {
+.page-red .content-sub-heading, .page-red legend {
   color: #f44336; }
 
 /* line 1, ../../Sources/Sass/common/material-master/assets/sass/elements/_footer.scss */
@@ -8640,13 +8640,18 @@ body {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
   /*padding:15px;*/ }
 
-/* line 38, ../../Sources/Sass/common/custom/base/_layout.scss */
+/* line 36, ../../Sources/Sass/common/custom/base/_layout.scss */
 .menu-top-info.plain {
   font-size: 1.5em; }
 
-/* line 42, ../../Sources/Sass/common/custom/base/_layout.scss */
+/* line 40, ../../Sources/Sass/common/custom/base/_layout.scss */
 .menu-content.plain {
   padding: 12px; }
+
+/* line 44, ../../Sources/Sass/common/custom/base/_layout.scss */
+legend {
+  font-size: 16px;
+  margin-bottom: 0px; }
 
 /* line 2, ../../Sources/Sass/common/custom/base/_typo.scss */
 em.subtitle {
