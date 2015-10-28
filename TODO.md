@@ -60,3 +60,4 @@ Admin
   - [ ] Better style for filter links
   - [ ] Tests on tablet
   - [ ] Tests on mobile
+  - [ ] Translate menus
