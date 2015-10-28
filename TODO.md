@@ -16,10 +16,10 @@ Public
     Published            [x] [x]
 
 User
-  Add                    [x] [x]   [ ] [ ]   [ ] [ ]
-    Self                 [x]       [ ]       [ ]
-    Markdown Ed.   [x]       [x]       [ ]       [ ]
-    Act                  [X]       [ ]       [ ]
+  Add                    [x] [x]   [x] [x]   [ ] [ ]
+    Self                 [x]       [x]       [ ]
+    Markdown Ed.   [x]       [x]       [x]       [ ]
+    Act                  [X]       [x]       [ ]
   Edit         [ ] [ ]   [x] [x]   [ ] [ ]   [ ] [ ]
     Self       [ ]       [x]       [ ]       [ ]
     Markdown Ed.   [ ]       [x]       [ ]       [ ]

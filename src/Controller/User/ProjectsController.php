@@ -21,7 +21,9 @@ class ProjectsController extends UserAppController
     {
         $this->paginate = [
             'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
-            'contain' => ['Licenses'=>['fields'=>['id', 'name']]],
+            'contain' => [
+                'Licenses' => ['fields' => ['id', 'name']]
+            ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['id' => 'desc'],
             'sorWhiteList' => ['name', 'created', 'published'],
@@ -39,22 +41,6 @@ class ProjectsController extends UserAppController
     }
 
     /**
-     * View method
-     *
-     * @param string|null $id Project id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $project = $this->Projects->get($id, [
-            'contain' => ['Licenses', 'Users', 'ProjectUsers']
-        ]);
-        $this->set('project', $project);
-        $this->set('_serialize', ['project']);
-    }
-
-    /**
      * Add method
      *
      * @return void Redirects on successful add, renders view otherwise.
@@ -63,16 +49,25 @@ class ProjectsController extends UserAppController
     {
         $project = $this->Projects->newEntity();
         if ($this->request->is('post')) {
+            // New values :
+            $this->request->data['user_id']=$this->Auth->user('id');
+            // Preparing data
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Act->add($project->id, 'add', 'Projects');
+                return $this->redirect(['action' => 'manage']);
             } else {
-                $this->Flash->error(__('The project could not be saved. Please, try again.'));
+                $errors = $project->errors();
+                $errorMessages = [];
+                array_walk_recursive($errors, function ($a) use (&$errorMessages) {
+                    $errorMessages[] = $a;
+                });
+                $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
         $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $users = $this->Projects->Users->find('list', ['limit' => 200]);
+//        $users = $this->Projects->Users->find('list', ['limit' => 200]);
         $this->set(compact('project', 'licenses', 'users'));
         $this->set('_serialize', ['project']);
     }
