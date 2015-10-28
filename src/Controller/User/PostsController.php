@@ -20,8 +20,6 @@ class PostsController extends UserAppController
      */
     public function manage($nsfw = 'all', $published = 'all')
     {
-//        debug($this->request->data);
-
         $this->paginate = [
             'fields' => ['id', 'title', 'sfw', 'published', 'publication_date', 'created', 'modified', 'license_id'],
             'contain' => [

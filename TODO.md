@@ -24,8 +24,8 @@ User
     Self       [ ]       [x]       [ ]       [ ]
     Markdown Ed.   [ ]       [x]       [ ]       [ ]
     Act                  [x]       [ ]       [ ]
-  Index/Manage           [x] [x]   [ ] [ ]   [ ] [ ]
-    Self                 [x]       [ ]       [ ]
+  Index/Manage           [x] [x]   [x] [x]   [ ] [ ]
+    Self                 [x]       [x]       [ ]
   Delete       [ ]       [x]       [ ]       [ ]
     Self       [ ]       [x]       [ ]       [ ]
     Act                  [x]       [ ]       [ ]
@@ -55,3 +55,5 @@ Admin
   - [x] Add a dl-horizontal style for definition lists
   - [ ] Review all paginator links and add a \__d() translation on them
   - [ ] Add icons on action buttons
+  - [ ] Add text where there is no element to display
+  - [ ] Better style for filter links
