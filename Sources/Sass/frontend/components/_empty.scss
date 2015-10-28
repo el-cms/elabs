@@ -1,0 +1,26 @@
+// Box displaying message when there's no content.
+
+.empty{
+	color: $black-hint-solid;
+	text-align: center;
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWO4e/fufwaiAE6VAD8TBy1nEsnUAAAAAElFTkSuQmCC);
+	border:1px solid $black-divider-solid;
+	// Other details from cards
+	margin-top: $margin-md;
+	margin-bottom: $margin-md;
+	// Padding = margins from .card-inner
+	padding: (($header-height - $line-height-h5) / 2) $grid-gutter;
+	a{
+		color:$black-sec-solid;
+	}
+	p{
+		margin:0;
+		display:block;
+	}
+	.empty-symbol{
+		font-size:$font-size-display-4;
+		line-height:normal;
+		/*margin:5px;*/
+	}
+}
+

@@ -29,6 +29,7 @@ User
   Delete       [ ]       [x]       [x]       [ ]
     Self       [ ]       [x]       [x]       [ ]
     Act                  [x]       [x]       [ ]
+
 Admin
   Lock         [ ]       [ ]       [ ]       [ ]
   Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
@@ -57,3 +58,5 @@ Admin
   - [ ] Add icons on action buttons
   - [ ] Add text where there is no element to display
   - [ ] Better style for filter links
+  - [ ] Tests on tablet
+  - [ ] Tests on mobile

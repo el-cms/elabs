@@ -13,6 +13,7 @@ $this->end();
 
 // Page content
 $this->start('pageContent');
+if(!$posts->isEmpty()):
 foreach ($posts as $post):
 	$data = [
 			'title' => $post->title,
@@ -28,6 +29,9 @@ foreach ($posts as $post):
 	];
 	echo $this->element('posts/card', ['data' => $data, 'item' => $item]);
 endforeach;
+else:
+    echo $this->element('layout/empty');
+endif;
 $this->end();
 
 echo $this->element('layouts/defaultindex');
