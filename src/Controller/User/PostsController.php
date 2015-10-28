@@ -12,13 +12,16 @@ use Cake\i18n\Time;
  */
 class PostsController extends UserAppController
 {
+
     /**
      * Index method
      *
      * @return void
      */
-    public function manage()
+    public function manage($nsfw = 'all', $published = 'all')
     {
+//        debug($this->request->data);
+
         $this->paginate = [
             'fields' => ['id', 'title', 'sfw', 'published', 'publication_date', 'created', 'modified', 'license_id'],
             'contain' => [
@@ -27,7 +30,19 @@ class PostsController extends UserAppController
             'order' => ['id' => 'desc'],
             'sortWhitelist' => ['title', 'published', 'publication_date', 'created', 'modified', 'sfw'],
         ];
+        if ($nsfw === 'safe') {
+            $this->paginate['conditions']['sfw'] = 1;
+        } elseif ($nsfw === 'unsafe') {
+            $this->paginate['conditions']['sfw'] = 0;
+        }
+        if ($published === 'drafts') {
+            $this->paginate['conditions']['published'] = 0;
+        } elseif ($published === 'published') {
+            $this->paginate['conditions']['published'] = 1;
+        }
         $this->set('posts', $this->paginate($this->Posts));
+        $this->set('filterNSFW', $nsfw);
+        $this->set('filterPub', $published);
         $this->set('_serialize', ['posts']);
     }
 
