@@ -11,8 +11,12 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $short_description
  * @property string $link
+ * @property int $post_count
+ * @property int $file_count
+ * @property int $project_count
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
+ * @property \App\Model\Entity\File[] $files
  */
 class License extends Entity
 {

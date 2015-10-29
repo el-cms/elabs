@@ -15,7 +15,9 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property int $user_id
+ * @property int $license_id
  * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\License $license
  * @property \App\Model\Entity\Itemfile[] $itemfiles
  */
 class File extends Entity

@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Licenses Model
  *
+ * @property \Cake\ORM\Association\HasMany $Files
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
  */
@@ -30,6 +31,9 @@ class LicensesTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
+        $this->hasMany('Files', [
+            'foreignKey' => 'license_id'
+        ]);
         $this->hasMany('Posts', [
             'foreignKey' => 'license_id'
         ]);

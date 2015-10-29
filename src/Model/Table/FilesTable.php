@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Files Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
+ * @property \Cake\ORM\Association\BelongsTo $Licenses
  * @property \Cake\ORM\Association\HasMany $Itemfiles
  */
 class FilesTable extends Table
@@ -34,6 +35,10 @@ class FilesTable extends Table
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Licenses', [
+            'foreignKey' => 'license_id',
             'joinType' => 'INNER'
         ]);
         $this->hasMany('Itemfiles', [

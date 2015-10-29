@@ -12,7 +12,7 @@ use Cake\ORM\Entity;
  * @property string $short_description
  * @property string $description
  * @property bool $sfw
- * @property string $download
+ * @property string $mainurl
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property int $license_id
