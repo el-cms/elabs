@@ -1,11 +1,7 @@
 // Common imports
 @import "common/_common.scss";
-
-// Padding added as pages are widescreen
-.content-heading .heading, .content-body{
-	padding-left:$grid-gutter;
-	padding-right:$grid-gutter;
-}
+// Backend-specific variables
+@import "backend/variables/_colours.scss";
 //
 // Backend-specific imports
 //
@@ -13,14 +9,10 @@
 // Addons
 
 // Base
-ul .side-nav-links, .side-nav{
-	list-style-type:none;
-}
+@import "backend/base/_tables.scss";
+
 // Components
-ul.side-nav{
-	margin:0px;
-	padding:0px;
-}
+@import "backend/components/_navs.scss"; 
 // Elements
 
 // Mixins

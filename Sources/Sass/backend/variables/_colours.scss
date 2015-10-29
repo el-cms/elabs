@@ -1,0 +1,8 @@
+// Extending the color list:
+$palette-list-class: append($palette-list-class, "grey");
+$palette-list-color: append($palette-list-color, $palette-grey-500);
+$palette-list-dark: append($palette-list-dark, $palette-grey-700);
+$palette-list-light: append($palette-list-light, $palette-grey-300);
+$palette-list-text: append($palette-list-text, $black-text);
+$palette-list-text-dark: append($palette-list-text-dark, $black-text);
+$palette-list-text-light: append($palette-list-text-light, $black-text);
