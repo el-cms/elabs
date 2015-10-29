@@ -29,8 +29,7 @@ class UsersController extends AppController
             'sortWhiteList' => ['username', 'realname', 'created'],
             'order' => ['Users.realname' => 'asc'],
             'conditions' => [
-//						'locked' => false,
-                'enabled' => true,
+                'status' => [1, 2],
             ],
             'sortWhitelist' => ['username', 'realname', 'created'],
             // Email should only be used for Gravatar.
@@ -65,7 +64,7 @@ class UsersController extends AppController
                 ],
                 'Files' => [],
             ],
-            'conditions' => ['enabled' => true],
+            'conditions' => ['status' => [1, 2]],
         ];
 
         // SFW options

@@ -78,8 +78,7 @@ class UsersController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->get($this->Auth->user('id'));
             if ($user->comparePassword($this->request->data['current_password'])) {
-                $user->status = false;
-                $user->locked = true;
+                $user->status = 3; // "deleted" state
                 $this->Users->save($user);
                 $this->Flash->Success(__d('users', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
                 return $this->redirect($this->Auth->logout());
