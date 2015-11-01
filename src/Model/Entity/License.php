@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $short_description
  * @property string $link
+ * @property string $icon
  * @property int $post_count
  * @property int $file_count
  * @property int $project_count
