@@ -74,6 +74,7 @@
                             // Icons vars are used in JS too.
                             $unlockIcon = '<span class="fa fa-unlock-alt fa-fw" title="' . __d('admin', 'Unlock') . '"></span>';
                             $lockIcon = '<span class="fa fa-lock fa-fw" title="' . __d('admin', 'Lock') . '"></span>';
+                            $activateIcon = '<span class="fa fa-check fa-fw" title="' . __d('admin', 'Activate') . '"></span>';
                             if ($user->status === 2):
                                 echo $this->Html->link($unlockIcon, '#', [
                                     'onClick' => "lock({$user->id}, 'unlock')",
@@ -84,6 +85,13 @@
                             elseif ($user->status === 1):
                                 echo $this->Html->link($lockIcon, '#', [
                                     'onClick' => "lock({$user->id}, 'lock')",
+                                    'class' => 'text-sec waves-attach waves-effect',
+                                    'escape' => false,
+                                    'id' => 'btnLockLnk' . $user->id
+                                ]);
+                            elseif ($user->status === 0):
+                                echo $this->Html->link($activateIcon, '#', [
+                                    'onClick' => "activate({$user->id})",
                                     'class' => 'text-sec waves-attach waves-effect',
                                     'escape' => false,
                                     'id' => 'btnLockLnk' . $user->id
@@ -204,6 +212,31 @@ $this->append('pageBottomScripts');
           lnkAction = 'lock(' + id + ',unlock)';
         } else {
           alert('<?php echo __d('admin', 'Unknown user status') ?>');
+        }
+        $('#userLine' + id).removeClass();
+        $('#userLine' + id).addClass(lineColor);
+        $('#userStatus' + id).html(statusLabel);
+        $('#btnLockLnk' + id).html(lnkIcon);
+        $('#btnLockLnk' + id).attr('onClick', lnkAction);
+
+      });
+    }
+    function activate(id) {
+      var request = $.ajax({
+        type: "POST",
+        url: "<?php echo $this->Url->build(['prefix' => 'admin', 'controller' => 'Users', 'action' => 'activate']); ?>" + '/'+id,
+        dataType: 'json',
+        async: true
+      });
+      request.fail(function (jqXHR, textStatus) {
+        alert(<?php echo __d('admin', '"Request failed: " + textStatus') ?>);
+      });
+      request.success(function (response) {
+        if (response.user.status === 1) {
+          lineColor = 'line-green';
+          statusLabel = '<?php echo $this->UserAdmin->statusLabel(1) ?>';
+          lnkIcon = '<?php echo $lockIcon ?>';
+          lnkAction = 'lock(' + id + ',lock)';
         }
         $('#userLine' + id).removeClass();
         $('#userLine' + id).addClass(lineColor);

@@ -51,9 +51,28 @@ class UsersController extends AdminAppController
      */
     public function view($id = null)
     {
-        $user = $this->Users->get($id, [
-            'fields' => ['id', 'username', 'realname', 'created', 'modified', 'status', 'bio', 'post_count', 'project_count', 'file_count', 'project_user_count'],
-        ]);
+        if ($this->request->is('ajax')) {
+            die('ajax');
+            $user = $this->Users->get($id, [
+                'fields' => ['id', 'username', 'realname', 'created', 'modified', 'status', 'bio', 'post_count', 'project_count', 'file_count', 'project_user_count'],
+            ]);
+        } else {
+            $user = $this->Users->get($id, [
+                'fields' => ['id', 'username', 'realname', 'website', 'created', 'modified', 'status', 'post_count', 'project_count', 'file_count', 'project_user_count',],
+                'contain' => [
+                    'Posts' => [
+                        'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
+//                        'conditions' => [
+//                            'published' => true,
+//                        ],
+                    ],
+                    'Projects' => [
+                        'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id'],
+                    ],
+                    'Files' => [],
+                ],
+            ]);
+        }
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
     }
@@ -71,6 +90,9 @@ class UsersController extends AdminAppController
         $this->Users->save($user);
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
+        if (!$this->request->is('ajax')) {
+            $this->redirect(['action' => 'view', $id]);
+        }
     }
 
     public function close($id)
@@ -82,5 +104,22 @@ class UsersController extends AdminAppController
         $this->Users->save($user);
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
+        if (!$this->request->is('ajax')) {
+            $this->redirect(['action' => 'view', $id]);
+        }
+    }
+
+    public function activate($id)
+    {
+        $user = $this->Users->get($id, [
+            'fields' => ['id', 'status']
+        ]);
+        $user->status = 1;
+        $this->Users->save($user);
+        $this->set('user', $user);
+        $this->set('_serialize', ['user']);
+        if (!$this->request->is('ajax')) {
+            $this->redirect(['action' => 'view', $id]);
+        }
     }
 }
