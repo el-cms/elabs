@@ -37,11 +37,9 @@ class AppView extends View
      */
     public function initialize()
     {
-        /**
-         * Helpers
-         * 
-         * @var type array
-         */
+        parent::initialize();
+        
+        // Helpers
         $this->loadHelper(
                 'Form', [
             'className' => 'Bootstrap.BootstrapForm' // instead of 'Bootstrap3.BootstrapForm'
