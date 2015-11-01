@@ -50,11 +50,20 @@
                     <ul class="margin-no nav nav-list">
                         <li>
                             <?php
-                            echo $this->Html->link('<span class="fa fa-eye" title="' . __d('admin', 'View details') . '"></span>', '#', [
+                            echo $this->Html->link('<span class="fa fa-list" title="' . __d('admin', 'Quick details') . '"></span>', '#', [
                                 'data-toggle' => 'modal',
                                 'data-target' => '#userModal',
                                 'data-id' => $user->id,
                                 'data-action' => 'getDetails',
+                                'class' => 'text-sec waves-attach waves-effect',
+                                'escape' => false
+                            ]);
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                            echo $this->Html->link('<span class="fa fa-eye" title="' . __d('admin', 'Full details') . '"></span>', 
+                                 ['action'=>'view', $user->id], [
                                 'class' => 'text-sec waves-attach waves-effect',
                                 'escape' => false
                             ]);
@@ -113,6 +122,12 @@
                 <dl class="dl-horizontal">
                     <dt><?php echo __d('elabs', 'Last update') ?></dt>
                     <dd id="uModUpdated"></dd>
+                    <dt><?php echo __d('posts', 'Articles') ?></dt>
+                    <dd id="uModArticleCount"></dd>
+                    <dt><?php echo __d('projects', 'Projects') ?></dt>
+                    <dd id="uModProjectCount"></dd>
+                    <dt><?php echo __d('files', 'Files') ?></dt>
+                    <dd id="uModFileCount"></dd>
                     <dt><?php echo __d('users', 'Bio') ?></dt>
                     <dd id="uModBio"></dd>
                 </dl>
@@ -214,11 +229,11 @@ $this->append('pageBottomScripts');
         alert(<?php echo __d('admin', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
-        var output = "<dl>";
-        output += "<dt>Bio:</dt><dd>" + response.user.username + "</dd>";
-        output += "</dl>";
         $('#uModTitle').html(response.user.realname);
         $('#uModBio').html(response.user.bio);
+        $('#uModArticleCount').html(response.user.post_count);
+        $('#uModProjectCount').html((response.user.project_count + response.user.project_user_count) + ' (' + response.user.project_user_count + ')');
+        $('#uModFileCount').html(response.user.file_count);
       });
     }
 

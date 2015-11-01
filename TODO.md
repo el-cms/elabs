@@ -31,13 +31,10 @@ User
     Act                  [x]       [x]       [ ]
 
 Admin
-  Lock         [ ]       [ ]       [ ]       [ ]
-  Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-    Anon           [ ]       [ ]       [ ]       [ ]
+  Lock         [x]       [ ]       [ ]       [ ]
+  Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
   View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-    Anon           [ ]       [ ]       [ ]       [ ]
-  Delete       [ ]       [ ]       [ ]       [ ]
-    Act                  [ ]       [ ]       [ ]
+  Delete       [x]       [ ]       [ ]       [ ]
 ```
 
 ## Other
@@ -49,6 +46,8 @@ Admin
 
 ### Before going public
   - [ ] Add a db dump for database creation
+    - [ ] Sync db with Mysql Workbench
+    - [ ] Add Mysql Workbench file
   - [x] Reformat code for PSR-2
   - [x] Remove short tags <?= being deprecated in PHP6
   - [x] Review \__d('elabs','...') and change their respective modules
@@ -61,3 +60,6 @@ Admin
   - [ ] Tests on tablet
   - [ ] Tests on mobile
   - [ ] Translate menus
+  - [ ] Delete unused views
+### On free time
+  - [ ] Check for fields in models comments
