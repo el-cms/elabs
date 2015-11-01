@@ -2,15 +2,28 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AdminAppController;
 
 /**
  * Users Controller
  *
  * @property \App\Model\Table\UsersTable $Users
  */
-class UsersController extends AppController
+class UsersController extends AdminAppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
+
+    public function beforeRender(\Cake\Event\Event $event)
+    {
+        parent::beforeRender($event);
+        $this->viewBuilder()->helpers(['UserAdmin']);
+    }
+
     /**
      * Index method
      *
@@ -18,6 +31,13 @@ class UsersController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'fields' => ['id', 'username', 'realname', 'role', 'status', 'created'],
+            'sortWhitelist' => ['username', 'realname', 'role', 'status', 'created'],
+            'order' => [
+                'status' => 'asc',
+            ]
+        ];
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
     }
@@ -32,74 +52,35 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Acts', 'Files', 'Posts', 'Projects']
+            'fields' => ['id', 'username', 'realname', 'created', 'modified', 'status', 'bio'],
         ]);
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
     }
 
-    /**
-     * Add method
-     *
-     * @return void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
+    public function lock($id, $action = 'lock')
     {
-        $user = $this->Users->newEntity();
-        if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
-            }
+        $bit = 2; // Lock by default
+        if ($action === 'unlock') {
+            $bit = 1;
         }
-        $this->set(compact('user'));
+        $user = $this->Users->get($id, [
+            'fields' => ['id', 'status']
+        ]);
+        $user->status = $bit;
+        $this->Users->save($user);
+        $this->set('user', $user);
         $this->set('_serialize', ['user']);
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id User id.
-     * @return void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
+    public function close($id)
     {
         $user = $this->Users->get($id, [
-            'contain' => []
+            'fields' => ['id', 'status']
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('user'));
+        $user->status = 3;
+        $this->Users->save($user);
+        $this->set('user', $user);
         $this->set('_serialize', ['user']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id User id.
-     * @return void Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
-        } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
-        }
-        return $this->redirect(['action' => 'index']);
     }
 }
