@@ -18,10 +18,13 @@ $linkConfig = ['class' => 'waves-attach waves-effect', 'escape' => false];
   <?php echo $this->Html->link(__d('users', 'Users'), ['prefix' => 'admin', 'controller' => 'users', 'action' => 'index'], $linkConfig) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('users', 'Licenses'), ['prefix' => 'admin', 'controller' => 'licenses', 'action' => 'index'], $linkConfig) ?>
+  <?php echo $this->Html->link(__d('licenses', 'Licenses'), ['prefix' => 'admin', 'controller' => 'licenses', 'action' => 'index'], $linkConfig) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('users', 'Tags'), ['prefix' => 'admin', 'controller' => 'tags', 'action' => 'index'], $linkConfig) ?>
+  <?php echo $this->Html->link(__d('tags', 'Tags'), ['prefix' => 'admin', 'controller' => 'tags', 'action' => 'index'], $linkConfig) ?>
+</li>
+<li>
+  <?php echo $this->Html->link(__d('admin', 'Maintenance'), '#', $linkConfig) ?>
 </li>
 <?php
 $this->end();
