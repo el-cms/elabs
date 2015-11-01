@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AdminAppController;
 
 /**
  * Licenses Controller
  *
  * @property \App\Model\Table\LicensesTable $Licenses
  */
-class LicensesController extends AppController
+class LicensesController extends AdminAppController
 {
     /**
      * Index method

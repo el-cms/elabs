@@ -1,23 +1,40 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<?php
+$this->assign('title', __d('licenses', 'New license'));
+
+$formTemplate = [
+    'label' => '<label class="form-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
+    'checkboxContainer' => '<div class="form-group"><div class="checkbox switch">{{content}}</div></div>',
+    'submitContainer' => '{{content}}',
+];
+$this->loadHelper('CodeMirror');
+echo $this->Form->create($license);
+$this->Form->templates($formTemplate);
+?>
+<div class="col-sm-3">
+    <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
     <ul class="side-nav">
-        <li class="heading"><?php echo __('Actions') ?></li>
-        <li><?php echo $this->Html->link(__('List Licenses'), ['action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-        <li><?php echo $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List licenses'), ['action' => 'index']) ?></li>
     </ul>
-</nav>
-<div class="licenses form large-9 medium-8 columns content">
-    <?php echo $this->Form->create($license) ?>
-    <fieldset>
-        <legend><?php echo __('Add License') ?></legend>
-        <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('short_description');
-            echo $this->Form->input('link');
-        ?>
-    </fieldset>
-    <?php echo $this->Form->button(__('Submit')) ?>
-    <?php echo $this->Form->end() ?>
 </div>
+<div class="col-sm-6">
+    <?php
+    echo $this->Form->input('name');
+    echo $this->Form->input('short_description', ['required' => false, 'id' => 'descriptionArea', 'label' => __d('licenses', 'Short description')]);
+    $this->CodeMirror->add('descriptionArea');
+
+    $this->append('pageBottomScripts');
+    echo $this->CodeMirror->scripts();
+    $this->end();
+    ?>
+</div>
+<div class="col-sm-3">
+    <?php
+    echo $this->Form->input('link');
+    echo $this->Form->select('icon', ['creative-commons' => 'Creative Commons', 'copyright' => 'Copyright sign']);
+    ?>
+    <div class="form-group-btn">
+        <?php echo $this->Form->submit(__('Submit')); ?>
+    </div>
+</div>
+<?php
+echo $this->Form->end();
