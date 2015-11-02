@@ -8,13 +8,24 @@ $formTemplate = [
 ];
 
 $this->loadHelper('CodeMirror');
+$linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect', 'escape' => false];
 ?>
 <div class="col-sm-3">
-    <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-    <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'btn']) ?>
-    <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
-    <?php echo $this->Html->link(__('List Posts'), ['action' => 'manage'], ['class' => 'btn']) ?>
-    <?php echo $this->Html->link(__('List available licenses'), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], ['class' => 'btn']) ?>
+    <div class="side-menu">
+        <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
+        <div class="side-menu-content">
+            <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-trash"></span>', 'Delete']), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'escape' => false, 'class' => 'btn btn-red waves-attach waves-button waves-effect']) ?>
+        </div>
+    </div>
+    <div class="side-menu">
+        <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
+        <div class="side-menu-content">
+            <ul>
+                <li><?php echo $this->Html->link(__d('posts', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'Your articles']), ['action' => 'manage'], $linkOptions) ?></li>
+                <li><?php echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions) ?></li>
+            </ul>
+        </div>
+    </div>
 </div>
 <?php
 echo $this->Form->create($post);

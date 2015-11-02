@@ -3,11 +3,12 @@ $this->assign('title', __d('projects', 'Projects'));
 
 // Pagination order links
 $this->start('pageOrderMenu');
+$linkOptions = ['class' => 'waves-attach waves-effect'];
 ?>
 <ul class="dropdown-menu nav">
-  <li><?php echo $this->Paginator->sort('name') ?></li>
-  <li><?php echo $this->Paginator->sort('created') ?></li>
-  <li><?php echo $this->Paginator->sort('modified') ?></li>
+    <li><?php echo $this->Paginator->sort('name', __d('projects', 'Name'), $linkOptions) ?></li>
+    <li><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date'), $linkOptions) ?></li>
+    <li><?php echo $this->Paginator->sort('modified', __d('elabs', 'Modification date'), $linkOptions) ?></li>
 </ul>
 <?php
 $this->end();

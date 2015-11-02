@@ -3,8 +3,8 @@ echo $this->Form->create('User', ['url' => ['prefix' => false, 'controller' => '
 $this->Form->templates([
 		'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
 ]);
-echo $this->Form->input('email');
-echo $this->Form->input('password');
+echo $this->Form->input('email', __d('elabs', 'E-mail'));
+echo $this->Form->input('password', __d('elabs', 'Password'));
 echo $this->Form->button(__('Login'), ['class' => 'btn-block btn-green']);
 echo $this->Form->end();
 ?>

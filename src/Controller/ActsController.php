@@ -30,16 +30,22 @@ class ActsController extends AppController
         'Posts' => [
             'fields' => ['id', 'title', 'excerpt', 'sfw', 'publication_date', 'modified'],
             'conditions' => [
-                'published' => 1,
+                'status' => 1,
             ],
             'contain' => 'Licenses',
         ],
         'Projects' => [
             'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'short_description'],
+            'conditions' => [
+                'status' => 1,
+            ],
             'contain' => 'Licenses',
         ],
         'Files' => [
             'fields' => ['id', 'name', 'filename', 'descripiton', 'modified'],
+            'conditions' => [
+                'status' => 1,
+            ],
             'contain' => 'Licenses',
         ]
     ];
@@ -52,14 +58,20 @@ class ActsController extends AppController
         'Posts' => [
             'fields' => ['id', 'title', 'modified'],
             'conditions' => [
-                'published' => 1,
+                'status' => 1,
             ],
         ],
         'Projects' => [
             'fields' => ['id', 'title' => 'name', 'modified'],
+            'conditions' => [
+                'status' => 1,
+            ],
         ],
         'Files' => [
             'fields' => ['id', 'name', 'modified'],
+            'conditions' => [
+                'status' => 1,
+            ],
         ]
     ];
 

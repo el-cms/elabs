@@ -12,6 +12,7 @@ use Cake\Core\Configure;
  */
 class UsersController extends AppController
 {
+
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
@@ -29,7 +30,7 @@ class UsersController extends AppController
             'sortWhiteList' => ['username', 'realname', 'created'],
             'order' => ['Users.realname' => 'asc'],
             'conditions' => [
-                'status' => [1, 2],
+                'OR' => [['status' => 1], ['status' => 2]]
             ],
             'sortWhitelist' => ['username', 'realname', 'created'],
             // Email should only be used for Gravatar.
@@ -54,7 +55,7 @@ class UsersController extends AppController
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
                     'conditions' => [ // SFW is made after
-                        'published' => true,
+                        'status' => 1,
                     ],
                 ],
                 'Projects' => [
@@ -64,7 +65,7 @@ class UsersController extends AppController
                 ],
                 'Files' => [],
             ],
-            'conditions' => ['status' => [1, 2]],
+            'conditions' => ['OR' => [['status' => 1], ['status' => 2]]],
         ];
 
         // SFW options

@@ -71,7 +71,7 @@ $inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
 $this->end();
 
 $this->start('pageActionsMenu');
-echo $this->Html->link(__('New Post'), ['action' => 'add'], ['class' => 'btn']);
+echo $this->Html->link(__d('posts', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New article']), ['action' => 'add'], ['class' => 'btn btn-green waves-attach waves-button waves-effect', 'escape' => false]);
 $this->end();
 
 $this->start('pageContent');

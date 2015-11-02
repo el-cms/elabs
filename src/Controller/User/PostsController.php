@@ -100,15 +100,16 @@ class PostsController extends UserAppController
 
             // Old publication state
             $oldState = $post->status;
-//            $this->request->data['user_id'] = $this->Auth->user('id');
-
+            if ($oldState === 0 && $this->request->data['status'] === '1') {
+                $this->request->data['publication_date'] = Time::now();
+            }
             $post = $this->Posts->patchEntity($post, $this->request->data);
             if ($this->Posts->save($post)) {
-                if ($oldState === '0' && $post->status === '1') {
+                if ($oldState === 0 && $post->status === 1) {
                     // New publication
                     $this->Act->add($post->id, 'add', 'Posts');
                     $this->Flash->success(__d('posts', 'Your article has been published.'));
-                } elseif ($oldState === '1' && $post->status === '0') {
+                } elseif ($oldState === 1 && $post->status === 0) {
                     // Removed from publication
                     $this->Act->remove($post->id);
                     $this->Flash->success(__d('posts', 'Your article has been unpublished.'));

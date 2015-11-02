@@ -11,6 +11,7 @@ use App\Controller\AppController;
  */
 class PostsController extends AppController
 {
+
     /**
      * Index method
      *
@@ -21,10 +22,12 @@ class PostsController extends AppController
         $findOptions = [
             'fields' => [
                 'id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id',
-                'Users.id', 'Users.username', 'Users.realname',
-                'Licenses.id', 'Licenses.name'],
+            ],
             'conditions' => ['Posts.status' => 1],
-            'contain' => ['Users', 'Licenses'],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+            ],
             'order' => ['publication_date' => 'desc'],
             'sortWhitelist' => ['publication_date', 'title'],
         ];
@@ -47,7 +50,10 @@ class PostsController extends AppController
     public function view($id = null)
     {
         $post = $this->Posts->get($id, [
-            'contain' => ['Users', 'Licenses'],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+            ],
             'conditions' => ['Posts.status' => 1],
         ]);
 

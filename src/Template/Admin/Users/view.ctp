@@ -19,32 +19,41 @@ $this->start('pageInfos');
 </dl>
 <?php
 if ($user->status != 3):
+    $this->start('pageActions');
+    $linkOptions = ['class' => 'btn btn-flat waves-attach waves-effect', 'escape' => false];
     ?>
-    <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-    <ul class="margin-no nav nav-list">
-        <li id="btnLock<?php echo $user->id ?>">
+    <ul>
+        <li>
+            <?php
+            if ($user->status === 0):
+                echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', ['<span class="fa fa-check"></span>', __d('admin', 'Activate')]), ['action' => 'activate', $user->id], $linkOptions);
+            endif;
+            ?>
+        </li>
+        <li>
             <?php
             $unlockIcon = '<span class="fa fa-unlock-alt fa-fw" title="' . __d('admin', 'Unlock') . '"></span>';
             $lockIcon = '<span class="fa fa-lock fa-fw" title="' . __d('admin', 'Lock') . '"></span>';
             if ($user->status === 2):
-                echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', [$unlockIcon, __d('admin', 'Unlock')]), ['action' => 'lock', $user->id, 'unlock'], ['class' => 'text-sec waves-attach waves-effect', 'escape' => false,]);
+                echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$unlockIcon, __d('admin', 'Unlock')]), ['action' => 'lock', $user->id, 'unlock'], $linkOptions);
             elseif ($user->status === 1):
-                echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', [$lockIcon, __d('admin', 'Lock')]), ['action' => 'lock', $user->id, 'lock'], ['class' => 'text-sec waves-attach waves-effect', 'escape' => false,]);
+                echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$lockIcon, __d('admin', 'Lock')]), ['action' => 'lock', $user->id, 'lock'], $linkOptions);
             else:
-                echo '<a class="text-sec"><span class="fa fa-fw"></span></a>';
+                echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-lock"></span>', 'Lock/unlock']), '#', ['class' => 'text-sec btn btn-flat disabled', 'escape' => false]);
             endif;
             ?>
         </li>
-        <li id="btnClose<?php echo $user->id ?>">
+        <li>
             <?php
             if ($user->status != 3):
-                echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', ['<span class="fa fa-times"></span>', __d('admin', 'Close')]), ['action' => 'close', $user->id], ['class' => 'text-sec waves-attach waves-effect', 'escape' => false]);
+                echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', ['<span class="fa fa-times"></span>', __d('admin', 'Close')]), ['action' => 'close', $user->id], $linkOptions);
             endif;
             ?>
         </li>
     </ul>
 
     <?php
+    $this->end();
 else:
     ?>
     <p class="muted">
@@ -80,6 +89,8 @@ echo h($user->bio);
         foreach ($user->posts as $posts):
             echo $this->element('posts/card_belongtouser', ['data' => $posts]);
         endforeach;
+    else:
+        echo $this->element('layout/empty_admin');
     endif;
     ?>
 </div>
@@ -90,6 +101,8 @@ echo h($user->bio);
         foreach ($user->projects as $projects):
             echo $this->element('projects/card_belongtouser', ['data' => $projects]);
         endforeach;
+    else:
+        echo $this->element('layout/empty_admin');
     endif;
     ?>
 </div>

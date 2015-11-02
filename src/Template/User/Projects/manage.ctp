@@ -60,7 +60,7 @@ echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['all', $
 $this->end();
 
 $this->start('pageActionsMenu');
-echo $this->Html->link(__('New Project'), ['action' => 'add'], ['class' => 'btn']);
+echo $this->Html->link(__d('projects', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New project']), ['action' => 'add'],  ['class' => 'btn btn-green waves-attach waves-button waves-effect', 'escape' => false]);
 $this->end();
 
 $this->start('pageContent');

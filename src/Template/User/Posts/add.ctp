@@ -1,19 +1,27 @@
 <?php
+$this->assign('title', __d('posts', 'New article'));
+
 $formTemplate = [
     'label' => '<label class="form-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
     'checkboxContainer' => '<div class="form-group"><div class="checkbox switch">{{content}}</div></div>',
     'submitContainer' => '{{content}}',
 ];
+
 $this->loadHelper('CodeMirror');
 echo $this->Form->create($post);
 $this->Form->templates($formTemplate);
+$linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect', 'escape' => false];
 ?>
 <div class="col-sm-3">
-    <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-    <ul class="side-nav">
-        <li><?php echo $this->Html->link(__('Your articles'), ['action' => 'manage']) ?></li>
-        <li><?php echo $this->Html->link(__('List available licenses'), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index']) ?></li>
-    </ul>
+    <div class="side-menu">
+        <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
+        <div class="side-menu-content">
+            <ul>
+                <li><?php echo $this->Html->link(__d('posts', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'Your articles']), ['action' => 'manage'], $linkOptions) ?></li>
+                <li><?php echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions) ?></li>
+            </ul>
+        </div>
+    </div>
 </div>
 <div class="col-sm-6">
     <?php
@@ -32,7 +40,7 @@ $this->Form->templates($formTemplate);
 <div class="col-sm-3">
     <?php
     echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]);
-    echo $this->Form->input('status', ['required' => false, 'type'=>'checkbox', 'class' => 'access_hide', 'label' => __d('posts', 'Published')]);
+    echo $this->Form->input('status', ['required' => false, 'type' => 'checkbox', 'class' => 'access_hide', 'label' => __d('posts', 'Published')]);
     echo $this->Form->input('license_id', ['options' => $licenses]);
     ?>
     <div class="form-group-btn">

@@ -2,7 +2,7 @@
 	<div class="menu-scroll">
 		<div class="menu-top">
 			<div class="menu-top-info plain">
-				<?php echo __('Login') ?>
+				<?php echo __d('elabs', 'Login') ?>
 			</div>
 		</div>
 		<div class="menu-content text-center plain">
