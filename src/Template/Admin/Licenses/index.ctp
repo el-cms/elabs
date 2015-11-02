@@ -1,47 +1,58 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?php echo __('Actions') ?></li>
-        <li><?php echo $this->Html->link(__('New License'), ['action' => 'add']) ?></li>
-        <li><?php echo $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-        <li><?php echo $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="licenses index large-9 medium-8 columns content">
-    <h3><?php echo __('Licenses') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
+<?php
+$this->assign('title', __d('licenses', 'Licenses'));
+
+$this->start('pageActionsMenu');
+?>
+<ul class="side-nav">
+    <li><?php echo $this->Html->link(__('New License'), ['action' => 'add']) ?></li>
+</ul>
+<?php
+$this->end();
+$this->start('pageContent');
+?>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th><?php echo $this->Paginator->sort('id') ?></th>
+            <th><?php echo $this->Paginator->sort('name', __d('licenses', 'Name')) ?></th>
+            <th><?php echo $this->Paginator->sort('link', __d('licenses', 'Link')) ?></th>
+            <th><?php echo $this->Paginator->sort('icon', __d('licenses', 'Icon')) ?></th>
+            <th><?php echo $this->Paginator->sort('post_count', __d('licenses', 'Posts')) ?></th>
+            <th><?php echo $this->Paginator->sort('project_count', __d('licenses', 'Projects')) ?></th>
+            <th><?php echo $this->Paginator->sort('file_count', __d('licenses', 'Files')) ?></th>
+            <th class="actions"><?php echo __('Actions') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        if (!$licenses->isEmpty()):
+            foreach ($licenses as $license):
+                ?>
+                <tr>
+                    <td><?php echo $this->Number->format($license->id) ?></td>
+                    <td><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . $license->icon . ' fa-fw"></span>', h($license->name)]) ?></td>
+                    <td><?php echo $this->Html->link(h($license->link), h($license->link)) ?></td>
+                    <td><?php echo h($license->post_count) ?></td>
+                    <td><?php echo h($license->project_count) ?></td>
+                    <td><?php echo h($license->file_count) ?></td>
+                    <td class="actions">
+                        <?php echo $this->Html->link(__('View'), ['action' => 'view', $license->id]) ?>
+                        <?php echo $this->Html->link(__('Edit'), ['action' => 'edit', $license->id]) ?>
+                        <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id)]) ?>
+                    </td>
+                </tr>
+                <?php
+            endforeach;
+        else:
+            ?>
             <tr>
-                <th><?php echo $this->Paginator->sort('id') ?></th>
-                <th><?php echo $this->Paginator->sort('name') ?></th>
-                <th><?php echo $this->Paginator->sort('short_description') ?></th>
-                <th><?php echo $this->Paginator->sort('link') ?></th>
-                <th class="actions"><?php echo __('Actions') ?></th>
+                <td colspan="7" class="text-center"><?php echo __d('licenses', 'You have no licenses yet. Please add one.') ?></td>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($licenses as $license): ?>
-            <tr>
-                <td><?php echo $this->Number->format($license->id) ?></td>
-                <td><?php echo h($license->name) ?></td>
-                <td><?php echo h($license->short_description) ?></td>
-                <td><?php echo h($license->link) ?></td>
-                <td class="actions">
-                    <?php echo $this->Html->link(__('View'), ['action' => 'view', $license->id]) ?>
-                    <?php echo $this->Html->link(__('Edit'), ['action' => 'edit', $license->id]) ?>
-                    <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?php echo $this->Paginator->prev('< ' . __('previous')) ?>
-            <?php echo $this->Paginator->numbers() ?>
-            <?php echo $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?php echo $this->Paginator->counter() ?></p>
-    </div>
-</div>
+        <?php endif; ?>
+    </tbody>
+</table>
+<?php
+$this->end();
+
+echo $this->element('layouts/defaultindex');
+
