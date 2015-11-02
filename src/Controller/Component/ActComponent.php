@@ -68,8 +68,15 @@ class ActComponent extends Component
         }
     }
 
-    public function remove($foreignKey)
+    public function remove($foreignKey, $model = null, $self = true)
     {
-        return $this->Acts->deleteAll(['fkid' => $foreignKey, ['user_id' => $uid = $this->Auth->user('id')]]);
+        // Creating the conditions
+        $conditions = [];
+        $conditions['fkid'] = $foreignKey;
+        $conditions['model'] = (is_null($model)) ? $this->request->params['controller'] : $model;
+        if ($self) {
+            $conditions['user_id'] = $this->Auth->user('id');
+        }
+        return $this->Acts->deleteAll($conditions);
     }
 }
