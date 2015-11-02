@@ -16,7 +16,6 @@ $this->start('pageContent');
             <th><?php echo $this->Paginator->sort('id') ?></th>
             <th><?php echo $this->Paginator->sort('name', __d('licenses', 'Name')) ?></th>
             <th><?php echo $this->Paginator->sort('link', __d('licenses', 'Link')) ?></th>
-            <th><?php echo $this->Paginator->sort('icon', __d('licenses', 'Icon')) ?></th>
             <th><?php echo $this->Paginator->sort('post_count', __d('licenses', 'Posts')) ?></th>
             <th><?php echo $this->Paginator->sort('project_count', __d('licenses', 'Projects')) ?></th>
             <th><?php echo $this->Paginator->sort('file_count', __d('licenses', 'Files')) ?></th>
