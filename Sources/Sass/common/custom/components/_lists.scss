@@ -1,0 +1,22 @@
+.side-menu{
+    .side-menu-content{
+        ul{
+            margin:0px;
+            padding:0px;
+            li{
+                margin:0px;
+                margin-left:15px;
+                padding:0px; 
+                list-style-type: none;
+            }
+            li.title{
+                margin:0px;
+            }
+        }
+        hr{
+            margin-top:5px;
+            margin-bottom: 5px;
+        }
+    }
+    margin-bottom: 15px;
+}

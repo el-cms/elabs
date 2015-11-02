@@ -8763,6 +8763,27 @@ em.subtitle {
     line-height: normal;
     /*margin:5px;*/ }
 
+/* line 1, ../../Sources/Sass/common/custom/components/_lists.scss */
+.side-menu {
+  margin-bottom: 15px; }
+  /* line 3, ../../Sources/Sass/common/custom/components/_lists.scss */
+  .side-menu .side-menu-content ul {
+    margin: 0px;
+    padding: 0px; }
+    /* line 6, ../../Sources/Sass/common/custom/components/_lists.scss */
+    .side-menu .side-menu-content ul li {
+      margin: 0px;
+      margin-left: 15px;
+      padding: 0px;
+      list-style-type: none; }
+    /* line 12, ../../Sources/Sass/common/custom/components/_lists.scss */
+    .side-menu .side-menu-content ul li.title {
+      margin: 0px; }
+  /* line 16, ../../Sources/Sass/common/custom/components/_lists.scss */
+  .side-menu .side-menu-content hr {
+    margin-top: 5px;
+    margin-bottom: 5px; }
+
 /* line 1, ../../Sources/Sass/common/custom/components/_navs.scss */
 nav li.title {
   display: block;
