@@ -1,4 +1,12 @@
 <div class="col-sm-3">
+	<?php
+//    if(!empty($this->fetch('pageActions'))):
+        ?>
+    <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
+	<?php echo $this->fetch('pageActions') ?>
+    <?php //endif; 
+//     if(!empty($this->fetch('pageInfos'))):
+    ?>
 	<div class="content-sub-heading"><?php echo __d('elabs', 'Infos') ?></div>
 	<?php echo $this->fetch('pageInfos') ?>
 </div>
