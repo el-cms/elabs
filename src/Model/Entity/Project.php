@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property string $mainurl
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @property int $status
  * @property int $license_id
  * @property \App\Model\Entity\License $license
  * @property int $user_id

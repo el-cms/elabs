@@ -11,6 +11,7 @@ use App\Controller\AppController;
  */
 class ProjectsController extends AppController
 {
+
     /**
      * Index method
      *
@@ -19,11 +20,16 @@ class ProjectsController extends AppController
     public function index()
     {
         $findOptions = [
-            'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'license_id', 'user_id',
-                'Users.id', 'Users.username', 'Users.realname',
-                'Licenses.id', 'Licenses.name'],
+            'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
+//                'Users.id', 'Users.username', 'Users.realname',
+//                'Licenses.id', 'Licenses.name'],
+            'conditions' => [
+                'Projects.status' => 1,
+            ],
             'sortWithelist' => ['created', 'modified', 'name'],
-            'contain' => ['Users', 'Licenses'],
+            'contain' => [
+                'Users'=>['fields'=>['id', 'username', 'realname']], 
+                'Licenses'=>['fields'=>['id', 'name', 'icon', 'link']]],
             'order' => ['created' => 'desc'],
         ];
 
@@ -46,7 +52,13 @@ class ProjectsController extends AppController
     public function view($id = null)
     {
         $project = $this->Projects->get($id, [
-            'contain' => ['Licenses', 'Users', 'ProjectUsers']
+            'contain' => [
+                'Licenses',
+                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'ProjectUsers'],
+            'conditions' => [
+                'Projects.status' => 1,
+            ],
         ]);
 
         //SFW state

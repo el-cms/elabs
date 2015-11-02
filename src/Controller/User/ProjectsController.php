@@ -17,10 +17,10 @@ class ProjectsController extends UserAppController
      *
      * @return void
      */
-    public function manage($nsfw = 'all')
+    public function manage($nsfw = 'all', $status = 'all')
     {
         $this->paginate = [
-            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
+            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']]
             ],
@@ -34,9 +34,13 @@ class ProjectsController extends UserAppController
         } elseif ($nsfw === 'unsafe') {
             $this->paginate['conditions']['sfw'] = 0;
         }
+        if ($status === 'locked') {
+            $this->paginate['conditions']['status'] = 2;
+        }
 
         $this->set('projects', $this->paginate($this->Projects));
         $this->set('filterNSFW', $nsfw);
+        $this->set('filterStatus', $status);
         $this->set('_serialize', ['projects']);
     }
 

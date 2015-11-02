@@ -17,6 +17,7 @@ use Cake\Validation\Validator;
  */
 class ProjectsTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -32,6 +33,11 @@ class ProjectsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->addBehavior('CounterCache', [
+            'Users' => ['post_count' => ['conditions' => ['status' => 1]]],
+            'Licenses' => ['post_count' => ['conditions' => ['status' => 1]]],
+        ]);
 
         $this->belongsTo('Licenses', [
             'foreignKey' => 'license_id',
