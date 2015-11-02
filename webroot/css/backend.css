@@ -8728,6 +8728,28 @@ em.subtitle {
   .dl-horizontal dd {
     margin-left: 180px; } }
 
+/* line 3, ../../Sources/Sass/common/custom/components/_empty.scss */
+.empty {
+  color: #9a9a9a;
+  text-align: center;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWO4e/fufwaiAE6VAD8TBy1nEsnUAAAAAElFTkSuQmCC);
+  border: 1px solid #dadada;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 16px 16px; }
+  /* line 13, ../../Sources/Sass/common/custom/components/_empty.scss */
+  .empty a {
+    color: #727272; }
+  /* line 16, ../../Sources/Sass/common/custom/components/_empty.scss */
+  .empty p {
+    margin: 0;
+    display: block; }
+  /* line 20, ../../Sources/Sass/common/custom/components/_empty.scss */
+  .empty .empty-symbol {
+    font-size: 112px;
+    line-height: normal;
+    /*margin:5px;*/ }
+
 /* line 1, ../../Sources/Sass/common/custom/components/_navs.scss */
 nav li.title {
   display: block;
