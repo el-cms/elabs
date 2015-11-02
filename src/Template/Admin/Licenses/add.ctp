@@ -6,7 +6,6 @@ $formTemplate = [
     'checkboxContainer' => '<div class="form-group"><div class="checkbox switch">{{content}}</div></div>',
     'submitContainer' => '{{content}}',
 ];
-$this->loadHelper('CodeMirror');
 echo $this->Form->create($license);
 $this->Form->templates($formTemplate);
 ?>
@@ -19,19 +18,17 @@ $this->Form->templates($formTemplate);
 <div class="col-sm-6">
     <?php
     echo $this->Form->input('name');
-    echo $this->Form->input('short_description', ['required' => false, 'id' => 'descriptionArea', 'label' => __d('licenses', 'Short description')]);
-    $this->CodeMirror->add('descriptionArea');
-
-    $this->append('pageBottomScripts');
-    echo $this->CodeMirror->scripts();
+    echo $this->Form->input('link');
+    ?>
+    <div class="form-group form-group-label form-group-brand">
+        <label class="form-label " for="icon"><?php echo __d('licenses', 'Icon') ?></label>
+        <?php echo $this->Form->select('icon', ['creative-commons' => 'Creative Commons', 'copyright' => 'Copyright sign']); ?>
+    </div>
+    <?php
     $this->end();
     ?>
 </div>
 <div class="col-sm-3">
-    <?php
-    echo $this->Form->input('link');
-    echo $this->Form->select('icon', ['creative-commons' => 'Creative Commons', 'copyright' => 'Copyright sign']);
-    ?>
     <div class="form-group-btn">
         <?php echo $this->Form->submit(__('Submit')); ?>
     </div>

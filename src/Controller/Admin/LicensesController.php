@@ -32,7 +32,7 @@ class LicensesController extends AdminAppController
     public function view($id = null)
     {
         $license = $this->Licenses->get($id, [
-            'contain' => ['Posts', 'Projects']
+            'contain' => ['Posts', 'Projects', 'Files']
         ]);
         $this->set('license', $license);
         $this->set('_serialize', ['license']);
