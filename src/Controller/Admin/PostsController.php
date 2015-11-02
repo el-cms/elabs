@@ -11,6 +11,13 @@ use App\Controller\Admin\AdminAppController;
  */
 class PostsController extends AdminAppController
 {
+
+    public function beforeRender(\Cake\Event\Event $event)
+    {
+        parent::beforeRender($event);
+        $this->viewBuilder()->helpers(['ItemsAdmin']);
+    }
+
     /**
      * Index method
      *
@@ -19,7 +26,11 @@ class PostsController extends AdminAppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Licenses']
+            'fields' => ['id', 'title', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+            ]
         ];
         $this->set('posts', $this->paginate($this->Posts));
         $this->set('_serialize', ['posts']);
@@ -40,5 +51,4 @@ class PostsController extends AdminAppController
         $this->set('post', $post);
         $this->set('_serialize', ['post']);
     }
-
 }
