@@ -20,7 +20,7 @@
                 <td><?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></td>
                 <td><?php echo h($post->created) ?></td>
                 <td><?php echo h($post->modified) ?></td>
-                <td><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}',['<span class="fa fa-fw fa-'.$post->license->icon.'"></span>', h($post->license->name)]), ['controller' => 'users', 'action' => 'view', $post->user->id], ['escape'=>false]) ?></td>
+                <td><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $post->license->icon . '"></span>', h($post->license->name)]), ['controller' => 'users', 'action' => 'view', $post->user->id], ['escape' => false]) ?></td>
                 <td><?php echo $this->ItemsAdmin->statusLabel($post->status) ?></td>
                 <td class="padding-no">
                     <ul class="margin-no nav nav-list">
@@ -34,8 +34,27 @@
                         </li>
                         <li>
                             <?php
+                            $unlockIcon = '<span class="fa fa-unlock-alt fa-fw" title="' . __d('admin', 'Unlock') . '"></span>';
+                            $lockIcon = '<span class="fa fa-lock fa-fw" title="' . __d('admin', 'Lock') . '"></span>';
+                            if ($post->status === 2):
+                                echo $this->Html->link($unlockIcon, ['action' => 'changeState', $post->id, 'unlock'], [
+                                    'class' => 'text-sec waves-attach waves-effect',
+                                    'escape' => false,
+                                ]);
+                            elseif ($post->status === 1):
+                                echo $this->Html->link($lockIcon, ['action' => 'changeState', $post->id, 'lock'], [
+                                    'class' => 'text-sec waves-attach waves-effect',
+                                    'escape' => false,
+                                ]);
+                            else:
+                                echo '<a class="text-sec disabled"><span class="fa fa-fw"></span></a>';
+                            endif;
+                            ?>
+                        </li>
+                        <li>
+                            <?php
                             if ($post->status != 3):
-                                echo $this->Html->link('<span class="fa fa-times" title="' . __d('admin', 'Close') . '"></span>', ['action' => 'close', $post->id], [
+                                echo $this->Html->link('<span class="fa fa-times" title="' . __d('admin', 'Close') . '"></span>', ['action' => 'changeState', $post->id, 'remove'], [
                                     'class' => 'text-sec waves-attach waves-effect',
                                     'escape' => false
                                 ]);
