@@ -44,7 +44,7 @@
                 <td><?php echo __d('amdin', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $roleIcon . '"></span>', ucfirst(h($user->role))]) ?></td>
                 <td><?php echo h($user->username) ?></td>
                 <td><?php echo h($user->realname) ?></td>
-                <td id="userStatus<?php echo $user->id ?>"><?php echo $this->UserAdmin->statusLabel($user->status) ?></td>
+                <td id="userStatus<?php echo $user->id ?>"><?php echo $this->UsersAdmin->statusLabel($user->status) ?></td>
                 <td><?php echo h($user->created) ?></td>
                 <td class="padding-no">
                     <ul class="margin-no nav nav-list">
@@ -62,8 +62,7 @@
                         </li>
                         <li>
                             <?php
-                            echo $this->Html->link('<span class="fa fa-eye" title="' . __d('admin', 'Full details') . '"></span>', 
-                                 ['action'=>'view', $user->id], [
+                            echo $this->Html->link('<span class="fa fa-eye" title="' . __d('admin', 'Full details') . '"></span>', ['action' => 'view', $user->id], [
                                 'class' => 'text-sec waves-attach waves-effect',
                                 'escape' => false
                             ]);
@@ -180,7 +179,7 @@ $this->append('pageBottomScripts');
         if (response.user.status === 3) {
           $('#userLine' + id).removeClass();
           $('#userLine' + id).addClass('line-grey');
-          $('#userStatus' + id).html('<?php echo $this->UserAdmin->statusLabel(3) ?>');
+          $('#userStatus' + id).html('<?php echo $this->UsersAdmin->statusLabel(3) ?>');
           $('#btnLock' + id).remove();
           $('#btnClose' + id).remove();
         } else {
@@ -202,12 +201,12 @@ $this->append('pageBottomScripts');
       request.success(function (response) {
         if (response.user.status === 1) {
           lineColor = 'line-green';
-          statusLabel = '<?php echo $this->UserAdmin->statusLabel(1) ?>';
+          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(1) ?>';
           lnkIcon = '<?php echo $lockIcon ?>';
           lnkAction = 'lock(' + id + ',lock)';
         } else if (response.user.status === 2) {
           lineColor = 'line-red';
-          statusLabel = '<?php echo $this->UserAdmin->statusLabel(2) ?>';
+          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(2) ?>';
           lnkIcon = '<?php echo $unlockIcon ?>';
           lnkAction = 'lock(' + id + ',unlock)';
         } else {
@@ -224,7 +223,7 @@ $this->append('pageBottomScripts');
     function activate(id) {
       var request = $.ajax({
         type: "POST",
-        url: "<?php echo $this->Url->build(['prefix' => 'admin', 'controller' => 'Users', 'action' => 'activate']); ?>" + '/'+id,
+        url: "<?php echo $this->Url->build(['prefix' => 'admin', 'controller' => 'Users', 'action' => 'activate']); ?>" + '/' + id,
         dataType: 'json',
         async: true
       });
@@ -234,7 +233,7 @@ $this->append('pageBottomScripts');
       request.success(function (response) {
         if (response.user.status === 1) {
           lineColor = 'line-green';
-          statusLabel = '<?php echo $this->UserAdmin->statusLabel(1) ?>';
+          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(1) ?>';
           lnkIcon = '<?php echo $lockIcon ?>';
           lnkAction = 'lock(' + id + ',lock)';
         }

@@ -15,7 +15,7 @@ $this->start('pageInfos');
     <dt><?php echo __('Last modification') ?></dt>
     <dd><?php echo h($user->modified) ?></dd>
     <dt><?php echo __('Status') ?></dt>
-    <dd><?php echo $this->UserAdmin->statusLabel($user->status) ?></dd>
+    <dd><?php echo $this->UsersAdmin->statusLabel($user->status) ?></dd>
 </dl>
 <?php
 if ($user->status != 3):

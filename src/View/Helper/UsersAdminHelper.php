@@ -4,7 +4,7 @@ namespace App\View\Helper;
 
 use Cake\View\Helper;
 
-class UserAdminHelper extends Helper
+class UsersAdminHelper extends Helper
 {
 
     public function roleLabel($status, $type = 'label')

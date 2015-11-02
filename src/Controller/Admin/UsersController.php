@@ -21,7 +21,7 @@ class UsersController extends AdminAppController
     public function beforeRender(\Cake\Event\Event $event)
     {
         parent::beforeRender($event);
-        $this->viewBuilder()->helpers(['UserAdmin']);
+        $this->viewBuilder()->helpers(['UsersAdmin']);
     }
 
     /**
