@@ -21,12 +21,12 @@ class PostsController extends UserAppController
     public function manage($nsfw = 'all', $published = 'all')
     {
         $this->paginate = [
-            'fields' => ['id', 'title', 'sfw', 'published', 'publication_date', 'created', 'modified', 'license_id'],
+            'fields' => ['id', 'title', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']]],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['id' => 'desc'],
-            'sortWhitelist' => ['title', 'published', 'publication_date', 'created', 'modified', 'sfw'],
+            'sortWhitelist' => ['title', 'status', 'publication_date', 'created', 'modified', 'sfw'],
         ];
         if ($nsfw === 'safe') {
             $this->paginate['conditions']['sfw'] = 1;
@@ -34,9 +34,11 @@ class PostsController extends UserAppController
             $this->paginate['conditions']['sfw'] = 0;
         }
         if ($published === 'drafts') {
-            $this->paginate['conditions']['published'] = 0;
+            $this->paginate['conditions']['status'] = 0;
         } elseif ($published === 'published') {
-            $this->paginate['conditions']['published'] = 1;
+            $this->paginate['conditions']['status'] = 1;
+        } elseif ($published === 'locked') {
+            $this->paginate['conditions']['status'] = 2;
         }
         $this->set('posts', $this->paginate($this->Posts));
         $this->set('filterNSFW', $nsfw);
@@ -56,14 +58,15 @@ class PostsController extends UserAppController
             // Assigning values:
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
-            if ($dataSent['published'] === '1') {
+            if ($dataSent['status'] === '1') {
                 $dataSent['publication_date'] = Time::now();
             }
+
             // Preparing data
             $post = $this->Posts->patchEntity($post, $dataSent);
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
-                if ($post->published) {
+                if ($post->status === '1') {
                     $this->Act->add($post->id, 'add', 'Posts');
                 }
                 return $this->redirect(['action' => 'manage']);
@@ -96,16 +99,16 @@ class PostsController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             // Old publication state
-            $oldState = $post->published;
+            $oldState = $post->status;
 //            $this->request->data['user_id'] = $this->Auth->user('id');
 
             $post = $this->Posts->patchEntity($post, $this->request->data);
             if ($this->Posts->save($post)) {
-                if ($oldState === false && $post->published === true) {
+                if ($oldState === '0' && $post->status === '1') {
                     // New publication
                     $this->Act->add($post->id, 'add', 'Posts');
                     $this->Flash->success(__d('posts', 'Your article has been published.'));
-                } elseif ($oldState === true && $post->published === false) {
+                } elseif ($oldState === '1' && $post->status === '0') {
                     // Removed from publication
                     $this->Act->remove($post->id);
                     $this->Flash->success(__d('posts', 'Your article has been unpublished.'));
@@ -121,7 +124,7 @@ class PostsController extends UserAppController
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
                 });
-                $this->Flash->error(__d('elabs','Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
+                $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);

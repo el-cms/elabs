@@ -24,10 +24,12 @@
       <?php else: ?>
           <span class="label label-red fixed-font"><?php echo __d('elabs', 'NSFW') ?></span>
       <?php endif; ?>&nbsp;
-      <?php if ($post->published): ?>
+      <?php if ($post->status===1): ?>
           <span class="label label-green"><?php echo __d('posts','Published') ?></span>
+      <?php elseif ($post->status===0): ?>
+          <span class="label label-gray"><?php echo __d('posts','Draft') ?></span>
       <?php else: ?>
-          <span class="label label-red"><?php echo __d('posts','Draft') ?></span>
+          <span class="label label-red"><?php echo __d('posts','Locked') ?></span>
       <?php endif; ?>&nbsp;
       <?php echo h($post->title) ?>
     </div>

@@ -23,7 +23,7 @@ class PostsController extends AppController
                 'id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id',
                 'Users.id', 'Users.username', 'Users.realname',
                 'Licenses.id', 'Licenses.name'],
-            'conditions' => ['published' => true],
+            'conditions' => ['Posts.status' => 1],
             'contain' => ['Users', 'Licenses'],
             'order' => ['publication_date' => 'desc'],
             'sortWhitelist' => ['publication_date', 'title'],
@@ -48,7 +48,7 @@ class PostsController extends AppController
     {
         $post = $this->Posts->get($id, [
             'contain' => ['Users', 'Licenses'],
-            'conditions' => ['published' => true],
+            'conditions' => ['Posts.status' => 1],
         ]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors

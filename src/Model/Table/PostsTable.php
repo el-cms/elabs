@@ -16,6 +16,7 @@ use Cake\Validation\Validator;
  */
 class PostsTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -33,8 +34,8 @@ class PostsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->addBehavior('CounterCache', [
-            'Users' => ['post_count' => ['conditions' => ['published' => true]]],
-            'Licenses' => ['post_count' => ['conditions' => ['published' => true]]],
+            'Users' => ['post_count' => ['conditions' => ['status' => 1]]],
+            'Licenses' => ['post_count' => ['conditions' => ['status' => 1]]],
         ]);
 
         $this->belongsTo('Users', [
@@ -69,7 +70,7 @@ class PostsTable extends Table
                 ->add('excerpt', [
                     'maxLength' => [
                         'rule' => ['maxLength', 250],
-                        'message' => 'Comments cannot be too long.']
+                        'message' => 'Excerpts cannot be too long.']
         ]);
 
         $validator
@@ -81,9 +82,9 @@ class PostsTable extends Table
                 ->notEmpty('sfw');
 
         $validator
-                ->add('published', 'valid', ['rule' => 'boolean'])
-                ->requirePresence('published', 'create')
-                ->notEmpty('published');
+                ->add('status', 'valid', ['rule' => 'numeric'])
+                ->requirePresence('status', 'create')
+                ->notEmpty('status');
 
         $validator
                 ->add('publication_date', 'valid', ['rule' => 'datetime'])

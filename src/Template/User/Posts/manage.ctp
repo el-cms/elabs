@@ -59,6 +59,12 @@ $inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
     echo $this->Html->link(__d('elabs', '{0}&nbsp;Only drafts', $icon), [$filterNSFW, 'drafts'], $options);
     ?>
   </li>
+  <li>
+    <?php
+    $icon = ($filterPub === 'locked') ? $active : $inactive;
+    echo $this->Html->link(__d('elabs', '{0}&nbsp;Only drafts', $icon), [$filterNSFW, 'locked'], $options);
+    ?>
+  </li>
 </ul>
 
 <?php

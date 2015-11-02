@@ -10,38 +10,38 @@ $formTemplate = [
 $this->loadHelper('CodeMirror');
 ?>
 <div class="col-sm-3">
-  <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-      <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'btn']) ?>
-  <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
-      <?php echo $this->Html->link(__('List Posts'), ['action' => 'manage'], ['class' => 'btn']) ?>
-      <?php echo $this->Html->link(__('List available licenses'), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], ['class' => 'btn']) ?>
+    <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
+    <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'btn']) ?>
+    <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
+    <?php echo $this->Html->link(__('List Posts'), ['action' => 'manage'], ['class' => 'btn']) ?>
+    <?php echo $this->Html->link(__('List available licenses'), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], ['class' => 'btn']) ?>
 </div>
 <?php
 echo $this->Form->create($post);
 $this->Form->templates($formTemplate);
 ?>
 <div class="col-sm-6">
-  <?php
-  // Required fields are still set to required=>false as there is an issue with codeMirror
-  echo $this->Form->input('title', ['label' => ['class' => 'floating-label']]);
-  echo $this->Form->input('excerpt', ['required' => false, 'id' => 'excerptArea', 'label' => __d('posts', 'Introduction')]);
-  echo $this->Form->input('text', ['required' => false, 'id' => 'textArea', 'label' => __d('posts', 'Article contents')]);
-  $this->CodeMirror->add('excerptArea', [], ['%s.setSize(null, "150")']);
-  $this->CodeMirror->add('textArea');
-  $this->append('pageBottomScripts');
-  echo $this->CodeMirror->scripts();
-  $this->end();
-  ?>
+    <?php
+    // Required fields are still set to required=>false as there is an issue with codeMirror
+    echo $this->Form->input('title', ['label' => ['class' => 'floating-label']]);
+    echo $this->Form->input('excerpt', ['required' => false, 'id' => 'excerptArea', 'label' => __d('posts', 'Introduction')]);
+    echo $this->Form->input('text', ['required' => false, 'id' => 'textArea', 'label' => __d('posts', 'Article contents')]);
+    $this->CodeMirror->add('excerptArea', [], ['%s.setSize(null, "150")']);
+    $this->CodeMirror->add('textArea');
+    $this->append('pageBottomScripts');
+    echo $this->CodeMirror->scripts();
+    $this->end();
+    ?>
 </div>
 <div class="col-sm-3">
-  <?php
-  echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]);
-  echo $this->Form->input('published', ['class' => 'access_hide', 'label' => __d('posts', 'Published')]);
-  echo $this->Form->input('license_id', ['options' => $licenses]);
-  ?>
-  <div class="form-group-btn">
-    <?php echo $this->Form->submit(__('Submit')); ?>
-  </div>
+    <?php
+    echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]);
+    echo $this->Form->input('status', ['required' => false, 'type' => 'checkbox', 'value' => '1', 'class' => 'access_hide', 'label' => __d('posts', 'Published')]);
+    echo $this->Form->input('license_id', ['options' => $licenses]);
+    ?>
+    <div class="form-group-btn">
+        <?php echo $this->Form->submit(__('Submit')); ?>
+    </div>
 </div>
 <?php
 $this->Form->end();

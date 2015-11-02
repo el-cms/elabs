@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  * @property bool $sfw
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
- * @property bool $published
+ * @property int $status
  * @property \Cake\I18n\Time $publication_date
  * @property int $user_id
  * @property \App\Model\Entity\User $user
