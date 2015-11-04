@@ -2,13 +2,14 @@
     <thead>
         <tr>
             <th><?php echo $this->Paginator->sort('id') ?></th>
-            <th><?php echo $this->Paginator->sort('title') ?></th>
-            <th><?php echo $this->Paginator->sort('Users.username') ?></th>
-            <th><?php echo $this->Paginator->sort('sfw') ?></th>
-            <th><?php echo $this->Paginator->sort('created') ?></th>
-            <th><?php echo $this->Paginator->sort('modified') ?></th>
-            <th><?php echo $this->Paginator->sort('status') ?></th>
-            <th class="actions"><?php echo __('Actions') ?></th>
+            <th><?php echo $this->Paginator->sort('title', __d('posts', 'Title')) ?></th>
+            <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Author')) ?></th>
+            <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
+            <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
+            <th><?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
+            <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
+            <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
+            <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +21,7 @@
                 <td><?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></td>
                 <td><?php echo h($post->created) ?></td>
                 <td><?php echo h($post->modified) ?></td>
-                <td><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $post->license->icon . '"></span>', h($post->license->name)]), ['controller' => 'users', 'action' => 'view', $post->user->id], ['escape' => false]) ?></td>
+                <td><?php echo $this->License->d($post->license, false) ?></td>
                 <td><?php echo $this->ItemsAdmin->statusLabel($post->status) ?></td>
                 <td class="padding-no">
                     <ul class="margin-no nav nav-list">

@@ -20,7 +20,6 @@ $this->start('pageInfos');
     <dd><?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></dd>
     <dt><?php echo __('Status') ?></dt>
     <dd><?php echo $this->ItemsAdmin->statusLabel($post->status) ?></dd>
-</tr>
 </dl>
 <?php
 $this->end();
@@ -28,7 +27,7 @@ $this->end();
 $this->start('pageActions');
 $linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-effect waves-effect'];
 ?>
-<dl class="side-nav">
+<ul>
     <li>
         <?php
         $unlockIcon = __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-unlock-alt fa-fw"></span>', __d('admin', 'Unlock')]);
@@ -54,7 +53,7 @@ $linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-ef
         ?>
     </li>
     <li><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List posts']), ['action' => 'index'], $linkConfig) ?> </li>
-</dl>
+</ul>
 <?php
 $this->end();
 
