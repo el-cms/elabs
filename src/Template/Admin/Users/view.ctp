@@ -50,6 +50,9 @@ if ($user->status != 3):
             endif;
             ?>
         </li>
+        <li>
+        <li><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List users']), ['action' => 'index'], $linkOptions) ?> </li>
+    </li>
     </ul>
 
     <?php

@@ -62,9 +62,6 @@ class UsersController extends AdminAppController
                 'contain' => [
                     'Posts' => [
                         'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
-//                        'conditions' => [
-//                            'published' => true,
-//                        ],
                     ],
                     'Projects' => [
                         'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id'],
@@ -77,17 +74,33 @@ class UsersController extends AdminAppController
         $this->set('_serialize', ['user']);
     }
 
+    /**
+     * Locks/unlocks an user
+     * 
+     * @param int $id User id
+     * @param string $action Action to perform : lock or unlock
+     */
     public function lock($id, $action = 'lock')
     {
+        $successMessage = __d('users', 'The account has been locked.');
         $bit = 2; // Lock by default
         if ($action === 'unlock') {
+            $successMessage = __d('users', 'The account has been unlocked.');
             $bit = 1;
         }
         $user = $this->Users->get($id, [
             'fields' => ['id', 'status']
         ]);
         $user->status = $bit;
-        $this->Users->save($user);
+        if ($this->Users->save($user)) {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Success($successMessage);
+            }
+        } else {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Error(__d('users', 'An error occured'));
+            }
+        }
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
         if (!$this->request->is('ajax')) {
@@ -95,13 +108,27 @@ class UsersController extends AdminAppController
         }
     }
 
+    /**
+     * Closes an user account
+     * 
+     * @param int $id User id
+     */
     public function close($id)
     {
         $user = $this->Users->get($id, [
             'fields' => ['id', 'status']
         ]);
         $user->status = 3;
-        $this->Users->save($user);
+        if ($this->Users->save($user)) {
+            $this->Act->removeAll($id);
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Success(__d('users', 'The account has been closed.'));
+            }
+        } else {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Error(__d('users', 'An error occured'));
+            }
+        }
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
         if (!$this->request->is('ajax')) {
@@ -109,13 +136,26 @@ class UsersController extends AdminAppController
         }
     }
 
+    /**
+     * Activates an user account
+     * 
+     * @param int $id User Id
+     */
     public function activate($id)
     {
         $user = $this->Users->get($id, [
             'fields' => ['id', 'status']
         ]);
         $user->status = 1;
-        $this->Users->save($user);
+        if ($this->Users->save($user)) {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Success(__d('users', 'The account has been activated.'));
+            }
+        } else {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Error(__d('users', 'An error occured'));
+            }
+        }
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
         if (!$this->request->is('ajax')) {
