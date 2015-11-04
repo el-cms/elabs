@@ -104,7 +104,7 @@ class UsersController extends AdminAppController
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
         if (!$this->request->is('ajax')) {
-            $this->redirect(['action' => 'view', $id]);
+            $this->redirect(['action' => 'index']);
         }
     }
 
@@ -132,7 +132,7 @@ class UsersController extends AdminAppController
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
         if (!$this->request->is('ajax')) {
-            $this->redirect(['action' => 'view', $id]);
+            $this->redirect(['action' => 'index']);
         }
     }
 
@@ -159,7 +159,7 @@ class UsersController extends AdminAppController
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
         if (!$this->request->is('ajax')) {
-            $this->redirect(['action' => 'view', $id]);
+            $this->redirect(['action' => 'index']);
         }
     }
 }
