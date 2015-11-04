@@ -65,7 +65,7 @@ $this->end();
 
 $this->start('pageContent');
 
-echo h($user->bio);
+echo $this->Markdown->transform($user->bio);
 ?>
 
 <nav class="tab-nav tab-nav-brand">
