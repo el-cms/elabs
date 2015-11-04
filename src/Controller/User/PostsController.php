@@ -80,7 +80,7 @@ class PostsController extends UserAppController
             }
         }
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
-        $this->set(compact('post', 'users', 'licenses'));
+        $this->set(compact('post', 'licenses'));
         $this->set('_serialize', ['post']);
     }
 
