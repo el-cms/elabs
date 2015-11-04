@@ -63,36 +63,47 @@ class PostsController extends AdminAppController
      * @param string $state The new state (lock, unlock or remove)
      * @return void
      */
-    public function changeState($id, $state)
+    public function changeState($id, $state='lock')
     {
-        switch($state){
+        switch ($state) {
             case 'lock':
+                $successMessage = __d('users', 'The post has been locked.');
                 $this->Act->remove($id);
-                $bit=2;
+                $bit = 2;
                 break;
             case 'unlock':
+                $successMessage = __d('users', 'The post has been unlocked.');
                 // TODO: there's something to do with re-publishing things
-                $bit=1;
+                $bit = 1;
                 break;
             case 'remove':
-                $bit=3;
+                $successMessage = __d('users', 'The post has been removed.');
+                $bit = 3;
                 $this->Act->remove($id, 'Posts', false);
                 break;
             default:
-                $bit=2;
+                $successMessage = __d('users', 'The post has been locked.');
+                $bit = 2;
         }
         $post = $this->Posts->get($id, [
             'fields' => ['id', 'status']
         ]);
         $post->status = $bit;
-        $this->Posts->save($post);
+        if ($this->Posts->save($post)) {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Success($successMessage);
+            }
+        } else {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Error(__d('users', 'An error occured'));
+            }
+        }
         $this->set('post', $post);
         $this->set('_serialize', ['post']);
         // Ready fo ajax calls
         // TODO : ajax action in index view
         if (!$this->request->is('ajax')) {
-            $this->redirect(['action' => 'view', $id]);
+            $this->redirect(['action' => 'index']);
         }
     }
-
 }
