@@ -20,24 +20,36 @@ User
     Self                 [x]       [x]       [ ]
     Markdown Ed.   [x]       [x]       [x]       [ ]
     Act                  [X]       [x]       [ ]
-  Edit         [ ] [ ]   [x] [x]   [x] [x]   [ ] [ ]
-    Self       [ ]       [x]       [x]       [ ]
-    Markdown Ed.   [ ]       [x]       [x]       [ ]
+  Edit         [x] [x]   [x] [x]   [x] [x]   [ ] [ ]
+    Self       [x]       [x]       [x]       [ ]
+    Markdown Ed.   [x]       [x]       [x]       [ ]
     Act                  [x]       [x]       [ ]
   Index/Manage           [x] [x]   [x] [x]   [ ] [ ]
     Self                 [x]       [x]       [ ]
-  Delete       [ ]       [x]       [x]       [ ]
-    Self       [ ]       [x]       [x]       [ ]
-    Act                  [x]       [x]       [ ]
+  Delete       [x]       [x]       [x]       [ ]
+    Self       [x]       [x]       [x]       [ ]
+    Act        [x]       [x]       [x]       [ ]
 
 Admin
   Lock         [x]       [ ]       [ ]       [ ]
+  Index        [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]
+  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
+  Lock/Del.    [ ]       [ ]       [ ]       [ ]
+```
+
+## Others
+
+```
+               Licenses  item/file item/post item/tag
+Validations    [ ]
+                C   V
+Admin
+  Add          [x]
+  Edit         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
   Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
   View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
   Delete       [x]       [ ]       [ ]       [ ]
 ```
-
-## Other
 
 ### Site config
 
@@ -56,10 +68,11 @@ Admin
   - [ ] Review all paginator links and add a \__d() translation on them
   - [ ] Add icons on action buttons
   - [ ] Add text where there is no element to display
-  - [ ] Better style for filter links
+  - [x] Better style for filter links
   - [ ] Tests on tablet
   - [ ] Tests on mobile
   - [ ] Translate menus
   - [ ] Delete unused views
+  - [ ] Review error messages on login
 ### On free time
-  - [ ] Check for fields in models comments
+  - [x] Check for fields in models comments

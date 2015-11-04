@@ -68,6 +68,14 @@ class ActComponent extends Component
         }
     }
 
+    /**
+     * Removes all acts with the given foreign key
+     * 
+     * @param int $foreignKey Target foreign key
+     * @param string $model Model name. If empty, current controller will be used.
+     * @param type $self If false, don't take care of the owner. To be used in admin only.
+     * @return bool
+     */
     public function remove($foreignKey, $model = null, $self = true)
     {
         // Creating the conditions
@@ -78,5 +86,19 @@ class ActComponent extends Component
             $conditions['user_id'] = $this->Auth->user('id');
         }
         return $this->Acts->deleteAll($conditions);
+    }
+
+    /**
+     * Removes all acts for a given user. To be used when user closes his account
+     * 
+     * @param int $uid User ID. If null, currently logged-in user id will be used.
+     * @return bool
+     */
+    public function removeAll($uid = null)
+    {
+        if (is_null($uid)) {
+            $uid = $this->Auth->user('id');
+        }
+        return $this->Acts->deleteAll(['user_id' => $uid]);
     }
 }

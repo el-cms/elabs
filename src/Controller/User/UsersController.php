@@ -81,6 +81,7 @@ class UsersController extends UserAppController
                 $user->status = 3; // "deleted" state
                 $this->Users->save($user);
                 $this->Flash->Success(__d('users', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
+                $this->Act->removeAll();
                 return $this->redirect($this->Auth->logout());
             } else {
                 $this->Flash->error(__d('users', 'Sorry, you have entered the wrong password.'));
