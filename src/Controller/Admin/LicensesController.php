@@ -23,22 +23,6 @@ class LicensesController extends AdminAppController
     }
 
     /**
-     * View method
-     *
-     * @param string|null $id License id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $license = $this->Licenses->get($id, [
-            'contain' => ['Posts', 'Projects', 'Files']
-        ]);
-        $this->set('license', $license);
-        $this->set('_serialize', ['license']);
-    }
-
-    /**
      * Add method
      *
      * @return void Redirects on successful add, renders view otherwise.
