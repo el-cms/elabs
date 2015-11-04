@@ -2,15 +2,23 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AdminAppController;
 
 /**
  * Projects Controller
  *
  * @property \App\Model\Table\ProjectsTable $Projects
  */
-class ProjectsController extends AppController
+class ProjectsController extends AdminAppController
 {
+
+    public function beforeRender(\Cake\Event\Event $event)
+    {
+        parent::beforeRender($event);
+        $this->viewBuilder()->helpers(['ItemsAdmin']);
+        $this->viewBuilder()->helpers(['License']);
+    }
+
     /**
      * Index method
      *
@@ -19,7 +27,11 @@ class ProjectsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Licenses', 'Users']
+            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+            ]
         ];
         $this->set('projects', $this->paginate($this->Projects));
         $this->set('_serialize', ['projects']);
@@ -35,78 +47,63 @@ class ProjectsController extends AppController
     public function view($id = null)
     {
         $project = $this->Projects->get($id, [
-            'contain' => ['Licenses', 'Users', 'ProjectUsers']
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'ProjectUsers']
         ]);
         $this->set('project', $project);
         $this->set('_serialize', ['project']);
     }
 
     /**
-     * Add method
-     *
-     * @return void Redirects on successful add, renders view otherwise.
+     * Changes a project's status.
+     * 
+     * @param int $id
+     * @param string $state The new state (lock, unlock or remove)
+     * @return void
      */
-    public function add()
+    public function changeState($id, $state = 'lock')
     {
-        $project = $this->Projects->newEntity();
-        if ($this->request->is('post')) {
-            $project = $this->Projects->patchEntity($project, $this->request->data);
-            if ($this->Projects->save($project)) {
-                $this->Flash->success(__('The project has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The project could not be saved. Please, try again.'));
-            }
+        switch ($state) {
+            case 'lock':
+                $successMessage = __d('users', 'The project has been locked.');
+                $this->Act->remove($id);
+                $bit = 2;
+                break;
+            case 'unlock':
+                $successMessage = __d('users', 'The project has been unlocked.');
+                // TODO: there's something to do with re-publishing things
+                $bit = 1;
+                break;
+            case 'remove':
+                $successMessage = __d('users', 'The project has been removed.');
+                $bit = 3;
+                $this->Act->remove($id, 'Projects', false);
+                break;
+            default:
+                $successMessage = __d('users', 'The project has been locked.');
+                $bit = 2;
         }
-        $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $users = $this->Projects->Users->find('list', ['limit' => 200]);
-        $this->set(compact('project', 'licenses', 'users'));
-        $this->set('_serialize', ['project']);
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Project id.
-     * @return void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
         $project = $this->Projects->get($id, [
-            'contain' => []
+            'fields' => ['id', 'status']
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $project = $this->Projects->patchEntity($project, $this->request->data);
-            if ($this->Projects->save($project)) {
-                $this->Flash->success(__('The project has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The project could not be saved. Please, try again.'));
+        $project->status = $bit;
+        if ($this->Projects->save($project)) {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Success($successMessage);
+            }
+        } else {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Error(__d('users', 'An error occured'));
             }
         }
-        $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $users = $this->Projects->Users->find('list', ['limit' => 200]);
-        $this->set(compact('project', 'licenses', 'users'));
+        $this->set('project', $project);
         $this->set('_serialize', ['project']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Project id.
-     * @return void Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $project = $this->Projects->get($id);
-        if ($this->Projects->delete($project)) {
-            $this->Flash->success(__('The project has been deleted.'));
-        } else {
-            $this->Flash->error(__('The project could not be deleted. Please, try again.'));
+        // Ready fo ajax calls
+        // TODO : ajax action in index view
+        if (!$this->request->is('ajax')) {
+            $this->redirect(['action' => 'index']);
         }
-        return $this->redirect(['action' => 'index']);
     }
 }

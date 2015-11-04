@@ -1,88 +1,68 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?php echo __('Actions') ?></li>
-        <li><?php echo $this->Html->link(__('Edit Project'), ['action' => 'edit', $project->id]) ?> </li>
-        <li><?php echo $this->Form->postLink(__('Delete Project'), ['action' => 'delete', $project->id], ['confirm' => __('Are you sure you want to delete # {0}?', $project->id)]) ?> </li>
-        <li><?php echo $this->Html->link(__('List Projects'), ['action' => 'index']) ?> </li>
-        <li><?php echo $this->Html->link(__('New Project'), ['action' => 'add']) ?> </li>
-        <li><?php echo $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
-        <li><?php echo $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
-        <li><?php echo $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?php echo $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?php echo $this->Html->link(__('List Project Users'), ['controller' => 'ProjectUsers', 'action' => 'index']) ?> </li>
-        <li><?php echo $this->Html->link(__('New Project User'), ['controller' => 'ProjectUsers', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="projects view large-9 medium-8 columns content">
-    <h3><?php echo h($project->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?php echo __('Name') ?></th>
-            <td><?php echo h($project->name) ?></td>
-        </tr>
-        <tr>
-            <th><?php echo __('Short Description') ?></th>
-            <td><?php echo h($project->short_description) ?></td>
-        </tr>
-        <tr>
-            <th><?php echo __('Download') ?></th>
-            <td><?php echo h($project->download) ?></td>
-        </tr>
-        <tr>
-            <th><?php echo __('License') ?></th>
-            <td><?php echo $project->has('license') ? $this->Html->link($project->license->name, ['controller' => 'Licenses', 'action' => 'view', $project->license->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?php echo __('User') ?></th>
-            <td><?php echo $project->has('user') ? $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?php echo __('Id') ?></th>
-            <td><?php echo $this->Number->format($project->id) ?></td>
-        </tr>
-        <tr>
-            <th><?php echo __('Created') ?></th>
-            <td><?php echo h($project->created) ?></tr>
-        </tr>
-        <tr>
-            <th><?php echo __('Modified') ?></th>
-            <td><?php echo h($project->modified) ?></tr>
-        </tr>
-        <tr>
-            <th><?php echo __('Sfw') ?></th>
-            <td><?php echo $project->sfw ? __('Yes') : __('No'); ?></td>
-         </tr>
-    </table>
-    <div class="row">
-        <h4><?php echo __('Description') ?></h4>
-        <?php echo $this->Text->autoParagraph(h($project->description)); ?>
-    </div>
-    <div class="related">
-        <h4><?php echo __('Related Project Users') ?></h4>
-        <?php if (!empty($project->project_users)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?php echo __('Id') ?></th>
-                <th><?php echo __('User Id') ?></th>
-                <th><?php echo __('Project Id') ?></th>
-                <th class="actions"><?php echo __('Actions') ?></th>
-            </tr>
-            <?php foreach ($project->project_users as $projectUsers): ?>
-            <tr>
-                <td><?php echo h($projectUsers->id) ?></td>
-                <td><?php echo h($projectUsers->user_id) ?></td>
-                <td><?php echo h($projectUsers->project_id) ?></td>
-                <td class="actions">
-                    <?php echo $this->Html->link(__('View'), ['controller' => 'ProjectUsers', 'action' => 'view', $projectUsers->id]) ?>
+<?php
+$this->assign('title', h($project->name));
 
-                    <?php echo $this->Html->link(__('Edit'), ['controller' => 'ProjectUsers', 'action' => 'edit', $projectUsers->id]) ?>
+$this->start('pageInfos');
+?>
+<dl class="dl-horizontal">
+    <dt><?php echo __('Id') ?></dt>
+    <dd><?php echo $this->Number->format($project->id) ?></dd>
+    <dt><?php echo __d('projects', 'Owner') ?></dt>
+    <dd><?php echo $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) ?></dd>
+    <dt><?php echo __d('projects', 'Url') ?></dt>
+    <dd><?php echo h($project->mainurl) ?></dd>
+    <dt><?php echo __d('licenses', 'License') ?></dt>
+    <dd><?php echo $this->License->d($project->license) ?></dd>
+    <dt><?php echo __d('elabs', 'Creation date') ?></dt>
+    <dd><?php echo h($project->created) ?></dd>
+    <dt><?php echo __d('elabs', 'Mod. date') ?></dt>
+    <dd><?php echo h($project->modified) ?></dd>
+    <dt><?php echo __d('elabs', 'Safe') ?></dt>
+    <dd><?php echo $this->ItemsAdmin->sfwLabel($project->sfw); ?></dd>
+    <dt><?php echo __d('elabs', 'Status') ?></dt>
+    <dd><?php echo $this->ItemsAdmin->statusLabel($project->status) ?></dd>
+</dl>
+<?php
+$this->end();
 
-                    <?php echo $this->Form->postLink(__('Delete'), ['controller' => 'ProjectUsers', 'action' => 'delete', $projectUsers->id], ['confirm' => __('Are you sure you want to delete # {0}?', $projectUsers->id)]) ?>
+$this->start('pageActions');
+$linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-effect waves-effect'];
+?>
+<ul>
+    <li>
+        <?php
+        $unlockIcon = __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-unlock-alt fa-fw"></span>', __d('admin', 'Unlock')]);
+        $lockIcon = __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-lock fa-fw"></span>', __d('admin', 'Lock')]);
+        if ($project->status === 2):
+            echo $this->Html->link($unlockIcon, ['action' => 'changeState', $project->id, 'unlock'], $linkConfig);
+        elseif ($project->status === 1):
+            echo $this->Html->link($lockIcon, ['action' => 'changeState', $project->id, 'lock'], $linkConfig);
+        else:
+            echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-flat disabled', 'escape' => false]);
+        endif;
+        ?>
+    </li>
+    <li>
+        <?php
+        $class = 'btn btn-flat waves-attach waves-effect waves-effect';
+        $link = ['action' => 'changeState', $project->id, 'remove'];
+        if ($project->status === 3):
+            $class = 'btn btn-flat disabled';
+            $link = '#';
+        endif;
+        echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-times"></span>', 'Disable']), $link, ['confirm' => __('Are you sure you want to disable # {0}?', $project->id), 'escape' => false, 'class' => $class])
+        ?>
+    </li>
+    <li><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List projects']), ['action' => 'index'], $linkConfig) ?> </li>
+</ul>
+<?php
+$this->end();
 
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-    <?php endif; ?>
-    </div>
-</div>
+$this->start('pageContent');
+echo $this->Markdown->transform($project->short_description);
+?>
+<hr/>
+<?php
+echo $this->Markdown->transform($project->description);
+$this->end();
+
+echo $this->element('layouts/defaultview');

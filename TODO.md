@@ -31,10 +31,10 @@ User
     Act        [x]       [x]       [x]       [ ]
 
 Admin
-  Lock         [x]       [x]       [ ]       [ ]
-  Index        [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]
-  View         [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]
-  Lock/Del.    [x]       [x]       [ ]       [ ]
+  Lock         [x]       [x]       [x]       [ ]
+  Index        [x] [x]   [x] [x]   [x] [x]   [ ] [ ]
+  View         [x] [x]   [x] [x]   [x] [x]   [ ] [ ]
+  Lock/Del.    [x]       [x]       [x]       [ ]
 ```
 
 ## Others
@@ -74,5 +74,16 @@ Admin
   - [ ] Translate menus
   - [ ] Delete unused views
   - [ ] Review error messages on login
+
 ### On free time
   - [x] Check for fields in models comments
+
+## Notes
+
+### Posts
+  - [ ] Add filters on admin/index view
+### Projects
+### Files
+### Users
+### Licenses
+### Tags
