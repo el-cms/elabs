@@ -16,6 +16,7 @@ class PostsController extends AdminAppController
     {
         parent::beforeRender($event);
         $this->viewBuilder()->helpers(['ItemsAdmin']);
+        $this->viewBuilder()->helpers(['License']);
     }
 
     /**
@@ -75,7 +76,7 @@ class PostsController extends AdminAppController
                 break;
             case 'remove':
                 $bit=3;
-                $this->Act->remove($id);
+                $this->Act->remove($id, 'Posts', false);
                 break;
             default:
                 $bit=2;
