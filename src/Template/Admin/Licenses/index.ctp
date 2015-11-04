@@ -2,12 +2,9 @@
 $this->assign('title', __d('licenses', 'Licenses'));
 
 $this->start('pageActionsMenu');
-?>
-<ul class="side-nav">
-    <li><?php echo $this->Html->link(__('New License'), ['action' => 'add']) ?></li>
-</ul>
-<?php
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New license']), ['action' => 'add'], ['class' => 'btn btn-green waves-attach waves-button waves-effect', 'escape' => false]);
 $this->end();
+
 $this->start('pageContent');
 ?>
 <table class="table table-condensed">
@@ -34,10 +31,25 @@ $this->start('pageContent');
                     <td><?php echo h($license->post_count) ?></td>
                     <td><?php echo h($license->project_count) ?></td>
                     <td><?php echo h($license->file_count) ?></td>
-                    <td class="actions">
-                        <?php echo $this->Html->link(__('View'), ['action' => 'view', $license->id]) ?>
-                        <?php echo $this->Html->link(__('Edit'), ['action' => 'edit', $license->id]) ?>
-                        <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id)]) ?>
+                    <td class="padding-no">
+                        <ul  class="margin-no nav nav-list">
+                            <li>
+                                <?php
+                                echo $this->Html->link('<span class="fa fa-pencil" title="' . __d('admin', 'Edit') . '"></span>', ['action' => 'edit', $license->id], [
+                                    'class' => 'text-sec waves-attach waves-effect',
+                                    'escape' => false
+                                ]);
+                                ?>
+                            </li>
+                            <li>
+                                <?php
+                                echo $this->Form->postLink('<span class="fa fa-trash" title="' . __d('admin', 'Delete') . '"></span>', ['action' => 'delete', $license->id], [
+                                    'confirm' => __('Are you sure you want to delete # {0}?', $license->id),
+                                    'class' => 'text-sec waves-attach waves-effect',
+                                    'escape' => false])
+                                ?>
+                            </li>
+                        </ul>
                     </td>
                 </tr>
                 <?php

@@ -8,12 +8,17 @@ $formTemplate = [
 ];
 echo $this->Form->create($license);
 $this->Form->templates($formTemplate);
+$linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect', 'escape' => false];
 ?>
 <div class="col-sm-3">
-    <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('List licenses'), ['action' => 'index']) ?></li>
-    </ul>
+    <div class="side-menu">
+        <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
+        <div class="side-menu-content">
+            <ul>
+                <li><?php echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['action' => 'index'], $linkOptions) ?></li>
+            </ul>
+        </div>
+    </div>
 </div>
 <div class="col-sm-6">
     <?php

@@ -6,17 +6,28 @@ $formTemplate = [
     'checkboxContainer' => '<div class="form-group"><div class="checkbox switch">{{content}}</div></div>',
     'submitContainer' => '{{content}}',
 ];
+
+$linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect', 'escape' => false];
 ?>
 <div class="col-sm-3">
-    <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-    <ul class="side-nav">
-        <li><?php
+    <div class="side-menu">
+        <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
+        <div class="side-menu-content">
+            <?php
             echo $this->Form->postLink(
-                    __('Delete'), ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id)]
+                    __('Delete'), ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-red waves-attach waves-button waves-effect']
             )
             ?></li>
-        <li><?php echo $this->Html->link(__('List Licenses'), ['action' => 'index']) ?></li>
-    </ul>
+        </div>
+    </div>
+    <div class="side-menu">
+        <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
+        <div class="side-menu-content">
+            <ul>
+                <li><?php echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['action' => 'index'], $linkOptions) ?></li>
+            </ul>
+        </div>
+    </div>
 </div>
 <?php
 echo $this->Form->create($license);

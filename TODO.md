@@ -31,10 +31,10 @@ User
     Act        [x]       [x]       [x]       [ ]
 
 Admin
-  Lock         [x]       [ ]       [ ]       [ ]
+  Lock         [x]       [x]       [ ]       [ ]
   Index        [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]
-  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-  Lock/Del.    [ ]       [ ]       [ ]       [ ]
+  View         [x] [x]   [x] [x]   [ ] [ ]   [ ] [ ]
+  Lock/Del.    [x]       [x]       [ ]       [ ]
 ```
 
 ## Others
@@ -45,9 +45,9 @@ Validations    [ ]
                 C   V
 Admin
   Add          [x]
-  Edit         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
+  Edit         [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
   Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ]
+  View                   [ ] [ ]   [ ] [ ]   [ ] [ ]
   Delete       [x]       [ ]       [ ]       [ ]
 ```
 
