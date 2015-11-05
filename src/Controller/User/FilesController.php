@@ -11,6 +11,14 @@ use App\Controller\AppController;
  */
 class FilesController extends UserAppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('UpManager');
+        $this->loadComponent('SimpleImage');
+    }
+
     /**
      * Index method
      *
@@ -50,16 +58,56 @@ class FilesController extends UserAppController
     {
         $file = $this->Files->newEntity();
         if ($this->request->is('post')) {
-            $file = $this->Files->patchEntity($file, $this->request->data);
-            if ($this->Files->save($file)) {
-                $this->Flash->success(__('The file has been saved.'));
-                return $this->redirect(['action' => 'index']);
+            $fileInfos = $this->request->data['file'];
+            $pathInfo = pathinfo($fileInfos['name']);
+
+            // Checking file :
+            if (!$this->UpManager->checkFileType($pathInfo['extension'])) {
+                $this->Flash->error(__d('files', 'This filetype is not allowed.'));
+            } elseif (!$this->UpManager->checkFileSize($fileInfos['size'])) {
+                $this->Flash->error(__d('files', 'File is too long. Max file size is {0}Kb', $this->UpManager->maxSize / 1024));
             } else {
-                $this->Flash->error(__('The file could not be saved. Please, try again.'));
+
+                // Saving file and preparing the db infos
+                $fileItem = [
+                    'name' => $fileInfos['name'],
+                    'filename' => $this->UpManager->makeFileName($pathInfo['extension']),
+                    'weight' => $fileInfos['size'],
+                    'description' => $this->request->data['description'],
+                    'sfw' => $this->request->data['sfw'],
+                    'user_id' => $this->Auth->user('id'),
+                    'license_id' => $this->request->data['license_id']
+                ];
+
+                if (in_array($pathInfo['extension'], $this->UpManager->accepted['image'])) {
+                    $this->UpManager->preparePath('thumb');
+                    // Make some thumbs
+                    $this->SimpleImage->load($fileInfos['tmp_name']);
+                    $this->SimpleImage->resizeToWidth('200');
+                    // Save and return errors if any
+                    if (!$this->SimpleImage->save($this->UpManager->currentThumbPath . DS . $fileItem['filename'])) {
+                        $this->Flash->error(__d('files', 'The thumbnail could not be saved in the destination folder. Please, try again.'));
+                    }
+                }
+                
+                // Save the uploaded file
+                $this->UpManager->preparePath('file');
+
+                if (!move_uploaded_file($fileInfos['tmp_name'], $this->UpManager->currentFilePath . DS . $fileItem['filename'])) {
+                    $this->Flash->error(__d('files', 'The file could not be saved in the destination folder. Please, try again.'));
+                } else {
+                    $file = $this->Files->patchEntity($file, $fileItem);
+                    if ($this->Files->save($file)) {
+                        $this->Flash->success(__d('files', 'The file has been saved.'));
+                        return $this->redirect(['action' => 'manage']);
+                    } else {
+                        $this->Flash->error(__d('elabs', 'The file could not be saved. Please, try again.'));
+                    }
+                }
             }
         }
-        $users = $this->Files->Users->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'users'));
+        $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
+        $this->set(compact('file', 'licenses'));
         $this->set('_serialize', ['file']);
     }
 

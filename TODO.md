@@ -77,13 +77,16 @@ Admin
 
 ### On free time
   - [x] Check for fields in models comments
+  - [ ] Check if add() action don't have unecessary find() 
 
 ## Notes
 
 ### Posts
   - [ ] Add filters on admin/index view
+
 ### Projects
 ### Files
+  - [ ] Create an empty index.html in created dirs (UpManagerComponent)
 ### Users
 ### Licenses
 ### Tags
