@@ -11,7 +11,7 @@
 
 # Gravatar plugin
 cd plugins
-wget https://github.com/el-cms/cakephp-gravatar-plugin/archive/Cake-3.X.zip
+wget https://github.com/LowG33kDev/cakephp-gravatar-plugin/archive/Cake-3.X.zip 
 unzip Cake-3.X.zip
 mv cakephp-gravatar-plugin-Cake-3.X Gravatar
 rm Cake-3.X.zip
