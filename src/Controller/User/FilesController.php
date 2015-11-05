@@ -99,6 +99,7 @@ class FilesController extends UserAppController
                     $file = $this->Files->patchEntity($file, $fileItem);
                     if ($this->Files->save($file)) {
                         $this->Flash->success(__d('files', 'The file has been saved.'));
+                        $this->Act->add($file->id, 'add', 'Files');
                         return $this->redirect(['action' => 'manage']);
                     } else {
                         $this->Flash->error(__d('elabs', 'The file could not be saved. Please, try again.'));
