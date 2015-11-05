@@ -4,6 +4,10 @@
 /tmp/*
 /logs/*
 
+# Upload dir
+/webroot/files/thumbs
+/webroot/files/20*
+
 # Netbeans IDE project dir
 /nbproject/private/
 
