@@ -29,7 +29,7 @@ class FilesController extends AppController
                 'Licenses' => ['fields' => ['id', 'name', 'icon']]
             ],
             'order' => ['created' => 'desc'],
-            'sortWhitelist' => ['created', 'name'],
+            'sortWhitelist' => ['created', 'name', 'modified'],
         ];
         if (!$this->request->session()->read('see_nsfw')) {
             $findOptions['conditions']['sfw'] = true;

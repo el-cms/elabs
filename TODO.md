@@ -12,8 +12,8 @@ Public
     Published            [x] [x]
     Filters    [ ]       [ ] [ ]   [ ] [ ]   [ ] [ ]   [x] [x]
     Order      [x]       [x] [x]   [x] [x]   [x] [x]   [x] [x]
-  View         [x] [x]   [x] [x]   [x] [x]   [ ] [ ]   
-    SFW                  [x] [x]   [x] [x]   [ ] [ ]   
+  View         [x] [x]   [x] [x]   [x] [x]   [x] [x]   
+    SFW                  [x] [x]   [x] [x]   [x] [x]   
     Published            [x] [x]
 
 User
@@ -75,10 +75,13 @@ Admin
   - [ ] Translate menus
   - [ ] Delete unused views
   - [ ] Review error messages on login
+  - [ ] Create reports support
+  - [ ] Check for all licenses links using the helper
 
 ### On free time
   - [x] Check for fields in models comments
-  - [ ] Check if add() action don't have unecessary find() 
+  - [ ] Check if add() action don't have unecessary find()
+  - [ ] Write tests
 
 ## Notes
 
