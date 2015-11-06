@@ -22,7 +22,7 @@ class UpManagerComponent extends Component
     ];
     public $maxSize = 1024 * 1024 * 3;
     public $filePath = '{DS}{y}{DS}{m}';
-    public $thumbPath = '{DS}thumbs{DS}{y}{DS}{m}';
+    public $thumbPath = 'thumbs{DS}{y}{DS}{m}';
     public $baseDir = 'uploads';
     // ^ to here ^
     public $currentFilePath;
@@ -91,10 +91,10 @@ class UpManagerComponent extends Component
                 $this->currentThumbPath = preg_replace("@\{$k\}@", $v, $this->currentThumbPath);
             }
             // Path for DB (url-friendly)
-            $this->currentThumbPathForDB=preg_replace("@\{DS}@", '/', $this->currentThumbPath);
+            $this->currentThumbPathForDB = preg_replace("@\{DS}@", '/', $this->currentThumbPath);
             // Path for files on FS
-            $this->currentThumbPath=preg_replace("@\{DS}@", DS, $this->currentThumbPath);
-            new Folder(WWW_ROOT . $this->baseDir . $this->currentThumbPath, true, '0755');
+            $this->currentThumbPath = preg_replace("@\{DS}@", DS, $this->currentThumbPath);
+            new Folder(WWW_ROOT . $this->baseDir . DS . $this->currentThumbPath, true, '0755');
             return $this->currentThumbPathForDB;
         } elseif ($type === 'file') {
             $this->currentFilePath = $this->filePath;
@@ -103,10 +103,10 @@ class UpManagerComponent extends Component
                 $this->currentFilePath = preg_replace("@\{$k\}@", $v, $this->currentFilePath);
             }
             // Path for DB (url-friendly)
-            $this->currentFilePathForDB=preg_replace("@\{DS}@", '/', $this->currentFilePath);
+            $this->currentFilePathForDB = preg_replace("@\{DS}@", '/', $this->currentFilePath);
             // Path for files on FS
-            $this->currentFilePath=preg_replace("@\{DS}@", DS, $this->currentFilePath);
-            new Folder(WWW_ROOT . $this->baseDir . $this->currentFilePath, true, '0755');
+            $this->currentFilePath = preg_replace("@\{DS}@", DS, $this->currentFilePath);
+            new Folder(WWW_ROOT . $this->baseDir . DS . $this->currentFilePath, true, '0755');
             return $this->currentFilePathForDB;
         }
     }
