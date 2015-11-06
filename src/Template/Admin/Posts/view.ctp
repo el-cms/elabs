@@ -37,7 +37,7 @@ $linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-ef
         elseif ($post->status === 1):
             echo $this->Html->link($lockIcon, ['action' => 'changeState', $post->id, 'lock'], $linkConfig);
         else:
-            echo $this->Html->link($lockIcon, '#',['class'=>'btn btn-flat disabled', 'escape'=>false]);
+            echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-flat disabled', 'escape' => false]);
         endif;
         ?>
     </li>
@@ -62,8 +62,9 @@ echo $this->Markdown->transform($post->excerpt)
 ?>
 <hr/>
 <?php echo $this->Markdown->transform($post->text); ?>
-</div>
+<div class="content-sub-heading"><?php echo __d('elabs', 'Related items') ?></div>
 <?php
+echo $this->element('layout/dev_block');
 $this->end();
 
 echo $this->element('layouts/defaultview');

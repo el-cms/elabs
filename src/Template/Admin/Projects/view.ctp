@@ -63,6 +63,10 @@ echo $this->Markdown->transform($project->short_description);
 <hr/>
 <?php
 echo $this->Markdown->transform($project->description);
+?>
+<div class="content-sub-heading"><?php echo __d('elabs', 'Related items') ?></div>
+<?php
+echo $this->element('layout/dev_block');
 $this->end();
 
 echo $this->element('layouts/defaultview');
