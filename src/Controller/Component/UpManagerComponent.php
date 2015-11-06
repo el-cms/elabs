@@ -12,6 +12,8 @@ use Cake\Filesystem\File;
 class UpManagerComponent extends Component
 {
     public $components = ['Auth'];
+    
+    // This should be moved in config file from here
     public $accepted = [
         'image' => ['jpg', 'jpeg', 'png', 'gif'],
         'audio' => ['mp3', 'ogg'],
@@ -21,8 +23,9 @@ class UpManagerComponent extends Component
     ];
     public $maxSize = 1024 * 1024 * 3;
     public $filePath = WWW_ROOT . 'uploads' . DS . '{y}' . DS . '{m}';
-    public $currentFilePath;
     public $thumbPath = WWW_ROOT . 'uploads' . DS . 'thumbs' . DS . '{y}' . DS . '{m}';
+    // ^ to here ^
+    public $currentFilePath;
     public $currentThumbPath;
 
     /**
