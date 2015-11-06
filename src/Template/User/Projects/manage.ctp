@@ -18,7 +18,7 @@ $inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
 $clear = ['<span class="fa fa-fw fa-times"></span>'];
 
 
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['all', $filterStatus], $options);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['all', 'all'], $options);
 ?>
 <hr/>
 <ul>
