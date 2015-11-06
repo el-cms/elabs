@@ -8814,15 +8814,18 @@ pre code {
   .card-full audio {
     padding-top: 16px;
     width: 100%; }
+  /* line 11, ../../Sources/Sass/frontend/components/_cards.scss */
+  .card-full img {
+    width: 100%; }
 
-/* line 13, ../../Sources/Sass/frontend/components/_cards.scss */
+/* line 16, ../../Sources/Sass/frontend/components/_cards.scss */
 .card-description {
   font-size: 0.9em;
   margin: 0px;
   padding: 16px;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.12); }
 
-/* line 21, ../../Sources/Sass/frontend/components/_cards.scss */
+/* line 24, ../../Sources/Sass/frontend/components/_cards.scss */
 .card-sub pre {
   overflow-x: hidden; }
 
@@ -8849,8 +8852,11 @@ ul.card-inner-list {
   .tile-full audio {
     padding-top: 16px;
     width: 100%; }
+  /* line 11, ../../Sources/Sass/frontend/components/_tiles.scss */
+  .tile-full img {
+    width: 100%; }
 
-/* line 13, ../../Sources/Sass/frontend/components/_tiles.scss */
+/* line 16, ../../Sources/Sass/frontend/components/_tiles.scss */
 .tile-sub pre {
   overflow-x: hidden; }
 
