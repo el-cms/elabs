@@ -20,9 +20,9 @@ class UpManagerComponent extends Component
         'other' => ['blend', 'dwg', 'dxf', 'sql']
     ];
     public $maxSize = 1024 * 1024 * 3;
-    public $filePath = WWW_ROOT . 'files' . DS . '{y}' . DS . '{m}';
+    public $filePath = WWW_ROOT . 'uploads' . DS . '{y}' . DS . '{m}';
     public $currentFilePath;
-    public $thumbPath = WWW_ROOT . 'files' . DS . 'thumbs' . DS . '{y}' . DS . '{m}';
+    public $thumbPath = WWW_ROOT . 'uploads' . DS . 'thumbs' . DS . '{y}' . DS . '{m}';
     public $currentThumbPath;
 
     /**
