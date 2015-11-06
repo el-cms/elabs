@@ -63,6 +63,7 @@ class FilesController extends UserAppController
         if ($this->request->is('post')) {
             $fileInfos = $this->request->data['file'];
             $pathInfo = pathinfo($fileInfos['name']);
+            $finalFileName=$this->UpManager->makeFileName($pathInfo['extension']);
 
             // Checking file :
             if (!$this->UpManager->checkFileType($pathInfo['extension'])) {
@@ -77,13 +78,13 @@ class FilesController extends UserAppController
                     $this->SimpleImage->load($fileInfos['tmp_name']);
                     $this->SimpleImage->resizeToWidth('200');
                     // Save and return errors if any
-                    if (!$this->SimpleImage->save(WWW_ROOT . $this->UpManager->baseDir . $this->UpManager->currentThumbPath . DS . $fileItem['filename'])) {
+                    if (!$this->SimpleImage->save(WWW_ROOT . $this->UpManager->baseDir . $this->UpManager->currentThumbPath . DS . $finalFileName)) {
                         $this->Flash->error(__d('files', 'The thumbnail could not be saved in the destination folder. Please, try again.'));
                     }
                 }
 
                 //Creates folder and return final file path
-                $currentFilePath = $this->UpManager->preparePath('file') . DS . $this->UpManager->makeFileName($pathInfo['extension']);
+                $currentFilePath = $this->UpManager->preparePath('file') . DS . $finalFileName;
                 $fileItem = [
                     'name' => $fileInfos['name'],
                     'filename' => $currentFilePath,
