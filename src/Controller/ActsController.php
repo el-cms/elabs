@@ -28,25 +28,25 @@ class ActsController extends AppController
      */
     public $findCardOptions = [
         'Posts' => [
-            'fields' => ['id', 'title', 'excerpt', 'sfw', 'publication_date', 'modified'],
+            'fields' => ['id', 'title', 'excerpt', 'sfw', 'publication_date', 'modified', 'license_id'],
             'conditions' => [
                 'status' => 1,
             ],
-            'contain' => 'Licenses',
+            'contain' => ['Licenses' => ['fields' => ['id', 'name', 'icon']]],
         ],
         'Projects' => [
-            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'short_description'],
+            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'short_description', 'license_id'],
             'conditions' => [
                 'status' => 1,
             ],
-            'contain' => 'Licenses',
+            'contain' => ['Licenses' => ['fields' => ['id', 'name', 'icon']]],
         ],
         'Files' => [
-            'fields' => ['id', 'name', 'filename', 'descripiton', 'modified'],
+            'fields' => ['id', 'name', 'sfw', 'filename', 'description', 'created', 'modified', 'license_id', 'mime'],
             'conditions' => [
                 'status' => 1,
             ],
-            'contain' => 'Licenses',
+            'contain' => ['Licenses' => ['fields' => ['id', 'name', 'icon']]],
         ]
     ];
 
@@ -68,7 +68,7 @@ class ActsController extends AppController
             ],
         ],
         'Files' => [
-            'fields' => ['id', 'name', 'modified'],
+            'fields' => ['id', 'title' => 'name', 'modified'],
             'conditions' => [
                 'status' => 1,
             ],
@@ -91,7 +91,7 @@ class ActsController extends AppController
                 'delete' => __d('acts', 'has been removed'),
             ],
             'models' => [
-//						'Files' => __d('files', 'File'),
+                'Files' => __d('files', 'File'),
                 'Posts' => __d('posts', 'Article'),
                 'Projects' => __d('projects', 'Project'),
             ]
@@ -127,10 +127,10 @@ class ActsController extends AppController
         $acts = $this->paginate($this->Acts);
 
         // SFW state
-        $sfw = [];
-        if (!$this->request->session()->read('see_nsfw')) {
-            $sfw['conditions']['sfw'] = true;
-        }
+//        $sfw = false;
+//        if (!$this->request->session()->read('see_nsfw')) {
+//            $sfw = true;
+//        }
         // Get items content
         $itemsContent = [];
         foreach ($this->paginate() as $item) {
@@ -144,7 +144,9 @@ class ActsController extends AppController
             // Additionnal conditions
             $options['conditions'][$item['model'] . '.id'] = $item['fkid'];
             //Sfw option:
-            $options = array_merge($sfw, $options);
+//            if($sfw){
+//                $options['conditions']['sfw']=true;
+//            }
             $itemsContent[$item['id']] = $this->$item['model']->find('all', $options)->first();
         }
 

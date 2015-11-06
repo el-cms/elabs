@@ -1,4 +1,7 @@
 <?php
+$this->loadHelper('Items');
+$this->loadHelper('License');
+
 $this->assign('title', __d('acts', 'Recent activity'));
 
 // Pagination order links
