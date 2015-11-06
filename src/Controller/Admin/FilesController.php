@@ -2,15 +2,23 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AdminAppController;
 
 /**
  * Files Controller
  *
  * @property \App\Model\Table\FilesTable $Files
  */
-class FilesController extends AppController
+class FilesController extends AdminAppController
 {
+
+    public function beforeRender(\Cake\Event\Event $event)
+    {
+        parent::beforeRender($event);
+        $this->viewBuilder()->helpers(['ItemsAdmin']);
+        $this->viewBuilder()->helpers(['License']);
+    }
+
     /**
      * Index method
      *
@@ -19,7 +27,11 @@ class FilesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users']
+            'fields' => ['id', 'name', 'filename', 'weight', 'filename', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+            ]
         ];
         $this->set('files', $this->paginate($this->Files));
         $this->set('_serialize', ['files']);
@@ -42,69 +54,53 @@ class FilesController extends AppController
     }
 
     /**
-     * Add method
-     *
-     * @return void Redirects on successful add, renders view otherwise.
+     * Changes a file's status.
+     * 
+     * @param int $id
+     * @param string $state The new state (lock, unlock or remove)
+     * @return void
      */
-    public function add()
+    public function changeState($id, $state = 'lock')
     {
-        $file = $this->Files->newEntity();
-        if ($this->request->is('post')) {
-            $file = $this->Files->patchEntity($file, $this->request->data);
-            if ($this->Files->save($file)) {
-                $this->Flash->success(__('The file has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The file could not be saved. Please, try again.'));
-            }
+        switch ($state) {
+            case 'lock':
+                $successMessage = __d('users', 'The file has been locked.');
+                $this->Act->remove($id);
+                $bit = 2;
+                break;
+            case 'unlock':
+                $successMessage = __d('users', 'The file has been unlocked.');
+                // TODO: there's something to do with re-publishing things
+                $bit = 1;
+                break;
+            case 'remove':
+                $successMessage = __d('users', 'The file has been removed.');
+                $bit = 3;
+                $this->Act->remove($id, 'Files', false);
+                break;
+            default:
+                $successMessage = __d('users', 'The file has been locked.');
+                $bit = 2;
         }
-        $users = $this->Files->Users->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'users'));
-        $this->set('_serialize', ['file']);
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id File id.
-     * @return void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
         $file = $this->Files->get($id, [
-            'contain' => []
+            'fields' => ['id', 'status']
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $file = $this->Files->patchEntity($file, $this->request->data);
-            if ($this->Files->save($file)) {
-                $this->Flash->success(__('The file has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The file could not be saved. Please, try again.'));
+        $file->status = $bit;
+        if ($this->Files->save($file)) {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Success($successMessage);
+            }
+        } else {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Error(__d('users', 'An error occured'));
             }
         }
-        $users = $this->Files->Users->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'users'));
+        $this->set('file', $file);
         $this->set('_serialize', ['file']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id File id.
-     * @return void Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $file = $this->Files->get($id);
-        if ($this->Files->delete($file)) {
-            $this->Flash->success(__('The file has been deleted.'));
-        } else {
-            $this->Flash->error(__('The file could not be deleted. Please, try again.'));
+        // Ready fo ajax calls
+        // TODO : ajax action in index view
+        if (!$this->request->is('ajax')) {
+            $this->redirect(['action' => 'index']);
         }
-        return $this->redirect(['action' => 'index']);
     }
 }
