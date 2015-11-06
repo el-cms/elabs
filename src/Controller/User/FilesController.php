@@ -64,25 +64,12 @@ class FilesController extends UserAppController
             $fileInfos = $this->request->data['file'];
             $pathInfo = pathinfo($fileInfos['name']);
 
-            debug($fileInfos);
-            die;
             // Checking file :
             if (!$this->UpManager->checkFileType($pathInfo['extension'])) {
                 $this->Flash->error(__d('files', 'This filetype is not allowed.'));
             } elseif (!$this->UpManager->checkFileSize($fileInfos['size'])) {
                 $this->Flash->error(__d('files', 'File is too long. Max file size is {0}Kb', $this->UpManager->maxSize / 1024));
             } else {
-
-                // Saving file and preparing the db infos
-                $fileItem = [
-                    'name' => $fileInfos['name'],
-                    'filename' => $this->UpManager->makeFileName($pathInfo['extension']),
-                    'weight' => $fileInfos['size'],
-                    'description' => $this->request->data['description'],
-                    'sfw' => $this->request->data['sfw'],
-                    'user_id' => $this->Auth->user('id'),
-                    'license_id' => $this->request->data['license_id']
-                ];
 
                 if (in_array($pathInfo['extension'], $this->UpManager->accepted['image'])) {
                     $this->UpManager->preparePath('thumb');
@@ -94,11 +81,21 @@ class FilesController extends UserAppController
                         $this->Flash->error(__d('files', 'The thumbnail could not be saved in the destination folder. Please, try again.'));
                     }
                 }
-
-                // Save the uploaded file
-                $this->UpManager->preparePath('file');
-
-                if (!move_uploaded_file($fileInfos['tmp_name'], $this->UpManager->currentFilePath . DS . $fileItem['filename'])) {
+                
+                //Creates folder and return final file path
+                $currentFilePath=$this->UpManager->preparePath('file') . DS . $this->UpManager->makeFileName($pathInfo['extension']);
+                $fileItem = [
+                    'name' => $fileInfos['name'],
+                    'filename' => $currentFilePath,
+                    'weight' => $fileInfos['size'],
+                    'mime' => $fileInfos['type'],
+                    'description' => $this->request->data['description'],
+                    'sfw' => $this->request->data['sfw'],
+                    'user_id' => $this->Auth->user('id'),
+                    'license_id' => $this->request->data['license_id']
+                ];
+                
+                if (!move_uploaded_file($fileInfos['tmp_name'], WWW_ROOT.$currentFilePath)) {
                     $this->Flash->error(__d('files', 'The file could not be saved in the destination folder. Please, try again.'));
                 } else {
                     $file = $this->Files->patchEntity($file, $fileItem);
@@ -167,10 +164,10 @@ class FilesController extends UserAppController
         ]);
         if ($this->Files->delete($file)) {
             //@todo Insert some logic to delete the files phisically too
-            $this->Flash->success(__d('files','The file has been deleted.'));
+            $this->Flash->success(__d('files', 'The file has been deleted.'));
             $this->Act->remove($id);
         } else {
-            $this->Flash->error(__d('files','The file could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('files', 'The file could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
     }

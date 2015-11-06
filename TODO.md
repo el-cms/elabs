@@ -91,6 +91,8 @@ Admin
 ### Projects
 ### Files
   - [ ] Create an empty index.html in created dirs (UpManagerComponent)
+  - [ ] Use File::mime() to get mimetype of an uploaded file
+  - [ ] Save the mimetype
 ### Users
 ### Licenses
 ### Tags

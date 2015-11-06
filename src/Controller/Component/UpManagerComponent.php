@@ -12,7 +12,6 @@ use Cake\Filesystem\File;
 class UpManagerComponent extends Component
 {
     public $components = ['Auth'];
-    
     // This should be moved in config file from here
     public $accepted = [
         'image' => ['jpg', 'jpeg', 'png', 'gif'],
@@ -22,8 +21,8 @@ class UpManagerComponent extends Component
         'other' => ['blend', 'dwg', 'dxf', 'sql']
     ];
     public $maxSize = 1024 * 1024 * 3;
-    public $filePath = WWW_ROOT . 'uploads' . DS . '{y}' . DS . '{m}';
-    public $thumbPath = WWW_ROOT . 'uploads' . DS . 'thumbs' . DS . '{y}' . DS . '{m}';
+    public $filePath = 'uploads' . DS . '{y}' . DS . '{m}';
+    public $thumbPath = 'uploads' . DS . 'thumbs' . DS . '{y}' . DS . '{m}';
     // ^ to here ^
     public $currentFilePath;
     public $currentThumbPath;
@@ -60,7 +59,7 @@ class UpManagerComponent extends Component
      * size allowed
      * 
      * @param int $size File size
-     * @return boolean
+     * @return string Created path
      */
     public function checkFileSize($size)
     {
@@ -81,13 +80,15 @@ class UpManagerComponent extends Component
             foreach ($data as $k => $v) {
                 $this->currentThumbPath = preg_replace("@\{$k\}@", $v, $this->currentThumbPath);
             }
-            new Folder($this->currentThumbPath, true, '0755');
+            new Folder(WWW_ROOT . $this->currentThumbPath, true, '0755');
+            return $this->currentThumbPath;
         } elseif ($type === 'file') {
             $this->currentFilePath = $this->filePath;
             foreach ($data as $k => $v) {
                 $this->currentFilePath = preg_replace("@\{$k\}@", $v, $this->currentFilePath);
             }
-            new Folder($this->currentFilePath, true, '0755');
+            new Folder(WWW_ROOT . $this->currentFilePath, true, '0755');
+            return $this->currentFilePath;
         }
     }
 //    public function path(){
