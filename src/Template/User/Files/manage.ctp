@@ -1,53 +1,117 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?php echo __('Actions') ?></li>
-        <li><?php echo $this->Html->link(__('New File'), ['action' => 'add']) ?></li>
-        <li><?php echo $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?php echo $this->Html->link(__('List Itemfiles'), ['controller' => 'Itemfiles', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__('New Itemfile'), ['controller' => 'Itemfiles', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="files index large-9 medium-8 columns content">
-    <h3><?php echo __('Files') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th><?php echo $this->Paginator->sort('id') ?></th>
-                <th><?php echo $this->Paginator->sort('name') ?></th>
-                <th><?php echo $this->Paginator->sort('filename') ?></th>
-                <th><?php echo $this->Paginator->sort('weight') ?></th>
-                <th><?php echo $this->Paginator->sort('description') ?></th>
-                <th><?php echo $this->Paginator->sort('created') ?></th>
-                <th><?php echo $this->Paginator->sort('modified') ?></th>
-                <th class="actions"><?php echo __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($files as $file): ?>
-            <tr>
-                <td><?php echo $this->Number->format($file->id) ?></td>
-                <td><?php echo h($file->name) ?></td>
-                <td><?php echo h($file->filename) ?></td>
-                <td><?php echo $this->Number->format($file->weight) ?></td>
-                <td><?php echo h($file->description) ?></td>
-                <td><?php echo h($file->created) ?></td>
-                <td><?php echo h($file->modified) ?></td>
-                <td class="actions">
-                    <?php echo $this->Html->link(__('View'), ['action' => 'view', $file->id]) ?>
-                    <?php echo $this->Html->link(__('Edit'), ['action' => 'edit', $file->id]) ?>
-                    <?php echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $file->id], ['confirm' => __('Are you sure you want to delete # {0}?', $file->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?php echo $this->Paginator->prev('< ' . __('previous')) ?>
-            <?php echo $this->Paginator->numbers() ?>
-            <?php echo $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?php echo $this->Paginator->counter() ?></p>
+<?php
+$this->assign('title', __d('posts', 'Your files'));
+
+$this->start('pageOrderMenu');
+?>
+<ul class="dropdown-menu nav">
+    <li><?= $this->Paginator->sort('name') ?></li>
+    <li><?= $this->Paginator->sort('weight') ?></li>
+    <li><?= $this->Paginator->sort('created') ?></li>
+    <li><?= $this->Paginator->sort('modified') ?></li>
+</ul>
+<?php
+$this->end();
+
+$this->start('pageFiltersMenu');
+$options = ['escape' => false];
+$active = ['<span class="fa fa-fw fa-check-circle-o"></span>'];
+$inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
+$clear = ['<span class="fa fa-fw fa-times"></span>'];
+
+
+echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['all', 'all'], $options);
+?><ul>
+    <li>
+        <?php
+        $icon = ($filterNSFW === 'all') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Show all', $icon), ['all', $filterStatus], $options);
+        ?>
+    </li>
+    <li>
+        <?php
+        $icon = ($filterNSFW === 'safe') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Only safe files', $icon), ['safe', $filterStatus], $options);
+        ?>
+    </li>
+    <li>
+        <?php
+        $icon = ($filterNSFW === 'unsafe') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Only unsafe files', $icon), ['unsafe', $filterStatus], $options);
+        ?>
+    </li>
+</ul>
+<hr />
+<ul>
+    <li>
+        <?php
+        $icon = ($filterStatus === 'all') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Show all', $icon), [$filterNSFW, 'all'], $options);
+        ?>
+    </li>
+    <li>
+        <?php
+        $icon = ($filterStatus === 'locked') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Only locked files', $icon), [$filterNSFW, 'locked'], $options);
+        ?>
+    </li>
+</ul>
+
+<?php
+$this->end();
+
+$this->start('pageActionsMenu');
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'Add a file']), ['action' => 'add'], ['class' => 'btn btn-green waves-attach waves-button waves-effect', 'escape' => false]);
+$this->end();
+
+$this->start('pageContent');
+if (!$files->isEmpty()):
+    ?>
+
+    <div class="tile-wrap" id="tiles-files">
+        <?php
+        foreach ($files as $file):
+            $config = $this->Items->fileConfig($file['filename']);
+            echo $this->element('files/tile_userindex', ['tileId' => 'tiles-files', 'file' => $file, 'config'=>$config]);
+        endforeach;
+        ?>
     </div>
+
+    <?php
+else:
+    echo $this->element('layout/empty');
+endif;
+$this->end();
+
+echo $this->element('layouts/defaultindex');
+/*<h3><? = __('Files')
+?></h3>
+<table cellpadding="0" cellspacing="0">
+    <tbody>
+<?php foreach ($files as $file): ?>
+        <tr>
+            <td><?= $this->Number->format($file->id) ?></td>
+            <td><?= h($file->name) ?></td>
+            <td><?= h($file->filename) ?></td>
+            <td><?= $this->Number->format($file->weight) ?></td>
+            <td><?= h($file->description) ?></td>
+            <td><?= h($file->created) ?></td>
+            <td><?= h($file->modified) ?></td>
+            <td class="actions">
+                <?= $this->Html->link(__('View'), ['action' => 'view', $file->id]) ?>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $file->id]) ?>
+<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $file->id], ['confirm' => __('Are you sure you want to delete # {0}?', $file->id)]) ?>
+            </td>
+        </tr>
+<?php endforeach; ?>
+    </tbody>
+</table>
+<div class="paginator">
+    <ul class="pagination">
+        <?= $this->Paginator->prev('< ' . __('previous')) ?>
+        <?= $this->Paginator->numbers() ?>
+<?= $this->Paginator->next(__('next') . ' >') ?>
+    </ul>
+    <p><?= $this->Paginator->counter() ?></p>
 </div>
+</div>
+*/

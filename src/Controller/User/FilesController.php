@@ -3,6 +3,7 @@
 namespace App\Controller\User;
 
 use App\Controller\AppController;
+use Cake\Filesystem\File;
 
 /**
  * Files Controller
@@ -24,12 +25,30 @@ class FilesController extends UserAppController
      *
      * @return void
      */
-    public function manage()
+    public function manage($nsfw = 'all', $status = 'all')
     {
         $this->paginate = [
-            'contain' => ['Users']
+            'fields' => ['id', 'name', 'filename', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
+            'contain' => [
+                'Licenses' => ['fields' => ['id', 'name']]
+            ],
+            'conditions' => ['user_id' => $this->Auth->user('id')],
+            'order' => ['id' => 'desc'],
+            'sorWhiteList' => ['name', 'created', 'modified', 'weight'],
         ];
+
+        if ($nsfw === 'safe') {
+            $this->paginate['conditions']['sfw'] = 1;
+        } elseif ($nsfw === 'unsafe') {
+            $this->paginate['conditions']['sfw'] = 0;
+        }
+        if ($status === 'locked') {
+            $this->paginate['conditions']['status'] = 2;
+        }
+
         $this->set('files', $this->paginate($this->Files));
+        $this->set('filterNSFW', $nsfw);
+        $this->set('filterStatus', $status);
         $this->set('_serialize', ['files']);
     }
 
@@ -61,6 +80,8 @@ class FilesController extends UserAppController
             $fileInfos = $this->request->data['file'];
             $pathInfo = pathinfo($fileInfos['name']);
 
+            debug($fileInfos);
+            die;
             // Checking file :
             if (!$this->UpManager->checkFileType($pathInfo['extension'])) {
                 $this->Flash->error(__d('files', 'This filetype is not allowed.'));
@@ -89,7 +110,7 @@ class FilesController extends UserAppController
                         $this->Flash->error(__d('files', 'The thumbnail could not be saved in the destination folder. Please, try again.'));
                     }
                 }
-                
+
                 // Save the uploaded file
                 $this->UpManager->preparePath('file');
 
