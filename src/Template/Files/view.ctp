@@ -30,7 +30,7 @@ $config = $this->Items->fileConfig($file['filename']);
 $this->end();
 
 $this->start('pageActions');
-echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-download"></span>', __d('files', 'Download')]), '/uploads/' . $file->filename, ['escape'=>false, 'class'=>'btn btn-block btn-green']);
+echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-download"></span>', __d('files', 'Download')]), ['action'=>'download', $file->id], ['escape'=>false, 'class'=>'btn btn-block btn-green']);
 $this->end();
 
 $this->start('pageContent');

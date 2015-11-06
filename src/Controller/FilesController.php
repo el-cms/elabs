@@ -21,7 +21,7 @@ class FilesController extends AppController
     {
         $findOptions = [
             'fields' => [
-                'id', 'name', 'filename', 'weight', 'description', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id','mime',
+                'id', 'name', 'filename', 'weight', 'description', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'mime',
             ],
             'conditions' => ['Files.status' => 1],
             'contain' => [
@@ -53,5 +53,23 @@ class FilesController extends AppController
         ]);
         $this->set('file', $file);
         $this->set('_serialize', ['file']);
+    }
+
+    /**
+     * Forces user to download the file
+     * @param int $id File id
+     * @return void
+     */
+    public function download($id)
+    {
+        // TODO: do some logging, save Download counter
+
+        $file = $this->Files->get($id);
+        $this->response->file(
+                'uploads/' . $file['filename'], ['download' => true, 'name' => $file['name']]
+        );
+        // Return response object
+        // to prevent controller from trying to render a view.
+        return $this->response;
     }
 }
