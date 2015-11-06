@@ -2,12 +2,10 @@
     <thead>
         <tr>
             <th><?php echo $this->Paginator->sort('id') ?></th>
-            <th><?php echo $this->Paginator->sort('name', __d('files', 'Name')) ?></th>
+            <th><?php echo $this->Paginator->sort('name', __d('files', 'Name')) ?>/<?php echo $this->Paginator->sort('filename', __d('files', 'F.name')) ?></th>
             <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Owner')) ?></th>
-            <th><?php echo $this->Paginator->sort('filename', __d('files', 'File name')) ?></th>
             <th><?php echo $this->Paginator->sort('weight', __d('files', 'Size')) ?></th>
-            <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
-            <th><?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
+            <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?>/<?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
             <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
             <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
             <th class="actions"><?php echo __('Actions') ?></th>
@@ -17,12 +15,16 @@
         <?php foreach ($files as $file): ?>
             <tr>
                 <td><?php echo $this->Number->format($file->id) ?></td>
-                <td><?php echo h($file->name) ?></td>
+                <td>
+                    <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-font fa-fw"></span>', h($file->name)]) ?></small><br/>
+                    <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-file-o fa-fw"></span>', h($file->filename)]) ?></small>
+                </td>
                 <td><?php echo $this->Html->link(h($file->user->username), ['controller' => 'users', 'action' => 'view', $file->user->id]) ?></td>
-                <td><?php echo h($file->filename) ?></td>
                 <td><?php echo $this->Number->format($file->weight) ?></td>
-                <td><?php echo h($file->created) ?></td>
-                <td><?php echo h($file->modified) ?></td>
+                <td>
+                    <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-asterisk fa-fw"></span>', h($file->created)]) ?></small><br/>
+                    <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-refresh fa-fw"></span>', h($file->modified)]) ?></small>
+                </td>
                 <td><?php echo $this->License->d($file->license, false) ?></td>
                 <td><?php echo $this->ItemsAdmin->statusLabel($file->status) ?></td>
                 <td class="padding-no">
