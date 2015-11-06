@@ -52,7 +52,6 @@ class UsersController extends AdminAppController
     public function view($id = null)
     {
         if ($this->request->is('ajax')) {
-            die('ajax');
             $user = $this->Users->get($id, [
                 'fields' => ['id', 'username', 'realname', 'created', 'modified', 'status', 'bio', 'post_count', 'project_count', 'file_count', 'project_user_count'],
             ]);
