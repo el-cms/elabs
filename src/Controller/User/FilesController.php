@@ -77,13 +77,13 @@ class FilesController extends UserAppController
                     $this->SimpleImage->load($fileInfos['tmp_name']);
                     $this->SimpleImage->resizeToWidth('200');
                     // Save and return errors if any
-                    if (!$this->SimpleImage->save($this->UpManager->currentThumbPath . DS . $fileItem['filename'])) {
+                    if (!$this->SimpleImage->save(WWW_ROOT . $this->UpManager->baseDir . $this->UpManager->currentThumbPath . DS . $fileItem['filename'])) {
                         $this->Flash->error(__d('files', 'The thumbnail could not be saved in the destination folder. Please, try again.'));
                     }
                 }
-                
+
                 //Creates folder and return final file path
-                $currentFilePath=$this->UpManager->preparePath('file') . DS . $this->UpManager->makeFileName($pathInfo['extension']);
+                $currentFilePath = $this->UpManager->preparePath('file') . DS . $this->UpManager->makeFileName($pathInfo['extension']);
                 $fileItem = [
                     'name' => $fileInfos['name'],
                     'filename' => $currentFilePath,
@@ -94,8 +94,8 @@ class FilesController extends UserAppController
                     'user_id' => $this->Auth->user('id'),
                     'license_id' => $this->request->data['license_id']
                 ];
-                
-                if (!move_uploaded_file($fileInfos['tmp_name'], WWW_ROOT.$currentFilePath)) {
+
+                if (!move_uploaded_file($fileInfos['tmp_name'], WWW_ROOT . $this->UpManager->baseDir . $currentFilePath)) {
                     $this->Flash->error(__d('files', 'The file could not be saved in the destination folder. Please, try again.'));
                 } else {
                     $file = $this->Files->patchEntity($file, $fileItem);

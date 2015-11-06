@@ -21,8 +21,9 @@ class UpManagerComponent extends Component
         'other' => ['blend', 'dwg', 'dxf', 'sql']
     ];
     public $maxSize = 1024 * 1024 * 3;
-    public $filePath = 'uploads' . DS . '{y}' . DS . '{m}';
-    public $thumbPath = 'uploads' . DS . 'thumbs' . DS . '{y}' . DS . '{m}';
+    public $filePath = '{y}' . DS . '{m}';
+    public $thumbPath = 'thumbs' . DS . '{y}' . DS . '{m}';
+    public $baseDir = 'uploads' . DS;
     // ^ to here ^
     public $currentFilePath;
     public $currentThumbPath;
@@ -80,14 +81,14 @@ class UpManagerComponent extends Component
             foreach ($data as $k => $v) {
                 $this->currentThumbPath = preg_replace("@\{$k\}@", $v, $this->currentThumbPath);
             }
-            new Folder(WWW_ROOT . $this->currentThumbPath, true, '0755');
+            new Folder(WWW_ROOT . $this->baseDir . $this->currentThumbPath, true, '0755');
             return $this->currentThumbPath;
         } elseif ($type === 'file') {
             $this->currentFilePath = $this->filePath;
             foreach ($data as $k => $v) {
                 $this->currentFilePath = preg_replace("@\{$k\}@", $v, $this->currentFilePath);
             }
-            new Folder(WWW_ROOT . $this->currentFilePath, true, '0755');
+            new Folder(WWW_ROOT . $this->baseDir . $this->currentFilePath, true, '0755');
             return $this->currentFilePath;
         }
     }
