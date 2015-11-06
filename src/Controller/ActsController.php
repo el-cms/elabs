@@ -108,7 +108,7 @@ class ActsController extends AppController
      *
      * @return void
      */
-    public function index()
+    public function index($hidePosts = 'no', $hideProjects = 'no', $hideFiles = 'no', $hideUpdates = 'no')
     {
         $conditions = null;
         if (!$this->request->session()->read('see_nsfw')) {
@@ -124,13 +124,26 @@ class ActsController extends AppController
                 'id' => 'desc'
             ]
         ];
+
+        // Filters
+        $models = []; // Models to be displayed
+        if ($hideProjects === 'no') {
+            $models[] = 'Projects';
+        }
+        if ($hidePosts === 'no') {
+            $models[] = 'Posts';
+        }
+        if ($hideFiles === 'no') {
+            $models[] = 'Files';
+        }
+        $this->paginate['conditions']['model IN'] = $models;
+
+        if ($hideUpdates === 'yes') {
+            $this->paginate['conditions']['type'] = 'add';
+        }
+
         $acts = $this->paginate($this->Acts);
 
-        // SFW state
-//        $sfw = false;
-//        if (!$this->request->session()->read('see_nsfw')) {
-//            $sfw = true;
-//        }
         // Get items content
         $itemsContent = [];
         foreach ($this->paginate() as $item) {
@@ -144,13 +157,14 @@ class ActsController extends AppController
             // Additionnal conditions
             $options['conditions'][$item['model'] . '.id'] = $item['fkid'];
             //Sfw option:
-//            if($sfw){
-//                $options['conditions']['sfw']=true;
-//            }
             $itemsContent[$item['id']] = $this->$item['model']->find('all', $options)->first();
         }
 
         // Pass variables to view
+        $this->set('filterUpdates', $hideUpdates);
+        $this->set('filterProjects', $hideProjects);
+        $this->set('filterPosts', $hidePosts);
+        $this->set('filterFiles', $hideFiles);
         $this->set('acts', $acts);
         $this->set('items', $itemsContent);
         $this->set('config', $this->config);

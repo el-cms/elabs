@@ -16,7 +16,44 @@ $linkOptions = ['class' => 'waves-attach waves-effect'];
 </ul>
 <?php
 $this->end();
-
+$this->start('pageFiltersMenu');
+$options = ['escape' => false];
+$active = ['<span class="fa fa-fw fa-check-circle-o"></span>'];
+$inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
+?>
+<ul>
+    <li>
+        <?php
+        echo $this->Html->link(__d('elabs', 'Clear filters'), ['action'=>'index'], $options);
+        ?>
+    </li>
+    <li>
+        <?php
+        $icon = ($filterUpdates === 'yes') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide updates', $icon), [$filterPosts, $filterProjects, $filterFiles, (($filterUpdates === 'yes') ? 'no' : 'yes')], $options);
+        ?>
+    </li>
+    <li>
+        <?php
+        $icon = ($filterPosts === 'yes') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide articles', $icon), [(($filterPosts === 'yes') ? 'no' : 'yes'), $filterProjects, $filterFiles, $filterUpdates], $options);
+        ?>
+    </li>
+    <li>
+        <?php
+        $icon = ($filterProjects === 'yes') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide projects', $icon), [$filterPosts, (($filterProjects === 'yes') ? 'no' : 'yes'), $filterFiles, $filterUpdates], $options);
+        ?>
+    </li>
+    <li>
+        <?php
+        $icon = ($filterFiles === 'yes') ? $active : $inactive;
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide files', $icon), [$filterPosts, $filterProjects, (($filterFiles === 'yes') ? 'no' : 'yes'), $filterUpdates], $options);
+        ?>
+    </li>
+</ul>
+<?php
+$this->end();
 // Page content
 $this->start('pageContent');
 if (!$acts->isEmpty()):
