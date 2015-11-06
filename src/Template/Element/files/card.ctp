@@ -4,7 +4,7 @@ $config = $this->Items->fileConfig($data['filename']);
 <div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-side pull-left">
         <span class="card-heading">
-            <?php echo $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
+            <?php echo $this->Html->link(__d('elabs', 'View...'), ['prefix' => false, 'controller' => 'Files', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
         </span>
     </div>
     <div class="card-main">

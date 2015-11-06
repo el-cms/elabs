@@ -11,6 +11,7 @@ use App\Controller\AppController;
  */
 class FilesController extends AppController
 {
+
     /**
      * Index method
      *
@@ -18,9 +19,22 @@ class FilesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users']
+        $findOptions = [
+            'fields' => [
+                'id', 'name', 'filename', 'weight', 'description', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id','mime',
+            ],
+            'conditions' => ['Files.status' => 1],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+            ],
+            'order' => ['created' => 'desc'],
+            'sortWhitelist' => ['created', 'name'],
         ];
+        if (!$this->request->session()->read('see_nsfw')) {
+            $findOptions['conditions']['sfw'] = true;
+        }
+        $this->paginate = $findOptions;
         $this->set('files', $this->paginate($this->Files));
         $this->set('_serialize', ['files']);
     }
@@ -35,7 +49,7 @@ class FilesController extends AppController
     public function view($id = null)
     {
         $file = $this->Files->get($id, [
-            'contain' => ['Users', 'Itemfiles']
+            'contain' => ['Users', 'Licenses', 'Itemfiles']
         ]);
         $this->set('file', $file);
         $this->set('_serialize', ['file']);
