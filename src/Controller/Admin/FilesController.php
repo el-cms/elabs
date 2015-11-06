@@ -47,7 +47,10 @@ class FilesController extends AdminAppController
     public function view($id = null)
     {
         $file = $this->Files->get($id, [
-            'contain' => ['Users', 'Itemfiles']
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Itemfiles']
         ]);
         $this->set('file', $file);
         $this->set('_serialize', ['file']);
