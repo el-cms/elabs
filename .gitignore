@@ -5,8 +5,8 @@
 /logs/*
 
 # Upload dir
-/webroot/files/thumbs
-/webroot/files/20*
+/webroot/uploads/thumbs
+/webroot/uploads/20*
 
 # Netbeans IDE project dir
 /nbproject/private/
