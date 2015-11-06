@@ -22,17 +22,21 @@ $this->start('pageContent');
 if (!$acts->isEmpty()):
     foreach ($acts as $act):
         // Check for valid action. If action is not on the list, it's ignored
-        if (in_array($act['type'], ['add', 'edit', 'delete'])) :
-            switch ($act['type']):
-                case 'add':
-                    $element = strtolower($act['model']) . '/card';
-                    break;
-                default:
-                    $element = 'acts/tile';
-                    break;
-            endswitch;
+        if (!$see_nsfw && !$items[$act['id']]['sfw']):
+            echo $this->element('acts/tile_nsfw', ['item' => $act]);
+        else:
+            if (in_array($act['type'], ['add', 'edit', 'delete'])) :
+                switch ($act['type']):
+                    case 'add':
+                        $element = strtolower($act['model']) . '/card';
+                        break;
+                    default:
+                        $element = 'acts/tile';
+                        break;
+                endswitch;
+            endif;
+            echo $this->element($element, ['data' => $items[$act['id']], 'config' => $config, 'item' => $act]);
         endif;
-        echo $this->element($element, ['data' => $items[$act['id']], 'config' => $config, 'item' => $act]);
     endforeach;
 else:
     echo $this->element('layout/empty');
