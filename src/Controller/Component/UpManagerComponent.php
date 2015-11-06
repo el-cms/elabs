@@ -21,12 +21,14 @@ class UpManagerComponent extends Component
         'other' => ['blend', 'dwg', 'dxf', 'sql']
     ];
     public $maxSize = 1024 * 1024 * 3;
-    public $filePath = '{y}' . DS . '{m}';
-    public $thumbPath = 'thumbs' . DS . '{y}' . DS . '{m}';
-    public $baseDir = 'uploads' . DS;
+    public $filePath = '{DS}{y}{DS}{m}';
+    public $thumbPath = '{DS}thumbs{DS}{y}{DS}{m}';
+    public $baseDir = 'uploads';
     // ^ to here ^
     public $currentFilePath;
+    public $currentFilePathForDB;
     public $currentThumbPath;
+    public $currentThumbPathForDB;
 
     /**
      * Returns an unique filename for the new file.
@@ -67,6 +69,13 @@ class UpManagerComponent extends Component
         return ($this->maxSize >= $size);
     }
 
+    /**
+     * Creates the destination dir and returns an URL-friendly string to get to
+     * the file, from the webroot dir (i.e: uploads/some/path/
+     * 
+     * @param string $type file or thumbnail
+     * @return type
+     */
     public function preparePath($type = 'file')
     {
         $data = [
@@ -81,15 +90,24 @@ class UpManagerComponent extends Component
             foreach ($data as $k => $v) {
                 $this->currentThumbPath = preg_replace("@\{$k\}@", $v, $this->currentThumbPath);
             }
+            // Path for DB (url-friendly)
+            $this->currentThumbPathForDB=preg_replace("@\{DS}@", '/', $this->currentThumbPath);
+            // Path for files on FS
+            $this->currentThumbPath=preg_replace("@\{DS}@", DS, $this->currentThumbPath);
             new Folder(WWW_ROOT . $this->baseDir . $this->currentThumbPath, true, '0755');
-            return $this->currentThumbPath;
+            return $this->currentThumbPathForDB;
         } elseif ($type === 'file') {
             $this->currentFilePath = $this->filePath;
+            $this->currentFilePathForDB = $this->filePath;
             foreach ($data as $k => $v) {
                 $this->currentFilePath = preg_replace("@\{$k\}@", $v, $this->currentFilePath);
             }
+            // Path for DB (url-friendly)
+            $this->currentFilePathForDB=preg_replace("@\{DS}@", '/', $this->currentFilePath);
+            // Path for files on FS
+            $this->currentFilePath=preg_replace("@\{DS}@", DS, $this->currentFilePath);
             new Folder(WWW_ROOT . $this->baseDir . $this->currentFilePath, true, '0755');
-            return $this->currentFilePath;
+            return $this->currentFilePathForDB;
         }
     }
 //    public function path(){
