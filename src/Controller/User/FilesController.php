@@ -53,22 +53,6 @@ class FilesController extends UserAppController
     }
 
     /**
-     * View method
-     *
-     * @param string|null $id File id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $file = $this->Files->get($id, [
-            'contain' => ['Users', 'Itemfiles']
-        ]);
-        $this->set('file', $file);
-        $this->set('_serialize', ['file']);
-    }
-
-    /**
      * Add method
      *
      * @return void Redirects on successful add, renders view otherwise.
@@ -143,19 +127,26 @@ class FilesController extends UserAppController
     public function edit($id = null)
     {
         $file = $this->Files->get($id, [
-            'contain' => []
+            'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $file = $this->Files->patchEntity($file, $this->request->data);
             if ($this->Files->save($file)) {
-                $this->Flash->success(__('The file has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__d('file', 'The file has been saved.'));
+                $this->Act->add($file->id, 'edit', 'Files');
+                return $this->redirect(['action' => 'manage']);
             } else {
-                $this->Flash->error(__('The file could not be saved. Please, try again.'));
+                $this->Flash->error(__d('files', 'The file could not be saved. Please, try again.'));
+                $errors = $file->errors();
+                $errorMessages = [];
+                array_walk_recursive($errors, function ($a) use (&$errorMessages) {
+                    $errorMessages[] = $a;
+                });
+                $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $users = $this->Files->Users->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'users'));
+        $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
+        $this->set(compact('file', 'licenses'));
         $this->set('_serialize', ['file']);
     }
 
@@ -169,11 +160,17 @@ class FilesController extends UserAppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $file = $this->Files->get($id);
+        $file = $this->Files->get($id, [
+            'conditions' => [
+                'user_id' => $this->Auth->user('id')
+            ]
+        ]);
         if ($this->Files->delete($file)) {
-            $this->Flash->success(__('The file has been deleted.'));
+            //@todo Insert some logic to delete the files phisically too
+            $this->Flash->success(__d('files','The file has been deleted.'));
+            $this->Act->remove($id);
         } else {
-            $this->Flash->error(__('The file could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('files','The file could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
     }
