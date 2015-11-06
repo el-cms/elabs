@@ -120,7 +120,7 @@
     <?php echo $this->Html->script('lib/jquery-1.11.3.min.js') ?>
     <?php echo $this->Html->script('material.min.js') ?>
     <!-- Custom scripts -->
-    <?php echo $this->Html->script('custom.js') ?>
     <?php echo $this->fetch('pageBottomScripts') ?>
+    <?php echo $this->Html->script('custom.js') ?>
   </body>
 </html>
