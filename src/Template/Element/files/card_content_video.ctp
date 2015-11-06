@@ -1,6 +1,3 @@
-<div class="card-full">
-    <video width="100%" controls>
-        <source src="uploads/<?php echo $data['filename'] ?>" type="<?php echo $data['mime'] ?>">
-        Your browser does not support the audio element.
-    </video>
-</div>
+<?php
+
+echo $this->Html->media($data['filename'], ['type' => $data['mime'], 'width'=>'100%','controls', 'pathPrefix' => 'uploads/', 'text' => __d('files', 'Your browser does not support the video element.')]);
