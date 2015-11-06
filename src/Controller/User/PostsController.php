@@ -66,7 +66,7 @@ class PostsController extends UserAppController
             $post = $this->Posts->patchEntity($post, $dataSent);
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
-                if ($post->status === '1') {
+                if ($post->status === 1) {
                     $this->Act->add($post->id, 'add', 'Posts');
                 }
                 return $this->redirect(['action' => 'manage']);
