@@ -17,19 +17,19 @@ Public
     Published            [x] [x]
 
 User
-  Add                    [x] [x]   [x] [x]   [ ] [ ]
-    Self                 [x]       [x]       [ ]
-    Markdown Ed.   [x]       [x]       [x]       [ ]
-    Act                  [X]       [x]       [ ]
-  Edit         [x] [x]   [x] [x]   [x] [x]   [ ] [ ]
-    Self       [x]       [x]       [x]       [ ]
-    Markdown Ed.   [x]       [x]       [x]       [ ]
-    Act                  [x]       [x]       [ ]
+  Add                    [x] [x]   [x] [x]   [x] [x]
+    Self                 [x]       [x]       [x]
+    Markdown Ed.   [x]       [x]       [x]       [x]
+    Act                  [X]       [x]       [x]
+  Edit         [x] [x]   [x] [x]   [x] [x]   [x] [x]
+    Self       [x]       [x]       [x]       [x]
+    Markdown Ed.   [x]       [x]       [x]       [x]
+    Act                  [x]       [x]       [x]
   Index/Manage           [x] [x]   [x] [x]   [x] [x]
     Self                 [x]       [x]       [x]
-  Delete       [x]       [x]       [x]       [ ]
-    Self       [x]       [x]       [x]       [ ]
-    Act        [x]       [x]       [x]       [ ]
+  Delete       [x]       [x]       [x]       [x]
+    Self       [x]       [x]       [x]       [x]
+    Act        [x]       [x]       [x]       [x] !File is not removed
 
 Admin
   Lock         [x]       [x]       [x]       [ ]
@@ -59,9 +59,10 @@ Admin
 
 ### Before going public
   - [ ] Add a db dump for database creation
-    - [ ] Sync db with Mysql Workbench
+    - [x] Sync a SQL file with Mysql Workbench schema
     - [ ] Add Mysql Workbench file
   - [x] Reformat code for PSR-2
+    - Errors remains, mostly line breaks after classes opening brackets
   - [x] Remove short tags <?= being deprecated in PHP6
   - [x] Review \__d('elabs','...') and change their respective modules
   - [ ] Review ALL page titles to follow Material guidelines (My/Your,...)
@@ -86,13 +87,13 @@ Admin
 ## Notes
 
 ### Posts
-  - [ ] Add filters on admin/index view
+  - [ ] Add filters on admin/index views
 
 ### Projects
 ### Files
   - [ ] Create an empty index.html in created dirs (UpManagerComponent)
   - [ ] Use File::mime() to get mimetype of an uploaded file
-  - [ ] Save the mimetype
+  - [x] Save the mimetype
 ### Users
 ### Licenses
 ### Tags
