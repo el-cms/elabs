@@ -7,7 +7,7 @@
             </div>
             <div class="modal-inner" id="modal-content">
                 <?php
-                echo $this->Form->create('Report', ['url' => $this->Url->build(['admin' => false, 'controller' => 'reports', 'action' => 'add'], true)]);
+                echo $this->Form->create('Report', ['url' => $this->Url->build(['prefix' => false, 'controller' => 'reports', 'action' => 'add'], true)]);
                 $this->Form->templates([
                     'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',]);
                 ?>

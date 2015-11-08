@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -13,10 +12,13 @@ use Cake\ORM\Entity;
  * @property string $url
  * @property string $reason
  * @property string $session
+ * @property \Cake\I18n\Time $created
  * @property int $user_id
+ * @property \App\Model\Entity\User $user
  */
 class Report extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

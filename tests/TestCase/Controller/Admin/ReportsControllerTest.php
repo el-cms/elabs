@@ -16,7 +16,15 @@ class ReportsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.reports'
+        'app.reports',
+        'app.users',
+        'app.acts',
+        'app.files',
+        'app.licenses',
+        'app.posts',
+        'app.projects',
+        'app.project_users',
+        'app.itemfiles'
     ];
 
     /**
