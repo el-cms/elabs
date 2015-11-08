@@ -25,9 +25,9 @@ $this->end();
 $this->start('pageContent');
 ?>
 <div class="col-sm-9 ">
-    <?php echo $this->Markdown->transform($post->excerpt) ?>
+    <?php echo $this->Markdown->transform(h($post->excerpt)) ?>
     <hr/>
-    <?php echo $this->Markdown->transform($post->text); ?>
+    <?php echo $this->Markdown->transform(h($post->text)); ?>
 </div>
 <?php
 echo $this->element('layout/loader_prism');

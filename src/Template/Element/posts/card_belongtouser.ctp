@@ -27,7 +27,7 @@
 		<!-- Content -->
 		<div class="card-inner">
 			<p>
-				<?php echo $this->Markdown->transform($data['excerpt']) ?>
+				<?php echo $this->Markdown->transform(h($data['excerpt'])) ?>
 			</p>
 		</div>
 	</div>

@@ -78,6 +78,8 @@ Admin
   - [ ] Review error messages on login
   - [ ] Create reports support
   - [ ] Check for all licenses links using the helper
+  - [ ] Add a h() method for every db output
+    - [x] Check if that's usefull on things parsed with mdown (now, see #4)
 
 ### On free time
   - [x] Check for fields in models comments

@@ -35,7 +35,7 @@ $config = $this->Items->fileConfig($data['filename']);
         <div class="card-inner">
             <?php echo $this->element('files/card_content_' . $config['element'], ['data' => $data]) ?>
             <p>
-                <?php echo $this->Markdown->transform($data['description']) ?>
+                <?php echo $this->Markdown->transform(h($data['description'])) ?>
             </p>
         </div>
     </div>

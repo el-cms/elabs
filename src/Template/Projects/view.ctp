@@ -39,11 +39,11 @@ $this->end();
 
 $this->start('pageContent');
 
-echo $this->Markdown->transform($project->short_description);
+echo $this->Markdown->transform(h($project->short_description));
 ?>
 <hr />
 <?php
-echo $this->Markdown->transform($project->description);
+echo $this->Markdown->transform(h($project->description));
 
 echo $this->element('layout/loader_prism');
 
