@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2015-11-08 17:21
+-- Generated: 2015-11-08 17:52
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -10,7 +10,8 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 ALTER TABLE `elabs`.`reports` 
-ADD COLUMN `user_id` INT(10) UNSIGNED NULL DEFAULT NULL COMMENT '' AFTER `session`,
+ADD COLUMN `created` DATETIME NOT NULL COMMENT '' AFTER `session`,
+ADD COLUMN `user_id` INT(10) UNSIGNED NULL DEFAULT NULL COMMENT '' AFTER `created`,
 ADD INDEX `fk_reports_users1_idx` (`user_id` ASC)  COMMENT '';
 
 ALTER TABLE `elabs`.`reports` 
