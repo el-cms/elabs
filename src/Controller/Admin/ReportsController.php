@@ -2,15 +2,16 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\Admin\AdminAppController;
 
 /**
  * Reports Controller
  *
  * @property \App\Model\Table\ReportsTable $Reports
  */
-class ReportsController extends AppController
+class ReportsController extends AdminAppController
 {
+
     /**
      * Index method
      *
@@ -18,6 +19,13 @@ class ReportsController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+    'fields'=>['id', 'name', 'email', 'url', 'created', 'user_id'],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username']],
+            ],
+            'order'=>['created'=>'DESC'],
+        ];
         $this->set('reports', $this->paginate($this->Reports));
         $this->set('_serialize', ['reports']);
     }
@@ -32,55 +40,9 @@ class ReportsController extends AppController
     public function view($id = null)
     {
         $report = $this->Reports->get($id, [
-            'contain' => []
+            'contain' => ['Users']
         ]);
         $this->set('report', $report);
-        $this->set('_serialize', ['report']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $report = $this->Reports->newEntity();
-        if ($this->request->is('post')) {
-            $report = $this->Reports->patchEntity($report, $this->request->data);
-            if ($this->Reports->save($report)) {
-                $this->Flash->success(__('The report has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The report could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('report'));
-        $this->set('_serialize', ['report']);
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Report id.
-     * @return void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $report = $this->Reports->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $report = $this->Reports->patchEntity($report, $this->request->data);
-            if ($this->Reports->save($report)) {
-                $this->Flash->success(__('The report has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The report could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('report'));
         $this->set('_serialize', ['report']);
     }
 
@@ -88,7 +50,7 @@ class ReportsController extends AppController
      * Delete method
      *
      * @param string|null $id Report id.
-     * @return void Redirects to index.
+     * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
