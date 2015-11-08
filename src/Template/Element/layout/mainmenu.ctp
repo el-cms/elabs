@@ -22,7 +22,15 @@ $this->end();
 $this->start('secondMenu');
 ?>
 <li>
-  <?php echo $this->Html->Link(($see_nsfw === true) ? __d('elabs', 'Hide NSFW') : __d('elabs', 'Show NSFW'), ['action' => 'switchSFW', ($see_nsfw === true) ? 'hide' : 'show']) ?>
+  <?php echo $this->Html->Link(($see_nsfw === true) ? __d('elabs', 'Hide NSFW') : __d('elabs', 'Show NSFW'), ['action' => 'switchSFW', ($see_nsfw === true) ? 'hide' : 'show'], ['class' => 'waves-attach']) ?>
+</li>
+<li>
+  <?php echo $this->Html->Link(__d('elabs', 'Report this page'), '#', [
+                                'data-toggle' => 'modal',
+                                'data-target' => '#reportModal',
+                                'data-itemtarget' => $this->Url->build(), // The current page
+                                'class' => 'text-sec waves-attach waves-effect',
+                                'escape' => false]) ?>
 </li>
 <li>
   <?php echo $this->Html->link('About', ['prefix' => false, 'controller' => 'pages', 'action' => 'display', 'about'], ['class' => 'waves-attach']) ?>

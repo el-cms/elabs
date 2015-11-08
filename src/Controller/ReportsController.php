@@ -11,6 +11,14 @@ use App\Controller\AppController;
  */
 class ReportsController extends AppController
 {
+    
+    public function beforeFilter(\Cake\Event\Event $event)
+    {
+        parent::beforeFilter($event);
+        
+        $this->Auth->allow('add');
+    }
+
     /**
      * Add method
      *
@@ -20,12 +28,26 @@ class ReportsController extends AppController
     {
         $report = $this->Reports->newEntity();
         if ($this->request->is('post')) {
+            // Preparing data
+            if (empty($this->request->data['url'])) {
+                $this->request->data['url'] = $this->referer();
+            }
+            $this->request->data['session'] = 'NULL !'; //var_export($this->Session->read(), true);
+            if (!empty($this->Auth->user('id'))) {
+                $this->request->data['user_id'] = $this->Auth->user('id');
+                $this->request->data['name'] = $this->Auth->user('username');
+                $this->request->data['email'] = $this->Auth->user('email');
+            } else {
+                $this->request->data['user_id'] = null;
+            }
             $report = $this->Reports->patchEntity($report, $this->request->data);
             if ($this->Reports->save($report)) {
-                $this->Flash->success(__('The report has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__d('reports', 'Thank you for your feedback'));
+                return $this->redirect($this->referer());
             } else {
-                $this->Flash->error(__('The report could not be saved. Please, try again.'));
+                $this->Flash->error(__d('reports', 'The report could not be saved (and that should be a good reason to report it...). Please try again.'));
+                debug($report->errors());die;
+                return $this->redirect($this->referer());
             }
         }
         $this->set(compact('report'));
