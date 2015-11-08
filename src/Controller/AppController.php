@@ -65,6 +65,7 @@ class AppController extends Controller
             ],
             'loginAction' => ['prefix' => false, 'controller' => 'Users', 'action' => 'login'],
             'authError' => __d('elabs', 'You are not allowed to view this page.'),
+            'flash' => ['key' => 'flash', 'params' => ['class' => 'danger alert']],
             'loginRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index'],
             'logoutRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index']
         ]);
