@@ -20,11 +20,11 @@ class ReportsController extends AdminAppController
     public function index()
     {
         $this->paginate = [
-    'fields'=>['id', 'name', 'email', 'url', 'created', 'user_id'],
+            'fields' => ['id', 'name', 'email', 'url', 'created', 'user_id'],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username']],
             ],
-            'order'=>['created'=>'DESC'],
+            'order' => ['created' => 'DESC'],
         ];
         $this->set('reports', $this->paginate($this->Reports));
         $this->set('_serialize', ['reports']);
@@ -40,7 +40,7 @@ class ReportsController extends AdminAppController
     public function view($id = null)
     {
         $report = $this->Reports->get($id, [
-            'contain' => ['Users']
+            'Users' => ['fields' => ['id', 'username']],
         ]);
         $this->set('report', $report);
         $this->set('_serialize', ['report']);
