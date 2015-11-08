@@ -11,11 +11,11 @@ use App\Controller\AppController;
  */
 class ReportsController extends AppController
 {
-    
+
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
-        
+
         $this->Auth->allow('add');
     }
 
@@ -46,11 +46,11 @@ class ReportsController extends AppController
                 return $this->redirect($this->referer());
             } else {
                 $this->Flash->error(__d('reports', 'The report could not be saved (and that should be a good reason to report it...). Please try again.'));
-                debug($report->errors());die;
                 return $this->redirect($this->referer());
             }
+        } else {
+            $this->Flash->error(__d('elabs', 'Something went wrong with your request...'));
+            return $this->redirect($this->referer());
         }
-        $this->set(compact('report'));
-        $this->set('_serialize', ['report']);
     }
 }
