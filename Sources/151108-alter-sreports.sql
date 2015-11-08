@@ -1,0 +1,26 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2015-11-08 17:21
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: Manuel Tancoigne
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+
+ALTER TABLE `elabs`.`reports` 
+ADD COLUMN `user_id` INT(10) UNSIGNED NULL DEFAULT NULL COMMENT '' AFTER `session`,
+ADD INDEX `fk_reports_users1_idx` (`user_id` ASC)  COMMENT '';
+
+ALTER TABLE `elabs`.`reports` 
+ADD CONSTRAINT `fk_reports_users1`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `elabs`.`users` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

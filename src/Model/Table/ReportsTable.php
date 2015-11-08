@@ -27,6 +27,8 @@ class ReportsTable extends Table
         $this->table('reports');
         $this->displayField('name');
         $this->primaryKey('id');
+        
+        $this->belongsTo('Users', ['foreignKey'=>'user_id']);
     }
 
     /**

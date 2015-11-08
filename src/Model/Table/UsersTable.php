@@ -19,6 +19,7 @@ use Cake\Core\Configure;
  */
 class UsersTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -45,6 +46,9 @@ class UsersTable extends Table
             'foreignKey' => 'user_id'
         ]);
         $this->hasMany('Projects', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->hasMany('Reports', [
             'foreignKey' => 'user_id'
         ]);
     }

@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property string $url
  * @property string $reason
  * @property string $session
+ * @property int $user_id
  */
 class Report extends Entity
 {
