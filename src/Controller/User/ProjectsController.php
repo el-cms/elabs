@@ -55,6 +55,7 @@ class ProjectsController extends UserAppController
         if ($this->request->is('post')) {
             // New values :
             $this->request->data['user_id'] = $this->Auth->user('id');
+            $this->request->data['status'] = 1;
             // Preparing data
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {

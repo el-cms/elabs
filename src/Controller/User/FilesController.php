@@ -93,7 +93,8 @@ class FilesController extends UserAppController
                     'description' => $this->request->data['description'],
                     'sfw' => $this->request->data['sfw'],
                     'user_id' => $this->Auth->user('id'),
-                    'license_id' => $this->request->data['license_id']
+                    'license_id' => $this->request->data['license_id'],
+                    'status' => 1
                 ];
 
                 if (!move_uploaded_file($fileInfos['tmp_name'], WWW_ROOT . $this->UpManager->baseDir . $currentFilePath)) {
@@ -105,6 +106,7 @@ class FilesController extends UserAppController
                         $this->Act->add($file->id, 'add', 'Files');
                         return $this->redirect(['action' => 'manage']);
                     } else {
+//                        debug($file->errors());die;
                         $this->Flash->error(__d('elabs', 'The file could not be saved. Please, try again.'));
                     }
                 }
