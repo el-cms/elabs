@@ -70,6 +70,9 @@ class AppController extends Controller
             'logoutRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index']
         ]);
         // Elabs helper, for the entire app
+        if (is_null($this->request->session()->read('see_nsfw'))) {
+            $this->_setSFWstate('hide');
+        }
         $this->viewBuilder()->helpers(['Elabs']);
     }
 
@@ -108,13 +111,18 @@ class AppController extends Controller
         $this->set('authUser', $authUser);
     }
 
+    private function _setSFWstate($state = 'hide')
+    {
+        $this->request->session()->write('see_nsfw', ($state === 'show') ? true : false);
+    }
+
     /**
      * Switch the value of SFW state.
      * @param type $state
      */
     public function switchSFW($state = 'hide')
     {
-        $this->request->session()->write('see_nsfw', ($state === 'show') ? true : false);
+        $this->_setSFWstate($state);
         $this->redirect($this->referer());
     }
 }

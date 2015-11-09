@@ -1,6 +1,6 @@
 <?php
 // Tile class
-switch ($item->model):
+switch ($model):
     case 'Files':
         $icon = 'file-o';
         break;

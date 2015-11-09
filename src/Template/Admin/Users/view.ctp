@@ -90,7 +90,7 @@ echo $this->Markdown->transform(h($user->bio));
     <?php
     if (!empty($user->posts)):
         foreach ($user->posts as $posts):
-            echo $this->element('posts/card_belongtouser', ['data' => $posts]);
+            echo $this->element('posts/card', ['data' => $posts]);
         endforeach;
     else:
         echo $this->element('layout/empty_admin');
@@ -102,7 +102,7 @@ echo $this->Markdown->transform(h($user->bio));
     <?php
     if (!empty($user->projects)):
         foreach ($user->projects as $projects):
-            echo $this->element('projects/card_belongtouser', ['data' => $projects]);
+            echo $this->element('projects/card', ['data' => $projects]);
         endforeach;
     else:
         echo $this->element('layout/empty_admin');
@@ -111,7 +111,15 @@ echo $this->Markdown->transform(h($user->bio));
 </div>
 
 <div class="tab-pane" id="files-tab">
-
+ <?php
+    if (!empty($user->files)):
+        foreach ($user->files as $files):
+            echo $this->element('files/card', ['data' => $files]);
+        endforeach;
+    else:
+        echo $this->element('layout/empty_admin');
+    endif;
+    ?>
 </div>
 <?php
 $this->end();

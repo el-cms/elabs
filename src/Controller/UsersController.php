@@ -52,30 +52,40 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
         $options = [
             'fields' => ['id', 'username', 'realname', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',],
             'contain' => [
                 'Posts' => [
-                    'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
+                    'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
                     'conditions' => [ // SFW is made after
                         'status' => 1,
                     ],
+                    'Licenses' => $licenseConfig,
                 ],
                 'Projects' => [
-                    'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id'],
+                    'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id'],
                     'conditions' => [ // SFW is made after
-                    ]
+                        'status' => 1,
+                    ],
+                    'Licenses' => $licenseConfig,
                 ],
-                'Files' => [],
+                'Files' => [
+                    'fields' => ['id', 'name', 'description', 'filename', 'sfw', 'created', 'modified', 'user_id', 'license_id'],
+                    'conditions' => [ // SFW is made after
+                        'status' => 1,
+                    ],
+                    'Licenses' => $licenseConfig,
+                ],
             ],
             'conditions' => ['OR' => [['status' => 1], ['status' => 2]]],
         ];
 
         // SFW options
         if ($this->request->session()->read('see_nsfw') === false) {
-            $options['contain']['Posts']['conditions']['sfw'] = 1;
-            $options['contain']['Projects']['conditions']['sfw'] = 1;
-            $options['contain']['Files']['conditions']['sfw'] = 1;
+            $options['contain']['Posts']['conditions']['sfw'] = true;
+            $options['contain']['Projects']['conditions']['sfw'] = true;
+            $options['contain']['Files']['conditions']['sfw'] = true;
         }
 
         $user = $this->Users->get($id, $options);

@@ -119,7 +119,7 @@ class UsersController extends AdminAppController
         ]);
         $user->status = 3;
         if ($this->Users->save($user)) {
-            $this->Act->removeAll($id);
+//            $this->Act->removeAll($id);
             if (!$this->request->is('ajax')) {
                 $this->Flash->Success(__d('users', 'The account has been closed.'));
             }

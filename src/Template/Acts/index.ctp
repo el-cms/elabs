@@ -58,17 +58,57 @@ $this->end();
 $this->start('pageContent');
 if (!$acts->isEmpty()):
     foreach ($acts as $act):
-        if (in_array($act['type'], ['add', 'edit', 'delete'])) :
-            switch ($act['type']):
-                case 'add':
-                    $element = strtolower($act['model']) . '/card';
-                    break;
-                default:
-                    $element = 'acts/tile';
-                    break;
-            endswitch;
+        $model = Cake\Utility\Inflector::variable(Cake\Utility\Inflector::singularize($act['model']));
+        if (!$act[$model]['sfw'] && !$see_nsfw):
+            echo $this->element('acts/tile_nsfw', ['model' => $act->model]);
+        else:
+            if ($act['type'] === 'add'):
+                echo $this->element(strtolower($act['model']) . '/card', ['data' => $act[$model]]); //$items[$act['id']], 'config' => $config, 'item' => $act]);
+            else:
+                // Tile class
+                switch ($act['type']):
+                    case 'edit':
+                        $class = 'info';
+                        $icon = 'info-circle';
+                        break;
+                    case 'delete':
+                        $class = 'danger';
+                        $icon = 'times';
+                        break;
+                    default:
+                        $class = '';
+                        $icon = 'info-circle';
+                endswitch;
+
+                switch ($act['model']):
+                    case 'Posts':
+                        $itemTitle = $act[$model]['title'];
+                        break;
+                    case 'Project':
+                        $itemTitle = $act[$model]['name'];
+                        break;
+                    case'File':
+                        $itemTitle = $act[$model]['name'];
+                        break;
+                    default:
+                        $itemTitle = $act[$model]['id'];
+                endswitch;
+
+                // Title link
+                $link = $this->Html->link($itemTitle, ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']]);
+                ?>
+                <div class="tile tile-<?php echo $class ?>">
+                    <div class="pull-left tile-side">
+                        <i class="fa fa-<?php echo $icon ?>"></i>
+                    </div>
+                    <div class="tile-inner">
+                        <strong><?php echo $act[$model]['modified'] ?>: </strong><?php echo __d('acts', '{0} {1} {2}', [$config['models'][$act['model']], $link, $config['strings'][$act['type']]]) ?>
+                    </div>
+                </div>
+            <?php
+            endif;
         endif;
-        echo $this->element($element, ['data' => $act[Cake\Utility\Inflector::variable(Cake\Utility\Inflector::singularize($act['model']))]]); //$items[$act['id']], 'config' => $config, 'item' => $act]);
+
     endforeach;
 else:
     echo $this->element('layout/empty');

@@ -59,8 +59,8 @@ class ActComponent extends Component
         if (is_null($type)) {
             $type = $this->Controller->request->params['action'];
         }
-        $uid = $this->Auth->user('id');
-        $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $foreignKey, 'model' => $model, 'type' => $type, 'user_id' => $uid]);
+//        $uid = $this->Auth->user('id');
+        $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $foreignKey, 'model' => $model, 'type' => $type]);//, 'user_id' => $uid]);
         if ($this->Acts->save($act)) {
             return true;
         } else {
@@ -76,15 +76,15 @@ class ActComponent extends Component
      * @param type $self If false, don't take care of the owner. To be used in admin only.
      * @return bool
      */
-    public function remove($foreignKey, $model = null, $self = true)
+    public function remove($foreignKey, $model = null)//, $self = true)
     {
         // Creating the conditions
         $conditions = [];
         $conditions['fkid'] = $foreignKey;
         $conditions['model'] = (is_null($model)) ? $this->request->params['controller'] : $model;
-        if ($self) {
-            $conditions['user_id'] = $this->Auth->user('id');
-        }
+//        if ($self) {
+//            $conditions['user_id'] = $this->Auth->user('id');
+//        }
         return $this->Acts->deleteAll($conditions);
     }
 
@@ -96,9 +96,10 @@ class ActComponent extends Component
      */
     public function removeAll($uid = null)
     {
-        if (is_null($uid)) {
-            $uid = $this->Auth->user('id');
-        }
-        return $this->Acts->deleteAll(['user_id' => $uid]);
+//        if (is_null($uid)) {
+//            $uid = $this->Auth->user('id');
+//        }
+//        return $this->Acts->deleteAll(['user_id' => $uid]);
+        throw new \Cake\Network\Exception\NotImplementedException('This is not handled anymore...');
     }
 }

@@ -30,8 +30,14 @@ $config = $this->Items->fileConfig($data['filename']);
         </div>
         <!-- Content -->
         <div class="card-description">
-            <?php echo __d('elabs', '{0}&nbsp;Creator: {1}', '<i class="fa fa-user"></i>', $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']])) ?><br/>
-            <?php echo __d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link($this->License->d($data['license']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false])) ?>
+             <?php
+            if (!isset($userInfo) || $userInfo):
+                echo __d('elabs', '{0}&nbsp;Creator: {1}', '<i class="fa fa-user"></i>', $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]))
+                ?><br/>
+                <?php
+            endif;
+            echo __d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $data['license']['icon'] . '"></span>', $data['license']['name']]), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false]))
+            ?>
         </div>
         <div class="card-inner">
             <?php echo $this->element('files/card_content_' . $config['element'], ['data' => $data]) ?>
