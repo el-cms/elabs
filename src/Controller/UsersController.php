@@ -72,7 +72,7 @@ class UsersController extends AppController
         if ($this->request->session()->read('see_nsfw') === false) {
             $options['contain']['Posts']['conditions']['sfw'] = 1;
             $options['contain']['Projects']['conditions']['sfw'] = 1;
-//			$options['contain']['Files']['conditions']['sfw'] = 1;
+			$options['contain']['Files']['conditions']['sfw'] = 1;
         }
 
         $user = $this->Users->get($id, $options);
@@ -93,8 +93,12 @@ class UsersController extends AppController
             //Adding defaults
             $this->request->data['see_nsfw'] = Configure::read('cms.defaultSeeNSFW');
             $this->request->data['role'] = Configure::read('cms.defaultRole');
-            $this->request->data['status'] = Configure::read('cms.defaultActivateUser');
+            $this->request->data['status'] = Configure::read('cms.defaultUserStatus');
             $this->request->data['locked'] = Configure::read('cms.defaultLockedUser');
+            $this->request->data['post_count'] =0;
+            $this->request->data['project_count'] =0;
+            $this->request->data['file_count'] =0;
+            $this->request->data['project_user_count'] =0;
 
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
@@ -102,6 +106,7 @@ class UsersController extends AppController
                 return $this->redirect(['action' => 'index']);
             } else {
                 $errors = $user->errors();
+                debug($errors);die;
                 $errorMessages = [];
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
