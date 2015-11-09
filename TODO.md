@@ -57,42 +57,49 @@ Public
 ```
 
 ### Site config
-  - [x] UUIDS instead of int Ids for
-    - [x] Users
-    - [x] Projects
-    - [x] Posts
-    - [x] Files
+  - [15/11/09] UUIDS instead of int Ids for
+    - [15/11/09] Users
+    - [15/11/09] Projects
+    - [15/11/09] Posts
+    - [15/11/09] Files
+
 ### Before going public
-  - [ ] Add a db dump for database creation
-    - [x] Sync a SQL file with Mysql Workbench schema
-    - [ ] Add Mysql Workbench file
-  - [x] Reformat code for PSR-2
-    - Errors remains, mostly line breaks after classes opening brackets
-  - [x] Remove short tags <?= being deprecated in PHP6
-  - [x] Review \__d('elabs','...') and change their respective modules
   - [ ] Review ALL page titles to follow Material guidelines (My/Your,...)
-  - [x] Add a dl-horizontal style for definition lists
   - [ ] Review all paginator links and add a \__d() translation on them
   - [ ] Add icons on action buttons
   - [ ] Add text where there is no element to display
-  - [x] Better style for filter links
-  - [ ] Tests on tablet
-  - [ ] Tests on mobile
-  - [ ] Translate menus
+  - [ ] Translate menus (proper __d() use)
   - [ ] Delete unused views
   - [ ] Review error messages on login
   - [ ] Create reports support
   - [ ] Check for all licenses links using the helper
-  - [x] Add a h() method for every db output (now, see #4)
-    - [x] Check if that's usefull on things parsed with mdown
-  - [x] Simple authorization handling
+  - [ ] Revert all user/<controler>/manage() to index()
+  - [??/??/??] Add a dl-horizontal style for definition lists
+  - [??/??/??] Better style for filter links
+  - [??/??/??] Simple authorization handling
 
 ### On free time
-  - [x] Check for fields in models comments
   - [ ] Check if add() action don't have unecessary find()
-  - [ ] Write tests
+  - [ ] WRITE TESTS
+  - [ ] Tests on tablet
+  - [ ] Tests on mobile
+  - [??/??/??] Check for fields in models comments
 
+### Things to do often as there is still many changes:
+  - [??/??/??] Reformat code for PSR-2
+    - Errors remains, mostly line breaks after classes opening brackets
+  - [??/??/??] Add a h() method for every db output
+    - [??/??/??] Check if that's usefull on things parsed with mdown (now, see #4)
+  - [??/??/??] Remove short tags <?= being deprecated in PHP6
+  - [??/??/??] Review \__d('elabs','...') and change their respective modules
+  - [ ] Add a db dump for database creation
+    - [15/11/09] Sync a SQL file with Mysql Workbench schema
+    - [ ] Add Mysql Workbench file
 ## Notes
+
+### Acts
+  - [15/11/09] Complete associations to change queries type. Leads to #6...
+    - --> fc02fd07884d09568a3c2dadc862f13e32f586fa and 2033393bd3a2fc98679600aba1b969ebd026fcaf
 
 ### Posts
   - [ ] Add filters on admin/index views
@@ -102,11 +109,11 @@ Public
 ### Files
   - [ ] Create an empty index.html in created dirs (UpManagerComponent)
   - [ ] Use File::mime() to get mimetype of an uploaded file
-  - [x] Save the mimetype
+  - [??/??/??] Save the mimetype
 
 ### Users
-  - [ ] Index view, related elements : - Add a block for empty lists
-  - [ ]                                - Add the files cards
+  - [15/11/09] Index view, related elements : - Add a block for empty lists
+  - [15/11/09]                                - Add the files cards
 
 ### Licenses
 
