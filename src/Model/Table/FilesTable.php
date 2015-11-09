@@ -48,6 +48,11 @@ class FilesTable extends Table
         $this->hasMany('Itemfiles', [
             'foreignKey' => 'file_id'
         ]);
+        
+        $this->hasMany('Acts', [
+            'foreignKey'=>'fkid',
+            'conditions'=>['Acts.model'=>'Files']
+        ]);
     }
 
     /**

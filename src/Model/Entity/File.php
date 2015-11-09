@@ -21,6 +21,7 @@ use Cake\ORM\Entity;
  * @property int $license_id
  * @property \App\Model\Entity\License $license
  * @property \App\Model\Entity\Itemfile[] $itemfiles
+ * @property \App\Model\Entity\Act[] $acts
  */
 class File extends Entity
 {

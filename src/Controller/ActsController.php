@@ -110,21 +110,51 @@ class ActsController extends AppController
      */
     public function index($hidePosts = 'no', $hideProjects = 'no', $hideFiles = 'no', $hideUpdates = 'no')
     {
-        $conditions = null;
-        if (!$this->request->session()->read('see_nsfw')) {
-            $conditions['sfw'] = false;
-        }
+        // Commons fields to get from Licenses table
+        $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
+        $userConfig = ['fields' => ['id', 'realname', 'username']];
 
         // Get the list of items
         $this->paginate = [
-            'contain' => ['Users'],
-            'fields' => ['id', 'type', 'fkid', 'model', 'Users.id', 'Users.username'],
+            'contain' => [
+                'Posts' => [
+                    'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
+                    'conditions' => [ // SFW is made after
+                        'Posts.status' => 1,
+                    ],
+                    'Licenses' => $licenseConfig,
+                    'Users' => $userConfig,
+                ],
+                'Projects' => [
+                    'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id'],
+                    'conditions' => [ // SFW is made after
+                        'Projects.status' => 1,
+                    ],
+                    'Licenses' => $licenseConfig,
+                    'Users' => $userConfig,
+                ],
+                'Files' => [
+                    'fields' => ['id', 'name', 'description', 'filename', 'created', 'modified',  'sfw', 'user_id', 'license_id'],
+                    'conditions' => [ // SFW is made after
+                        'Files.status' => 1,
+                    ],
+                    'Licenses' => $licenseConfig,
+                    'Users' => $userConfig,
+                ],
+            ],
+//            'fields' => ['id', 'type', 'fkid', 'model', 'Users.id', 'Users.username'],
             'limit' => 30,
             'order' => [
                 'id' => 'desc'
             ]
         ];
 
+        // SFW conditions :
+        if (!$this->request->session()->read('see_nsfw')) {
+            $this->paginate['contain']['Posts']['conditions']['Posts.sfw'] = true;
+            $this->paginate['contain']['Projects']['conditions']['Projects.sfw'] = true;
+            $this->paginate['contain']['Files']['conditions']['Files.sfw'] = true;
+        }
         // Filters
         $models = []; // Models to be displayed
         if ($hideProjects === 'no') {
@@ -144,29 +174,12 @@ class ActsController extends AppController
 
         $acts = $this->paginate($this->Acts);
 
-        // Get items content
-        $itemsContent = [];
-        foreach ($this->paginate() as $item) {
-            if ($item['type'] === 'add') {
-                // Get full content for new items
-                $options = $this->findCardOptions[$item['model']];
-            } else {
-                // Get partial content for update/delete
-                $options = $this->findTileOptions[$item['model']];
-            }
-            // Additionnal conditions
-            $options['conditions'][$item['model'] . '.id'] = $item['fkid'];
-            //Sfw option:
-            $itemsContent[$item['id']] = $this->$item['model']->find('all', $options)->first();
-        }
-
         // Pass variables to view
         $this->set('filterUpdates', $hideUpdates);
         $this->set('filterProjects', $hideProjects);
         $this->set('filterPosts', $hidePosts);
         $this->set('filterFiles', $hideFiles);
         $this->set('acts', $acts);
-        $this->set('items', $itemsContent);
         $this->set('config', $this->config);
         $this->set('_serialize', ['acts']);
     }

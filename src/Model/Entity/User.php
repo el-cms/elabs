@@ -23,7 +23,6 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property int $project_count
  * @property int $file_count
  * @property int $project_user_count
- * @property \App\Model\Entity\Act[] $acts
  * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects

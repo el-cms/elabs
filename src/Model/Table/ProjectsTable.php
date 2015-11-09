@@ -49,6 +49,11 @@ class ProjectsTable extends Table
         $this->hasMany('ProjectUsers', [
             'foreignKey' => 'project_id'
         ]);
+        
+        $this->hasMany('Acts', [
+            'foreignKey'=>'fkid',
+            'conditions'=>['Acts.model'=>'Projects']
+        ]);
     }
 
     /**

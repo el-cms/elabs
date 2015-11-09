@@ -45,6 +45,10 @@ class PostsTable extends Table
             'foreignKey' => 'license_id',
             'joinType' => 'INNER'
         ]);
+        $this->hasMany('Acts', [
+            'foreignKey'=>'fkid',
+            'conditions'=>['Acts.model'=>'Posts']
+        ]);
     }
 
     /**

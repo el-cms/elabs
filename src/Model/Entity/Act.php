@@ -12,6 +12,9 @@ use Cake\ORM\Entity;
  * @property string $type
  * @property string $user_id
  * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Post $post
+ * @property \App\Model\Entity\Project $project
+ * @property \App\Model\Entity\File $file
  */
 class Act extends Entity
 {

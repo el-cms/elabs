@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Act;
@@ -29,9 +30,17 @@ class ActsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
+        $this->belongsTo('Posts', [
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Posts'],
+        ]);
+        $this->belongsTo('Projects', [
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Projects'],
+        ]);
+        $this->belongsTo('Files', [
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Files'],
         ]);
     }
 
@@ -44,35 +53,23 @@ class ActsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'numeric'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('model', 'create')
-            ->notEmpty('model');
+                ->requirePresence('model', 'create')
+                ->notEmpty('model');
 
         $validator
-            ->add('fkid', 'valid', ['rule' => 'uuid'])
-            ->requirePresence('fkid', 'create')
-            ->notEmpty('fkid');
+                ->add('fkid', 'valid', ['rule' => 'uuid'])
+                ->requirePresence('fkid', 'create')
+                ->notEmpty('fkid');
 
         $validator
-            ->requirePresence('type', 'create')
-            ->notEmpty('type');
+                ->requirePresence('type', 'create')
+                ->notEmpty('type');
 
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
-        return $rules;
-    }
 }

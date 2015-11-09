@@ -20,6 +20,7 @@ use Cake\ORM\Entity;
  * @property string $user_id
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\ProjectUser[] $project_users
+ * @property \App\Model\Entity\Act[] $acts
  */
 class Project extends Entity
 {
