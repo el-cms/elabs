@@ -83,8 +83,8 @@ Public
   - [ ] Review error messages on login
   - [ ] Create reports support
   - [ ] Check for all licenses links using the helper
-  - [ ] Add a h() method for every db output
-    - [x] Check if that's usefull on things parsed with mdown (now, see #4)
+  - [x] Add a h() method for every db output (now, see #4)
+    - [x] Check if that's usefull on things parsed with mdown
   - [x] Simple authorization handling
 
 ### On free time
