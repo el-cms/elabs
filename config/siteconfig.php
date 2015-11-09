@@ -3,7 +3,7 @@
 return ['cms' => [
 				'siteName' => 'Experiments Labs',
 				'defaultRole' => 'author',
-				'defaultActivateUser' => false,
+				'defaultUserStatus' => 0,
 				'defaultLockedUser' => false,
 				'defaultSeeNSFW' => false,
 				'defaultMinPassLenght' => 8,
