@@ -7,13 +7,13 @@
 Validations    [ ]       [ ]       [ ]       [ ]
                 C   V     C   V     C   V     C   V     C   V
 Public
-  Index        [x] [x]   [x] [x]   [x] [x]   [x] [x]   [x] [x] 
+  Index        [x] [x]   [x] [x]   [x] [x]   [x] [x]   [x] [x]
     SFW                  [x] [x]   [x] [x]   [x] [x]     N/A
     Published            [x] [x]
     Filters    [ ]       [ ] [ ]   [ ] [ ]   [ ] [ ]   [x] [x]
     Order      [x]       [x] [x]   [x] [x]   [x] [x]   [x] [x]
-  View         [x] [x]   [x] [x]   [x] [x]   [x] [x]   
-    SFW                  [x] [x]   [x] [x]   [x] [x]   
+  View         [x] [x]   [x] [x]   [x] [x]   [x] [x]
+    SFW                  [x] [x]   [x] [x]   [x] [x]
     Published            [x] [x]
 
 User
@@ -32,31 +32,36 @@ User
     Act        [x]       [x]       [x]       [x] !File is not removed
 
 Admin
-  Lock         [x]       [x]       [x]       [ ]
-  Index        [x] [x]   [x] [x]   [x] [x]   [ ] [ ]
-  View         [x] [x]   [x] [x]   [x] [x]   [ ] [ ]
-  Lock/Del.    [x]       [x]       [x]       [ ]
+  Lock         [x]       [x]       [x]       [x]
+  Index        [x] [x]   [x] [x]   [x] [x]   [x] [x]
+  View         [x] [x]   [x] [x]   [x] [x]   [x] [x]
+  Lock/Del.    [x]       [x]       [x]       [x]
 ```
 
 ## Others
 
 ```
-               Licenses  item/file item/post item/tag
+               Licenses  item/file item/post item/tag  Reports
 Validations    [ ]
-                C   V
+                C   V     C   V     C   V     C   V     C   V
 Admin
   Add          [x]
-  Edit         [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-  Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]
-  View                   [ ] [ ]   [ ] [ ]   [ ] [ ]
-  Delete       [x]       [ ]       [ ]       [ ]
+  Edit         [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]   
+  Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ]   [x] [x]
+  View                   [ ] [ ]   [ ] [ ]   [ ] [ ]   [x] [x]
+  Delete       [x]       [ ]       [ ]       [ ]       [x] [x] 
+Public
+  Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ] | [x] Modal to add
+  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ] | [x] Helper
+
 ```
 
 ### Site config
-
-  - Options:
-    - [ ] Default field to display about authors (username or realname)
-
+  - [x] UUIDS instead of int Ids for
+    - [x] Users
+    - [x] Projects
+    - [x] Posts
+    - [x] Files
 ### Before going public
   - [ ] Add a db dump for database creation
     - [x] Sync a SQL file with Mysql Workbench schema
@@ -92,10 +97,20 @@ Admin
   - [ ] Add filters on admin/index views
 
 ### Projects
+
 ### Files
   - [ ] Create an empty index.html in created dirs (UpManagerComponent)
   - [ ] Use File::mime() to get mimetype of an uploaded file
   - [x] Save the mimetype
+
 ### Users
+  - [ ] Index view, related elements : - Add a block for empty lists
+  - [ ]                                - Add the files cards
+
 ### Licenses
+
 ### Tags
+
+### Reports
+  - [ ] Make a component to get number of reports
+    - [ ] Add a read/unread state in db
