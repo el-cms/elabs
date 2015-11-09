@@ -85,6 +85,7 @@ Public
   - [ ] Check for all licenses links using the helper
   - [ ] Add a h() method for every db output
     - [x] Check if that's usefull on things parsed with mdown (now, see #4)
+  - [x] Simple authorization handling
 
 ### On free time
   - [x] Check for fields in models comments
@@ -114,3 +115,6 @@ Public
 ### Reports
   - [ ] Make a component to get number of reports
     - [ ] Add a read/unread state in db
+
+### Auth
+  - [ ] Deny non-users, non-admins

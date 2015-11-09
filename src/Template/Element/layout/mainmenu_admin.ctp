@@ -24,6 +24,9 @@ $linkConfig = ['class' => 'waves-attach waves-effect', 'escape' => false];
   <?php echo $this->Html->link(__d('tags', 'Tags'), ['prefix' => 'admin', 'controller' => 'tags', 'action' => 'index'], $linkConfig) ?>
 </li>
 <li>
+  <?php echo $this->Html->link(__d('reports', 'Reports'), ['prefix' => 'admin', 'controller' => 'reports', 'action' => 'index'], $linkConfig) ?>
+</li>
+<li>
   <?php echo $this->Html->link(__d('admin', 'Maintenance'), '#', $linkConfig) ?>
 </li>
 <?php

@@ -82,8 +82,6 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['index', 'view', 'switchSFW']);
-
         $this->set('see_nsfw', $this->request->session()->read('see_nsfw'));
     }
 

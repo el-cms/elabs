@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Core\Configure;
+use Cake\Network\Exception\ForbiddenException;
 
 /**
  * Users Controller
@@ -16,7 +17,9 @@ class UsersController extends AppController
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['register', 'logout']);
+        if ($this->request->action === 'register' && !empty($this->Auth->user('id'))) {
+            throw new ForbiddenException(__d('elabs', 'You are already registered'));
+        }
     }
 
     /**
@@ -72,7 +75,7 @@ class UsersController extends AppController
         if ($this->request->session()->read('see_nsfw') === false) {
             $options['contain']['Posts']['conditions']['sfw'] = 1;
             $options['contain']['Projects']['conditions']['sfw'] = 1;
-			$options['contain']['Files']['conditions']['sfw'] = 1;
+            $options['contain']['Files']['conditions']['sfw'] = 1;
         }
 
         $user = $this->Users->get($id, $options);
@@ -95,10 +98,10 @@ class UsersController extends AppController
             $this->request->data['role'] = Configure::read('cms.defaultRole');
             $this->request->data['status'] = Configure::read('cms.defaultUserStatus');
             $this->request->data['locked'] = Configure::read('cms.defaultLockedUser');
-            $this->request->data['post_count'] =0;
-            $this->request->data['project_count'] =0;
-            $this->request->data['file_count'] =0;
-            $this->request->data['project_user_count'] =0;
+            $this->request->data['post_count'] = 0;
+            $this->request->data['project_count'] = 0;
+            $this->request->data['file_count'] = 0;
+            $this->request->data['project_user_count'] = 0;
 
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
@@ -106,7 +109,8 @@ class UsersController extends AppController
                 return $this->redirect(['action' => 'index']);
             } else {
                 $errors = $user->errors();
-                debug($errors);die;
+                debug($errors);
+                die;
                 $errorMessages = [];
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
