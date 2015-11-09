@@ -69,6 +69,8 @@ class AppController extends Controller
             'loginRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index'],
             'logoutRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index']
         ]);
+        // Elabs helper, for the entire app
+        $this->viewBuilder()->helpers(['Elabs']);
     }
 
     /**
