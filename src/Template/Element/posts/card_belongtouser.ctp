@@ -2,6 +2,7 @@
 	<div class="card-side pull-left">
 		<span class="card-heading">
 			<?php echo $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($data['id'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
+          <?php echo $this->Elabs->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $this->Number->format($data['id'])], true), ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
 		</span>
 	</div>
 	<div class="card-main">

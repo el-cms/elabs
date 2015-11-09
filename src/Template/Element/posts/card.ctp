@@ -1,7 +1,8 @@
 <div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-side pull-left">
         <span class="card-heading">
-            <?php echo $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat']) ?>
+            <?php echo $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
+            <?php echo $this->Elabs->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($item['fkid'])], true), ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
         </span>
     </div>
     <div class="card-main">
