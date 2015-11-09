@@ -39,8 +39,8 @@
                     $roleIcon = 'question';
             }
             ?>
-            <tr id="userLine<?php echo $this->Number->format($user->id) ?>" class="<?php echo $style ?>">
-                <td><?php echo $this->Number->format($user->id) ?></td>
+            <tr id="userLine<?php echo $user->id ?>" class="<?php echo $style ?>">
+                <td><?php echo $user->id ?></td>
                 <td><?php echo __d('amdin', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $roleIcon . '"></span>', ucfirst(h($user->role))]) ?></td>
                 <td><?php echo h($user->username) ?></td>
                 <td><?php echo h($user->realname) ?></td>

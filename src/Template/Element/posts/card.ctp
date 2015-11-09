@@ -1,8 +1,8 @@
 <div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-side pull-left">
         <span class="card-heading">
-            <?php echo $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
-            <?php echo $this->Elabs->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $this->Number->format($item['fkid'])], true), ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
+            <?php echo $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $item['fkid']], ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
+            <?php echo $this->Elabs->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $item['fkid']], true), ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
         </span>
     </div>
     <div class="card-main">
@@ -33,7 +33,7 @@
                     'prefix' => false,
                     'controller' => 'Users',
                     'action' => 'view',
-                    $this->Number->format($item['user']['id'])
+                    $item['user']['id']
                 ])
             ])
             ?><br/>
@@ -47,7 +47,7 @@
                     'prefix' => false,
                     'controller' => 'Licenses',
                     'action' => 'view',
-                    $this->Number->format($data['license']['id'])], ['escape' => false]
+                    $data['license']['id']], ['escape' => false]
                 )
             ])
             ?>

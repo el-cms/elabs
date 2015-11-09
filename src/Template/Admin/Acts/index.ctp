@@ -22,9 +22,9 @@
         <tbody>
             <?php foreach ($acts as $act): ?>
             <tr>
-                <td><?php echo $this->Number->format($act->id) ?></td>
+                <td><?php echo $act->id ?></td>
                 <td><?php echo h($act->model) ?></td>
-                <td><?php echo $this->Number->format($act->fkid) ?></td>
+                <td><?php echo $act->fkid ?></td>
                 <td><?php echo h($act->type) ?></td>
                 <td><?php echo $act->has('user') ? $this->Html->link($act->user->username, ['controller' => 'Users', 'action' => 'view', $act->user->id]) : '' ?></td>
                 <td class="actions">

@@ -26,11 +26,11 @@
         </tr>
         <tr>
             <th><?php echo __('Id') ?></th>
-            <td><?php echo $this->Number->format($act->id) ?></td>
+            <td><?php echo $act->id ?></td>
         </tr>
         <tr>
             <th><?php echo __('Fkid') ?></th>
-            <td><?php echo $this->Number->format($act->fkid) ?></td>
+            <td><?php echo $act->fkid ?></td>
         </tr>
     </table>
 </div>

@@ -5,7 +5,7 @@ $this->start('pageInfos');
 ?>
 <dl class="dl-horizontal">
     <dt><?php echo __('Id') ?></dt>
-    <dd><?php echo $this->Number->format($project->id) ?></dd>
+    <dd><?php echo $project->id ?></dd>
     <dt><?php echo __d('projects', 'Owner') ?></dt>
     <dd><?php echo $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) ?></dd>
     <dt><?php echo __d('projects', 'Url') ?></dt>

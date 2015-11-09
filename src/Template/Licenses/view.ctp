@@ -28,7 +28,7 @@
         </tr>
         <tr>
             <th><?php echo __('Id') ?></th>
-            <td><?php echo $this->Number->format($license->id) ?></td>
+            <td><?php echo $license->id ?></td>
         </tr>
     </table>
     <div class="related">

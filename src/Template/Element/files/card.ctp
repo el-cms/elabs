@@ -4,8 +4,8 @@ $config = $this->Items->fileConfig($data['filename']);
 <div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-side pull-left">
         <span class="card-heading">
-            <?php echo $this->Html->link(__d('elabs', 'View...'), ['prefix' => false, 'controller' => 'Files', 'action' => 'view', $this->Number->format($item['fkid'])], ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
-            <?php echo $this->Elabs->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Files', 'action' => 'view', $this->Number->format($item['fkid'])], true), ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
+            <?php echo $this->Html->link(__d('elabs', 'View...'), ['prefix' => false, 'controller' => 'Files', 'action' => 'view', $item['fkid']], ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
+            <?php echo $this->Elabs->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Files', 'action' => 'view', $item['fkid']], true), ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
         </span>
     </div>
     <div class="card-main">
@@ -30,8 +30,8 @@ $config = $this->Items->fileConfig($data['filename']);
         </div>
         <!-- Content -->
         <div class="card-description">
-            <?php echo __d('elabs', '{0}&nbsp;Creator: {1}', '<i class="fa fa-user"></i>', $this->Html->link($item['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $this->Number->format($item['user']['id'])])) ?><br/>
-            <?php echo __d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link($this->License->d($data['license']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $this->Number->format($data['license']['id'])], ['escape' => false])) ?>
+            <?php echo __d('elabs', '{0}&nbsp;Creator: {1}', '<i class="fa fa-user"></i>', $this->Html->link($item['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $item['user']['id']])) ?><br/>
+            <?php echo __d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link($this->License->d($data['license']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false])) ?>
         </div>
         <div class="card-inner">
             <?php echo $this->element('files/card_content_' . $config['element'], ['data' => $data]) ?>

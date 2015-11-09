@@ -36,7 +36,7 @@
                 <div class="col-sm-4">
                     <dl class="dl-horizontal">
                         <dt><?php echo __('Id') ?></dt>
-                        <dd><?php echo $this->Number->format($file->id) ?></dd>
+                        <dd><?php echo $file->id ?></dd>
                         <dt><?php echo __d('elabs', 'Creation date') ?></dt>
                         <dd><?php echo h($file->created) ?></dd>
                         <dt><?php echo __d('elabs', 'Updated on') ?></dt>

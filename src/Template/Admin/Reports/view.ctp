@@ -5,7 +5,7 @@ $this->start('pageInfos');
 ?>
 <dl>
     <dt><?php echo __('Id') ?></dt>
-    <dd><?php echo $this->Number->format($report->id) ?></dd>
+    <dd><?php echo $report->id ?></dd>
     <dt><?php echo __('Url') ?></dt>
     <dd><?php echo $this->Html->link(h($report->url), h($report->url)) ?></dd>
     <dt><?php echo __('Created') ?></dt>

@@ -38,7 +38,7 @@
     <div class="tile-sub">
       <dl class="dl-horizontal">
         <dt><?php echo __('Id') ?></dt>
-        <dd><?php echo $this->Number->format($post->id) ?></dd>
+        <dd><?php echo $post->id ?></dd>
         <?php if ($post->published): ?>
             <dt><?php echo __d('posts', 'Publication date') ?></dt>
             <dd><?php echo h($post->publication_date) ?></dd>

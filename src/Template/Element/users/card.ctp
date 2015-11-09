@@ -17,9 +17,9 @@
         </div>
       </div>
       <div class="card-inner">
-        <?php echo $this->Html->link(__d('users', "{0}&nbsp;{1} Articles", '<span class="fa fa-font"></span>', $user['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'user', $this->Number->format($user['id'])], ['class' => 'btn btn-flat waves-attach waves-effect btn-block', 'escape' => false]) ?>
-        <?php echo $this->Html->link(__d('users', '{0}&nbsp;{1} Projects', '<span class="fa fa-cogs"></span>', $user['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'user', $this->Number->format($user['id'])], ['class' => 'btn btn-flat waves-attach waves-effect btn-block', 'escape' => false]) ?>
-        <?php echo $this->Html->link(__d('users', '{0}&nbsp;{1} Files', '<span class="fa fa-file"></span>', $user['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'user', $this->Number->format($user['id'])], ['class' => 'btn btn-flat waves-attach waves-effect btn-block', 'escape' => false]) ?>
+        <?php echo $this->Html->link(__d('users', "{0}&nbsp;{1} Articles", '<span class="fa fa-font"></span>', $user['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-flat waves-attach waves-effect btn-block', 'escape' => false]) ?>
+        <?php echo $this->Html->link(__d('users', '{0}&nbsp;{1} Projects', '<span class="fa fa-cogs"></span>', $user['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-flat waves-attach waves-effect btn-block', 'escape' => false]) ?>
+        <?php echo $this->Html->link(__d('users', '{0}&nbsp;{1} Files', '<span class="fa fa-file"></span>', $user['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-flat waves-attach waves-effect btn-block', 'escape' => false]) ?>
       </div>
     </div>
   </div>

@@ -15,7 +15,7 @@
     <tbody>
         <?php foreach ($posts as $post): ?>
             <tr>
-                <td><?php echo $this->Number->format($post->id) ?></td>
+                <td><?php echo $post->id ?></td>
                 <td><?php echo h($post->title) ?></td>
                 <td><?php echo $this->Html->link(h($post->user->username), ['controller' => 'users', 'action' => 'view', $post->user->id]) ?></td>
                 <td><?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></td>

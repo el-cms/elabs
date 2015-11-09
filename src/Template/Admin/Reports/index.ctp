@@ -12,7 +12,7 @@
     <tbody>
         <?php foreach ($reports as $report): ?>
             <tr>
-                <td><?php echo $this->Number->format($report->id) ?></td>
+                <td><?php echo $report->id ?></td>
                 <td>
                     <?php
                     if ($report->has(['user'])):

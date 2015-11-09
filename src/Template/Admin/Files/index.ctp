@@ -14,13 +14,13 @@
     <tbody>
         <?php foreach ($files as $file): ?>
             <tr>
-                <td><?php echo $this->Number->format($file->id) ?></td>
+                <td><?php echo $file->id ?></td>
                 <td>
                     <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-font fa-fw"></span>', h($file->name)]) ?></small><br/>
                     <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-file-o fa-fw"></span>', h($file->filename)]) ?></small>
                 </td>
                 <td><?php echo $this->Html->link(h($file->user->username), ['controller' => 'users', 'action' => 'view', $file->user->id]) ?></td>
-                <td><?php echo $this->Number->format($file->weight) ?></td>
+                <td><?php echo $file->weight ?></td>
                 <td>
                     <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-asterisk fa-fw"></span>', h($file->created)]) ?></small><br/>
                     <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-refresh fa-fw"></span>', h($file->modified)]) ?></small>

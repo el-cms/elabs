@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <th><?php echo __('Id') ?></th>
-            <td><?php echo $this->Number->format($tag->id) ?></td>
+            <td><?php echo $tag->id ?></td>
         </tr>
     </table>
     <div class="related">

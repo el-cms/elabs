@@ -5,7 +5,7 @@ $this->start('pageInfos');
 ?>
 <dl class="dl-horizontal">
     <dt><?php echo __('Id') ?></dt>
-    <dd><?php echo $this->Number->format($post->id) ?></dd>
+    <dd><?php echo $post->id ?></dd>
     <dt><?php echo __d('elabs', 'Author') ?></dt>
     <dd><?php echo $this->Html->link($post->user->username, ['controller' => 'Users', 'action' => 'view', $post->user->id]) ?></dd>
     <dt><?php echo __('License') ?></dt>

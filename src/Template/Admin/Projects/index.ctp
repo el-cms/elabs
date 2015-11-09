@@ -15,7 +15,7 @@
     <tbody>
         <?php foreach ($projects as $project): ?>
             <tr>
-                <td><?php echo $this->Number->format($project->id) ?></td>
+                <td><?php echo $project->id ?></td>
                 <td><?php echo h($project->name) ?></td>
                 <td><?php echo $this->Html->link(h($project->user->username), ['controller' => 'users', 'action' => 'view', $project->user->id]) ?></td>
                 <td><?php echo $this->ItemsAdmin->sfwLabel($project->sfw) ?></td>

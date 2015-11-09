@@ -23,7 +23,7 @@
         <tbody>
             <?php foreach ($licenses as $license): ?>
             <tr>
-                <td><?php echo $this->Number->format($license->id) ?></td>
+                <td><?php echo $license->id ?></td>
                 <td><?php echo h($license->name) ?></td>
                 <td><?php echo h($license->short_description) ?></td>
                 <td><?php echo h($license->link) ?></td>

@@ -25,7 +25,7 @@ $this->start('pageContent');
             foreach ($licenses as $license):
                 ?>
                 <tr>
-                    <td><?php echo $this->Number->format($license->id) ?></td>
+                    <td><?php echo $license->id ?></td>
                     <td><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . $license->icon . ' fa-fw"></span>', h($license->name)]) ?></td>
                     <td><?php echo $this->Html->link(h($license->link), h($license->link)) ?></td>
                     <td><?php echo h($license->post_count) ?></td>

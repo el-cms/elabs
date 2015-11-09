@@ -14,7 +14,7 @@ $config = $this->Items->fileConfig($file['filename']);
     <dt><?php echo __('Author') ?></dt>
     <dd><?php echo $file->has('user') ? $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) : '' ?></dd>
     <dt><?php echo __('Weight') ?></dt>
-    <dd><?php echo $this->Number->format($file->weight) ?></dd>
+    <dd><?php echo $file->weight ?></dd>
     <dt><?php echo __('Created') ?></dt>
     <dd><?php echo h($file->created) ?></dd>
     <?php if ($file->has('modified')): ?>

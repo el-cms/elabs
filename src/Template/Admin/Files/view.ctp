@@ -8,7 +8,7 @@ $this->start('pageInfos');
 ?>
 <dl class="dl-horizontal">
     <dt><?php echo __('Id') ?></dt>
-    <dd><?php echo $this->Number->format($file->id) ?></dd>
+    <dd><?php echo $file->id ?></dd>
     <dt><?php echo __d('files', 'Owner') ?></dt>
     <dd><?php echo $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) ?></dd>
     <dt><?php echo __d('files', 'Name') ?></dt>
@@ -16,7 +16,7 @@ $this->start('pageInfos');
     <dt><?php echo __d('files', 'File name') ?></dt>
     <dd><small><?php echo h($file->filename) ?></small></dd>
     <dt><?php echo __('Weight') ?></dt>
-    <dd><?php echo $this->Number->format($file->weight) ?></dd>
+    <dd><?php echo $file->weight ?></dd>
     <dt><?php echo __d('licenses', 'License') ?></dt>
     <dd><?php echo $this->License->d($file->license) ?></dd>
     <dt><?php echo __d('elabs', 'Creation date') ?></dt>

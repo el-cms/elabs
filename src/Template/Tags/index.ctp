@@ -19,7 +19,7 @@
         <tbody>
             <?php foreach ($tags as $tag): ?>
             <tr>
-                <td><?php echo $this->Number->format($tag->id) ?></td>
+                <td><?php echo $tag->id ?></td>
                 <td><?php echo h($tag->name) ?></td>
                 <td class="actions">
                     <?php echo $this->Html->link(__('View'), ['action' => 'view', $tag->id]) ?>
