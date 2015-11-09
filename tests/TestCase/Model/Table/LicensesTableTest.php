@@ -18,8 +18,14 @@ class LicensesTableTest extends TestCase
      */
     public $fixtures = [
         'app.licenses',
+        'app.files',
+        'app.users',
+        'app.acts',
         'app.posts',
-        'app.projects'
+        'app.projects',
+        'app.project_users',
+        'app.reports',
+        'app.itemfiles'
     ];
 
     /**

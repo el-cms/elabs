@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -9,18 +8,18 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
- * @property string $short_description
  * @property string $link
  * @property string $icon
  * @property int $post_count
- * @property int $file_count
  * @property int $project_count
+ * @property int $file_count
+ * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
- * @property \App\Model\Entity\File[] $files
  */
 class License extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
@@ -16,6 +15,7 @@ use Cake\Core\Configure;
  * @property \Cake\ORM\Association\HasMany $Files
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
+ * @property \Cake\ORM\Association\HasMany $Reports
  */
 class UsersTable extends Table
 {
@@ -62,16 +62,16 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'uuid'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->add('email', 'valid', ['rule' => 'email'])
-                ->requirePresence('email', 'create')
+            ->add('email', 'valid', ['rule' => 'email'])
+            ->requirePresence('email', 'create')
                 ->notEmpty('email', 'Your email is needed for login');
 
         $validator
-                ->requirePresence('username', 'create')
+            ->requirePresence('username', 'create')
                 ->notEmpty('username', 'You should provide a user name')
                 ->add('username', [
                     'minLength' => [
@@ -81,10 +81,10 @@ class UsersTable extends Table
         ]);
 
         $validator
-                ->allowEmpty('realname');
+            ->allowEmpty('realname');
 
         $validator
-                ->requirePresence('password', 'create')
+            ->requirePresence('password', 'create')
                 ->notEmpty('password', 'Without a password, you can\'t login.')
                 ->add('password', [
                     'minLength' => [
@@ -109,27 +109,46 @@ class UsersTable extends Table
                 ->notEmpty('password_confirm');
 
         $validator
-                ->allowEmpty('website');
+            ->allowEmpty('website');
 
         $validator
-                ->allowEmpty('bio');
+            ->allowEmpty('bio');
 
         $validator
-                ->requirePresence('role', 'create')
+            ->requirePresence('role', 'create')
                 ->notEmpty('role', 'A valid role is required.')
                 ->add('role', 'inlist', ['rule' => ['inList', ['admin', 'author', 'user']],
                     'message' => 'Please enter a valid role']);
 
         $validator
-                ->add('see_nsfw', 'valid', ['rule' => 'boolean'])
-                ->allowEmpty('see_nsfw');
+            ->add('see_nsfw', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('see_nsfw', 'create')
+            ->notEmpty('see_nsfw');
 
         $validator
-                ->add('status', 'valid', ['rule' => 'boolean'])
-                ->allowEmpty('status');
+            ->add('status', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('status', 'create')
+            ->notEmpty('status');
+
         $validator
-                ->add('locked', 'valid', ['rule' => 'boolean'])
-                ->allowEmpty('locked');
+            ->add('post_count', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('post_count', 'create')
+            ->notEmpty('post_count');
+
+        $validator
+            ->add('project_count', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('project_count', 'create')
+            ->notEmpty('project_count');
+
+        $validator
+            ->add('file_count', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('file_count', 'create')
+            ->notEmpty('file_count');
+
+        $validator
+            ->add('project_user_count', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('project_user_count', 'create')
+            ->notEmpty('project_user_count');
 
         return $validator;
     }
@@ -143,8 +162,8 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email'], __d('users', 'This email address is already in use.')));
-        $rules->add($rules->isUnique(['username'], __d('users', 'This username is already taken.')));
+        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['username']));
         return $rules;
     }
 }

@@ -24,7 +24,8 @@ class ItemfilesTableTest extends TestCase
         'app.posts',
         'app.licenses',
         'app.projects',
-        'app.project_users'
+        'app.project_users',
+        'app.reports'
     ];
 
     /**

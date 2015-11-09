@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\Tag;
@@ -15,6 +14,7 @@ use Cake\Validation\Validator;
  */
 class TagsTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -43,12 +43,17 @@ class TagsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->requirePresence('name', 'create')
-                ->notEmpty('name');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
+        $validator
+            ->add('itemtag_count', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('itemtag_count', 'create')
+            ->notEmpty('itemtag_count');
 
         return $validator;
     }

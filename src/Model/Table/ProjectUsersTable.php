@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\ProjectUser;
@@ -16,6 +15,7 @@ use Cake\Validation\Validator;
  */
 class ProjectUsersTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -29,6 +29,8 @@ class ProjectUsersTable extends Table
         $this->table('project_users');
         $this->displayField('id');
         $this->primaryKey('id');
+
+        $this->addBehavior('CounterCache', ['Users' => ['project_user_count']]);
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
@@ -49,8 +51,8 @@ class ProjectUsersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('id', 'create');
 
         return $validator;
     }

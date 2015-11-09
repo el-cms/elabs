@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -7,7 +6,7 @@ use Cake\ORM\Entity;
 /**
  * Post Entity.
  *
- * @property int $id
+ * @property string $id
  * @property string $title
  * @property string $excerpt
  * @property string $text
@@ -16,13 +15,14 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $modified
  * @property int $status
  * @property \Cake\I18n\Time $publication_date
- * @property int $user_id
+ * @property string $user_id
  * @property \App\Model\Entity\User $user
  * @property int $license_id
  * @property \App\Model\Entity\License $license
  */
 class Post extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

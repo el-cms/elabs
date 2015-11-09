@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -7,7 +6,7 @@ use Cake\ORM\Entity;
 /**
  * Project Entity.
  *
- * @property int $id
+ * @property string $id
  * @property string $name
  * @property string $short_description
  * @property string $description
@@ -18,12 +17,13 @@ use Cake\ORM\Entity;
  * @property int $status
  * @property int $license_id
  * @property \App\Model\Entity\License $license
- * @property int $user_id
+ * @property string $user_id
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\ProjectUser[] $project_users
  */
 class Project extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\Project;
@@ -61,26 +60,31 @@ class ProjectsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'uuid'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->requirePresence('name', 'create')
-                ->notEmpty('name');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
-                ->allowEmpty('short_description');
+            ->allowEmpty('short_description');
 
         $validator
-                ->allowEmpty('description');
+            ->allowEmpty('description');
 
         $validator
-                ->add('sfw', 'valid', ['rule' => 'boolean'])
-                ->requirePresence('sfw', 'create')
-                ->notEmpty('sfw');
+            ->add('sfw', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('sfw', 'create')
+            ->notEmpty('sfw');
 
         $validator
-                ->allowEmpty('download');
+            ->allowEmpty('mainurl');
+
+        $validator
+            ->add('status', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('status', 'create')
+            ->notEmpty('status');
 
         return $validator;
     }

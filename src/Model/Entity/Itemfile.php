@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -9,12 +8,13 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $model
- * @property int $fkid
- * @property int $file_id
+ * @property string $fkid
+ * @property string $file_id
  * @property \App\Model\Entity\File $file
  */
 class Itemfile extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

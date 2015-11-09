@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\License;
@@ -17,6 +16,7 @@ use Cake\Validation\Validator;
  */
 class LicensesTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -51,18 +51,33 @@ class LicensesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->requirePresence('name', 'create')
-                ->notEmpty('name');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
-                ->allowEmpty('short_description');
+            ->allowEmpty('link');
 
         $validator
-                ->allowEmpty('link');
+            ->allowEmpty('icon');
+
+        $validator
+            ->add('post_count', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('post_count', 'create')
+            ->notEmpty('post_count');
+
+        $validator
+            ->add('project_count', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('project_count', 'create')
+            ->notEmpty('project_count');
+
+        $validator
+            ->add('file_count', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('file_count', 'create')
+            ->notEmpty('file_count');
 
         return $validator;
     }

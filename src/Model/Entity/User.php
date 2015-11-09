@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -8,7 +7,7 @@ use Cake\Auth\DefaultPasswordHasher;
 /**
  * User Entity.
  *
- * @property int $id
+ * @property string $id
  * @property string $email
  * @property string $username
  * @property string $realname
@@ -25,11 +24,14 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property int $file_count
  * @property int $project_user_count
  * @property \App\Model\Entity\Act[] $acts
+ * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
+ * @property \App\Model\Entity\Report[] $reports
  */
 class User extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -47,7 +49,7 @@ class User extends Entity
     protected function _setPassword($password)
     {
         return (new DefaultPasswordHasher)->hash($password);
-    }
+}
 
     public function comparePassword($password)
     {

@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property string $reason
  * @property string $session
  * @property \Cake\I18n\Time $created
- * @property int $user_id
+ * @property string $user_id
  * @property \App\Model\Entity\User $user
  */
 class Report extends Entity

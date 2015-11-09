@@ -19,9 +19,9 @@ class ActsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'model' => ['type' => 'string', 'length' => 30, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'fkid' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'fkid' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'type' => ['type' => 'string', 'length' => 30, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'user_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'user_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
             'fk_events_users1_idx' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
         ],
@@ -45,9 +45,9 @@ class ActsFixture extends TestFixture
         [
             'id' => 1,
             'model' => 'Lorem ipsum dolor sit amet',
-            'fkid' => 1,
+            'fkid' => '2ef44ff0-cc44-481d-9079-dde98940df1e',
             'type' => 'Lorem ipsum dolor sit amet',
-            'user_id' => 1
+            'user_id' => '780c3c17-f3af-4b6d-99e0-3073105d57ff'
         ],
     ];
 }

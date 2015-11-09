@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\File;
@@ -17,6 +16,7 @@ use Cake\Validation\Validator;
  */
 class FilesTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -32,6 +32,10 @@ class FilesTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('CounterCache', [
+            'Users' => ['post_count' => ['conditions' => ['status' => 1]]],
+            'Licenses' => ['post_count' => ['conditions' => ['status' => 1]]],
+        ]);
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
@@ -55,23 +59,37 @@ class FilesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'uuid'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->allowEmpty('name');
+            ->allowEmpty('name');
 
         $validator
-                ->requirePresence('filename', 'create')
-                ->notEmpty('filename');
+            ->requirePresence('filename', 'create')
+            ->notEmpty('filename');
 
         $validator
-                ->add('weight', 'valid', ['rule' => 'numeric'])
-                ->requirePresence('weight', 'create')
-                ->notEmpty('weight');
+            ->add('weight', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('weight', 'create')
+            ->notEmpty('weight');
 
         $validator
-                ->allowEmpty('description');
+            ->allowEmpty('description');
+
+        $validator
+            ->requirePresence('mime', 'create')
+            ->notEmpty('mime');
+
+        $validator
+            ->add('sfw', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('sfw', 'create')
+            ->notEmpty('sfw');
+
+        $validator
+            ->add('status', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('status', 'create')
+            ->notEmpty('status');
 
         return $validator;
     }
@@ -86,6 +104,7 @@ class FilesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['license_id'], 'Licenses'));
         return $rules;
     }
 }

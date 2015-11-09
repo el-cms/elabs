@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\Itemfile;
@@ -15,6 +14,7 @@ use Cake\Validation\Validator;
  */
 class ItemfilesTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -44,17 +44,17 @@ class ItemfilesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->requirePresence('model', 'create')
-                ->notEmpty('model');
+            ->requirePresence('model', 'create')
+            ->notEmpty('model');
 
         $validator
-                ->add('fkid', 'valid', ['rule' => 'numeric'])
-                ->requirePresence('fkid', 'create')
-                ->notEmpty('fkid');
+            ->add('fkid', 'valid', ['rule' => 'uuid'])
+            ->requirePresence('fkid', 'create')
+            ->notEmpty('fkid');
 
         return $validator;
     }

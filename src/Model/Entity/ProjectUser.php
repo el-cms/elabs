@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -8,13 +7,14 @@ use Cake\ORM\Entity;
  * ProjectUser Entity.
  *
  * @property int $id
- * @property int $user_id
+ * @property string $user_id
  * @property \App\Model\Entity\User $user
- * @property int $project_id
+ * @property string $project_id
  * @property \App\Model\Entity\Project $project
  */
 class ProjectUser extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

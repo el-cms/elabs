@@ -20,8 +20,12 @@ class PostsTableTest extends TestCase
         'app.posts',
         'app.users',
         'app.acts',
+        'app.files',
+        'app.licenses',
         'app.projects',
-        'app.licenses'
+        'app.project_users',
+        'app.itemfiles',
+        'app.reports'
     ];
 
     /**

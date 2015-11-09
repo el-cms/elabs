@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -9,10 +8,12 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
+ * @property int $itemtag_count
  * @property \App\Model\Entity\Itemtag[] $itemtags
  */
 class Tag extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

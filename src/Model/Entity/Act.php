@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -9,13 +8,14 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $model
- * @property int $fkid
+ * @property string $fkid
  * @property string $type
- * @property int $user_id
+ * @property string $user_id
  * @property \App\Model\Entity\User $user
  */
 class Act extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

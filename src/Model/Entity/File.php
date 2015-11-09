@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -7,23 +6,25 @@ use Cake\ORM\Entity;
 /**
  * File Entity.
  *
- * @property int $id
+ * @property string $id
  * @property string $name
  * @property string $filename
  * @property int $weight
  * @property string $description
+ * @property string $mime
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
- * @property int $sfw
+ * @property bool $sfw
  * @property int $status
- * @property int $user_id
- * @property int $license_id
+ * @property string $user_id
  * @property \App\Model\Entity\User $user
+ * @property int $license_id
  * @property \App\Model\Entity\License $license
  * @property \App\Model\Entity\Itemfile[] $itemfiles
  */
 class File extends Entity
 {
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

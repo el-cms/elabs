@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\Post;
@@ -57,12 +56,12 @@ class PostsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'uuid'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->requirePresence('title', 'create')
-                ->notEmpty('title');
+            ->requirePresence('title', 'create')
+            ->notEmpty('title');
 
         $validator
                 ->requirePresence('excerpt', 'create')
@@ -74,21 +73,21 @@ class PostsTable extends Table
         ]);
 
         $validator
-                ->notEmpty('text');
+            ->allowEmpty('text');
 
         $validator
-                ->add('sfw', 'valid', ['rule' => 'boolean'])
-                ->requirePresence('sfw', 'create')
-                ->notEmpty('sfw');
+            ->add('sfw', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('sfw', 'create')
+            ->notEmpty('sfw');
 
         $validator
-                ->add('status', 'valid', ['rule' => 'numeric'])
-                ->requirePresence('status', 'create')
-                ->notEmpty('status');
+            ->add('status', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('status', 'create')
+            ->notEmpty('status');
 
         $validator
-                ->add('publication_date', 'valid', ['rule' => 'datetime'])
-                ->allowEmpty('publication_date');
+            ->add('publication_date', 'valid', ['rule' => 'datetime'])
+            ->allowEmpty('publication_date');
 
         return $validator;
     }

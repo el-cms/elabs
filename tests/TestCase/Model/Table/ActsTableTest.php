@@ -19,8 +19,13 @@ class ActsTableTest extends TestCase
     public $fixtures = [
         'app.acts',
         'app.users',
+        'app.files',
+        'app.licenses',
         'app.posts',
-        'app.projects'
+        'app.projects',
+        'app.project_users',
+        'app.itemfiles',
+        'app.reports'
     ];
 
     /**

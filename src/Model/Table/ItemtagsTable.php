@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use App\Model\Entity\Itemtag;
@@ -15,6 +14,7 @@ use Cake\Validation\Validator;
  */
 class ItemtagsTable extends Table
 {
+
     /**
      * Initialize method
      *
@@ -28,6 +28,8 @@ class ItemtagsTable extends Table
         $this->table('itemtags');
         $this->displayField('id');
         $this->primaryKey('id');
+
+        $this->addBehavior('CounterCache', ['Tags' => ['itemtag_count']]);
 
         $this->belongsTo('Tags', [
             'foreignKey' => 'tag_id',
@@ -44,17 +46,17 @@ class ItemtagsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'numeric'])
-                ->allowEmpty('id', 'create');
+            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->requirePresence('model', 'create')
-                ->notEmpty('model');
+            ->requirePresence('model', 'create')
+            ->notEmpty('model');
 
         $validator
-                ->add('fkid', 'valid', ['rule' => 'numeric'])
-                ->requirePresence('fkid', 'create')
-                ->notEmpty('fkid');
+            ->add('fkid', 'valid', ['rule' => 'uuid'])
+            ->requirePresence('fkid', 'create')
+            ->notEmpty('fkid');
 
         return $validator;
     }
