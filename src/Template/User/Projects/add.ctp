@@ -1,4 +1,6 @@
 <?php
+$this->assign('title', __d('projects', 'New project'));
+
 $formTemplate = [
     'label' => '<label class="form-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
     'checkboxContainer' => '<div class="form-group"><div class="checkbox switch">{{content}}</div></div>',

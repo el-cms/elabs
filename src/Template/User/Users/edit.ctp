@@ -1,4 +1,6 @@
 <?php
+$this->assign('title', __d('users', 'Update your profile'));
+
 $formTemplate = [
     'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
     'submitContainer' => '{{content}}',

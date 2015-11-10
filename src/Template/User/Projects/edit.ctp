@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', __d('projects', 'Edit a project'));
+$this->assign('title', __d('projects', 'Edit project "{0}"', $project->name));
 
 $formTemplate = [
     'label' => '<label class="form-label {{attrs.class}}" {{attrs}}>{{text}}</label>',

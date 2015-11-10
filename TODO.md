@@ -64,7 +64,6 @@ Public
     - [15/11/09] Files
 
 ### Before going public
-  - [ ] Review ALL page titles to follow Material guidelines (My/Your,...)
   - [ ] Review all paginator links and add a \__d() translation on them
   - [ ] Add icons on action buttons
   - [ ] Add text where there is no element to display
@@ -73,6 +72,7 @@ Public
   - [ ] Check for all licenses links created using the license helper
   - [ ] Add default order in $this->paginate when retrieving data
   - [ ] Create a simple captchas system
+  - [15/11/10] Review ALL page titles to follow Material guidelines (My/Your,...)
   - [15/11/10]] Check for admin page titles (should be <controller>/<action>/<optionnal title>
   - [15/11/10] Add an icon in the paginator links when active (d39482f5c3a730565f7a88331a8d99fbacfb2844)
   - [15/11/10] Revert all user/<controler>/manage() to index()

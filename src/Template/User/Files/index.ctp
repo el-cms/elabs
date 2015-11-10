@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', __d('posts', 'Your files'));
+$this->assign('title', __d('files', 'Your files'));
 
 $this->start('pageOrderMenu');
 ?>

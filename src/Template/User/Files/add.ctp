@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', __d('posts', 'New File'));
+$this->assign('title', __d('files', 'Add a file'));
 
 $formTemplate = [
     'label' => '<label class="form-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
