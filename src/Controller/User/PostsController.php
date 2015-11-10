@@ -18,7 +18,7 @@ class PostsController extends UserAppController
      *
      * @return void
      */
-    public function manage($nsfw = 'all', $published = 'all')
+    public function index($nsfw = 'all', $published = 'all')
     {
         $this->paginate = [
             'fields' => ['id', 'title', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
@@ -69,7 +69,7 @@ class PostsController extends UserAppController
                 if ($post->status === 1) {
                     $this->Act->add($post->id, 'add', 'Posts');
                 }
-                return $this->redirect(['action' => 'manage']);
+                return $this->redirect(['action' => 'index']);
             } else {
                 $errors = $post->errors();
                 $errorMessages = [];
@@ -118,7 +118,7 @@ class PostsController extends UserAppController
                     $this->Act->add($post->id, 'edit', 'Posts');
                     $this->Flash->success(__d('posts', 'Your article has been updated.'));
                 }
-                return $this->redirect(['action' => 'manage']);
+                return $this->redirect(['action' => 'index']);
             } else {
                 $errors = $post->errors();
                 $errorMessages = [];
@@ -154,6 +154,6 @@ class PostsController extends UserAppController
         } else {
             $this->Flash->error(__('The post could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'manage']);
+        return $this->redirect(['action' => 'index']);
     }
 }

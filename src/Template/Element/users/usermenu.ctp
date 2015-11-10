@@ -23,17 +23,17 @@ $linkConfig = ['class' => 'waves-attach waves-effect', 'escape' => false];
 				<li class="title">
 					<?php echo __d('posts', 'Articles:') ?>
 				</li>
-				<li><?php echo $this->Html->link('<span class="fa fa-list"></span>&nbsp;' . __d('elabs', 'Manage'), ['prefix' => 'user', 'controller' => 'posts', 'action' => 'manage'], $linkConfig) ?></li>
+				<li><?php echo $this->Html->link('<span class="fa fa-list"></span>&nbsp;' . __d('elabs', 'Manage'), ['prefix' => 'user', 'controller' => 'posts', 'action' => 'index'], $linkConfig) ?></li>
 				<li><?php echo $this->Html->link('<span class="fa fa-plus"></span>&nbsp;' . __d('posts', 'Write something !'), ['prefix' => 'user', 'controller' => 'posts', 'action' => 'add'], $linkConfig) ?></li>
 				<li class="title">
 					<?php echo __d('projects', 'Projects:') ?>
 				</li>
-				<li><?php echo $this->Html->link('<span class="fa fa-list"></span>&nbsp;' . __d('elabs', 'Manage'), ['prefix' => 'user', 'controller' => 'projects', 'action' => 'manage'], $linkConfig) ?></li>
+				<li><?php echo $this->Html->link('<span class="fa fa-list"></span>&nbsp;' . __d('elabs', 'Manage'), ['prefix' => 'user', 'controller' => 'projects', 'action' => 'index'], $linkConfig) ?></li>
 				<li><?php echo $this->Html->link('<span class="fa fa-plus"></span>&nbsp;' . __d('projects', 'Add a project !'), ['prefix' => 'user', 'controller' => 'projects', 'action' => 'add'], $linkConfig) ?></li>
 				<li class="title">
 					<?php echo __d('files', 'Files:') ?>
 				</li>
-				<li><?php echo $this->Html->link('<span class="fa fa-list"></span>&nbsp;' . __d('elabs', 'Manage'), ['prefix' => 'user', 'controller' => 'files', 'action' => 'manage'], $linkConfig) ?></li>
+				<li><?php echo $this->Html->link('<span class="fa fa-list"></span>&nbsp;' . __d('elabs', 'Manage'), ['prefix' => 'user', 'controller' => 'files', 'action' => 'index'], $linkConfig) ?></li>
 				<li><?php echo $this->Html->link('<span class="fa fa-plus"></span>&nbsp;' . __d('files', 'Upload some rich content !'), ['prefix' => 'user', 'controller' => 'files', 'action' => 'add'], $linkConfig) ?></li>
 			</ul>
 		</div>

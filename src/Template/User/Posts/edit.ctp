@@ -21,7 +21,7 @@ $linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect'
         <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
         <div class="side-menu-content">
             <ul>
-                <li><?php echo $this->Html->link(__d('posts', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'Your articles']), ['action' => 'manage'], $linkOptions) ?></li>
+                <li><?php echo $this->Html->link(__d('posts', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'Your articles']), ['action' => 'index'], $linkOptions) ?></li>
                 <li><?php echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions) ?></li>
             </ul>
         </div>

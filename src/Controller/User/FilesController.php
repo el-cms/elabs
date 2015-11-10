@@ -25,7 +25,7 @@ class FilesController extends UserAppController
      *
      * @return void
      */
-    public function manage($nsfw = 'all', $status = 'all')
+    public function index($nsfw = 'all', $status = 'all')
     {
         $this->paginate = [
             'fields' => ['id', 'name', 'filename', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
@@ -104,7 +104,7 @@ class FilesController extends UserAppController
                     if ($this->Files->save($file)) {
                         $this->Flash->success(__d('files', 'The file has been saved.'));
                         $this->Act->add($file->id, 'add', 'Files');
-                        return $this->redirect(['action' => 'manage']);
+                        return $this->redirect(['action' => 'index']);
                     } else {
 //                        debug($file->errors());die;
                         $this->Flash->error(__d('elabs', 'The file could not be saved. Please, try again.'));
@@ -134,7 +134,7 @@ class FilesController extends UserAppController
             if ($this->Files->save($file)) {
                 $this->Flash->success(__d('file', 'The file has been saved.'));
                 $this->Act->add($file->id, 'edit', 'Files');
-                return $this->redirect(['action' => 'manage']);
+                return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('files', 'The file could not be saved. Please, try again.'));
                 $errors = $file->errors();

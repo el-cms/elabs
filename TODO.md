@@ -73,7 +73,7 @@ Public
   - [ ] Review error messages on login
   - [ ] Create reports support
   - [ ] Check for all licenses links using the helper
-  - [ ] Revert all user/<controler>/manage() to index()
+  - [15/11/10] Revert all user/<controler>/manage() to index()
   - [??/??/??] Add a dl-horizontal style for definition lists
   - [??/??/??] Better style for filter links
   - [??/??/??] Simple authorization handling
