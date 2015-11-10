@@ -3,13 +3,11 @@ $this->assign('title', __d('users', 'Author: {0}', h($user->realname)));
 
 $this->start('pageInfos');
 ?>
-<dl class="dl-horizontal">
+<dl>
     <dt><?php echo __d('users', 'Username') ?></dt>
     <dd><?php echo h($user->username) ?></dd>
-    <dt><?php echo __d('users', 'Name') ?></dt>
-    <dd><?php echo h($user->realname) ?></dd>
     <dt><?php echo __d('users', 'Website') ?></dt>
-    <dd><?php echo h($user->website) ?></dd>
+    <dd><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}',['<span class="fa fa-external-link"></span>', h($user->website)]), h($user->website), ['escape'=>false, 'target'=>'_blank']) ?></dd>
     <dt><?php echo __d('users', 'Member since') ?></dt>
     <dd><?php echo h($user->created) ?></dd>
 </dl>
@@ -24,13 +22,13 @@ echo $this->Markdown->transform(h($user->bio));
 <nav class="tab-nav tab-nav-brand">
     <ul class="nav nav-justified">
         <li class="active">
-            <a class="waves-attach waves-effect" data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles') ?></a>
+            <a class="waves-attach waves-effect" data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles ({0})', $user->post_count) ?></a>
         </li>
         <li>
-            <a class="waves-attach waves-effect" data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects') ?></a>
+            <a class="waves-attach waves-effect" data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects ({0})', $user->project_count) ?></a>
         </li>
         <li>
-            <a class="waves-attach waves-effect" data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files') ?></a>
+            <a class="waves-attach waves-effect" data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files ({0})', $user->file_count) ?></a>
         </li>
     </ul>
     <div class="tab-nav-indicator"></div>

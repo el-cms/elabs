@@ -54,7 +54,7 @@ class UsersController extends AppController
     {
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
         $options = [
-            'fields' => ['id', 'username', 'realname', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',],
+            'fields' => ['id', 'username', 'realname', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',],
             'contain' => [
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
