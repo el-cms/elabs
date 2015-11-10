@@ -34,8 +34,8 @@ class ProjectsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->addBehavior('CounterCache', [
-            'Users' => ['post_count' => ['conditions' => ['status' => 1]]],
-            'Licenses' => ['post_count' => ['conditions' => ['status' => 1]]],
+            'Users' => ['project_count' => ['conditions' => ['status' => 1]]],
+            'Licenses' => ['project_count' => ['conditions' => ['status' => 1]]],
         ]);
 
         $this->belongsTo('Licenses', [

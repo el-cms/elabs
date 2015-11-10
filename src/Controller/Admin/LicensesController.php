@@ -31,6 +31,10 @@ class LicensesController extends AdminAppController
     {
         $license = $this->Licenses->newEntity();
         if ($this->request->is('post')) {
+            // Adding default values
+            $this->request->data['post_count']=0;
+            $this->request->data['project_count']=0;
+            $this->request->data['file_count']=0;
             $license = $this->Licenses->patchEntity($license, $this->request->data);
             if ($this->Licenses->save($license)) {
                 $this->Flash->success(__('The license has been saved.'));

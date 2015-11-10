@@ -33,8 +33,8 @@ class FilesTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('CounterCache', [
-            'Users' => ['post_count' => ['conditions' => ['status' => 1]]],
-            'Licenses' => ['post_count' => ['conditions' => ['status' => 1]]],
+            'Users' => ['file_count' => ['conditions' => ['status' => 1]]],
+            'Licenses' => ['file_count' => ['conditions' => ['status' => 1]]],
         ]);
 
         $this->belongsTo('Users', [
