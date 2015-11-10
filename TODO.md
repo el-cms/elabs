@@ -51,7 +51,7 @@ Admin
   View                   [ ] [ ]   [ ] [ ]   [ ] [ ]   [x] [x]
   Delete       [x]       [ ]       [ ]       [ ]       [x] [x] 
 Public
-  Index        [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ] | [x] Modal to add
+  Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ] | [x] Modal to add
   View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ] | [x] Helper
 
 ```
@@ -69,11 +69,15 @@ Public
   - [ ] Add icons on action buttons
   - [ ] Add text where there is no element to display
   - [ ] Translate menus (proper __d() use)
-  - [ ] Delete unused views
   - [ ] Review error messages on login
-  - [ ] Create reports support
-  - [ ] Check for all licenses links using the helper
+  - [ ] Check for all licenses links created using the license helper
+  - [ ] Check for admin page titles (should be <controller>/<action>/<optionnal title>
+  - [ ] Add default order in $this->paginate when retrieving data
+  - [ ] Create a simple captchas system
+  - [15/11/10] Add an icon in the paginator links when active (d39482f5c3a730565f7a88331a8d99fbacfb2844)
   - [15/11/10] Revert all user/<controler>/manage() to index()
+  - [??/??/??] Delete unused views
+  - [??/??/??] Create reports support
   - [??/??/??] Add a dl-horizontal style for definition lists
   - [??/??/??] Better style for filter links
   - [??/??/??] Simple authorization handling
@@ -102,16 +106,24 @@ Public
     - --> fc02fd07884d09568a3c2dadc862f13e32f586fa and 2033393bd3a2fc98679600aba1b969ebd026fcaf
 
 ### Posts
+  - [ ] Create proper filters, not shown in filter list, but used by links in 
+    user or license cards : filter on license and filter on user.
   - [ ] Add filters on admin/index views
 
 ### Projects
+  - [ ] Create proper filters, not shown in filter list, but used by links in 
+    user or license cards : filter on license and filter on user.
 
 ### Files
+  - [ ] Create proper filters, not shown in filter list, but used by links in 
+    user or license cards : filter on license and filter on user.
   - [ ] Create an empty index.html in created dirs (UpManagerComponent)
   - [ ] Use File::mime() to get mimetype of an uploaded file
   - [??/??/??] Save the mimetype
 
 ### Users
+  - [ ] Add a captcha on register
+  - [ ] Add a captcha on login
   - [15/11/09] Index view, related elements : - Add a block for empty lists
   - [15/11/09]                                - Add the files cards
 
@@ -120,8 +132,9 @@ Public
 ### Tags
 
 ### Reports
+  - [ ] Add a captcha for anonymous reports
   - [ ] Make a component to get number of reports
     - [ ] Add a read/unread state in db
 
 ### Auth
-  - [ ] Deny non-users, non-admins
+  - [??/??/??] Deny non-users, non-admins
