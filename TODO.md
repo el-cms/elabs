@@ -52,7 +52,7 @@ Admin
   Delete       [x]       [ ]       [ ]       [ ]       [x] [x] 
 Public
   Index        [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ] | [x] Modal to add
-  View         [ ] [ ]   [ ] [ ]   [ ] [ ]   [ ] [ ] | [x] Helper
+  View         [x] [x]   [ ] [ ]   [ ] [ ]   [ ] [ ] | [x] Helper
 
 ```
 

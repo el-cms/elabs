@@ -11,6 +11,7 @@ use App\Controller\AppController;
  */
 class LicensesController extends AppController
 {
+
     /**
      * Index method
      *
@@ -18,9 +19,9 @@ class LicensesController extends AppController
      */
     public function index()
     {
-        $this->paginate=[
-            'sortWhiteList'=>['name', 'post_count', 'project_count', 'file_count'],
-            'order'=>['name'=>'asc']
+        $this->paginate = [
+            'sortWhiteList' => ['name', 'post_count', 'project_count', 'file_count'],
+            'order' => ['name' => 'asc']
         ];
         $this->set('licenses', $this->paginate($this->Licenses));
         $this->set('_serialize', ['licenses']);
@@ -36,7 +37,17 @@ class LicensesController extends AppController
     public function view($id = null)
     {
         $license = $this->Licenses->get($id, [
-            'contain' => ['Posts', 'Projects']
+            'contain' => [
+                'Posts' => [
+                    'Users' => ['fields' => ['id', 'username']]
+                ],
+                'Projects' => [
+                    'Users' => ['fields' => ['id', 'username']]
+                ],
+                'Files' => [
+                    'Users' => ['fields' => ['id', 'username']]
+                ]
+            ]
         ]);
         $this->set('license', $license);
         $this->set('_serialize', ['license']);
