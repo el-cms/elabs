@@ -18,7 +18,7 @@ class UserAppController extends AppController
         if (in_array($this->Auth->user('role'), ['user', 'admin'])) {
             $this->Auth->allow();
         } else {
-            throw new ForbiddenException(__d('elabs', 'You don\'t have enough right to access this ressource.'));
+            throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this ressource.'));
         }
     }
 
