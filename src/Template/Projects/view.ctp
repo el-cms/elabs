@@ -1,21 +1,21 @@
 <?php
-$this->assign('title', h($project->name));
+$this->assign('title', __d('projects', 'Project: {0}', h($project->name)));
 
 $this->start('pageInfos');
 ?>
 <dl class="dl-horizontal">
     <?php if ($project->has('url')): ?>
-    <dt><?php echo __d('elabs', 'Url') ?></dt>
-    <dd><?php echo h($project->download) ?></dd>
+        <dt><?php echo __d('elabs', 'Url') ?></dt>
+        <dd><?php echo h($project->download) ?></dd>
     <?php endif; ?>
     <dt><?php echo __d('elabs', 'License') ?></dt>
-    <dd><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-'.$project->license->icon.'"></span>',$project->license->name]), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape'=>false]) ?></dd>
+    <dd><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $project->license->icon . '"></span>', $project->license->name]), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></dd>
     <dt><?php echo __d('elabs', 'Created on') ?></dt>
     <dd><?php echo h($project->created) ?></tr>
-    <?php if ($project->has('modified')): ?>
-    <dt><?php echo __d('elabs', 'Modified on') ?></dt>
-    <dd><?php echo h($project->modified) ?></tr>
-    <?php endif; ?>
+        <?php if ($project->has('modified')): ?>
+        <dt><?php echo __d('elabs', 'Modified on') ?></dt>
+        <dd><?php echo h($project->modified) ?></tr>
+        <?php endif; ?>
     <dt><?php echo __d('elabs', 'Safe content') ?></dt>
     <dd><span class="label label-<?php echo $project->sfw ? 'green' : 'red'; ?>"><?php echo $project->sfw ? __('Yes') : __('No'); ?></span></dd>
     <dt><?php echo __d('elabs', 'Tags') ?></dt>

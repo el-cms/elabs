@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($user->realname));
+$this->assign('title', __d('users', 'Author: {0}', h($user->realname)));
 
 $this->start('pageInfos');
 ?>

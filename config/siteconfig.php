@@ -1,7 +1,7 @@
 <?php
 
 return ['cms' => [
-				'siteName' => 'Experiments Labs',
+				'siteName' => 'ExperimentsLabs',
 				'defaultRole' => 'author',
 				'defaultUserStatus' => 0,
 				'defaultLockedUser' => false,

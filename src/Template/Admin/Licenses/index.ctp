@@ -1,6 +1,4 @@
 <?php
-$this->assign('title', __d('licenses', 'Licenses'));
-
 $this->start('pageActionsMenu');
 echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New license']), ['action' => 'add'], ['class' => 'btn btn-green waves-attach waves-button waves-effect', 'escape' => false]);
 $this->end();

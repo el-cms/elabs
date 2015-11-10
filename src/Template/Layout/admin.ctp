@@ -5,7 +5,7 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="initial-scale=1.0, width=device-width" name="viewport">
     <title>
-      <?php echo $this->fetch('title') ?>
+      <?php echo $this->fetch('title') . ' &#150; ' . Cake\Core\Configure::read('cms.siteName') ?>
     </title>
     <?php echo $this->Html->meta('icon') ?>
 

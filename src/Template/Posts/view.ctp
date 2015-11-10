@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($post->title));
+$this->assign('title', __d('posts', 'Article: {0}', h($post->title)));
 
 $this->start('pageInfos');
 ?>
@@ -12,8 +12,8 @@ $this->start('pageInfos');
     <dt><?php echo __('Publication Date') ?></dt>
     <dd><?php echo h($post->publication_date) ?></dd>
     <?php if ($post->has('modified')): ?>
-    <dt><?php echo __('Updated on') ?></dt>
-    <dd><?php echo h($post->modified) ?></dd>
+        <dt><?php echo __('Updated on') ?></dt>
+        <dd><?php echo h($post->modified) ?></dd>
     <?php endif; ?>
     <dt><?php echo __('Safe content') ?></dt>
     <dd><span class="label label-<?php echo $post->sfw ? 'green' : 'red'; ?>"><?php echo $post->sfw ? __d('elabs', '{0}&nbsp;Yes', '<span class="fa fa-check-circle"></span>') : __d('elabs', '{0}&nbsp;No', '<span class="fa fa-times-circle"></span>'); ?></span></dd>

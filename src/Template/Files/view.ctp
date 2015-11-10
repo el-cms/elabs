@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($file->name));
+$this->assign('title', __d('file', 'File: {0}', h($file->name)));
 
 $this->start('pageInfos');
 
@@ -11,7 +11,7 @@ $config = $this->Items->fileConfig($file['filename']);
     <dd><?php echo h($file->name) ?></dd>
     <dt><?php echo __d('elabs', 'License') ?></dt>
     <dd><?php echo $this->License->d($file->license, true) ?></dd>
-    <dt><?php echo __('Author') ?></dt>
+    <dt><?php echo __('Creator') ?></dt>
     <dd><?php echo $file->has('user') ? $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) : '' ?></dd>
     <dt><?php echo __('Weight') ?></dt>
     <dd><?php echo $file->weight ?></dd>
@@ -30,7 +30,7 @@ $config = $this->Items->fileConfig($file['filename']);
 $this->end();
 
 $this->start('pageActions');
-echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-download"></span>', __d('files', 'Download')]), ['action'=>'download', $file->id], ['escape'=>false, 'class'=>'btn btn-block btn-green']);
+echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-download"></span>', __d('files', 'Download')]), ['action' => 'download', $file->id], ['escape' => false, 'class' => 'btn btn-block btn-green']);
 $this->end();
 
 $this->start('pageContent');
