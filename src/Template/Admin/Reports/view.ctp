@@ -4,8 +4,6 @@ $this->assign('title', __d('reports', 'Admin/Report&gt; {0}', h($report->name)))
 $this->start('pageInfos');
 ?>
 <dl>
-    <dt><?php echo __('Id') ?></dt>
-    <dd><?php echo $report->id ?></dd>
     <dt><?php echo __('Url') ?></dt>
     <dd><?php echo $this->Html->link(h($report->url), h($report->url)) ?></dd>
     <dt><?php echo __('Created') ?></dt>

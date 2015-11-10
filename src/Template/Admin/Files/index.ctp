@@ -4,7 +4,6 @@ $this->assign('title', __d('files', 'Admin/Files&gt; List'));
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th><?php echo $this->Paginator->sort('id') ?></th>
             <th><?php echo $this->Paginator->sort('name', __d('files', 'Name')) ?>/<?php echo $this->Paginator->sort('filename', __d('files', 'F.name')) ?></th>
             <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Owner')) ?></th>
             <th><?php echo $this->Paginator->sort('weight', __d('files', 'Size')) ?></th>
@@ -17,7 +16,6 @@ $this->assign('title', __d('files', 'Admin/Files&gt; List'));
     <tbody>
         <?php foreach ($files as $file): ?>
             <tr>
-                <td><?php echo $file->id ?></td>
                 <td>
                     <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-font fa-fw"></span>', h($file->name)]) ?></small><br/>
                     <small><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-file-o fa-fw"></span>', h($file->filename)]) ?></small>

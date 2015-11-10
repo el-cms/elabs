@@ -4,7 +4,6 @@ $this->assign('title', __d('posts', 'Admin/Articles&gt; List'));
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th><?php echo $this->Paginator->sort('id') ?></th>
             <th><?php echo $this->Paginator->sort('title', __d('posts', 'Title')) ?></th>
             <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Author')) ?></th>
             <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
@@ -18,7 +17,6 @@ $this->assign('title', __d('posts', 'Admin/Articles&gt; List'));
     <tbody>
         <?php foreach ($posts as $post): ?>
             <tr>
-                <td><?php echo $post->id ?></td>
                 <td><?php echo h($post->title) ?></td>
                 <td><?php echo $this->Html->link(h($post->user->username), ['controller' => 'users', 'action' => 'view', $post->user->id]) ?></td>
                 <td><?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></td>

@@ -4,7 +4,6 @@ $this->assign('title', __d('projects', 'Admin/Projects&gt; List'));
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th><?php echo $this->Paginator->sort('id') ?></th>
             <th><?php echo $this->Paginator->sort('name', __d('projects', 'Name')) ?></th>
             <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Owner')) ?></th>
             <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
@@ -18,7 +17,6 @@ $this->assign('title', __d('projects', 'Admin/Projects&gt; List'));
     <tbody>
         <?php foreach ($projects as $project): ?>
             <tr>
-                <td><?php echo $project->id ?></td>
                 <td><?php echo h($project->name) ?></td>
                 <td><?php echo $this->Html->link(h($project->user->username), ['controller' => 'users', 'action' => 'view', $project->user->id]) ?></td>
                 <td><?php echo $this->ItemsAdmin->sfwLabel($project->sfw) ?></td>

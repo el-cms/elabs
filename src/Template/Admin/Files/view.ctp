@@ -7,8 +7,6 @@ $config = $this->Items->fileConfig($file['filename']);
 $this->start('pageInfos');
 ?>
 <dl class="dl-horizontal">
-    <dt><?php echo __('Id') ?></dt>
-    <dd><?php echo $file->id ?></dd>
     <dt><?php echo __d('files', 'Owner') ?></dt>
     <dd><?php echo $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) ?></dd>
     <dt><?php echo __d('files', 'Name') ?></dt>

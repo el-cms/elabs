@@ -10,7 +10,6 @@ $this->start('pageContent');
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th><?php echo $this->Paginator->sort('id') ?></th>
             <th><?php echo $this->Paginator->sort('name', __d('licenses', 'Name')) ?></th>
             <th><?php echo $this->Paginator->sort('link', __d('licenses', 'Link')) ?></th>
             <th><?php echo $this->Paginator->sort('post_count', __d('licenses', 'Posts')) ?></th>
@@ -25,7 +24,6 @@ $this->start('pageContent');
             foreach ($licenses as $license):
                 ?>
                 <tr>
-                    <td><?php echo $license->id ?></td>
                     <td><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . $license->icon . ' fa-fw"></span>', h($license->name)]) ?></td>
                     <td><?php echo $this->Html->link(h($license->link), h($license->link)) ?></td>
                     <td><?php echo h($license->post_count) ?></td>

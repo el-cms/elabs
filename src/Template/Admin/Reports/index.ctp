@@ -4,7 +4,6 @@ $this->assign('title', __d('reports', 'Admin/Reports&gt; List'));
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th><?php echo $this->Paginator->sort('id') ?></th>
             <th><?php echo $this->Paginator->sort('name') ?></th>
             <th><?php echo $this->Paginator->sort('email') ?></th>
             <th><?php echo $this->Paginator->sort('url') ?></th>
@@ -15,7 +14,6 @@ $this->assign('title', __d('reports', 'Admin/Reports&gt; List'));
     <tbody>
         <?php foreach ($reports as $report): ?>
             <tr>
-                <td><?php echo $report->id ?></td>
                 <td>
                     <?php
                     if ($report->has(['user'])):
