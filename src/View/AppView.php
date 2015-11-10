@@ -26,6 +26,7 @@ use Cake\View\View;
  */
 class AppView extends View
 {
+
     /**
      * Initialization hook method.
      *
@@ -38,7 +39,7 @@ class AppView extends View
     public function initialize()
     {
         parent::initialize();
-        
+
         // Helpers
         $this->loadHelper(
                 'Form', [
@@ -57,6 +58,24 @@ class AppView extends View
             // This one too
             'checkboxWrapper' => '<div class="checkbox switch">{{label}}</div>',
             'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
+        ]);
+        $this->Paginator->templates([
+//            'nextActive' => '<li class="next"><a rel="next" href="{{url}}">{{text}}</a></li>',
+//            'nextDisabled' => '<li class="next disabled"><a href="" onclick="return false;">{{text}}</a></li>',
+//            'prevActive' => '<li class="prev"><a rel="prev" href="{{url}}">{{text}}</a></li>',
+//            'prevDisabled' => '<li class="prev disabled"><a href="" onclick="return false;">{{text}}</a></li>',
+//            'counterRange' => '{{start}} - {{end}} of {{count}}',
+//            'counterPages' => '{{page}} of {{pages}}',
+//            'first' => '<li class="first"><a href="{{url}}">{{text}}</a></li>',
+//            'last' => '<li class="last"><a href="{{url}}">{{text}}</a></li>',
+//            'number' => '<li><a href="{{url}}">{{text}}</a></li>',
+//            'current' => '<li class="active"><a href="">{{text}}</a></li>',
+//            'ellipsis' => '<li class="ellipsis">...</li>',
+            'sort' => '<a href="{{url}}"><span class="fa fa-fw fa-sort"></span>&nbsp;{{text}}</a>',
+            'sortAsc' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>',
+            'sortDesc' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
+            'sortAscLocked' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
+            'sortDescLocked' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>'
         ]);
     }
 }
