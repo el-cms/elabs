@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($file->name));
+$this->assign('title', __d('files', 'Admin/File&gt; {0}', h($file->name)));
 
 $this->loadHelper('Items');
 $config = $this->Items->fileConfig($file['filename']);

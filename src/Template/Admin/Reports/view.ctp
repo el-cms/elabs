@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($report->name));
+$this->assign('title', __d('reports', 'Admin/Report&gt; {0}', h($report->name)));
 
 $this->start('pageInfos');
 ?>

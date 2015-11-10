@@ -71,9 +71,9 @@ Public
   - [ ] Translate menus (proper __d() use)
   - [ ] Review error messages on login
   - [ ] Check for all licenses links created using the license helper
-  - [ ] Check for admin page titles (should be <controller>/<action>/<optionnal title>
   - [ ] Add default order in $this->paginate when retrieving data
   - [ ] Create a simple captchas system
+  - [15/11/10]] Check for admin page titles (should be <controller>/<action>/<optionnal title>
   - [15/11/10] Add an icon in the paginator links when active (d39482f5c3a730565f7a88331a8d99fbacfb2844)
   - [15/11/10] Revert all user/<controler>/manage() to index()
   - [??/??/??] Delete unused views
@@ -102,8 +102,7 @@ Public
 ## Notes
 
 ### Acts
-  - [15/11/09] Complete associations to change queries type. Leads to #6...
-    - --> fc02fd07884d09568a3c2dadc862f13e32f586fa and 2033393bd3a2fc98679600aba1b969ebd026fcaf
+  - [15/11/09] Complete associations to change queries type. Leads to #6... (fc02fd07884d09568a3c2dadc862f13e32f586fa and 2033393bd3a2fc98679600aba1b969ebd026fcaf)
 
 ### Posts
   - [ ] Create proper filters, not shown in filter list, but used by links in 

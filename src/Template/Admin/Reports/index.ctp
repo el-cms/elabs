@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', __d('reports', 'Admin/Reports&gt; List'));
+?>
 <table class="table table-condensed">
     <thead>
         <tr>

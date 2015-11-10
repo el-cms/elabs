@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', __d('elabs', 'Admin/Licenses/Edit> {0}', $license->name));
+$this->assign('title', __d('elabs', 'Admin/Licenses/Edit&gt; {0}', $license->name));
 
 $formTemplate = [
     'label' => '<label class="form-label {{attrs.class}}" {{attrs}}>{{text}}</label>',

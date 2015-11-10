@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', __d('files', 'Admin/Files&gt; List'));
+?>
 <table class="table table-condensed">
     <thead>
         <tr>

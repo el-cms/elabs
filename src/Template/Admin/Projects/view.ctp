@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($project->name));
+$this->assign('title', __d('projects', 'Admin/Project&gt; {0}', h($project->name)));
 
 $this->start('pageInfos');
 ?>

@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($post->title));
+$this->assign('title', __d('posts', 'Admin/Article&gt; {0}', h($post->title)));
 
 $this->start('pageInfos');
 ?>

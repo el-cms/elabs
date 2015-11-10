@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', h($user->realname));
+$this->assign('title', __d('users', 'Admin/User&gt; {0}', h($user->realname)));
 
 $this->start('pageInfos');
 ?>
@@ -111,7 +111,7 @@ echo $this->Markdown->transform(h($user->bio));
 </div>
 
 <div class="tab-pane" id="files-tab">
- <?php
+    <?php
     if (!empty($user->files)):
         foreach ($user->files as $files):
             echo $this->element('files/card', ['data' => $files]);
