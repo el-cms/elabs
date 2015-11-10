@@ -17,12 +17,7 @@ $this->end();
 $this->start('pageContent');
 if (!$projects->isEmpty()):
     foreach ($projects as $project):
-        $item = [
-            'fkid' => $project->id,
-            'user' => $project['user'],
-        ];
-        echo $this->element('projects/card', ['data' => $project, 'item' => $item]);
-
+        echo $this->element('projects/card', ['data' => $project]);
     endforeach;
 else:
     echo $this->element('layout/empty');

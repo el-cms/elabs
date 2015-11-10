@@ -17,12 +17,7 @@ $this->end();
 $this->start('pageContent');
 if (!$files->isEmpty()):
     foreach ($files as $file):
-       $item = [
-            'fkid' => $file->id,
-            'user' => $file['user'],
-        ];
-        echo $this->element('files/card', ['data' => $file, 'item' => $item]);
-
+        echo $this->element('files/card', ['data' => $file]);
     endforeach;
 else:
     echo $this->element('layout/empty');

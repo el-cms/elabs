@@ -16,19 +16,7 @@ $this->end();
 $this->start('pageContent');
 if (!$posts->isEmpty()):
     foreach ($posts as $post):
-        $data = [
-            'title' => $post->title,
-            'excerpt' => $post->excerpt,
-            'sfw' => $post->sfw,
-            'publication_date' => $post->publication_date,
-            'modified' => $post->modified,
-            'license' => $post['license'],
-        ];
-        $item = [
-            'fkid' => $post->id,
-            'user' => $post['user'],
-        ];
-        echo $this->element('posts/card', ['data' => $data, 'item' => $item]);
+        echo $this->element('posts/card', ['data' => $post]);
     endforeach;
 else:
     echo $this->element('layout/empty');
