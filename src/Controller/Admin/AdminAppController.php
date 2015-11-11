@@ -18,7 +18,12 @@ class AdminAppController extends AppController
         if ($this->Auth->user('role') === 'admin') {
             $this->Auth->allow();
         } else {
-            throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this ressource.'));
+            if (!$this->Auth->user('id')) {
+                $this->Flash->Error(__d('elabs', 'You should be logged in to access this page.'));
+                $this->redirect($this->Auth->config('loginAction'));
+            } else {
+                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this ressource.'));
+            }
         }
     }
 
