@@ -57,11 +57,6 @@ Public
 ```
 
 ### Site config
-  - [15/11/09] UUIDS instead of int Ids for
-    - [15/11/09] Users
-    - [15/11/09] Projects
-    - [15/11/09] Posts
-    - [15/11/09] Files
   - [ ] Add a language field on items
     - [ ] Language selector on add/edit
     - [ ] Default language in user profile
@@ -72,15 +67,19 @@ Public
       - [15/11/11] Translate menus (proper __d() use)
       - [15/11/11] Review all paginator links and add a \__d() translation on them
     - [ ] Translate static pages 
+  - [15/11/09] UUIDS instead of int Ids for
+    - [15/11/09] Users
+    - [15/11/09] Projects
+    - [15/11/09] Posts
+    - [15/11/09] Files
  
 
 ### Before going public
-  - [15/11/11] Add icons on action buttons/links
   - [ ] Add text where there is no element to display (or remove item)
   - [ ] Review error messages on login
-  - [ ] Check for all licenses links created using the license helper
   - [ ] Add default order in $this->paginate when retrieving data
   - [ ] Create a simple captchas system
+  - [15/11/11] Add icons on action buttons/links
   - [15/11/10] Review ALL page titles to follow Material guidelines (My/Your,...)
   - [15/11/10]] Check for admin page titles (should be <controller>/<action>/<optionnal title>
   - [15/11/10] Add an icon in the paginator links when active (d39482f5c3a730565f7a88331a8d99fbacfb2844)
@@ -92,11 +91,12 @@ Public
   - [??/??/??] Simple authorization handling
 
 ### On free time
-  - [ ] Add a target="_blank" on external links
+  - [ ] Check for all licenses links created using the license helper
   - [ ] Check if add() action don't have unecessary find()
   - [ ] WRITE TESTS
   - [ ] Tests on tablet
   - [ ] Tests on mobile
+  - [15/11/11] Add a target="_blank" on external links
   - [??/??/??] Check for fields in models comments
 
 ### Things to do often as there is still many changes:
