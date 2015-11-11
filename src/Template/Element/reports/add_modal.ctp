@@ -45,7 +45,7 @@
                 <p class="text-right">
                     <?php
                     echo $this->Form->hidden('url', ['id'=>'reportModalUrl']);
-                    echo $this->Form->button(__('Send'), array(
+                    echo $this->Form->button(__d('reports', 'Send the report'), array(
                         'class' => 'btn btn-flat btn-brand waves-attach waves-effect',
                     ));
                     ?>

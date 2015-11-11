@@ -4,17 +4,17 @@ $this->assign('title', __d('users', 'Admin/User&gt; {0}', h($user->realname)));
 $this->start('pageInfos');
 ?>
 <dl class="dl-horizontal">
-    <dt><?php echo __('Username') ?></dt>
+    <dt><?php echo __d('users', 'Username') ?></dt>
     <dd><?php echo h($user->username) ?></dd>
-    <dt><?php echo __('Name') ?></dt>
+    <dt><?php echo __d('users', 'Name') ?></dt>
     <dd><?php echo h($user->realname) ?></dd>
-    <dt><?php echo __('Website') ?></dt>
+    <dt><?php echo __d('users', 'Website') ?></dt>
     <dd><?php echo h($user->website) ?></dd>
-    <dt><?php echo __('Member since') ?></dt>
+    <dt><?php echo __d('users', 'Member since') ?></dt>
     <dd><?php echo h($user->created) ?></dd>
-    <dt><?php echo __('Last modification') ?></dt>
+    <dt><?php echo __d('users', 'Last modification') ?></dt>
     <dd><?php echo h($user->modified) ?></dd>
-    <dt><?php echo __('Status') ?></dt>
+    <dt><?php echo __d('elabs', 'Status') ?></dt>
     <dd><?php echo $this->UsersAdmin->statusLabel($user->status) ?></dd>
 </dl>
 <?php

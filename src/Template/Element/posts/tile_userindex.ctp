@@ -12,7 +12,7 @@
               <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', '<span class="fa fa-pencil fa-fw"></span>'), ['action' => 'edit', $post->id], ['class' => 'waves-attach waves-effect', 'escape' => false]) ?>
             </li>
             <li>
-              <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'waves-attach waves-effect', 'escape' => false]) ?>
+              <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $post->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $post->id), 'class' => 'waves-attach waves-effect', 'escape' => false]) ?>
             </li>
           </ul>
         </li>
@@ -37,8 +37,6 @@
   <div style="height: 0px;" class="tile-active-show collapse" id="<?php echo $tileId . $post->id ?>">
     <div class="tile-sub">
       <dl class="dl-horizontal">
-        <dt><?php echo __('Id') ?></dt>
-        <dd><?php echo $post->id ?></dd>
         <?php if ($post->published): ?>
             <dt><?php echo __d('posts', 'Publication date') ?></dt>
             <dd><?php echo h($post->publication_date) ?></dd>

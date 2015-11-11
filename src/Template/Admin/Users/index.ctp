@@ -4,12 +4,12 @@ $this->assign('title', __d('users', 'Admin/Users&gt; List'));
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th><?php echo $this->Paginator->sort('role') ?></th>
-            <th><?php echo $this->Paginator->sort('username') ?></th>
-            <th><?php echo $this->Paginator->sort('realname') ?></th>
-            <th><?php echo $this->Paginator->sort('status') ?></th>
-            <th><?php echo $this->Paginator->sort('created') ?></th>
-            <th class="actions"><?php echo __('Actions') ?></th>
+            <th><?php echo $this->Paginator->sort('role', __d('users', 'Role')) ?></th>
+            <th><?php echo $this->Paginator->sort('username', __d('users', 'Username')) ?></th>
+            <th><?php echo $this->Paginator->sort('realname', __d('users', 'Name')) ?></th>
+            <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
+            <th><?php echo $this->Paginator->sort('created', __d('users', 'Join date')) ?></th>
+            <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
         </tr>
     </thead>
     <tbody>

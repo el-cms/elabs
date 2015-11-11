@@ -15,7 +15,7 @@ $this->start('pageContent');
             <th><?php echo $this->Paginator->sort('post_count', __d('licenses', 'Posts')) ?></th>
             <th><?php echo $this->Paginator->sort('project_count', __d('licenses', 'Projects')) ?></th>
             <th><?php echo $this->Paginator->sort('file_count', __d('licenses', 'Files')) ?></th>
-            <th class="actions"><?php echo __('Actions') ?></th>
+            <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -42,7 +42,7 @@ $this->start('pageContent');
                             <li>
                                 <?php
                                 echo $this->Form->postLink('<span class="fa fa-trash" title="' . __d('admin', 'Delete') . '"></span>', ['action' => 'delete', $license->id], [
-                                    'confirm' => __('Are you sure you want to delete # {0}?', $license->id),
+                                    'confirm' => __d('elabs','Are you sure you want to delete # {0}?', $license->id),
                                     'class' => 'text-sec waves-attach waves-effect',
                                     'escape' => false])
                                 ?>

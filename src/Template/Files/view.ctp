@@ -7,15 +7,15 @@ $this->loadHelper('Items');
 $config = $this->Items->fileConfig($file['filename']);
 ?>
 <dl class="dl-horizontal">
-    <dt><?php echo __('Name') ?></dt>
+    <dt><?php echo __d('files', 'Name') ?></dt>
     <dd><?php echo h($file->name) ?></dd>
     <dt><?php echo __d('elabs', 'License') ?></dt>
     <dd><?php echo $this->License->d($file->license, true) ?></dd>
-    <dt><?php echo __('Creator') ?></dt>
+    <dt><?php echo __d('files', 'Creator') ?></dt>
     <dd><?php echo $file->has('user') ? $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) : '' ?></dd>
-    <dt><?php echo __('Weight') ?></dt>
+    <dt><?php echo __d('files', 'File size') ?></dt>
     <dd><?php echo $file->weight ?></dd>
-    <dt><?php echo __('Created') ?></dt>
+    <dt><?php echo __d('elabs', 'Added on') ?></dt>
     <dd><?php echo h($file->created) ?></dd>
     <?php if ($file->has('modified')): ?>
         <dt><?php echo __d('elabs', 'Modified on') ?></dt>

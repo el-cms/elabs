@@ -59,7 +59,7 @@ class ProjectsController extends UserAppController
             // Preparing data
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
-                $this->Flash->success(__d('project','The project has been saved.'));
+                $this->Flash->success(__d('project', 'The project has been saved.'));
                 $this->Act->add($project->id, 'add', 'Projects');
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -68,7 +68,7 @@ class ProjectsController extends UserAppController
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
                 });
-                $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
+                $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
         $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
@@ -126,10 +126,10 @@ class ProjectsController extends UserAppController
             ]
         ]);
         if ($this->Projects->delete($project)) {
-            $this->Flash->success(__d('project','The project has been deleted.'));
+            $this->Flash->success(__d('project', 'The project has been deleted.'));
             $this->Act->remove($id);
         } else {
-            $this->Flash->error(__d('project','The project could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('project', 'The project could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
     }

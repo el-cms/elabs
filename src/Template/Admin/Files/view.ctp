@@ -13,7 +13,7 @@ $this->start('pageInfos');
     <dd><small><?php echo h($file->name) ?></small></dd>
     <dt><?php echo __d('files', 'File name') ?></dt>
     <dd><small><?php echo h($file->filename) ?></small></dd>
-    <dt><?php echo __('Weight') ?></dt>
+    <dt><?php echo __d('files', 'File size') ?></dt>
     <dd><?php echo $file->weight ?></dd>
     <dt><?php echo __d('licenses', 'License') ?></dt>
     <dd><?php echo $this->License->d($file->license) ?></dd>
@@ -54,7 +54,7 @@ $linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-ef
             $class = 'btn btn-flat disabled';
             $link = '#';
         endif;
-        echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-times"></span>', 'Disable']), $link, ['confirm' => __('Are you sure you want to disable # {0}?', $file->id), 'escape' => false, 'class' => $class])
+        echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-times"></span>', 'Disable']), $link, ['confirm' => __d('disable','Are you sure you want to disable # {0}?', $file->id), 'escape' => false, 'class' => $class])
         ?>
     </li>
     <li><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List files']), ['action' => 'index'], $linkConfig) ?> </li>
@@ -76,32 +76,3 @@ echo $this->element('layout/dev_block');
 $this->end();
 
 echo $this->element('layouts/defaultview');
-/*
-  <?php if (!empty($file->itemfiles)): ?>
-  <table cellpadding="0" cellspacing="0">
-  <tr>
-  <th><?php echo __('Id') ?></th>
-  <th><?php echo __('Model') ?></th>
-  <th><?php echo __('Fkid') ?></th>
-  <th><?php echo __('File Id') ?></th>
-  <th class="actions"><?php echo __('Actions') ?></th>
-  </tr>
-  <?php foreach ($file->itemfiles as $itemfiles): ?>
-  <tr>
-  <td><?php echo h($itemfiles->id) ?></td>
-  <td><?php echo h($ite mfiles->model) ?></td>
-  <td><?php echo h($itemfiles->fkid) ?></td>
-  <td><?php echo h($itemfiles->file_id) ?></td>
-  <td class="actions">
-  <?php echo $this->Html->link(__('View'), ['controller' => 'Itemfiles', 'action' => 'view', $itemfiles->id]) ?>
-
-  <?php echo $this->Html->link(__('Edit'), ['controller' => 'Itemfiles', 'action' => 'edit', $itemfiles->id]) ?>
-
-  <?php echo $this->Form->postLink(__('Delete'), ['controller' => 'Itemfiles', 'action' => 'delete', $itemfiles->id], ['confirm' => __('Are you sure you want to delete # {0}?', $itemfiles->id)]) ?>
-
-  </td>
-  </tr>
-  <?php endforeach; ?>
-  </table>
-  <?php endif; ?> */
-?>       

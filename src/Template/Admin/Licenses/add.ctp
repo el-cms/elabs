@@ -35,7 +35,7 @@ $linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect'
 </div>
 <div class="col-sm-3">
     <div class="form-group-btn">
-        <?php echo $this->Form->submit(__('Submit')); ?>
+        <?php echo $this->Form->submit(__d('elabs','Create'), ['class'=>'btn-green']); ?>
     </div>
 </div>
 <?php

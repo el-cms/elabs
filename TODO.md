@@ -62,12 +62,21 @@ Public
     - [15/11/09] Projects
     - [15/11/09] Posts
     - [15/11/09] Files
+  - [ ] Add a language field on items
+    - [ ] Language selector on add/edit
+    - [ ] Default language in user profile
+    - [ ] Language attributes on contents
+  - [ ] Interface translations
+    - [ ] Default site language in user profile
+    - [15/11/11] Translate strings (Tags and related is not done)
+      - [15/11/11] Translate menus (proper __d() use)
+      - [15/11/11] Review all paginator links and add a \__d() translation on them
+    - [ ] Translate static pages 
+ 
 
 ### Before going public
-  - [ ] Review all paginator links and add a \__d() translation on them
-  - [ ] Add icons on action buttons
-  - [ ] Add text where there is no element to display
-  - [ ] Translate menus (proper __d() use)
+  - [15/11/11] Add icons on action buttons/links
+  - [ ] Add text where there is no element to display (or remove item)
   - [ ] Review error messages on login
   - [ ] Check for all licenses links created using the license helper
   - [ ] Add default order in $this->paginate when retrieving data
@@ -83,6 +92,7 @@ Public
   - [??/??/??] Simple authorization handling
 
 ### On free time
+  - [ ] Add a target="_blank" on external links
   - [ ] Check if add() action don't have unecessary find()
   - [ ] WRITE TESTS
   - [ ] Tests on tablet

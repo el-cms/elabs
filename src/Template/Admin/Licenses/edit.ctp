@@ -15,7 +15,7 @@ $linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect'
         <div class="side-menu-content">
             <?php
             echo $this->Form->postLink(
-                    __('Delete'), ['action' => 'delete', $license->id], ['confirm' => __('Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-red waves-attach waves-button waves-effect']
+                    __d('elabs','Delete'), ['action' => 'delete', $license->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-red waves-attach waves-button waves-effect']
             )
             ?></li>
         </div>
@@ -48,7 +48,7 @@ $this->Form->templates($formTemplate);
 </div>
 <div class="col-sm-3">
     <div class="form-group-btn">
-        <?php echo $this->Form->submit(__('Submit')); ?>
+        <?php echo $this->Form->submit(__d('elabs','Save changes'), ['class'=>'btn-green']); ?>
     </div>
 </div>
 <?php

@@ -5,7 +5,7 @@ $this->Form->templates([
 ]);
 echo $this->Form->input('email', ['label'=>__d('elabs', 'E-mail')]);
 echo $this->Form->input('password', ['label'=>__d('elabs', 'Password')]);
-echo $this->Form->submit(__('Login'), ['class' => 'btn-block btn-green']);
+echo $this->Form->submit(__d('elabs', 'Login'), ['class' => 'btn-block btn-green']);
 echo $this->Form->end();
 ?>
 <div class="text-center"><?php echo __d('elabs', 'or') ?></div>

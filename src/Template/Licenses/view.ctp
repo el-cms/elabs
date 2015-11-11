@@ -4,7 +4,7 @@ $this->assign('title', __d('license', 'License: {0}', h($license->name)));
 $this->start('pageInfos');
 ?>
 <dl>
-    <dt><?php echo __('Name') ?></dt>
+    <dt><?php echo __d('files', 'Name') ?></dt>
     <dd><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . h($license->icon) . '"></span>', h($license->name)]) ?></dd>
 </dl>
 <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-external-link"></span>', __d('licenses', 'More info online')]), h($license->link), ['escape' => false]) ?>

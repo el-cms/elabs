@@ -10,7 +10,6 @@ $this->loadHelper('CodeMirror');
 echo $this->Form->create($project);
 $this->Form->templates($formTemplate);
 $linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect', 'escape' => false];
-
 ?>
 <div class="col-sm-3">
     <div class="side-menu">
@@ -44,7 +43,7 @@ $linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect'
     echo $this->Form->input('license_id', ['options' => $licenses]);
     ?>
     <div class="form-group-btn">
-        <?php echo $this->Form->submit(__('Submit')); ?>
+        <?php echo $this->Form->submit(__d('projects', 'Save this project'), ['class' => 'btn-green']); ?>
     </div>
 </div>
 <?php

@@ -4,21 +4,19 @@ $this->assign('title', __d('posts', 'Admin/Article&gt; {0}', h($post->title)));
 $this->start('pageInfos');
 ?>
 <dl class="dl-horizontal">
-    <dt><?php echo __('Id') ?></dt>
-    <dd><?php echo $post->id ?></dd>
     <dt><?php echo __d('elabs', 'Author') ?></dt>
     <dd><?php echo $this->Html->link($post->user->username, ['controller' => 'Users', 'action' => 'view', $post->user->id]) ?></dd>
-    <dt><?php echo __('License') ?></dt>
+    <dt><?php echo __d('licenses', 'License') ?></dt>
     <dd><?php echo $this->License->d($post->license) ?></dd>
-    <dt><?php echo __('Created') ?></dt>
+    <dt><?php echo __d('elabs', 'Created on') ?></dt>
     <dd><?php echo h($post->created) ?></tr>
-    <dt><?php echo __('Modified') ?></dt>
+    <dt><?php echo __d('elabs', 'Updated on') ?></dt>
     <dd><?php echo h($post->modified) ?></tr>
-    <dt><?php echo __('Publication Date') ?></dt>
+    <dt><?php echo __d('posts', 'Publication Date') ?></dt>
     <dd><?php echo h($post->publication_date) ?></tr>
-    <dt><?php echo __('Sfw') ?></dt>
+    <dt><?php echo __d('elabs', 'Safe') ?></dt>
     <dd><?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></dd>
-    <dt><?php echo __('Status') ?></dt>
+    <dt><?php echo __d('elabs', 'Status') ?></dt>
     <dd><?php echo $this->ItemsAdmin->statusLabel($post->status) ?></dd>
 </dl>
 <?php
@@ -49,7 +47,7 @@ $linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-ef
             $class = 'btn btn-flat disabled';
             $link = '#';
         endif;
-        echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-times"></span>', 'Disable']), $link, ['confirm' => __('Are you sure you want to disable # {0}?', $post->id), 'escape' => false, 'class' => $class])
+        echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-times"></span>', 'Disable']), $link, ['confirm' => __d('elabs','Are you sure you want to disable # {0}?', $post->id), 'escape' => false, 'class' => $class])
         ?>
     </li>
     <li><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List posts']), ['action' => 'index'], $linkConfig) ?> </li>

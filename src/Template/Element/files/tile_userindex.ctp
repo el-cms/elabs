@@ -12,7 +12,7 @@
                             <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', '<span class="fa fa-pencil fa-fw"></span>'), ['action' => 'edit', $file->id], ['class' => 'waves-attach waves-effect', 'escape' => false]) ?>
                         </li>
                         <li>
-                            <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $file->id], ['confirm' => __('Are you sure you want to delete # {0}?', $file->id), 'class' => 'waves-attach waves-effect', 'escape' => false]) ?>
+                            <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'class' => 'waves-attach waves-effect', 'escape' => false]) ?>
                         </li>
                     </ul>
                 </li>
@@ -35,15 +35,13 @@
             <div class="row">
                 <div class="col-sm-4">
                     <dl class="dl-horizontal">
-                        <dt><?php echo __('Id') ?></dt>
-                        <dd><?php echo $file->id ?></dd>
                         <dt><?php echo __d('elabs', 'Creation date') ?></dt>
                         <dd><?php echo h($file->created) ?></dd>
                         <dt><?php echo __d('elabs', 'Updated on') ?></dt>
                         <dd><?php echo h($file->modified) ?></dd>
-                        <dt><?php echo __d('elabs', 'License') ?></dt>
+                        <dt><?php echo __d('licenses', 'License') ?></dt>
                         <dd><?php echo $this->Html->link(h($file->license->name), ['prefix' => false, 'controller' => 'licenses', 'action' => 'view', $file->license_id]); ?></dd>
-                        <dt><?php echo __d('elabs', 'Tags') ?></dt>
+                        <dt><?php echo __d('tags', 'Tags') ?></dt>
                         <dd><?php echo $this->element('layout/dev_inline') ?></dd>
                     </dl>
                 </div>

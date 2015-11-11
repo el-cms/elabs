@@ -11,6 +11,7 @@ use App\Controller\Admin\AdminAppController;
  */
 class LicensesController extends AdminAppController
 {
+
     /**
      * Index method
      *
@@ -32,15 +33,15 @@ class LicensesController extends AdminAppController
         $license = $this->Licenses->newEntity();
         if ($this->request->is('post')) {
             // Adding default values
-            $this->request->data['post_count']=0;
-            $this->request->data['project_count']=0;
-            $this->request->data['file_count']=0;
+            $this->request->data['post_count'] = 0;
+            $this->request->data['project_count'] = 0;
+            $this->request->data['file_count'] = 0;
             $license = $this->Licenses->patchEntity($license, $this->request->data);
             if ($this->Licenses->save($license)) {
-                $this->Flash->success(__('The license has been saved.'));
+                $this->Flash->success(__d('licenses', 'The license has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The license could not be saved. Please, try again.'));
+                $this->Flash->error(__d('licenses', 'The license could not be saved. Please, try again.'));
             }
         }
         $this->set(compact('license'));
@@ -62,10 +63,10 @@ class LicensesController extends AdminAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $license = $this->Licenses->patchEntity($license, $this->request->data);
             if ($this->Licenses->save($license)) {
-                $this->Flash->success(__('The license has been saved.'));
+                $this->Flash->success(__d('licenses','The license has been updated.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The license could not be saved. Please, try again.'));
+                $this->Flash->error(__d('licenses','The license could not be updated. Please, try again.'));
             }
         }
         $this->set(compact('license'));
@@ -84,9 +85,9 @@ class LicensesController extends AdminAppController
         $this->request->allowMethod(['post', 'delete']);
         $license = $this->Licenses->get($id);
         if ($this->Licenses->delete($license)) {
-            $this->Flash->success(__('The license has been deleted.'));
+            $this->Flash->success(__d('licenses','The license has been deleted.'));
         } else {
-            $this->Flash->error(__('The license could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('licenses','The license could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
     }

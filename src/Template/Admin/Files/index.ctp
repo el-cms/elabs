@@ -10,7 +10,7 @@ $this->assign('title', __d('files', 'Admin/Files&gt; List'));
             <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?>/<?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
             <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
             <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
-            <th class="actions"><?php echo __('Actions') ?></th>
+            <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
         </tr>
     </thead>
     <tbody>

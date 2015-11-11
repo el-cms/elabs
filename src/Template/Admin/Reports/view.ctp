@@ -4,11 +4,11 @@ $this->assign('title', __d('reports', 'Admin/Report&gt; {0}', h($report->name)))
 $this->start('pageInfos');
 ?>
 <dl>
-    <dt><?php echo __('Url') ?></dt>
+    <dt><?php echo __d('elabs', 'Source') ?></dt>
     <dd><?php echo $this->Html->link(h($report->url), h($report->url)) ?></dd>
-    <dt><?php echo __('Created') ?></dt>
+    <dt><?php echo __d('elabs', 'Added on') ?></dt>
     <dd><?php echo h($report->created) ?></dd>
-    <dt><?php echo __('Author') ?></dt>
+    <dt><?php echo __d('elabs', 'Author') ?></dt>
     <dd>
         <?php
         if ($report->has(['user'])):
@@ -23,7 +23,7 @@ $this->start('pageInfos');
         echo __d('elabs', '{0}&nbsp;{1}', [$icon, $uname]);
         ?>
     </dd>
-    <dt><?php echo __('Email') ?></dt>
+    <dt><?php echo __d('elabs', 'E-Mail') ?></dt>
     <dd><?php echo h($report->email) ?></dd>
 </dl>
 <?php
@@ -33,7 +33,7 @@ $this->start('pageActions');
 $class = 'btn btn-flat waves-attach waves-effect waves-effect';
 ?>
 <ul>
-    <li><?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-trash-o"></span>', 'Delete']), ['action' => 'delete', $report->id], ['confirm' => __('Are you sure you want to delete # {0}?', $report->id), 'escape' => false, 'class' => $class]) ?> </li>
+    <li><?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-trash-o"></span>', 'Delete']), ['action' => 'delete', $report->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $report->id), 'escape' => false, 'class' => $class]) ?> </li>
     <li><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'Reports list']), ['action' => 'index'], ['escape' => false, 'class' => $class]) ?> </li>
 </ul>
 <?php

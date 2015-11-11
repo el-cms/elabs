@@ -125,7 +125,7 @@ class UsersController extends AppController
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
                 });
-                $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
+                $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
         $this->set(compact('user'));
@@ -146,7 +146,7 @@ class UsersController extends AppController
                 $this->request->session()->write('see_nsfw', $this->Auth->User('see_nsfw'));
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('users', 'Invalid username or password, try again. Is your accound active ?'));
+            $this->Flash->error(__d('users', 'Invalid username or password, try again. Is your accound active ?'));
         }
     }
 

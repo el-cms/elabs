@@ -4,11 +4,11 @@ $this->assign('title', __d('reports', 'Admin/Reports&gt; List'));
 <table class="table table-condensed">
     <thead>
         <tr>
-            <th><?php echo $this->Paginator->sort('name') ?></th>
-            <th><?php echo $this->Paginator->sort('email') ?></th>
-            <th><?php echo $this->Paginator->sort('url') ?></th>
-            <th><?php echo $this->Paginator->sort('created') ?></th>
-            <th class="actions"><?php echo __('Actions') ?></th>
+            <th><?php echo $this->Paginator->sort('name', __d('reports', 'Author')) ?></th>
+            <th><?php echo $this->Paginator->sort('email', __d('elabs', 'E-Mail')) ?></th>
+            <th><?php echo $this->Paginator->sort('url', __d('reports', 'source')) ?></th>
+            <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
+            <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -34,7 +34,7 @@ $this->assign('title', __d('reports', 'Admin/Reports&gt; List'));
                 <td class="padding-no">
                     <ul class="margin-no nav nav-list">
                         <li><?php echo $this->Html->link('<span class="fa fa-eye" title="' . __d('admin', 'Full details') . '"></span>', ['action' => 'view', $report->id], ['class' => 'text-sec waves-attach waves-effect', 'escape' => false]) ?></li>
-                        <li><?php echo $this->Form->postLink('<span class="fa fa-times" title="' . __d('elabs', 'Delete') . '"></span>', ['action' => 'delete', $report->id], ['confirm' => __('Are you sure you want to delete # {0}?', $report->id), 'class' => 'text-sec waves-attach waves-effect', 'escape' => false]) ?></li>
+                        <li><?php echo $this->Form->postLink('<span class="fa fa-times" title="' . __d('elabs', 'Delete') . '"></span>', ['action' => 'delete', $report->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $report->id), 'class' => 'text-sec waves-attach waves-effect', 'escape' => false]) ?></li>
                     </ul>
                 </td>
             </tr>

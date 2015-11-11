@@ -65,7 +65,7 @@ class PostsController extends UserAppController
             // Preparing data
             $post = $this->Posts->patchEntity($post, $dataSent);
             if ($this->Posts->save($post)) {
-                $this->Flash->success(__('The post has been saved.'));
+                $this->Flash->success(__d('posts', 'Your article has been saved.'));
                 if ($post->status === 1) {
                     $this->Act->add($post->id, 'add', 'Posts');
                 }
@@ -76,7 +76,7 @@ class PostsController extends UserAppController
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
                 });
-                $this->Flash->error(__('Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
+                $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
@@ -149,10 +149,10 @@ class PostsController extends UserAppController
             ]
         ]);
         if ($this->Posts->delete($post)) {
-            $this->Flash->success(__('The post has been deleted.'));
+            $this->Flash->success(__d('posts','Your article has been deleted.'));
             $this->Act->remove($id);
         } else {
-            $this->Flash->error(__('The post could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('posts','Your article could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
     }

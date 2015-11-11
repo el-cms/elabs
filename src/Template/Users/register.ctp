@@ -5,7 +5,7 @@
             <div class="card-main">
                 <div class="card-header">
                     <div class="card-inner">
-                        <?php echo __('elabs', 'Register') ?>
+                        <?php echo __d('elabs', 'Register') ?>
                     </div>
                 </div>
                 <div class="card-inner">

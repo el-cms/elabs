@@ -6,8 +6,10 @@ $this->start('pageInfos');
 <dl>
     <dt><?php echo __d('users', 'Username') ?></dt>
     <dd><?php echo h($user->username) ?></dd>
-    <dt><?php echo __d('users', 'Website') ?></dt>
-    <dd><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}',['<span class="fa fa-external-link"></span>', h($user->website)]), h($user->website), ['escape'=>false, 'target'=>'_blank']) ?></dd>
+    <?php if ($user->has('website')): ?>
+        <dt><?php echo __d('users', 'Website') ?></dt>
+        <dd><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-external-link"></span>', h($user->website)]), h($user->website), ['escape' => false, 'target' => '_blank']) ?></dd>
+    <?php endif; ?>
     <dt><?php echo __d('users', 'Member since') ?></dt>
     <dd><?php echo h($user->created) ?></dd>
 </dl>

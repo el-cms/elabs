@@ -4,10 +4,10 @@ $this->assign('title', __d('files', 'Your files'));
 $this->start('pageOrderMenu');
 ?>
 <ul class="dropdown-menu nav">
-    <li><?= $this->Paginator->sort('name') ?></li>
-    <li><?= $this->Paginator->sort('weight') ?></li>
-    <li><?= $this->Paginator->sort('created') ?></li>
-    <li><?= $this->Paginator->sort('modified') ?></li>
+    <li><?= $this->Paginator->sort('name', __d('files', 'Name')) ?></li>
+    <li><?= $this->Paginator->sort('weight', __d('files', 'File size')) ?></li>
+    <li><?= $this->Paginator->sort('created', __d('files', 'Addition date')) ?></li>
+    <li><?= $this->Paginator->sort('modified', __d('elabs', 'Modification date')) ?></li>
 </ul>
 <?php
 $this->end();
@@ -71,7 +71,7 @@ if (!$files->isEmpty()):
         <?php
         foreach ($files as $file):
             $config = $this->Items->fileConfig($file['filename']);
-            echo $this->element('files/tile_userindex', ['tileId' => 'tiles-files', 'file' => $file, 'config'=>$config]);
+            echo $this->element('files/tile_userindex', ['tileId' => 'tiles-files', 'file' => $file, 'config' => $config]);
         endforeach;
         ?>
     </div>

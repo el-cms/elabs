@@ -44,7 +44,7 @@ $linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect'
     echo $this->Form->input('license_id', ['options' => $licenses]);
     ?>
     <div class="form-group-btn">
-        <?php echo $this->Form->submit(__('Submit')); ?>
+        <?php echo $this->Form->submit(__d('elabs', 'Save the article'), ['class'=>'btn-green']); ?>
     </div>
 </div>
 <?php

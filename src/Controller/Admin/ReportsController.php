@@ -58,9 +58,9 @@ class ReportsController extends AdminAppController
         $this->request->allowMethod(['post', 'delete']);
         $report = $this->Reports->get($id);
         if ($this->Reports->delete($report)) {
-            $this->Flash->success(__('The report has been deleted.'));
+            $this->Flash->success(__d('reports', 'The report has been deleted.'));
         } else {
-            $this->Flash->error(__('The report could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('reports', 'The report could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
     }

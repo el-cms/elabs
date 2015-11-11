@@ -22,10 +22,10 @@ class UsersController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('Your informations are now up to date.'));
+                $this->Flash->success(__d('users','Your informations are now up to date.'));
                 return $this->redirect(['action' => 'edit']);
             } else {
-                $this->Flash->error(__('An error occured. Please, try again.'));
+                $this->Flash->error(__d('elabs','An error occured. Please, try again.'));
             }
         }
         $this->set(compact('user'));
@@ -47,7 +47,7 @@ class UsersController extends UserAppController
                 $user = $this->Users->patchEntity($user, $this->request->data);
                 // Saving new password. Validation and hashing is made in UserTable.
                 if ($this->Users->save($user)) {
-                    $this->Flash->success(__('Your password has been updated.'));
+                    $this->Flash->success(__d('users','Your password has been updated.'));
                     return $this->redirect(['action' => 'edit']);
                 } else {
                     $errors = $user->errors();
@@ -55,7 +55,7 @@ class UsersController extends UserAppController
                     array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                         $errorMessages[] = $a;
                     });
-                    $this->Flash->error(__('An error occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
+                    $this->Flash->error(__d('elabs','An error occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
                     return $this->redirect(['action' => 'edit']);
                 }
             } else {

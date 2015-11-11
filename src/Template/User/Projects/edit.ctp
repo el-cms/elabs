@@ -14,7 +14,7 @@ $linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect'
     <div class="side-menu">
         <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
         <div class="side-menu-content">
-            <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-trash"></span>', 'Delete']), ['action' => 'delete', $project->id], ['confirm' => __('Are you sure you want to delete # {0}?', $project->id), 'escape' => false, 'class' => 'btn btn-red waves-attach waves-button waves-effect']) ?>
+            <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-trash"></span>', 'Delete']), ['action' => 'delete', $project->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $project->id), 'escape' => false, 'class' => 'btn btn-red waves-attach waves-button waves-effect']) ?>
         </div>
     </div>
 
@@ -53,7 +53,7 @@ $this->Form->templates($formTemplate);
     echo $this->Form->input('license_id', ['options' => $licenses]);
     ?>
     <div class="form-group-btn">
-        <?php echo $this->Form->submit(__('Submit')); ?>
+        <?php echo $this->Form->submit(__d('elabs', 'Update the project'), ['class'=>'btn-green']); ?>
     </div>
 </div>
 <?php
