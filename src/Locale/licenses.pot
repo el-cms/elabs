@@ -1,0 +1,136 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-11-14 13:23+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/Admin/LicensesController.php:41
+msgid "The license has been saved."
+msgstr ""
+
+#: Controller/Admin/LicensesController.php:44
+msgid "The license could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/LicensesController.php:66
+msgid "The license has been updated."
+msgstr ""
+
+#: Controller/Admin/LicensesController.php:69
+msgid "The license could not be updated. Please, try again."
+msgstr ""
+
+#: Controller/Admin/LicensesController.php:88
+msgid "The license has been deleted."
+msgstr ""
+
+#: Controller/Admin/LicensesController.php:90
+msgid "The license could not be deleted. Please, try again."
+msgstr ""
+
+#: Template/Admin/Files/index.ctp:11
+#: Template/Admin/Files/view.ctp:18
+#: Template/Admin/Posts/index.ctp:12
+#: Template/Admin/Posts/view.ctp:9
+#: Template/Admin/Projects/index.ctp:12
+#: Template/Admin/Projects/view.ctp:11
+#: Template/Element/files/tile_userindex.ctp:42
+#: Template/Posts/view.ctp:10
+msgid "License"
+msgstr ""
+
+#: Template/Admin/Licenses/add.ctp:2
+msgid "Admin/License&gt; Create"
+msgstr ""
+
+#: Template/Admin/Licenses/add.ctp:18
+#: Template/Admin/Licenses/edit.ctp:27
+#: Template/User/Files/add.ctp:21
+#: Template/User/Files/edit.ctp:26
+#: Template/User/Posts/add.ctp:21
+#: Template/User/Posts/edit.ctp:25
+#: Template/User/Projects/add.ctp:20
+#: Template/User/Projects/edit.ctp:26
+msgid "{0}&nbsp;{1}"
+msgstr ""
+
+#: Template/Admin/Licenses/add.ctp:29
+#: Template/Admin/Licenses/edit.ctp:42
+msgid "Icon"
+msgstr ""
+
+#: Template/Admin/Licenses/index.ctp:2
+msgid "Admin/Licenses&gt; List"
+msgstr ""
+
+#: Template/Admin/Licenses/index.ctp:13
+msgid "Name"
+msgstr ""
+
+#: Template/Admin/Licenses/index.ctp:14
+msgid "Link"
+msgstr ""
+
+#: Template/Admin/Licenses/index.ctp:15
+msgid "Posts"
+msgstr ""
+
+#: Template/Admin/Licenses/index.ctp:16
+msgid "Projects"
+msgstr ""
+
+#: Template/Admin/Licenses/index.ctp:17
+msgid "Files"
+msgstr ""
+
+#: Template/Admin/Licenses/index.ctp:58
+msgid "You have no licenses yet. Please add one."
+msgstr ""
+
+#: Template/Element/layout/mainmenu_admin.ctp:21
+#: Template/Licenses/index.ctp:2
+msgid "Licenses"
+msgstr ""
+
+#: Template/Element/licenses/card.ctp:13
+msgid "{0}&nbsp;{1} Articles"
+msgstr ""
+
+#: Template/Element/licenses/card.ctp:14
+msgid "{0}&nbsp;{1} Projects"
+msgstr ""
+
+#: Template/Element/licenses/card.ctp:15
+msgid "{0}&nbsp;{1} Files"
+msgstr ""
+
+#: Template/Licenses/index.ctp:9
+msgid "Real name"
+msgstr ""
+
+#: Template/Licenses/index.ctp:10
+msgid "Number of posts"
+msgstr ""
+
+#: Template/Licenses/index.ctp:11
+msgid "Number of projects"
+msgstr ""
+
+#: Template/Licenses/index.ctp:12
+msgid "Number of files"
+msgstr ""
+
+#: Template/Licenses/view.ctp:10
+msgid "More info online"
+msgstr ""
+

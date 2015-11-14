@@ -1,0 +1,155 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-11-14 13:23+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/ActsController.php:95
+msgid "Article"
+msgstr ""
+
+#: Controller/User/PostsController.php:68
+msgid "Your article has been saved."
+msgstr ""
+
+#: Controller/User/PostsController.php:111
+msgid "Your article has been published."
+msgstr ""
+
+#: Controller/User/PostsController.php:115
+msgid "Your article has been unpublished."
+msgstr ""
+
+#: Controller/User/PostsController.php:119
+msgid "Your article has been updated."
+msgstr ""
+
+#: Controller/User/PostsController.php:152
+msgid "Your article has been deleted."
+msgstr ""
+
+#: Controller/User/PostsController.php:155
+msgid "Your article could not be deleted. Please, try again."
+msgstr ""
+
+#: Template/Admin/Posts/index.ctp:2
+msgid "Admin/Articles&gt; List"
+msgstr ""
+
+#: Template/Admin/Posts/index.ctp:7
+#: Template/Posts/index.ctp:9
+msgid "Title"
+msgstr ""
+
+#: Template/Admin/Posts/view.ctp:2
+msgid "Admin/Article&gt; {0}"
+msgstr ""
+
+#: Template/Admin/Posts/view.ctp:15
+#: Template/Posts/view.ctp:12
+msgid "Publication Date"
+msgstr ""
+
+#: Template/Admin/Users/index.ctp:133
+#: Template/Admin/Users/view.ctp:77
+#: Template/Element/layout/mainmenu.ctp:8
+#: Template/Element/layout/mainmenu_admin.ctp:9
+#: Template/Posts/index.ctp:2
+msgid "Articles"
+msgstr ""
+
+#: Template/Element/posts/card.ctp:20
+msgid "Published on: {0}"
+msgstr ""
+
+#: Template/Element/posts/tile_userindex.ctp:28
+#: Template/User/Posts/add.ctp:43
+#: Template/User/Posts/edit.ctp:50
+msgid "Published"
+msgstr ""
+
+#: Template/Element/posts/tile_userindex.ctp:30
+msgid "Draft"
+msgstr ""
+
+#: Template/Element/posts/tile_userindex.ctp:32
+msgid "Locked"
+msgstr ""
+
+#: Template/Element/posts/tile_userindex.ctp:41
+#: Template/Posts/index.ctp:10
+msgid "Publication date"
+msgstr ""
+
+#: Template/Element/users/usermenu.ctp:24
+msgid "Articles:"
+msgstr ""
+
+#: Template/Element/users/usermenu.ctp:27
+msgid "Write something !"
+msgstr ""
+
+#: Template/Licenses/view.ctp:21
+#: Template/Users/view.ctp:27
+msgid "Articles ({0})"
+msgstr ""
+
+#: Template/Posts/view.ctp:2
+msgid "Article: {0}"
+msgstr ""
+
+#: Template/Posts/view.ctp:8
+msgid "Author"
+msgstr ""
+
+#: Template/User/Files/add.ctp:29
+#: Template/User/Files/edit.ctp:37
+msgid "Description"
+msgstr ""
+
+#: Template/User/Files/edit.ctp:2
+msgid "Edit file  \"{0}\""
+msgstr ""
+
+#: Template/User/Posts/add.ctp:2
+msgid "New article"
+msgstr ""
+
+#: Template/User/Posts/add.ctp:20
+#: Template/User/Posts/edit.ctp:24
+#: Template/User/Posts/index.ctp:74
+msgid "{0}&nbsp;{1}"
+msgstr ""
+
+#: Template/User/Posts/add.ctp:30
+#: Template/User/Posts/edit.ctp:38
+msgid "Introduction"
+msgstr ""
+
+#: Template/User/Posts/add.ctp:32
+#: Template/User/Posts/edit.ctp:39
+msgid "Article contents"
+msgstr ""
+
+#: Template/User/Posts/edit.ctp:2
+msgid "Edit article \"{0}\""
+msgstr ""
+
+#: Template/User/Posts/index.ctp:2
+msgid "Your articles"
+msgstr ""
+
+#: Template/User/Posts/index.ctp:7
+msgid "Post title"
+msgstr ""
+

@@ -1,0 +1,89 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-11-14 13:23+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/ReportsController.php:45
+msgid "Thank you for your feedback"
+msgstr ""
+
+#: Controller/ReportsController.php:48
+msgid "The report could not be saved (and that should be a good reason to report it...). Please try again."
+msgstr ""
+
+#: Controller/Admin/ReportsController.php:61
+msgid "The report has been deleted."
+msgstr ""
+
+#: Controller/Admin/ReportsController.php:63
+msgid "The report could not be deleted. Please, try again."
+msgstr ""
+
+#: Template/Admin/Reports/index.ctp:2
+msgid "Admin/Reports&gt; List"
+msgstr ""
+
+#: Template/Admin/Reports/index.ctp:7
+msgid "Author"
+msgstr ""
+
+#: Template/Admin/Reports/index.ctp:9
+msgid "source"
+msgstr ""
+
+#: Template/Admin/Reports/view.ctp:2
+msgid "Admin/Report&gt; {0}"
+msgstr ""
+
+#: Template/Admin/Reports/view.ctp:44
+#: Template/Element/reports/add_modal.ctp:39
+msgid "Reason"
+msgstr ""
+
+#: Template/Admin/Reports/view.ctp:48
+msgid "Session"
+msgstr ""
+
+#: Template/Element/layout/mainmenu.ctp:28
+msgid "Report this page"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_admin.ctp:27
+msgid "Reports"
+msgstr ""
+
+#: Template/Element/reports/add_modal.ctp:20
+msgid "Your name"
+msgstr ""
+
+#: Template/Element/reports/add_modal.ctp:21
+msgid "Name"
+msgstr ""
+
+#: Template/Element/reports/add_modal.ctp:25
+msgid "Your email"
+msgstr ""
+
+#: Template/Element/reports/add_modal.ctp:26
+msgid "Email"
+msgstr ""
+
+#: Template/Element/reports/add_modal.ctp:37
+msgid "Reason for your report"
+msgstr ""
+
+#: Template/Element/reports/add_modal.ctp:48
+msgid "Send the report"
+msgstr ""
+
