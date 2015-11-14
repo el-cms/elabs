@@ -1,6 +1,6 @@
 # Change Log
 All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/).
+This project will adhere to [Semantic Versioning](http://semver.org/) as soon as possible.
 
 ## [Unreleased]
 
@@ -34,4 +34,3 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - [ ] **NSFW mechanism**
     - [ ] **...**
   - [ ] :red_circle: Make this CHANGELOG follow Semantic versioning as soon as possible
-  
