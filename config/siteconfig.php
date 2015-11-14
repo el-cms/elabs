@@ -2,7 +2,7 @@
 
 return ['cms' => [
         'siteName' => 'YourSite',
-        'isRegistrationOpen'=>false,
+        'isRegistrationOpen'=>true,
         'defaultRole' => 'author',
         'defaultUserStatus' => 0,
         'defaultLockedUser' => false,
