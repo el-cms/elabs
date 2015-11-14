@@ -21,5 +21,5 @@ echo $this->Form->input('realname', ['label' => __d('users', 'Real name'), 'requ
 echo $this->Form->input('password', ['required', 'templateVars' => ['help' => __d('users', 'A strong password is a good start.')]]);
 echo $this->Form->input('password_confirm', ['label' => __d('users', 'Password confirmation'), 'type' => 'password', 'required', 'templateVars' => ['help' => __d('users', 'Verify you didn\'t made a typo')]]);
 echo $this->Form->input('bio', ['label' => __d('elabs', 'About...'), 'type' => 'textarea', 'templateVars' => ['help' => __d('users', 'Tell us why you want to come here')]]);
-echo$this->Form->submit(__d('elabs', 'Register'), ['class' => 'btn-block']);
+echo $this->Form->submit(__d('elabs', 'Register'), ['class' => 'btn-block']);
 echo $this->Form->end();

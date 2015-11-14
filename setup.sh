@@ -21,5 +21,5 @@ rm Cake-3.X.zip
 cd ../
 composer dumpautoload
 
-echo "\n\nDone\n\n"
+echo "Done"
 

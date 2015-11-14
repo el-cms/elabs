@@ -20,6 +20,9 @@ class UsersController extends AppController
         if (in_array($this->request->action, ['register', 'login']) && !empty($this->Auth->user('id'))) {
             throw new ForbiddenException(__d('elabs', 'You are already registered'));
         }
+        if(!Configure::read('cms.isRegistrationOpen') && $this->request->action==='register'){
+            throw new ForbiddenException(__d('elabs', 'Registrations are closed for now... Come back later...'), 403);
+        }
     }
 
     /**

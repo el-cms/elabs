@@ -32,7 +32,7 @@
                     </a>
                 </li>
             </ul>
-            <a class="header-logo" href="#">ExperimentsLabs</a>
+          <?php echo $this->Html->link(Cake\Core\Configure::read('cms.siteName'), '/', ['escape'=>false, 'class'=>'header-logo'])?>
 
             <ul class="nav nav-list pull-right">
                 <li>

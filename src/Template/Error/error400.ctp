@@ -28,7 +28,7 @@ if (Configure::read('debug')):
     $this->end();
 endif;
 ?>
-<h2><?php echo h($message) ?></h2>
+<h2 class="text-red"><?php echo h($message) ?></h2>
 <p class="error">
     <strong><?php echo __d('cake', 'Error') ?>: </strong>
     <?php echo sprintf(
