@@ -1,10 +1,3 @@
 <p>
-	So you want to register on this site ?<br>
-	Remember those simple points :
-<ul>
-	<li>The account validation is manual</li>
-	<li>If you tell me about your projects, that would be great</li>
-</ul>
-<strong>You need to fill the blue fields.</strong>
-
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </p>
