@@ -59,7 +59,7 @@ class LicensesTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->allowEmpty('link');
+            ->allowEmpty('mainurl');
 
         $validator
             ->allowEmpty('icon');

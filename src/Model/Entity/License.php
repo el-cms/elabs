@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
- * @property string $link
+ * @property string $mainurl
  * @property string $icon
  * @property int $post_count
  * @property int $project_count
