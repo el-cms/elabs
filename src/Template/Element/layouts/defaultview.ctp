@@ -1,6 +1,6 @@
 <div class="col-sm-3 side-menu">
     <?php
-    if (!empty($this->fetch('pageActions'))):
+    if ($this->fetch('pageActions')):
         ?>
         <div class="side-menu">
             <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
@@ -11,7 +11,7 @@
         <?php
     endif;
 
-    if (!empty($this->fetch('pageInfos'))):
+    if ($this->fetch('pageInfos')):
         ?>
         <div class="side-menu">
             <div class="content-sub-heading"><?php echo __d('elabs', 'Infos') ?></div>

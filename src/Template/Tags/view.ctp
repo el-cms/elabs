@@ -23,7 +23,7 @@
     </table>
     <div class="related">
         <h4><?php echo __('Related Itemtags') ?></h4>
-        <?php if (!empty($tag->itemtags)): ?>
+        <?php if ($tag->itemtags): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?php echo __('Id') ?></th>

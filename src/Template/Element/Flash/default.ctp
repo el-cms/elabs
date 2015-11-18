@@ -1,6 +1,6 @@
 <?php
 $class = 'message';
-if (!empty($params['class'])) {
+if ($params['class']) {
     $class .= '  alert-' . $params['class'];
 }
 ?>

@@ -19,7 +19,7 @@ $link = $this->Html->link($data['title'], ['prefix' => false, 'controller' => $i
 ?>
 <div class="tile tile-<?php echo $class ?>">
 	<div class="pull-left tile-side">
-		<i class="fa fa-<?php echo $icon ?>"></i>
+		<i class="fa fa-fw fa-<?php echo $icon ?>"></i>
 	</div>
 	<div class="tile-inner">
 		<strong><?php echo $data['modified'] ?>: </strong><?php echo __d('acts', '{0} {1} {2}', [$config['models'][$item['model']], $link, $config['strings'][$item['type']]]) ?>

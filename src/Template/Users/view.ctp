@@ -38,7 +38,7 @@ echo $this->Markdown->transform(h($user->bio));
 
 <div class="tab-pane fade active in" id="posts-tab">
     <?php
-    if (!empty($user->posts)):
+    if ($user->posts):
         foreach ($user->posts as $posts):
             echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false]);
         endforeach;
@@ -50,7 +50,7 @@ echo $this->Markdown->transform(h($user->bio));
 
 <div class="tab-pane" id="projects-tab">
     <?php
-    if (!empty($user->projects)):
+    if ($user->projects):
         foreach ($user->projects as $projects):
             echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false]);
         endforeach;
@@ -62,7 +62,7 @@ echo $this->Markdown->transform(h($user->bio));
 
 <div class="tab-pane" id="files-tab">
     <?php
-    if (!empty($user->files)):
+    if ($user->files):
         foreach ($user->files as $files):
             echo $this->element('files/card', ['data' => $files, 'userInfo' => false]);
         endforeach;

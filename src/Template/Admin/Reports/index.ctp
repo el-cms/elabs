@@ -28,7 +28,7 @@ $this->assign('title', __d('reports', 'Admin/Reports&gt; List'));
                     echo __d('elabs', '{0}&nbsp;{1}', [$icon, $uname]);
                     ?>
                 </td>
-                <td><span class="fa fa-fw fa-<?php echo (!empty($report->email) ? 'check-circle' : 'circle-o') ?>"></span></td>
+                <td><span class="fa fa-fw fa-<?php echo ($report->email ? 'check-circle' : 'circle-o') ?>"></span></td>
                 <td><?php echo $this->Html->link(h($report->url), h($report->url)) ?></td>
                 <td><?php echo h($report->created) ?></td>
                 <td class="padding-no">

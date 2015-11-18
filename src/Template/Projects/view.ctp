@@ -23,7 +23,7 @@ endif; ?>
 <div class="content-sub-heading"><?php echo __d('elabs', 'Members') ?></div>
 <ul>
     <li><?php echo $project->has('user') ? $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) : '' ?></li>
-    <?php if (!empty($project->project_users)): ?>
+    <?php if ($project->project_users): ?>
 
         <?php foreach ($project->project_users as $projectUsers): ?>
             <li><?php echo $this->Html->link(h($projectUsers->id), ['controller' => 'ProjectUsers', 'action' => 'view', $projectUsers->id]) ?></li>  

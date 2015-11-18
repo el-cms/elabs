@@ -17,7 +17,7 @@ class UsersController extends AppController
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
-        if (in_array($this->request->action, ['register', 'login']) && !empty($this->Auth->user('id'))) {
+        if (in_array($this->request->action, ['register', 'login']) && $this->Auth->user('id')) {
             throw new ForbiddenException(__d('elabs', 'You are already registered'));
         }
         if (!Configure::read('cms.isRegistrationOpen') && $this->request->action === 'register') {

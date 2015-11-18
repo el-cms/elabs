@@ -10,13 +10,13 @@ if (Configure::read('debug')):
 
     $this->start('file');
 ?>
-<?php if (!empty($error->queryString)) : ?>
+<?php if ($error->queryString) : ?>
     <p class="notice">
         <strong>SQL Query: </strong>
         <?php echo h($error->queryString) ?>
     </p>
 <?php endif; ?>
-<?php if (!empty($error->params)) : ?>
+<?php if ($error->params) : ?>
         <strong>SQL Query Params: </strong>
         <?php echo Debugger::dump($error->params) ?>
 <?php endif; ?>

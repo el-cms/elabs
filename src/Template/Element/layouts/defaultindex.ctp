@@ -1,6 +1,6 @@
 <div class="col-sm-3">
     <?php
-    if (!empty($this->fetch('pageOrderMenu'))):
+    if ($this->fetch('pageOrderMenu')):
         ?>
         <div class="side-menu">
             <div class="content-sub-heading"><?php echo __d('elabs', 'Display order') ?></div>
@@ -12,7 +12,7 @@
         <?php
     endif;
 
-    if (!empty($this->fetch('pageFiltersMenu'))):
+    if ($this->fetch('pageFiltersMenu')):
         ?>
         <div class="side-menu">
             <div class="content-sub-heading"><?php echo __d('elabs', 'Filters') ?></div>
@@ -23,7 +23,7 @@
         <?php
     endif;
 
-    if (!empty($this->fetch('pageActionsMenu'))):
+    if ($this->fetch('pageActionsMenu')):
         ?>
         <div class="side-menu">
             <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
