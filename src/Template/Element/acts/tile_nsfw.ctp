@@ -17,7 +17,7 @@ endswitch;
 ?>
 <div class="tile tile-red">
     <div class="pull-left tile-side">
-        <i class="fa fa-<?php echo $icon ?>"></i>
+        <i class="fa fa-fw fa-<?php echo $icon ?>"></i>
     </div>
     <div class="tile-inner">
         <strong><?php echo __d('acts', 'This element may not be safe, therefore it is hidden.') ?></strong>
