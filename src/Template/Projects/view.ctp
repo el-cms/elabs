@@ -2,12 +2,10 @@
 $this->assign('title', __d('projects', 'Project: {0}', h($project->name)));
 
 $this->start('pageInfos');
-?>
-<dl class="dl-horizontal">
-    <?php if ($project->has('url')): ?>
-        <dt><?php echo __d('elabs', 'Url') ?></dt>
-        <dd><?php echo h($project->download) ?></dd>
-    <?php endif; ?>
+if ($project->has('mainurl')):
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-external-link"></span>',__d('elabs', 'Website')]),$project->mainurl, ['escape'=>false, 'class'=>'btn btn-default']);
+endif; ?>
+<dl>
     <dt><?php echo __d('elabs', 'License') ?></dt>
     <dd><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $project->license->icon . '"></span>', $project->license->name]), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></dd>
     <dt><?php echo __d('elabs', 'Created on') ?></dt>
