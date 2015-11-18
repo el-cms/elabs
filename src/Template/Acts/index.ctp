@@ -84,10 +84,10 @@ if (!$acts->isEmpty()):
                     case 'Posts':
                         $itemTitle = $act[$model]['title'];
                         break;
-                    case 'Project':
+                    case 'Projects':
                         $itemTitle = $act[$model]['name'];
                         break;
-                    case'File':
+                    case 'Files':
                         $itemTitle = $act[$model]['name'];
                         break;
                     default:
