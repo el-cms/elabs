@@ -37,11 +37,11 @@ $this->end();
 
 $this->start('pageContent');
 
-echo $this->Markdown->transform(h($project->short_description));
+echo $this->Elabs->displayMD($project->short_description);
 ?>
 <hr />
 <?php
-echo $this->Markdown->transform(h($project->description));
+echo $this->Elabs->displayMD($project->description);
 
 echo $this->element('layout/loader_prism');
 

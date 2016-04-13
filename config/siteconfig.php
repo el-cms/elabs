@@ -9,7 +9,8 @@ return ['cms' => [
         'defaultSeeNSFW' => false,
         'defaultMinPassLenght' => 8,
         'defaultMinUserNameLenght' => 6,
-        'see_nsfw' => 1
+        'see_nsfw' => 1,
+        'escapeMarkdown'=>true,
     ]
 ];
 

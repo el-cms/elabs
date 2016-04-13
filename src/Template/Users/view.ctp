@@ -18,7 +18,7 @@ $this->end();
 
 $this->start('pageContent');
 
-echo $this->Markdown->transform(h($user->bio));
+echo $this->Elabs->displayMD($user->bio);
 ?>
 
 <nav class="tab-nav tab-nav-brand">

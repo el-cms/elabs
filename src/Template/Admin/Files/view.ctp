@@ -63,7 +63,7 @@ $linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-ef
 $this->end();
 
 $this->start('pageContent');
-echo $this->Markdown->transform(h($file->description));
+echo $this->Elabs->displayMD($file->description);
 ?>
 <hr />
 <?php

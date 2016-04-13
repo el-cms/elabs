@@ -56,10 +56,10 @@ $linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-ef
 $this->end();
 
 $this->start('pageContent');
-echo $this->Markdown->transform(h($post->excerpt));
+echo $this->Elabs->displayMD($post->excerpt);
 ?>
 <hr/>
-<?php echo $this->Markdown->transform(h($post->text)); ?>
+<?php echo $this->Elabs->displayMD($post->text); ?>
 <div class="content-sub-heading"><?php echo __d('elabs', 'Related items') ?></div>
 <?php
 echo $this->element('layout/dev_block');

@@ -40,7 +40,7 @@
         </div>
         <div class="card-inner">
             <p>
-                <?php echo $this->Markdown->transform(h($data['excerpt'])) ?>
+                <?php echo $this->Elabs->displayMD($data['excerpt']) ?>
             </p>
         </div>
     </div>
