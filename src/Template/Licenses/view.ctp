@@ -31,7 +31,7 @@ $this->start('pageContent');
 </nav>
 <div class="tab-pane fade active in" id="posts-tab">
     <?php
-    if ($license->posts):
+    if (!empty($license->posts)):
         foreach ($license->posts as $posts):
             echo $this->element('posts/card', ['data' => $posts, 'licenseInfo' => false]);
         endforeach;
@@ -43,7 +43,7 @@ $this->start('pageContent');
 
 <div class="tab-pane" id="projects-tab">
     <?php
-    if ($license->projects):
+    if (!empty($license->projects)):
         foreach ($license->projects as $projects):
             echo $this->element('projects/card', ['data' => $projects, 'licenseInfo' => false]);
         endforeach;
@@ -55,7 +55,7 @@ $this->start('pageContent');
 
 <div class="tab-pane" id="files-tab">
     <?php
-    if ($license->files):
+    if (!empty($license->files)):
         foreach ($license->files as $files):
             echo $this->element('files/card', ['data' => $files, 'licenseInfo' => false]);
         endforeach;

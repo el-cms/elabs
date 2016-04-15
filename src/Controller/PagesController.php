@@ -52,10 +52,10 @@ class PagesController extends AppController
         }
         $page = $subpage = null;
 
-        if ($path[0]) {
+        if (!empty($path[0])) {
             $page = $path[0];
         }
-        if ($path[1]) {
+        if (!empty($path[1])) {
             $subpage = $path[1];
         }
         $this->set(compact('page', 'subpage'));

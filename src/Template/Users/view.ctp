@@ -38,7 +38,7 @@ echo $this->Elabs->displayMD($user->bio);
 
 <div class="tab-pane fade active in" id="posts-tab">
     <?php
-    if ($user->posts):
+    if (!empty($user->posts)):
         foreach ($user->posts as $posts):
             echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false]);
         endforeach;
@@ -50,7 +50,7 @@ echo $this->Elabs->displayMD($user->bio);
 
 <div class="tab-pane" id="projects-tab">
     <?php
-    if ($user->projects):
+    if (!empty($user->projects)):
         foreach ($user->projects as $projects):
             echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false]);
         endforeach;
@@ -62,7 +62,7 @@ echo $this->Elabs->displayMD($user->bio);
 
 <div class="tab-pane" id="files-tab">
     <?php
-    if ($user->files):
+    if (!empty($user->files)):
         foreach ($user->files as $files):
             echo $this->element('files/card', ['data' => $files, 'userInfo' => false]);
         endforeach;

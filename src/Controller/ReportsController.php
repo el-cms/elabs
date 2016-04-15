@@ -29,11 +29,11 @@ class ReportsController extends AppController
         $report = $this->Reports->newEntity();
         if ($this->request->is('post')) {
             // Preparing data
-            if (!$this->request->data['url']) {
+            if (empty($this->request->data['url'])) {
                 $this->request->data['url'] = $this->referer();
             }
             $this->request->data['session'] = 'NULL !'; //var_export($this->Session->read(), true);
-            if ($this->Auth->user('id')) {
+            if (!empty($this->Auth->user('id'))) {
                 $this->request->data['user_id'] = $this->Auth->user('id');
                 $this->request->data['name'] = $this->Auth->user('username');
                 $this->request->data['email'] = $this->Auth->user('email');
