@@ -55,5 +55,5 @@ $this->Form->templates($formTemplate);
     </div>
 </div>
 <?php
-$this->Form->end();
+echo $this->Form->end();
 
