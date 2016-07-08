@@ -202,18 +202,21 @@ DispatcherFactory::add('ControllerFactory');
 Type::build('date')->useLocaleParser();
 Type::build('datetime')->useLocaleParser();
 
+// Json Type
+Type::map('json', 'App\Database\Type\JsonType');
 
 /**
  * Custom configuration files
  */
-//Configure::config('default', new PhpConfig());
 Configure::load('siteconfig', 'default');
 
-// Bootstrap widgets
-Plugin::load('Bootstrap');
+/*
+ * Plugins
+ */
+// Bootstrap UI Helper
+Plugin::load('BootstrapUI');
 
 // Markdown renderer
 Plugin::load('Tanuck/Markdown');
-
-// Gravatar helper
-Plugin::load('Gravatar');
+Plugin::load('Ajax', ['bootstrap' => true]);
+Plugin::load('Search');

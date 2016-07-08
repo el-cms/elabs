@@ -69,11 +69,9 @@ class AppController extends Controller
             'loginRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index'],
             'logoutRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index']
         ]);
-        // Elabs helper, for the entire app
         if (is_null($this->request->session()->read('see_nsfw'))) {
             $this->_setSFWstate('hide');
         }
-        $this->viewBuilder()->helpers(['Elabs']);
     }
 
     /**

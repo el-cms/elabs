@@ -2,14 +2,13 @@
 
 namespace App\View\Helper;
 
-use Cake\View\Helper;
-
+use Cake\Core\Configure;
 /**
- * CakePHP ElabsHelper
+ * CakePHP HtmlHelper
  */
-class ElabsHelper extends Helper {
+class HtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper {
 
-    public $helpers = ['Html', 'Url', 'Markdown'];
+    public $helpers = ['Markdown'];
 
     /**
      * Create a link to display the page report modal
@@ -77,4 +76,31 @@ class ElabsHelper extends Helper {
         return $text;
     }
 
+    /**
+     * Creates an icon.
+     * 
+     * This method surcharges the icon() method from BootstrapUI :
+     *  - fixed width by default
+     *  - fontAwesome by default
+     * 
+     * Additionnal options :
+     *  - fixed If true, an fa-fw class will be applied (default)
+     * 
+     * @param string $name Icon name
+     * @param array $options
+     * @return string
+     */
+    public function icon($name, array $options = [])
+    {
+        $options += [
+            'iconSet' => 'fa',
+            'fixed' => true,
+            'class' => null
+        ];
+        if ($options['fixed']) {
+            $this->injectClasses($options['iconSet'] . '-fw', $options);
+        }
+        unset($options['fixed']);
+        return parent::icon($name, $options);
+    }
 }
