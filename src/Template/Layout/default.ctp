@@ -80,6 +80,9 @@
                                 </ul>
                             </li>
                         </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <?php echo $this->fetch('secondMenu'); ?> 
+                        </ul>
                     </div>
                     <!-- / Right menu -->
                 </div>
