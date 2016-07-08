@@ -3,7 +3,19 @@ body{
 	margin-bottom: 50px;
 }
 
-// Blocks for "Under contruction" elements
+#page-loader{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100vh;
+	background-color:#FFF;
+	z-index: 1000;
+	text-align: center;
+	line-height:100vh;
+}
+
+/*// Blocks for "Under contruction" elements
 .dev-block{
 	color:$palette-grey-500;
 	border:1px dashed $palette-grey-600;
@@ -20,12 +32,8 @@ body{
 	color:$palette-grey-500;
 	border:1px dashed $palette-grey-600;
 	display:inline-block;
-	/*text-align: center;*/
-	/*line-height:100%;*/
 	border-radius: 2px;
-	/*height:100%;*/
 	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
-	/*padding:15px;*/
 }
 
 //
@@ -46,3 +54,4 @@ legend{
 	font-size:$font-size-h5;
 	margin-bottom: 0px;
 }
+*/
