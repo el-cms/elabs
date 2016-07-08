@@ -105,12 +105,13 @@
         ?>
         <footer class="footer">
             <div class="container">
-                <p>© 2015 Elabs</p>
+                <p>&copy; 2015 Elabs</p>
             </div>
         </footer>
         <!-- Javascript at the end -->
-        <?php echo $this->Html->script('lib/jquery-1.11.3.min.js') ?>
-        <?php echo $this->Html->script('material.min.js') ?>
+        <?php echo $this->Html->script('lib/jquery.min.js') ?>
+        <?php echo $this->Html->script('bootstrap.min.js') ?>
+        <?php echo $this->Html->script('bootstrap-tagsinput.min.js') ?>
         <!-- Custom scripts -->
         <?php echo $this->fetch('pageBottomScripts') ?>
         <?php echo $this->Html->script('custom.js') ?>
