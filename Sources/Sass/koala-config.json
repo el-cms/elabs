@@ -5,10 +5,18 @@
 			"dest": "../../webroot/css"
 		}
 	],
-	"ignores": ["*.css", "*.less", "common/material-master", "common/Font-Awesome-master", "common/codemirror-5.7"],
+	"ignores": [
+        "*.css", 
+        "*.less", 
+        "common/bootstrap-sass", 
+        "common/bootstrap-tagsinput-latest", 
+        "common/Font-Awesome-master", 
+        "common/codemirror",
+        "bootflat.github.io-master"
+        ],
 	"options": {
-		"outputStyle": "nested",
-		"lineComments": true,
+		"outputStyle": "compressed",
+		"lineComments": false,
 		"debugInfo": false,
 		"sourceMap": true,
 		"unixNewlines": false,
