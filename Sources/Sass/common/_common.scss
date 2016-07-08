@@ -3,9 +3,6 @@
 // Files common to both backend and frontend
 //
 
-// Base from Material
-@import "material-master/assets/sass/base.scss";
-
 // Base from Bootstrap
 @import "custom_bootstrap.scss";
 
@@ -14,13 +11,15 @@
 
 // Common modifications
 @import "custom/addons/codemirror.scss";
-@import "custom/base/grid.scss";
-@import "custom/base/layout.scss";
-@import "custom/base/typo.scss";
-@import "custom/components/alerts.scss";
-@import "custom/components/dls.scss";
-@import "custom/components/empty.scss";
-@import "custom/components/lists.scss";
-@import "custom/components/navs.scss";
-@import "custom/components/pagination.scss";
+//@import "custom/base/grid.scss";
+//@import "custom/base/layout.scss";
+//@import "custom/base/typo.scss";
+//@import "custom/components/alerts.scss";
+//@import "custom/components/dls.scss";
+//@import "custom/components/empty.scss";
+//@import "custom/components/lists.scss";
+//@import "custom/components/navs.scss";
+//@import "custom/components/pagination.scss";
 @import "custom/components/tiles.scss";
+@import "custom/components/cards.scss";
+@import "custom/components/timeline.scss";

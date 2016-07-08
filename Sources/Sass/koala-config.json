@@ -12,7 +12,7 @@
         "common/bootstrap-tagsinput-latest", 
         "common/Font-Awesome-master", 
         "common/codemirror",
-        "bootflat.github.io-master"
+        "common/bootflat.github.io-master"
         ],
 	"options": {
 		"outputStyle": "compressed",

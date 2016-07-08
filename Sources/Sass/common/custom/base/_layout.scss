@@ -5,7 +5,7 @@ body{
 }
 
 #page-loader{
-    position:absolute;
+    position:fixed;
     top:0;
     left:0;
     width:100%;
@@ -20,6 +20,11 @@ footer.navbar{
     border-width:1px 0 0 0;
     border-radius:0;
     margin-bottom:0;
+}
+
+.menu-fixed{
+    position:fixed;
+    top:151px;
 }
 
 /*// Blocks for "Under contruction" elements

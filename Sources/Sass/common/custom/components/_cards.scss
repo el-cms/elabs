@@ -1,0 +1,47 @@
+.card{
+    padding: 10px;
+    margin-bottom: 5px;
+    border: none;
+    @include radius($type: border-radius, $value: $well-radius);
+    color: $modal-font-color; 
+    background-color: $well-background-color; 
+    @include box-shadow($value: $well-shadow);
+    & blockquote {
+        border-color: $well-blockquote-color;
+    }
+    @at-root &-lg {
+        padding: 20px;
+    }
+    @at-root &-sm {
+        padding: 5px;
+    }
+    .nsfw{
+        background-color: #F00;
+    }
+    .card-header-side{
+        float:left;
+        width:60px;
+    }
+    .card-header{
+        h1, h2, h3, h4{
+            margin:0;
+            padding:0;
+            font-size:1.3em;
+            a{
+                display:block;
+            }
+        }
+        .card-informations{
+            list-style:none;
+            font-size:0.8em;
+            li{
+                display:block;
+                width:100%;
+            }
+        }
+    }
+    .main{
+        
+    }
+}
+

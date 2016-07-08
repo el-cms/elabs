@@ -1,0 +1,33 @@
+.timeline{
+    .pos-left{
+        .events{
+            width:27%;
+        }
+    }
+    .pos-right{
+        .events{
+            width:67%;
+        }
+    }
+    dl::before{
+        left:30%;
+    }
+    dl{
+        dt{
+            margin:0 30% 30px;
+            transform:translateX(-60px);
+        }
+        dd{
+            .circ{
+                left: 30%;
+            }
+            .circ-nsfw{
+                background-color:silver;
+            }
+            .time{
+                left:30%;
+                top:29px;
+            }
+        }
+    }
+}
