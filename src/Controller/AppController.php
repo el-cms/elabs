@@ -30,15 +30,6 @@ use Cake\Core\Configure;
  */
 class AppController extends Controller
 {
-    /**
-     * List of helpers with their configuration
-     * 
-     * @var array
-     */
-    public $helpers = [
-        'Tanuck/Markdown.Markdown' => ['parser' => 'GithubMarkdown'],
-        'Gravatar.Gravatar'
-    ];
 
     /**
      * Initialization hook method.
@@ -77,7 +68,7 @@ class AppController extends Controller
     /**
      * Before filter callback
      * 
-     * @param Event $event
+     * @param \Cake\Event\Event $event The beforeFilter event.
      * @return void
      */
     public function beforeFilter(Event $event)
@@ -95,8 +86,9 @@ class AppController extends Controller
      */
     public function beforeRender(Event $event)
     {
+        $this->set('currentController', \Cake\Utility\Inflector::underscore($this->request->params['controller']));
         if (!array_key_exists('_serialize', $this->viewVars) &&
-                in_array($this->response->type(), ['application/json', 'application/xml'])
+                in_array($this->response->type(), ['application/json', 'application/xml', 'text/csv'])
         ) {
             $this->set('_serialize', true);
         }

@@ -1,7 +1,7 @@
 // Common imports
 @import "common/_common.scss";
 // Backend-specific variables
-@import "backend/variables/_colours.scss";
+//@import "backend/variables/_colours.scss";
 //
 // Backend-specific imports
 //
@@ -9,10 +9,10 @@
 // Addons
 
 // Base
-@import "backend/base/_tables.scss";
+//@import "backend/base/_tables.scss";
 
 // Components
-@import "backend/components/_navs.scss"; 
+//@import "backend/components/_navs.scss"; 
 // Elements
 
 // Mixins

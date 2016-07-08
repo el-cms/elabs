@@ -1,39 +1,46 @@
 body{
-	// Margin to avoid footer covering content
-	margin-bottom: 50px;
+    // Margin to avoid footer covering content
+    margin-top:50px;
+    margin-bottom: 0;
 }
 
 #page-loader{
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100vh;
-	background-color:#FFF;
-	z-index: 1000;
-	text-align: center;
-	line-height:100vh;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background-color:#FFF;
+    z-index: 1000;
+    text-align: center;
+    line-height:100vh;
+}
+
+footer.navbar{
+    border-width:1px 0 0 0;
+    border-radius:0;
+    margin-bottom:0;
 }
 
 /*// Blocks for "Under contruction" elements
 .dev-block{
-	color:$palette-grey-500;
-	border:1px dashed $palette-grey-600;
-	text-align: center;
-	line-height:100%;
-	border-radius: 5px;
-	height:100%;
-	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
-	padding:15px;
+    color:$palette-grey-500;
+    border:1px dashed $palette-grey-600;
+    text-align: center;
+    line-height:100%;
+    border-radius: 5px;
+    height:100%;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
+    padding:15px;
 }
 
 // Inline for "Under contruction" elements
 .dev-inline{
-	color:$palette-grey-500;
-	border:1px dashed $palette-grey-600;
-	display:inline-block;
-	border-radius: 2px;
-	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
+    color:$palette-grey-500;
+    border:1px dashed $palette-grey-600;
+    display:inline-block;
+    border-radius: 2px;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
 }
 
 //
@@ -42,16 +49,16 @@ body{
 
 //Title
 .menu-top-info.plain{
-	font-size: 1.5em;
+    font-size: 1.5em;
 }
 // Content1
 .menu-content.plain{
-	padding:$margin-sm;
+    padding:$margin-sm;
 }
 
 legend{
-	@extend .content-sub-heading;
-	font-size:$font-size-h5;
-	margin-bottom: 0px;
+    @extend .content-sub-heading;
+    font-size:$font-size-h5;
+    margin-bottom: 0px;
 }
 */

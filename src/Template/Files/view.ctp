@@ -35,7 +35,7 @@ $this->end();
 
 $this->start('pageContent');
 
-echo $this->Elabs->displayMD($file->description);
+echo $this->Html->displayMD($file->description);
 echo $this->element('files/view_content_' . $config['element'], ['data' => $file]);
 echo $this->element('layout/loader_prism');
 

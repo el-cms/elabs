@@ -25,7 +25,7 @@ $this->start('secondMenu');
     <?php echo $this->Html->Link(($see_nsfw === true) ? __d('elabs', 'Hide NSFW') : __d('elabs', 'Show NSFW'), ['action' => 'switchSFW', ($see_nsfw === true) ? 'hide' : 'show'], ['class' => 'waves-attach']) ?>
 </li>
 <li>
-    <?php echo $this->Elabs->reportLink(null, ['title' => __d('reports', 'Report this page'), 'class' => 'waves-attach']) ?>
+    <?php echo $this->Html->reportLink(null, ['title' => __d('reports', 'Report this page'), 'class' => 'waves-attach']) ?>
 </li>
 <li>
     <?php echo $this->Html->link(__d('elabs', 'About'), ['prefix' => false, 'controller' => 'pages', 'action' => 'display', 'about'], ['class' => 'waves-attach']) ?>
