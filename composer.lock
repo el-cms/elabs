@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bfcd580cd20873d358c8543f4957005b",
-    "content-hash": "09707fe7f959d24d6cc2757f5f67cfd0",
+    "hash": "8b768561a82c0382d280c18b8121db69",
+    "content-hash": "b33e61de04b78100a7a4563fac034e1d",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -404,45 +404,150 @@
             "time": "2015-03-06 05:21:16"
         },
         {
-            "name": "holt59/cakephp3-bootstrap-helpers",
+            "name": "dereuromark/cakephp-ajax",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Holt59/cakephp3-bootstrap-helpers.git",
-                "reference": "1c7e8ba651bda8cc00554ba1242e71d026f1e3a0"
+                "url": "https://github.com/dereuromark/cakephp-ajax.git",
+                "reference": "e9e79a45ceb14808a55c793baa94392b8ed9b4cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Holt59/cakephp3-bootstrap-helpers/zipball/1c7e8ba651bda8cc00554ba1242e71d026f1e3a0",
-                "reference": "1c7e8ba651bda8cc00554ba1242e71d026f1e3a0",
+                "url": "https://api.github.com/repos/dereuromark/cakephp-ajax/zipball/e9e79a45ceb14808a55c793baa94392b8ed9b4cd",
+                "reference": "e9e79a45ceb14808a55c793baa94392b8ed9b4cd",
                 "shasum": ""
             },
             "require": {
-                "cakephp/cakephp": ">=3.2.3"
+                "cakephp/cakephp": "~3.0",
+                "php": ">=5.4"
             },
             "require-dev": {
-                "cakephp/cakephp-codesniffer": "dev-master",
-                "phpunit/phpunit": "*"
+                "dereuromark/cakephp-tools": "dev-master",
+                "fig-r/psr2r-sniffer": "dev-master"
             },
             "type": "cakephp-plugin",
-            "extra": {
-                "installer-name": "Bootstrap"
-            },
             "autoload": {
                 "psr-4": {
-                    "Bootstrap\\": "src"
+                    "Ajax\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache"
+                "MIT"
             ],
-            "description": "Bootstrap Helpers for CakePHP 3.0",
+            "authors": [
+                {
+                    "name": "Mark Scherer",
+                    "homepage": "http://www.dereuromark.de",
+                    "role": "Author"
+                }
+            ],
+            "description": "A CakePHP plugin that makes working with AJAX a piece of cake.",
+            "homepage": "https://github.com/dereuromark/cakephp-ajax",
+            "keywords": [
+                "ajax",
+                "asynchronous",
+                "cakephp",
+                "plugin",
+                "view"
+            ],
+            "time": "2016-06-22 12:04:32"
+        },
+        {
+            "name": "friendsofcake/bootstrap-ui",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfCake/bootstrap-ui.git",
+                "reference": "d1483230d1bb46f6ff114ae987ddefd285f09dc7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfCake/bootstrap-ui/zipball/d1483230d1bb46f6ff114ae987ddefd285f09dc7",
+                "reference": "d1483230d1bb46f6ff114ae987ddefd285f09dc7",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "~3.0"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "dev-master",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "BootstrapUI\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jad Bitar",
+                    "homepage": "http://jadb.io",
+                    "role": "Author"
+                },
+                {
+                    "name": "Others",
+                    "homepage": "https://github.com/friendsofcake/bootstrap-ui/graphs/contributors"
+                }
+            ],
+            "description": "Twitter Bootstrap 3 support for CakePHP 3",
+            "homepage": "http://github.com/friendsofcake/bootstrap-ui",
             "keywords": [
                 "bootstrap",
-                "cakephp"
+                "cakephp",
+                "twitter"
             ],
-            "time": "2016-06-11 10:03:51"
+            "time": "2016-04-06 12:22:58"
+        },
+        {
+            "name": "friendsofcake/search",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfCake/search.git",
+                "reference": "44df06b3b68791ecdc79d762847850b8840d8dc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfCake/search/zipball/44df06b3b68791ecdc79d762847850b8840d8dc4",
+                "reference": "44df06b3b68791ecdc79d762847850b8840d8dc4",
+                "shasum": ""
+            },
+            "require-dev": {
+                "cakephp/cakephp": "~3.0",
+                "friendsofcake/cakephp-test-utilities": "dev-master"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Search\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Winther",
+                    "homepage": "http://cakephp.nu/",
+                    "role": "Author"
+                }
+            ],
+            "description": "CakePHP 3.0 easy search framework",
+            "homepage": "https://github.com/FriendsOfCake/search",
+            "keywords": [
+                "cake3",
+                "cakephp",
+                "cakephp3",
+                "search"
+            ],
+            "time": "2016-07-06 16:59:09"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -1374,7 +1479,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "holt59/cakephp3-bootstrap-helpers": 20,
+        "dereuromark/cakephp-ajax": 20,
         "tanuck/cakephp-markdown": 20,
         "psy/psysh": 0
     },
