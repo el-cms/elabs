@@ -1,0 +1,17 @@
+.toolbar{
+    border:1px solid #CCC;
+    border-width:1px 0;
+    padding: $padding-small-vertical $padding-small-horizontal;
+    margin-bottom: $padding-base-vertical;
+    .btn-group{
+        a{
+            @extend .btn;
+            @extend .btn-xs;
+            &:first-child{
+                background-color: #CCC;
+                cursor: default;
+                border-color: $btn-default-border;
+            }
+        }
+    }
+}

@@ -9,8 +9,8 @@ $fa-font-path:"../fonts";
 
 // Bootstrap vars
 //== Navbar
-$navbar-default-color:             #FFCE54;
 $navbar-default-bg:                #F6BB42;
+$navbar-default-color:             darken($navbar-default-bg, 20%);;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%);
 
 // Navbar links
