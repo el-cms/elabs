@@ -49,7 +49,7 @@ class AppView extends View
             ]
         ]);
         $this->loadHelper('Flash', ['className' => 'BootstrapUI.Flash']);
-        $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
+//        $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
         $this->loadHelper('Gravatar.Gravatar');
 
         $this->Paginator->templates([
@@ -64,11 +64,11 @@ class AppView extends View
 //            'number' => '<li><a href="{{url}}">{{text}}</a></li>',
 //            'current' => '<li class="active"><a href="">{{text}}</a></li>',
 //            'ellipsis' => '<li class="ellipsis">...</li>',
-            'sort' => '<a href="{{url}}"><span class="fa fa-fw fa-sort"></span>&nbsp;{{text}}</a>',
-            'sortAsc' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>',
-            'sortDesc' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
-            'sortAscLocked' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
-            'sortDescLocked' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>'
+            'sort' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort"></span>&nbsp;{{text}}</a>',
+            'sortAsc' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>',
+            'sortDesc' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
+            'sortAscLocked' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
+            'sortDescLocked' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>'
         ]);
         $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
     }
