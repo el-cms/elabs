@@ -13,13 +13,7 @@ switch ($model):
     default:
         $icon = 'question';
 endswitch;
-// Title link
 ?>
-<div class="tile tile-red">
-    <div class="pull-left tile-side">
-        <i class="fa fa-fw fa-<?php echo $icon ?>"></i>
-    </div>
-    <div class="tile-inner">
-        <strong><?php echo __d('acts', 'This element may not be safe, therefore it is hidden.') ?></strong>
-    </div>
+<div class="tile tile-nsfw">
+    <?php echo __('{0}&nbsp;{1}', [$this->Html->icon($icon), __d('acts', 'This element may not be safe, therefore it is hidden.')]) ?>
 </div>
