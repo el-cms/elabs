@@ -55,7 +55,7 @@
                                     <span class="avatar">
                                         <?php
                                         if (!is_null($authUser)):
-                                            echo $this->Gravatar->generate($authUser['email'], ["size"=>"20px"]);
+                                            echo $this->Gravatar->generate($authUser['email'], ["size" => "20px"]);
                                         else:
                                             ?><span class="fa fa-user"></span><?php
                                         endif;
@@ -92,27 +92,28 @@
         <!-- / Navbar-->
 
         <!-- Main content -->
-        <div class="content">
-            <div class="content-heading">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="heading"><?php echo $this->fetch('title') ?></h1>
-                        </div>
-                    </div>
+        <div class="container">
+            <!-- Flash messages -->
+            <div class="row">
+                <?php echo $this->Flash->render() ?>
+            </div>
+            <!-- / Flash messages -->
+            
+            <!-- Title -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1><?php echo $this->fetch('title') ?></h1>
                 </div>
             </div>
-            <div class="container">
-                <div class="content-inner">
-                    <div class="row">
-                        <?php echo $this->Flash->render() ?>
-                        <?php echo $this->fetch('content') ?>
-                    </div>
-                </div>
-            </div>
+            <!-- / Title -->
+            
+            <!-- Content -->
+            <?php echo $this->fetch('content') ?>
+            <!-- / Content -->
+            
         </div>
         <!-- / Main content -->
-        
+
         <!-- Login modal -->
         <?php
         if (is_null($authUser)):
@@ -120,7 +121,7 @@
         endif;
         ?>
         <!-- /Login modal -->
-        
+
         <!-- Footer -->
         <footer class="navbar navbar-default navbar-static">
             <div class="container">
