@@ -1,44 +1,74 @@
-<div class="col-sm-3">
-    <?php
-    if (!empty($this->fetch('pageOrderMenu'))):
-        ?>
-        <div class="side-menu">
-            <div class="content-sub-heading"><?php echo __d('elabs', 'Display order') ?></div>
-            <div class="dropdown dropdown-inline">
-                <a aria-expanded="false" class="btn dropdown-toggle-btn waves-attach waves-effect" data-toggle="dropdown"><?php echo __d('elabs', 'Order by...') ?><span class="icon margin-left-sm">keyboard_arrow_down</span></a>
-                <?php echo $this->fetch('pageOrderMenu') ?>
-            </div>
-        </div>
-        <?php
-    endif;
+<?php
+$haveMenu = false;
+$this->start('pageMenu');
+$this->end();
 
-    if (!empty($this->fetch('pageFiltersMenu'))):
-        ?>
-        <div class="side-menu">
-            <div class="content-sub-heading"><?php echo __d('elabs', 'Filters') ?></div>
-            <div class="side-menu-content">
-                <?php echo $this->fetch('pageFiltersMenu'); ?>
-            </div>
-        </div>
-        <?php
-    endif;
-
-    if (!empty($this->fetch('pageActionsMenu'))):
-        ?>
-        <div class="side-menu">
-            <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-            <div class="side-menu-content">
-                <?php echo $this->fetch('pageActionsMenu'); ?>
-            </div>
-        </div>
-        <?php
-    endif;
+// Ordering menu
+$this->start('pageOrderMenu_final');
+$pageOrderMenu = $this->fetch('pageOrderMenu');
+if (!empty($pageOrderMenu)):
+    $haveMenu = true;
     ?>
-</div>
-
-<div class="col-sm-9">
+    <div class="btn-group" aria-role="toolbar">
+        <a><?= __('Order by:') ?></a>
+        <?php echo $pageOrderMenu ?>
+    </div>
     <?php
-    echo $this->fetch('pageContent');
-    echo $this->element('layout/paginationlinks');
+endif;
+$this->end();
+
+// Filters
+$this->start('pageFiltersMenu_final');
+$pageFiltersMenu = $this->fetch('pageFiltersMenu');
+
+if (!empty($pageFiltersMenu)):
+    $haveMenu = true;
     ?>
+    <div class="btn-group" aria-role="toolbar">
+        <a><?php echo __d('elabs', 'Filters') ?></a>
+        <?php echo $pageFiltersMenu; ?>
+    </div>
+    <?php
+endif;
+$this->end();
+
+// Actions
+$this->start('pageActionsMenu_final');
+$pageActionsMenu = $this->fetch('pageActionsMenu');
+if (!empty($pageActionsMenu)):
+    $haveMenu = true;
+    ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><?php echo __d('elabs', 'Actions') ?></h3>
+        </div>
+        <div class="panel-body">
+
+        </div>
+    </div>
+    <?php
+endif;
+$this->end();
+
+if ($haveMenu):
+    ?>
+    <div class="row">
+        <div class="col-sm-12 toolbar">
+            <?php
+            echo $this->fetch('pageOrderMenu_final');
+            echo $this->fetch('pageFiltersMenu_final');
+            echo $this->fetch('pageActionsMenu_final');
+            ?>
+        </div>
+    </div>
+    <?php
+endif;
+?>
+<div class="row">
+    <div class="col-sm-12">
+        <?php
+        echo $this->fetch('pageContent');
+        echo $this->element('layout/paginationlinks');
+        ?>
+    </div>   
 </div>
