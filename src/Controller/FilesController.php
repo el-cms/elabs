@@ -53,6 +53,14 @@ class FilesController extends AppController
         ]);
         $this->set('file', $file);
         $this->set('_serialize', ['file']);
+        // It will be great when i'll find a way to nicely handle exceptions/errors
+        if (!$post->sfw && !$this->request->session()->read('see_nsfw')) {
+            // And make a proper common error page
+            $this->viewBuilder()->template('nsfw');
+        } else {
+            $this->set('post', $post);
+            $this->set('_serialize', ['post']);
+        }
     }
 
     /**
