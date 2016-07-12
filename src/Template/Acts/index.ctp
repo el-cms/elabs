@@ -52,7 +52,7 @@ if (!$acts->isEmpty()):
                     if ($act['type'] === 'add'):
                         ?>
                         <dd class="pos-right clearfix">
-                            <div class="circ circ-success"></i></div>
+                            <div class="circ circ-success"></div>
                             <div class="time">
                                 <?= $this->Time->format($actDate, "hh:mm") ?>
                             </div>

@@ -6,26 +6,19 @@ $this->start('pageInfos');
 $this->loadHelper('Items');
 $config = $this->Items->fileConfig($file['filename']);
 ?>
-<dl class="dl-horizontal">
-    <dt><?php echo __d('files', 'Name') ?></dt>
-    <dd><?php echo h($file->name) ?></dd>
-    <dt><?php echo __d('elabs', 'License') ?></dt>
-    <dd><?php echo $this->License->d($file->license, true) ?></dd>
-    <dt><?php echo __d('files', 'Creator') ?></dt>
-    <dd><?php echo $file->has('user') ? $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) : '' ?></dd>
-    <dt><?php echo __d('files', 'File size') ?></dt>
-    <dd><?php echo $file->weight ?></dd>
-    <dt><?php echo __d('elabs', 'Added on') ?></dt>
-    <dd><?php echo h($file->created) ?></dd>
+<ul class="list-unstyled">
+    <li><strong><?php echo __d('files', 'Name: ') ?></strong> <?php echo h($file->name) ?></li>
+    <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->License->d($file->license, true) ?></li>
+    <li><strong><?php echo __d('files', 'Creator:') ?></strong> <?php echo $file->has('user') ? $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) : '' ?></li>
+    <li><strong><?php echo __d('files', 'File size:') ?></strong> <?php echo $file->weight ?></li>
+    <li><strong><?php echo __d('files', 'Mime type:')?></strong> <?php echo $file->mime ?></li>
+    <li><strong><?php echo __d('elabs', 'Added on:') ?></strong> <?php echo h($file->created) ?></li>
     <?php if ($file->has('modified')): ?>
-        <dt><?php echo __d('elabs', 'Modified on') ?></dt>
-        <dd><?php echo h($file->modified) ?></dd>
+        <li><strong><?php echo __d('elabs', 'Modified on:') ?></strong> <?php echo h($file->modified) ?></li>
     <?php endif; ?>
-    <dt><?php echo __d('elabs', 'Safe content') ?></dt>
-    <dd><span class="label label-<?php echo $file->sfw ? 'green' : 'red'; ?>"><?php echo $file->sfw ? __('Yes') : __('No'); ?></span></dd>
-    <dt><?php echo __d('elabs', 'Tags') ?></dt>
-    <dd><?php echo $this->element('layout/dev_inline') ?></dd>
-</dl>
+    <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $file->sfw ? 'success' : 'danger'; ?>"><?php echo $file->sfw ? __('Yes') : __('No'); ?></span></li>
+    <li><strong><?php echo __d('elabs', 'Tags:') ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
+</ul>
 <?php
 $this->end();
 
@@ -34,11 +27,9 @@ echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-d
 $this->end();
 
 $this->start('pageContent');
-
-echo $this->Html->displayMD($file->description);
 echo $this->element('files/view_content_' . $config['element'], ['data' => $file]);
+echo $this->Html->displayMD($file->description);
 echo $this->element('layout/loader_prism');
-
 $this->end();
 
 echo $this->element('layouts/defaultview');

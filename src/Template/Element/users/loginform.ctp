@@ -1,5 +1,5 @@
 <?php
-echo $this->Form->create('User', ['url' => ['prefix' => false, 'controller' => 'users', 'action' => 'login']]);
+echo $this->Form->create('User', ['url' => ['prefix' => false, 'controller' => 'users', 'action' => 'login'], 'idPrefix'=>'login']);
 $this->Form->templates([
     'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
 ]);

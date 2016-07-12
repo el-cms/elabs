@@ -3,16 +3,16 @@
     <div class="pull-right">
       <ul class="margin-no nav nav-list">
         <li class="dropdown">
-          <a aria-expanded="false" class="dropdown-toggle text-default waves-attach waves-effect" data-toggle="dropdown"><span class="icon">more_vert</span></a>
+          <a aria-expanded="false" class="dropdown-toggle text-default  " data-toggle="dropdown"><span class="icon">more_vert</span></a>
           <ul class="dropdown-menu">
             <li>
-              <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;View online', '<span class="fa fa-eye fa-fw"></span>'), ['prefix' => false, 'action' => 'view', $post->id], ['class' => 'waves-attach waves-effect', 'escape' => false]); ?>
+              <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;View online', '<span class="fa fa-eye fa-fw"></span>'), ['prefix' => false, 'action' => 'view', $post->id], ['class' => ' ', 'escape' => false]); ?>
             </li>
             <li>
-              <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', '<span class="fa fa-pencil fa-fw"></span>'), ['action' => 'edit', $post->id], ['class' => 'waves-attach waves-effect', 'escape' => false]) ?>
+              <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', '<span class="fa fa-pencil fa-fw"></span>'), ['action' => 'edit', $post->id], ['class' => ' ', 'escape' => false]) ?>
             </li>
             <li>
-              <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $post->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $post->id), 'class' => 'waves-attach waves-effect', 'escape' => false]) ?>
+              <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $post->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $post->id), 'class' => ' ', 'escape' => false]) ?>
             </li>
           </ul>
         </li>

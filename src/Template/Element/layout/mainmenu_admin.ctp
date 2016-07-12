@@ -1,6 +1,6 @@
 <?php
 $this->start('mainMenu');
-$linkConfig = ['class' => 'waves-attach waves-effect', 'escape' => false];
+$linkConfig = ['class' => ' ', 'escape' => false];
 ?>
 <li>
     <?php echo $this->Html->link(__d('admin', 'Dashboard'), '#', $linkConfig) ?>

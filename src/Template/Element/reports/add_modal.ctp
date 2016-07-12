@@ -1,16 +1,16 @@
 <div aria-hidden="true" class="modal" id="reportModal" role="dialog" tabindex="-1">
-    <div class="modal-dialog modal-xs">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-heading">
-                <a class="modal-close" data-dismiss="modal">×</a>
-                <h2 class="modal-title" id="uModTitle">Modal Title</h2>
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="uModTitle"><?php echo __('Report something')?></h4>
             </div>
-            <div class="modal-inner" id="modal-content">
-                <?php
-                echo $this->Form->create('Report', ['url' => $this->Url->build(['prefix' => false, 'controller' => 'reports', 'action' => 'add'], true)]);
-                $this->Form->templates([
-                    'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',]);
-                ?>
+            <?php
+            echo $this->Form->create('Report', ['url' => $this->Url->build(['prefix' => false, 'controller' => 'reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
+            $this->Form->templates([
+                'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',]);
+            ?>
+            <div class="modal-body" id="modal-content">
                 <div class="alert alert-info">
                     <i class="fa fa-info-circle fa-2x pull-left"></i><?php echo __d('elabs', ' You have found something wrong or want to react about something ? Your comments are welcome.'); ?>
                 </div>
@@ -33,7 +33,6 @@
                 <?php
                 echo $this->Form->input('reason', array(
                     'type' => 'textarea',
-                    'maxlenght' => '255',
                     'label' => __d('reports', 'Reason for your report'),
                     'class' => 'form-control',
                     'placeholder' => __d('reports', 'Reason'),
@@ -42,15 +41,13 @@
                 ?>
             </div>
             <div class="modal-footer">
-                <p class="text-right">
-                    <?php
-                    echo $this->Form->hidden('url', ['id'=>'reportModalUrl']);
-                    echo $this->Form->button(__d('reports', 'Send the report'), array(
-                        'class' => 'btn btn-flat btn-brand waves-attach waves-effect',
-                    ));
-                    ?>
-                    <button class="btn btn-flat btn-brand waves-attach waves-effect" data-dismiss="modal" type="button">Close</button>
-                </p>
+                <?php
+                echo $this->Form->hidden('url', ['id' => 'reportModalUrl']);
+                echo $this->Form->button(__d('reports', 'Send the report'), array(
+                    'class' => 'btn btn-flat btn-primary',
+                ));
+                ?>
+                <button class="btn btn-flat btn-warning" data-dismiss="modal" type="button">Close</button>
             </div>
             <?php echo $this->Form->end(); ?>
         </div>
@@ -61,13 +58,14 @@
 $this->append('pageBottomScripts');
 ?>
 <script>
-//    // Reports modal
+    // Reports modal
     $('#reportModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
-      var itemTarget = button.data('itemtarget'); // Button that triggered the modal //      var id = button.data('id'); // Extract info from data-* attributes
-      //      var action = button.data('action'); // Extract info from data-* attributes
+      var itemTarget = button.data('itemtarget'); // Button that triggered the modal 
+//      var id = button.data('id'); // Extract info from data-* attributes
+//      var action = button.data('action'); // Extract info from data-* attributes
 //      alert(itemTarget);
-        $('#reportModalUrl').val(itemTarget);
+      $('#reportModalUrl').val(itemTarget);
     });
 //    function showReportModal(target) {
 //      var request = $.ajax({

@@ -9,7 +9,7 @@ $pageOrderMenu = $this->fetch('pageOrderMenu');
 if (!empty($pageOrderMenu)):
     $haveMenu = true;
     ?>
-    <div class="btn-group" aria-role="toolbar">
+    <div class="btn-group">
         <a><?= __('Order by:') ?></a>
         <?php echo $pageOrderMenu ?>
     </div>
@@ -24,7 +24,7 @@ $pageFiltersMenu = $this->fetch('pageFiltersMenu');
 if (!empty($pageFiltersMenu)):
     $haveMenu = true;
     ?>
-    <div class="btn-group" aria-role="toolbar">
+    <div class="btn-group">
         <a><?php echo __d('elabs', 'Filters') ?></a>
         <?php echo $pageFiltersMenu; ?>
     </div>
@@ -39,7 +39,7 @@ $pageActionsMenu = $this->fetch('pageActionsMenu');
 if (!empty($pageActionsMenu)):
     $haveMenu = true;
     ?>
-    <div class="btn-group" aria-role="toolbar">
+    <div class="btn-group">
         <a><?php echo __d('elabs', 'Actions') ?></a>
         <?php echo $pageFiltersMenu; ?>
     </div>

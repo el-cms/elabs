@@ -1,6 +1,6 @@
 <?php
 
-echo $this->Form->create('User', ['prefix' => false, 'controller' => 'Users', 'action' => 'register']);
+echo $this->Form->create('User', ['url'=> ['prefix' => false, 'controller' => 'Users', 'action' => 'register'], 'idPrefix'=>'register']);
 $this->Form->templates([
     'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
     'inputContainer' => '<div class="form-group form-group-label form-group-brand {{required}}">{{content}}'
