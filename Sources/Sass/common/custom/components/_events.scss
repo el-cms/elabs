@@ -7,7 +7,7 @@
 .timeline dl dd.pos-left .events.event-danger,
 .timeline dl dd.pos-right .events.event-danger{
     background-color: lighten($alert-danger, 10%);
-    a{
+    .card-header a, .card-content a{
         color:darken($alert-danger, 20%);
         &:hover{ 
             color:darken($alert-danger, 10%);
@@ -25,7 +25,7 @@
 .timeline dl dd.pos-left .events.event-warning,
 .timeline dl dd.pos-right .events.event-warning{
     background-color: lighten($alert-warning, 10%);
-    a{
+    .card-header a, .card-content a{
         color:darken($alert-warning, 20%);
         &:hover{ 
             color:darken($alert-warning, 10%);
@@ -43,7 +43,7 @@
 .timeline dl dd.pos-left .events.event-info,
 .timeline dl dd.pos-right .events.event-info{
     background-color: lighten($alert-primary, 10%);
-    a{
+    .card-header a, .card-content a{
         color:darken($alert-primary, 20%);
         &:hover{ 
             color:darken($alert-primary, 10%);
@@ -61,7 +61,7 @@
 .timeline dl dd.pos-left .events.event-success,
 .timeline dl dd.pos-right .events.event-success{
     background-color: lighten($alert-success, 10%);
-    a{
+    .card-header a, .card-content a{
         color:darken($alert-success, 20%);
         &:hover{ 
             color:darken($alert-success, 10%);
@@ -81,7 +81,7 @@
     background-color: #CCC;
     opacity: 0.5;
     font-size:0.8em;
-    a{
+    .card-header a, .card-content a{
         color:darken(#CCC, 20%);
         &:hover{ 
             color:darken(#CCC, 10%);

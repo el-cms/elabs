@@ -11,6 +11,11 @@
                 background-color: #CCC;
                 cursor: default;
                 border-color: $btn-default-border;
+                border-right:none;
+                color:#666;
+                &:hover{
+                    border-right:none;
+                }
             }
         }
     }

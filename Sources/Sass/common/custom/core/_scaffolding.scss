@@ -1,7 +1,53 @@
 body{
-    // Margin to avoid footer covering content
-    margin-top:50px;
-    margin-bottom: 0;
+    // Style for "sticky footer"
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.page-header{
+    background-color:$navbar-default-bg;
+    margin-bottom:30px;
+    padding-bottom:0;
+    border:0;
+    @include box-shadow($value: $well-shadow);
+    h1{
+        color:darken($navbar-default-bg, 20%);
+        margin-bottom: 30px;
+    }
+    .toolbar{
+        background-color:rgba(255,255,255,0.5);
+        margin:0;
+        border-bottom:0;
+    }
+}
+
+.page-content{
+    // For a "sticky footer" effect
+    flex:1;
+}
+
+.footer{
+    background-color:$navbar-default-bg;
+    .footer-logo{
+        width:40%;
+        a{
+            color: darken($navbar-default-bg, 35%);
+        }
+    }
+    .footer-nav{
+        width:30%;
+        dt{
+            color: darken($navbar-default-bg, 30%);
+            font-variant: small-caps;
+        }
+        a{
+            color: darken($navbar-default-bg, 20%);
+            &:hover{
+                color: darken($navbar-default-bg, 30%);
+            }
+        }
+    }
 }
 
 /*// Blocks for "Under contruction" elements
@@ -15,16 +61,17 @@ body{
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
     padding:15px;
 }
-
+*/
 // Inline for "Under contruction" elements
 .dev-inline{
-    color:$palette-grey-500;
-    border:1px dashed $palette-grey-600;
+    color: $gray-light;
+    border:1px dashed $gray;
     display:inline-block;
     border-radius: 2px;
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
 }
 
+/*
 //
 // Login form in right menu
 //

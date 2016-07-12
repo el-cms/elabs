@@ -1,4 +1,13 @@
 .navbar-default{
+    border-bottom-color:transparent;
+    @include box-shadow($value: $well-shadow);
+    .navbar-brand > img{
+        // Override the defaults
+        display: inline-block;
+        width: 25px;
+        top: -1px;
+        position: relative;
+    }
     .dropdown-menu{
         background-color: $navbar-default-bg;
         a{
