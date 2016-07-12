@@ -11,7 +11,7 @@ $config = $this->Items->fileConfig($file['filename']);
     <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->License->d($file->license, true) ?></li>
     <li><strong><?php echo __d('files', 'Creator:') ?></strong> <?php echo $file->has('user') ? $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) : '' ?></li>
     <li><strong><?php echo __d('files', 'File size:') ?></strong> <?php echo $file->weight ?></li>
-    <li><strong><?php echo __d('files', 'Mime type:')?></strong> <?php echo $file->mime ?></li>
+    <li><strong><?php echo __d('files', 'Mime type:') ?></strong> <?php echo $file->mime ?></li>
     <li><strong><?php echo __d('elabs', 'Added on:') ?></strong> <?php echo h($file->created) ?></li>
     <?php if ($file->has('modified')): ?>
         <li><strong><?php echo __d('elabs', 'Modified on:') ?></strong> <?php echo h($file->modified) ?></li>
@@ -27,8 +27,11 @@ echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-d
 $this->end();
 
 $this->start('pageContent');
-echo $this->element('files/view_content_' . $config['element'], ['data' => $file]);
-echo $this->Html->displayMD($file->description);
+echo $this->Html->displayMD($file->description) ?>
+<div class="well">
+    <?php echo $this->element('files/view_content_' . $config['element'], ['data' => $file]) ?>
+</div>
+<?php
 echo $this->element('layout/loader_prism');
 $this->end();
 
