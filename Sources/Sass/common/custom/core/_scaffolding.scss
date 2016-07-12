@@ -50,6 +50,10 @@ body{
     }
 }
 
+audio{
+    padding-top: $padding-base-vertical;
+}
+
 /*// Blocks for "Under contruction" elements
 .dev-block{
     color:$palette-grey-500;
