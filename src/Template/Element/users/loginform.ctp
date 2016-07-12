@@ -1,11 +1,11 @@
 <?php
-echo $this->Form->create('User', ['url' => ['prefix' => false, 'controller' => 'users', 'action' => 'login'], 'idPrefix'=>'login']);
+echo $this->Form->create('User', ['url' => ['prefix' => false, 'controller' => 'users', 'action' => 'login'], 'idPrefix' => 'login']);
 $this->Form->templates([
     'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
 ]);
 echo $this->Form->input('email', ['label' => __d('elabs', 'E-mail')]);
 echo $this->Form->input('password', ['label' => __d('elabs', 'Password')]);
-echo $this->Form->submit(__d('elabs', 'Login'), ['class' => 'btn-block btn-green']);
+echo $this->Form->submit(__d('elabs', 'Login'), ['class' => 'btn-block btn-primary']);
 echo $this->Form->end();
 
 if (Cake\Core\Configure::read('cms.isRegistrationOpen')):
@@ -16,5 +16,7 @@ if (Cake\Core\Configure::read('cms.isRegistrationOpen')):
 else:
     ?>
     <div class="alert alert-warning"><?php echo __d('elabs', 'Registrations are closed for now... Come back later.') ?></div>
-        <?php
+<?php
 endif;
+?>
+

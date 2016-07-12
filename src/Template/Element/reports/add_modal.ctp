@@ -47,7 +47,7 @@
                     'class' => 'btn btn-flat btn-primary',
                 ));
                 ?>
-                <button class="btn btn-flat btn-warning" data-dismiss="modal" type="button">Close</button>
+                <button class="btn btn-flat btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
             </div>
             <?php echo $this->Form->end(); ?>
         </div>
