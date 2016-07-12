@@ -1,9 +1,9 @@
 <?php
 $haveMenu = false;
-$this->start('pageMenu');
-$this->end();
+// Starting the toolbar
+$this->start('pageToolbar');
 
-// Ordering menu
+// Ordering options
 $this->start('pageOrderMenu_final');
 $pageOrderMenu = $this->fetch('pageOrderMenu');
 if (!empty($pageOrderMenu)):
@@ -15,12 +15,12 @@ if (!empty($pageOrderMenu)):
     </div>
     <?php
 endif;
+// End of ordering options
 $this->end();
 
 // Filters
 $this->start('pageFiltersMenu_final');
 $pageFiltersMenu = $this->fetch('pageFiltersMenu');
-
 if (!empty($pageFiltersMenu)):
     $haveMenu = true;
     ?>
@@ -30,6 +30,7 @@ if (!empty($pageFiltersMenu)):
     </div>
     <?php
 endif;
+// End of filters
 $this->end();
 
 // Actions
@@ -38,31 +39,38 @@ $pageActionsMenu = $this->fetch('pageActionsMenu');
 if (!empty($pageActionsMenu)):
     $haveMenu = true;
     ?>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"><?php echo __d('elabs', 'Actions') ?></h3>
-        </div>
-        <div class="panel-body">
-
-        </div>
+    <div class="btn-group" aria-role="toolbar">
+        <a><?php echo __d('elabs', 'Actions') ?></a>
+        <?php echo $pageFiltersMenu; ?>
     </div>
     <?php
 endif;
+// End of Actions
 $this->end();
 
+// Rendering the toolbar
 if ($haveMenu):
     ?>
-    <div class="row">
-        <div class="col-sm-12 toolbar">
-            <?php
-            echo $this->fetch('pageOrderMenu_final');
-            echo $this->fetch('pageFiltersMenu_final');
-            echo $this->fetch('pageActionsMenu_final');
-            ?>
+    <div class="toolbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <?php
+                    echo $this->fetch('pageOrderMenu_final');
+                    echo $this->fetch('pageFiltersMenu_final');
+                    echo $this->fetch('pageActionsMenu_final');
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
     <?php
 endif;
+
+// End of toolbar
+$this->end();
+
+// Page layout
 ?>
 <div class="row">
     <div class="col-sm-12">

@@ -92,48 +92,61 @@
         <!-- / Navbar-->
 
         <!-- Main content -->
-        <div class="container">
-            <!-- Flash messages -->
-            <div class="row">
-                <?php echo $this->Flash->render() ?>
-            </div>
-            <!-- / Flash messages -->
-            
-            <!-- Title -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1><?php echo $this->fetch('title') ?></h1>
+        <div class="page-header">
+            <div class="container-fluid">
+                <div class="container">
+                    <!-- Flash messages -->
+                    <div class="row">
+                        <?php echo $this->Flash->render() ?>
+                    </div>
+                    <!-- / Flash messages -->
+
+                    <!-- Title -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1><?php echo $this->fetch('title') ?></h1>
+                        </div>
+                    </div>
+                    <!-- / Title -->
                 </div>
             </div>
-            <!-- / Title -->
-            
-            <!-- Content -->
-            <?php echo $this->fetch('content') ?>
-            <!-- / Content -->
-            
+            <!-- Toolbar -->
+            <?php echo $this->fetch('pageToolbar') ?>
         </div>
-        <!-- / Main content -->
+        <!-- / Toolbar -->
+    </div>
+</div>
+<div class="container">
+    <!-- Content -->
+    <?php echo $this->fetch('content') ?>
+    <!-- / Content -->
+</div>
+<!-- / Main content -->
 
-        <!-- Login modal -->
-        <?php
-        if (is_null($authUser)):
-            echo $this->element('users/loginmodal');
-        endif;
-        ?>
-        <!-- /Login modal -->
+<!-- Login modal -->
+<?php
+if (is_null($authUser)):
+    echo $this->element('users/loginmodal');
+endif;
+?>
+<!-- /Login modal -->
 
-        <!-- Footer -->
-        <footer class="navbar navbar-default navbar-static">
-            <div class="container">
-                <p class="navbar-text">&copy; 2015 Elabs</p>
-            </div>
-        </footer>
-        <!-- Javascript at the end -->
-        <?php echo $this->Html->script('lib/jquery.min.js') ?>
-        <?php echo $this->Html->script('bootstrap.min.js') ?>
-        <?php echo $this->Html->script('bootstrap-tagsinput.min.js') ?>
-        <!-- Custom scripts -->
-        <?php echo $this->fetch('pageBottomScripts') ?>
-        <?php echo $this->Html->script('custom.js') ?>
-    </body>
+<!-- Report modal -->
+<?php echo $this->element('reports/add_modal'); ?>
+<!-- / Report modal -->
+
+<!-- Footer -->
+<footer class="navbar navbar-default navbar-static">
+    <div class="container">
+        <p class="navbar-text">&copy; 2015 Elabs</p>
+    </div>
+</footer>
+<!-- Javascript at the end -->
+<?php echo $this->Html->script('lib/jquery.min.js') ?>
+<?php echo $this->Html->script('bootstrap.min.js') ?>
+<?php echo $this->Html->script('bootstrap-tagsinput.min.js') ?>
+<!-- Custom scripts -->
+<?php echo $this->fetch('pageBottomScripts') ?>
+<?php echo $this->Html->script('custom.js') ?>
+</body>
 </html>
