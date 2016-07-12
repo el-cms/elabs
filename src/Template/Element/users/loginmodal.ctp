@@ -12,6 +12,9 @@
                 </span>
                 <?php echo $this->element('users/loginform') ?>
             </div>
+            <div class="modal-footer">
+                <button class="btn btn-flat btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
+            </div>
         </div>
     </div>
 </div>
