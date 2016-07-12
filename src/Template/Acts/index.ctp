@@ -57,7 +57,7 @@ if (!$acts->isEmpty()):
                                 <?= $this->Time->format($actDate, "hh:mm") ?>
                             </div>
                             <div class="events event-success">
-                                <?= $this->element(strtolower($act['model']) . '/card_small', ['data' => $act[$model], 'event' => 'true']); ?>
+                                <?= $this->element(strtolower($act['model']) . '/card', ['data' => $act[$model], 'event' => 'true']); ?>
                             </div>
                         </dd>
                         <?php

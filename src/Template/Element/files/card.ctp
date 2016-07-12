@@ -1,50 +1,49 @@
 <?php
 $config = $this->Items->fileConfig($data['filename']);
 ?>
-<div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
-    <div class="card-side pull-left">
-        <span class="card-heading">
-            <?php echo $this->Html->link(__d('elabs', 'View...'), ['prefix' => false, 'controller' => 'Files', 'action' => 'view', $data['id']], ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
-            <?php echo $this->Elabs->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Files', 'action' => 'view', $data['id']], true), ['class' => 'waves-attach waves-effect btn btn-flat btn-block']) ?>
-        </span>
-    </div>
+<div class="card<?php echo ($event ? ' card-event' : '') ?><?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-main">
+        <?php
+        if (!$data['sfw']):
+            ?>
+            <div class="nsfw-pill"><?= __('NSFW') ?></div>
+            <?php
+        endif;
+        ?>
+        <!-- Icon -->
+        <div class="card-header-side">
+            <i class="fa fa-<?php echo $config['icon'] ?> fa-3x"></i>
+        </div>
         <!-- Header -->
         <div class="card-header">
-            <!-- Icon -->
-            <div class="card-header-side pull-left">
-                <i class="fa fa-<?php echo $config['icon'] ?> fa-3x"></i>
-            </div>
+            <!-- Report link -->
+            <?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Files', 'action' => 'view', $data['id']], true), ['class' => 'report-link']) ?>
             <!-- Title -->
-            <div class="card-inner">
-                <div class="text-overflow"><?php echo h($data['name']) ?></div>
-                <em class="subtitle">
+            <h3><?php echo $this->Html->link(h($data['name']), ['prefix' => false, 'controller' => 'Files', 'action' => 'view', $data['id']]) ?></h3>
+            <ul class="card-informations">
+                <?php if (!isset($userInfo) || $userInfo): ?>
+                    <li>
+                        <?= __('{0}&nbsp;{1}', [$this->Html->icon('user'), __('Author:')]) ?>
+                        <?= $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
+                    </li>
                     <?php
-                    echo __d('elabs', 'Created on: {0}', h($data['created']));
-                    if ($data['created'] != $data['modified']):
-                        echo ' - ' . __d('elabs', 'Updated on: {0}', h($data['modified']));
-                    endif;
+                endif;
+                if (!isset($licenseInfo) || $licenseInfo):
                     ?>
-                </em>
-            </div>
+                    <li>
+                        <?php echo __('{0}&nbsp;{1}', [$this->Html->icon('copyright'), __('License:')]) ?>
+                        <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon($data['license']['icon']), $data['license']['name']]), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false]) ?>
+                    </li>
+                    <?php
+                endif;
+                ?>
+            </ul>
         </div>
         <!-- Content -->
-        <div class="card-description">
-            <?php
-            if (!isset($userInfo) || $userInfo):
-                echo __d('elabs', '{0}&nbsp;Creator: {1}', '<i class="fa fa-user"></i>', $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]))
-                ?><br/>
-                <?php
-            endif;
-            if (!isset($licenseInfo) || $licenseInfo):
-                echo __d('elabs', '{0}&nbsp;License: {1}', '<i class="fa fa-copyright"></i>', $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $data['license']['icon'] . '"></span>', $data['license']['name']]), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false]));
-            endif;
-            ?>
-        </div>
-        <div class="card-inner">
+        <div class="card-content">
             <?php echo $this->element('files/card_content_' . $config['element'], ['data' => $data]) ?>
             <p>
-                <?php echo $this->Elabs->displayMD($data['description']) ?>
+                <?php echo $this->Html->displayMD($data['description']) ?>
             </p>
         </div>
     </div>
