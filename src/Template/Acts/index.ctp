@@ -52,12 +52,12 @@ if (!$acts->isEmpty()):
                     if ($act['type'] === 'add'):
                         ?>
                         <dd class="pos-right clearfix">
-                            <div class="circ"></div>
+                            <div class="circ circ-success"></i></div>
                             <div class="time">
                                 <?= $this->Time->format($actDate, "hh:mm") ?>
                             </div>
-                            <div class="events">
-                                <?= $this->element(strtolower($act['model']) . '/card_small', ['data' => $act[$model], 'style' => 'small']); ?>
+                            <div class="events event-success">
+                                <?= $this->element(strtolower($act['model']) . '/card_small', ['data' => $act[$model], 'event' => 'true']); ?>
                             </div>
                         </dd>
                         <?php
@@ -69,7 +69,7 @@ if (!$acts->isEmpty()):
                                 $icon = 'info-circle';
                                 break;
                             case 'delete':
-                                $class = 'danger';
+                                $class = 'trash';
                                 $icon = 'times';
                                 break;
                             default:
@@ -92,16 +92,12 @@ if (!$acts->isEmpty()):
                         endswitch;
                         ?>
                         <dd class="pos-left clearfix">
-                            <div class="circ"></div>
+                            <div class="circ circ-<?php echo $class?>"></div>
                             <div class="time">
                                 <?= $this->Time->format($actDate, "hh:mm") ?>
                             </div>
-                            <div class="events">
-                                <div class="tile tile-<?php echo $class ?>">
-                                    <?php
-                                    echo $this->Html->link(__('{0} {1} {2} {3}', [$this->Html->icon($icon), $config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]), ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']], ['class' => 'full', 'escape' => false]);
-                                    ?>
-                                </div>
+                            <div class="events event-<?php echo $class ?>">
+                                <?php echo $this->Html->link(__('{0} {1} {2} {3}', [$this->Html->icon($icon), $config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]), ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']], ['class' => 'full', 'escape' => false]); ?>
                             </div>
                         </dd>
                     <?php
@@ -112,8 +108,8 @@ if (!$acts->isEmpty()):
                     ?>
                     <dd class="pos-right clearfix">
                         <div class="circ circ-nsfw"></div>
-                        <div class="events">
-                            <?= $this->element('acts/tile_nsfw', ['model' => $act->model]); ?>
+                        <div class="events event-nsfw">
+                            <?= $this->element('acts/tile_nsfw', ['model' => $act->model, 'event' => 'true']); ?>
                         </div>
                     </dd>
                 <?php

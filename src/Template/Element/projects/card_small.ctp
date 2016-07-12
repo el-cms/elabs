@@ -1,17 +1,20 @@
-<div class="card<?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
-    <!--<div class="card-side pull-left">
-        <span class="card-heading">
-    <?php echo $this->Html->link(__d('elabs', 'Read more...'), ['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $data['id']], ['class' => '  btn btn-flat']) ?>
-    <?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $data['id']], true), ['class' => '  btn btn-flat btn-block btn-block']) ?>
-        </span>
-    </div> -->
+<div class="card<?php echo ($event ? ' card-event' : '') ?><?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-main">
+        <?php
+        if (!$data['sfw']):
+            ?>
+            <div class="nsfw-pill"><?= __('NSFW') ?></div>
+            <?php
+        endif;
+        ?>
         <!-- Icon -->
         <div class="card-header-side">
             <i class="fa fa-cogs fa-3x"></i>
         </div>
         <!-- Header -->
         <div class="card-header">
+            <!-- Report link -->
+            <?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $data['id']], true), ['class' => 'report-link']) ?>
             <!-- Title -->
             <h3><?php echo $this->Html->link(h($data['name']), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $data['id']]) ?></h3>
             <ul class="card-informations">
