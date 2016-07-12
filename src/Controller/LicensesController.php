@@ -36,7 +36,7 @@ class LicensesController extends AppController
      */
     public function view($id = null)
     {
-        $license = $this->Licenses->get($id, [
+        $findOptions = [
             'contain' => [
                 'Posts' => [
                     'Users' => ['fields' => ['id', 'username']]
@@ -48,7 +48,14 @@ class LicensesController extends AppController
                     'Users' => ['fields' => ['id', 'username']]
                 ]
             ]
-        ]);
+        ];
+        // SFW conditions :
+        if (!$this->request->session()->read('see_nsfw')) {
+            $findOptions['contain']['Posts']['conditions']['Posts.sfw'] = true;
+            $findOptions['contain']['Projects']['conditions']['Projects.sfw'] = true;
+            $findOptions['contain']['Files']['conditions']['Files.sfw'] = true;
+        }
+        $license = $this->Licenses->get($id, $findOptions);
         $this->set('license', $license);
         $this->set('_serialize', ['license']);
     }
