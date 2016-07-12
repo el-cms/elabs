@@ -16,6 +16,21 @@
         dt{
             margin:0 30% 30px;
             transform:translateX(-60px);
+            line-height: 1.4em;
+            padding: $padding-small-vertical $padding-small-horizontal;
+            &::before{
+                content: '';
+                clear: both;
+                display: block;
+                width: 320px;
+                position: absolute;
+                transform:translateY(-1px);
+                top: 50%;
+                background-color: #AAB2BD;
+                height:2px;
+                left: -100px;
+                z-index:-1;
+            }
         }
         dd{
             .circ{
@@ -23,6 +38,18 @@
             }
             .circ-nsfw{
                 background-color:silver;
+            }
+            .circ-info{
+                background-color:$alert-primary;
+            }
+            .circ-warning{
+                background-color:$alert-warning;
+            }
+            .circ-danger{
+                background-color:$alert-danger;
+            }
+            .circ-success{
+                background-color:$alert-success;
             }
             .time{
                 left:30%;

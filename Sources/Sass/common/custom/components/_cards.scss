@@ -15,9 +15,23 @@
     @at-root &-sm {
         padding: 5px;
     }
-    .nsfw{
-        background-color: #F00;
-    }
+    .nsfw-pill{
+            content: '';
+            float: right;
+            margin: 0;
+            padding: $padding-small-vertical $padding-small-horizontal;
+            font-size: 0.8em;
+            line-height: 1em;
+            border: 1px solid rgba(200,60,60,0.5);
+            position: absolute;
+            top: 0;
+            left: 6px;
+            background-color: rgba(200,60,60,0.8);
+            border-bottom-left-radius: $border-radius-small;
+            border-bottom-right-radius: $border-radius-small;
+            border-width: 0 1px 1px 1px;
+            color: #FFF;
+        }
     .card-header-side{
         float:left;
         width:60px;
@@ -40,8 +54,41 @@
             }
         }
     }
-    .main{
-        
+    .report-link {
+        float: right;
+        background-color: rgba(255,255,255,0.5);
+        margin: -#{$padding-large-vertical} -#{$padding-large-horizontal};
+        border-top-right-radius: 3px;
+        padding: 5px;
+        font-size: 0.8em;
+        color: #888;
+        border-width: 0 0 1px 1px;
+        border: 1px solid #EEE;
+        border-width: 0 0 1px 1px;
+        line-height: 0.8em;
+        &:hover{
+            background-color: #FFF;
+            color: #AAA;
+        }
+    }
+}
+
+.card-event{
+    padding: 0;
+    margin-bottom: 0;
+    border: none;
+    @include radius($type: border-radius, $value: $well-radius);
+    color: $modal-font-color; 
+    background-color: transparent; 
+    @include box-shadow($value: none);
+    & blockquote {
+        border-color: $well-blockquote-color;
+    }
+    @at-root &-lg {
+        padding: 20px;
+    }
+    @at-root &-sm {
+        padding: 5px;
     }
 }
 
