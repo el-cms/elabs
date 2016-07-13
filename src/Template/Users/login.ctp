@@ -1,12 +1,10 @@
 <?php $this->assign('title', __d('elabs', 'Login')); ?>
 <div class="row">
-    <div class="col-sm-4 col-lg-offset-4">
-        <div class="card">
-            <div class="card-main">
-                <div class="card-header">
-                    <div class="card-inner"><?php echo __d('elabs', 'Login') ?></div>
-                </div>
-                <div class="card-inner">
+    <div class="col-sm-4 col-sm-offset-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3><?php echo __d('elabs', 'Login') ?></h3>
+                <div class="panel-body">
                     <div class="text-center">
                         <span class="fa-stack fa-5x">
                             <i class="fa fa-circle-o fa-stack-2x"></i>
