@@ -54,6 +54,19 @@ audio{
     padding-top: $padding-base-vertical;
 }
 
+.flash-messages{
+    padding:0;
+    margin:0;
+    .alert{
+        &:first-child{
+            margin-top:20px;
+        }
+        &:last-child{
+            margin-bottom:0;
+        }
+    }
+}
+
 /*// Blocks for "Under contruction" elements
 .dev-block{
     color:$palette-grey-500;

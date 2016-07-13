@@ -102,7 +102,7 @@
             <div class="container-fluid">
                 <div class="container">
                     <!-- Flash messages -->
-                    <div class="row">
+                    <div class="row flash-messages">
                         <?php echo $this->Flash->render() ?>
                     </div>
                     <!-- / Flash messages -->
