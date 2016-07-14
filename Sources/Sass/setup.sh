@@ -58,6 +58,7 @@ cp -f "codemirror/mode/xml/xml.js" "$webroot/js/lib/codemirror/modes/"
 wget -nv "https://github.com/bootflat/bootflat.github.io/archive/master.zip"
 unzip master.zip
 rm master.zip -f
+cp common/bootflat.github.io-master/bootflat/js/jquery.fs.selecter.min.js $webroot/js/lib
 
 # Typeahead
 wget -nv "http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js" -O "$webroot/js/lib/typeahead.bundle.js"
