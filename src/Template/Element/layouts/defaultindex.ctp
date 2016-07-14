@@ -14,13 +14,14 @@
 
 // Blocks for this type of view
 // ----------------------------
+// (Order matters)
 $toolbarContent = [
     'pageOrderBy' => ['title' => __d('elabs', 'Order by:')],
-    'pageFilters' => ['title' => __d('elabs', 'Filters:')]
+    'pageFilters' => ['title' => __d('elabs', 'Filters:')],
 ];
 $colContentLeft = [
     'pageActions' => ['title' => __d('elabs', 'Actions')],
-    'pageLinks' => ['title' => __d('elabs', 'Related links')]
+    'pageLinks' => ['title' => __d('elabs', 'Related links')],
 ];
 $colContentMain = ['pageContent'];
 

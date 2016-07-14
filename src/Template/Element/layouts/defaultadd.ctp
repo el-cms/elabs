@@ -2,10 +2,9 @@
 // Additionnal helpers
 $this->loadHelper('CodeMirror');
 
-// Columns:
-$colContentLeft = ['pageActions'=>['title'=>__d('elabs', 'Actions')], 'pageLinks' => ['title' => __d('elabs', 'Related links')]];
+// Blocks:
+$colContentLeft = ['pageActions' => ['title' => __d('elabs', 'Actions')], 'pageLinks' => ['title' => __d('elabs', 'Related links')]];
 $colContentMain = ['pageContent'];
-$colContentRight = ['formOptions' => ['title' => __d('elabs', 'Options')]];
 
 // Preparing content
 $haveLeftCol = false;
@@ -45,11 +44,10 @@ endif;
 // Rendering the page content
 // --------------------------
 ?>
-<div class="col-sm-<?php echo ($haveLeftCol)?8:12 ?>">
+<div class="col-sm-<?php echo ($haveLeftCol) ? 8 : 12 ?>">
     <?php echo $this->fetch('pageContent'); ?>
 </div>   
 <?php
-
 // Custom scripts
 // --------------
 $this->append('pageBottomScripts');
