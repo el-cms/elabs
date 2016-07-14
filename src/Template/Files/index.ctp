@@ -1,15 +1,26 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Files/index.ctp
+ * Description:
+ *   List of files, sortable
+ * Layout element:
+ *   defaultindex.ctp
+ */
+
+// Page title
 $this->assign('title', __d('files', 'Files'));
 
-// Pagination order links
-$this->start('pageOrderMenu');
-$linkOptions = ['class' => ' '];
-echo $this->Paginator->sort('name', __d('files', 'Name'), $linkOptions);
-echo $this->Paginator->sort('created', __d('files', 'Creation date'), $linkOptions);
-echo $this->Paginator->sort('modified', __d('elabs', 'Modification date'), $linkOptions);
+// Block: Pagination order links
+// -----------------------------
+$this->start('pageOrderBy');
+echo $this->Paginator->sort('name', __d('files', 'Name'));
+echo $this->Paginator->sort('created', __d('files', 'Creation date'));
+echo $this->Paginator->sort('modified', __d('elabs', 'Modification date'));
 $this->end();
 
-// Page content
+// Block: Page content
+// -------------------
 $this->start('pageContent');
 if (!$files->isEmpty()):
     foreach ($files as $file):
@@ -20,4 +31,6 @@ else:
 endif;
 $this->end();
 
+// Load the layout element
+// -----------------------
 echo $this->element('layouts/defaultindex');

@@ -1,16 +1,27 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Licenses/index.ctp
+ * Description:
+ *   List of licenses, sortable
+ * Layout element:
+ *   defaultindex.ctp
+ */
+
+// Page title
 $this->assign('title', __d('licenses', 'Licenses'));
 
-// Pagination order links
-$this->start('pageOrderMenu');
-$linkOptions = ['class' => ' '];
-echo $this->Paginator->sort('name', __d('licenses', 'Real name'), $linkOptions);
-echo $this->Paginator->sort('post_count', __d('licenses', 'Number of posts'), $linkOptions);
-echo $this->Paginator->sort('project_count', __d('licenses', 'Number of projects'), $linkOptions);
-echo $this->Paginator->sort('file_count', __d('licenses', 'Number of files'), $linkOptions);
+// Block: Pagination order links
+// -----------------------------
+$this->start('pageOrderBy');
+echo $this->Paginator->sort('name', __d('licenses', 'Real name'));
+echo $this->Paginator->sort('post_count', __d('licenses', 'Number of posts'));
+echo $this->Paginator->sort('project_count', __d('licenses', 'Number of projects'));
+echo $this->Paginator->sort('file_count', __d('licenses', 'Number of files'));
 $this->end();
 
-// Page content
+// Block: Page content
+// -------------------
 $this->start('pageContent');
 ?>
 <div class="row">
@@ -23,4 +34,6 @@ $this->start('pageContent');
 <?php
 $this->end();
 
+// Load the layout element
+// -----------------------
 echo $this->element('layouts/defaultindex');

@@ -1,24 +1,38 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Acts/index.ctp
+ * Description:
+ *   List of acts, sortable and filterable
+ * Layout element:
+ *   defaultindex.ctp
+ */
+
+// Additionnal helpers
 $this->loadHelper('Items');
 $this->loadHelper('License');
 $this->loadHelper('Time', ['className' => 'ElabsTime']);
 
+// Page title
 $this->assign('title', __d('acts', 'Recent activity'));
 
-// Pagination order links
-$this->start('pageOrderMenu');
-$linkOptions = ['class' => 'btn'];
-echo $this->Paginator->sort('id', __d('elabs', 'Date'), $linkOptions);
-echo $this->Paginator->sort('model', __d('elabs', 'Type'), $linkOptions);
-echo $this->Paginator->sort('type', __d('elabs', 'Action'), $linkOptions);
-echo $this->Paginator->sort('user_id', __d('elabs', 'User'), $linkOptions);
+// Block: Pagination order links
+// -----------------------------
+$this->start('pageOrderBy');
+echo $this->Paginator->sort('id', __d('elabs', 'Date'));
+echo $this->Paginator->sort('model', __d('elabs', 'Type'));
+echo $this->Paginator->sort('type', __d('elabs', 'Action'));
+echo $this->Paginator->sort('user_id', __d('elabs', 'User'));
 $this->end();
-// Filters
-$this->start('pageFiltersMenu');
+
+// Block: Filters
+// --------------
+$this->start('pageFilters');
 $options = ['escape' => false];
 $active = ['<span class="fa fa-fw fa-check-circle-o"></span>'];
 $inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
-echo $this->Html->link(__d('elabs', 'Clear filters'), ['action' => 'index'], $options);
+$clear = ['<span class="fa fa-fw fa-times"></span>'];
+echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['action' => 'index'], $options);
 $icon = ($filterUpdates === 'yes') ? $active : $inactive;
 echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide updates', $icon), [$filterPosts, $filterProjects, $filterFiles, (($filterUpdates === 'yes') ? 'no' : 'yes')], $options);
 $icon = ($filterPosts === 'yes') ? $active : $inactive;
@@ -28,7 +42,9 @@ echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide projects', $icon), [$filterPo
 $icon = ($filterFiles === 'yes') ? $active : $inactive;
 echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide files', $icon), [$filterPosts, $filterProjects, (($filterFiles === 'yes') ? 'no' : 'yes'), $filterUpdates], $options);
 $this->end();
-// Page content
+
+// Block: Page content
+// -------------------
 $this->start('pageContent');
 if (!$acts->isEmpty()):
     ?>
@@ -92,7 +108,7 @@ if (!$acts->isEmpty()):
                         endswitch;
                         ?>
                         <dd class="pos-left clearfix">
-                            <div class="circ circ-<?php echo $class?>"></div>
+                            <div class="circ circ-<?php echo $class ?>"></div>
                             <div class="time">
                                 <?= $this->Time->format($actDate, "hh:mm") ?>
                             </div>
@@ -124,4 +140,6 @@ else:
 endif;
 $this->end();
 
+// Load the layout element
+// -----------------------
 echo $this->element('layouts/defaultindex');
