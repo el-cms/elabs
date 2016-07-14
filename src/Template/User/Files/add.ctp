@@ -15,10 +15,11 @@ $this->end();
 $this->start('pageContent');
 echo $this->Form->create($file, ['type' => 'file']);
 echo $this->Form->input('file', ['type' => 'file']);
-echo $this->Form->input('description', ['required' => false, 'id' => 'descArea', 'label' => __d('posts', 'Description')]);
+echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descArea', 'label' => __d('posts', 'Description')]);
 $this->CodeMirror->add('descArea');
 echo $this->Form->input('license_id', ['options' => $licenses, 'class' => 'selecter', 'data-selecter-options' => '{"cover":"true"}']);
-?><div class="row">
+?>
+<div class="row">
     <div class="col-sm-6">
         <?php echo $this->Form->input('sfw', ['label' => __d('elabs', 'This is SFW')]); ?>
     </div>
@@ -28,11 +29,6 @@ echo $this->Form->input('license_id', ['options' => $licenses, 'class' => 'selec
 </div>
 <?php
 echo $this->Form->end();
-$this->end();
-
-// Form options
-// ------------
-$this->start('formOptions');
 $this->end();
 
 // Load the custom layout element
