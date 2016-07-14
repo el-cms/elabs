@@ -7,8 +7,6 @@
             </div>
             <?php
             echo $this->Form->create('Report', ['url' => $this->Url->build(['prefix' => false, 'controller' => 'reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
-            $this->Form->templates([
-                'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',]);
             ?>
             <div class="modal-body" id="modal-content">
                 <div class="alert alert-info">

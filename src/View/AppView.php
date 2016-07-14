@@ -42,15 +42,17 @@ class AppView extends View
 
         $this->loadHelper('Html', ['className' => 'AppHtml', 'App' => \Cake\Core\Configure::read('App')]);
         $this->loadHelper('Form', [
-            'className' => 'Form',
+            'className' => 'BootstrapUI.Form',
             'templates' => [
                 'select' => '<select name="{{name}}"{{attrs}} class="form-control">{{content}}</select>',
                 'dateWidget' => '<ul class="list-inline"><li class="year">{{year}}</li><li class="month">{{month}}</li><li class="day">{{day}}</li></ul>',
+                'help'=>'<p class="help-block"><i class="fa fa-info-circle"></i> {{content}}</p>'
             ]
         ]);
         $this->loadHelper('Flash', ['className' => 'BootstrapUI.Flash']);
 //        $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
         $this->loadHelper('Gravatar.Gravatar');
+        $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
 
         $this->Paginator->templates([
 //            'nextActive' => '<li class="next"><a rel="next" href="{{url}}">{{text}}</a></li>',
@@ -70,6 +72,5 @@ class AppView extends View
             'sortAscLocked' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
             'sortDescLocked' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>'
         ]);
-        $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
     }
 }

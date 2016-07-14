@@ -1,0 +1,11 @@
+.help-block{
+    font-size:0.8em;
+    opacity:0.8;
+}
+.form-group.required{
+    label::before{
+        content: '*';
+        @extend .text-danger;
+        padding-right: 3px;
+    }
+}
