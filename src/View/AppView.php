@@ -46,7 +46,7 @@ class AppView extends View
             'templates' => [
                 'select' => '<select name="{{name}}"{{attrs}} class="form-control">{{content}}</select>',
                 'dateWidget' => '<ul class="list-inline"><li class="year">{{year}}</li><li class="month">{{month}}</li><li class="day">{{day}}</li></ul>',
-                'help'=>'<p class="help-block"><i class="fa fa-info-circle"></i> {{content}}</p>'
+                'help' => '<p class="help-block"><i class="fa fa-info-circle"></i> {{content}}</p>',
             ]
         ]);
         $this->loadHelper('Flash', ['className' => 'BootstrapUI.Flash']);
