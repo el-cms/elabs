@@ -1,52 +1,76 @@
 <?php
-$hasSideBar = false;
+/*
+ * File:
+ *   src/Templates/Elements/layouts/defaultview.ctp
+ * Description:
+ *   Layout element for "view" views
+ * Usable blocks:
+ *   pageActions - Links for actions related to the view
+ *   pageLinks   - Links for pages related to the view
+ *   pageInfos   - Information about the displayed item
+ *   pageContent - Main view content
+ */
 
-// Actions
-$pageActions = $this->fetch('pageActions');
-if (!empty($pageActions)):
-    $hasSideBar = true;
-    $this->start('pageActions_final');
-    ?>
-    <div class="list-group-item">
-        <h4 class="list-group-item-heading"><?php echo __d('elabs', 'Actions') ?></h4>
-        <div class="list-group-item-text">
-            <?php echo $this->fetch('pageActions') ?>
+// Blocks for this type of view
+// ----------------------------
+// (Order matters)
+$colContentLeft = [
+    'pageActions' => ['title' => __d('elabs', 'Actions')],
+    'pageInfos' => ['title' => __d('elabs', 'Informations')],
+    'pageLinks' => ['title' => __d('elabs', 'Related links')],
+];
+$colContentMain = ['pageContent'];
+
+// Preparing content
+$haveLeftCol = false;
+
+// Block: Left column
+// ------------------
+$this->start('leftCol');
+foreach ($colContentLeft as $block => $options):
+    $blockData = $this->fetch($block);
+    if (!empty($blockData)):
+        $haveLeftCol = true;
+        ?>
+        <div class="list-group-item">
+            <h4 class="list-group-item-heading"><?php echo $options['title'] ?></h4>
+            <div class="list-group-item-text">
+                <?php echo $blockData ?>
+            </div>
         </div>
-    </div>
-    <?php
-    $this->end();
-endif;
+        <?php
+    endif;
+endforeach;
+$this->end();
 
-// Infos
-$pageInfos = $this->fetch('pageInfos');
-if (!empty($pageInfos)):
-    $hasSideBar = true;
-    $this->start('pageInfos_final');
-    ?>
-    <div class="list-group-item">
-        <h4 class="list-group-item-heading"><?php echo __d('elabs', 'Infos') ?></h4>
-        <div class="list-group-item-text">
-            <?php echo $this->fetch('pageInfos') ?>
-        </div>
-    </div>
-    <?php
-    $this->end();
-endif;
-
-
-if ($hasSideBar):
-    ?>
-    <div class="col-sm-4 side-menu">
-        <div class="list-group">
-            <?php
-            echo $this->fetch('pageActions_final');
-            echo $this->fetch('pageInfos_final');
-            ?>
-        </div>
-    </div>
-    <?php
-endif;
+// Rendering the view
+// ------------------
 ?>
-<div class = "col-sm-<?php echo ($hasSideBar) ? 8 : 12 ?> rendered-text">
-    <?php echo $this->fetch('pageContent'); ?>
+<div class="row">
+    <?php
+    // Left col
+    // --------
+    if ($haveLeftCol):
+        ?>
+        <div class="col-sm-4">
+            <div class="list-group">
+                <?php echo $this->fetch('leftCol'); ?>
+            </div>
+        </div>
+        <?php
+    endif;
+
+    // Page content
+    // ------------
+    ?>
+    <div class="col-sm-<?php echo ($haveLeftCol) ? 8 : 12 ?>">
+        <?php
+        echo $this->fetch('pageContent');
+        ?>
+    </div>
 </div>
+
+<?php
+// Additionnal scripts/elements
+// ----------------------------
+echo $this->element('layout/loader_prism');

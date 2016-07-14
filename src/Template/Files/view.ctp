@@ -1,9 +1,22 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Files/view.ctp
+ * Description:
+ *   Display of a single file record
+ * Layout element:
+ *   defaultview.ctp
+ */
+
+// Custom helpers
+$this->loadHelper('Items');
+
+// Page title
 $this->assign('title', __d('file', 'File: {0}', h($file->name)));
 
+// Block: Item informations
+// ------------------------
 $this->start('pageInfos');
-
-$this->loadHelper('Items');
 $config = $this->Items->fileConfig($file['filename']);
 ?>
 <ul class="list-unstyled">
@@ -22,17 +35,24 @@ $config = $this->Items->fileConfig($file['filename']);
 <?php
 $this->end();
 
+// Block: Actions
+// --------------
 $this->start('pageActions');
-echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-download"></span>', __d('files', 'Download')]), ['action' => 'download', $file->id], ['escape' => false, 'class' => 'btn btn-block btn-green']);
+echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-download"></span>', __d('files', 'Download')]), ['action' => 'download', $file->id], ['escape' => false, 'class' => 'btn btn-block']);
 $this->end();
 
+// Block: Page content
+// -------------------
 $this->start('pageContent');
 echo $this->Html->displayMD($file->description) ?>
-<div class="well">
+<div class="panel">
+    <div class="panel-body">
     <?php echo $this->element('files/view_content_' . $config['element'], ['data' => $file]) ?>
+    </div>
 </div>
 <?php
-echo $this->element('layout/loader_prism');
 $this->end();
 
+// Load the layout element
+// -----------------------
 echo $this->element('layouts/defaultview');
