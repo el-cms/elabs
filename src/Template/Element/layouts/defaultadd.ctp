@@ -3,7 +3,7 @@
 $this->loadHelper('CodeMirror');
 
 // Columns:
-$colContentLeft = ['pageLinks' => ['title' => __d('elabs', 'Related links')]];
+$colContentLeft = ['pageActions'=>['title'=>__d('elabs', 'Actions')], 'pageLinks' => ['title' => __d('elabs', 'Related links')]];
 $colContentMain = ['pageContent'];
 $colContentRight = ['formOptions' => ['title' => __d('elabs', 'Options')]];
 
