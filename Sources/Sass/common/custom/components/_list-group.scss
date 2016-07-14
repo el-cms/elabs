@@ -1,0 +1,13 @@
+.list-group-item-text{
+    // Nested items
+    .list-group-item {
+        margin: 0 -16px;
+        &:first-child{
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        &:last-child{
+            margin-bottom: -#{$padding-large-vertical + 1};
+        }
+    }
+}
