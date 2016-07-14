@@ -1,5 +1,5 @@
 <?php
-$haveMenu = false;
+$haveSideMenu = false;
 // Starting the toolbar
 $this->start('pageToolbar');
 
@@ -7,7 +7,7 @@ $this->start('pageToolbar');
 $this->start('pageOrderMenu_final');
 $pageOrderMenu = $this->fetch('pageOrderMenu');
 if (!empty($pageOrderMenu)):
-    $haveMenu = true;
+    $haveSideMenu = true;
     ?>
     <div class="btn-group">
         <a><?= __('Order by:') ?></a>
@@ -22,7 +22,7 @@ $this->end();
 $this->start('pageFiltersMenu_final');
 $pageFiltersMenu = $this->fetch('pageFiltersMenu');
 if (!empty($pageFiltersMenu)):
-    $haveMenu = true;
+    $haveSideMenu = true;
     ?>
     <div class="btn-group">
         <a><?php echo __d('elabs', 'Filters') ?></a>
@@ -37,7 +37,7 @@ $this->end();
 $this->start('pageActionsMenu_final');
 $pageActionsMenu = $this->fetch('pageActionsMenu');
 if (!empty($pageActionsMenu)):
-    $haveMenu = true;
+    $haveSideMenu = true;
     ?>
     <div class="btn-group">
         <a><?php echo __d('elabs', 'Actions') ?></a>
@@ -49,7 +49,7 @@ endif;
 $this->end();
 
 // Rendering the toolbar
-if ($haveMenu):
+if ($haveSideMenu):
     ?>
     <div class="toolbar">
         <div class="container">
