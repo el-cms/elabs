@@ -1,8 +1,16 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Users/Files/edit.ctp
+ * Description:
+ *   Form to edit a file
+ * Layout element:
+ *   defaultform.ctp
+ */
 
+// Page title
 $this->assign('title', __d('posts', 'Edit file  "{0}"', $file->name));
 
-$linkOptions = ['class' => 'list-group-item', 'escape' => false];
 
 // Actions block
 // -------------
@@ -13,6 +21,7 @@ $this->end();
 // Related links block
 // -------------------
 $this->start('pageLinks');
+$linkOptions = ['class' => 'list-group-item', 'escape' => false];
 echo $this->Html->link(__d('files', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'Your files']), ['action' => 'index'], $linkOptions);
 echo $this->Html->link(__d('files', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New file']), ['action' => 'add'], $linkOptions);
 echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
@@ -40,4 +49,4 @@ $this->end();
 
 // Load the custom layout element
 // ------------------------------
-echo $this->element('layouts/defaultadd');
+echo $this->element('layouts/defaultform');

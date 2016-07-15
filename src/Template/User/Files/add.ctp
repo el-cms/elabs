@@ -1,11 +1,20 @@
 <?php
-$this->assign('title', __d('files', 'Add a file'));
+/*
+ * File:
+ *   src/Templates/Users/Files/add.ctp
+ * Description:
+ *   Form to add a file
+ * Layout element:
+ *   defaultform.ctp
+ */
 
-$linkOptions = ['class' => 'list-group-item', 'escape' => false];
+// Page title
+$this->assign('title', __d('files', 'Add a file'));
 
 // Related links block
 // -------------------
 $this->start('pageLinks');
+$linkOptions = ['class' => 'list-group-item', 'escape' => false];
 echo $this->Html->link(__d('files', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'Your files']), ['action' => 'index'], $linkOptions);
 echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
 $this->end();
@@ -33,4 +42,4 @@ $this->end();
 
 // Load the custom layout element
 // ------------------------------
-echo $this->element('layouts/defaultadd');
+echo $this->element('layouts/defaultform');
