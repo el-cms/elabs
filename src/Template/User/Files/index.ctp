@@ -12,7 +12,7 @@
 $this->assign('title', __d('files', 'Your files'));
 
 // Block: Pagination order links
-// ----------------------
+// -----------------------------
 $this->start('pageOrderMenu');
 echo $this->Paginator->sort('name', __d('files', 'Name'));
 echo $this->Paginator->sort('weight', __d('files', 'File size'));
