@@ -1,5 +1,5 @@
-<div class="panel panel-accordion">
-    <div class="panel-title" data-toggle="collapse" data-parent="#<?= $tileGroupId ?>" href="#<?php echo $tileGroupId . $file->id ?>" aria-expanded="true" aria-controls="<?php echo $tileGroupId . $file->id ?>">
+<div class="panel">
+    <div class="panel-title">
         <!-- Item actions menu -->
         <div class="btn-group btn-panel-title">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -20,15 +20,17 @@
         <!-- / Item actions menu -->
 
         <!-- Badges and title -->
-        <?php if ($file->sfw): ?>
-            <span class="label label-success"><?php echo __d('elabs', 'Safe') ?></span>
-        <?php else: ?>
-            <span class="label label-danger"><?php echo __d('elabs', 'NSFW') ?></span>
-        <?php endif; ?>&nbsp;
-        <?php if ($file->status === 2): ?>
-            <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
-        <?php endif; ?>&nbsp;
-        <span id="h-<?php echo $tileGroupId . $file->id ?>"><?php echo h($file->name) ?></span>
+        <span class="panel-group-title" data-toggle="collapse" data-parent="#<?= $tileGroupId ?>" href="#<?php echo $tileGroupId . $file->id ?>" aria-expanded="true" aria-controls="<?php echo $tileGroupId . $file->id ?>">
+            <?php if ($file->sfw): ?>
+                <span class="label label-success"><?php echo __d('elabs', 'Safe') ?></span>
+            <?php else: ?>
+                <span class="label label-danger"><?php echo __d('elabs', 'NSFW') ?></span>
+            <?php endif; ?>&nbsp;
+            <?php if ($file->status === 2): ?>
+                <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
+            <?php endif; ?>&nbsp;
+            <span id="h-<?php echo $tileGroupId . $file->id ?>"><?php echo h($file->name) ?></span>
+        </span>
         <!-- / Badges and title -->
     </div>
     <div id="<?php echo $tileGroupId . $file->id ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h-<?php echo $tileGroupId . $file->id ?>">
