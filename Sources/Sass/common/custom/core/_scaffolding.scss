@@ -67,11 +67,10 @@ audio{
         }
     }
 }
-
-/*// Blocks for "Under contruction" elements
+// Blocks for "Under contruction" elements
 .dev-block{
-    color:$palette-grey-500;
-    border:1px dashed $palette-grey-600;
+    color: $gray-light;
+    border:1px dashed $gray;
     text-align: center;
     line-height:100%;
     border-radius: 5px;
@@ -79,7 +78,6 @@ audio{
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
     padding:15px;
 }
-*/
 // Inline for "Under contruction" elements
 .dev-inline{
     color: $gray-light;
