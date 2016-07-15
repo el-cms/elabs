@@ -11,7 +11,6 @@
 // Page title
 $this->assign('title', __d('posts', 'Edit file  "{0}"', $file->name));
 
-
 // Actions block
 // -------------
 $this->start('pageActions');
