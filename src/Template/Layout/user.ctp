@@ -117,7 +117,18 @@
                 </div>
             </div>
             <!-- Toolbar -->
-            <?php echo $this->fetch('pageToolbar') ?>
+            <?php
+            $pageToolbar = $this->fetch('pageToolbar');
+            if (!empty($pageToolbar)):
+                ?>
+                <div class="toolbar">
+                    <div class="container">
+                        <?php echo $this->fetch('pageToolbar') ?>
+                    </div>
+                </div>
+                <?php
+            endif;
+            ?>
             <!-- / Toolbar -->
         </div>
         <div class="container page-content">
