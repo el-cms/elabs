@@ -13,7 +13,7 @@ $this->assign('title', __d('files', 'Your files'));
 
 // Block: Pagination order links
 // -----------------------------
-$this->start('pageOrderMenu');
+$this->start('pageOrderBy');
 echo $this->Paginator->sort('name', __d('files', 'Name'));
 echo $this->Paginator->sort('weight', __d('files', 'File size'));
 echo $this->Paginator->sort('created', __d('files', 'Addition date'));
@@ -22,7 +22,7 @@ $this->end();
 
 // Filters
 // -------
-$this->start('pageFiltersMenu');
+$this->start('pageFilters');
 $options = ['escape' => false];
 $active = ['<span class="fa fa-fw fa-check-circle-o"></span>'];
 $inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
@@ -46,10 +46,8 @@ $this->end();
 // ------------
 $this->start('pageContent');
 if (!$files->isEmpty()):
-    $tileGroupId='tiles-files-group';
+    $tileGroupId = 'tiles-files-group';
     ?>
-<!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">-->
-
     <div class="panel-group" id="<?= $tileGroupId ?>" role="tablist" aria-multiselectable="true">
         <?php
         foreach ($files as $file):

@@ -26,8 +26,8 @@
             /*padding: $padding-base-vertical $padding-base-horizontal;*/
             border-top:1px solid $btn-default-border;
         }
-/*        .panel-body{
-            padding: $padding-base-vertical $padding-base-horizontal;
-        }*/
+        .panel-group-title{
+            cursor: pointer;
+        }
     }
 }
