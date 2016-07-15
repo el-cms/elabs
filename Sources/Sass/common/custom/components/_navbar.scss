@@ -13,9 +13,13 @@
         a{
             color: $navbar-default-link-color;
             &:hover{
-                background-color: $navbar-default-toggle-hover-bg;
+                background-color: darken($navbar-default-bg, 10%);
                 color: $navbar-default-link-hover-color;
             }
+        }
+        .dropdown-header{
+            background-color: darken($navbar-default-bg, 15%);
+            color: darken($navbar-default-bg, 30%);
         }
     }
 }
