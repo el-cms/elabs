@@ -18,5 +18,15 @@
                 }
             }
         }
+        .btn-group-separator{
+            background-color:transparent;
+            padding:$padding-small-horizontal/2;
+            border-width:0 1px;
+            &:hover{
+                background-color:transparent;
+                border-color: transparent;
+                cursor:default;
+            }
+        }
     }
 }
