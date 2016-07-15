@@ -1,40 +1,43 @@
-<div class="tile tile-collapse">
-    <div data-parent="#<?php echo $tileId ?>" data-target="#<?php echo $tileId . $project->id ?>" data-toggle="tile" class="padding-no">
-        <div class="pull-right">
-            <ul class="margin-no nav nav-list">
-                <li class="dropdown">
-                    <a aria-expanded="false" class="dropdown-toggle text-default  " data-toggle="dropdown"><span class="icon">more_vert</span></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;View online', '<span class="fa fa-eye fa-fw"></span>'), ['prefix' => false, 'action' => 'view', $project->id], ['class' => ' ', 'escape' => false]); ?>
-                        </li>
-                        <li>
-                            <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', '<span class="fa fa-pencil fa-fw"></span>'), ['action' => 'edit', $project->id], ['class' => ' ', 'escape' => false]) ?>
-                        </li>
-                        <li>
-                            <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $project->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $project->id), 'class' => ' ', 'escape' => false]) ?>
-                        </li>
-                    </ul>
+<div class="panel">
+    <div class="panel-title">
+        <!-- Item actions menu -->
+        <div class="btn-group btn-panel-title">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php echo $this->Html->icon('ellipsis-v') ?>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;View online', '<span class="fa fa-eye fa-fw"></span>'), ['prefix' => false, 'action' => 'view', $project->id], ['class' => ' ', 'escape' => false]); ?>
+                </li>
+                <li>
+                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', '<span class="fa fa-pencil fa-fw"></span>'), ['action' => 'edit', $project->id], ['class' => ' ', 'escape' => false]) ?>
+                </li>
+                <li>
+                    <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $project->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $project->id), 'class' => ' ', 'escape' => false]) ?>
                 </li>
             </ul>
         </div>
-        <div class="tile-inner cell-title">
+        <!-- / Item actions menu -->
+
+        <!-- Badges and title -->
+        <span class="panel-group-title" data-toggle="collapse" data-parent="#<?= $tileGroupId ?>" href="#<?php echo $tileGroupId . $project->id ?>" aria-expanded="true" aria-controls="<?php echo $tileGroupId . $project->id ?>">
             <?php if ($project->sfw): ?>
-                <span class="label label-green fixed-font"><?php echo __d('elabs', 'Safe') ?></span>
+                <span class="label label-gsuccess"><?php echo __d('elabs', 'Safe') ?></span>
             <?php else: ?>
-                <span class="label label-red fixed-font"><?php echo __d('elabs', 'NSFW') ?></span>
+                <span class="label label-danger"><?php echo __d('elabs', 'NSFW') ?></span>
             <?php endif; ?>&nbsp;
             <?php if ($project->status === 2): ?>
-                <span class="label label-red fixed-font"><?php echo __d('elabs', 'Locked') ?></span>
+                <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
-            <?php echo h($project->name) ?>
-        </div>
+            <span id="h-<?php echo $tileGroupId . $project->id ?>"><?php echo h($project->name) ?></span>
+        </span>
+        <!-- / Badges and title -->
     </div>
-    <div style="height: 0px;" class="tile-active-show collapse" id="<?php echo $tileId . $project->id ?>">
-        <div class="tile-sub">
+    <div id="<?php echo $tileGroupId . $project->id ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h-<?php echo $tileGroupId . $project->id ?>">
+        <div class="panel-body">
             <div class="row">
                 <div class="col-sm-4">
-                    <dl class="dl-horizontal">
+                    <dl>
                         <dt><?php echo __d('elabs', 'Creation date') ?></dt>
                         <dd><?php echo h($project->created) ?></dd>
                         <dt><?php echo __d('elabs', 'Updated on') ?></dt>
