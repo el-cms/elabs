@@ -138,14 +138,6 @@
         </div>
         <!-- / Main content -->
 
-        <!-- Login modal -->
-        <?php
-        if (is_null($authUser)):
-            echo $this->element('users/loginmodal');
-        endif;
-        ?>
-        <!-- /Login modal -->
-
         <!-- Report modal -->
         <?php echo $this->element('reports/add_modal'); ?>
         <!-- / Report modal -->
