@@ -35,14 +35,14 @@
 @import "custom/components/pagination";
 @import "custom/components/alerts";
 @import "custom/components/list-group";
-@import "custom/components/panels";
+/*@import "custom/components/panels";*/
 //@import "custom/components/dls.scss";
 //@import "custom/components/alerts.scss";
 //@import "custom/components/progress-bars";
 //@import "custom/components/panels";
 
 // Components w/ JavaScript
-
+@import "custom/jscomponents/accordions";
 // Utility classes
 
 // Elabs-specific components and theme overrides
