@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -23,7 +23,7 @@
     </head>
     <body>
         <?php echo $this->element('layout/pageloader') ?>
-        <?php echo $this->element('layout/mainmenu') ?>
+        <?php echo $this->element('layout/mainmenu_admin') ?>
         <!-- Navbar -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -94,24 +94,22 @@
         </nav>
         <!-- / Navbar-->
 
-        <!-- Main content -->
+        <!-- Page header -->
         <div class="page-header">
             <div class="container-fluid">
-                <div class="container">
-                    <!-- Flash messages -->
-                    <div class="row flash-messages">
-                        <?php echo $this->Flash->render() ?>
-                    </div>
-                    <!-- / Flash messages -->
-
-                    <!-- Title -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1><span class="fa fa-wrench"></span> <?php echo $this->fetch('title') ?></h1>
-                        </div>
-                    </div>
-                    <!-- / Title -->
+                <!-- Flash messages -->
+                <div class="row flash-messages">
+                    <?php echo $this->Flash->render() ?>
                 </div>
+                <!-- / Flash messages -->
+
+                <!-- Title -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1><span class="fa fa-wrench"></span> <?php echo $this->fetch('title') ?></h1>
+                    </div>
+                </div>
+                <!-- / Title -->
             </div>
             <!-- Toolbar -->
             <?php
@@ -128,16 +126,21 @@
             ?>
             <!-- / Toolbar -->
         </div>
-        <div class="container page-content">
-            <!-- Content -->
-            <?php echo $this->fetch('content') ?>
-            <!-- / Content -->
+        <!-- / Header -->
+        
+        <!-- Main content (wrapped here for container-fluid) -->
+        <div>
+            <div class="container-fluid page-content">
+                <!-- Content -->
+                <?php echo $this->fetch('content') ?>
+                <!-- / Content -->
+            </div>
         </div>
         <!-- / Main content -->
 
         <!-- Footer -->
         <footer class="footer">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="clearfix">
                     <div class="footer-logo">
                         <a href="/"><?= $this->Html->image('logo-32.png', ['alt' => __('Logo'), 'title' => __('{0} logo', Cake\Core\Configure::read('cms.siteName'))]) ?> <?= Cake\Core\Configure::read('cms.siteName') ?></a>
