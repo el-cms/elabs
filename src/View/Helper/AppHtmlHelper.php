@@ -35,7 +35,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
             'class' => null
         ];
         if ($options['fixed']) {
-            $this->injectClasses($options['iconSet'] . '-fw', $options);
+            $options = $this->injectClasses($options['iconSet'] . '-fw', $options);
         }
         unset($options['fixed']);
         return parent::icon($name, $options);
