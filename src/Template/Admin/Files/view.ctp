@@ -1,78 +1,91 @@
 <?php
-$this->assign('title', __d('files', 'Admin/File&gt; {0}', h($file->name)));
+/*
+ * File:
+ *   src/Templates/Admin/Files/view.ctp
+ * Description:
+ *   Administration - Displays a file
+ * Layout element:
+ *   defaultview.ctp
+ */
 
+// Additionnal helpers
 $this->loadHelper('Items');
 $config = $this->Items->fileConfig($file['filename']);
 
+// Page title
+$this->assign('title', __d('files', 'Admin/File&gt; {0}', h($file->name)));
+
+// Block: Item informations
+// ------------------------
 $this->start('pageInfos');
 ?>
-<dl class="dl-horizontal">
-    <dt><?php echo __d('files', 'Owner') ?></dt>
-    <dd><?php echo $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) ?></dd>
-    <dt><?php echo __d('files', 'Name') ?></dt>
-    <dd><small><?php echo h($file->name) ?></small></dd>
-    <dt><?php echo __d('files', 'File name') ?></dt>
-    <dd><small><?php echo h($file->filename) ?></small></dd>
-    <dt><?php echo __d('files', 'File size') ?></dt>
-    <dd><?php echo $file->weight ?></dd>
-    <dt><?php echo __d('licenses', 'License') ?></dt>
-    <dd><?php echo $this->License->d($file->license) ?></dd>
-    <dt><?php echo __d('elabs', 'Creation date') ?></dt>
-    <dd><?php echo h($file->created) ?></dd>
-    <dt><?php echo __d('elabs', 'Mod. date') ?></dt>
-    <dd><?php echo h($file->modified) ?></dd>
-    <dt><?php echo __d('elabs', 'Safe') ?></dt>
-    <dd><?php echo $this->ItemsAdmin->sfwLabel($file->sfw); ?></dd>
-    <dt><?php echo __d('elabs', 'Status') ?></dt>
-    <dd><?php echo $this->ItemsAdmin->statusLabel($file->status) ?></dd>
-</dl>
-<?php
-$this->end();
-
-$this->start('pageActions');
-$linkConfig = ['escape' => false, 'class' => 'btn btn-flat waves-attach waves-effect waves-effect'];
-?>
-<ul>
-    <li>
-        <?php
-        $unlockIcon = __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-unlock-alt fa-fw"></span>', __d('admin', 'Unlock')]);
-        $lockIcon = __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-lock fa-fw"></span>', __d('admin', 'Lock')]);
-        if ($file->status === 2):
-            echo $this->Html->link($unlockIcon, ['action' => 'changeState', $file->id, 'unlock'], $linkConfig);
-        elseif ($file->status === 1):
-            echo $this->Html->link($lockIcon, ['action' => 'changeState', $file->id, 'lock'], $linkConfig);
-        else:
-            echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-flat disabled', 'escape' => false]);
-        endif;
-        ?>
-    </li>
-    <li>
-        <?php
-        $class = 'btn btn-flat waves-attach waves-effect waves-effect';
-        $link = ['action' => 'changeState', $file->id, 'remove'];
-        if ($file->status === 3):
-            $class = 'btn btn-flat disabled';
-            $link = '#';
-        endif;
-        echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-times"></span>', 'Disable']), $link, ['confirm' => __d('disable','Are you sure you want to disable # {0}?', $file->id), 'escape' => false, 'class' => $class])
-        ?>
-    </li>
-    <li><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List files']), ['action' => 'index'], $linkConfig) ?> </li>
+<ul class="list-unstyled">
+    <li><strong><?php echo __d('files', 'Owner:') ?></strong> <?php echo $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) ?></li>
+    <li><strong><?php echo __d('files', 'Name:') ?></strong> <small><?php echo h($file->name) ?></small></li>
+    <li><strong><?php echo __d('files', 'File name:') ?></strong> <small><?php echo h($file->filename) ?></small></li>
+    <li><strong><?php echo __d('files', 'File size:') ?></strong> <?php echo $file->weight ?></li>
+    <li><strong><?php echo __d('licenses', 'License:') ?></strong> <?php echo $this->License->d($file->license) ?></li>
+    <li><strong><?php echo __d('elabs', 'Creation date:') ?></strong> <?php echo h($file->created) ?></li>
+    <li><strong><?php echo __d('elabs', 'Mod. date:') ?></strong> <?php echo h($file->modified) ?></li>
+    <li><strong><?php echo __d('elabs', 'Safe:') ?></strong> <?php echo $this->ItemsAdmin->sfwLabel($file->sfw); ?></li>
+    <li><strong><?php echo __d('elabs', 'Status:') ?></strong> <?php echo $this->ItemsAdmin->statusLabel($file->status) ?></li>
 </ul>
 <?php
 $this->end();
 
-$this->start('pageContent');
-echo $this->Elabs->displayMD($file->description);
+// Block: Actions
+// --------------
+$this->start('pageActions');
 ?>
-<hr />
+<div class="btn-group btn-group-vertical btn-block">
+    <?php
+    $linkConfig = ['escape' => false, 'class' => 'btn btn-primary'];
+    $unlockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('unlock-alt'), __d('admin', 'Unlock')]);
+    $lockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('admin', 'Lock')]);
+    if ($file->status === 2):
+        echo $this->Html->link($unlockIcon, ['action' => 'changeState', $file->id, 'unlock'], $linkConfig);
+    elseif ($file->status === 1):
+        echo $this->Html->link($lockIcon, ['action' => 'changeState', $file->id, 'lock'], $linkConfig);
+    else:
+        echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-warning disabled', 'escape' => false]);
+    endif;
+    $class = 'btn btn-danger';
+    $link = ['action' => 'changeState', $file->id, 'remove'];
+    if ($file->status === 3):
+        $class .= ' disabled';
+        $link = '#';
+    endif;
+    echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('times'), 'Disable']), $link, ['confirm' => __d('disable', 'Are you sure you want to disable # {0}?', $file->id), 'escape' => false, 'class' => $class]);
+    echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List files']), ['action' => 'index'], $linkConfig);
+    ?>
+</div>
 <?php
-echo $this->element('files/view_content_' . $config['element'], ['data' => $file]);
-?>
-<div class="content-sub-heading"><?php echo __d('elabs', 'Related items') ?></div>
-<?php
-echo $this->element('layout/dev_block');
-
 $this->end();
 
+$this->start('pageContent');
+?>
+<div class="panel">
+    <ul id="fileTabs" class="nav nav-tabs nav-justified">
+        <li class="active"><a data-toggle="tab" href="#tab-content" aria-expanded="true"><?php echo __d('users', 'Content') ?></a></li>
+        <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('users', 'Related items') ?></a></li>
+    </ul>
+    <div id = "userTabsContent" class = "tab-content">
+        <div class="tab-pane fade active in" id="tab-content">
+            <?php
+            echo $this->Html->displayMD($file->description);
+            echo $this->element('files/view_content_' . $config['element'], ['data' => $file]);
+            ?>
+        </div>
+        <div class="tab-pane" id="tab-related">
+            <?php
+            echo $this->element('layout/dev_block');
+            ?>
+        </div>
+    </div>
+</div>
+<?php
+$this->end();
+
+// Load the layout element
+// -----------------------
 echo $this->element('layouts/defaultview');
