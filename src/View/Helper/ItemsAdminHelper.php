@@ -6,7 +6,7 @@ use Cake\View\Helper;
 
 class ItemsAdminHelper extends Helper
 {
-
+    public $helpers=['Html'];
     public function statusLabel($status, $icon = true)
     {
         switch ($status) {
@@ -28,7 +28,7 @@ class ItemsAdminHelper extends Helper
                 break;
         }
         if ($icon) {
-            return __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . $statusIcon . ' fa-fw"></span>', $text]);
+            return __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($statusIcon), $text]);
         } else {
             return $text;
         }
@@ -38,16 +38,16 @@ class ItemsAdminHelper extends Helper
         switch($sfw){
             case 1:
                 $labelIcon='check';
-                $labelColor='green';
+                $labelColor='success';
                 $text=__d('elabs', 'Yes');
                 break;
             default:
                 $labelIcon='times';
-                $labelColor='red';
+                $labelColor='danger';
                 $text=__d('elabs', 'No');
         }
         if ($icon) {
-            $out= __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . $labelIcon . ' fa-fw"></span>', $text]);
+            $out= __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($labelIcon), $text]);
         } else {
             $out= $text;
         }
