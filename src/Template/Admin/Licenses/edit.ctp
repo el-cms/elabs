@@ -5,7 +5,7 @@
  * Description:
  *   Form to edit a license
  * Layout element:
- *   defaultform.ctp
+ *   adminform.ctp
  */
 
 // Page title

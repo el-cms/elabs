@@ -5,7 +5,7 @@
  * Description:
  *   Administration - Displays a file
  * Layout element:
- *   defaultview.ctp
+ *   adminview.ctp
  */
 
 // Additionnal helpers
@@ -39,7 +39,7 @@ $this->start('pageActions');
 ?>
 <div class="btn-group btn-group-vertical btn-block">
     <?php
-    $linkConfig = ['escape' => false, 'class' => 'btn btn-warning'];
+    // Lock/unlock
     $unlockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('unlock-alt'), __d('admin', 'Unlock')]);
     $lockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('admin', 'Lock')]);
     if ($file->status === 2):
@@ -49,6 +49,7 @@ $this->start('pageActions');
     else:
         echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-warning disabled', 'escape' => false]);
     endif;
+    // Close
     $class = 'btn btn-danger';
     $link = ['action' => 'changeState', $file->id, 'remove'];
     if ($file->status === 3):
@@ -56,12 +57,15 @@ $this->start('pageActions');
         $link = '#';
     endif;
     echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('times'), 'Disable']), $link, ['confirm' => __d('disable', 'Are you sure you want to disable # {0}?', $file->id), 'escape' => false, 'class' => $class]);
+    // List
     echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List files']), ['action' => 'index'], ['escape' => false, 'class' => 'btn btn-primary']);
     ?>
 </div>
 <?php
 $this->end();
 
+// Block: Page content
+// -------------------
 $this->start('pageContent');
 ?>
 <div class="panel">

@@ -5,7 +5,7 @@
  * Description:
  *   Administration - List of files, sortable
  * Layout element:
- *   defaultindex.ctp
+ *   adminindex.ctp
  * @todo: add filters
  * Notes: paginations links are in the table, not in a block.
  */
