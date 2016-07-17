@@ -39,13 +39,13 @@ $this->start('pageActions');
 ?>
 <div class="btn-group btn-group-vertical btn-block">
     <?php
-    $linkConfig = ['escape' => false, 'class' => 'btn btn-primary'];
+    $linkConfig = ['escape' => false, 'class' => 'btn btn-warning'];
     $unlockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('unlock-alt'), __d('admin', 'Unlock')]);
     $lockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('admin', 'Lock')]);
     if ($file->status === 2):
-        echo $this->Html->link($unlockIcon, ['action' => 'changeState', $file->id, 'unlock'], $linkConfig);
+        echo $this->Html->link($unlockIcon, ['action' => 'changeState', $file->id, 'unlock'], ['escape' => false, 'class' => 'btn btn-warning']);
     elseif ($file->status === 1):
-        echo $this->Html->link($lockIcon, ['action' => 'changeState', $file->id, 'lock'], $linkConfig);
+        echo $this->Html->link($lockIcon, ['action' => 'changeState', $file->id, 'lock'], ['escape' => false, 'class' => 'btn btn-warning']);
     else:
         echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-warning disabled', 'escape' => false]);
     endif;
@@ -56,7 +56,7 @@ $this->start('pageActions');
         $link = '#';
     endif;
     echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('times'), 'Disable']), $link, ['confirm' => __d('disable', 'Are you sure you want to disable # {0}?', $file->id), 'escape' => false, 'class' => $class]);
-    echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List files']), ['action' => 'index'], $linkConfig);
+    echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List files']), ['action' => 'index'], ['escape' => false, 'class' => 'btn btn-primary']);
     ?>
 </div>
 <?php
@@ -88,4 +88,4 @@ $this->end();
 
 // Load the layout element
 // -----------------------
-echo $this->element('layouts/defaultview');
+echo $this->element('layouts/adminview');

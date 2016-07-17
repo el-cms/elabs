@@ -96,4 +96,4 @@ $this->end();
 
 // Load the layout element
 // -----------------------
-echo $this->element('layouts/defaultindex');
+echo $this->element('layouts/adminindex');
