@@ -1,73 +1,95 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Admin/Projects/index.ctp
+ * Description:
+ *   Administration - List of projects, sortable
+ * Layout element:
+ *   adminindex.ctp
+ * @todo: add filters
+ * Notes: paginations links are in the table, not in a block.
+ */
+
+// Page title
 $this->assign('title', __d('projects', 'Admin/Projects&gt; List'));
+
+// Block: Page content
+// -------------------
+$this->start('pageContent');
 ?>
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th><?php echo $this->Paginator->sort('name', __d('projects', 'Name')) ?></th>
-            <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Owner')) ?></th>
-            <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
-            <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
-            <th><?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
-            <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
-            <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
-            <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($projects as $project): ?>
+<div class="panel">
+    <table class="table table-condensed table-striped table-bordered">
+        <thead>
             <tr>
-                <td><?php echo h($project->name) ?></td>
-                <td><?php echo $this->Html->link(h($project->user->username), ['controller' => 'users', 'action' => 'view', $project->user->id]) ?></td>
-                <td><?php echo $this->ItemsAdmin->sfwLabel($project->sfw) ?></td>
-                <td><?php echo h($project->created) ?></td>
-                <td><?php echo h($project->modified) ?></td>
-                <td><?php echo $this->License->d($project->license, false) ?></td>
-                <td><?php echo $this->ItemsAdmin->statusLabel($project->status) ?></td>
-                <td class="padding-no">
-                    <ul class="margin-no nav nav-list">
-                        <li>
+                <th><?php echo $this->Paginator->sort('name', __d('projects', 'Name')) ?></th>
+                <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Owner')) ?></th>
+                <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
+                <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
+                <th><?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
+                <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
+                <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
+                <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($projects as $project): ?>
+                <tr>
+                    <td><?php echo h($project->name) ?></td>
+                    <td><?php echo $this->Html->link(h($project->user->username), ['controller' => 'users', 'action' => 'view', $project->user->id]) ?></td>
+                    <td><?php echo $this->ItemsAdmin->sfwLabel($project->sfw) ?></td>
+                    <td><?php echo h($project->created) ?></td>
+                    <td><?php echo h($project->modified) ?></td>
+                    <td><?php echo $this->License->d($project->license, false) ?></td>
+                    <td><?php echo $this->ItemsAdmin->statusLabel($project->status) ?></td>
+                    <td>
+                        <div class="btn-group btn-group-xs">
                             <?php
-                            echo $this->Html->link('<span class="fa fa-eye" title="' . __d('admin', 'Full details') . '"></span>', ['action' => 'view', $project->id], [
-                                'class' => 'text-sec waves-attach waves-effect',
+                            // See content
+                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('admin', 'Full details')]), ['action' => 'view', $project->id], [
+                                'class' => 'btn btn-primary',
                                 'escape' => false
                             ]);
-                            ?>
-                        </li>
-                        <li>
-                            <?php
-                            $unlockIcon = '<span class="fa fa-unlock-alt fa-fw" title="' . __d('admin', 'Unlock') . '"></span>';
-                            $lockIcon = '<span class="fa fa-lock fa-fw" title="' . __d('admin', 'Lock') . '"></span>';
+                            // Lock/unlock
+                            $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('admin', 'Unlock')]);
+                            $lockIcon = $this->Html->icon('lock', ['title' => __d('admin', 'Lock')]);
                             if ($project->status === 2):
                                 echo $this->Html->link($unlockIcon, ['action' => 'changeState', $project->id, 'unlock'], [
-                                    'class' => 'text-sec waves-attach waves-effect',
+                                    'class' => 'btn btn-warning',
                                     'escape' => false,
                                 ]);
                             elseif ($project->status === 1):
                                 echo $this->Html->link($lockIcon, ['action' => 'changeState', $project->id, 'lock'], [
-                                    'class' => 'text-sec waves-attach waves-effect',
+                                    'class' => 'btn btn-warning',
                                     'escape' => false,
                                 ]);
                             else:
-                                echo '<a class="text-sec disabled"><span class="fa fa-fw"></span></a>';
-                            endif;
-                            ?>
-                        </li>
-                        <li>
+                                ?>
+                                <a class="btn disabled"><?= $this->Html->icon('fw', ['fixed' => false]) ?></a>
                             <?php
+                            endif;
+                            // Close
                             if ($project->status != 3):
-                                echo $this->Html->link('<span class="fa fa-times" title="' . __d('admin', 'Close') . '"></span>', ['action' => 'changeState', $project->id, 'remove'], [
-                                    'class' => 'text-sec waves-attach waves-effect',
+                                echo $this->Html->link($this->Html->icon('times', ['title' => __d('admin', 'Close')]), ['action' => 'changeState', $project->id, 'remove'], [
+                                    'class' => 'btn btn-danger',
+                                    'confirm' => __d('files', 'Are you sure you want to close this ?'),
                                     'escape' => false
                                 ]);
+                            else:
+                                ?>
+                                <a class="btn disabled"><?= $this->Html->icon('fw', ['fixed' => false]) ?></a>
+                            <?php
                             endif;
                             ?>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 <?php
-echo $this->element('layout/paginationlinks');
+$this->end();
+
+// Load the layout element
+// -----------------------
+echo $this->element('layouts/adminindex');
