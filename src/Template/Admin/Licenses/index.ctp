@@ -1,67 +1,80 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Admin/Files/index.ctp
+ * Description:
+ *   Administration - List of files, sortable
+ * Layout element:
+ *   defaultindex.ctp
+ * @todo: add filters
+ * Notes: paginations links are in the table, not in a block.
+ */
+
+// Page title
 $this->assign('title', __d('licenses', 'Admin/Licenses&gt; List'));
 
-$this->start('pageActionsMenu');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New license']), ['action' => 'add'], ['class' => 'btn btn-green waves-attach waves-button waves-effect', 'escape' => false]);
+// Block: Page actions
+// -------------------
+$this->start('pageActions');
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New license']), ['action' => 'add'], ['class' => 'btn btn-green waves-attach waves-button waves-effect', 'escape' => false]);
 $this->end();
 
+// Block: Page content
+// -------------------
 $this->start('pageContent');
 ?>
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th><?php echo $this->Paginator->sort('name', __d('licenses', 'Name')) ?></th>
-            <th><?php echo $this->Paginator->sort('link', __d('licenses', 'Link')) ?></th>
-            <th><?php echo $this->Paginator->sort('post_count', __d('licenses', 'Posts')) ?></th>
-            <th><?php echo $this->Paginator->sort('project_count', __d('licenses', 'Projects')) ?></th>
-            <th><?php echo $this->Paginator->sort('file_count', __d('licenses', 'Files')) ?></th>
-            <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        if (!$licenses->isEmpty()):
-            foreach ($licenses as $license):
-                ?>
-                <tr>
-                    <td><?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . $license->icon . ' fa-fw"></span>', h($license->name)]) ?></td>
-                    <td><?php echo $this->Html->link(h($license->link), h($license->link)) ?></td>
-                    <td><?php echo h($license->post_count) ?></td>
-                    <td><?php echo h($license->project_count) ?></td>
-                    <td><?php echo h($license->file_count) ?></td>
-                    <td class="padding-no">
-                        <ul  class="margin-no nav nav-list">
-                            <li>
+<div class="panel">
+    <table class="table table-condensed table-striped table-bordered">
+        <thead>
+            <tr>
+                <th><?php echo $this->Paginator->sort('name', __d('licenses', 'Name')) ?></th>
+                <th><?php echo $this->Paginator->sort('link', __d('licenses', 'Link')) ?></th>
+                <th><?php echo $this->Paginator->sort('post_count', __d('licenses', 'Posts')) ?></th>
+                <th><?php echo $this->Paginator->sort('project_count', __d('licenses', 'Projects')) ?></th>
+                <th><?php echo $this->Paginator->sort('file_count', __d('licenses', 'Files')) ?></th>
+                <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if (!$licenses->isEmpty()):
+                foreach ($licenses as $license):
+                    ?>
+                    <tr>
+                        <td><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($license->icon), h($license->name)]) ?></td>
+                        <td><?php echo $this->Html->link(h($license->link), h($license->link)) ?></td>
+                        <td><?php echo h($license->post_count) ?></td>
+                        <td><?php echo h($license->project_count) ?></td>
+                        <td><?php echo h($license->file_count) ?></td>
+                        <td>
+                            <div class="btn-group btn-group-xs">
                                 <?php
-                                echo $this->Html->link('<span class="fa fa-pencil" title="' . __d('admin', 'Edit') . '"></span>', ['action' => 'edit', $license->id], [
-                                    'class' => 'text-sec waves-attach waves-effect',
+                                echo $this->Html->link($this->Html->icon('pencil', ['title' => __d('admin', 'Edit')]), ['action' => 'edit', $license->id], [
+                                    'class' => 'btn btn-primary',
                                     'escape' => false
                                 ]);
-                                ?>
-                            </li>
-                            <li>
-                                <?php
-                                echo $this->Form->postLink('<span class="fa fa-trash" title="' . __d('admin', 'Delete') . '"></span>', ['action' => 'delete', $license->id], [
-                                    'confirm' => __d('elabs','Are you sure you want to delete # {0}?', $license->id),
-                                    'class' => 'text-sec waves-attach waves-effect',
+                                echo $this->Form->postLink($this->Html->icon('trash', ['title' => __d('admin', 'Delete')]), ['action' => 'delete', $license->id], [
+                                    'confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id),
+                                    'class' => 'btn btn-danger',
                                     'escape' => false])
                                 ?>
-                            </li>
-                        </ul>
-                    </td>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                endforeach;
+            else:
+                ?>
+                <tr>
+                    <td colspan="7" class="text-center"><?php echo __d('licenses', 'You have no licenses yet. Please add one.') ?></td>
                 </tr>
-                <?php
-            endforeach;
-        else:
-            ?>
-            <tr>
-                <td colspan="7" class="text-center"><?php echo __d('licenses', 'You have no licenses yet. Please add one.') ?></td>
-            </tr>
-        <?php endif; ?>
-    </tbody>
-</table>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
 <?php
 $this->end();
 
+// Load the layout element
+// -----------------------
 echo $this->element('layouts/defaultindex');
-
