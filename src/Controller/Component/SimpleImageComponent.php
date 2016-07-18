@@ -30,7 +30,7 @@ use Cake\Controller\Component;
  * http://www.gnu.org/licenses/gpl.html
  *
  */
-class SimpleImage
+class SimpleImageComponent extends Component
 {
 
     // Original image
@@ -69,8 +69,6 @@ class SimpleImage
             }
         }
         $this->currentImage = $this->image;
-        // Logging this
-        $this->log('Image loaded (' . $filename . ')');
 
         return true;
     }
@@ -109,7 +107,6 @@ class SimpleImage
         if ($permissions != null) {
             chmod($filename, $permissions);
         }
-        $this->log((($original === true) ? 'Original' : 'Copy') . ' image saved successfully.');
 
         return true;
     }
@@ -166,7 +163,6 @@ class SimpleImage
         $ratio = $height / $this->getHeight();
         $width = $this->getWidth() * $ratio;
         $this->resize($width, $height);
-        $this->log('Image resized to height ' . $height);
     }
 
     /**
@@ -181,7 +177,6 @@ class SimpleImage
         $ratio = $width / $this->getWidth();
         $height = $this->getheight() * $ratio;
         $this->resize($width, $height);
-        $this->log('Image resized to width ' . $width);
     }
 
     /**
@@ -196,7 +191,6 @@ class SimpleImage
         $width = $this->getWidth() * $scale / 100;
         $height = $this->getheight() * $scale / 100;
         $this->resize($width, $height);
-        $this->log('(Scale of ' . $scale . ')');
     }
 
     /**
@@ -234,11 +228,10 @@ class SimpleImage
         // Determinating the crop sizes
         $cropX = $width;
         $cropY = $height;
-        //Creating image
+        // Creating image
         $newImage = imagecreatetruecolor($width, $height);
         imagecopyresampled($newImage, $this->currentImage, 0, 0, $startX, $startY, $width, $height, $cropX, $cropY);
         $this->currentImage = $newImage;
-        $this->log("Crop: X=$width, Y=$height");
     }
 
     /**
@@ -257,20 +250,7 @@ class SimpleImage
         $imgY = $this->getHeight();
         $startX = ($imgX - $width) / 2;
         $startY = ($imgY - $height) / 2;
-        $this->log("Center crop: W=$width, H=$height, SX=$startX, SY=$startY");
         $this->crop($width, $height, (int)$startX, (int)$startY);
-    }
-
-    /**
-     * Adds a message to the modification log
-     *
-     * @param string $message Message to add
-     *
-     * @return void
-     */
-    public function log($message)
-    {
-        $this->log[] = $message;
     }
 
     /**
@@ -281,8 +261,6 @@ class SimpleImage
     public function reset()
     {
         $this->currentImage = $this->image;
-        //$this->log=array();
-        $this->log("\n--Re-using base image");
 
         return true;
     }
@@ -322,19 +300,9 @@ class SimpleImage
                 $startY = $this->getHeight() - $w->getHeight() - $margins;
                 break;
         }
-        // Definiying the image size
-        //switch ($type) {
-        // In this case, the watermark is ON the pic.
-        //case 'hover':
         $newImage = $this->currentImage;
         imagecopy($newImage, $w->currentImage, $startX, $startY, 0, 0, $w->getWidth(), $w->getHeight());
         $this->currentImage = $newImage;
-        //break;
-        // In this case, the watermark is on a color band above or under the pic.
-        //case 'extend':
-        //break;
-        //}
-        $this->log("Image watermarked with file $source");
     }
 
     /**
