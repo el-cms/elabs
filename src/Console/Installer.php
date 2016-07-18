@@ -25,6 +25,7 @@ use Exception;
  */
 class Installer
 {
+
     /**
      * Does some routine installation tasks so people don't have to.
      *
@@ -126,8 +127,8 @@ class Installer
     {
         // Change the permissions on a path and output the results.
         $changePerms = function ($path, $perms, $io) {
-            // Get current permissions in decimal format so we can bitmask it.
-            $currentPerms = octdec(substr(sprintf('%o', fileperms($path)), -4));
+            // Get permission bits from stat(2) result.
+            $currentPerms = fileperms($path) & 0777;
             if (($currentPerms & $perms) == $perms) {
                 return;
             }
@@ -177,12 +178,14 @@ class Installer
 
         if ($count == 0) {
             $io->write('No Security.salt placeholder to replace.');
+
             return;
         }
 
         $result = file_put_contents($config, $content);
         if ($result) {
             $io->write('Updated Security.salt value in config/app.php');
+
             return;
         }
         $io->write('Unable to update Security.salt value.');
