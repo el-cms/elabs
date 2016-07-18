@@ -108,7 +108,7 @@ class AppController extends Controller
      *
      * @return void
      */
-    private function _setSFWState($state = 'hide')
+    protected function _setSFWState($state = 'hide')
     {
         $this->request->session()->write('seeNSFW', ($state === 'show') ? true : false);
     }
