@@ -6,14 +6,14 @@
             <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
             <!-- SFW pill-->
             <?php if (!$data['sfw']): ?>
-                <li><a class="nsfw-pill"><?= __('NSFW') ?></a></li>
+                <li><a class="nsfw-pill"><?php echo __('NSFW') ?></a></li>
             <?php endif; ?>
         </ul>
         <!-- Headings -->
         <div class="card-heading">
             <!-- Icon -->
             <div class="card-heading-side">
-                <i class="fa fa-font fa-3x"></i>
+                <?php echo $this->Html->icon('font 3x')?>
             </div>
             <!-- Header -->
             <div class="card-header">
@@ -22,8 +22,8 @@
                 <ul class="card-informations">
                     <?php if (!isset($userInfo) || $userInfo): ?>
                         <li>
-                            <?= __('{0}&nbsp;{1}', [$this->Html->icon('user'), __('Author:')]) ?>
-                            <?= $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
+                            <?php echo __('{0}&nbsp;{1}', [$this->Html->icon('user'), __('Author:')]) ?>
+                            <?php echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
                         </li>
                         <?php
                     endif;

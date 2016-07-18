@@ -3,14 +3,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="uModTitle"><?php echo __('Report something')?></h4>
+                <h4 class="modal-title" id="uModTitle"><?php echo __('Report something') ?></h4>
             </div>
             <?php
             echo $this->Form->create('Report', ['url' => $this->Url->build(['prefix' => false, 'controller' => 'reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
             ?>
             <div class="modal-body" id="modal-content">
                 <div class="alert alert-info">
-                    <i class="fa fa-info-circle fa-2x pull-left"></i><?php echo __d('elabs', ' You have found something wrong or want to react about something ? Your comments are welcome.'); ?>
+                  <?php
+                  echo $this->Html->icon('info-circle 2x', ['class' => 'pull-left']);
+                  echo __d('elabs', ' You have found something wrong or want to react about something ? Your comments are welcome.');
+                  ?>
                 </div>
                 <?php
                 if (is_null($authUser)):
@@ -39,13 +42,13 @@
                 ?>
             </div>
             <div class="modal-footer">
-                <?php
-                echo $this->Form->hidden('url', ['id' => 'reportModalUrl']);
-                echo $this->Form->button(__d('reports', 'Send the report'), array(
-                    'class' => 'btn btn-flat btn-primary',
-                ));
-                ?>
-                <button class="btn btn-flat btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
+              <?php
+              echo $this->Form->hidden('url', ['id' => 'reportModalUrl']);
+              echo $this->Form->button(__d('reports', 'Send the report'), array(
+                  'class' => 'btn btn-primary',
+              ));
+              ?>
+                <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
             </div>
             <?php echo $this->Form->end(); ?>
         </div>
@@ -56,15 +59,15 @@
 $this->append('pageBottomScripts');
 ?>
 <script>
-    // Reports modal
-    $('#reportModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget); // Button that triggered the modal
-      var itemTarget = button.data('itemtarget'); // Button that triggered the modal 
+        // Reports modal
+        $('#reportModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var itemTarget = button.data('itemtarget'); // Button that triggered the modal
 //      var id = button.data('id'); // Extract info from data-* attributes
 //      var action = button.data('action'); // Extract info from data-* attributes
 //      alert(itemTarget);
-      $('#reportModalUrl').val(itemTarget);
-    });
+            $('#reportModalUrl').val(itemTarget);
+        });
 //    function showReportModal(target) {
 //      var request = $.ajax({
 //        type: "POST",

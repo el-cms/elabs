@@ -64,7 +64,7 @@ $this->start('pageContent');
                                 ]);
                             else:
                                 ?>
-                                <a class="btn disabled"><?= $this->Html->icon('fw', ['fixed' => false]) ?></a>
+                                <a class="btn disabled"><?php echo $this->Html->icon('fw', ['fixed' => false]) ?></a>
                             <?php
                             endif;
                             // Close
@@ -76,7 +76,7 @@ $this->start('pageContent');
                                 ]);
                             else:
                                 ?>
-                                <a class="btn disabled"><?= $this->Html->icon('fw', ['fixed' => false]) ?></a>
+                                <a class="btn disabled"><?php echo $this->Html->icon('fw', ['fixed' => false]) ?></a>
                             <?php
                             endif;
                             ?>

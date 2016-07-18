@@ -14,16 +14,16 @@ $this->assign('title', __d('projects', 'Edit project "{0}"', $project->name));
 // Actions block
 // -------------
 $this->start('pageActions');
-echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-trash"></span>', 'Delete']), ['action' => 'delete', $project->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $project->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
+echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('trash'), 'Delete']), ['action' => 'delete', $project->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $project->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
 $this->end();
 
 // Related links block
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('projects', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'Your projects']), ['action' => 'index'], $linkOptions);
-echo $this->Html->link(__d('projects', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New project']), ['action' => 'add'], $linkOptions);
-echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('projects', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Your projects']), ['action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('projects', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New project']), ['action' => 'add'], $linkOptions);
+echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block

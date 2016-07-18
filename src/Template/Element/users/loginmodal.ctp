@@ -7,13 +7,15 @@
             </div>
             <div class="modal-body text-center">
                 <span class="fa-stack fa-5x">
-                    <i class="fa fa-circle-o fa-stack-2x"></i>
-                    <i class="fa fa-user fa-stack-1x text-brand"></i>
+                  <?php
+                  echo $this->Html->icon('circle-o stack-2x');
+                  echo $this->Html->icon('user stack-1x', ['class' => 'text-primary']);
+                  ?>
                 </span>
                 <?php echo $this->element('users/loginform') ?>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-flat btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
+                <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
             </div>
         </div>
     </div>

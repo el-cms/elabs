@@ -106,7 +106,7 @@ $this->start('pageContent');
                                 ]);
                             else:
                                 ?>
-                                <a class="btn disabled"><?= $this->Html->icon('fw', ['fixed' => false]) ?></a>
+                                <a class="btn disabled"><?php echo $this->Html->icon('fw', ['fixed' => false]) ?></a>
                             <?php
                             endif;
                             if ($user->status != 3):
@@ -117,7 +117,7 @@ $this->start('pageContent');
                                 ]);
                             else:
                                 ?>
-                                <a class="btn disabled"><?= $this->Html->icon('fw', ['fixed' => false]) ?></a>
+                                <a class="btn disabled"><?php echo $this->Html->icon('fw', ['fixed' => false]) ?></a>
                             <?php
                             endif;
                             ?>

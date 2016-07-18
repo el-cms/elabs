@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Update incoming...</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body{
+			  color:#88C;
+			  background-color:#333;
+			}
+			.cli{
+			  color: #8C8;
+			}
+			.cli-start{
+			  font-weight:bold;
+			  color:#CCC;
+			}
+			.caret{
+			  height:1em;
+			  border:1px solid #8C8;
+			  background-color: #5A5;
+			  text-decoration: blink;
+			  opacity:.8;
+			  animation: blinker 0.75s ease-in infinite;
+			}
+			@keyframes blinker {  
+			  50% { opacity: 0.0; }
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+[Welcome to experimentslabs.com]
+<span class="cli-start">$</span> <span class="cli">update-website</span>
+<span class="cli-start">&gt; Update incoming, please come back in a few minutes...</span> <span class="caret">&nbsp;</span>
+		</pre>
+	</body>
+</html>

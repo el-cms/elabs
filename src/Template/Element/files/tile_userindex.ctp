@@ -3,25 +3,25 @@
         <!-- Item actions menu -->
         <div class="btn-group btn-panel-title">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php echo $this->Html->icon('ellipsis-v') ?>
+              <?php echo $this->Html->icon('ellipsis-v') ?>
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;View online', '<span class="fa fa-eye fa-fw"></span>'), ['prefix' => false, 'action' => 'view', $file->id], ['class' => ' ', 'escape' => false]); ?>
+                  <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;View online', $this->Html->icon('eye')), ['prefix' => false, 'action' => 'view', $file->id], ['class' => ' ', 'escape' => false]); ?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', '<span class="fa fa-pencil fa-fw"></span>'), ['action' => 'edit', $file->id], ['class' => ' ', 'escape' => false]) ?>
+                  <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', $this->Html->icon('pencil')), ['action' => 'edit', $file->id], ['class' => ' ', 'escape' => false]) ?>
                 </li>
                 <li>
-                    <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', '<span class="fa fa-trash fa-fw text-red "></span>'), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'class' => ' ', 'escape' => false]) ?>
+                  <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', $this->Html->icon('trash-o', ['class' => 'text-danger'])), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'escape' => false]) ?>
                 </li>
             </ul>
         </div>
         <!-- / Item actions menu -->
 
         <!-- Badges and title -->
-        <span class="panel-group-title" data-toggle="collapse" data-parent="#<?= $tileGroupId ?>" href="#<?php echo $tileGroupId . $file->id ?>" aria-expanded="true" aria-controls="<?php echo $tileGroupId . $file->id ?>">
-            <?php if ($file->sfw): ?>
+        <span class="panel-group-title" data-toggle="collapse" data-parent="#<?php echo $tileGroupId ?>" href="#<?php echo $tileGroupId . $file->id ?>" aria-expanded="true" aria-controls="<?php echo $tileGroupId . $file->id ?>">
+          <?php if ($file->sfw): ?>
                 <span class="label label-success"><?php echo __d('elabs', 'Safe') ?></span>
             <?php else: ?>
                 <span class="label label-danger"><?php echo __d('elabs', 'NSFW') ?></span>

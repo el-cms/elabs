@@ -1,5 +1,5 @@
 <div id="page-loader">
-	<div class="loader-centered">
-		<i class="fa fa-spin fa-spinner fa-4x" title="Page is loading"></i>
-	</div>
+    <div class="loader-centered">
+        <?php echo $this->Html->icon('spinner 4x', ['title' => __d('elabs', 'Page is loading...')]) ?>
+    </div>
 </div>

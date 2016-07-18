@@ -23,9 +23,9 @@ $this->end();
 // -------
 $this->start('pageFilters');
 $options = ['escape' => false];
-$active = ['<span class="fa fa-fw fa-check-circle-o"></span>'];
-$inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
-$clear = ['<span class="fa fa-fw fa-times"></span>'];
+$active = [$this->Html->icon('check-circle-o')];
+$inactive = [$this->Html->icon('circle-o')];
+$clear = [$this->Html->icon('times')];
 echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['all', 'all'], $options);
 $icon = ($filterNSFW === 'all') ? $active : $inactive;
 echo $this->Html->link(__d('elabs', '{0}&nbsp;All', $icon), ['all', $filterStatus], $options);
@@ -45,7 +45,7 @@ $this->end();
 // Page actions
 // ------------
 $this->start('pageActions');
-echo $this->Html->link(__d('projects', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New project']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
+echo $this->Html->link(__d('projects', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New project']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
 $this->end();
 
 // Page content
@@ -54,7 +54,7 @@ $this->start('pageContent');
 if (!$projects->isEmpty()):
     $tileGroupId = 'tiles-projects-group';
     ?>
-    <div class="panel-group" id="<?= $tileGroupId ?>" role="tablist" aria-multiselectable="true">
+    <div class="panel-group" id="<?php echo $tileGroupId ?>" role="tablist" aria-multiselectable="true">
         <?php
         foreach ($projects as $project):
             echo $this->element('projects/tile_userindex', ['tileGroupId' => $tileGroupId, 'project' => $project]);

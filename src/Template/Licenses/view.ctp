@@ -16,7 +16,7 @@ $this->assign('title', __d('license', 'License: {0}', h($license->name)));
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('files', 'Name:') ?></strong> <?php echo __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . h($license->icon) . '"></span>', h($license->name)]) ?></li>
+    <li><strong><?php echo __d('files', 'Name:') ?></strong> <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon(h($license->icon)), h($license->name)]) ?></li>
 </ul>
 <?php
 $this->end();
@@ -24,7 +24,7 @@ $this->end();
 // Block: Actions
 // --------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-external-link"></span>', __d('licenses', 'More info online')]), h($license->link), ['escape' => false, "class" => "btn btn-block"]);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('licenses', 'More info online')]), h($license->link), ['escape' => false, "class" => "btn btn-block"]);
 $this->end();
 
 // Block: Page content
@@ -33,9 +33,9 @@ $this->start('pageContent');
 if (!$seeNSFW):
     ?>
     <div class="alert alert-info alert-sm">
-        <?php echo __d('elabs', 'Some entries may be hidden, depending on your NSFW settings.') ?>
+      <?php echo __d('elabs', 'Some entries may be hidden, depending on your NSFW settings.') ?>
     </div>
-<?php endif; ?> 
+<?php endif; ?>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
         <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles {0}', '<span class="badge">' . $this->Number->format($license->post_count) . '</span>') ?></a></li>
@@ -44,27 +44,27 @@ if (!$seeNSFW):
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">
-            <?php
-            if (!empty($license->posts)):
-                foreach ($license->posts as $posts):
-                    echo $this->element('posts/card', ['data' => $posts, 'licenseInfo' => false, 'event' => false]);
-                endforeach;
-            else:
-                echo $this->element('layout/empty', ['alternative' => false]);
-            endif;
-            ?>
+          <?php
+          if (!empty($license->posts)):
+              foreach ($license->posts as $posts):
+                  echo $this->element('posts/card', ['data' => $posts, 'licenseInfo' => false, 'event' => false]);
+              endforeach;
+          else:
+              echo $this->element('layout/empty', ['alternative' => false]);
+          endif;
+          ?>
         </div>
 
         <div class="tab-pane" id="projects-tab">
-            <?php
-            if (!empty($license->projects)):
-                foreach ($license->projects as $projects):
-                    echo $this->element('projects/card', ['data' => $projects, 'licenseInfo' => false, 'event' => false]);
-                endforeach;
-            else:
-                echo $this->element('layout/empty', ['alternative' => false]);
-            endif;
-            ?>
+          <?php
+          if (!empty($license->projects)):
+              foreach ($license->projects as $projects):
+                  echo $this->element('projects/card', ['data' => $projects, 'licenseInfo' => false, 'event' => false]);
+              endforeach;
+          else:
+              echo $this->element('layout/empty', ['alternative' => false]);
+          endif;
+          ?>
         </div>
 
         <div class="tab-pane" id="files-tab">

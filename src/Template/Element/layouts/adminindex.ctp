@@ -36,7 +36,7 @@ foreach ($toolbarContent as $block => $options):
     if (!empty($blockData)):
         ?>
         <div class="btn-group">
-            <a><?= $options['title'] ?></a>
+            <a><?php echo $options['title'] ?></a>
             <?php echo $blockData ?>
         </div>
         <?php
