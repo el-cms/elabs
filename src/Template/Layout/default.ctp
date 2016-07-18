@@ -99,6 +99,9 @@
                 <div class="container">
                     <!-- Flash messages -->
                     <div class="row flash-messages">
+                        <div class="alert alert-warning">
+                            <strong>Note that this website is still under contruction (<a href="https://github.com/el-cms/elabs">sources are on <i class="fa fa-github"></i> Github</a>). Some features may not work or not be implemented. And there are bugs. Thank you.</strong>
+                        </div>
                       <?php echo $this->Flash->render() ?>
                     </div>
                     <!-- / Flash messages -->
