@@ -24,7 +24,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
      * Options :
      *  - fixed: bool, If true, an fa-fw class will be applied (default)
      *
-     * @param string $name Icon name
+     * @param string $name Icon name or space separated names
      * @param array $options An array of options
      *
      * @return string
@@ -36,11 +36,15 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
             'fixed' => true,
             'class' => null
         ];
+        $names = explode(' ', $name);
+        foreach ($names as $string) {
+            $options = $this->injectClasses($options['iconSet'] . '-' . $string, $options);
+        }
         if ($options['fixed']) {
             $options = $this->injectClasses($options['iconSet'] . '-fw', $options);
         }
         unset($options['fixed']);
-        
+
         return parent::icon($name, $options);
     }
 
