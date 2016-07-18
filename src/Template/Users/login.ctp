@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  * File:
  *   src/Templates/Users/login.ctp
@@ -8,15 +8,17 @@
  */
 
 // Page title
-$this->assign('title', __d('elabs', 'Login')); 
+$this->assign('title', __d('elabs', 'Login'));
 ?>
 <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
         <div class="panel">
             <div class="panel-body text-center">
                 <span class="fa-stack fa-5x">
-                    <i class="fa fa-circle-o fa-stack-2x"></i>
-                    <i class="fa fa-user fa-stack-1x text-brand"></i>
+                    <?php
+                    echo $this->Html->icon('circle-o stack-2x');
+                    echo $this->Html->icon('user stack-1x', ['class' => 'text-primary'])
+                    ?>
                 </span>
                 <?php echo $this->element('users/loginform') ?>
             </div>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php echo $this->Html->charset() ?>
+      <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta content="initial-scale=1.0, width=device-width" name="viewport">
         <title>
-            <?php echo $this->fetch('title') . ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
+          <?php echo $this->fetch('title') . ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
         </title>
         <?php echo $this->Html->meta('icon') ?>
 
@@ -22,8 +22,10 @@
         <![endif]-->
     </head>
     <body>
-        <?php echo $this->element('layout/pageloader') ?>
-        <?php echo $this->element('layout/mainmenu') ?>
+      <?php
+      echo $this->element('layout/pageloader');
+      echo $this->element('layout/mainmenu');
+      ?>
         <!-- Navbar -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -31,15 +33,9 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
                         <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-bars"></i>
+                        <?php echo $this->Html->icon('bars') ?>
                     </button>
-                    <?php
-                    echo $this->Html->link(
-                            __('{0} {1}', [
-                        $this->Html->image('logo-32.png'),
-                        Cake\Core\Configure::read('cms.siteName')]
-                            ), '/', ['escape' => false, 'class' => 'navbar-brand'])
-                    ?>
+                    <?php echo $this->Html->link(__('{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
                 </div>
                 <!-- / Header and expand button -->
 
@@ -48,7 +44,7 @@
                     <!-- Main menu -->
                     <div>
                         <ul class="nav navbar-nav">
-                            <?php echo $this->fetch('mainMenu'); ?>
+                          <?php echo $this->fetch('mainMenu'); ?>
                         </ul>
                     </div>
                     <!-- / Main menu -->
@@ -59,26 +55,26 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="avatar">
-                                        <?php
-                                        if (!is_null($authUser)):
-                                            echo $this->Gravatar->generate($authUser['email'], ["size" => "20px"]);
-                                        else:
-                                            ?><span class="fa fa-user"></span><?php
-                                        endif;
-                                        ?>
+                                      <?php
+                                      if (!is_null($authUser)):
+                                          echo $this->Gravatar->generate($authUser['email'], ["size" => "20px"]);
+                                      else:
+                                          echo $this->Html->icon('user');
+                                      endif;
+                                      ?>
                                     </span>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <?php
-                                    if (!is_null($authUser)):
-                                        echo $this->element('users/usermenu');
-                                    else:
-                                        if (!is_null($authUser)):
-                                            echo $this->element('users/usermenu');
-                                        else:
-                                            ?>
-                                            <li><a href="#" data-toggle="modal" data-target="#loginModal"><?= __('{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __('Login/Register')]) ?></a></li>
+                                  <?php
+                                  if (!is_null($authUser)):
+                                      echo $this->element('users/usermenu');
+                                  else:
+                                      if (!is_null($authUser)):
+                                          echo $this->element('users/usermenu');
+                                      else:
+                                          ?>
+                                            <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __('Login/Register')]) ?></a></li>
                                         <?php
                                         endif;
                                     endif;
@@ -87,7 +83,7 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <?php echo $this->fetch('secondMenu'); ?> 
+                          <?php echo $this->fetch('secondMenu'); ?>
                         </ul>
                     </div>
                     <!-- / Right menu -->
@@ -103,7 +99,7 @@
                 <div class="container">
                     <!-- Flash messages -->
                     <div class="row flash-messages">
-                        <?php echo $this->Flash->render() ?>
+                      <?php echo $this->Flash->render() ?>
                     </div>
                     <!-- / Flash messages -->
 
@@ -123,7 +119,7 @@
                 ?>
                 <div class="toolbar">
                     <div class="container">
-                        <?php echo $this->fetch('pageToolbar') ?>
+                      <?php echo $this->fetch('pageToolbar') ?>
                     </div>
                 </div>
                 <?php
@@ -155,7 +151,7 @@
             <div class="container">
                 <div class="clearfix">
                     <div class="footer-logo">
-                        <a href="/"><?= $this->Html->image('logo-32.png', ['alt' => __('Logo'), 'title' => __('{0} logo', Cake\Core\Configure::read('cms.siteName'))]) ?> <?= Cake\Core\Configure::read('cms.siteName') ?></a>
+                        <a href="/"><?php echo $this->Html->image('logo-32.png', ['alt' => __('Logo'), 'title' => __('{0} logo', Cake\Core\Configure::read('cms.siteName'))]) ?> <?php echo Cake\Core\Configure::read('cms.siteName') ?></a>
                     </div>
                     <dl class="footer-nav">
                         <dt class="nav-title">About the site</dt>

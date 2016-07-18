@@ -29,9 +29,9 @@ $this->end();
 // --------------
 $this->start('pageFilters');
 $options = ['escape' => false];
-$active = ['<span class="fa fa-fw fa-check-circle-o"></span>'];
-$inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
-$clear = ['<span class="fa fa-fw fa-times"></span>'];
+$active = [$this->Html->icon('check-circle-o')];
+$inactive = [$this->Html->icon('circle-o')];
+$clear = [$this->Html->icon('times')];
 echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['action' => 'index'], $options);
 $icon = ($filterUpdates === 'yes') ? $active : $inactive;
 echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide updates', $icon), [$filterPosts, $filterProjects, $filterFiles, (($filterUpdates === 'yes') ? 'no' : 'yes')], $options);
@@ -50,19 +50,19 @@ if (!$acts->isEmpty()):
     ?>
     <div class="timeline">
         <dl>
-            <?php
-            $lastDate = new Cake\I18n\Time();
-            foreach ($acts as $act):
-                $model = Cake\Utility\Inflector::variable(Cake\Utility\Inflector::singularize($act['model']));
-                // Filter NSFW
-                if (!is_null($act[$model])):
-                    // Model name
-                    // Act date
-                    $actDate = $act[$model]->modified;
-                    // Date change ?
-                    if (!$this->Time->isSameDay($lastDate, $actDate)):
-                        ?>
-                        <dt><?= $this->Time->format($actDate, "dd/MM/yyyy") ?></dt>
+          <?php
+          $lastDate = new Cake\I18n\Time();
+          foreach ($acts as $act):
+              $model = Cake\Utility\Inflector::variable(Cake\Utility\Inflector::singularize($act['model']));
+              // Filter NSFW
+              if (!is_null($act[$model])):
+                  // Model name
+                  // Act date
+                  $actDate = $act[$model]->modified;
+                  // Date change ?
+                  if (!$this->Time->isSameDay($lastDate, $actDate)):
+                      ?>
+                        <dt><?php echo $this->Time->format($actDate, "dd/MM/yyyy") ?></dt>
                         <?php
                     endif;
                     if ($act['type'] === 'add'):
@@ -70,10 +70,10 @@ if (!$acts->isEmpty()):
                         <dd class="pos-right clearfix">
                             <div class="circ circ-success"></div>
                             <div class="time">
-                                <?= $this->Time->format($actDate, "hh:mm") ?>
+                              <?php echo $this->Time->format($actDate, "hh:mm") ?>
                             </div>
                             <div class="events event-success">
-                                <?= $this->element(strtolower($act['model']) . '/card', ['data' => $act[$model], 'event' => 'true']); ?>
+                              <?php echo $this->element(strtolower($act['model']) . '/card', ['data' => $act[$model], 'event' => 'true']); ?>
                             </div>
                         </dd>
                         <?php
@@ -110,10 +110,10 @@ if (!$acts->isEmpty()):
                         <dd class="pos-left clearfix">
                             <div class="circ circ-<?php echo $class ?>"></div>
                             <div class="time">
-                                <?= $this->Time->format($actDate, "hh:mm") ?>
+                              <?php echo $this->Time->format($actDate, "hh:mm") ?>
                             </div>
                             <div class="events event-<?php echo $class ?>">
-                                <?php echo $this->Html->link(__('{0} {1} {2} {3}', [$this->Html->icon($icon), $config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]), ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']], ['class' => 'full', 'escape' => false]); ?>
+                              <?php echo $this->Html->link(__('{0} {1} {2} {3}', [$this->Html->icon($icon), $config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]), ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']], ['class' => 'full', 'escape' => false]); ?>
                             </div>
                         </dd>
                     <?php
@@ -125,7 +125,7 @@ if (!$acts->isEmpty()):
                     <dd class="pos-right clearfix">
                         <div class="circ circ-nsfw"></div>
                         <div class="events event-nsfw">
-                            <?= $this->element('acts/tile_nsfw', ['model' => $act->model, 'event' => 'true']); ?>
+                            <?php echo $this->element('acts/tile_nsfw', ['model' => $act->model, 'event' => 'true']); ?>
                         </div>
                     </dd>
                 <?php

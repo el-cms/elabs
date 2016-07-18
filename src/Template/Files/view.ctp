@@ -38,7 +38,7 @@ $this->end();
 // Block: Actions
 // --------------
 $this->start('pageActions');
-echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-download"></span>', __d('files', 'Download')]), ['action' => 'download', $file->id], ['escape' => false, 'class' => 'btn btn-block']);
+echo $this->html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('download'), __d('files', 'Download')]), ['action' => 'download', $file->id], ['escape' => false, 'class' => 'btn btn-block']);
 $this->end();
 
 // Block: Page content

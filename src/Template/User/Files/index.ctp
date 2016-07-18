@@ -24,9 +24,9 @@ $this->end();
 // -------
 $this->start('pageFilters');
 $options = ['escape' => false];
-$active = ['<span class="fa fa-fw fa-check-circle-o"></span>'];
-$inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
-$clear = ['<span class="fa fa-fw fa-times"></span>'];
+$active = [$this->Html->icon('check-circle-o')];
+$inactive = [$this->Html->icon('circle-o')];
+$clear = [$this->Html->icon('times')];
 echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['all', 'all'], $options);
 $icon = ($filterNSFW === 'safe') ? $active : $inactive;
 echo $this->Html->link(__d('elabs', '{0}&nbsp;Only safe files', $icon), ['safe', $filterStatus], $options);
@@ -39,7 +39,7 @@ $this->end();
 // Page actions
 // ------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'Add a file']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'Add a file']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
 $this->end();
 
 // Page content
@@ -48,7 +48,7 @@ $this->start('pageContent');
 if (!$files->isEmpty()):
     $tileGroupId = 'tiles-files-group';
     ?>
-    <div class="panel-group" id="<?= $tileGroupId ?>" role="tablist" aria-multiselectable="true">
+    <div class="panel-group" id="<?php echo $tileGroupId ?>" role="tablist" aria-multiselectable="true">
         <?php
         foreach ($files as $file):
             $config = $this->Items->fileConfig($file['filename']);

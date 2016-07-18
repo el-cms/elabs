@@ -2,7 +2,7 @@
     <div class="card card-user">
         <div class="card-main">
             <div class="card-header-side">
-                <?php echo $this->Gravatar->generate($user['email'], ['image-options' => ['class' => 'img-rounded']]) ?>
+              <?php echo $this->Gravatar->generate($user['email'], ['image-options' => ['class' => 'img-rounded']]) ?>
             </div>
             <!-- Header -->
             <div class="card-header">
@@ -16,9 +16,11 @@
             </div>
         </div>
         <div class="card-content">
-            <?php echo $this->Html->link(__d('users', "{0}&nbsp;{1} Articles", '<span class="fa fa-font"></span>', $user['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-flat   btn-block', 'escape' => false]) ?>
-            <?php echo $this->Html->link(__d('users', '{0}&nbsp;{1} Projects', '<span class="fa fa-cogs"></span>', $user['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-flat   btn-block', 'escape' => false]) ?>
-            <?php echo $this->Html->link(__d('users', '{0}&nbsp;{1} Files', '<span class="fa fa-file"></span>', $user['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-flat   btn-block', 'escape' => false]) ?>
+            <?php
+            echo $this->Html->link(__d('users', "{0}&nbsp;{1} Articles", $this->Html->icon('font'), $user['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            echo $this->Html->link(__d('users', '{0}&nbsp;{1} Projects', $this->Html->icon('cogs'), $user['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            echo $this->Html->link(__d('users', '{0}&nbsp;{1} Files', $this->Html->icon('file'), $user['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            ?>
         </div>
     </div>
 </div>

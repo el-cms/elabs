@@ -1,5 +1,5 @@
 <div class="dev-block">
-  <span class="fa fa-cog fa-spin fa-2x fa-fw"></span>
-  <p><?php echo __d('elabs', 'This feature is under development.') ?></p>
+    <?php echo $this->Html->icon('cog spin 2x') ?>
+    <p><?php echo __d('elabs', 'This feature is under development.') ?></p>
 </div>
 <br/>

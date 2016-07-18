@@ -31,33 +31,31 @@ $this->end();
 $this->start('pageActions');
 ?>
 <div class="btn-group btn-group-vertical btn-block">
-    <?php
-    if ($user->status != 3):
-        if ($user->status === 0):
-            echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', [$this->Html->icon('check'), __d('admin', 'Activate')]), ['action' => 'activate', $user->id], ['class' => 'btn btn-warning', 'escape' => false]);
-        endif;
-        ?>
-        <?php
-        $unlockIcon = '<span class="fa fa-unlock-alt fa-fw" title="' . __d('admin', 'Unlock') . '"></span>';
-        $lockIcon = '<span class="fa fa-lock fa-fw" title="' . __d('admin', 'Lock') . '"></span>';
-        if ($user->status === 2):
-            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$unlockIcon, __d('admin', 'Unlock')]), ['action' => 'lock', $user->id, 'unlock'], ['class' => 'btn btn-warning', 'escape' => false]);
-        elseif ($user->status === 1):
-            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$lockIcon, __d('admin', 'Lock')]), ['action' => 'lock', $user->id, 'lock'], ['class' => 'btn btn-warning', 'escape' => false]);
-        else:
-            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-lock"></span>', 'Lock/unlock']), '#', ['class' => 'text-sec btn-warning disabled', 'escape' => false]);
-        endif;
-        ?>
-        <?php
-        if ($user->status != 3):
-            echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', ['<span class="fa fa-times"></span>', __d('admin', 'Close')]), ['action' => 'close', $user->id], ['confirm' => __d('admin', 'Are you sure you want to close this account ?'), 'class' => 'btn btn-danger', 'escape' => false]);
-        endif;
-        // List
-        echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List users']), ['action' => 'index'], ['class' => 'btn btn-primary', 'escape' => false]);
-    else:
-        ?>
+  <?php
+  if ($user->status != 3):
+      if ($user->status === 0):
+          echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', [$this->Html->icon('check'), __d('admin', 'Activate')]), ['action' => 'activate', $user->id], ['class' => 'btn btn-warning', 'escape' => false]);
+      endif;
+      $unlockIcon = $this->Html->icon('unlock', ['title' => __d('admin', 'Unlock')]);
+      $lockIcon = $this->Html->icon('lock', ['title' => __d('admin', 'Lock')]);
+      if ($user->status === 2):
+          echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$unlockIcon, __d('admin', 'Unlock')]), ['action' => 'lock', $user->id, 'unlock'], ['class' => 'btn btn-warning', 'escape' => false]);
+      elseif ($user->status === 1):
+          echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$lockIcon, __d('admin', 'Lock')]), ['action' => 'lock', $user->id, 'lock'], ['class' => 'btn btn-warning', 'escape' => false]);
+      else:
+          echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('lock'), 'Lock/unlock']), '#', ['class' => 'text-sec btn-warning disabled', 'escape' => false]);
+      endif;
+      ?>
+      <?php
+      if ($user->status != 3):
+          echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', [$this->Html->icon('times'), __d('admin', 'Close')]), ['action' => 'close', $user->id], ['confirm' => __d('admin', 'Are you sure you want to close this account ?'), 'class' => 'btn btn-danger', 'escape' => false]);
+      endif;
+      // List
+      echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List users']), ['action' => 'index'], ['class' => 'btn btn-primary', 'escape' => false]);
+  else:
+      ?>
         <p class="muted">
-            <?php echo __d('users', 'This account has been closed, so no further actions are available.'); ?>
+          <?php echo __d('users', 'This account has been closed, so no further actions are available.'); ?>
         </p>
     <?php
     endif;
@@ -71,7 +69,7 @@ $this->start('pageContent');
 if ($user->has('bio')):
     ?>
     <div class="well">
-        <?php echo $this->Html->displayMD($user->bio) ?>    
+      <?php echo $this->Html->displayMD($user->bio) ?>
     </div>
     <?php
 endif;
@@ -84,27 +82,27 @@ endif;
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">
-            <?php
-            if (!empty($user->posts)):
-                foreach ($user->posts as $posts):
-                    echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false, 'event' => false]);
-                endforeach;
-            else:
-                echo $this->element('layout/empty', ['alternative' => false]);
-            endif;
-            ?>
+          <?php
+          if (!empty($user->posts)):
+              foreach ($user->posts as $posts):
+                  echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false, 'event' => false]);
+              endforeach;
+          else:
+              echo $this->element('layout/empty', ['alternative' => false]);
+          endif;
+          ?>
         </div>
 
         <div class="tab-pane" id="projects-tab">
-            <?php
-            if (!empty($user->projects)):
-                foreach ($user->projects as $projects):
-                    echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false, 'event' => false]);
-                endforeach;
-            else:
-                echo $this->element('layout/empty', ['alternative' => false]);
-            endif;
-            ?>
+          <?php
+          if (!empty($user->projects)):
+              foreach ($user->projects as $projects):
+                  echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false, 'event' => false]);
+              endforeach;
+          else:
+              echo $this->element('layout/empty', ['alternative' => false]);
+          endif;
+          ?>
         </div>
 
         <div class="tab-pane" id="files-tab">

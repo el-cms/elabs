@@ -24,9 +24,9 @@ $this->end();
 // -------
 $this->start('pageFilters');
 $options = ['escape' => false];
-$active = ['<span class="fa fa-fw fa-check-circle-o"></span>'];
-$inactive = ['<span class="fa fa-fw fa-circle-o"></span>'];
-$clear = ['<span class="fa fa-fw fa-times"></span>'];
+$active = [$this->Html->icon('check-circle-o')];
+$inactive = [$this->Html->icon('circle-o')];
+$clear = [$this->Html->icon('times')];
 $icon = ($filterNSFW === 'all') ? $active : $inactive;
 echo $this->Html->link(__d('elabs', '{0}&nbsp;Show all', $icon), ['all', $filterPub], $options);
 $icon = ($filterNSFW === 'safe') ? $active : $inactive;
@@ -49,7 +49,7 @@ $this->end();
 // Page actions
 // ------------
 $this->start('pageActions');
-echo $this->Html->link(__d('posts', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-plus"></span>', 'New article']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
+echo $this->Html->link(__d('posts', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New article']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
 $this->end();
 
 // Page content
@@ -58,7 +58,7 @@ $this->start('pageContent');
 if (!$posts->isEmpty()):
     $tileGroupId = 'tiles-posts-group';
     ?>
-    <div class="panel-group" id="<?= $tileGroupId ?>" role="tablist" aria-multiselectable="true">
+    <div class="panel-group" id="<?php echo $tileGroupId ?>" role="tablist" aria-multiselectable="true">
         <?php
         foreach ($posts as $post):
             echo $this->element('posts/tile_userindex', ['tileGroupId' => $tileGroupId, 'post' => $post]);
