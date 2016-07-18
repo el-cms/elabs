@@ -25,7 +25,7 @@
         <?php echo $this->element('layout/pageloader') ?>
         <?php echo $this->element('layout/mainmenu') ?>
         <!-- Navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-user navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Header and expand button -->
                 <div class="navbar-header">
@@ -98,7 +98,7 @@
         <!-- / Navbar-->
 
         <!-- Main content -->
-        <div class="page-header">
+        <div class="page-header page-header-user">
             <div class="container-fluid">
                 <div class="container">
                     <!-- Flash messages -->
@@ -143,7 +143,7 @@
         <!-- / Report modal -->
 
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="footer footer-user">
             <div class="container">
                 <div class="clearfix">
                     <div class="footer-logo">

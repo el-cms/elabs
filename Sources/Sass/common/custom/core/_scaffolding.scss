@@ -21,13 +21,24 @@ body{
         border-bottom:0;
     }
 }
-
+.page-header-admin{
+    background-color:$navbar-admin-bg;
+    h1{
+        color:$navbar-admin-text-color;
+    }
+}
+.page-header-user{
+    background-color: $navbar-user-bg;
+    h1{
+        color:$navbar-user-text-color;
+    }
+}
 .page-content{
     // For a "sticky footer" effect
     flex:1;
 }
 
-.footer{
+.footer, .footer-admin, .footer-user{
     margin-top:30px;
     background-color:$navbar-default-bg;
     .footer-logo{
@@ -46,6 +57,44 @@ body{
             color: darken($navbar-default-bg, 20%);
             &:hover{
                 color: darken($navbar-default-bg, 30%);
+            }
+        }
+    }
+}
+.footer-admin{
+    background-color:$navbar-admin-bg;
+    .footer-logo{
+        a{
+            color: $navbar-admin-link-color;
+        }
+    }
+    .footer-nav{
+        dt{
+            color: darken($navbar-admin-text-color, 30%);
+        }
+        a{
+            color: $navbar-admin-link-color;
+            &:hover{
+                color: $navbar-admin-link-hover-color;
+            }
+        }
+    }
+}
+.footer-user{
+    background-color:$navbar-user-bg;
+    .footer-logo{
+        a{
+            color: $navbar-user-link-color;
+        }
+    }
+    .footer-nav{
+        dt{
+            color: darken($navbar-user-text-color, 30%);
+        }
+        a{
+            color: $navbar-user-link-color;
+            &:hover{
+                color: $navbar-user-link-hover-color;
             }
         }
     }

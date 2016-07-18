@@ -7,6 +7,17 @@ $css-path: "..";
 $mdfont-path: "../fonts";
 $fa-font-path:"../fonts";
 
+// Custom vars for admin adn user layouts
+$navbar-admin-bg: #C33;
+$navbar-admin-text-color: darken($navbar-admin-bg, 15%);
+$navbar-admin-link-color: darken($navbar-admin-text-color, 15%);
+$navbar-admin-link-hover-color:lighten($navbar-admin-link-color, 10%);
+
+$navbar-user-bg: #380;
+$navbar-user-text-color: darken($navbar-user-bg, 15%);
+$navbar-user-link-color: darken($navbar-user-text-color, 15%);
+$navbar-user-link-hover-color:lighten($navbar-user-link-color, 10%);
+
 // Bootstrap vars
 //== Navbar
 $navbar-default-bg:                #F6BB42;
