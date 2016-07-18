@@ -1,8 +1,7 @@
 <?php
-
 return ['cms' => [
         'siteName' => 'YourSite',
-        'isRegistrationOpen'=>true,
+        'isRegistrationOpen' => true,
         'defaultRole' => 'author',
         'defaultUserStatus' => 0,
         'defaultLockedUser' => false,
@@ -10,7 +9,6 @@ return ['cms' => [
         'defaultMinPassLenght' => 8,
         'defaultMinUserNameLenght' => 6,
         'see_nsfw' => 1,
-        'escapeMarkdown'=>true,
+        'escapeMarkdown' => true,
     ]
 ];
-

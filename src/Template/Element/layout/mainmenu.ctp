@@ -22,7 +22,7 @@ $this->end();
 $this->start('secondMenu');
 ?>
 <li>
-    <?php echo $this->Html->Link(($see_nsfw === true) ? __d('elabs', 'Hide NSFW') : __d('elabs', 'Show NSFW'), ['action' => 'switchSFW', ($see_nsfw === true) ? 'hide' : 'show']) ?>
+    <?php echo $this->Html->Link(($seeNSFW === true) ? __d('elabs', 'Hide NSFW') : __d('elabs', 'Show NSFW'), ['action' => 'switchSFW', ($seeNSFW === true) ? 'hide' : 'show']) ?>
 </li>
 <li>
     <?php echo $this->Html->reportLink(null, ['title' => __d('reports', 'Report this page'), 'class' => '']) ?>

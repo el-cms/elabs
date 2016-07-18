@@ -12,7 +12,11 @@ use Cake\Filesystem\File;
  */
 class FilesController extends UserAppController
 {
-
+    /**
+     * Initializes and loads extra components
+     *
+     * @return void
+     */
     public function initialize()
     {
         parent::initialize();
@@ -22,6 +26,9 @@ class FilesController extends UserAppController
 
     /**
      * Index method
+     *
+     * @param string $nsfw NSFW filter
+     * @param string $status Status filter
      *
      * @return void
      */
@@ -71,7 +78,6 @@ class FilesController extends UserAppController
             } elseif (!$this->UpManager->checkFileSize($fileInfos['size'])) {
                 $this->Flash->error(__d('files', 'File is too long. Max file size is {0}Kb', $this->UpManager->maxSize / 1024));
             } else {
-
                 if (in_array($pathInfo['extension'], $this->UpManager->accepted['image'])) {
                     $this->UpManager->preparePath('thumb');
                     // Make some thumbs
@@ -104,7 +110,7 @@ class FilesController extends UserAppController
                     if ($this->Files->save($file)) {
                         $this->Flash->success(__d('files', 'The file has been saved.'));
                         $this->Act->add($file->id, 'add', 'Files');
-                        return $this->redirect(['action' => 'index']);
+                        $this->redirect(['action' => 'index']);
                     } else {
 //                        debug($file->errors());die;
                         $this->Flash->error(__d('elabs', 'The file could not be saved. Please, try again.'));
@@ -121,7 +127,9 @@ class FilesController extends UserAppController
      * Edit method
      *
      * @param string|null $id File id.
+     *
      * @return void Redirects on successful edit, renders view otherwise.
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -134,7 +142,7 @@ class FilesController extends UserAppController
             if ($this->Files->save($file)) {
                 $this->Flash->success(__d('file', 'The file has been saved.'));
                 $this->Act->add($file->id, 'edit', 'Files');
-                return $this->redirect(['action' => 'index']);
+                $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('files', 'The file could not be saved. Please, try again.'));
                 $errors = $file->errors();
@@ -154,7 +162,9 @@ class FilesController extends UserAppController
      * Delete method
      *
      * @param string|null $id File id.
+     *
      * @return void Redirects to index.
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
@@ -166,12 +176,11 @@ class FilesController extends UserAppController
             ]
         ]);
         if ($this->Files->delete($file)) {
-            //@todo Insert some logic to delete the files phisically too
             $this->Flash->success(__d('files', 'The file has been deleted.'));
             $this->Act->remove($id);
         } else {
             $this->Flash->error(__d('files', 'The file could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        $this->redirect(['action' => 'index']);
     }
 }

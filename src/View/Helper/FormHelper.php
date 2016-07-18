@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,7 +17,12 @@ class FormHelper extends \BootstrapUI\View\Helper\FormHelper
 {
 
     /**
-     * Custom datetime
+     * Custom datetime widget
+     *
+     * @param string $fieldName Name of the field
+     * @param array $options An array of options
+     *
+     * @return string HTML widget
      */
     public function dateTime($fieldName, array $options = [])
     {
@@ -38,9 +42,18 @@ class FormHelper extends \BootstrapUI\View\Helper\FormHelper
         ];
         $options = $this->_initInputField($fieldName, $options);
         $options = $this->_datetimeOptions($options);
+
         return $this->dateTimeWidget('datetime', $options);
     }
 
+    /**
+     * Creates the datetime widget
+     *
+     * @param type $fieldName Field name
+     * @param array $options Array of options
+     *
+     * @return string
+     */
     public function dateTimeWidget($fieldName, array $options = [])
     {
         $options['type'] = 'text';
@@ -59,7 +72,7 @@ class FormHelper extends \BootstrapUI\View\Helper\FormHelper
                     inline:true,
                     focusOnShow:false,
                     stepping: 15,
-                    '.(($options['notAfterNow'])?'maxDate:moment(),':'').'
+                    ' . (($options['notAfterNow']) ? 'maxDate:moment(),' : '') . '
                     icons: {
                         time: "fa fa-clock-o",
                         date: "fa fa-calendar",

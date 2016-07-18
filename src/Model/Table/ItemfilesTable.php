@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Itemfile;
@@ -69,6 +70,7 @@ class ItemfilesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['file_id'], 'Files'));
+
         return $rules;
     }
 }

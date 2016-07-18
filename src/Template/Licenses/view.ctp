@@ -30,7 +30,7 @@ $this->end();
 // Block: Page content
 // -------------------
 $this->start('pageContent');
-if (!$see_nsfw):
+if (!$seeNSFW):
     ?>
     <div class="alert alert-info alert-sm">
         <?php echo __d('elabs', 'Some entries may be hidden, depending on your NSFW settings.') ?>

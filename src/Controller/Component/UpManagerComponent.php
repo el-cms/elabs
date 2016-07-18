@@ -3,14 +3,15 @@
 namespace App\Controller\Component;
 
 use Cake\Controller\Component;
-use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
+use Cake\Filesystem\Folder;
 
 /**
  * CakePHP FileComponent
  */
 class UpManagerComponent extends Component
 {
+
     public $components = ['Auth'];
     // This should be moved in config file from here
     public $accepted = [
@@ -32,8 +33,8 @@ class UpManagerComponent extends Component
 
     /**
      * Returns an unique filename for the new file.
-     * 
-     * @param string $original
+     *
+     * @param string $ext Desired extension
      * @return string New filename
      */
     public function makeFileName($ext)
@@ -43,9 +44,9 @@ class UpManagerComponent extends Component
 
     /**
      * Checks if the given file ext is in the allowed exts array
-     * 
+     *
      * @param string $file Filename
-     * @return boolean
+     * @return bool
      */
     public function checkFileType($file)
     {
@@ -54,13 +55,14 @@ class UpManagerComponent extends Component
                 return true;
             }
         }
+
         return false;
     }
 
     /**
      * Return true if the given file size is smaller or equal to the maximum file
      * size allowed
-     * 
+     *
      * @param int $size File size
      * @return string Created path
      */
@@ -72,7 +74,7 @@ class UpManagerComponent extends Component
     /**
      * Creates the destination dir and returns an URL-friendly string to get to
      * the file, from the webroot dir (i.e: uploads/some/path/
-     * 
+     *
      * @param string $type file or thumbnail
      * @return type
      */
@@ -95,6 +97,7 @@ class UpManagerComponent extends Component
             // Path for files on FS
             $this->currentThumbPath = preg_replace("@\{DS}@", DS, $this->currentThumbPath);
             new Folder(WWW_ROOT . $this->baseDir . DS . $this->currentThumbPath, true, '0755');
+
             return $this->currentThumbPathForDB;
         } elseif ($type === 'file') {
             $this->currentFilePath = $this->filePath;
@@ -107,16 +110,17 @@ class UpManagerComponent extends Component
             // Path for files on FS
             $this->currentFilePath = preg_replace("@\{DS}@", DS, $this->currentFilePath);
             new Folder(WWW_ROOT . $this->baseDir . DS . $this->currentFilePath, true, '0755');
+
             return $this->currentFilePathForDB;
         }
     }
 //    public function path(){
-//        
+//
 //        return APP.DS.'webroot'.DS.'files'.$this->Auth->user('username');
 //    }
-//    
+//
 //    public function preparePath($path){
-//        
+//
 //        return new Folder($path, true, '777');
 //    }
 }

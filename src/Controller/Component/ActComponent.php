@@ -7,12 +7,15 @@ use Cake\ORM\TableRegistry;
 
 /**
  * Component to handle simple acts action.
- * 
+ *
  */
 class ActComponent extends Component
 {
+
     /**
      * Configuration array
+     *
+     * @var array
      */
     public $config = [
         // A list of actions and synonyms
@@ -25,13 +28,16 @@ class ActComponent extends Component
 
     /**
      * Additionnal components used
+     *
      * @var array
      */
     public $components = ['Auth'];
 
     /**
      * Constructor, basically loads the Acts Model
-     * 
+     *
+     * @param array $config Configuration array
+     *
      * @return void
      */
     public function initialize(array $config)
@@ -43,11 +49,11 @@ class ActComponent extends Component
 
     /**
      * Adds an element to the Acts table
-     * 
+     *
      * @param mixed $foreignKey Target foreign key
      * @param string $type Target action
      * @param string $model Target model
-     * 
+     *
      * @return bool
      */
     public function add($foreignKey, $type = null, $model = null)
@@ -60,7 +66,7 @@ class ActComponent extends Component
             $type = $this->Controller->request->params['action'];
         }
 //        $uid = $this->Auth->user('id');
-        $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $foreignKey, 'model' => $model, 'type' => $type]);//, 'user_id' => $uid]);
+        $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $foreignKey, 'model' => $model, 'type' => $type]); //, 'user_id' => $uid]);
         if ($this->Acts->save($act)) {
             return true;
         } else {
@@ -70,10 +76,10 @@ class ActComponent extends Component
 
     /**
      * Removes all acts with the given foreign key
-     * 
+     *
      * @param int $foreignKey Target foreign key
      * @param string $model Model name. If empty, current controller will be used.
-     * @param type $self If false, don't take care of the owner. To be used in admin only.
+     *
      * @return bool
      */
     public function remove($foreignKey, $model = null)//, $self = true)
@@ -90,9 +96,12 @@ class ActComponent extends Component
 
     /**
      * Removes all acts for a given user. To be used when user closes his account
-     * 
+     *
      * @param int $uid User ID. If null, currently logged-in user id will be used.
-     * @return bool
+     *
+     * @throws NotImplementedException
+     *
+     * @return void
      */
     public function removeAll($uid = null)
     {

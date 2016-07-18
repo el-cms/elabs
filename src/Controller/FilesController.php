@@ -31,7 +31,7 @@ class FilesController extends AppController
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['created', 'name', 'modified'],
         ];
-        if (!$this->request->session()->read('see_nsfw')) {
+        if (!$this->request->session()->read('seeNSFW')) {
             $findOptions['conditions']['sfw'] = true;
         }
         $this->paginate = $findOptions;
@@ -52,7 +52,7 @@ class FilesController extends AppController
             'contain' => ['Users', 'Licenses', 'Itemfiles']
         ]);
         // It will be great when i'll find a way to nicely handle exceptions/errors
-        if (!$file->sfw && !$this->request->session()->read('see_nsfw')) {
+        if (!$file->sfw && !$this->request->session()->read('seeNSFW')) {
             // And make a proper common error page
             $this->viewBuilder()->template('nsfw');
         } else {
@@ -64,18 +64,15 @@ class FilesController extends AppController
     /**
      * Forces user to download the file
      * @param int $id File id
-     * @return void
+     *
+     * @return \Cake\Network\Response
      */
     public function download($id)
     {
-        // TODO: do some logging, save Download counter
-
         $file = $this->Files->get($id);
-        $this->response->file(
-                'uploads/' . $file['filename'], ['download' => true, 'name' => $file['name']]
-        );
-        // Return response object
-        // to prevent controller from trying to render a view.
+        $this->response->file('uploads/' . $file['filename'], ['download' => true, 'name' => $file['name']]);
+
+        // Return response object to prevent controller from trying to render a view.
         return $this->response;
     }
 }

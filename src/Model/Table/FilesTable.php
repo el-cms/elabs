@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\File;
@@ -48,10 +49,10 @@ class FilesTable extends Table
         $this->hasMany('Itemfiles', [
             'foreignKey' => 'file_id'
         ]);
-        
+
         $this->hasMany('Acts', [
-            'foreignKey'=>'fkid',
-            'conditions'=>['Acts.model'=>'Files']
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Files']
         ]);
     }
 
@@ -110,6 +111,7 @@ class FilesTable extends Table
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['license_id'], 'Licenses'));
+
         return $rules;
     }
 }

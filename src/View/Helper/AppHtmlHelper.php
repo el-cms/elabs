@@ -10,21 +10,23 @@ use Cake\Core\Configure;
  */
 class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
 {
+
     public $helpers = ['Url', 'Html', 'Markdown'];
     public $config = [];
 
     /**
      * Creates an icon.
-     * 
+     *
      * This method surcharges the icon() method from BootstrapUI :
      *  - fixed width by default
      *  - fontAwesome by default
-     * 
-     * Additionnal options :
-     *  - fixed If true, an fa-fw class will be applied (default)
-     * 
+     *
+     * Options :
+     *  - fixed: bool, If true, an fa-fw class will be applied (default)
+     *
      * @param string $name Icon name
-     * @param array $options
+     * @param array $options An array of options
+     *
      * @return string
      */
     public function icon($name, array $options = [])
@@ -38,12 +40,25 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
             $options = $this->injectClasses($options['iconSet'] . '-fw', $options);
         }
         unset($options['fixed']);
+        
         return parent::icon($name, $options);
     }
 
+    /**
+     * Joins the differents strings from a given array, with a separator
+     *
+     * Options:
+     *   - uppercase: bool, Sets the first letter of the final string uppercase.
+     *   - and: bool, Set the last separator as a "and" string
+     *
+     * @param array $array The array of strings
+     * @param array $options An array of options
+     *
+     * @return string
+     */
     public function arrayToString(array $array, array $options = [])
     {
-        $options+=[
+        $options += [
             'uppercase' => true,
             'and' => true,
         ];
@@ -58,23 +73,23 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
             if ($i == $count && $options['and'] && $i > 1) {
                 $separator = __(' et ');
             }
-            $out.=$separator . (($options['uppercase']) ? ucfirst($item) : $item);
+            $out .= $separator . (($options['uppercase']) ? ucfirst($item) : $item);
             $i++;
         }
+
         return $out;
     }
 
     /**
      * Create a link to display the page report modal
-     * 
+     *
+     * Options:
+     *   - icon:  mixed (string, bool), null, an icon to place before the link
+     *
      * @param mixed $target string or array, the current page
      * @param array $options an array of options
+     *
      * @return string
-     * 
-     * Options:
-     *  icon :  mixed (string, bool), null, an icon to place before the link
-     *  
-     * 
      */
     public function reportLink($target = null, $options = [])
     {
@@ -99,32 +114,31 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
         $options['data-toggle'] = 'modal';
         $options['data-target'] = '#reportModal';
         $options['data-itemtarget'] = (is_null($target) ? $this->Url->build() : $target); // The current page
+
         return $this->Html->Link($linkTitle, '#', $options);
     }
 
     /**
      * Display markdown text
-     * 
-     * @param string $text
-     * @param array $options
+     *
+     * Options:
+     *   - raw: bool, false, return raw text with no formatting (text will be escaped)
+     *   - protect: bool, false, Escape content. this value will overwrite cms.escapeMarkdown
+     *
+     * @param string $text Raw markdown text
+     * @param array $options An array of options
+     *
      * @return string
-     * 
-     * Options: 
-     *  raw : bool, false, return raw text with no formatting (text will be escaped)
-     *  protect : bool, false, Escape content. this value will overwrite cms.escapeMarkdown
      */
     public function displayMD($text, $options = [])
     {
-        $options+=[
+        $options += [
             'raw' => false,
             'protect' => false //
         ];
-
-
         if ($options['protect'] === true || \Cake\Core\Configure::read('cms.escapeMarkdown') === true || $options['raw'] === true) {
             $text = h($text);
         }
-
         if (!$options['raw']) {
             $text = $this->Markdown->transform($text);
         }

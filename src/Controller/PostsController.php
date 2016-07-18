@@ -32,7 +32,7 @@ class PostsController extends AppController
             'sortWhitelist' => ['publication_date', 'title'],
         ];
         // SFW
-        if (!$this->request->session()->read('see_nsfw')) {
+        if (!$this->request->session()->read('seeNSFW')) {
             $findOptions['conditions']['sfw'] = true;
         }
         $this->paginate = $findOptions;
@@ -58,7 +58,7 @@ class PostsController extends AppController
         ]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors
-        if (!$post->sfw && !$this->request->session()->read('see_nsfw')) {
+        if (!$post->sfw && !$this->request->session()->read('seeNSFW')) {
             // And make a proper common error page
             $this->viewBuilder()->template('nsfw');
         } else {

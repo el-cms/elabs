@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\ProjectUser;
@@ -68,6 +69,7 @@ class ProjectUsersTable extends Table
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['project_id'], 'Projects'));
+
         return $rules;
     }
 }

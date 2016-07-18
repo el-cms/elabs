@@ -16,6 +16,9 @@ class PostsController extends UserAppController
     /**
      * Index method
      *
+     * @param string $nsfw NSFW filter
+     * @param string $published Publication state filter
+     *
      * @return void
      */
     public function index($nsfw = 'all', $published = 'all')
@@ -69,7 +72,7 @@ class PostsController extends UserAppController
                 if ($post->status === 1) {
                     $this->Act->add($post->id, 'add', 'Posts');
                 }
-                return $this->redirect(['action' => 'index']);
+                $this->redirect(['action' => 'index']);
             } else {
                 $errors = $post->errors();
                 $errorMessages = [];
@@ -97,7 +100,6 @@ class PostsController extends UserAppController
             'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-
             // Old publication state
             $oldState = $post->status;
             if ($oldState === 0 && $this->request->data['status'] === '1') {
@@ -118,7 +120,7 @@ class PostsController extends UserAppController
                     $this->Act->add($post->id, 'edit', 'Posts');
                     $this->Flash->success(__d('posts', 'Your article has been updated.'));
                 }
-                return $this->redirect(['action' => 'index']);
+                $this->redirect(['action' => 'index']);
             } else {
                 $errors = $post->errors();
                 $errorMessages = [];
@@ -149,11 +151,11 @@ class PostsController extends UserAppController
             ]
         ]);
         if ($this->Posts->delete($post)) {
-            $this->Flash->success(__d('posts','Your article has been deleted.'));
+            $this->Flash->success(__d('posts', 'Your article has been deleted.'));
             $this->Act->remove($id);
         } else {
-            $this->Flash->error(__d('posts','Your article could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('posts', 'Your article could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        $this->redirect(['action' => 'index']);
     }
 }

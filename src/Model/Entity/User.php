@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Model\Entity;
 
-use Cake\ORM\Entity;
 use Cake\Auth\DefaultPasswordHasher;
+use Cake\ORM\Entity;
 
 /**
  * User Entity.
@@ -17,7 +18,7 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property string $role
- * @property bool $see_nsfw
+ * @property bool $seeNSFW
  * @property int $status
  * @property int $post_count
  * @property int $project_count
@@ -45,11 +46,23 @@ class User extends Entity
         'id' => false,
     ];
 
+    /**
+     * Hashes a password
+     *
+     * @param string $password Password to hash
+     *
+     * @return string
+     */
     protected function _setPassword($password)
     {
         return (new DefaultPasswordHasher)->hash($password);
-}
-
+    }
+    /**
+     * Compare two hashed passwords
+     *
+     * @param string $password Password to check
+     * @return int
+     */
     public function comparePassword($password)
     {
         return (new DefaultPasswordHasher)->check($password, $this->password);

@@ -1,12 +1,13 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
+use Cake\Core\Configure;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-use Cake\Core\Configure;
 
 /**
  * Users Model
@@ -64,45 +65,42 @@ class UsersTable extends Table
         $validator
             ->add('email', 'valid', ['rule' => 'email'])
             ->requirePresence('email', 'create')
-                ->notEmpty('email', 'Your email is needed for login');
+            ->notEmpty('email', 'Your email is needed for login');
 
         $validator
             ->requirePresence('username', 'create')
-                ->notEmpty('username', 'You should provide a user name')
-                ->add('username', [
-                    'minLength' => [
-                        'rule' => ['minLength', Configure::read('cms.defaultMinUserNameLenght')],
-                        'message' => sprintf('User names must be %d characters min.', Configure::read('cms.defaultMinUserNameLenght')),
-                    ]
-        ]);
+            ->notEmpty('username', 'You should provide a user name')
+            ->add('username', [
+                'minLength' => [
+                    'rule' => ['minLength', Configure::read('cms.defaultMinUserNameLenght')],
+                    'message' => sprintf('User names must be %d characters min.', Configure::read('cms.defaultMinUserNameLenght')),
+                ]
+            ]);
 
         $validator
             ->allowEmpty('realname');
 
         $validator
             ->requirePresence('password', 'create')
-                ->notEmpty('password', 'Without a password, you can\'t login.')
-                ->add('password', [
-                    'minLength' => [
-                        'rule' => ['minLength', Configure::read('cms.defaultMinPassLenght')],
-                        'message' => sprintf('Passwords must be %d characters min.', Configure::read('cms.defaultMinPassLenght')),
-                    ]
-                ])
-                ->add('password', 'compare', [
-                    'rule' => function ($value, $context) {
-                        if ($value != $context['data']['password_confirm']) {
-                            return false;
-                        }
-                        return true;
-                    },
-                    'message' => __d('users', 'Your password does not match your confirm password. Please try again'),
-                    'on' => ['create', 'update'],
-                    'allowEmpty' => false
-        ]);
+            ->notEmpty('password', 'Without a password, you can\'t login.')
+            ->add('password', [
+                'minLength' => [
+                    'rule' => ['minLength', Configure::read('cms.defaultMinPassLenght')],
+                    'message' => sprintf('Passwords must be %d characters min.', Configure::read('cms.defaultMinPassLenght')),
+                ]
+            ])
+            ->add('password', 'compare', [
+                'rule' => function ($value, $context) {
+                    return ($value === $context['data']['password_confirm']);
+                },
+                'message' => __d('users', 'Your password does not match your confirm password. Please try again'),
+                'on' => ['create', 'update'],
+                'allowEmpty' => false
+            ]);
 
         $validator
-                ->requirePresence('password_confirm', 'create')
-                ->notEmpty('password_confirm');
+            ->requirePresence('password_confirm', 'create')
+            ->notEmpty('password_confirm');
 
         $validator
             ->allowEmpty('website');
@@ -112,14 +110,14 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('role', 'create')
-                ->notEmpty('role', 'A valid role is required.')
-                ->add('role', 'inlist', ['rule' => ['inList', ['admin', 'author', 'user']],
-                    'message' => 'Please enter a valid role']);
+            ->notEmpty('role', 'A valid role is required.')
+            ->add('role', 'inlist', ['rule' => ['inList', ['admin', 'author', 'user']],
+                'message' => 'Please enter a valid role']);
 
         $validator
-            ->add('see_nsfw', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('see_nsfw', 'create')
-            ->notEmpty('see_nsfw');
+            ->add('seeNSFW', 'valid', ['rule' => 'boolean'])
+            ->requirePresence('seeNSFW', 'create')
+            ->notEmpty('seeNSFW');
 
         $validator
             ->add('status', 'valid', ['rule' => 'numeric'])
@@ -160,6 +158,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['username']));
+
         return $rules;
     }
 }

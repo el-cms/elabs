@@ -29,6 +29,13 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+
+    /**
+     * Before filter callback
+     *
+     * @param \Cake\Event\Event $event The beforeFilter event.
+     * @return void
+     */
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
@@ -48,7 +55,7 @@ class PagesController extends AppController
 
         $count = count($path);
         if (!$count) {
-            return $this->redirect('/');
+            $this->redirect('/');
         }
         $page = $subpage = null;
 
