@@ -44,7 +44,7 @@ $this->assign('title', __d('users', 'Update your profile'));
                         ?>
                     </fieldset>
                     <div class="form-group-btn">
-                        <?php echo $this->Form->submit(__d('elabs', 'Save changes'), ['class' => 'btn-green']) ?>
+                        <?php echo $this->Form->submit(__d('elabs', 'Save changes'), ['class' => 'btn-success']) ?>
                     </div>
                     <?php echo $this->Form->end() ?>
                 </div>
@@ -69,7 +69,7 @@ $this->assign('title', __d('users', 'Update your profile'));
                     echo $this->Form->input('password_confirm', ['type' => 'password', 'value' => '', 'label' => __d('users', 'Confirmation')]);
                     ?>
                     <div class="form-group-btn">
-                        <?php echo $this->Form->submit(__d('users', 'Update password'), ['class' => 'btn-green']) ?>
+                        <?php echo $this->Form->submit(__d('users', 'Update password'), ['class' => 'btn-success']) ?>
                     </div>
                     <?php echo $this->Form->end() ?>
                 </div>

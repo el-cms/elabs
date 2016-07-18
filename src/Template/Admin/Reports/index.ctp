@@ -50,7 +50,7 @@ $this->start('pageContent');
                         <div class="btn-group btn-group-xs">
                             <?php
                             // See content
-                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('admin', 'Full details')]), ['action' => 'view', $report->id], ['class' => 'text-sec waves-attach waves-effect', 'escape' => false, 'class' => 'btn btn-primary']);
+                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('admin', 'Full details')]), ['action' => 'view', $report->id], ['escape' => false, 'class' => 'btn btn-primary']);
                             echo $this->Form->postLink($this->Html->icon('times', ['title' => __d('elabs', 'Delete')]), ['action' => 'delete', $report->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $report->id), 'class' => 'btn btn-danger', 'escape' => false]);
                             ?>
                         </div>
