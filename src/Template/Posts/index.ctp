@@ -1,26 +1,41 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Posts/index.ctp
+ * Description:
+ *   List of posts, sortable and filterable
+ * Layout element:
+ *   defaultindex.ctp
+ */
+
+// Page title
 $this->assign('title', __d('posts', 'Articles'));
 
-// Pagination order links
-$this->start('pageOrderMenu');
-$linkOptions = ['class' => 'waves-attach waves-effect'];
+// Block: Pagination order links
+// -----------------------------
+$this->start('pageOrderBy');
+echo $this->Paginator->sort('title', __d('posts', 'Title'));
+echo $this->Paginator->sort('publication_date', __d('posts', 'Publication date'));
+$this->end();
+
+// Block: Page content
+// -------------------
+$this->start('pageContent');
 ?>
-<ul class="dropdown-menu nav">
-    <li><?php echo $this->Paginator->sort('title', __d('posts', 'Title'), $linkOptions) ?></li>
-    <li><?php echo $this->Paginator->sort('publication_date', __d('posts', 'Publication date'), $linkOptions) ?></li>
-</ul>
+<div class="row">
+    <?php
+    if (!$posts->isEmpty()):
+        foreach ($posts as $post):
+            echo $this->element('posts/card', ['data' => $post, 'event' => false]);
+        endforeach;
+    else:
+        echo $this->element('layout/empty');
+    endif;
+    ?>
+</div>
 <?php
 $this->end();
 
-// Page content
-$this->start('pageContent');
-if (!$posts->isEmpty()):
-    foreach ($posts as $post):
-        echo $this->element('posts/card', ['data' => $post]);
-    endforeach;
-else:
-    echo $this->element('layout/empty');
-endif;
-$this->end();
-
+// Load the layout element
+// -----------------------
 echo $this->element('layouts/defaultindex');

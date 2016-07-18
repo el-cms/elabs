@@ -1,19 +1,26 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Users/index.ctp
+ * Description:
+ *   List of users, sortable
+ * Layout element:
+ *   defaultindex.ctp
+ */
+
+// Page title
 $this->assign('title', __d('users', 'Authors'));
 
-// Pagination order links
+// Block: Pagination order links
+// -----------------------------
 $this->start('pageOrderMenu');
-$linkOptions = ['class' => 'waves-attach waves-effect'];
-?>
-<ul class="dropdown-menu nav">
-    <li><?php echo $this->Paginator->sort('realname', __d('users', 'Real name'), $linkOptions) ?></li>
-    <li><?php echo $this->Paginator->sort('username', __d('users', 'User name'), $linkOptions) ?></li>
-    <li><?php echo $this->Paginator->sort('created', __d('users', 'Join date'), $linkOptions) ?></li>
-</ul>
-<?php
+echo $this->Paginator->sort('realname', __d('users', 'Real name'));
+echo $this->Paginator->sort('username', __d('users', 'User name'));
+echo $this->Paginator->sort('created', __d('users', 'Join date'));
 $this->end();
 
-// Page content
+// Block: Page content
+// -------------------
 $this->start('pageContent');
 ?>
 <div class="row">
@@ -26,4 +33,6 @@ $this->start('pageContent');
 <?php
 $this->end();
 
+// Load the layout element
+// -----------------------
 echo $this->element('layouts/defaultindex');

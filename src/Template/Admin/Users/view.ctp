@@ -1,127 +1,128 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Admin/Users/view.ctp
+ * Description:
+ *   Administration - Displays an user
+ * Layout element:
+ *   adminview.ctp
+ */
+
+// Page title
 $this->assign('title', __d('users', 'Admin/User&gt; {0}', h($user->realname)));
 
+// Block: Item informations
+// ------------------------
 $this->start('pageInfos');
 ?>
-<dl class="dl-horizontal">
-    <dt><?php echo __d('users', 'Username') ?></dt>
-    <dd><?php echo h($user->username) ?></dd>
-    <dt><?php echo __d('users', 'Name') ?></dt>
-    <dd><?php echo h($user->realname) ?></dd>
-    <dt><?php echo __d('users', 'Website') ?></dt>
-    <dd><?php echo h($user->website) ?></dd>
-    <dt><?php echo __d('users', 'Member since') ?></dt>
-    <dd><?php echo h($user->created) ?></dd>
-    <dt><?php echo __d('users', 'Last modification') ?></dt>
-    <dd><?php echo h($user->modified) ?></dd>
-    <dt><?php echo __d('elabs', 'Status') ?></dt>
-    <dd><?php echo $this->UsersAdmin->statusLabel($user->status) ?></dd>
-</dl>
+<ul class="list-unstyled">
+    <li><strong><?php echo __d('users', 'Username') ?></strong> <?php echo h($user->username) ?></li>
+    <li><strong><?php echo __d('users', 'Name') ?></strong> <?php echo h($user->realname) ?></li>
+    <li><strong><?php echo __d('users', 'Website') ?></strong> <?php echo h($user->website) ?></li>
+    <li><strong><?php echo __d('users', 'Member since') ?></strong> <?php echo h($user->created) ?></li>
+    <li><strong><?php echo __d('users', 'Last modification') ?></strong> <?php echo h($user->modified) ?></li>
+    <li><strong><?php echo __d('elabs', 'Status') ?></strong> <?php echo $this->UsersAdmin->statusLabel($user->status) ?></li>
+</ul>
 <?php
-if ($user->status != 3):
-    $this->start('pageActions');
-    $linkOptions = ['class' => 'btn btn-flat waves-attach waves-effect', 'escape' => false];
-    ?>
-    <ul>
-        <li>
-            <?php
-            if ($user->status === 0):
-                echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', ['<span class="fa fa-check"></span>', __d('admin', 'Activate')]), ['action' => 'activate', $user->id], $linkOptions);
-            endif;
-            ?>
-        </li>
-        <li>
-            <?php
-            $unlockIcon = '<span class="fa fa-unlock-alt fa-fw" title="' . __d('admin', 'Unlock') . '"></span>';
-            $lockIcon = '<span class="fa fa-lock fa-fw" title="' . __d('admin', 'Lock') . '"></span>';
-            if ($user->status === 2):
-                echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$unlockIcon, __d('admin', 'Unlock')]), ['action' => 'lock', $user->id, 'unlock'], $linkOptions);
-            elseif ($user->status === 1):
-                echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$lockIcon, __d('admin', 'Lock')]), ['action' => 'lock', $user->id, 'lock'], $linkOptions);
-            else:
-                echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-lock"></span>', 'Lock/unlock']), '#', ['class' => 'text-sec btn btn-flat disabled', 'escape' => false]);
-            endif;
-            ?>
-        </li>
-        <li>
-            <?php
-            if ($user->status != 3):
-                echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', ['<span class="fa fa-times"></span>', __d('admin', 'Close')]), ['action' => 'close', $user->id], $linkOptions);
-            endif;
-            ?>
-        </li>
-        <li>
-        <li><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List users']), ['action' => 'index'], $linkOptions) ?> </li>
-    </li>
-    </ul>
-
-    <?php
-    $this->end();
-else:
-    ?>
-    <p class="muted">
-        <?php echo __d('users', 'This account has been closed, so no further actions are available.'); ?>
-    </p>
-<?php
-endif;
 $this->end();
 
-$this->start('pageContent');
-
-echo $this->Elabs->displayMD($user->bio);
+// Block: Actions
+// --------------
+$this->start('pageActions');
 ?>
+<div class="btn-group btn-group-vertical btn-block">
+    <?php
+    if ($user->status != 3):
+        if ($user->status === 0):
+            echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', [$this->Html->icon('check'), __d('admin', 'Activate')]), ['action' => 'activate', $user->id], ['class' => 'btn btn-warning', 'escape' => false]);
+        endif;
+        ?>
+        <?php
+        $unlockIcon = '<span class="fa fa-unlock-alt fa-fw" title="' . __d('admin', 'Unlock') . '"></span>';
+        $lockIcon = '<span class="fa fa-lock fa-fw" title="' . __d('admin', 'Lock') . '"></span>';
+        if ($user->status === 2):
+            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$unlockIcon, __d('admin', 'Unlock')]), ['action' => 'lock', $user->id, 'unlock'], ['class' => 'btn btn-warning', 'escape' => false]);
+        elseif ($user->status === 1):
+            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$lockIcon, __d('admin', 'Lock')]), ['action' => 'lock', $user->id, 'lock'], ['class' => 'btn btn-warning', 'escape' => false]);
+        else:
+            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-lock"></span>', 'Lock/unlock']), '#', ['class' => 'text-sec btn-warning disabled', 'escape' => false]);
+        endif;
+        ?>
+        <?php
+        if ($user->status != 3):
+            echo $this->Html->link(__d('elabs', '{0}&nbsp{1}', ['<span class="fa fa-times"></span>', __d('admin', 'Close')]), ['action' => 'close', $user->id], ['confirm' => __d('admin', 'Are you sure you want to close this account ?'), 'class' => 'btn btn-danger', 'escape' => false]);
+        endif;
+        // List
+        echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List users']), ['action' => 'index'], ['class' => 'btn btn-primary', 'escape' => false]);
+    else:
+        ?>
+        <p class="muted">
+            <?php echo __d('users', 'This account has been closed, so no further actions are available.'); ?>
+        </p>
+    <?php
+    endif;
+    ?></div>
+<?php
+$this->end();
 
-<nav class="tab-nav tab-nav-brand">
-    <ul class="nav nav-justified">
-        <li class="active">
-            <a class="waves-attach waves-effect" data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles') ?></a>
-        </li>
-        <li>
-            <a class="waves-attach waves-effect" data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects') ?></a>
-        </li>
-        <li>
-            <a class="waves-attach waves-effect" data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files') ?></a>
-        </li>
+// Block: Page content
+// -------------------
+$this->start('pageContent');
+if ($user->has('bio')):
+    ?>
+    <div class="well">
+        <?php echo $this->Html->displayMD($user->bio) ?>    
+    </div>
+    <?php
+endif;
+?>
+<div class="panel">
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles ({0})', $user->post_count) ?></a></li>
+        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects ({0})', $user->project_count) ?></a></li>
+        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files ({0})', $user->file_count) ?></a></li>
     </ul>
-    <div class="tab-nav-indicator"></div>
-</nav>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="posts-tab">
+            <?php
+            if (!empty($user->posts)):
+                foreach ($user->posts as $posts):
+                    echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
 
-<div class="tab-pane fade active in" id="posts-tab">
-    <?php
-    if (!empty($user->posts)):
-        foreach ($user->posts as $posts):
-            echo $this->element('posts/card', ['data' => $posts]);
-        endforeach;
-    else:
-        echo $this->element('layout/empty_admin');
-    endif;
-    ?>
-</div>
+        <div class="tab-pane" id="projects-tab">
+            <?php
+            if (!empty($user->projects)):
+                foreach ($user->projects as $projects):
+                    echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
 
-<div class="tab-pane" id="projects-tab">
-    <?php
-    if (!empty($user->projects)):
-        foreach ($user->projects as $projects):
-            echo $this->element('projects/card', ['data' => $projects]);
-        endforeach;
-    else:
-        echo $this->element('layout/empty_admin');
-    endif;
-    ?>
-</div>
-
-<div class="tab-pane" id="files-tab">
-    <?php
-    if (!empty($user->files)):
-        foreach ($user->files as $files):
-            echo $this->element('files/card', ['data' => $files]);
-        endforeach;
-    else:
-        echo $this->element('layout/empty_admin');
-    endif;
-    ?>
+        <div class="tab-pane" id="files-tab">
+            <?php
+            if (!empty($user->files)):
+                foreach ($user->files as $files):
+                    echo $this->element('files/card', ['data' => $files, 'userInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
+    </div>
 </div>
 <?php
 $this->end();
 
-echo $this->element('layouts/defaultview');
+// Load the layout element
+// -----------------------
+echo $this->element('layouts/adminview');

@@ -51,8 +51,14 @@ class FilesController extends AppController
         $file = $this->Files->get($id, [
             'contain' => ['Users', 'Licenses', 'Itemfiles']
         ]);
-        $this->set('file', $file);
-        $this->set('_serialize', ['file']);
+        // It will be great when i'll find a way to nicely handle exceptions/errors
+        if (!$file->sfw && !$this->request->session()->read('see_nsfw')) {
+            // And make a proper common error page
+            $this->viewBuilder()->template('nsfw');
+        } else {
+            $this->set('file', $file);
+            $this->set('_serialize', ['file']);
+        }
     }
 
     /**

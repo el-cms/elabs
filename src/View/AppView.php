@@ -40,25 +40,20 @@ class AppView extends View
     {
         parent::initialize();
 
-        // Helpers
-        $this->loadHelper(
-                'Form', [
-            'className' => 'Bootstrap.BootstrapForm' // instead of 'Bootstrap3.BootstrapForm'
-                ]
-        );
-
-        $this->Form->templates([
-            'inputContainer' => '<div class="form-group form-group-label form-group-brand {{required}}">{{content}}</div>',
-            'inputContainerError' => '<div class="form-group form-group-label form-group-red{{required}}">{{content}}<span class="form-help form-help-msg text-red">{{error}}<span class="fa fa-warning-sign form-help-icon"></span></span></div>',
-            // Sadly, this one is overriden in input() method from BootstrapFormHelper...
-            'label' => '<label class="floating-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
-            //Don't work either
-            'submitContainer' => '<div class="form-group-btn">{{content}}</div>',
-            'checkbox' => '<input type="checkbox" name="{{name}}" class="access-hide" value="{{value}}"{{attrs}}><span class="switch-toggle switch-toggle-brand"></span>',
-            // This one too
-            'checkboxWrapper' => '<div class="checkbox switch">{{label}}</div>',
-            'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
+        $this->loadHelper('Html', ['className' => 'AppHtml', 'App' => \Cake\Core\Configure::read('App')]);
+        $this->loadHelper('Form', [
+            'className' => 'BootstrapUI.Form',
+            'templates' => [
+                'select' => '<select name="{{name}}"{{attrs}} class="form-control">{{content}}</select>',
+                'dateWidget' => '<ul class="list-inline"><li class="year">{{year}}</li><li class="month">{{month}}</li><li class="day">{{day}}</li></ul>',
+                'help' => '<p class="help-block"><i class="fa fa-info-circle"></i> {{content}}</p>',
+            ]
         ]);
+        $this->loadHelper('Flash', ['className' => 'BootstrapUI.Flash']);
+//        $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
+        $this->loadHelper('Gravatar.Gravatar');
+        $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
+
         $this->Paginator->templates([
 //            'nextActive' => '<li class="next"><a rel="next" href="{{url}}">{{text}}</a></li>',
 //            'nextDisabled' => '<li class="next disabled"><a href="" onclick="return false;">{{text}}</a></li>',
@@ -71,11 +66,11 @@ class AppView extends View
 //            'number' => '<li><a href="{{url}}">{{text}}</a></li>',
 //            'current' => '<li class="active"><a href="">{{text}}</a></li>',
 //            'ellipsis' => '<li class="ellipsis">...</li>',
-            'sort' => '<a href="{{url}}"><span class="fa fa-fw fa-sort"></span>&nbsp;{{text}}</a>',
-            'sortAsc' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>',
-            'sortDesc' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
-            'sortAscLocked' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
-            'sortDescLocked' => '<a href="{{url}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>'
+            'sort' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort"></span>&nbsp;{{text}}</a>',
+            'sortAsc' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>',
+            'sortDesc' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
+            'sortAscLocked' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-asc"></span>&nbsp;{{text}}</a>',
+            'sortDescLocked' => '<a href="{{url}}" class="{{class}}"><span class="fa fa-fw fa-sort-amount-desc"></span>&nbsp;{{text}}</a>'
         ]);
     }
 }

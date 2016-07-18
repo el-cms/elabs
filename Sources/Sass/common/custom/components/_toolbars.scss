@@ -1,0 +1,32 @@
+.toolbar{
+    border:1px solid #CCC;
+    border-width:1px 0;
+    padding: $padding-small-vertical $padding-small-horizontal;
+    margin-bottom: $padding-base-vertical;
+    .btn-group{
+        a{
+            @extend .btn;
+            @extend .btn-xs;
+            &:first-child{
+                background-color: #CCC;
+                cursor: default;
+                border-color: $btn-default-border;
+                border-right:none;
+                color:#666;
+                &:hover{
+                    border-right:none;
+                }
+            }
+        }
+        .btn-group-separator{
+            background-color:transparent;
+            padding:$padding-small-horizontal/2;
+            border-width:0 1px;
+            &:hover{
+                background-color:transparent;
+                border-color: transparent;
+                cursor:default;
+            }
+        }
+    }
+}

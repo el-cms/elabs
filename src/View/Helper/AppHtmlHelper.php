@@ -2,14 +2,67 @@
 
 namespace App\View\Helper;
 
-use Cake\View\Helper;
+use Cake\Core\Configure;
 
 /**
- * CakePHP ElabsHelper
+ * CakePHP AppHtmlHelper
+ * @author mtancoigne
  */
-class ElabsHelper extends Helper {
+class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
+{
+    public $helpers = ['Url', 'Html', 'Markdown'];
+    public $config = [];
 
-    public $helpers = ['Html', 'Url', 'Markdown'];
+    /**
+     * Creates an icon.
+     * 
+     * This method surcharges the icon() method from BootstrapUI :
+     *  - fixed width by default
+     *  - fontAwesome by default
+     * 
+     * Additionnal options :
+     *  - fixed If true, an fa-fw class will be applied (default)
+     * 
+     * @param string $name Icon name
+     * @param array $options
+     * @return string
+     */
+    public function icon($name, array $options = [])
+    {
+        $options += [
+            'iconSet' => 'fa',
+            'fixed' => true,
+            'class' => null
+        ];
+        if ($options['fixed']) {
+            $options = $this->injectClasses($options['iconSet'] . '-fw', $options);
+        }
+        unset($options['fixed']);
+        return parent::icon($name, $options);
+    }
+
+    public function arrayToString(array $array, array $options = [])
+    {
+        $options+=[
+            'uppercase' => true,
+            'and' => true,
+        ];
+        $i = 1;
+        $count = count($array);
+        $out = '';
+        foreach ($array as $item) {
+            $separator = null;
+            if ($i > 1) {
+                $separator = ', ';
+            }
+            if ($i == $count && $options['and'] && $i > 1) {
+                $separator = __(' et ');
+            }
+            $out.=$separator . (($options['uppercase']) ? ucfirst($item) : $item);
+            $i++;
+        }
+        return $out;
+    }
 
     /**
      * Create a link to display the page report modal
@@ -23,7 +76,8 @@ class ElabsHelper extends Helper {
      *  
      * 
      */
-    public function reportLink($target = null, $options = []) {
+    public function reportLink($target = null, $options = [])
+    {
         if (isset($options['title'])) {
             $titleText = $options['title'];
             unset($options['title']);
@@ -59,7 +113,8 @@ class ElabsHelper extends Helper {
      *  raw : bool, false, return raw text with no formatting (text will be escaped)
      *  protect : bool, false, Escape content. this value will overwrite cms.escapeMarkdown
      */
-    public function displayMD($text, $options = []) {
+    public function displayMD($text, $options = [])
+    {
         $options+=[
             'raw' => false,
             'protect' => false //
@@ -69,12 +124,11 @@ class ElabsHelper extends Helper {
         if ($options['protect'] === true || \Cake\Core\Configure::read('cms.escapeMarkdown') === true || $options['raw'] === true) {
             $text = h($text);
         }
-        
+
         if (!$options['raw']) {
             $text = $this->Markdown->transform($text);
         }
 
         return $text;
     }
-
 }

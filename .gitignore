@@ -12,7 +12,10 @@
 /nbproject/private/
 
 # Sass external sources
-/Sources/Sass/common/material-master
+/Sources/Sass/common/bootstrap-sass
+/Sources/Sass/common/bootstrap-tagsinput-latest
+/Sources/Sass/common/bootstrap-datetimepicker-master
+/Sources/Sass/common/bootflat.github.io-master
 /Sources/Sass/common/Font-Awesome-master
 /Sources/Sass/common/codemirror
 

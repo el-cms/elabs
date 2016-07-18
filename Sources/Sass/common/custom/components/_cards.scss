@@ -1,0 +1,169 @@
+.card{
+    padding: 10px;
+    margin-bottom: $padding-large-vertical;
+    border: none;
+    @include radius($type: border-radius, $value: $well-radius);
+    color: $modal-font-color; 
+    background-color: $well-background-color; 
+    @include box-shadow($value: $well-shadow);
+    & blockquote {
+        border-color: $well-blockquote-color;
+    }
+    @at-root &-lg {
+        padding: 20px;
+    }
+    @at-root &-sm {
+        padding: 5px;
+    }
+    &:last-child{
+        margin-bottom:0;
+    }
+    
+    // The toolbar
+    .card-toolbar{
+        margin: -#{$padding-large-vertical + 1} -#{$padding-large-vertical};
+        padding:0;
+        list-style-type: none;
+        text-align: right;
+        float:right;
+        // Entries
+        li{
+            display: block;
+            padding:0;
+            margin-bottom: $padding-small-vertical;
+            // Links
+            a{
+                width: 100%;
+                height:100%;
+                display:block;
+                padding: $padding-small-vertical $padding-small-horizontal;
+                font-size: 0.8em;
+                line-height: 1em;
+                background-color: rgba(255,255,255,0.5);
+                color: #888;
+                boder:none;
+                /*border: 1px solid #EEE;*/
+                /*border-width: 0 1px 1px 1px;*/
+                border-top-left-radius: $border-radius-base;
+                border-bottom-left-radius: $border-radius-base;
+                &:hover{
+                    background-color: #FFF;
+                    color: #AAA;
+                }
+                &.nsfw-pill, .nsfw-pill:hover{
+                    background-color: rgba(200,60,60,0.8);
+                    /*border-color:rgba(200,60,60,0.5);*/
+                    color: #FFF;
+                }
+                &.report-link {
+                    background-color: $alert-success;
+                    /*border-color:darken($alert-success, 30%);*/
+                    color:darken($alert-success, 30%);
+                    &:hover{
+                        background-color: lighten($alert-success, 15%);
+                    }
+                }
+            }
+            // First li element
+            &:first-child{
+                a{
+                    border-width: 0 0 1px 1px;
+                    border-top-right-radius: $border-radius-base;
+                    border-top-left-radius: 0;
+                }
+            }
+        }
+    }
+    // Where the headers go
+    .card-heading{
+        display:flex;
+        margin-bottom: $padding-base-vertical;
+    }
+    // Place for an icon or something
+    .card-heading-side{
+        margin-right: $padding-base-horizontal;
+    }
+    
+    // Card title
+    .card-header{
+        h1, h2, h3, h4{
+            /*width: 100%;*/
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin:0;
+            padding:0;
+            font-size:1.3em;
+            a{
+                display:block;
+            }
+        }
+        // Small informations
+        .card-informations{
+            list-style:none;
+            font-size:0.8em;
+            padding:0;
+            li{
+                display:inline-block;
+                margin-right:$padding-large-horizontal;
+            }
+        }
+    }
+    
+    // Content
+    .card-content{
+        clear:both;
+        img{
+            max-height: 50vh;
+        }
+    }
+}
+
+// Special overrides for cards represented as events.
+.card-event{
+    padding: 0;
+    margin-bottom: 0;
+    border: none;
+    @include radius($type: border-radius, $value: $well-radius);
+    color: $modal-font-color; 
+    background-color: transparent; 
+    @include box-shadow($value: none);
+    & blockquote {
+        border-color: $well-blockquote-color;
+    }
+    @at-root &-lg {
+        padding: 20px;
+    }
+    @at-root &-sm {
+        padding: 5px;
+    }
+    .card-toolbar{
+        margin: -#{$padding-large-vertical} -#{$padding-large-horizontal};
+    }
+    /*.nsfw-pill{
+        top: 0;
+        left: $padding-base-horizontal;
+    }
+    .report-link{
+        margin: -#{$padding-large-vertical} -#{$padding-large-horizontal};
+    }*/
+    .card-informations{
+        li{
+            display:block;
+        }
+    }
+}
+
+.card-user{
+    .card-header-side{
+        width:80px;
+        margin-right: $padding-base-horizontal;
+        margin-bottom:$padding-base-horizontal;
+    }
+}
+
+.tab-content{
+    .card{
+        background-color: #F0F0F0;
+    }
+}

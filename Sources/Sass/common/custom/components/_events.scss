@@ -1,0 +1,98 @@
+// All events
+.timeline dl dd .events{
+    padding:$padding-large-vertical $padding-large-horizontal;
+}
+
+// Dangers
+.timeline dl dd.pos-left .events.event-danger,
+.timeline dl dd.pos-right .events.event-danger{
+    background-color: lighten($alert-danger, 10%);
+    .card-header a, .card-content a{
+        color:darken($alert-danger, 20%);
+        &:hover{ 
+            color:darken($alert-danger, 10%);
+        }
+    }
+}
+.timeline dl dd.pos-left .events.event-danger:before{
+    border-left-color: lighten($alert-danger, 10%);  
+}
+.timeline dl dd.pos-right .events.event-danger:before{
+    border-right-color: lighten($alert-danger, 10%);  
+}
+
+// Warnings
+.timeline dl dd.pos-left .events.event-warning,
+.timeline dl dd.pos-right .events.event-warning{
+    background-color: lighten($alert-warning, 10%);
+    .card-header a, .card-content a{
+        color:darken($alert-warning, 20%);
+        &:hover{ 
+            color:darken($alert-warning, 10%);
+        }
+    }
+}
+.timeline dl dd.pos-left .events.event-warning:before{
+    border-left-color: lighten($alert-warning, 10%);  
+}
+.timeline dl dd.pos-right .events.event-warning:before{
+    border-right-color: lighten($alert-warning, 10%);  
+}
+
+// Infos
+.timeline dl dd.pos-left .events.event-info,
+.timeline dl dd.pos-right .events.event-info{
+    background-color: lighten($alert-primary, 10%);
+    .card-header a, .card-content a{
+        color:darken($alert-primary, 20%);
+        &:hover{ 
+            color:darken($alert-primary, 10%);
+        }
+    }
+}
+.timeline dl dd.pos-left .events.event-info:before{
+    border-left-color: lighten($alert-primary, 10%);  
+}
+.timeline dl dd.pos-right .events.event-info:before{
+    border-right-color: lighten($alert-primary, 10%);  
+}
+
+// Successes
+.timeline dl dd.pos-left .events.event-success,
+.timeline dl dd.pos-right .events.event-success{
+    background-color: lighten($alert-success, 10%);
+    .card-header a, .card-content a{
+        color:darken($alert-success, 20%);
+        &:hover{ 
+            color:darken($alert-success, 10%);
+        }
+    }
+}
+.timeline dl dd.pos-left .events.event-success:before{
+    border-left-color: lighten($alert-success, 10%);  
+}
+.timeline dl dd.pos-right .events.event-success:before{
+    border-right-color: lighten($alert-success, 10%);  
+}
+
+// NSFW events
+.timeline dl dd.pos-left .events.event-nsfw,
+.timeline dl dd.pos-right .events.event-nsfw{
+    background-color: #CCC;
+    opacity: 0.5;
+    font-size:0.8em;
+    .card-header a, .card-content a{
+        color:darken(#CCC, 20%);
+        &:hover{ 
+            color:darken(#CCC, 10%);
+        }
+    }
+}
+.timeline dl dd.pos-left .events.event-nsfw:before{
+    opacity: 0.5;
+    border-left-color: #CCC
+}
+.timeline dl dd.pos-right .events.event-nsfw:before{
+    opacity: 0.5;
+    border-right-color: #CCC
+}

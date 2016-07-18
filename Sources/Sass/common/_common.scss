@@ -1,23 +1,51 @@
-@import "custom/variables.scss";
 //
 // Files common to both backend and frontend
-//
+// -----------------------------------------
 
-// Base from Material
-@import "material-master/assets/sass/base.scss";
+// Variables, can't be variations of the bootstrap variables as loaded first
+@import "custom/core/variables.scss";
+
+// Base from Bootstrap
+@import "custom_bootstrap.scss";
+
+// Theme
+@import "custom_bootflat.scss";
 
 // Font-Awesome
 @import "Font-Awesome-master/scss/font-awesome.scss";
 
-// Common modifications
-@import "custom/addons/codemirror.scss";
-@import "custom/base/grid.scss";
-@import "custom/base/layout.scss";
-@import "custom/base/typo.scss";
-@import "custom/components/alerts.scss";
-@import "custom/components/dls.scss";
-@import "custom/components/empty.scss";
-@import "custom/components/lists.scss";
-@import "custom/components/navs.scss";
-@import "custom/components/pagination.scss";
+// Overrides
+// ---------
+
+// Core variables and mixins
+
+// Reset and dependencies
+
+// Core CSS
+@import "custom/core/scaffolding";
+@import "custom/core/forms";
+@import "custom/core/type.scss";
+
+// Components
+@import "custom/components/events";
+@import "custom/components/navbar";
+@import "custom/components/pagination";
+@import "custom/components/alerts";
+@import "custom/components/list-group";
+
+// Components w/ JavaScript
+@import "custom/jscomponents/accordions";
+// Utility classes
+
+// Elabs-specific components and theme overrides
+// ---------------------------------------------
 @import "custom/components/tiles.scss";
+@import "custom/components/cards.scss";
+@import "custom/components/timeline.scss";
+@import "custom/components/page-loader.scss";
+@import "custom/components/toolbars.scss";
+@import "custom/components/empty.scss";
+
+// Shared addons
+// -------------
+@import "custom/addons/codemirror.scss";

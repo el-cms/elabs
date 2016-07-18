@@ -1,15 +1,49 @@
+.tile{
+    padding: 5px;
+    margin-bottom:5px;
+    border: none;
+    @include radius($type: border-radius, $value: $well-radius);
+    color: $modal-font-color; 
+    @include box-shadow($value: $well-shadow);
+
+    & blockquote {
+        border-color: $well-blockquote-color;
+    }
+    @at-root &-lg {
+        padding: 20px;
+    }
+    @at-root &-sm {
+        padding: 5px;
+    }
+    .pull-left{
+        margin-left:5px;
+        margin-right:5px;
+    }
+    a.full{
+        display:block;
+    }
+}
+
 .tile-danger{
-	@extend .alert-danger;
+    @extend .alert-danger;
 }
 
 .tile-warning{
-	@extend .alert-warning;
+    @extend .alert-warning;
 }
 
 .tile-info{
-	@extend .alert-info;
+    @extend .alert-info;
+    a{
+        color: darken($link-color, 10%)
+    }
 }
 
 .tile-success{
-	@extend .alert-success;
+    @extend .alert-success;
+}
+
+.tile-nsfw{
+    opacity: 0.5;
+    font-size:0.8em;
 }

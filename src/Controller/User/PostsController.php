@@ -21,7 +21,7 @@ class PostsController extends UserAppController
     public function index($nsfw = 'all', $published = 'all')
     {
         $this->paginate = [
-            'fields' => ['id', 'title', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
+            'fields' => ['id', 'title', 'excerpt', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']]],
             'conditions' => ['user_id' => $this->Auth->user('id')],

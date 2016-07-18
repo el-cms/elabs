@@ -1,44 +1,93 @@
-<div class="col-sm-3">
+<?php
+/*
+ * File:
+ *   src/Templates/Elements/layouts/defaultindex.ctp
+ * Description:
+ *   Layout element for index views
+ * Usable blocks:
+ *   pageOrderBy - Pagination links
+ *   pageFilters - Filter links
+ *   pageActions - Links for actions related to the view
+ *   pageLinks   - Links for pages related to the view
+ *   pageContent - Main view content
+ */
+
+// Blocks for this type of view
+// ----------------------------
+// (Order matters)
+$toolbarContent = [
+    'pageOrderBy' => ['title' => __d('elabs', 'Order by:')],
+    'pageFilters' => ['title' => __d('elabs', 'Filters:')],
+];
+$colContentLeft = [
+    'pageActions' => ['title' => __d('elabs', 'Actions')],
+    'pageLinks' => ['title' => __d('elabs', 'Related links')],
+];
+$colContentMain = ['pageContent'];
+
+// Preparing content
+$haveLeftCol = false;
+
+// Block: Toolbar
+// -----------
+$this->start('pageToolbar');
+foreach ($toolbarContent as $block => $options):
+    $blockData = $this->fetch($block);
+    if (!empty($blockData)):
+        ?>
+        <div class="btn-group">
+            <a><?= $options['title'] ?></a>
+            <?php echo $blockData ?>
+        </div>
+        <?php
+    endif;
+endforeach;
+$this->end();
+
+// Block: Left column
+// ------------------
+$this->start('leftCol');
+foreach ($colContentLeft as $block => $options):
+    $blockData = $this->fetch($block);
+    if (!empty($blockData)):
+        $haveLeftCol = true;
+        ?>
+        <div class="list-group-item">
+            <h4 class="list-group-item-heading"><?php echo $options['title'] ?></h4>
+            <div class="list-group-item-text">
+                <?php echo $blockData ?>
+            </div>
+        </div>
+        <?php
+    endif;
+endforeach;
+$this->end();
+
+// Rendering the view
+// ------------------
+// Note: Toolbar is rendered in Layout/default.ctp
+?>
+<div class="row">
     <?php
-    if (!empty($this->fetch('pageOrderMenu'))):
+    // Left col
+    // --------
+    if ($haveLeftCol):
         ?>
-        <div class="side-menu">
-            <div class="content-sub-heading"><?php echo __d('elabs', 'Display order') ?></div>
-            <div class="dropdown dropdown-inline">
-                <a aria-expanded="false" class="btn dropdown-toggle-btn waves-attach waves-effect" data-toggle="dropdown"><?php echo __d('elabs', 'Order by...') ?><span class="icon margin-left-sm">keyboard_arrow_down</span></a>
-                <?php echo $this->fetch('pageOrderMenu') ?>
+        <div class="col-sm-4">
+            <div class="list-group">
+                <?php echo $this->fetch('leftCol'); ?>
             </div>
         </div>
         <?php
     endif;
 
-    if (!empty($this->fetch('pageFiltersMenu'))):
-        ?>
-        <div class="side-menu">
-            <div class="content-sub-heading"><?php echo __d('elabs', 'Filters') ?></div>
-            <div class="side-menu-content">
-                <?php echo $this->fetch('pageFiltersMenu'); ?>
-            </div>
-        </div>
-        <?php
-    endif;
-
-    if (!empty($this->fetch('pageActionsMenu'))):
-        ?>
-        <div class="side-menu">
-            <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-            <div class="side-menu-content">
-                <?php echo $this->fetch('pageActionsMenu'); ?>
-            </div>
-        </div>
-        <?php
-    endif;
+    // Page content
+    // ------------
     ?>
-</div>
-
-<div class="col-sm-9">
-    <?php
-    echo $this->fetch('pageContent');
-    echo $this->element('layout/paginationlinks');
-    ?>
+    <div class="col-sm-<?php echo ($haveLeftCol) ? 8 : 12 ?>">
+        <?php
+        echo $this->fetch('pageContent');
+        echo $this->element('layout/paginationlinks');
+        ?>
+    </div>
 </div>

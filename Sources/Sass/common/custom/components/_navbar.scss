@@ -1,0 +1,100 @@
+.navbar-default, .navbar-admin, .navbar-user{
+    border-bottom-color:transparent;
+    @include box-shadow($value: $well-shadow);
+    .navbar-brand > img{
+        // Override the defaults
+        display: inline-block;
+        width: 25px;
+        top: -1px;
+        position: relative;
+    }
+    .nav > li > a{
+        border-bottom:3px solid transparent;
+        margin-bottom:-4px;
+        &:hover{
+            border-bottom-color: darken($navbar-default-bg, 10%);
+            background-color:transparent;
+        }
+    }
+    .dropdown-toggle{
+        border-color:transparent;
+        &:hover{
+            border-color:transparent !important;
+        }
+    }
+    .dropdown-menu{
+        background-color: $navbar-default-bg;
+        a{
+            color: $navbar-default-link-color;
+            &:hover{
+                background-color: darken($navbar-default-bg, 10%);
+                color: $navbar-default-link-hover-color;
+            }
+        }
+        .dropdown-header{
+            background-color: darken($navbar-default-bg, 15%);
+            color: darken($navbar-default-bg, 30%);
+        }
+    }
+}
+
+.navbar-admin{
+    background-color: $navbar-admin-bg;
+    .navbar-brand{
+        color: $navbar-admin-link-color;
+    }
+    .nav > li > a{
+        border-bottom:3px solid transparent;
+        margin-bottom:-4px;
+        color: $navbar-admin-link-color;
+        &:hover{
+            border-bottom-color: darken($navbar-admin-bg, 10%);
+            color: $navbar-admin-link-hover-color;
+        }
+    }
+    .dropdown-menu{
+        background-color: $navbar-admin-bg;
+        a{
+            color: $navbar-admin-link-color;
+            &:hover{
+                background-color: darken($navbar-admin-bg, 10%);
+                color: $navbar-admin-link-hover-color;
+            }
+        }
+        .dropdown-header{
+            background-color: darken($navbar-admin-bg, 15%);
+            color: darken($navbar-admin-bg, 30%);
+        }
+    }
+}
+
+// user navbar
+.navbar-user{
+    background-color: $navbar-user-bg;
+    .navbar-brand{
+        color: $navbar-admin-link-color;
+    }
+    .nav > li > a{
+        border-bottom:3px solid transparent;
+        margin-bottom:-4px;
+        color: $navbar-user-link-color;
+        &:hover{
+            border-bottom-color: darken($navbar-user-bg, 10%);
+            color: $navbar-user-link-hover-color;
+        }
+    }
+    .dropdown-menu{
+        background-color: $navbar-user-bg;
+        a{
+            color: $navbar-user-link-color;
+            &:hover{
+                background-color: darken($navbar-user-bg, 10%);
+                color: $navbar-user-link-hover-color;
+            }
+        }
+        .dropdown-header{
+            background-color: darken($navbar-user-bg, 15%);
+            color: darken($navbar-user-bg, 30%);
+        }
+    }
+}

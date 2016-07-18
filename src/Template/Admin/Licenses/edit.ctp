@@ -1,55 +1,49 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Admin/Licenses/edit.ctp
+ * Description:
+ *   Form to edit a license
+ * Layout element:
+ *   adminform.ctp
+ */
+
+// Page title
 $this->assign('title', __d('elabs', 'Admin/Licenses/Edit&gt; {0}', $license->name));
 
-$formTemplate = [
-    'label' => '<label class="form-label {{attrs.class}}" {{attrs}}>{{text}}</label>',
-    'checkboxContainer' => '<div class="form-group"><div class="checkbox switch">{{content}}</div></div>',
-    'submitContainer' => '{{content}}',
-];
+// Actions block
+// -------------
+$this->start('pageActions');
+echo $this->Form->postLink(__('{0}&nbsp;{1}', [$this->Html->icon('trash'), __('Delete')]), ['action' => 'delete', $license->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
+$this->end();
 
-$linkOptions = ['class' => 'btn btn-flat waves-attach waves-button waves-effect', 'escape' => false];
-?>
-<div class="col-sm-3">
-    <div class="side-menu">
-        <div class="content-sub-heading"><?php echo __d('elabs', 'Actions') ?></div>
-        <div class="side-menu-content">
-            <?php
-            echo $this->Form->postLink(
-                    __d('elabs','Delete'), ['action' => 'delete', $license->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-red waves-attach waves-button waves-effect']
-            )
-            ?></li>
-        </div>
-    </div>
-    <div class="side-menu">
-        <div class="content-sub-heading"><?php echo __d('elabs', 'Navigation') ?></div>
-        <div class="side-menu-content">
-            <ul>
-                <li><?php echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-list"></span>', 'List available licenses']), ['action' => 'index'], $linkOptions) ?></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<?php
+// Related links block
+// -------------------
+$this->start('pageLinks');
+$linkOptions = ['class' => 'list-group-item', 'escape' => false];
+echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List licenses']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'Add a license']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'add'], $linkOptions);
+$this->end();
+
+// Page content block
+// ------------------
+$this->start('pageContent');
 echo $this->Form->create($license);
-$this->Form->templates($formTemplate);
+echo $this->Form->input('name');
+echo $this->Form->input('link');
 ?>
-<div class="col-sm-6">
-    <?php
-    echo $this->Form->input('name');
-    echo $this->Form->input('link');
-    ?>
-    <div class="form-group form-group-label form-group-brand">
-        <label class="form-label " for="icon"><?php echo __d('licenses', 'Icon') ?></label>
+<div class="row">
+    <div class="col-sm-6">
         <?php echo $this->Form->select('icon', ['creative-commons' => 'Creative Commons', 'copyright' => 'Copyright sign']); ?>
     </div>
-    <?php
-    $this->end();
-    ?>
-</div>
-<div class="col-sm-3">
-    <div class="form-group-btn">
-        <?php echo $this->Form->submit(__d('elabs','Save changes'), ['class'=>'btn-green']); ?>
+    <div class="col-sm-6">
+        <?php echo $this->Form->submit(__d('elabs', 'Save changes'), ['class' => 'btn-primary btn block']); ?>
     </div>
 </div>
 <?php
 echo $this->Form->end();
+$this->end();
+
+// Load the custom layout element
+// ------------------------------
+echo $this->element('layouts/adminform');
