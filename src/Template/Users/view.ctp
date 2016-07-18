@@ -1,6 +1,18 @@
 <?php
+/*
+ * File:
+ *   src/Templates/Admin/Users/view.ctp
+ * Description:
+ *   Administration - Displays an user
+ * Layout element:
+ *   adminview.ctp
+ */
+
+// Page title
 $this->assign('title', __d('users', 'Author: {0}', h($user->realname)));
 
+// Block: Item informations
+// ------------------------
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
@@ -13,6 +25,8 @@ $this->start('pageInfos');
 <?php
 $this->end();
 
+// Block: Page content
+// -------------------
 $this->start('pageContent');
 ?>
 <div class="well">
@@ -29,7 +43,7 @@ $this->start('pageContent');
             <?php
             if (!empty($user->posts)):
                 foreach ($user->posts as $posts):
-                    echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false]);
+                    echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false, 'event'=>false]);
                 endforeach;
             else:
                 echo $this->element('layout/empty', ['alternative' => false]);
@@ -41,7 +55,7 @@ $this->start('pageContent');
             <?php
             if (!empty($user->projects)):
                 foreach ($user->projects as $projects):
-                    echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false]);
+                    echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false, 'event'=>false]);
                 endforeach;
             else:
                 echo $this->element('layout/empty', ['alternative' => false]);
@@ -53,7 +67,7 @@ $this->start('pageContent');
             <?php
             if (!empty($user->files)):
                 foreach ($user->files as $files):
-                    echo $this->element('files/card', ['data' => $files, 'userInfo' => false]);
+                    echo $this->element('files/card', ['data' => $files, 'userInfo' => false, 'event'=>false]);
                 endforeach;
             else:
                 echo $this->element('layout/empty', ['alternative' => false]);
@@ -65,4 +79,6 @@ $this->start('pageContent');
 <?php
 $this->end();
 
-echo $this->element('layouts/defaultview');
+// Load the layout element
+// -----------------------
+echo $this->element('layouts/adminview');

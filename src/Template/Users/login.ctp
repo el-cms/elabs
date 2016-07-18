@@ -1,4 +1,15 @@
-<?php $this->assign('title', __d('elabs', 'Login')); ?>
+<?php 
+/*
+ * File:
+ *   src/Templates/Users/login.ctp
+ * Description:
+ *   Login view
+ * Layout element: none
+ */
+
+// Page title
+$this->assign('title', __d('elabs', 'Login')); 
+?>
 <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
         <div class="panel">

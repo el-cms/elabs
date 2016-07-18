@@ -1,4 +1,14 @@
-<?php $this->assign('title', __d('elabs', 'Register')); ?>
+<?php 
+/*
+ * File:
+ *   src/Templates/Users/register.ctp
+ * Description:
+ *   Register view
+ * Layout element: none
+ */
+
+// Page title
+$this->assign('title', __d('elabs', 'Register')); ?>
 <div class="row">
     <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel">
