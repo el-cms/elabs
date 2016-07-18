@@ -14,6 +14,12 @@ use Cake\Network\Exception\ForbiddenException;
 class UsersController extends AppController
 {
 
+    /**
+     * Before filter callback
+     *
+     * @param \Cake\Event\Event $event The beforeFilter event.
+     * @return void
+     */
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
@@ -40,7 +46,7 @@ class UsersController extends AppController
             ],
             'sortWhitelist' => ['username', 'realname', 'created'],
             // Email should only be used for Gravatar.
-            'fields' => ['id', 'username', 'realname', 'email', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',]
+            'fields' => ['id', 'username', 'realname', 'email', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count']
         ];
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
@@ -57,7 +63,7 @@ class UsersController extends AppController
     {
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
         $options = [
-            'fields' => ['id', 'username', 'realname', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count',],
+            'fields' => ['id', 'username', 'realname', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count'],
             'contain' => [
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
@@ -85,7 +91,7 @@ class UsersController extends AppController
         ];
 
         // SFW options
-        if ($this->request->session()->read('see_nsfw') === false) {
+        if ($this->request->session()->read('seeNSFW') === false) {
             $options['contain']['Posts']['conditions']['sfw'] = true;
             $options['contain']['Projects']['conditions']['sfw'] = true;
             $options['contain']['Files']['conditions']['sfw'] = true;
@@ -97,17 +103,16 @@ class UsersController extends AppController
     }
 
     /**
-     * Add method
+     * Register method
      *
-     * @return void Redirects on successful add, renders view otherwise.
+     * @return void (Redirection)
      */
     public function register()
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-
             //Adding defaults
-            $this->request->data['see_nsfw'] = Configure::read('cms.defaultSeeNSFW');
+            $this->request->data['seeNSFW'] = Configure::read('cms.defaultSeeNSFW');
             $this->request->data['role'] = Configure::read('cms.defaultRole');
             $this->request->data['status'] = Configure::read('cms.defaultUserStatus');
             $this->request->data['locked'] = Configure::read('cms.defaultLockedUser');
@@ -119,7 +124,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__d('users', 'Your account has been created. An email will be sent to you when active'));
-                return $this->redirect(['action' => 'index']);
+                $this->redirect(['action' => 'index']);
             } else {
                 $errors = $user->errors();
                 $errorMessages = [];
@@ -135,8 +140,8 @@ class UsersController extends AppController
 
     /**
      * Simple user login
-     * 
-     * @return void Redirect
+     *
+     * @return void (Redirection)
      */
     public function login()
     {
@@ -144,8 +149,8 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                $this->request->session()->write('see_nsfw', $this->Auth->User('see_nsfw'));
-                return $this->redirect($this->Auth->redirectUrl());
+                $this->request->session()->write('seeNSFW', $this->Auth->User('seeNSFW'));
+                $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__d('users', 'Invalid username or password, try again. Is your accound active ?'));
         }
@@ -153,12 +158,12 @@ class UsersController extends AppController
 
     /**
      * User logout
-     * 
-     * @return void Redirect
+     *
+     * @return void (redirection)
      */
     public function logout()
     {
         $this->Flash->success(__d('users', 'You are logged out. See you later !'));
-        return $this->redirect($this->Auth->logout());
+        $this->redirect($this->Auth->logout());
     }
 }

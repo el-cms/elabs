@@ -12,6 +12,13 @@ use App\Controller\Admin\AdminAppController;
 class ProjectsController extends AdminAppController
 {
 
+    /**
+     * Before render callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     *
+     * @return void
+     */
     public function beforeRender(\Cake\Event\Event $event)
     {
         parent::beforeRender($event);
@@ -41,7 +48,9 @@ class ProjectsController extends AdminAppController
      * View method
      *
      * @param string|null $id Project id.
+     *
      * @return void
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function view($id = null)
@@ -58,9 +67,11 @@ class ProjectsController extends AdminAppController
 
     /**
      * Changes a project's status.
-     * 
-     * @param int $id
+     *
+     * @param int $id Project id
+     *
      * @param string $state The new state (lock, unlock or remove)
+     *
      * @return void
      */
     public function changeState($id, $state = 'lock')
@@ -73,7 +84,6 @@ class ProjectsController extends AdminAppController
                 break;
             case 'unlock':
                 $successMessage = __d('users', 'The project has been unlocked.');
-                // TODO: there's something to do with re-publishing things
                 $bit = 1;
                 break;
             case 'remove':
@@ -101,7 +111,6 @@ class ProjectsController extends AdminAppController
         $this->set('project', $project);
         $this->set('_serialize', ['project']);
         // Ready fo ajax calls
-        // TODO : ajax action in index view
         if (!$this->request->is('ajax')) {
             $this->redirect(['action' => 'index']);
         }

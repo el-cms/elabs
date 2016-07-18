@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Project;
@@ -49,10 +50,10 @@ class ProjectsTable extends Table
         $this->hasMany('ProjectUsers', [
             'foreignKey' => 'project_id'
         ]);
-        
+
         $this->hasMany('Acts', [
-            'foreignKey'=>'fkid',
-            'conditions'=>['Acts.model'=>'Projects']
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Projects']
         ]);
     }
 
@@ -105,6 +106,7 @@ class ProjectsTable extends Table
     {
         $rules->add($rules->existsIn(['license_id'], 'Licenses'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+
         return $rules;
     }
 }

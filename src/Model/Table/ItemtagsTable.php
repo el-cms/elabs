@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Itemtag;
@@ -71,6 +72,7 @@ class ItemtagsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['tag_id'], 'Tags'));
+
         return $rules;
     }
 }

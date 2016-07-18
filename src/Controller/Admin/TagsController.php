@@ -50,7 +50,7 @@ class TagsController extends AppController
             $tag = $this->Tags->patchEntity($tag, $this->request->data);
             if ($this->Tags->save($tag)) {
                 $this->Flash->success(__('The tag has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The tag could not be saved. Please, try again.'));
             }
@@ -75,7 +75,7 @@ class TagsController extends AppController
             $tag = $this->Tags->patchEntity($tag, $this->request->data);
             if ($this->Tags->save($tag)) {
                 $this->Flash->success(__('The tag has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The tag could not be saved. Please, try again.'));
             }
@@ -100,6 +100,6 @@ class TagsController extends AppController
         } else {
             $this->Flash->error(__('The tag could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        $this->redirect(['action' => 'index']);
     }
 }

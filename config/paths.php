@@ -11,7 +11,6 @@
  * @since         3.0.0
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 /**
  * Use the DS to separate the directories in other defines
  */
@@ -24,7 +23,6 @@ if (!defined('DS')) {
  * a directory layout other than the way it is distributed.
  * When using custom settings be sure to use the DS and do not add a trailing DS.
  */
-
 /**
  * The full path to the directory which holds "src", WITHOUT a trailing DS.
  */

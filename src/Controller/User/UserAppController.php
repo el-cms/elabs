@@ -12,6 +12,15 @@ use Cake\Network\Exception\ForbiddenException;
 class UserAppController extends AppController
 {
 
+    /**
+     * Before filter callback
+     *
+     * @param \Cake\Event\Event $event The beforeFilter event.
+     *
+     * @return void
+     *
+     * @throws ForbiddenException
+     */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -31,6 +40,7 @@ class UserAppController extends AppController
      * Before render callback.
      *
      * @param \Cake\Event\Event $event The beforeRender event.
+     *
      * @return void
      */
     public function beforeRender(Event $event)

@@ -6,7 +6,17 @@ use Cake\View\Helper;
 
 class ItemsAdminHelper extends Helper
 {
-    public $helpers=['Html'];
+
+    public $helpers = ['Html'];
+
+    /**
+     * Creates a label depending on a given status
+     *
+     * @param int $status Status to check
+     * @param bool $icon If true, an icon will be appended to the text.
+     *
+     * @return string
+     */
     public function statusLabel($status, $icon = true)
     {
         switch ($status) {
@@ -33,24 +43,34 @@ class ItemsAdminHelper extends Helper
             return $text;
         }
     }
-    
-    public function sfwLabel($sfw, $icon=true){
-        switch($sfw){
+
+    /**
+     * Creates a label depending on a given SFW flag
+     *
+     * @param int $sfw Status to check
+     * @param bool $icon If true, an icon will be appended to the text.
+     *
+     * @return string
+     */
+    public function sfwLabel($sfw, $icon = true)
+    {
+        switch ($sfw) {
             case 1:
-                $labelIcon='check';
-                $labelColor='success';
-                $text=__d('elabs', 'Yes');
+                $labelIcon = 'check';
+                $labelColor = 'success';
+                $text = __d('elabs', 'Yes');
                 break;
             default:
-                $labelIcon='times';
-                $labelColor='danger';
-                $text=__d('elabs', 'No');
+                $labelIcon = 'times';
+                $labelColor = 'danger';
+                $text = __d('elabs', 'No');
         }
         if ($icon) {
-            $out= __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($labelIcon), $text]);
+            $out = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($labelIcon), $text]);
         } else {
-            $out= $text;
+            $out = $text;
         }
-        return '<span class="label label-'.$labelColor.'">'.$out.'</span>';
+        
+        return '<span class="label label-' . $labelColor . '">' . $out . '</span>';
     }
 }

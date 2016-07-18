@@ -9,7 +9,6 @@ use Cake\View\Helper;
  */
 class ItemsHelper extends Helper
 {
-    // This should be moved in config file 
     public $accepted = [
         'image' => ['jpg', 'jpeg', 'png', 'gif'],
         'audio' => ['mp3', 'ogg'],
@@ -18,6 +17,13 @@ class ItemsHelper extends Helper
         'other' => ['blend', 'dwg', 'dxf', 'sql']
     ];
 
+    /**
+     * Defines the type of element and icon of a given file
+     *
+     * @param string $filename Name of the file
+     *
+     * @return array
+     */
     public function fileConfig($filename)
     {
         $info = pathinfo($filename);

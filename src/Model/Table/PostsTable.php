@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Post;
@@ -46,8 +47,8 @@ class PostsTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->hasMany('Acts', [
-            'foreignKey'=>'fkid',
-            'conditions'=>['Acts.model'=>'Posts']
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Posts']
         ]);
     }
 
@@ -68,13 +69,13 @@ class PostsTable extends Table
             ->notEmpty('title');
 
         $validator
-                ->requirePresence('excerpt', 'create')
-                ->notEmpty('excerpt')
-                ->add('excerpt', [
-                    'maxLength' => [
-                        'rule' => ['maxLength', 250],
-                        'message' => 'Excerpts cannot be too long.']
-        ]);
+            ->requirePresence('excerpt', 'create')
+            ->notEmpty('excerpt')
+            ->add('excerpt', [
+                'maxLength' => [
+                    'rule' => ['maxLength', 250],
+                    'message' => 'Excerpts cannot be too long.']
+            ]);
 
         $validator
             ->allowEmpty('text');
@@ -107,6 +108,7 @@ class PostsTable extends Table
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['license_id'], 'Licenses'));
+
         return $rules;
     }
 }

@@ -18,7 +18,6 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-use Cake\Core\Configure;
 
 /**
  * Application Controller
@@ -35,7 +34,6 @@ class AppController extends Controller
      * Initialization hook method.
      *
      * Use this method to add common initialization code like loading components.
-     *
      * e.g. `$this->loadComponent('Security');`
      *
      * @return void
@@ -60,28 +58,30 @@ class AppController extends Controller
             'loginRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index'],
             'logoutRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index']
         ]);
-        if (is_null($this->request->session()->read('see_nsfw'))) {
-            $this->_setSFWstate('hide');
+        if (is_null($this->request->session()->read('seeNSFW'))) {
+            $this->_setSFWState('hide');
         }
     }
 
     /**
      * Before filter callback
-     * 
+     *
      * @param \Cake\Event\Event $event The beforeFilter event.
+     *
      * @return void
      */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
         $this->Auth->allow();
-        $this->set('see_nsfw', $this->request->session()->read('see_nsfw'));
+        $this->set('seeNSFW', $this->request->session()->read('seeNSFW'));
     }
 
     /**
      * Before render callback.
      *
      * @param \Cake\Event\Event $event The beforeRender event.
+     *
      * @return void
      */
     public function beforeRender(Event $event)
@@ -101,18 +101,28 @@ class AppController extends Controller
         $this->set('authUser', $authUser);
     }
 
-    private function _setSFWstate($state = 'hide')
+    /**
+     * Changes the state of the seeNSFW value in session
+     *
+     * @param string $state New state, can be 'hide' or 'show'
+     *
+     * @return void
+     */
+    private function _setSFWState($state = 'hide')
     {
-        $this->request->session()->write('see_nsfw', ($state === 'show') ? true : false);
+        $this->request->session()->write('seeNSFW', ($state === 'show') ? true : false);
     }
 
     /**
      * Switch the value of SFW state.
-     * @param type $state
+     *
+     * @param string $state New state, can be 'hide' or 'show'
+     *
+     * @return void
      */
     public function switchSFW($state = 'hide')
     {
-        $this->_setSFWstate($state);
+        $this->_setSFWState($state);
         $this->redirect($this->referer());
     }
 }

@@ -28,13 +28,13 @@ class ProjectsController extends AppController
             ],
             'sortWithelist' => ['created', 'modified', 'name'],
             'contain' => [
-                'Users'=>['fields'=>['id', 'username', 'realname']], 
-                'Licenses'=>['fields'=>['id', 'name', 'icon', 'link']]],
+                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon', 'link']]],
             'order' => ['created' => 'desc'],
         ];
 
         // SFW
-        if (!$this->request->session()->read('see_nsfw')) {
+        if (!$this->request->session()->read('seeNSFW')) {
             $findOptions['conditions']['sfw'] = true;
         }
         $this->paginate = $findOptions;
@@ -62,7 +62,7 @@ class ProjectsController extends AppController
         ]);
 
         //SFW state
-        if (!$project->sfw && !$this->request->session()->read('see_nsfw')) {
+        if (!$project->sfw && !$this->request->session()->read('seeNSFW')) {
             $this->viewBuilder()->template('nsfw');
         } else {
             $this->set('project', $project);

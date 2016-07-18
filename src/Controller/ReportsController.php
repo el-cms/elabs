@@ -12,6 +12,12 @@ use App\Controller\AppController;
 class ReportsController extends AppController
 {
 
+    /**
+     * Before filter callback
+     *
+     * @param \Cake\Event\Event $event The beforeFilter event.
+     * @return void
+     */
     public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
@@ -20,9 +26,9 @@ class ReportsController extends AppController
     }
 
     /**
-     * Add method
+     * Adds a report in DB and redirects
      *
-     * @return void Redirects on successful add, renders view otherwise.
+     * @return void
      */
     public function add()
     {
@@ -43,14 +49,17 @@ class ReportsController extends AppController
             $report = $this->Reports->patchEntity($report, $this->request->data);
             if ($this->Reports->save($report)) {
                 $this->Flash->success(__d('reports', 'Thank you for your feedback'));
-                return $this->redirect($this->referer());
+
+                $this->redirect($this->referer());
             } else {
                 $this->Flash->error(__d('reports', 'The report could not be saved (and that should be a good reason to report it...). Please try again.'));
-                return $this->redirect($this->referer());
+
+                $this->redirect($this->referer());
             }
         } else {
             $this->Flash->error(__d('elabs', 'Something went wrong with your request...'));
-            return $this->redirect($this->referer());
+
+            $this->redirect($this->referer());
         }
     }
 }

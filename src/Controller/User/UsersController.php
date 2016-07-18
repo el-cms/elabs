@@ -11,6 +11,7 @@ use App\Controller\User\UserAppController;
  */
 class UsersController extends UserAppController
 {
+
     /**
      * Edit the current user
      *
@@ -22,10 +23,10 @@ class UsersController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__d('users','Your informations are now up to date.'));
-                return $this->redirect(['action' => 'edit']);
+                $this->Flash->success(__d('users', 'Your informations are now up to date.'));
+                $this->redirect(['action' => 'edit']);
             } else {
-                $this->Flash->error(__d('elabs','An error occured. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'An error occured. Please, try again.'));
             }
         }
         $this->set(compact('user'));
@@ -34,7 +35,7 @@ class UsersController extends UserAppController
 
     /**
      * Update the password in DB
-     * 
+     *
      * @return void Redirects
      */
     public function updatePassword()
@@ -47,30 +48,30 @@ class UsersController extends UserAppController
                 $user = $this->Users->patchEntity($user, $this->request->data);
                 // Saving new password. Validation and hashing is made in UserTable.
                 if ($this->Users->save($user)) {
-                    $this->Flash->success(__d('users','Your password has been updated.'));
-                    return $this->redirect(['action' => 'edit']);
+                    $this->Flash->success(__d('users', 'Your password has been updated.'));
+                    $this->redirect(['action' => 'edit']);
                 } else {
                     $errors = $user->errors();
                     $errorMessages = [];
                     array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                         $errorMessages[] = $a;
                     });
-                    $this->Flash->error(__d('elabs','An error occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
-                    return $this->redirect(['action' => 'edit']);
+                    $this->Flash->error(__d('elabs', 'An error occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
+                    $this->redirect(['action' => 'edit']);
                 }
             } else {
                 $this->Flash->error(__d('users', 'Sorry, you have entered the wrong password.'));
-                return $this->redirect(['action' => 'edit']);
+                $this->redirect(['action' => 'edit']);
             }
         } else {
             $this->Flash->error(__d('users', 'To access this page, you need to fill the form first.'));
-            return $this->redirect(['action' => 'edit']);
+            $this->redirect(['action' => 'edit']);
         }
     }
 
     /**
      * Closes account and logout
-     * 
+     *
      * @return void Redirects
      */
     public function closeAccount()
@@ -82,14 +83,14 @@ class UsersController extends UserAppController
                 $this->Users->save($user);
                 $this->Flash->Success(__d('users', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
 //                $this->Act->removeAll();
-                return $this->redirect($this->Auth->logout());
+                $this->redirect($this->Auth->logout());
             } else {
                 $this->Flash->error(__d('users', 'Sorry, you have entered the wrong password.'));
-                return $this->redirect(['action' => 'edit']);
+                $this->redirect(['action' => 'edit']);
             }
         } else {
             $this->Flash->error(__d('users', 'To access this page, you need to fill the form first.'));
-            return $this->redirect(['action' => 'edit']);
+            $this->redirect(['action' => 'edit']);
         }
     }
 }

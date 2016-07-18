@@ -15,6 +15,7 @@ class ActsController extends AppController
     /**
      * Config value, like strings and model names.
      * Filled in initialize();
+     *
      * @var array
      */
     public $config = [
@@ -24,6 +25,7 @@ class ActsController extends AppController
 
     /**
      * Options used in queries for cards (add content)
+     *
      * @var array
      */
     public $findCardOptions = [
@@ -52,6 +54,7 @@ class ActsController extends AppController
 
     /**
      * List of option used in queries for tiles (update/delete content)
+     *
      * @var array
      */
     public $findTileOptions = [
@@ -77,7 +80,7 @@ class ActsController extends AppController
 
     /**
      * Loads additionnal models and create the configuration array
-     * 
+     *
      * @return void
      */
     public function initialize()
@@ -105,6 +108,11 @@ class ActsController extends AppController
 
     /**
      * Index method
+     *
+     * @param string $hidePosts Hides the posts, 'yes' or 'no'
+     * @param string $hideProjects Hides the projects, 'yes' or 'no'
+     * @param string $hideFiles Hides the files, 'yes' or 'no'
+     * @param string $hideUpdates Hides the updates, 'yes' or 'no'
      *
      * @return void
      */
@@ -134,7 +142,7 @@ class ActsController extends AppController
                     'Users' => $userConfig,
                 ],
                 'Files' => [
-                    'fields' => ['id', 'name', 'description', 'filename', 'created', 'modified',  'sfw', 'user_id', 'license_id'],
+                    'fields' => ['id', 'name', 'description', 'filename', 'created', 'modified', 'sfw', 'user_id', 'license_id'],
                     'conditions' => [ // SFW is made after
                         'Files.status' => 1,
                     ],
@@ -150,7 +158,7 @@ class ActsController extends AppController
         ];
 
         // SFW conditions :
-        if (!$this->request->session()->read('see_nsfw')) {
+        if (!$this->request->session()->read('seeNSFW')) {
             $this->paginate['contain']['Posts']['conditions']['Posts.sfw'] = true;
             $this->paginate['contain']['Projects']['conditions']['Projects.sfw'] = true;
             $this->paginate['contain']['Files']['conditions']['Files.sfw'] = true;

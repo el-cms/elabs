@@ -34,7 +34,9 @@ class ReportsController extends AdminAppController
      * View method
      *
      * @param string|null $id Report id.
+     *
      * @return void
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function view($id = null)
@@ -50,7 +52,9 @@ class ReportsController extends AdminAppController
      * Delete method
      *
      * @param string|null $id Report id.
-     * @return \Cake\Network\Response|null Redirects to index.
+     *
+     * @return void (redirection)
+     *
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
@@ -62,6 +66,6 @@ class ReportsController extends AdminAppController
         } else {
             $this->Flash->error(__d('reports', 'The report could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        $this->redirect(['action' => 'index']);
     }
 }

@@ -14,6 +14,8 @@ class ProjectsController extends UserAppController
 
     /**
      * Index method
+     * @param string $nsfw Filter NSFW content
+     * @param string $status Filter status
      *
      * @return void
      */
@@ -61,7 +63,7 @@ class ProjectsController extends UserAppController
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__d('project', 'The project has been saved.'));
                 $this->Act->add($project->id, 'add', 'Projects');
-                return $this->redirect(['action' => 'index']);
+                $this->redirect(['action' => 'index']);
             } else {
                 $errors = $project->errors();
                 $errorMessages = [];
@@ -94,7 +96,7 @@ class ProjectsController extends UserAppController
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__d('project', 'The project has been saved.'));
                 $this->Act->add($project->id, 'edit', 'Projects');
-                return $this->redirect(['action' => 'index']);
+                $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('project', 'The project could not be saved. Please, try again.'));
                 $errors = $project->errors();
@@ -131,6 +133,6 @@ class ProjectsController extends UserAppController
         } else {
             $this->Flash->error(__d('project', 'The project could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        $this->redirect(['action' => 'index']);
     }
 }

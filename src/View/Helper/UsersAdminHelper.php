@@ -7,9 +7,19 @@ use Cake\View\Helper;
 class UsersAdminHelper extends Helper
 {
 
-    public function roleLabel($status, $type = 'label')
+    public $helpers = ['Html'];
+
+    /**
+     * Creates a label depending on a given role
+     *
+     * @param string $role Role to check
+     * @param string $type Element type (label, icon)
+     *
+     * @return string
+     */
+    public function roleLabel($role, $type = 'label')
     {
-        switch ($status) {
+        switch ($role) {
             case 'author':
                 $desc = __d('users', 'Author');
                 $icon = 'pencil';
@@ -26,14 +36,23 @@ class UsersAdminHelper extends Helper
 
         switch ($type) {
             case 'icon':
-                $text = __d('admin', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-' . $icon . '"></span>', $desc]);
+                $text = __d('admin', '{0}&nbsp;{1}', [$this->Html->icon($icon), $desc]);
                 break;
             default: // Label
                 $text = sprintf('<span class="label">%s</span>', $desc);
         }
+
         return $text;
     }
 
+    /**
+     * Creates a label depending on a given status
+     *
+     * @param int $status Status to check
+     * @param bool $icon If true, an icon will be appended to the text.
+     *
+     * @return string
+     */
     public function statusLabel($status, $icon = true)
     {
         switch ($status) {
@@ -55,7 +74,7 @@ class UsersAdminHelper extends Helper
                 break;
         }
         if ($icon) {
-            return __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-' . $statusIcon . ' fa-fw"></span>', $text]);
+            return __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($statusIcon), $text]);
         } else {
             return $text;
         }

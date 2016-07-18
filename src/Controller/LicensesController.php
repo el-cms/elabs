@@ -50,7 +50,7 @@ class LicensesController extends AppController
             ]
         ];
         // SFW conditions :
-        if (!$this->request->session()->read('see_nsfw')) {
+        if (!$this->request->session()->read('seeNSFW')) {
             $findOptions['contain']['Posts']['conditions']['Posts.sfw'] = true;
             $findOptions['contain']['Projects']['conditions']['Projects.sfw'] = true;
             $findOptions['contain']['Files']['conditions']['Files.sfw'] = true;
