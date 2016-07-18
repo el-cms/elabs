@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/el-cms/elabs.svg?branch=master)](https://travis-ci.org/el-cms/elabs)
 # ELabs
 CMS for ExperimentsLabs.com based on CakePHP 3
 
