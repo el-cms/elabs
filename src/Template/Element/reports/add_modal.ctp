@@ -6,7 +6,7 @@
                 <h4 class="modal-title" id="uModTitle"><?php echo __('Report something') ?></h4>
             </div>
             <?php
-            echo $this->Form->create('Report', ['url' => $this->Url->build(['prefix' => false, 'controller' => 'reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
+            echo $this->Form->create('Report', ['url' => $this->Url->build(['plugin'=>null, 'prefix' => false, 'controller' => 'reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
             ?>
             <div class="modal-body" id="modal-content">
                 <div class="alert alert-info">

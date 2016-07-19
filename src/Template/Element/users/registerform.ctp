@@ -1,6 +1,6 @@
 <?php
 
-echo $this->Form->create('User', ['url' => ['prefix' => false, 'controller' => 'Users', 'action' => 'register'], 'idPrefix' => 'register']);
+echo $this->Form->create('User', ['url' => ['plugin'=>null, 'prefix' => false, 'controller' => 'Users', 'action' => 'register'], 'idPrefix' => 'register']);
 echo $this->Form->input('email', ['label' => __d('elabs', 'E-Mail'), 'required' => true, 'help' => __d('users', 'Your email won\'t be given/sold to third-parties')]);
 echo $this->Form->input('username', ['label' => __d('users', 'User name'), 'required' => true, 'help' => __d('users', 'User name should be small caps, alphanumeric and underscores only')]);
 echo $this->Form->input('realname', ['label' => __d('users', 'Real name'), 'required' => true, 'help' => __d('users', 'Your real name, if you don\'t mind')]);
