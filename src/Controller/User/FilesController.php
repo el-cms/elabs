@@ -40,7 +40,7 @@ class FilesController extends UserAppController
                 'Licenses' => ['fields' => ['id', 'name']]
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
-            'order' => ['id' => 'desc'],
+            'order' => ['created' => 'desc'],
             'sorWhiteList' => ['name', 'created', 'modified', 'weight'],
         ];
 

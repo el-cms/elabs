@@ -38,7 +38,8 @@ class ProjectsController extends AdminAppController
             'contain' => [
                 'Users' => ['fields' => ['id', 'username']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']]
-            ]
+            ],
+            'order' => ['created' => 'desc']
         ];
         $this->set('projects', $this->paginate($this->Projects));
         $this->set('_serialize', ['projects']);
