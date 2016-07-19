@@ -1,8 +1,9 @@
 <?php
-
 use Cake\Core\Configure;
 
 $this->assign('title', __('Error: {0}', $message));
+
+$this->loadHelper('CowSays');
 
 if (Configure::read('debug')):
     $this->layout = 'dev_error';
@@ -33,11 +34,9 @@ if (Configure::read('debug')):
     $this->end();
 endif;
 ?>
-<p>
-    <strong><?php echo __d('cake', 'Error:') ?> </strong>
+<div class="text-center">
     <?php
-    echo sprintf(
-            __d('cake', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>"
-    )
+    $string = __d('cake', 'Error 404:') . "\n" . sprintf(__d('cake', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>");
+    echo $this->CowSays->sayError($string);
     ?>
-</p>
+</div>

@@ -1,5 +1,4 @@
 <?php
-
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
@@ -32,7 +31,9 @@ if (Configure::read('debug')):
     $this->end();
 endif;
 ?>
-<p>
-    <strong><?php echo __d('cake', 'Error') ?>: </strong>
-    <?php echo h($message) ?>
-</p>
+<div class="text-center">
+    <?php
+    $string = __d('cake', 'Error:') . "\n" . $message;
+    echo $this->CowSays->sayError($string);
+    ?>
+</div>
