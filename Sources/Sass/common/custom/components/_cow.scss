@@ -1,0 +1,11 @@
+.cow-box{
+	border:none;
+	background-color:transparent;
+	text-shadow: 1px 0px #FFF;
+	display:inline-block;
+	text-align:left;
+	strong{
+		// Resize the bold font to give the impression of the same width as standard text
+		font-size:0.95em;
+	}
+}
