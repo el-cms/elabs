@@ -102,7 +102,7 @@
                         <div class="alert alert-warning">
                             <strong>Note that this website is still under contruction (<a href="https://github.com/el-cms/elabs">sources are on <i class="fa fa-github"></i> Github</a>). Some features may not work or not be implemented. And there are bugs. Thank you.</strong>
                         </div>
-                      <?php echo $this->Flash->render() ?>
+                        <?php echo $this->Flash->render() ?>
                     </div>
                     <!-- / Flash messages -->
 
@@ -165,8 +165,8 @@
                     </dl>
                     <dl class="footer-nav">
                         <dt class="nav-title">About the author</dt>
-                        <dd class="nav-item"><a href="#">CV</a></dd>
-                        <dd class="nav-item"><a href="#">Contact</a></dd>
+                        <dd class="nav-item"><?php echo $this->Html->link(__d('elabs', 'CV'), Cake\Core\Configure::read('cms.adminCVUrl')) ?></dd>
+                        <dd class="nav-item">Contact</dd>
                     </dl>
                 </div>
             </div>
