@@ -53,10 +53,11 @@ class ActComponent extends Component
      * @param mixed $foreignKey Target foreign key
      * @param string $type Target action
      * @param string $model Target model
+     * @param date $created Creation date
      *
      * @return bool
      */
-    public function add($foreignKey, $type = null, $model = null)
+    public function add($foreignKey, $type = null, $model = null, $created = null)
     {
         // Checking params
         if (is_null($model)) {
@@ -66,7 +67,7 @@ class ActComponent extends Component
             $type = $this->Controller->request->params['action'];
         }
 //        $uid = $this->Auth->user('id');
-        $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $foreignKey, 'model' => $model, 'type' => $type]); //, 'user_id' => $uid]);
+        $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $foreignKey, 'model' => $model, 'type' => $type, 'created' => $created]); //, 'user_id' => $uid]);
         if ($this->Acts->save($act)) {
             return true;
         } else {

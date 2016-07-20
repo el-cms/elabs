@@ -72,7 +72,7 @@ class ActsController extends AppController
         $this->paginate = [
             'contain' => [
                 'Posts' => [
-                    'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
+                    'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'created', 'license_id'],
                     'conditions' => [ // SFW is made after
                         'Posts.status' => 1,
                     ],
@@ -99,7 +99,7 @@ class ActsController extends AppController
 //            'fields' => ['id', 'type', 'fkid', 'model', 'Users.id', 'Users.username'],
             'limit' => 30,
             'order' => [
-                'id' => 'desc'
+                'created' => 'desc'
             ]
         ];
 

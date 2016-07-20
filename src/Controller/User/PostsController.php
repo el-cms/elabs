@@ -70,7 +70,7 @@ class PostsController extends UserAppController
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__d('posts', 'Your article has been saved.'));
                 if ($post->status === 1) {
-                    $this->Act->add($post->id, 'add', 'Posts');
+                    $this->Act->add($post->id, 'add', 'Posts', $post->created);
                 }
                 $this->redirect(['action' => 'index']);
             } else {
