@@ -7,6 +7,7 @@ use Cake\ORM\Entity;
  * Language Entity
  *
  * @property string $id
+ * @property string $iso639_1
  * @property string $name
  * @property int $post_count
  * @property int $project_count

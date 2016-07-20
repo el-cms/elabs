@@ -1,9 +1,9 @@
 <?php
 /*
  * File:
- *   src/Templates/Admin/Files/index.ctp
+ *   src/Templates/Admin/Languages/index.ctp
  * Description:
- *   Administration - List of files, sortable
+ *   Administration - List of languages, sortable
  * Layout element:
  *   adminindex.ctp
  * @todo: add filters
@@ -16,7 +16,7 @@ $this->assign('title', __d('languages', 'Admin/Languages&gt; List'));
 // Block: Page actions
 // -------------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New language']), ['action' => 'add'], ['class' => 'btn btn-success', 'escape' => false]);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New language']), ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
 $this->end();
 
 // Block: Page content
@@ -27,7 +27,8 @@ $this->start('pageContent');
     <table class="table table-condensed table-striped table-bordered">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('id', ['label'=>'ISO 639-2 (id)']) ?></th>
+                <th><?= $this->Paginator->sort('iso639_1', ['label'=>'ISO 639-1']) ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -36,6 +37,7 @@ $this->start('pageContent');
             <?php foreach ($languages as $language): ?>
                 <tr>
                     <td><?= h($language->id) ?></td>
+                    <td><?= h($language->iso639_1) ?></td>
                     <td><?= h($language->name) ?></td>
                     <td>
                         <div class="btn-group btn-group-xs">
@@ -56,4 +58,4 @@ $this->end();
 
 // Load the layout element
 // -----------------------
-echo $this->element('layouts/defaultindex');
+echo $this->element('layouts/adminindex');

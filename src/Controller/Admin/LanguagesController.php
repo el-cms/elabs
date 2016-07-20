@@ -34,10 +34,15 @@ class LanguagesController extends AdminAppController
     {
         $language = $this->Languages->newEntity();
         if ($this->request->is('post')) {
+            // Default counts
+            $this->request->data['post_count'] = 0;
+            $this->request->data['project_count'] = 0;
+            $this->request->data['file_count'] = 0;
             $language = $this->Languages->patchEntity($language, $this->request->data);
+            // Manually set the id
+            $language->id=$this->request->data['id'];
             if ($this->Languages->save($language)) {
                 $this->Flash->success(__('The language has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The language could not be saved. Please, try again.'));
