@@ -2,28 +2,28 @@
 $this->start('mainMenu');
 ?>
 <li>
-  <?php echo $this->Html->link(__d('admin', 'Dashboard'), '#') ?>
+    <?php echo $this->Html->link(__d('admin', 'Dashboard'), '#') ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('posts', 'Articles'), ['prefix' => 'admin', 'controller' => 'posts', 'action' => 'index']) ?>
+    <?php echo $this->Html->link(__d('posts', 'Articles'), ['prefix' => 'admin', 'controller' => 'posts', 'action' => 'index']) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('projects', 'Projects'), ['prefix' => 'admin', 'controller' => 'projects', 'action' => 'index']) ?>
+    <?php echo $this->Html->link(__d('projects', 'Projects'), ['prefix' => 'admin', 'controller' => 'projects', 'action' => 'index']) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('files', 'Files'), ['prefix' => 'admin', 'controller' => 'files', 'action' => 'index']) ?>
+    <?php echo $this->Html->link(__d('files', 'Files'), ['prefix' => 'admin', 'controller' => 'files', 'action' => 'index']) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('users', 'Users'), ['prefix' => 'admin', 'controller' => 'users', 'action' => 'index']) ?>
+    <?php echo $this->Html->link(__d('users', 'Users'), ['prefix' => 'admin', 'controller' => 'users', 'action' => 'index']) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('licenses', 'Licenses'), ['prefix' => 'admin', 'controller' => 'licenses', 'action' => 'index']) ?>
+    <?php echo $this->Html->link(__d('licenses', 'Licenses'), ['prefix' => 'admin', 'controller' => 'licenses', 'action' => 'index']) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('tags', 'Tags'), ['prefix' => 'admin', 'controller' => 'tags', 'action' => 'index']) ?>
+    <?php echo $this->Html->link(__d('tags', 'Tags'), ['prefix' => 'admin', 'controller' => 'tags', 'action' => 'index']) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__d('reports', 'Reports'), ['prefix' => 'admin', 'controller' => 'reports', 'action' => 'index']) ?>
+    <?php echo $this->Html->link(__d('reports', 'Reports'), ['prefix' => 'admin', 'controller' => 'reports', 'action' => 'index']) ?>
 </li>
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo __d('admin', 'Maintenance') ?> <span class="caret"></span></a>
@@ -42,10 +42,10 @@ $this->end();
 $this->start('secondMenu');
 ?>
 <li>
-  <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon('eye'), __d('admin', 'View site online')]), '/', array_merge($linkConfig, ['target' => '_blank'])) ?>
+    <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon('eye'), __d('admin', 'View site online')]), '/', ['target' => '_blank']) ?>
 </li>
 <li>
-  <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon('sign-out'), __d('users', 'Logout')]), ['prefix' => false, 'controller' => 'users', 'action' => 'logout']) ?>
+    <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon('sign-out'), __d('users', 'Logout')]), ['prefix' => false, 'controller' => 'users', 'action' => 'logout']) ?>
 </li>
 <?php
 $this->end();
