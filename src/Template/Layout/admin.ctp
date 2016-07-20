@@ -125,8 +125,8 @@
         <!-- / Header -->
 
         <!-- Main content (wrapped here for container-fluid) -->
-        <div>
-            <div class="container-fluid page-content">
+        <div class="page-content">
+            <div class="container-fluid">
                 <!-- Content -->
                 <?php echo $this->fetch('content') ?>
                 <!-- / Content -->
@@ -137,23 +137,7 @@
         <!-- Footer -->
         <footer class="footer footer-admin">
             <div class="container-fluid">
-                <div class="clearfix">
-                    <div class="footer-logo">
-                        <a href="/"><?php echo $this->Html->image('logo-32.png', ['alt' => __('Logo'), 'title' => __('{0} logo', Cake\Core\Configure::read('cms.siteName'))]) ?> <?php echo Cake\Core\Configure::read('cms.siteName') ?></a>
-                    </div>
-                    <dl class="footer-nav">
-                        <dt class="nav-title">About the site</dt>
-                        <dd class="nav-item"><a href="https://github.com/el-cms/elabs">Sources</a></dd>
-                        <dd class="nav-item"><a href="https://github.com/el-cms/elabs/issues">Issues</a></dd>
-                        <dd class="nav-item"><?php echo $this->Html->link(__('Licenses used'), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index']) ?></dd>
-                        <dd class="nav-item"><a href="#">Why another CMS ?</a></dd>
-                    </dl>
-                    <dl class="footer-nav">
-                        <dt class="nav-title">About the author</dt>
-                        <dd class="nav-item"><a href="#">CV</a></dd>
-                        <dd class="nav-item"><a href="#">Contact</a></dd>
-                    </dl>
-                </div>
+                <?php echo $this->element('layout/footer'); ?>
             </div>
         </footer>
         <!-- Javascript at the end -->
