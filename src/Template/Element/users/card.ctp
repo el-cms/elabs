@@ -1,7 +1,7 @@
 <div class="col-sm-4 col-xs-6">
     <div class="card card-user">
-        <div class="card-main">
-            <div class="card-header-side">
+        <div class="card-heading">
+            <div class="card-heading-side">
               <?php echo $this->Gravatar->generate($user['email'], ['image-options' => ['class' => 'img-rounded']]) ?>
             </div>
             <!-- Header -->

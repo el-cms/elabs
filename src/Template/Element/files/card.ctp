@@ -16,7 +16,7 @@ $config = $this->Items->fileConfig($data['filename']);
         <div class="card-heading">
             <!-- Icon -->
             <div class="card-heading-side">
-              <?php echo $this->Html->icon($icon . ' x3') ?>
+              <?php echo $this->Html->icon($config['icon'] . ' 3x') ?>
             </div>
             <!-- Header -->
             <div class="card-header">

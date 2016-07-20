@@ -38,7 +38,8 @@ class FilesController extends AdminAppController
             'contain' => [
                 'Users' => ['fields' => ['id', 'username']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']]
-            ]
+            ],
+            'order' => ['created' => 'desc']
         ];
         $this->set('files', $this->paginate($this->Files));
         $this->set('_serialize', ['files']);

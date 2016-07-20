@@ -28,7 +28,7 @@ class PostsController extends UserAppController
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']]],
             'conditions' => ['user_id' => $this->Auth->user('id')],
-            'order' => ['id' => 'desc'],
+            'order' => ['created' => 'desc'],
             'sortWhitelist' => ['title', 'status', 'publication_date', 'created', 'modified', 'sfw'],
         ];
         if ($nsfw === 'safe') {
@@ -70,7 +70,7 @@ class PostsController extends UserAppController
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__d('posts', 'Your article has been saved.'));
                 if ($post->status === 1) {
-                    $this->Act->add($post->id, 'add', 'Posts');
+                    $this->Act->add($post->id, 'add', 'Posts', $post->created);
                 }
                 $this->redirect(['action' => 'index']);
             } else {

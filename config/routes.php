@@ -46,12 +46,13 @@ Router::scope('/', function ($routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['prefix' => false, 'controller' => 'Acts', 'action' => 'index']);
+    $routes->connect('/', ['prefix' => false, 'plugin' => null, 'controller' => 'Acts', 'action' => 'index']);
 
     /**
-     * ...and connect the rest of 'Pages' controller's URLs.
+     * Custom pages
      */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/about', ['controller' => 'Pages', 'action' => 'display', 'about']);
+//    $routes->connect('/pages/*', ['prefix'=>false, 'plugin'=>null, 'controller' => 'Pages', 'action' => 'display']);
 
     /**
      * Connect catchall routes for all controllers.

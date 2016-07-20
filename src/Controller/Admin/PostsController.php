@@ -38,7 +38,8 @@ class PostsController extends AdminAppController
             'contain' => [
                 'Users' => ['fields' => ['id', 'username']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']]
-            ]
+            ],
+            'order' => ['created' => 'desc']
         ];
         $this->set('posts', $this->paginate($this->Posts));
         $this->set('_serialize', ['posts']);

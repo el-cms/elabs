@@ -47,7 +47,8 @@ class LicensesController extends AppController
                 'Files' => [
                     'Users' => ['fields' => ['id', 'username']]
                 ]
-            ]
+            ],
+            'order' => ['name' => 'ASC']
         ];
         // SFW conditions :
         if (!$this->request->session()->read('seeNSFW')) {

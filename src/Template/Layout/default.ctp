@@ -102,7 +102,7 @@
                         <div class="alert alert-warning">
                             <strong>Note that this website is still under contruction (<a href="https://github.com/el-cms/elabs">sources are on <i class="fa fa-github"></i> Github</a>). Some features may not work or not be implemented. And there are bugs. Thank you.</strong>
                         </div>
-                      <?php echo $this->Flash->render() ?>
+                        <?php echo $this->Flash->render() ?>
                     </div>
                     <!-- / Flash messages -->
 
@@ -150,25 +150,9 @@
         <!-- / Report modal -->
 
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="footer footer-default">
             <div class="container">
-                <div class="clearfix">
-                    <div class="footer-logo">
-                        <a href="/"><?php echo $this->Html->image('logo-32.png', ['alt' => __('Logo'), 'title' => __('{0} logo', Cake\Core\Configure::read('cms.siteName'))]) ?> <?php echo Cake\Core\Configure::read('cms.siteName') ?></a>
-                    </div>
-                    <dl class="footer-nav">
-                        <dt class="nav-title">About the site</dt>
-                        <dd class="nav-item"><a href="https://github.com/el-cms/elabs">Sources</a></dd>
-                        <dd class="nav-item"><a href="https://github.com/el-cms/elabs/issues">Issues</a></dd>
-                        <dd class="nav-item"><?php echo $this->Html->link(__('Licenses used'), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index']) ?></dd>
-                        <dd class="nav-item"><a href="#">Why another CMS ?</a></dd>
-                    </dl>
-                    <dl class="footer-nav">
-                        <dt class="nav-title">About the author</dt>
-                        <dd class="nav-item"><a href="#">CV</a></dd>
-                        <dd class="nav-item"><a href="#">Contact</a></dd>
-                    </dl>
-                </div>
+                <?php echo $this->element('layout/footer'); ?>
             </div>
         </footer>
         <!-- Javascript at the end -->

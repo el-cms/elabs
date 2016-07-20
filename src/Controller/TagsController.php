@@ -11,6 +11,7 @@ use App\Controller\AppController;
  */
 class TagsController extends AppController
 {
+
     /**
      * Index method
      *
@@ -18,6 +19,7 @@ class TagsController extends AppController
      */
     public function index()
     {
+        $this->paginate = ['order' => ['created' => 'desc']];
         $this->set('tags', $this->paginate($this->Tags));
         $this->set('_serialize', ['tags']);
     }

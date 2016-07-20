@@ -19,6 +19,7 @@ class LicensesController extends AdminAppController
      */
     public function index()
     {
+        $this->paginate = ['order' => ['name' => 'asc']];
         $this->set('licenses', $this->paginate($this->Licenses));
         $this->set('_serialize', ['licenses']);
     }

@@ -47,7 +47,7 @@ class UsersController extends AdminAppController
             'fields' => ['id', 'username', 'realname', 'role', 'status', 'created'],
             'sortWhitelist' => ['username', 'realname', 'role', 'status', 'created'],
             'order' => [
-                'status' => 'asc',
+                'username' => 'asc',
             ]
         ];
         $this->set('users', $this->paginate($this->Users));

@@ -10,5 +10,6 @@ return ['cms' => [
         'defaultMinUserNameLenght' => 6,
         'see_nsfw' => 1,
         'escapeMarkdown' => true,
+        'adminCVUrl' => '#',
     ]
 ];

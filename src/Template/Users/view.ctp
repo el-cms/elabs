@@ -15,28 +15,37 @@ $this->assign('title', __d('users', 'Author: {0}', h($user->realname)));
 // ------------------------
 $this->start('pageInfos');
 ?>
-<ul class="list-unstyled">
-    <li><strong><?php echo __d('users', 'Username:') ?></strong> <?php echo h($user->username) ?></li>
-    <?php if ($user->has('website')): ?>
-        <li><strong><?php echo __d('users', 'Website:') ?></strong><br/><?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), h($user->website)]), h($user->website), ['escape' => false, 'target' => '_blank']) ?></li>
-    <?php endif; ?>
-    <li><strong><?php echo __d('users', 'Member since:') ?></strong> <?php echo h($user->created) ?></li>
-</ul>
+<div class="row">
+    <div class="col-sm-4">
+      <?php echo $this->Gravatar->generate($user->email, ['image-options' => ['class' => 'img-responsive img-rounded']]) ?>
+    </div>
+    <div class="col-sm-8">
+        <ul class="list-unstyled">
+            <li><strong><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('user'), h($user->username)]) ?></strong></li>
+            <li><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('calendar'), h($user->created)]) ?></li>
+            <?php if ($user->has('website')): ?>
+                <li><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), $this->Html->link(__d('elabs', 'Website'), h($user->website), ['escape' => false, 'target' => '_blank'])]) ?></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+</div>
 <?php
 $this->end();
 
 // Block: Page content
 // -------------------
 $this->start('pageContent');
-?>
-<div class="well">
-  <?php echo $this->Html->displayMD($user->bio) ?>
-</div>
+if (!empty($user->bio)):
+    ?>
+    <div class="well">
+      <?php echo $this->Html->displayMD($user->bio) ?>
+    </div>
+<?php endif; ?>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles ({0})', $user->post_count) ?></a></li>
-        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects ({0})', $user->project_count) ?></a></li>
-        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files ({0})', $user->file_count) ?></a></li>
+        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles {0}', '<span class="badge">' . $user->post_count . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects {0}', '<span class="badge">' . $user->project_count . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files {0}', '<span class="badge">' . $user->file_count . '</span>') ?></a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">

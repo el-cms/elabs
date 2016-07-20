@@ -12,6 +12,7 @@ use Cake\ORM\TableRegistry;
  */
 class ActsController extends AppController
 {
+
     /**
      * Config value, like strings and model names.
      * Filled in initialize();
@@ -21,61 +22,6 @@ class ActsController extends AppController
     public $config = [
         'strings' => [],
         'models' => [],
-    ];
-
-    /**
-     * Options used in queries for cards (add content)
-     *
-     * @var array
-     */
-    public $findCardOptions = [
-        'Posts' => [
-            'fields' => ['id', 'title', 'excerpt', 'sfw', 'publication_date', 'modified', 'license_id'],
-            'conditions' => [
-                'status' => 1,
-            ],
-            'contain' => ['Licenses' => ['fields' => ['id', 'name', 'icon']]],
-        ],
-        'Projects' => [
-            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'short_description', 'license_id'],
-            'conditions' => [
-                'status' => 1,
-            ],
-            'contain' => ['Licenses' => ['fields' => ['id', 'name', 'icon']]],
-        ],
-        'Files' => [
-            'fields' => ['id', 'name', 'sfw', 'filename', 'description', 'created', 'modified', 'license_id', 'mime'],
-            'conditions' => [
-                'status' => 1,
-            ],
-            'contain' => ['Licenses' => ['fields' => ['id', 'name', 'icon']]],
-        ]
-    ];
-
-    /**
-     * List of option used in queries for tiles (update/delete content)
-     *
-     * @var array
-     */
-    public $findTileOptions = [
-        'Posts' => [
-            'fields' => ['id', 'title', 'modified'],
-            'conditions' => [
-                'status' => 1,
-            ],
-        ],
-        'Projects' => [
-            'fields' => ['id', 'title' => 'name', 'modified'],
-            'conditions' => [
-                'status' => 1,
-            ],
-        ],
-        'Files' => [
-            'fields' => ['id', 'title' => 'name', 'modified'],
-            'conditions' => [
-                'status' => 1,
-            ],
-        ]
     ];
 
     /**
@@ -126,7 +72,7 @@ class ActsController extends AppController
         $this->paginate = [
             'contain' => [
                 'Posts' => [
-                    'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
+                    'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'created', 'license_id'],
                     'conditions' => [ // SFW is made after
                         'Posts.status' => 1,
                     ],
@@ -153,7 +99,7 @@ class ActsController extends AppController
 //            'fields' => ['id', 'type', 'fkid', 'model', 'Users.id', 'Users.username'],
             'limit' => 30,
             'order' => [
-                'id' => 'desc'
+                'Acts.created' => 'desc'
             ]
         ];
 

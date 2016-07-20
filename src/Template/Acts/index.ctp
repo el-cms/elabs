@@ -52,19 +52,20 @@ if (!$acts->isEmpty()):
         <dl>
           <?php
           $lastDate = new Cake\I18n\Time();
+          // Items
           foreach ($acts as $act):
-              $model = Cake\Utility\Inflector::variable(Cake\Utility\Inflector::singularize($act['model']));
-              // Filter NSFW
-              if (!is_null($act[$model])):
-                  // Model name
-                  // Act date
-                  $actDate = $act[$model]->modified;
-                  // Date change ?
-                  if (!$this->Time->isSameDay($lastDate, $actDate)):
-                      ?>
-                        <dt><?php echo $this->Time->format($actDate, "dd/MM/yyyy") ?></dt>
-                        <?php
-                    endif;
+              $actDate = $act->created;
+              // Date change ?
+              if (!$this->Time->isSameDay($lastDate, $actDate)):
+                  ?>
+                    <dt><?php echo $this->Time->format($actDate, "dd/MM/yyyy") ?></dt>
+                    <?php
+                endif;
+                // Last date shift
+                $lastDate = $actDate;
+                $model = Cake\Utility\Inflector::variable(Cake\Utility\Inflector::singularize($act['model']));
+                // Filter NSFW
+                if (!is_null($act[$model])):
                     if ($act['type'] === 'add'):
                         ?>
                         <dd class="pos-right clearfix">
@@ -118,8 +119,7 @@ if (!$acts->isEmpty()):
                         </dd>
                     <?php
                     endif;
-                    // Last date shift
-                    $lastDate = $actDate;
+
                 else:
                     ?>
                     <dd class="pos-right clearfix">

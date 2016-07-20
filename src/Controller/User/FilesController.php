@@ -40,7 +40,7 @@ class FilesController extends UserAppController
                 'Licenses' => ['fields' => ['id', 'name']]
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
-            'order' => ['id' => 'desc'],
+            'order' => ['created' => 'desc'],
             'sorWhiteList' => ['name', 'created', 'modified', 'weight'],
         ];
 
@@ -109,7 +109,7 @@ class FilesController extends UserAppController
                     $file = $this->Files->patchEntity($file, $fileItem);
                     if ($this->Files->save($file)) {
                         $this->Flash->success(__d('files', 'The file has been saved.'));
-                        $this->Act->add($file->id, 'add', 'Files');
+                        $this->Act->add($file->id, 'add', 'Files', $file->created);
                         $this->redirect(['action' => 'index']);
                     } else {
 //                        debug($file->errors());die;
