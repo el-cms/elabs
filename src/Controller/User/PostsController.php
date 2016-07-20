@@ -26,7 +26,9 @@ class PostsController extends UserAppController
         $this->paginate = [
             'fields' => ['id', 'title', 'excerpt', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
             'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']]],
+                'Licenses' => ['fields' => ['id', 'name']],
+                'Languages' => ['fields' => ['id', 'name']]
+            ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['title', 'status', 'publication_date', 'created', 'modified', 'sfw'],
@@ -83,7 +85,8 @@ class PostsController extends UserAppController
             }
         }
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
-        $this->set(compact('post', 'licenses'));
+        $languages = $this->Posts->Languages->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'licenses', 'languages'));
         $this->set('_serialize', ['post']);
     }
 
@@ -133,7 +136,8 @@ class PostsController extends UserAppController
             }
         }
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
-        $this->set(compact('post', 'users', 'licenses'));
+        $languages = $this->Posts->Languages->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'users', 'licenses', 'languages'));
         $this->set('_serialize', ['post']);
     }
 

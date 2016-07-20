@@ -35,14 +35,21 @@ echo $this->Form->input('excerpt', ['type' => 'textarea', 'required' => false, '
 $this->CodeMirror->add('excerptArea', [], ['%s.setSize(null, "150")']);
 echo $this->Form->input('text', ['required' => false, 'id' => 'textArea', 'label' => __d('posts', 'Article contents')]);
 $this->CodeMirror->add('textArea');
-echo $this->Form->input('license_id', ['options' => $licenses]);
 ?>
 <div class="row">
+    <div class="col-sm-6">
+        <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
+    </div>
+    <div class="col-sm-6">
+        <?php echo $this->Form->input('language_id', ['options' => $languages]); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-3">
-      <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
+        <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
     </div>
     <div class="col-sm-3">
-      <?php echo $this->Form->input('status', ['required' => false, 'type' => 'checkbox', 'value' => '1', 'class' => 'access_hide', 'label' => __d('posts', 'Published')]); ?>
+        <?php echo $this->Form->input('status', ['required' => false, 'type' => 'checkbox', 'value' => '1', 'class' => 'access_hide', 'label' => __d('posts', 'Published')]); ?>
     </div>
     <div class="col-sm-3">
         <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
