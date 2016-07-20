@@ -21,12 +21,13 @@ class PostsController extends AppController
     {
         $findOptions = [
             'fields' => [
-                'id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id',
+                'id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id', 'language_id',
             ],
             'conditions' => ['Posts.status' => 1],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Languages' => ['fields' => ['id', 'name']],
             ],
             'order' => ['publication_date' => 'desc'],
             'sortWhitelist' => ['publication_date', 'title'],
@@ -52,7 +53,8 @@ class PostsController extends AppController
         $post = $this->Posts->get($id, [
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Languages' => ['fields' => ['id', 'name']],
             ],
             'conditions' => ['Posts.status' => 1],
         ]);

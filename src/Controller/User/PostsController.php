@@ -27,7 +27,7 @@ class PostsController extends UserAppController
             'fields' => ['id', 'title', 'excerpt', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name']]
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']]
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
@@ -112,7 +112,7 @@ class PostsController extends UserAppController
             if ($this->Posts->save($post)) {
                 if ($oldState === 0 && $post->status === 1) {
                     // New publication
-                    $this->Act->add($post->id, 'add', 'Posts');
+                    $this->Act->add($post->id, 'add', 'Posts', $post->created);
                     $this->Flash->success(__d('posts', 'Your article has been published.'));
                 } elseif ($oldState === 1 && $post->status === 0) {
                     // Removed from publication

@@ -4,6 +4,8 @@
         <ul class="card-toolbar">
             <!-- Report link -->
             <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
+            <!-- Language pill -->
+            <li><a class="language-pill"><?php echo $data['language']['id'] ?></a></li>
             <!-- SFW pill-->
             <?php if (!$data['sfw']): ?>
                 <li><a class="nsfw-pill"><?php echo __('NSFW') ?></a></li>
