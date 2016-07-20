@@ -4,7 +4,7 @@
     </div>
     <dl class="footer-nav">
         <dt class="nav-title">About the site</dt>
-        <dd class="nav-item"><?php echo $this->Html->link(__('About'), ['prefix' => false, 'plugin' => null, 'controller' => 'Pages', 'action' => 'display', 'about']) ?></dd>
+        <dd class="nav-item"><?php echo $this->Html->link(__('About'), ['prefix' => false, 'plugin' => null, 'controller' => 'pages', 'action' => 'display', 'about']) ?></dd>
         <dd class="nav-item"><a href="https://github.com/el-cms/elabs">Sources</a></dd>
         <dd class="nav-item"><a href="https://github.com/el-cms/elabs/issues">Issues</a></dd>
         <dd class="nav-item"><?php echo $this->Html->link(__('Licenses used'), ['prefix' => false, 'plugin' => null, 'controller' => 'Licenses', 'action' => 'index']) ?></dd>
