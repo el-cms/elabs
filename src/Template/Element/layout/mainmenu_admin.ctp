@@ -30,6 +30,8 @@ $this->start('mainMenu');
     <ul class="dropdown-menu">
         <li class="dropdown-header">Acts:</li>
         <li><?php echo $this->Form->postLink(__('{0}&nbsp;{1}', [$this->Html->icon('reload'), __('Rebuild table')]), ['controller' => 'Acts', 'action' => 'clean'], ['escape' => false, 'confirm' => _('Are you sure you want to clear the table and rebuild it ?')]) ?></li>
+        <li class="dropdown-header">General</li>
+        <li><?php echo $this->Form->postLink(__('{0}&nbsp;{1}', [$this->Html->icon('trash'), __('Clear the caches')]), ['controller' => 'Maintenance', 'action' => 'clearCache'], ['escape' => false, 'confirm' => _('Are you sure you want to clear the caches ?')]) ?></li>
     </ul>
 </li>
 <li>
