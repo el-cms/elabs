@@ -38,8 +38,21 @@ body{
     flex:1;
 }
 
-.footer, .footer-admin, .footer-user{
+.footer{
     margin-top:30px;
+    .footer-logo{
+        width:40%;
+    }
+    .footer-nav{
+        width:30%;
+        dt{
+            font-variant: small-caps;
+        }
+    }
+}
+
+.footer-default{
+	background-color:$navbar-admin-bg;
     background-color:$navbar-default-bg;
     .footer-logo{
         width:40%;
@@ -135,24 +148,3 @@ audio{
     border-radius: 2px;
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
 }
-
-/*
-//
-// Login form in right menu
-//
-
-//Title
-.menu-top-info.plain{
-    font-size: 1.5em;
-}
-// Content1
-.menu-content.plain{
-    padding:$margin-sm;
-}
-
-legend{
-    @extend .content-sub-heading;
-    font-size:$font-size-h5;
-    margin-bottom: 0px;
-}
-*/
