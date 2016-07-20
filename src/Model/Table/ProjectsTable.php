@@ -47,10 +47,13 @@ class ProjectsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('Languages', [
+            'foreignKey' => 'language_id',
+            'joinType' => 'INNER'
+        ]);
         $this->hasMany('ProjectUsers', [
             'foreignKey' => 'project_id'
         ]);
-
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',
             'conditions' => ['Acts.model' => 'Projects']
@@ -66,31 +69,31 @@ class ProjectsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'uuid'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'uuid'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+                ->requirePresence('name', 'create')
+                ->notEmpty('name');
 
         $validator
-            ->allowEmpty('short_description');
+                ->allowEmpty('short_description');
 
         $validator
-            ->allowEmpty('description');
+                ->allowEmpty('description');
 
         $validator
-            ->add('sfw', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->add('sfw', 'valid', ['rule' => 'boolean'])
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->allowEmpty('mainurl');
+                ->allowEmpty('mainurl');
 
         $validator
-            ->add('status', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+                ->add('status', 'valid', ['rule' => 'numeric'])
+                ->requirePresence('status', 'create')
+                ->notEmpty('status');
 
         return $validator;
     }
