@@ -12,6 +12,7 @@ use Cake\Filesystem\File;
  */
 class FilesController extends UserAppController
 {
+
     /**
      * Initializes and loads extra components
      *
@@ -141,7 +142,9 @@ class FilesController extends UserAppController
             $file = $this->Files->patchEntity($file, $this->request->data);
             if ($this->Files->save($file)) {
                 $this->Flash->success(__d('file', 'The file has been saved.'));
-                $this->Act->add($file->id, 'edit', 'Files');
+                if ($this->request->data['isMinor'] == '0') {
+                    $this->Act->add($file->id, 'edit', 'Files', $file->modified);
+                }
                 $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('files', 'The file could not be saved. Please, try again.'));

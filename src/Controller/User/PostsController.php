@@ -117,7 +117,9 @@ class PostsController extends UserAppController
                     $this->Flash->success(__d('posts', 'Your article has been unpublished.'));
                 } else {
                     // Updated
-                    $this->Act->add($post->id, 'edit', 'Posts');
+                    if ($this->request->data['isMinor'] == '0') {
+                        $this->Act->add($post->id, 'edit', 'Posts', $post->modified);
+                    }
                     $this->Flash->success(__d('posts', 'Your article has been updated.'));
                 }
                 $this->redirect(['action' => 'index']);
