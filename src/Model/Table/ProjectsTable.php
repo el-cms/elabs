@@ -37,6 +37,7 @@ class ProjectsTable extends Table
         $this->addBehavior('CounterCache', [
             'Users' => ['project_count' => ['conditions' => ['status' => 1]]],
             'Licenses' => ['project_count' => ['conditions' => ['status' => 1]]],
+            'Languages' => ['project_count' => ['conditions' => ['status' => 1]]],
         ]);
 
         $this->belongsTo('Licenses', [

@@ -36,6 +36,7 @@ class FilesTable extends Table
         $this->addBehavior('CounterCache', [
             'Users' => ['file_count' => ['conditions' => ['status' => 1]]],
             'Licenses' => ['file_count' => ['conditions' => ['status' => 1]]],
+            'Languages' => ['file_count' => ['conditions' => ['status' => 1]]],
         ]);
 
         $this->belongsTo('Users', [

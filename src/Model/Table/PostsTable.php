@@ -36,6 +36,7 @@ class PostsTable extends Table
         $this->addBehavior('CounterCache', [
             'Users' => ['post_count' => ['conditions' => ['status' => 1]]],
             'Licenses' => ['post_count' => ['conditions' => ['status' => 1]]],
+            'Languages' => ['post_count' => ['conditions' => ['status' => 1]]],
         ]);
 
         $this->belongsTo('Users', [

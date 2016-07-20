@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -59,11 +58,26 @@ class LanguagesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->allowEmpty('id', 'create');
+            ->allowEmpty('id', 'create');
 
         $validator
-                ->requirePresence('name', 'create')
-                ->notEmpty('name');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
+        $validator
+            ->integer('post_count')
+            ->requirePresence('post_count', 'create')
+            ->notEmpty('post_count');
+
+        $validator
+            ->integer('project_count')
+            ->requirePresence('project_count', 'create')
+            ->notEmpty('project_count');
+
+        $validator
+            ->integer('file_count')
+            ->requirePresence('file_count', 'create')
+            ->notEmpty('file_count');
 
         return $validator;
     }
