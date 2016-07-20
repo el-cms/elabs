@@ -99,7 +99,7 @@ class ActsController extends AppController
 //            'fields' => ['id', 'type', 'fkid', 'model', 'Users.id', 'Users.username'],
             'limit' => 30,
             'order' => [
-                'created' => 'desc'
+                'Acts.created' => 'desc'
             ]
         ];
 
