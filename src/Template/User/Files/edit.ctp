@@ -30,15 +30,18 @@ $this->end();
 // ------------------
 $this->start('pageContent');
 echo $this->Form->create($file);
-echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descArea', 'label' => __d('posts', 'Description'), 'value'=>$file->description]);
+echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descArea', 'label' => __d('posts', 'Description'), 'value' => $file->description]);
 $this->CodeMirror->add('descArea');
 echo $this->Form->input('license_id ', ['options' => $licenses, 'class' => 'selecter', 'data-selecter-options' => '{"cover":"true"}']);
 ?>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <?php echo $this->Form->input('sfw', ['label' => __d('elabs', 'This is SFW')]); ?>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
+    </div>
+    <div class="col-sm-4">
         <?php echo $this->Form->submit(__d('files', 'Update'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>

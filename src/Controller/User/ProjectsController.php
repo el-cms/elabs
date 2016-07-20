@@ -95,7 +95,9 @@ class ProjectsController extends UserAppController
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__d('project', 'The project has been saved.'));
-                $this->Act->add($project->id, 'edit', 'Projects');
+                if ($this->request->data['isMinor'] == '0') {
+                    $this->Act->add($project->id, 'edit', 'Projects', $project->modified);
+                }
                 $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('project', 'The project could not be saved. Please, try again.'));

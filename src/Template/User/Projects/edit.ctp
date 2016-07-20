@@ -41,7 +41,10 @@ echo $this->Form->input('license_id', ['options' => $licenses]);
 ?>
 <div class="row">
     <div class="col-sm-6">
-        <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
+      <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
+    </div>
+    <div class="col-sm-4">
+      <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
     </div>
     <div class="col-sm-6">
         <?php echo $this->Form->submit(__d('elabs', 'Update the project'), ['class' => 'btn-primary btn-block']); ?>
