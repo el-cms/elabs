@@ -21,7 +21,6 @@ class ActsController extends AdminAppController
      * @var array
      */
     public $config = [
-        'strings' => [],
         'models' => [],
     ];
 
@@ -36,10 +35,6 @@ class ActsController extends AdminAppController
 
         // Create config strings
         $this->config = [
-            'strings' => [
-                'edit' => __d('acts', 'has been updated'),
-                'delete' => __d('acts', 'has been removed'),
-            ],
             'models' => [
                 'Files' => __d('files', 'File'),
                 'Posts' => __d('posts', 'Article'),
