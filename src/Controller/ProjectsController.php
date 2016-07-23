@@ -28,7 +28,7 @@ class ProjectsController extends AppController
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon', 'link']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1',]],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
             'order' => ['created' => 'desc'],
         ];
@@ -55,7 +55,7 @@ class ProjectsController extends AppController
             'contain' => [
                 'Licenses',
                 'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1',]],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'ProjectUsers'],
             'conditions' => [
                 'Projects.status' => 1,

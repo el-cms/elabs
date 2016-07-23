@@ -15,7 +15,7 @@ class LanguagesController extends AdminAppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Network\Response|void
      */
     public function index()
     {
@@ -40,9 +40,10 @@ class LanguagesController extends AdminAppController
             $this->request->data['file_count'] = 0;
             $language = $this->Languages->patchEntity($language, $this->request->data);
             // Manually set the id
-            $language->id=$this->request->data['id'];
+            $language->id = $this->request->data['id'];
             if ($this->Languages->save($language)) {
                 $this->Flash->success(__('The language has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The language could not be saved. Please, try again.'));

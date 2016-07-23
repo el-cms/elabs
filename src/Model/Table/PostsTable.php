@@ -79,8 +79,9 @@ class PostsTable extends Table
                 ->add('excerpt', [
                     'maxLength' => [
                         'rule' => ['maxLength', 250],
-                        'message' => 'Excerpts cannot be too long.']
-        ]);
+                        'message' => 'Excerpts cannot be too long.'
+                    ]
+                ]);
 
         $validator
                 ->allowEmpty('text');

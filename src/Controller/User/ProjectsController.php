@@ -25,7 +25,7 @@ class ProjectsController extends UserAppController
             'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1',]],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
