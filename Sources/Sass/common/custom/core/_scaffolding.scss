@@ -153,7 +153,8 @@ audio{
     overflow: hidden;
     display:inline-block;
     max-height: 300px;
-    .small-overlay{
+    &:before{
+        /*.small-overlay{*/
         content: "";
         position: relative;
         top:300px;
@@ -161,14 +162,29 @@ audio{
         height: 20px;
         box-shadow: 0px -20px 10px -10px #FFF inset;
         opacity:1;
+        win-width:100%;
+        display:block;
     }
     img{
         cursor: pointer;
     }
     &.in{
         max-height:100%;
-        .small-overlay{
+        &:before{
+            /*.small-overlay{*/
             opacity: 0;
         }
     }
+}
+.event-success .img-cropped-wrapper:before{
+    box-shadow: 0px -20px 10px -10px lighten($alert-success, 10%) inset;
+}
+.event-danger .img-cropped-wrapper:before{
+    box-shadow: 0px -20px 10px -10px lighten($alert-danger, 10%) inset;
+}
+.event-info .img-cropped-wrapper:before{
+    box-shadow: 0px -20px 10px -10px lighten($alert-primary, 10%) inset;
+}
+.event-warning .img-cropped-wrapper:before{
+    box-shadow: 0px -20px 10px -10px lighten($alert-warning, 10%) inset;
 }
