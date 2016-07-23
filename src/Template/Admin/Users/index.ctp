@@ -11,7 +11,11 @@
  */
 
 // Page title
-$this->assign('title', __d('users', 'Admin/Users&gt; List'));
+$this->assign('title', __d('users', 'List of users'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Users'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
 
 // Block: Page content
 // -------------------

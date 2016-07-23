@@ -11,13 +11,17 @@
  */
 
 // Page title
-$this->assign('title', __d('languages', 'Admin/Languages&gt; List'));
+$this->assign('title', __d('languages', 'List of languages'));
 
 // Block: Page actions
 // -------------------
 $this->start('pageActions');
 echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New language']), ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
 $this->end();
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Languages'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
 
 // Block: Page content
 // -------------------
@@ -27,8 +31,8 @@ $this->start('pageContent');
     <table class="table table-condensed table-striped table-bordered">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id', ['label'=>'ISO 639-2 (id)']) ?></th>
-                <th><?= $this->Paginator->sort('iso639_1', ['label'=>'ISO 639-1']) ?></th>
+                <th><?= $this->Paginator->sort('id', ['label' => 'ISO 639-2 (id)']) ?></th>
+                <th><?= $this->Paginator->sort('iso639_1', ['label' => 'ISO 639-1']) ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -38,7 +42,7 @@ $this->start('pageContent');
                 <tr>
                     <td><?= h($language->id) ?></td>
                     <td><?= h($language->iso639_1) ?></td>
-                    <td><?= h($language->name) ?></td>
+                    <td><?= $this->Html->langLabel($language->name, $language->iso639_1, ['label'=>false]) ?></td>
                     <td>
                         <div class="btn-group btn-group-xs">
                             <?php

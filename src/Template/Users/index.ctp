@@ -11,6 +11,9 @@
 // Page title
 $this->assign('title', __d('users', 'Authors'));
 
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Authors'));
+
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderMenu');

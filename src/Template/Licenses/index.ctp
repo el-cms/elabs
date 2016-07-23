@@ -11,6 +11,11 @@
 // Page title
 $this->assign('title', __d('licenses', 'Licenses'));
 
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'About'), ['controller' => 'Pages', 'action' => 'display', 'about']);
+$this->Html->addCrumb(__d('elabs', 'Licenses'), ['action' => 'index']);
+$this->Html->addCrumb(__d('licenses', 'List of licenses'));
+
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');

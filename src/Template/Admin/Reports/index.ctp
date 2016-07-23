@@ -11,7 +11,11 @@
  */
 
 // Page title
-$this->assign('title', __d('reports', 'Admin/Reports&gt; List'));
+$this->assign('title', __d('projects', 'List of reports'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Reports'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
 
 // Block: Page content
 // -------------------

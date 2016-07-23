@@ -9,7 +9,11 @@
  */
 
 // Page title
-$this->assign('title', __d('users', 'Admin/User&gt; {0}', h($user->realname)));
+$this->assign('title', h($user->realname));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Users'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
 
 // Block: Item informations
 // ------------------------

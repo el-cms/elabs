@@ -9,7 +9,11 @@
  */
 
 // Page title
-$this->assign('title', __d('elabs', 'Admin/Languages/Edit&gt; {0}', $language->name));
+$this->assign('title', $language->name);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Languages'), ['action' => 'index']);
+$this->Html->addCrumb(__d('elabs', 'Edit {0}', [$this->Html->langLabel($language->name, $language->iso639_1, ['label' => false])]));
 
 // Actions block
 // -------------

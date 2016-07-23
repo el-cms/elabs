@@ -14,14 +14,14 @@ switch ($model):
         $icon = 'question';
 endswitch;
 
-if (!$event): ?>
+if (!$event):
+    ?>
     <div class="tile tile-nsfw">
-<?php
-endif;
-
-echo __('{0}&nbsp;{1}', [$this->Html->icon($icon), __d('acts', 'This element may not be safe, therefore it is hidden.')]);
-if (!$event): ?>
+        <?php
+    endif;
+    echo __('{0}&nbsp;{1}', [$this->Html->icon($icon), __d('acts', 'This element may not be safe, therefore it is hidden.')]);
+    if (!$event):
+        ?>
     </div>
-<?php
+    <?php
  endif;
- 

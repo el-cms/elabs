@@ -9,20 +9,28 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Admin/Article&gt; {0}', h($post->title)));
+$this->assign('title', h($post->title));
+
+// Language
+$this->assign('contentLanguage', $post->language->iso639_1);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Articles'), ['action' => 'index']);
+$this->Html->addCrumb($this->Html->langLabel($post->title, $post->language->iso639_1, ['label' => false]));
 
 // Block: Item informations
 // ------------------------
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('elabs', 'Author') ?></strong> <?php echo $this->Html->link($post->user->username, ['controller' => 'Users', 'action' => 'view', $post->user->id]) ?></li>
-    <li><strong><?php echo __d('licenses', 'License') ?></strong> <?php echo $this->License->d($post->license) ?></li>
-    <li><strong><?php echo __d('elabs', 'Created on') ?></strong> <?php echo h($post->created) ?></li>
-    <li><strong><?php echo __d('elabs', 'Updated on') ?></strong> <?php echo h($post->modified) ?></li>
-    <li><strong><?php echo __d('posts', 'Publication Date') ?></strong> <?php echo h($post->publication_date) ?></li>
-    <li><strong><?php echo __d('elabs', 'Safe') ?></strong> <?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></li>
-    <li><strong><?php echo __d('elabs', 'Status') ?></strong> <?php echo $this->ItemsAdmin->statusLabel($post->status) ?></li>
+    <li><strong><?php echo __d('elabs', 'Author:') ?></strong> <?php echo $this->Html->link($post->user->username, ['controller' => 'Users', 'action' => 'view', $post->user->id]) ?></li>
+    <li><strong><?php echo __d('licenses', 'License:') ?></strong> <?php echo $this->License->d($post->license) ?></li>
+    <li><strong><?php echo __d('elabs', 'Created on:') ?></strong> <?php echo h($post->created) ?></li>
+    <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($post->modified) ?></li>
+    <li><strong><?php echo __d('posts', 'Pub. Date:') ?></strong> <?php echo h($post->publication_date) ?></li>
+    <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($post->language->name, $post->language->iso639_1) ?></li>
+    <li><strong><?php echo __d('elabs', 'Safe:') ?></strong> <?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></li>
+    <li><strong><?php echo __d('elabs', 'Status:') ?></strong> <?php echo $this->ItemsAdmin->statusLabel($post->status) ?></li>
 </ul>
 <?php
 $this->end();
@@ -68,7 +76,7 @@ $this->start('pageContent');
         <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('users', 'Related items') ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
-        <div class="tab-pane fade active in" id="tab-content">
+        <div class="tab-pane fade active in" id="tab-content" lang="<?php echo $post->language->iso639_1 ?>">
             <?php
             echo $this->Html->displayMD($post->excerpt);
             echo $this->Html->displayMD($post->text);

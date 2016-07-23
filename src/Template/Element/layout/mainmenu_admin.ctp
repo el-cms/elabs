@@ -20,6 +20,9 @@ $this->start('mainMenu');
     <?php echo $this->Html->link(__d('licenses', 'Licenses'), ['prefix' => 'admin', 'controller' => 'licenses', 'action' => 'index']) ?>
 </li>
 <li>
+    <?php echo $this->Html->link(__d('languages', 'Languages'), ['prefix' => 'admin', 'controller' => 'languages', 'action' => 'index']) ?>
+</li>
+<li>
     <?php echo $this->Html->link(__d('tags', 'Tags'), ['prefix' => 'admin', 'controller' => 'tags', 'action' => 'index']) ?>
 </li>
 <li>

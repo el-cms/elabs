@@ -9,7 +9,12 @@
  */
 
 // Page title
-$this->assign('title', __d('licenses', 'Admin/Languages&gt; Create'));
+$this->assign('title', __d('languages', 'New language'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Languages'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
+
 // Related links block
 // -------------------
 $this->start('pageLinks');

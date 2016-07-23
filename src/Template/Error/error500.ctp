@@ -4,6 +4,9 @@ use Cake\Error\Debugger;
 
 $this->assign('title', __('Error: {0}', $message));
 
+// Breadcrumbs
+$this->Html->addCrumb($this->fetch('title'));
+
 if (Configure::read('debug')):
     $this->layout = 'dev_error';
 

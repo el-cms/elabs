@@ -3,6 +3,9 @@ use Cake\Core\Configure;
 
 $this->assign('title', __('Error: {0}', $message));
 
+// Breadcrumbs
+$this->Html->addCrumb($this->fetch('title'));
+
 $this->loadHelper('CowSays');
 
 if (Configure::read('debug')):

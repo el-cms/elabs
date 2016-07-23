@@ -6,12 +6,16 @@
  *   Administration - List of files, sortable
  * Layout element:
  *   adminindex.ctp
- * @todo: add filters
+ *
  * Notes: paginations links are in the table, not in a block.
  */
 
 // Page title
-$this->assign('title', __d('files', 'Admin/Files&gt; List'));
+$this->assign('title', __d('files', 'List of files'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
 
 // Block: Page content
 // -------------------
@@ -24,8 +28,13 @@ $this->start('pageContent');
                 <th><?php echo $this->Paginator->sort('name', __d('files', 'Name')) ?>/<?php echo $this->Paginator->sort('filename', __d('files', 'F.name')) ?></th>
                 <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Owner')) ?></th>
                 <th><?php echo $this->Paginator->sort('weight', __d('files', 'Size')) ?></th>
-                <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?>/<?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
+                <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
+                <th>
+                    <?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?><br/>
+                    <?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?>
+                </th>
                 <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
+                <th><?php echo $this->Paginator->sort('Languages.name', __d('language', 'Language')) ?></th>
                 <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
@@ -39,11 +48,13 @@ $this->start('pageContent');
                     </td>
                     <td><?php echo $this->Html->link(h($file->user->username), ['controller' => 'users', 'action' => 'view', $file->user->id]) ?></td>
                     <td><?php echo $file->weight ?></td>
+                    <td><?php echo $this->ItemsAdmin->sfwLabel($file->sfw) ?></td>
                     <td>
                         <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('asterisk'), h($file->created)]) ?></small><br/>
                         <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('refresh'), h($file->modified)]) ?></small>
                     </td>
                     <td><?php echo $this->License->d($file->license, false) ?></td>
+                    <td><?php echo $this->Html->langLabel($file->language->name, $file->language->iso639_1) ?></td>
                     <td><?php echo $this->ItemsAdmin->statusLabel($file->status) ?></td>
                     <td>
                         <div class="btn-group btn-group-xs">

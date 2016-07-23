@@ -12,7 +12,11 @@
 $this->loadHelper('Items');
 
 // Page title
-$this->assign('title', __d('file', 'File: {0}', h($file->name)));
+$this->assign('title', $file->name);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
+$this->Html->addCrumb($file->name);
 
 // Block: Item informations
 // ------------------------
@@ -29,6 +33,7 @@ $config = $this->Items->fileConfig($file['filename']);
     <?php if ($file->has('modified')): ?>
         <li><strong><?php echo __d('elabs', 'Modified on:') ?></strong> <?php echo h($file->modified) ?></li>
     <?php endif; ?>
+    <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($file->language->name, $file->language->iso639_1) ?></li>
     <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $file->sfw ? 'success' : 'danger'; ?>"><?php echo $file->sfw ? __('Yes') : __('No'); ?></span></li>
     <li><strong><?php echo __d('elabs', 'Tags:') ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
 </ul>
@@ -44,10 +49,13 @@ $this->end();
 // Block: Page content
 // -------------------
 $this->start('pageContent');
-echo $this->Html->displayMD($file->description) ?>
-<div class="panel">
-    <div class="panel-body">
-    <?php echo $this->element('files/view_content_' . $config['element'], ['data' => $file]) ?>
+?>
+<div lang="<?php echo $file->language->iso639_1 ?>">
+    <?php echo $this->Html->displayMD($file->description) ?>
+    <div class="panel">
+        <div class="panel-body">
+            <?php echo $this->element('files/view_content_' . $config['element'], ['data' => $file]) ?>
+        </div>
     </div>
 </div>
 <?php

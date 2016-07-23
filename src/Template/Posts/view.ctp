@@ -9,7 +9,14 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Article: {0}', h($post->title)));
+$this->assign('title', h($post->title));
+
+// Language
+$this->assign('contentLanguage', $post->language->iso639_1);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Articles'), ['action' => 'index']);
+$this->Html->addCrumb($this->Html->langLabel($post->title, $post->language->iso639_1, ['label' => false]));
 
 // Block: Item informations
 // ------------------------
@@ -18,7 +25,7 @@ $this->start('pageInfos');
 <ul class="list-unstyled">
     <li><strong><?php echo __d('posts', 'Author:') ?></strong> <?php echo $this->Html->link($post->user->username, ['controller' => 'Users', 'action' => 'view', $post->user->id]) ?></li>
     <li><strong><?php echo __d('licenses', 'License:') ?></strong> <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($post->license->icon), $post->license->name]), ['controller' => 'Licenses', 'action' => 'view', $post->license->id], ['escape' => false]) ?></li>
-    <li><strong><?php echo __d('licenses', 'Language:') ?></strong> <?php echo __d('elabs', '{0} ({1})', ['<span class="label label-info">' . $post->language->name . '</span>', $post->language->id]) ?></li>
+    <li><strong><?php echo __d('licenses', 'Language:') ?></strong> <?php echo $this->Html->langLabel($post->language->name, $post->language->iso639_1) ?></li>
     <li><strong><?php echo __d('posts', 'Publication Date:') ?></strong> <?php echo h($post->publication_date) ?></li>
     <?php if ($post->has('modified')): ?>
         <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($post->modified) ?></li>

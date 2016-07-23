@@ -9,7 +9,11 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Edit article "{0}"', $post->title));
+$this->assign('title', $post->title);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Articles'), ['action' => 'index']);
+$this->Html->addCrumb(__d('elabs', 'Edit {0}', [h($post->title)]));
 
 // Page actions
 // ------------

@@ -9,7 +9,11 @@
  */
 
 // Page title
-$this->assign('title', __d('users', 'Author: {0}', h($user->realname)));
+$this->assign('title', __d('users', h($user->realname)));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Authors'), ['action' => 'index']);
+$this->Html->addCrumb(h($user->realname));
 
 // Block: Item informations
 // ------------------------
@@ -17,7 +21,7 @@ $this->start('pageInfos');
 ?>
 <div class="row">
     <div class="col-sm-4">
-      <?php echo $this->Gravatar->generate($user->email, ['image-options' => ['class' => 'img-responsive img-rounded']]) ?>
+        <?php echo $this->Gravatar->generate($user->email, ['image-options' => ['class' => 'img-responsive img-rounded']]) ?>
     </div>
     <div class="col-sm-8">
         <ul class="list-unstyled">
@@ -38,7 +42,7 @@ $this->start('pageContent');
 if (!empty($user->bio)):
     ?>
     <div class="well">
-      <?php echo $this->Html->displayMD($user->bio) ?>
+        <?php echo $this->Html->displayMD($user->bio) ?>
     </div>
 <?php endif; ?>
 <div class="panel">
@@ -49,27 +53,27 @@ if (!empty($user->bio)):
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">
-          <?php
-          if (!empty($user->posts)):
-              foreach ($user->posts as $posts):
-                  echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false, 'event' => false]);
-              endforeach;
-          else:
-              echo $this->element('layout/empty', ['alternative' => false]);
-          endif;
-          ?>
+            <?php
+            if (!empty($user->posts)):
+                foreach ($user->posts as $posts):
+                    echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
         </div>
 
         <div class="tab-pane" id="projects-tab">
-          <?php
-          if (!empty($user->projects)):
-              foreach ($user->projects as $projects):
-                  echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false, 'event' => false]);
-              endforeach;
-          else:
-              echo $this->element('layout/empty', ['alternative' => false]);
-          endif;
-          ?>
+            <?php
+            if (!empty($user->projects)):
+                foreach ($user->projects as $projects):
+                    echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
         </div>
 
         <div class="tab-pane" id="files-tab">

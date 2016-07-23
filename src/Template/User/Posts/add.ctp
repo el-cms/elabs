@@ -11,6 +11,10 @@
 // Page title
 $this->assign('title', __d('posts', 'New article'));
 
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Articles'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
+
 // Related links block
 // -------------------
 $this->start('pageLinks');

@@ -11,6 +11,11 @@
 // Page title
 $this->assign('title', __d('license', 'License: {0}', h($license->name)));
 
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'About'), ['controller' => 'Pages', 'action' => 'display', 'about']);
+$this->Html->addCrumb(__d('elabs', 'Licenses'), ['action' => 'index']);
+$this->Html->addCrumb(__d('licenses', 'Content with the {0} license', [h($license->name)]));
+
 // Block: Item informations
 // ------------------------
 $this->start('pageInfos');
@@ -33,7 +38,7 @@ $this->start('pageContent');
 if (!$seeNSFW):
     ?>
     <div class="alert alert-info alert-sm">
-      <?php echo __d('elabs', 'Some entries may be hidden, depending on your NSFW settings.') ?>
+        <?php echo __d('elabs', 'Some entries may be hidden, depending on your NSFW settings.') ?>
     </div>
 <?php endif; ?>
 <div class="panel">
@@ -44,27 +49,27 @@ if (!$seeNSFW):
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">
-          <?php
-          if (!empty($license->posts)):
-              foreach ($license->posts as $posts):
-                  echo $this->element('posts/card', ['data' => $posts, 'licenseInfo' => false, 'event' => false]);
-              endforeach;
-          else:
-              echo $this->element('layout/empty', ['alternative' => false]);
-          endif;
-          ?>
+            <?php
+            if (!empty($license->posts)):
+                foreach ($license->posts as $posts):
+                    echo $this->element('posts/card', ['data' => $posts, 'licenseInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
         </div>
 
         <div class="tab-pane" id="projects-tab">
-          <?php
-          if (!empty($license->projects)):
-              foreach ($license->projects as $projects):
-                  echo $this->element('projects/card', ['data' => $projects, 'licenseInfo' => false, 'event' => false]);
-              endforeach;
-          else:
-              echo $this->element('layout/empty', ['alternative' => false]);
-          endif;
-          ?>
+            <?php
+            if (!empty($license->projects)):
+                foreach ($license->projects as $projects):
+                    echo $this->element('projects/card', ['data' => $projects, 'licenseInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
         </div>
 
         <div class="tab-pane" id="files-tab">
