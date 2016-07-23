@@ -75,11 +75,15 @@ class UsersController extends AdminAppController
                 'contain' => [
                     'Posts' => [
                         'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
+                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     ],
                     'Projects' => [
                         'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id'],
+                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     ],
-                    'Files' => [],
+                    'Files' => [
+                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                    ],
                 ],
             ]);
         }

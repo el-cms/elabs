@@ -26,7 +26,8 @@ class FilesController extends AppController
             'conditions' => ['Files.status' => 1],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['created', 'name', 'modified'],
@@ -49,10 +50,16 @@ class FilesController extends AppController
     public function view($id = null)
     {
         $file = $this->Files->get($id, [
-            'contain' => ['Users', 'Licenses', 'Itemfiles']
+            'contain' => [
+                'Users',
+                'Licenses',
+                'Itemfiles',
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+            ]
         ]);
         // It will be great when i'll find a way to nicely handle exceptions/errors
         if (!$file->sfw && !$this->request->session()->read('seeNSFW')) {
+            $this->set('name', $file->name);
             // And make a proper common error page
             $this->viewBuilder()->template('nsfw');
         } else {

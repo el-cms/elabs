@@ -27,7 +27,7 @@ class PostsController extends AppController
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
             'order' => ['publication_date' => 'desc'],
             'sortWhitelist' => ['publication_date', 'title'],
@@ -54,13 +54,14 @@ class PostsController extends AppController
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
             'conditions' => ['Posts.status' => 1],
         ]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors
         if (!$post->sfw && !$this->request->session()->read('seeNSFW')) {
+            $this->set('title', $post->title);
             // And make a proper common error page
             $this->viewBuilder()->template('nsfw');
         } else {

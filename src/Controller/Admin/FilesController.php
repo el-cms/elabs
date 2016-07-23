@@ -37,7 +37,8 @@ class FilesController extends AdminAppController
             'fields' => ['id', 'name', 'filename', 'weight', 'filename', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']]
             ],
             'order' => ['created' => 'desc']
         ];
@@ -60,7 +61,9 @@ class FilesController extends AdminAppController
             'contain' => [
                 'Users' => ['fields' => ['id', 'username']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Itemfiles']
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Itemfiles',
+                ]
         ]);
         $this->set('file', $file);
         $this->set('_serialize', ['file']);

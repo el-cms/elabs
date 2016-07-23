@@ -37,7 +37,8 @@ class PostsController extends AdminAppController
             'fields' => ['id', 'title', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
             'order' => ['created' => 'desc']
         ];
@@ -59,7 +60,8 @@ class PostsController extends AdminAppController
         $post = $this->Posts->get($id, [
             'contain' => [
                 'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']]
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ]
         ]);
         $this->set('post', $post);

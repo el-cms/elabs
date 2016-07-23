@@ -21,15 +21,15 @@ class ProjectsController extends AppController
     {
         $findOptions = [
             'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
-//                'Users.id', 'Users.username', 'Users.realname',
-//                'Licenses.id', 'Licenses.name'],
             'conditions' => [
                 'Projects.status' => 1,
             ],
             'sortWithelist' => ['created', 'modified', 'name'],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon', 'link']]],
+                'Licenses' => ['fields' => ['id', 'name', 'icon', 'link']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1',]],
+            ],
             'order' => ['created' => 'desc'],
         ];
 
@@ -55,6 +55,7 @@ class ProjectsController extends AppController
             'contain' => [
                 'Licenses',
                 'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1',]],
                 'ProjectUsers'],
             'conditions' => [
                 'Projects.status' => 1,
@@ -63,6 +64,7 @@ class ProjectsController extends AppController
 
         //SFW state
         if (!$project->sfw && !$this->request->session()->read('seeNSFW')) {
+            $this->set('name', $project->name);
             $this->viewBuilder()->template('nsfw');
         } else {
             $this->set('project', $project);
