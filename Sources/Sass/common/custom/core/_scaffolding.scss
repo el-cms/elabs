@@ -52,7 +52,7 @@ body{
 }
 
 .footer-default{
-	background-color:$navbar-admin-bg;
+    background-color:$navbar-admin-bg;
     background-color:$navbar-default-bg;
     .footer-logo{
         width:40%;
@@ -147,4 +147,28 @@ audio{
     display:inline-block;
     border-radius: 2px;
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAPUlEQVQYlX3PsQ2AUAwD0ew/ZSa47mpTID5CIilcvWtcQJ6pZ90dILXhCSYEUht+gj9U72BCNbWh+r6Y3lxB7/Lpn5+z/AAAAABJRU5ErkJggg==) repeat;
+}
+
+.img-cropped-wrapper{
+    overflow: hidden;
+    display:inline-block;
+    max-height: 300px;
+    .small-overlay{
+        content: "";
+        position: relative;
+        top:300px;
+        transform: translateY(-20px);
+        height: 20px;
+        box-shadow: 0px -20px 10px -10px #FFF inset;
+        opacity:1;
+    }
+    img{
+        cursor: pointer;
+    }
+    &.in{
+        max-height:100%;
+        .small-overlay{
+            opacity: 0;
+        }
+    }
 }

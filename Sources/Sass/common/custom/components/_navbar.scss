@@ -15,6 +15,10 @@
             border-bottom-color: darken($navbar-default-bg, 10%);
             background-color:transparent;
         }
+        &:focus{
+            border-bottom-color: darken($navbar-default-bg, 10%);
+            background-color:transparent;
+        }
     }
     .dropdown-toggle{
         border-color:transparent;
