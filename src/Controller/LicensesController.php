@@ -39,13 +39,16 @@ class LicensesController extends AppController
         $findOptions = [
             'contain' => [
                 'Posts' => [
-                    'Users' => ['fields' => ['id', 'username']]
+                    'Users' => ['fields' => ['id', 'username']],
+                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 ],
                 'Projects' => [
-                    'Users' => ['fields' => ['id', 'username']]
+                    'Users' => ['fields' => ['id', 'username']],
+                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 ],
                 'Files' => [
-                    'Users' => ['fields' => ['id', 'username']]
+                    'Users' => ['fields' => ['id', 'username']],
+                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 ]
             ],
             'order' => ['name' => 'ASC']

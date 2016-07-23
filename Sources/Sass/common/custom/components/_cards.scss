@@ -18,7 +18,7 @@
     &:last-child{
         margin-bottom:0;
     }
-    
+
     // The toolbar
     .card-toolbar{
         margin: -#{$padding-large-vertical + 1} -#{$padding-large-vertical};
@@ -63,6 +63,12 @@
                         background-color: lighten($alert-success, 15%);
                     }
                 }
+                &.language-pill{
+                    @extend .label-language;
+                    &.language-pill:hover{
+                        @extend .label-language;
+                    }
+                }
             }
             // First li element
             &:first-child{
@@ -83,7 +89,7 @@
     .card-heading-side{
         margin-right: $padding-base-horizontal;
     }
-    
+
     // Card title
     .card-header{
         h1, h2, h3, h4{
@@ -109,13 +115,10 @@
             }
         }
     }
-    
+
     // Content
     .card-content{
         clear:both;
-        img{
-            max-height: 50vh;
-        }
     }
 }
 

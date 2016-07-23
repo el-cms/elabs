@@ -13,7 +13,11 @@ $this->loadHelper('Items');
 $config = $this->Items->fileConfig($file['filename']);
 
 // Page title
-$this->assign('title', __d('files', 'Admin/File&gt; {0}', h($file->name)));
+$this->assign('title', $file->name);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
+$this->Html->addCrumb($file->name);
 
 // Block: Item informations
 // ------------------------
@@ -27,6 +31,7 @@ $this->start('pageInfos');
     <li><strong><?php echo __d('licenses', 'License:') ?></strong> <?php echo $this->License->d($file->license) ?></li>
     <li><strong><?php echo __d('elabs', 'Creation date:') ?></strong> <?php echo h($file->created) ?></li>
     <li><strong><?php echo __d('elabs', 'Mod. date:') ?></strong> <?php echo h($file->modified) ?></li>
+    <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($file->language->name, $file->language->iso639_1) ?></li>
     <li><strong><?php echo __d('elabs', 'Safe:') ?></strong> <?php echo $this->ItemsAdmin->sfwLabel($file->sfw); ?></li>
     <li><strong><?php echo __d('elabs', 'Status:') ?></strong> <?php echo $this->ItemsAdmin->statusLabel($file->status) ?></li>
 </ul>
@@ -74,7 +79,7 @@ $this->start('pageContent');
         <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('users', 'Related items') ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
-        <div class="tab-pane fade active in" id="tab-content">
+        <div class="tab-pane fade active in" id="tab-content" lang="<?php echo $file->language->iso639_1 ?>">
             <?php
             echo $this->Html->displayMD($file->description);
             echo $this->element('files/view_content_' . $config['element'], ['data' => $file]);

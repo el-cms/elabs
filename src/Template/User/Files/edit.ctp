@@ -9,7 +9,11 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Edit file  "{0}"', $file->name));
+$this->assign('title', $file->name);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
+$this->Html->addCrumb(__d('elabs', 'Edit {0}', [$file->name]));
 
 // Actions block
 // -------------
@@ -32,8 +36,15 @@ $this->start('pageContent');
 echo $this->Form->create($file);
 echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descArea', 'label' => __d('posts', 'Description'), 'value' => $file->description]);
 $this->CodeMirror->add('descArea');
-echo $this->Form->input('license_id ', ['options' => $licenses, 'class' => 'selecter', 'data-selecter-options' => '{"cover":"true"}']);
 ?>
+<div class="row">
+    <div class="col-sm-6">
+        <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
+    </div>
+    <div class="col-sm-6">
+        <?php echo $this->Form->input('language_id', ['options' => $languages, 'default'=>'fra']); ?>
+    </div>
+</div>
 <div class="row">
     <div class="col-sm-4">
         <?php echo $this->Form->input('sfw', ['label' => __d('elabs', 'This is SFW')]); ?>

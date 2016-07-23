@@ -9,6 +9,9 @@
 
 // Page title
 $this->assign('title', __d('elabs', 'Register'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Register'));
 ?>
 <div class="row">
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">

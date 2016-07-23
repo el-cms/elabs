@@ -11,6 +11,9 @@
 // Page title
 $this->assign('title', __d('projects', 'Projects'));
 
+// Breadcrumbs
+$this->Html->addCrumb($this->fetch('title'));
+
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');

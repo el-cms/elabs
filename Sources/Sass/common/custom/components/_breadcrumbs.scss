@@ -1,0 +1,52 @@
+.breadcrumb{
+    background-color:transparent;
+    padding:$padding-small-vertical 0;
+    margin-bottom:30px;
+    margin-top:-25px;
+    color: lighten($navbar-default-link-color, 10%);
+    a{
+        color: lighten($navbar-default-link-color, 15%);
+        text-decoration:underline;
+        &:hover{
+            color: lighten($navbar-default-link-color, 20%);
+        }
+    }
+    .last{
+        color: lighten($navbar-default-link-color, 15%);
+    }
+    & > li + li:before{
+        color:inherit;
+    }
+}
+
+.page-header-user{
+    .breadcrumb{
+        color: lighten($navbar-user-link-color, 10%);
+        a{
+            color: lighten($navbar-user-link-color, 15%);
+            text-decoration:underline;
+            &:hover{
+                color: lighten($navbar-user-link-color, 20%);
+            }
+        }
+        .last{
+            color: lighten($navbar-user-link-color, 15%);
+        }
+    }
+}
+
+.page-header-admin{
+    .breadcrumb{
+        color: lighten($navbar-admin-link-color, 10%);
+        a{
+            color: lighten($navbar-admin-link-color, 15%);
+            text-decoration:underline;
+            &:hover{
+                color: lighten($navbar-admin-link-color, 20%);
+            }
+        }
+        .last{
+            color: lighten($navbar-admin-link-color, 15%);
+        }
+    }
+}

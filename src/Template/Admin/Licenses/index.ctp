@@ -11,12 +11,16 @@
  */
 
 // Page title
-$this->assign('title', __d('licenses', 'Admin/Licenses&gt; List'));
+$this->assign('title', __d('licenses', 'List of licenses'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Licenses'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
 
 // Block: Page actions
 // -------------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New license']), ['action' => 'add'], ['class' => 'btn btn-success', 'escape' => false]);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New license']), ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
 $this->end();
 
 // Block: Page content
@@ -77,4 +81,4 @@ $this->end();
 
 // Load the layout element
 // -----------------------
-echo $this->element('layouts/defaultindex');
+echo $this->element('layouts/adminindex');

@@ -9,7 +9,11 @@
  */
 
 // Page title
-$this->assign('title', __d('projects', 'Edit project "{0}"', $project->name));
+$this->assign('title', $project->name);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Projects'), ['action' => 'index']);
+$this->Html->addCrumb(__d('elabs', 'Edit {0}', [h($project->name)]));
 
 // Actions block
 // -------------
@@ -37,16 +41,23 @@ $this->CodeMirror->add('excerptArea', [], ['%s.setSize(null, "150")']);
 echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descriptionArea', 'label' => __d('projects', 'Full description')]);
 $this->CodeMirror->add('descriptionArea');
 echo $this->Form->input('mainurl', ['label' => __d('projects', 'Main URL')]);
-echo $this->Form->input('license_id', ['options' => $licenses]);
 ?>
 <div class="row">
     <div class="col-sm-6">
-      <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
-    </div>
-    <div class="col-sm-4">
-      <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
+        <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
     </div>
     <div class="col-sm-6">
+        <?php echo $this->Form->input('language_id', ['options' => $languages]); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
+    </div>
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
+    </div>
+    <div class="col-sm-4">
         <?php echo $this->Form->submit(__d('elabs', 'Update the project'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>

@@ -1,11 +1,19 @@
+<?php
+// Define the lang attribute for titles
+$contentLanguage = $this->fetch('contentLanguage');
+$langAttribute = '';
+if (!empty($contentLanguage)):
+    $langAttribute = ' lang="' . $contentLanguage . '"';
+endif;
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <?php echo $this->Html->charset() ?>
+        <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta content="initial-scale=1.0, width=device-width" name="viewport">
-        <title>
-          <?php echo $this->fetch('title') . ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
+        <title<?php echo $langAttribute ?>>
+            <?php echo $this->fetch('title') . ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
         </title>
         <?php echo $this->Html->meta('icon') ?>
 
@@ -22,10 +30,10 @@
         <![endif]-->
     </head>
     <body>
-      <?php
-      echo $this->element('layout/pageloader');
-      echo $this->element('layout/mainmenu_admin');
-      ?>
+        <?php
+        echo $this->element('layout/pageloader');
+        echo $this->element('layout/mainmenu_admin');
+        ?>
         <!-- Navbar -->
         <nav class="navbar navbar-admin navbar-fixed-top">
             <div class="container-fluid">
@@ -44,7 +52,7 @@
                     <!-- Main menu -->
                     <div>
                         <ul class="nav navbar-nav">
-                          <?php echo $this->fetch('mainMenu'); ?>
+                            <?php echo $this->fetch('mainMenu'); ?>
                         </ul>
                     </div>
                     <!-- / Main menu -->
@@ -55,25 +63,25 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="avatar">
-                                      <?php
-                                      if (!is_null($authUser)):
-                                          echo $this->Gravatar->generate($authUser['email'], ["size" => "20px"]);
-                                      else:
-                                          echo $this->Html->icon('user');
-                                      endif;
-                                      ?>
+                                        <?php
+                                        if (!is_null($authUser)):
+                                            echo $this->Gravatar->generate($authUser['email'], ["size" => "20px"]);
+                                        else:
+                                            echo $this->Html->icon('user');
+                                        endif;
+                                        ?>
                                     </span>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                  <?php
-                                  if (!is_null($authUser)):
-                                      echo $this->element('users/usermenu');
-                                  else:
-                                      if (!is_null($authUser)):
-                                          echo $this->element('users/usermenu');
-                                      else:
-                                          ?>
+                                    <?php
+                                    if (!is_null($authUser)):
+                                        echo $this->element('users/usermenu');
+                                    else:
+                                        if (!is_null($authUser)):
+                                            echo $this->element('users/usermenu');
+                                        else:
+                                            ?>
                                             <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __('Login/Register')]) ?></a></li>
                                         <?php
                                         endif;
@@ -95,17 +103,27 @@
             <div class="container-fluid">
                 <!-- Flash messages -->
                 <div class="row flash-messages">
-                  <?php echo $this->Flash->render() ?>
+                    <?php echo $this->Flash->render() ?>
                 </div>
                 <!-- / Flash messages -->
 
-                <!-- Title -->
+                <!-- Title area-->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('wrench'), $this->fetch('title')]) ?></h1>
+                        <!-- Title -->
+                        <h1<?php echo $langAttribute ?>><?php echo $this->fetch('title') ?></h1>
+                        <!-- / Title -->
+
+                        <!-- Breadcrumbs -->
+                        <?php
+                        // Root
+                        echo $this->Html->getCrumbList([], ['text' => $this->Html->icon('wrench'), 'url' => null, 'escape' => false])
+                        ?>
+                        <!-- / Breadcrumbs -->
                     </div>
                 </div>
-                <!-- / Title -->
+                <!-- / Title area -->
+
             </div>
             <!-- Toolbar -->
             <?php
@@ -114,7 +132,7 @@
                 ?>
                 <div class="toolbar">
                     <div class="container">
-                      <?php echo $this->fetch('pageToolbar') ?>
+                        <?php echo $this->fetch('pageToolbar') ?>
                     </div>
                 </div>
                 <?php

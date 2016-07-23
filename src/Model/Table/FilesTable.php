@@ -36,6 +36,7 @@ class FilesTable extends Table
         $this->addBehavior('CounterCache', [
             'Users' => ['file_count' => ['conditions' => ['status' => 1]]],
             'Licenses' => ['file_count' => ['conditions' => ['status' => 1]]],
+            'Languages' => ['file_count' => ['conditions' => ['status' => 1]]],
         ]);
 
         $this->belongsTo('Users', [
@@ -46,10 +47,13 @@ class FilesTable extends Table
             'foreignKey' => 'license_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('Languages', [
+            'foreignKey' => 'language_id',
+            'joinType' => 'INNER'
+        ]);
         $this->hasMany('Itemfiles', [
             'foreignKey' => 'file_id'
         ]);
-
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',
             'conditions' => ['Acts.model' => 'Files']
@@ -65,37 +69,37 @@ class FilesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'uuid'])
-            ->allowEmpty('id', 'create');
+                ->add('id', 'valid', ['rule' => 'uuid'])
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('name');
+                ->allowEmpty('name');
 
         $validator
-            ->requirePresence('filename', 'create')
-            ->notEmpty('filename');
+                ->requirePresence('filename', 'create')
+                ->notEmpty('filename');
 
         $validator
-            ->add('weight', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('weight', 'create')
-            ->notEmpty('weight');
+                ->add('weight', 'valid', ['rule' => 'numeric'])
+                ->requirePresence('weight', 'create')
+                ->notEmpty('weight');
 
         $validator
-            ->allowEmpty('description');
+                ->allowEmpty('description');
 
         $validator
-            ->requirePresence('mime', 'create')
-            ->notEmpty('mime');
+                ->requirePresence('mime', 'create')
+                ->notEmpty('mime');
 
         $validator
-            ->add('sfw', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->add('sfw', 'valid', ['rule' => 'boolean'])
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->add('status', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+                ->add('status', 'valid', ['rule' => 'numeric'])
+                ->requirePresence('status', 'create')
+                ->notEmpty('status');
 
         return $validator;
     }

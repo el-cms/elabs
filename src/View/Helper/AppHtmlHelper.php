@@ -10,7 +10,6 @@ use Cake\Core\Configure;
  */
 class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
 {
-
     public $helpers = ['Url', 'Html', 'Markdown'];
     public $config = [];
 
@@ -148,5 +147,34 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
         }
 
         return $text;
+    }
+
+    /**
+     * Creates a label with language attributes.
+     * Use label=false to remove the label class from it.
+     *
+     * @param string $content Content of the label
+     * @param string $isoCode ISO639-1 code (2 letters)
+     * @param array $options An array of options
+     * @return string
+     */
+    public function langLabel($content, $isoCode, $options = [])
+    {
+        $options += [
+            'class' => null,
+            'label' => true,
+            'tag' => 'span',
+        ];
+        if ($options['label']) {
+            $options['class'] .= 'label label-language';
+        }
+        $tag = $options['tag'];
+
+        $options['lang'] = $isoCode;
+
+        unset($options['label']);
+        unset($options['tag']);
+
+        return $this->tag($tag, $content, $options);
     }
 }

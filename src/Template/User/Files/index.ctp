@@ -11,6 +11,10 @@
 // Page title
 $this->assign('title', __d('files', 'Your files'));
 
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
+
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');

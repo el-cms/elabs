@@ -9,7 +9,13 @@
  */
 
 // Page title
-$this->assign('title', __d('reports', 'Admin/Report&gt; {0}', h($report->name)));
+$this->assign('title', h($report->name));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Reports'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
+
+
 
 // Block: Item informations
 // ------------------------
@@ -36,7 +42,7 @@ $this->end();
 // --------------
 $this->start('pageActions');
 ?>
-<div class="btn-group btn-group-vertical btn-block">
+<div class="btn-block btn-group btn-group-vertical">
     <?php
     echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('trash-o'), 'Delete']), ['action' => 'delete', $report->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $report->id), 'escape' => false, 'class' => 'btn btn-danger']);
     echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Reports list']), ['action' => 'index'], ['escape' => false, 'class' => 'btn btn-primary']);

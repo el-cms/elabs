@@ -24,7 +24,8 @@ class ProjectsController extends UserAppController
         $this->paginate = [
             'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
             'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']]
+                'Licenses' => ['fields' => ['id', 'name']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
@@ -74,8 +75,8 @@ class ProjectsController extends UserAppController
             }
         }
         $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-//        $users = $this->Projects->Users->find('list', ['limit' => 200]);
-        $this->set(compact('project', 'licenses', 'users'));
+        $languages = $this->Projects->Languages->find('list', ['limit' => 200]);
+        $this->set(compact('project', 'licenses', 'languages'));
         $this->set('_serialize', ['project']);
     }
 
@@ -110,7 +111,8 @@ class ProjectsController extends UserAppController
             }
         }
         $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $this->set(compact('project', 'licenses'));
+        $languages = $this->Projects->Languages->find('list', ['limit' => 200]);
+        $this->set(compact('project', 'licenses', 'languages'));
         $this->set('_serialize', ['project']);
     }
 

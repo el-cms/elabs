@@ -11,7 +11,11 @@
  */
 
 // Page title
-$this->assign('title', __d('projects', 'Admin/Projects&gt; List'));
+$this->assign('title', __d('projects', 'List of projects'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Projects'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
 
 // Block: Page content
 // -------------------
@@ -24,9 +28,12 @@ $this->start('pageContent');
                 <th><?php echo $this->Paginator->sort('name', __d('projects', 'Name')) ?></th>
                 <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Owner')) ?></th>
                 <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
-                <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
-                <th><?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
+                <th>
+                    <?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?><br />
+                    <?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?>
+                </th>
                 <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
+                <th><?php echo $this->Paginator->sort('Languages.name', __d('languages', 'Language')) ?></th>
                 <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
@@ -34,12 +41,15 @@ $this->start('pageContent');
         <tbody>
             <?php foreach ($projects as $project): ?>
                 <tr>
-                    <td><?php echo h($project->name) ?></td>
+                    <td><?php echo $this->Html->langLabel($project->name, $project->language->iso639_1, ['label' => false]) ?></td>
                     <td><?php echo $this->Html->link(h($project->user->username), ['controller' => 'users', 'action' => 'view', $project->user->id]) ?></td>
                     <td><?php echo $this->ItemsAdmin->sfwLabel($project->sfw) ?></td>
-                    <td><?php echo h($project->created) ?></td>
-                    <td><?php echo h($project->modified) ?></td>
+                    <td>
+                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('asterisk'), h($project->created)]) ?></small><br/>
+                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('refresh'), h($project->modified)]) ?></small>
+                    </td>
                     <td><?php echo $this->License->d($project->license, false) ?></td>
+                    <td><?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></td>
                     <td><?php echo $this->ItemsAdmin->statusLabel($project->status) ?></td>
                     <td>
                         <div class="btn-group btn-group-xs">

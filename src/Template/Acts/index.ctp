@@ -16,6 +16,9 @@ $this->loadHelper('Time', ['className' => 'ElabsTime']);
 // Page title
 $this->assign('title', __d('acts', 'Recent activity'));
 
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Home'));
+
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');

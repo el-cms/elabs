@@ -11,6 +11,9 @@
 // Page title
 $this->assign('title', __d('projects', 'Your projects'));
 
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Projects'));
+
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');

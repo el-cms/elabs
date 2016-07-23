@@ -11,6 +11,10 @@
 // Page title
 $this->assign('title', __d('projects', 'New project'));
 
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Projects'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
+
 // Related links block
 // -------------------
 $this->start('pageLinks');
@@ -30,8 +34,15 @@ echo $this->Form->input('description', ['required' => false, 'id' => 'descriptio
 $this->CodeMirror->add('excerptArea', [], ['%s.setSize(null, "150")']);
 echo $this->Form->input('mainurl', ['label' => __d('projects', 'Main URL')]);
 $this->CodeMirror->add('descriptionArea');
-echo $this->Form->input('license_id', ['options' => $licenses]);
 ?>
+<div class="row">
+    <div class="col-sm-6">
+        <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
+    </div>
+    <div class="col-sm-6">
+        <?php echo $this->Form->input('language_id', ['options' => $languages]); ?>
+    </div>
+</div>
 <div class="row">
     <div class="col-sm-6">
         <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>

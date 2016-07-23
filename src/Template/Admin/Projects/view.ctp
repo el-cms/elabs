@@ -9,20 +9,28 @@
  */
 
 // Page title
-$this->assign('title', __d('projects', 'Admin/Project&gt; {0}', h($project->name)));
+$this->assign('title', h($project->name));
+
+// Language
+$this->assign('contentLanguage', $project->language->iso639_1);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Projects'), ['action' => 'index']);
+$this->Html->addCrumb($this->Html->langLabel($project->name, $project->language->iso639_1, ['label' => false]));
 
 // Block: Item informations
 // ------------------------
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('projects', 'Owner') ?></strong> <?php echo $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) ?></li>
-    <li><strong><?php echo __d('projects', 'Url') ?></strong> <?php echo h($project->mainurl) ?></li>
-    <li><strong><?php echo __d('licenses', 'License') ?></strong> <?php echo $this->License->d($project->license) ?></li>
-    <li><strong><?php echo __d('elabs', 'Creation date') ?></strong> <?php echo h($project->created) ?></li>
-    <li><strong><?php echo __d('elabs', 'Mod. date') ?></strong> <?php echo h($project->modified) ?></li>
-    <li><strong><?php echo __d('elabs', 'Safe') ?></strong> <?php echo $this->ItemsAdmin->sfwLabel($project->sfw); ?></li>
-    <li><strong><?php echo __d('elabs', 'Status') ?></strong> <?php echo $this->ItemsAdmin->statusLabel($project->status) ?></li>
+    <li><strong><?php echo __d('projects', 'Owner:') ?></strong> <?php echo $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) ?></li>
+    <li><strong><?php echo __d('projects', 'Url:') ?></strong> <?php echo h($project->mainurl) ?></li>
+    <li><strong><?php echo __d('licenses', 'License:') ?></strong> <?php echo $this->License->d($project->license) ?></li>
+    <li><strong><?php echo __d('elabs', 'Creation date:') ?></strong> <?php echo h($project->created) ?></li>
+    <li><strong><?php echo __d('elabs', 'Mod. date:') ?></strong> <?php echo h($project->modified) ?></li>
+    <li><strong><?php echo __d('language', 'Language:') ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
+    <li><strong><?php echo __d('elabs', 'Safe:') ?></strong> <?php echo $this->ItemsAdmin->sfwLabel($project->sfw); ?></li>
+    <li><strong><?php echo __d('elabs', 'Status:') ?></strong> <?php echo $this->ItemsAdmin->statusLabel($project->status) ?></li>
 </ul>
 <?php
 $this->end();
@@ -68,7 +76,7 @@ $this->start('pageContent');
         <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('users', 'Related items') ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
-        <div class="tab-pane fade active in" id="tab-content">
+        <div class="tab-pane fade active in" id="tab-content" lang="<?php echo $project->language->iso639_1 ?>">
             <?php
             echo $this->Html->displayMD($project->short_description);
             echo $this->Html->displayMD($project->description);

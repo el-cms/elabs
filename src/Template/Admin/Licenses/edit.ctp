@@ -9,7 +9,11 @@
  */
 
 // Page title
-$this->assign('title', __d('elabs', 'Admin/Licenses/Edit&gt; {0}', $license->name));
+$this->assign('title', $license->name);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Licenses'), ['action' => 'index']);
+$this->Html->addCrumb(__d('elabs', 'Edit {0}', [$license->name]));
 
 // Actions block
 // -------------

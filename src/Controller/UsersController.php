@@ -62,6 +62,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
+        $languageConfig = ['fields' => ['id', 'name', 'iso639_1']];
         $options = [
             'fields' => ['id', 'username', 'realname', 'email', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count'],
             'contain' => [
@@ -71,6 +72,7 @@ class UsersController extends AppController
                         'status' => 1,
                     ],
                     'Licenses' => $licenseConfig,
+                    'Languages' => $languageConfig,
                 ],
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id'],
@@ -78,6 +80,7 @@ class UsersController extends AppController
                         'status' => 1,
                     ],
                     'Licenses' => $licenseConfig,
+                    'Languages' => $languageConfig,
                 ],
                 'Files' => [
                     'fields' => ['id', 'name', 'description', 'filename', 'sfw', 'created', 'modified', 'user_id', 'license_id'],
@@ -85,6 +88,7 @@ class UsersController extends AppController
                         'status' => 1,
                     ],
                     'Licenses' => $licenseConfig,
+                    'Languages' => $languageConfig,
                 ],
             ],
             'conditions' => ['OR' => [['status' => 1], ['status' => 2]]],

@@ -38,7 +38,8 @@ class FilesController extends UserAppController
         $this->paginate = [
             'fields' => ['id', 'name', 'filename', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
             'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']]
+                'Licenses' => ['fields' => ['id', 'name']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
@@ -101,6 +102,7 @@ class FilesController extends UserAppController
                     'sfw' => $this->request->data['sfw'],
                     'user_id' => $this->Auth->user('id'),
                     'license_id' => $this->request->data['license_id'],
+                    'language_id' => $this->request->data['language_id'],
                     'status' => 1
                 ];
 
@@ -120,7 +122,8 @@ class FilesController extends UserAppController
             }
         }
         $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'licenses'));
+        $languages = $this->Files->Languages->find('list', ['limit' => 200]);
+        $this->set(compact('file', 'licenses', 'languages'));
         $this->set('_serialize', ['file']);
     }
 
@@ -157,7 +160,8 @@ class FilesController extends UserAppController
             }
         }
         $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'licenses'));
+        $languages = $this->Files->Languages->find('list', ['limit' => 200]);
+        $this->set(compact('file', 'licenses', 'languages'));
         $this->set('_serialize', ['file']);
     }
 

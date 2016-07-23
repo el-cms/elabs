@@ -11,7 +11,11 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Admin/Articles&gt; List'));
+$this->assign('title', __d('posts', 'List of articles'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Articles'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
 
 // Block: Page content
 // -------------------
@@ -24,9 +28,12 @@ $this->start('pageContent');
                 <th><?php echo $this->Paginator->sort('title', __d('posts', 'Title')) ?></th>
                 <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Author')) ?></th>
                 <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
-                <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
-                <th><?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
+                <th>
+                    <?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?><br/>
+                    <?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?>
+                </th>
                 <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
+                <th><?php echo $this->Paginator->sort('Languages.name', __d('language', 'Language')) ?></th>
                 <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
@@ -37,9 +44,12 @@ $this->start('pageContent');
                     <td><?php echo h($post->title) ?></td>
                     <td><?php echo $this->Html->link(h($post->user->username), ['controller' => 'users', 'action' => 'view', $post->user->id]) ?></td>
                     <td><?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></td>
-                    <td><?php echo h($post->created) ?></td>
-                    <td><?php echo h($post->modified) ?></td>
+                    <td>
+                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('asterisk'), h($post->created)]) ?></small><br/>
+                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('refresh'), h($post->modified)]) ?></small>
+                    </td>
                     <td><?php echo $this->License->d($post->license, false) ?></td>
+                    <td><?php echo $this->Html->langLabel($post->language->name, $post->language->iso639_1) ?></td>
                     <td><?php echo $this->ItemsAdmin->statusLabel($post->status) ?></td>
                     <td>
                         <div class="btn-group btn-group-xs">
