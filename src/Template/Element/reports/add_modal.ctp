@@ -6,14 +6,14 @@
                 <h4 class="modal-title" id="uModTitle"><?php echo __('Report something') ?></h4>
             </div>
             <?php
-            echo $this->Form->create('Report', ['url' => $this->Url->build(['plugin'=>null, 'prefix' => false, 'controller' => 'reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
+            echo $this->Form->create('Report', ['url' => $this->Url->build(['plugin' => null, 'prefix' => false, 'controller' => 'Reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
             ?>
             <div class="modal-body" id="modal-content">
                 <div class="alert alert-info">
-                  <?php
-                  echo $this->Html->icon('info-circle 2x', ['class' => 'pull-left']);
-                  echo __d('elabs', ' You have found something wrong or want to react about something ? Your comments are welcome.');
-                  ?>
+                    <?php
+                    echo $this->Html->icon('info-circle 2x', ['class' => 'pull-left']);
+                    echo __d('elabs', ' You have found something wrong or want to react about something ? Your comments are welcome.');
+                    ?>
                 </div>
                 <?php
                 if (is_null($authUser)):
@@ -42,12 +42,12 @@
                 ?>
             </div>
             <div class="modal-footer">
-              <?php
-              echo $this->Form->hidden('url', ['id' => 'reportModalUrl']);
-              echo $this->Form->button(__d('reports', 'Send the report'), array(
-                  'class' => 'btn btn-primary',
-              ));
-              ?>
+                <?php
+                echo $this->Form->hidden('url', ['id' => 'reportModalUrl']);
+                echo $this->Form->button(__d('reports', 'Send the report'), array(
+                    'class' => 'btn btn-primary',
+                ));
+                ?>
                 <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
             </div>
             <?php echo $this->Form->end(); ?>
@@ -59,19 +59,19 @@
 $this->append('pageBottomScripts');
 ?>
 <script>
-        // Reports modal
-        $('#reportModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); // Button that triggered the modal
-            var itemTarget = button.data('itemtarget'); // Button that triggered the modal
+    // Reports modal
+    $('#reportModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      var itemTarget = button.data('itemtarget'); // Button that triggered the modal
 //      var id = button.data('id'); // Extract info from data-* attributes
 //      var action = button.data('action'); // Extract info from data-* attributes
 //      alert(itemTarget);
-            $('#reportModalUrl').val(itemTarget);
-        });
+      $('#reportModalUrl').val(itemTarget);
+    });
 //    function showReportModal(target) {
 //      var request = $.ajax({
 //        type: "POST",
-//        url: "<?php echo $this->Url->build(['prefix' => false, 'controller' => 'Reports', 'action' => 'add']); ?>" + '/' + id,
+//        url: "<?php echo $this->Url->build(['plugin' => null, 'prefix' => false, 'controller' => 'Reports', 'action' => 'add']); ?>" + '/' + id,
 //        dataType: 'json',
 //        async: true
 //      });
