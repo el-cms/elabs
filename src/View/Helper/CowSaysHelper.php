@@ -1,4 +1,5 @@
 <?php
+
 /*
  * CowsayPHP is based on the Tony Monroe's sowtfare Cowsay.
  * http://www.nog.net/~tony/warez/cowsay.shtml
@@ -16,67 +17,66 @@ use Cake\View\Helper;
  */
 class CowSaysHelper extends Helper
 {
-
     public $cows = [
         // Default cow
-        'default' => "
-        {0}   ^__^
-         {0}  ({1})\\_______
+        'default' => '
+        %1$s   ^__^
+         %1$s  (%2$s)\\_______
             (__)\\       )\\/\\
-             {2} ||----w |
-                ||     ||",
+             %3$s ||----w |
+                ||     ||',
         //The Budweiser frogs
-        'bud_frog' => "
-        {0}
-         {0}
+        'bud_frog' => '
+        %1$s
+         %1$s
            oO)-.                       .-(Oo
           /__  _\\                     /_  __\\
           \\  \\(  |     ()~()         |  )/  /
            \\__|\\ |    (-___-)        | /|__/
-           '  '--'    ==`-'==        '--'  '",
+           \'  \'--\'    ==`-\'==        \'--\'  \'',
         // Bunny
-        'bunny' => "
-  {0}
-   {0}   \\
+        'bunny' => '
+  %1$s
+   %1$s   \\
         \\ /\\
         ( )
-      .( o ).",
+      .( o ).',
         // Elephant and snake
-        'elephant_snake' => "
-   {0}
-    {0}              ....
+        'elephant_snake' => '
+   %1$s
+    %1$s              ....
            ........    .
           .            .
          .             .
 .........              ........
 ...............................
 
-  Elephant inside ASCII snake",
+  Elephant inside ASCII snake',
         // The flaming sheep, contributed by Geordan Rosario (geordan@csua.berkeley.edu)
-        'flaming_sheep' => "
-  {0}            .    .     .
-   {0}      .  . .     `  ,
-    {0}    .; .  : .' :  :  : .
-     {0}   i..`: i` i.i.,i  i .
-      {0}   `,--.|i |i|ii|ii|i:
-           U{1}U\\.'@@@@@@`.||'
-           \\__/(@@@@@@@@@@)'
+        'flaming_sheep' => '
+  %1$s            .    .     .
+   %1$s      .  . .     `  ,
+    %1$s    .; .  : .\' :  :  : .
+     %1$s   i..`: i` i.i.,i  i .
+      %1$s   `,--.|i |i|ii|ii|i:
+           U%2$sU\\.\'@@@@@@`.||\'
+           \\__/(@@@@@@@@@@)\'
                 (@@@@@@@@)
-                `YY~~~~YY'
-                 ||    ||     ",
+                `YY~~~~YY\'
+                 ||    ||',
         // Wonderful koala
-        'koala' => "
-  {0}
-   {0}
+        'koala' => '
+  %1$s
+   %1$s
        ___
      {~._.~}
       ( Y )
      ()~*~()
-     (_)-(_)   ",
+     (_)-(_)',
         // Luke skywalker koala
-        'luke_koala' => "
-  {0}
-   {0}          .
+        'luke_koala' => '
+  %1$s
+   %1$s          .
        ___   //
      {~._.~}//
       ( Y )K/
@@ -84,41 +84,41 @@ class CowSaysHelper extends Helper
      (_)-(_)
      Luke
      Sywalker
-     koala",
+     koala',
         // A moose
-        'moose' => "
-  {0}
-   {0}   \\_\\_    _/_/
-    {0}      \\__/
-           ({1})\\_______
+        'moose' => '
+  %1$s
+   %1$s   \\_\\_    _/_/
+    %1$s      \\__/
+           (%2$s)\\_______
            (__)\\       )\\/\\
-            {2} ||----w |
-               ||     ||",
+            %3$s ||----w |
+               ||     ||',
         // Sheep
-        'sheep' => "
-  {0}
-   {0}
+        'sheep' => '
+  %1$s
+   %1$s
        __
-      U{1}U\\.'@@@@@@`.
+      U%2$sU\\.\'@@@@@@`.
       \\__/(@@@@@@@@@@)
            (@@@@@@@@)
-           `YY~~~~YY'
-            ||    ||",
+           `YY~~~~YY\'
+            ||    ||',
         // Scowleton
-        'scowleton' => "
-          {0}      (__)
-           {0}     /{1}|
-            {0}   (_\"_)*+++++++++*
+        'scowleton' => '
+          %1$s      (__)
+           %1$s     /%2$s|
+            %1$s   (_\"_)*+++++++++*
                    //I#\\\\\\\\\\\\\\\\I\\
                    I[I|I|||||I I `
-                   I`I'///'' I I
+                   I`I\'///\'\' I I
                    I I       I I
                    ~ ~       ~ ~
-                     Scowleton",
+                     Scowleton',
         // Darth vader koala
-        'vader_koala' => "
-   {0}
-    {0}        .
+        'vader_koala' => '
+   %1$s
+    %1$s        .
      .---.  //
     Y|o o|Y//
    /_(i=i)K/
@@ -127,17 +127,17 @@ class CowSaysHelper extends Helper
 
      Darth
      Vader
-     koala        ",
+     koala',
         // Cowth vader
-        'cowth_vader' => "
-        {0}    ,-^-.
-         {0}   !oYo!
-          {0} /./=\\.\\______
+        'cowth_vader' => '
+        %1$s    ,-^-.
+         %1$s   !oYo!
+          %1$s /./=\\.\\______
                ##        )\\/\\
                 ||-----w||
                 ||      ||
 
-               Cowth Vader"
+               Cowth Vader'
     ];
     public $lines = [
         'think' => [
@@ -198,12 +198,6 @@ class CowSaysHelper extends Helper
             'balloonClass' => null, // Ballon text class
             'cowClass' => null, // Whole cow text class
         ];
-
-        // Balloon style
-        $lines = $this->lines[$options['speakLines']];
-
-        // Eyes
-        $eyes = $this->eyes[$options['eyes']];
 
         // Cut the message at each linebreak
         $strings = explode("\n", $message);
@@ -266,7 +260,7 @@ class CowSaysHelper extends Helper
             $finalCow = '<span class="' . $options['cowClass'] . '">' . $finalCow . '</span>';
         }
         // Final string to return
-        return __("<pre class = \"cow-box\">$finalCow</pre>", $this->lines[$options['speakLines']]['line'], $this->eyes[$options['eyes']][0], $this->eyes[$options['eyes']][1]);
+        return sprintf('<pre class = "cow-box">' . $finalCow . '</pre>', $this->lines[$options['speakLines']]['line'], $this->eyes[$options['eyes']][0], $this->eyes[$options['eyes']][1]);
     }
 
     /**
