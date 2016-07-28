@@ -9,12 +9,12 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Your articles'));
+$this->assign('title', __d('elabs', 'Your articles'));
 
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');
-echo $this->Paginator->sort('title', __d('posts', 'Post title'));
+echo $this->Paginator->sort('title', __d('elabs', 'Post title'));
 echo $this->Paginator->sort('publication_date', __d('elabs', 'Publication date'));
 echo $this->Paginator->sort('created', __d('elabs', 'Creation date'));
 echo $this->Paginator->sort('modified', __d('elabs', 'Update date'));
@@ -49,7 +49,7 @@ $this->end();
 // Page actions
 // ------------
 $this->start('pageActions');
-echo $this->Html->link(__d('posts', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New article']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New article']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
 $this->end();
 
 // Page content

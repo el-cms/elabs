@@ -11,7 +11,7 @@
  */
 
 // Page title
-$this->assign('title', __d('users', 'Admin/Users&gt; List'));
+$this->assign('title', __d('elabs', 'Admin/Users&gt; List'));
 
 // Block: Page content
 // -------------------
@@ -21,11 +21,11 @@ $this->start('pageContent');
     <table class="table table-condensed table-striped table-bordered">
         <thead>
             <tr>
-                <th><?php echo $this->Paginator->sort('role', __d('users', 'Role')) ?></th>
-                <th><?php echo $this->Paginator->sort('username', __d('users', 'Username')) ?></th>
-                <th><?php echo $this->Paginator->sort('realname', __d('users', 'Name')) ?></th>
+                <th><?php echo $this->Paginator->sort('role', __d('elabs', 'Role')) ?></th>
+                <th><?php echo $this->Paginator->sort('username', __d('elabs', 'Username')) ?></th>
+                <th><?php echo $this->Paginator->sort('realname', __d('elabs', 'Name')) ?></th>
                 <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
-                <th><?php echo $this->Paginator->sort('created', __d('users', 'Join date')) ?></th>
+                <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Join date')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
         </thead>
@@ -59,7 +59,7 @@ $this->start('pageContent');
                 }
                 ?>
                 <tr id="userLine<?php echo $user->id ?>" class="<?php echo $style ?>">
-                    <td><?php echo __d('amdin', '{0}&nbsp;{1}', [$this->Html->icon($roleIcon), ucfirst(h($user->role))]) ?></td>
+                    <td><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($roleIcon), ucfirst(h($user->role))]) ?></td>
                     <td><?php echo h($user->username) ?></td>
                     <td><?php echo h($user->realname) ?></td>
                     <td id="userStatus<?php echo $user->id ?>"><?php echo $this->UsersAdmin->statusLabel($user->status) ?></td>
@@ -67,7 +67,7 @@ $this->start('pageContent');
                     <td>
                         <div class="btn-group btn-group-xs">
                             <?php
-                            echo $this->Html->link($this->Html->icon('list', ['title' => __d('admin', 'Quick details')]), '#', [
+                            echo $this->Html->link($this->Html->icon('list', ['title' => __d('elabs', 'Quick details')]), '#', [
                                 'data-toggle' => 'modal',
                                 'data-target' => '#userModal',
                                 'data-id' => $user->id,
@@ -75,14 +75,14 @@ $this->start('pageContent');
                                 'class' => 'btn btn-primary',
                                 'escape' => false
                             ]);
-                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('admin', 'Full details')]), ['action' => 'view', $user->id], [
+                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('elabs', 'Full details')]), ['action' => 'view', $user->id], [
                                 'class' => 'btn btn-primary',
                                 'escape' => false
                             ]);
                             // Icons vars are used in JS too.
-                            $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('admin', 'Unlock')]);
-                            $lockIcon = $this->Html->icon('lock', ['title' => __d('admin', 'Lock')]);
-                            $activateIcon = $this->Html->icon('check', ['title' => __d('admin', 'Activate')]);
+                            $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('elabs', 'Unlock')]);
+                            $lockIcon = $this->Html->icon('lock', ['title' => __d('elabs', 'Lock')]);
+                            $activateIcon = $this->Html->icon('check', ['title' => __d('elabs', 'Activate')]);
                             if ($user->status === 2):
                                 echo $this->Html->link($unlockIcon, '#', [
                                     'onClick' => "lock('{$user->id}', 'unlock')",
@@ -110,7 +110,7 @@ $this->start('pageContent');
                             <?php
                             endif;
                             if ($user->status != 3):
-                                echo $this->Html->link($this->Html->icon('times', ['title' => __d('admin', 'Close')]), '#', [
+                                echo $this->Html->link($this->Html->icon('times', ['title' => __d('elabs', 'Close')]), '#', [
                                     'onClick' => "closeAccount('{$user->id}')",
                                     'class' => 'btn btn-danger',
                                     'escape' => false
@@ -141,13 +141,13 @@ $this->start('pageContent');
                 <dl class="dl-horizontal">
                     <dt><?php echo __d('elabs', 'Last update') ?></dt>
                     <dd id="uModUpdated"></dd>
-                    <dt><?php echo __d('posts', 'Articles') ?></dt>
+                    <dt><?php echo __d('elabs', 'Articles') ?></dt>
                     <dd id="uModArticleCount"></dd>
-                    <dt><?php echo __d('projects', 'Projects') ?></dt>
+                    <dt><?php echo __d('elabs', 'Projects') ?></dt>
                     <dd id="uModProjectCount"></dd>
-                    <dt><?php echo __d('files', 'Files') ?></dt>
+                    <dt><?php echo __d('elabs', 'Files') ?></dt>
                     <dd id="uModFileCount"></dd>
-                    <dt><?php echo __d('users', 'Bio') ?></dt>
+                    <dt><?php echo __d('elabs', 'Bio') ?></dt>
                     <dd id="uModBio"></dd>
                 </dl>
             </div>
@@ -186,7 +186,7 @@ $this->append('pageBottomScripts');
         async: true
       });
       request.fail(function (jqXHR, textStatus) {
-        alert(<?php echo __d('admin', '"Request failed: " + textStatus') ?>);
+        alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
         console.log(response);
@@ -195,7 +195,7 @@ $this->append('pageBottomScripts');
           $('#userLine' + id).addClass('disabled');
           $('#userStatus' + id).html('<?php echo $this->UsersAdmin->statusLabel(3) ?>');
         } else {
-          alert('<?php echo __d('admin', 'An error occured when you tried to close this account.') ?>');
+          alert('<?php echo __d('elabs', 'An error occured when you tried to close this account.') ?>');
         }
       });
     }
@@ -211,7 +211,7 @@ $this->append('pageBottomScripts');
         async: true
       });
       request.fail(function (jqXHR, textStatus) {
-        alert(<?php echo __d('admin', '"Request failed: " + textStatus') ?>);
+        alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
         if (response.user.status === 1) {
@@ -225,7 +225,7 @@ $this->append('pageBottomScripts');
           lnkIcon = '<?php echo $unlockIcon ?>';
           lnkAction = 'lock(\'' + id + '\', \'unlock\')';
         } else {
-          alert('<?php echo __d('admin', 'Unknown user status') ?>');
+          alert('<?php echo __d('elabs', 'Unknown user status') ?>');
         }
         $('#userLine' + id).removeClass();
         $('#userLine' + id).addClass(lineColor);
@@ -243,7 +243,7 @@ $this->append('pageBottomScripts');
         async: true
       });
       request.fail(function (jqXHR, textStatus) {
-        alert(<?php echo __d('admin', '"Request failed: " + textStatus') ?>);
+        alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
         if (response.user.status === 1) {
@@ -273,7 +273,7 @@ $this->append('pageBottomScripts');
 //        $("#log").html(msg);
 //      });
       request.fail(function (jqXHR, textStatus) {
-        alert(<?php echo __d('admin', '"Request failed: " + textStatus') ?>);
+        alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
         $('#uModTitle').html(response.user.realname);

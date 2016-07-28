@@ -36,13 +36,13 @@ class ActsController extends AppController
         // Create config strings
         $this->config = [
             'strings' => [
-                'edit' => __d('acts', 'has been updated'),
-                'delete' => __d('acts', 'has been removed'),
+                'edit' => __d('elabs', 'has been updated'),
+                'delete' => __d('elabs', 'has been removed'),
             ],
             'models' => [
-                'Files' => __d('files', 'File'),
-                'Posts' => __d('posts', 'Article'),
-                'Projects' => __d('projects', 'Project'),
+                'Files' => __d('elabs', 'File'),
+                'Posts' => __d('elabs', 'Article'),
+                'Projects' => __d('elabs', 'Project'),
             ]
         ];
 

@@ -9,12 +9,12 @@
  */
 
 // Page title
-$this->assign('title', __d('projects', 'Projects'));
+$this->assign('title', __d('elabs', 'Projects'));
 
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');
-echo $this->Paginator->sort('name', __d('projects', 'Name'));
+echo $this->Paginator->sort('name', __d('elabs', 'Name'));
 echo $this->Paginator->sort('created', __d('elabs', 'Creation date'));
 echo $this->Paginator->sort('modified', __d('elabs', 'Modification date'));
 $this->end();

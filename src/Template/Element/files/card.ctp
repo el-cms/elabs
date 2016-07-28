@@ -42,7 +42,7 @@ $config = $this->Items->fileConfig($data['filename']);
                         ?>
                         <li>
                           <?php
-                          echo __('{0} {1}', [$this->Html->icon('calendar'), __d('posts', 'Published on: {0}', h($data['publication_date']))]);
+                          echo __('{0} {1}', [$this->Html->icon('calendar'), __d('elabs', 'Published on: {0}', h($data['publication_date']))]);
                           if ($data['publication_date'] < $data['modified']):
                               echo ' - ' . __d('elabs', 'Updated on: {0}', h($data['modified']));
                           endif;

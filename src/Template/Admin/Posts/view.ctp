@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Admin/Article&gt; {0}', h($post->title)));
+$this->assign('title', __d('elabs', 'Admin/Article&gt; {0}', h($post->title)));
 
 // Block: Item informations
 // ------------------------
@@ -17,10 +17,10 @@ $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
     <li><strong><?php echo __d('elabs', 'Author') ?></strong> <?php echo $this->Html->link($post->user->username, ['controller' => 'Users', 'action' => 'view', $post->user->id]) ?></li>
-    <li><strong><?php echo __d('licenses', 'License') ?></strong> <?php echo $this->License->d($post->license) ?></li>
+    <li><strong><?php echo __d('elabs', 'License') ?></strong> <?php echo $this->License->d($post->license) ?></li>
     <li><strong><?php echo __d('elabs', 'Created on') ?></strong> <?php echo h($post->created) ?></li>
     <li><strong><?php echo __d('elabs', 'Updated on') ?></strong> <?php echo h($post->modified) ?></li>
-    <li><strong><?php echo __d('posts', 'Publication Date') ?></strong> <?php echo h($post->publication_date) ?></li>
+    <li><strong><?php echo __d('elabs', 'Publication Date') ?></strong> <?php echo h($post->publication_date) ?></li>
     <li><strong><?php echo __d('elabs', 'Safe') ?></strong> <?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></li>
     <li><strong><?php echo __d('elabs', 'Status') ?></strong> <?php echo $this->ItemsAdmin->statusLabel($post->status) ?></li>
 </ul>
@@ -34,8 +34,8 @@ $this->start('pageActions');
 <div class="btn-group btn-group-vertical btn-block">
     <?php
     // Lock/unlock
-    $unlockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('unlock-alt'), __d('admin', 'Unlock')]);
-    $lockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('admin', 'Lock')]);
+    $unlockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('unlock-alt'), __d('elabs', 'Unlock')]);
+    $lockIcon = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('elabs', 'Lock')]);
     if ($post->status === 2):
         echo $this->Html->link($unlockIcon, ['action' => 'changeState', $post->id, 'unlock'], ['escape' => false, 'class' => 'btn btn-warning']);
     elseif ($post->status === 1):
@@ -64,8 +64,8 @@ $this->start('pageContent');
 ?>
 <div class="panel">
     <ul id="postTabs" class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#tab-content" aria-expanded="true"><?php echo __d('users', 'Content') ?></a></li>
-        <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('users', 'Related items') ?></a></li>
+        <li class="active"><a data-toggle="tab" href="#tab-content" aria-expanded="true"><?php echo __d('elabs', 'Content') ?></a></li>
+        <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('elabs', 'Related items') ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
         <div class="tab-pane fade active in" id="tab-content">

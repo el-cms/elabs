@@ -9,14 +9,14 @@
  */
 
 // Page title
-$this->assign('title', __d('license', 'License: {0}', h($license->name)));
+$this->assign('title', __d('elabs', 'License: {0}', h($license->name)));
 
 // Block: Item informations
 // ------------------------
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('files', 'Name:') ?></strong> <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon(h($license->icon)), h($license->name)]) ?></li>
+    <li><strong><?php echo __d('elabs', 'Name:') ?></strong> <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon(h($license->icon)), h($license->name)]) ?></li>
 </ul>
 <?php
 $this->end();
@@ -24,7 +24,7 @@ $this->end();
 // Block: Actions
 // --------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('licenses', 'More info online')]), h($license->link), ['escape' => false, "class" => "btn btn-block"]);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('elabs', 'More info online')]), h($license->link), ['escape' => false, "class" => "btn btn-block"]);
 $this->end();
 
 // Block: Page content
@@ -38,9 +38,9 @@ if (!$seeNSFW):
 <?php endif; ?>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles {0}', '<span class="badge">' . $this->Number->format($license->post_count) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects {0}', '<span class="badge">' . $this->Number->format($license->project_count) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files {0}', '<span class="badge">' . $this->Number->format($license->file_count) . '</span>') ?></a></li>
+        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $this->Number->format($license->post_count) . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $this->Number->format($license->project_count) . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $this->Number->format($license->file_count) . '</span>') ?></a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">

@@ -21,8 +21,8 @@ $this->end();
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List licenses']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
-echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'Add a license']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'add'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List licenses']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'Add a license']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'add'], $linkOptions);
 $this->end();
 
 // Page content block

@@ -14,7 +14,7 @@ $this->loadHelper('License');
 $this->loadHelper('Time', ['className' => 'ElabsTime']);
 
 // Page title
-$this->assign('title', __d('acts', 'Recent activity'));
+$this->assign('title', __d('elabs', 'Recent activity'));
 
 // Block: Pagination order links
 // -----------------------------

@@ -9,16 +9,16 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Article: {0}', h($post->title)));
+$this->assign('title', __d('elabs', 'Article: {0}', h($post->title)));
 
 // Block: Item informations
 // ------------------------
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('posts', 'Author:') ?></strong> <?php echo $this->Html->link($post->user->username, ['controller' => 'Users', 'action' => 'view', $post->user->id]) ?></li>
-    <li><strong><?php echo __d('licenses', 'License:') ?></strong> <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($post->license->icon), $post->license->name]), ['controller' => 'Licenses', 'action' => 'view', $post->license->id], ['escape' => false]) ?></li>
-    <li><strong><?php echo __d('posts', 'Publication Date:') ?></strong> <?php echo h($post->publication_date) ?></li>
+    <li><strong><?php echo __d('elabs', 'Author:') ?></strong> <?php echo $this->Html->link($post->user->username, ['controller' => 'Users', 'action' => 'view', $post->user->id]) ?></li>
+    <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($post->license->icon), $post->license->name]), ['controller' => 'Licenses', 'action' => 'view', $post->license->id], ['escape' => false]) ?></li>
+    <li><strong><?php echo __d('elabs', 'Publication Date:') ?></strong> <?php echo h($post->publication_date) ?></li>
     <?php if ($post->has('modified')): ?>
         <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($post->modified) ?></li>
     <?php endif; ?>

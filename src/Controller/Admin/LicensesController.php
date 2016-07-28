@@ -39,10 +39,10 @@ class LicensesController extends AdminAppController
             $this->request->data['file_count'] = 0;
             $license = $this->Licenses->patchEntity($license, $this->request->data);
             if ($this->Licenses->save($license)) {
-                $this->Flash->success(__d('licenses', 'The license has been saved.'));
+                $this->Flash->success(__d('elabs', 'The license has been saved.'));
                 $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__d('licenses', 'The license could not be saved. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The license could not be saved. Please, try again.'));
             }
         }
         $this->set(compact('license'));
@@ -64,10 +64,10 @@ class LicensesController extends AdminAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $license = $this->Licenses->patchEntity($license, $this->request->data);
             if ($this->Licenses->save($license)) {
-                $this->Flash->success(__d('licenses', 'The license has been updated.'));
+                $this->Flash->success(__d('elabs', 'The license has been updated.'));
                 $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__d('licenses', 'The license could not be updated. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The license could not be updated. Please, try again.'));
             }
         }
         $this->set(compact('license'));
@@ -86,9 +86,9 @@ class LicensesController extends AdminAppController
         $this->request->allowMethod(['post', 'delete']);
         $license = $this->Licenses->get($id);
         if ($this->Licenses->delete($license)) {
-            $this->Flash->success(__d('licenses', 'The license has been deleted.'));
+            $this->Flash->success(__d('elabs', 'The license has been deleted.'));
         } else {
-            $this->Flash->error(__d('licenses', 'The license could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('elabs', 'The license could not be deleted. Please, try again.'));
         }
         $this->redirect(['action' => 'index']);
     }

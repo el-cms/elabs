@@ -9,13 +9,13 @@
  */
 
 // Page title
-$this->assign('title', __d('files', 'Files'));
+$this->assign('title', __d('elabs', 'Files'));
 
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');
-echo $this->Paginator->sort('name', __d('files', 'Name'));
-echo $this->Paginator->sort('created', __d('files', 'Creation date'));
+echo $this->Paginator->sort('name', __d('elabs', 'Name'));
+echo $this->Paginator->sort('created', __d('elabs', 'Creation date'));
 echo $this->Paginator->sort('modified', __d('elabs', 'Modification date'));
 $this->end();
 

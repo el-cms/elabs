@@ -123,7 +123,7 @@ class UsersController extends AppController
 
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__d('users', 'Your account has been created. An email will be sent to you when active'));
+                $this->Flash->success(__d('elabs', 'Your account has been created. An email will be sent to you when active'));
                 $this->redirect(['action' => 'index']);
             } else {
                 $errors = $user->errors();
@@ -152,7 +152,7 @@ class UsersController extends AppController
                 $this->request->session()->write('seeNSFW', $this->Auth->User('seeNSFW'));
                 $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__d('users', 'Invalid username or password, try again. Is your accound active ?'));
+            $this->Flash->error(__d('elabs', 'Invalid username or password, try again. Is your accound active ?'));
         }
     }
 
@@ -163,7 +163,7 @@ class UsersController extends AppController
      */
     public function logout()
     {
-        $this->Flash->success(__d('users', 'You are logged out. See you later !'));
+        $this->Flash->success(__d('elabs', 'You are logged out. See you later !'));
         $this->redirect($this->Auth->logout());
     }
 }

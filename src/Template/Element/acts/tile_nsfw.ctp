@@ -19,7 +19,7 @@ if (!$event): ?>
 <?php
 endif;
 
-echo __('{0}&nbsp;{1}', [$this->Html->icon($icon), __d('acts', 'This element may not be safe, therefore it is hidden.')]);
+echo __('{0}&nbsp;{1}', [$this->Html->icon($icon), __d('elabs', 'This element may not be safe, therefore it is hidden.')]);
 if (!$event): ?>
     </div>
 <?php

@@ -9,7 +9,7 @@ if (Cake\Core\Configure::read('cms.isRegistrationOpen')):
     ?>
     <div class="text-center"><?php echo __d('elabs', 'or') ?></div>
     <?php
-    echo $this->Html->link(__d('users', 'Register'), ['prefix' => false, 'controller' => 'users', 'action' => 'register'], ['class' => 'btn btn-block']);
+    echo $this->Html->link(__d('elabs', 'Register'), ['prefix' => false, 'controller' => 'users', 'action' => 'register'], ['class' => 'btn btn-block']);
 else:
     ?>
     <div class="alert alert-warning"><?php echo __d('elabs', 'Registrations are closed for now... Come back later.') ?></div>

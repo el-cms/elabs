@@ -11,7 +11,7 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Admin/Articles&gt; List'));
+$this->assign('title', __d('elabs', 'Admin/Articles&gt; List'));
 
 // Block: Page content
 // -------------------
@@ -21,12 +21,12 @@ $this->start('pageContent');
     <table class="table table-condensed table-striped table-bordered">
         <thead>
             <tr>
-                <th><?php echo $this->Paginator->sort('title', __d('posts', 'Title')) ?></th>
+                <th><?php echo $this->Paginator->sort('title', __d('elabs', 'Title')) ?></th>
                 <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Author')) ?></th>
                 <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
                 <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
                 <th><?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?></th>
-                <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
+                <th><?php echo $this->Paginator->sort('Licenses.name', __d('elabs', 'License')) ?></th>
                 <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
@@ -45,13 +45,13 @@ $this->start('pageContent');
                         <div class="btn-group btn-group-xs">
                             <?php
                             // See content
-                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('admin', 'Full details')]), ['action' => 'view', $post->id], [
+                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('elabs', 'Full details')]), ['action' => 'view', $post->id], [
                                 'class' => 'btn btn-primary',
                                 'escape' => false
                             ]);
                             // Lock/unlock
-                            $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('admin', 'Unlock')]);
-                            $lockIcon = $this->Html->icon('lock', ['title' => __d('admin', 'Lock')]);
+                            $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('elabs', 'Unlock')]);
+                            $lockIcon = $this->Html->icon('lock', ['title' => __d('elabs', 'Lock')]);
                             if ($post->status === 2):
                                 echo $this->Html->link($unlockIcon, ['action' => 'changeState', $post->id, 'unlock'], [
                                     'class' => 'btn btn-warning',
@@ -69,7 +69,7 @@ $this->start('pageContent');
                             endif;
                             // Close
                             if ($post->status != 3):
-                                echo $this->Html->link($this->Html->icon('times', ['title' => __d('admin', 'Close')]), ['action' => 'changeState', $post->id, 'remove'], [
+                                echo $this->Html->link($this->Html->icon('times', ['title' => __d('elabs', 'Close')]), ['action' => 'changeState', $post->id, 'remove'], [
                                     'class' => 'btn btn-danger',
                                     'escape' => false
                                 ]);

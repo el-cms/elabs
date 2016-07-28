@@ -75,9 +75,9 @@ class FilesController extends UserAppController
 
             // Checking file :
             if (!$this->UpManager->checkFileType($pathInfo['extension'])) {
-                $this->Flash->error(__d('files', 'This filetype is not allowed.'));
+                $this->Flash->error(__d('elabs', 'This filetype is not allowed.'));
             } elseif (!$this->UpManager->checkFileSize($fileInfos['size'])) {
-                $this->Flash->error(__d('files', 'File is too long. Max file size is {0}Kb', $this->UpManager->maxSize / 1024));
+                $this->Flash->error(__d('elabs', 'File is too long. Max file size is {0}Kb', $this->UpManager->maxSize / 1024));
             } else {
                 if (in_array($pathInfo['extension'], $this->UpManager->accepted['image'])) {
                     $this->UpManager->preparePath('thumb');
@@ -86,7 +86,7 @@ class FilesController extends UserAppController
                     $this->SimpleImage->resizeToWidth('200');
                     // Save and return errors if any
                     if (!$this->SimpleImage->save(WWW_ROOT . $this->UpManager->baseDir . DS . $this->UpManager->currentThumbPath . DS . $finalFileName)) {
-                        $this->Flash->error(__d('files', 'The thumbnail could not be saved in the destination folder. Please, try again.'));
+                        $this->Flash->error(__d('elabs', 'The thumbnail could not be saved in the destination folder. Please, try again.'));
                     }
                 }
 
@@ -105,11 +105,11 @@ class FilesController extends UserAppController
                 ];
 
                 if (!move_uploaded_file($fileInfos['tmp_name'], WWW_ROOT . $this->UpManager->baseDir . $currentFilePath)) {
-                    $this->Flash->error(__d('files', 'The file could not be saved in the destination folder. Please, try again.'));
+                    $this->Flash->error(__d('elabs', 'The file could not be saved in the destination folder. Please, try again.'));
                 } else {
                     $file = $this->Files->patchEntity($file, $fileItem);
                     if ($this->Files->save($file)) {
-                        $this->Flash->success(__d('files', 'The file has been saved.'));
+                        $this->Flash->success(__d('elabs', 'The file has been saved.'));
                         $this->Act->add($file->id, 'add', 'Files', $file->created);
                         $this->redirect(['action' => 'index']);
                     } else {
@@ -141,13 +141,13 @@ class FilesController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $file = $this->Files->patchEntity($file, $this->request->data);
             if ($this->Files->save($file)) {
-                $this->Flash->success(__d('file', 'The file has been saved.'));
+                $this->Flash->success(__d('elabs', 'The file has been saved.'));
                 if ($this->request->data['isMinor'] == '0') {
                     $this->Act->add($file->id, 'edit', 'Files', $file->modified);
                 }
                 $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__d('files', 'The file could not be saved. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The file could not be saved. Please, try again.'));
                 $errors = $file->errors();
                 $errorMessages = [];
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
@@ -179,10 +179,10 @@ class FilesController extends UserAppController
             ]
         ]);
         if ($this->Files->delete($file)) {
-            $this->Flash->success(__d('files', 'The file has been deleted.'));
+            $this->Flash->success(__d('elabs', 'The file has been deleted.'));
             $this->Act->remove($id);
         } else {
-            $this->Flash->error(__d('files', 'The file could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('elabs', 'The file could not be deleted. Please, try again.'));
         }
         $this->redirect(['action' => 'index']);
     }

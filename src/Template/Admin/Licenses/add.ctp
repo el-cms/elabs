@@ -9,13 +9,13 @@
  */
 
 // Page title
-$this->assign('title', __d('licenses', 'Admin/License&gt; Create'));
+$this->assign('title', __d('elabs', 'Admin/License&gt; Create'));
 
 // Related links block
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List licenses']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List licenses']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block

@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('projects', 'Project: {0}', h($project->name)));
+$this->assign('title', __d('elabs', 'Project: {0}', h($project->name)));
 
 // Block: Item informations
 // ------------------------

@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Edit file  "{0}"', $file->name));
+$this->assign('title', __d('elabs', 'Edit file  "{0}"', $file->name));
 
 // Actions block
 // -------------
@@ -21,16 +21,16 @@ $this->end();
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('files', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Your files']), ['action' => 'index'], $linkOptions);
-echo $this->Html->link(__d('files', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New file']), ['action' => 'add'], $linkOptions);
-echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Your files']), ['action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New file']), ['action' => 'add'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block
 // ------------------
 $this->start('pageContent');
 echo $this->Form->create($file);
-echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descArea', 'label' => __d('posts', 'Description'), 'value' => $file->description]);
+echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descArea', 'label' => __d('elabs', 'Description'), 'value' => $file->description]);
 $this->CodeMirror->add('descArea');
 echo $this->Form->input('license_id ', ['options' => $licenses, 'class' => 'selecter', 'data-selecter-options' => '{"cover":"true"}']);
 ?>
@@ -42,7 +42,7 @@ echo $this->Form->input('license_id ', ['options' => $licenses, 'class' => 'sele
         <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
     </div>
     <div class="col-sm-4">
-        <?php echo $this->Form->submit(__d('files', 'Update'), ['class' => 'btn-primary btn-block']); ?>
+        <?php echo $this->Form->submit(__d('elabs', 'Update'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>
 <?php
