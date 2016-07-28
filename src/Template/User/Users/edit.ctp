@@ -9,22 +9,22 @@
  */
 
 // Page title
-$this->assign('title', __d('users', 'Update your profile'));
+$this->assign('title', __d('elabs', 'Update your profile'));
 
 // Breadcrumbs
 $this->Html->addCrumb($this->fetch('title'));
 ?>
 <div class="panel">
     <ul id="userTabs" class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#tab-general" aria-expanded="true"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('user'), __d('users', 'Main informations')]) ?></a></li>
-        <li><a data-toggle="tab" href="#tab-password" aria-expanded="false"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('users', 'Change password')]) ?></a></li>
-        <li><a data-toggle="tab" href="#tab-close" aria-expanded="false"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('times'), __d('users', 'Close account')]) ?></a></li>
+        <li class="active"><a data-toggle="tab" href="#tab-general" aria-expanded="true"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('user'), __d('elabs', 'Main informations')]) ?></a></li>
+        <li><a data-toggle="tab" href="#tab-password" aria-expanded="false"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('elabs', 'Change password')]) ?></a></li>
+        <li><a data-toggle="tab" href="#tab-close" aria-expanded="false"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('times'), __d('elabs', 'Close account')]) ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
         <div class="tab-pane fade active in" id="tab-general">
             <div class="row">
                 <div class="col-sm-4">
-                    <?php echo $this->Html->link(__d('elabs ', '{0}&nbsp;{1} ', [$this->Html->icon('eye'), __d('users', 'View your profile online')]), ['prefix' => false, 'action' => 'view', $user->id], ['class' => 'btn btn-primary btn-block', 'escape' => false]) ?>
+                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1} ', [$this->Html->icon('eye'), __d('elabs', 'View your profile online')]), ['prefix' => false, 'action' => 'view', $user->id], ['class' => 'btn btn-primary btn-block', 'escape' => false]) ?>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
@@ -67,12 +67,12 @@ $this->Html->addCrumb($this->fetch('title'));
                 <div class="col-sm-8">
                     <?php
                     echo$this->Form->create($user, ['url' => ['action' => 'update_password']]);
-                    echo $this->Form->input('current_password', ['type' => 'password', 'label' => __d('users', 'Current password')]);
-                    echo $this->Form->input('password', ['type' => 'password', 'value' => '', 'label' => __d('users', 'New password')]);
-                    echo $this->Form->input('password_confirm', ['type' => 'password', 'value' => '', 'label' => __d('users', 'Confirmation')]);
+                    echo $this->Form->input('current_password', ['type' => 'password', 'label' => __d('elabs', 'Current password')]);
+                    echo $this->Form->input('password', ['type' => 'password', 'value' => '', 'label' => __d('elabs', 'New password')]);
+                    echo $this->Form->input('password_confirm', ['type' => 'password', 'value' => '', 'label' => __d('elabs', 'Confirmation')]);
                     ?>
                     <div class="form-group-btn">
-                        <?php echo $this->Form->submit(__d('users', 'Update password'), ['class' => 'btn-success']) ?>
+                        <?php echo $this->Form->submit(__d('elabs', 'Update password'), ['class' => 'btn-success']) ?>
                     </div>
                     <?php echo $this->Form->end() ?>
                 </div>
@@ -92,10 +92,10 @@ $this->Html->addCrumb($this->fetch('title'));
                 <div class="col-sm-8">
                     <?php
                     echo $this->Form->create($user, ['url' => ['action' => 'close_account']]);
-                    echo $this->Form->input('current_password', ['type' => 'password', 'label' => __d('users', 'Current password')]);
+                    echo $this->Form->input('current_password', ['type' => 'password', 'label' => __d('elabs', 'Current password')]);
                     ?>
                     <div class="form-group-btn">
-                        <?php echo $this->Form->button(__d('users', 'Close your account'), ['class' => 'btn-danger']) ?>
+                        <?php echo $this->Form->button(__d('elabs', 'Close your account'), ['class' => 'btn-danger']) ?>
                     </div>
                     <?php echo $this->Form->end() ?>
                 </div>

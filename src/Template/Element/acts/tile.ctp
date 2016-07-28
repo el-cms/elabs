@@ -20,6 +20,6 @@ $link = $this->Html->link($data['title'], ['prefix' => false, 'controller' => $i
 <div class="tile tile-<?php echo $class ?>">
     <div class="tile-inner">
         <?php echo $this->Html->icon($icon) ?>
-        <strong><?php echo $data['modified'] ?>: </strong><?php echo __d('acts', '{0} {1} {2}', [$config['models'][$item['model']], $link, $config['strings'][$item['type']]]) ?>
+        <strong><?php echo $data['modified'] ?>: </strong><?php echo __d('elabs', '{0} {1} {2}', [$config['models'][$item['model']], $link, $config['strings'][$item['type']]]) ?>
     </div>
 </div>

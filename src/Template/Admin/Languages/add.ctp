@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('languages', 'New language'));
+$this->assign('title', __d('elabs', 'New language'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Languages'), ['action' => 'index']);
@@ -19,7 +19,7 @@ $this->Html->addCrumb($this->fetch('title'));
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List languages']), ['prefix' => 'admin', 'controller' => 'Languages', 'action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List languages']), ['prefix' => 'admin', 'controller' => 'Languages', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block
@@ -33,8 +33,8 @@ echo $this->Form->create($language);
         echo $this->Form->input(
                 'id', ['type' => 'text',
             'required' => true,
-            'label' => __d('languages', 'ISO 639-2'),
-            'help' => $this->Html->link(__d('languages', 'ISO 639-2: 3 chars. code'), 'https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes', ['target' => '_blank'])
+            'label' => __d('elabs', 'ISO 639-2'),
+            'help' => $this->Html->link(__d('elabs', 'ISO 639-2: 3 chars. code'), 'https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes', ['target' => '_blank'])
         ]);
         ?>
     </div>
@@ -43,13 +43,13 @@ echo $this->Form->create($language);
         echo $this->Form->input(
                 'iso639_1', ['type' => 'text',
             'required' => true,
-            'label' => __d('languages', 'ISO 639-1'),
-            'help' => $this->Html->link(__d('languages', 'ISO 639-1: 2 chars. code'), 'https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes', ['target' => '_blank'])
+            'label' => __d('elabs', 'ISO 639-1'),
+            'help' => $this->Html->link(__d('elabs', 'ISO 639-1: 2 chars. code'), 'https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes', ['target' => '_blank'])
         ]);
         ?>
     </div>
     <div class="col-sm-4">
-        <?php echo $this->Form->input('name', ['label' => __d('languages', 'Language, in native form')]); ?>
+        <?php echo $this->Form->input('name', ['label' => __d('elabs', 'Language, in native form')]); ?>
     </div>
 </div>
 <?php

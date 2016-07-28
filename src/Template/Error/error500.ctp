@@ -36,7 +36,7 @@ endif;
 ?>
 <div class="text-center">
     <?php
-    $string = __d('cake', 'Error:') . "\n" . $message;
+    $string = __d('elabs', 'Error:') . "\n" . $message;
     echo $this->CowSays->sayError($string);
     ?>
 </div>

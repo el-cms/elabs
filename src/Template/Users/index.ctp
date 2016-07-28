@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('users', 'Authors'));
+$this->assign('title', __d('elabs', 'Authors'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Authors'));
@@ -17,9 +17,9 @@ $this->Html->addCrumb(__d('elabs', 'Authors'));
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderMenu');
-echo $this->Paginator->sort('realname', __d('users', 'Real name'));
-echo $this->Paginator->sort('username', __d('users', 'User name'));
-echo $this->Paginator->sort('created', __d('users', 'Join date'));
+echo $this->Paginator->sort('realname', __d('elabs', 'Real name'));
+echo $this->Paginator->sort('username', __d('elabs', 'User name'));
+echo $this->Paginator->sort('created', __d('elabs', 'Join date'));
 $this->end();
 
 // Block: Page content

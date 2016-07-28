@@ -11,7 +11,7 @@
  */
 
 // Page title
-$this->assign('title', __d('projects', 'List of reports'));
+$this->assign('title', __d('elabs', 'List of reports'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Reports'), ['action' => 'index']);
@@ -25,9 +25,9 @@ $this->start('pageContent');
     <table class="table table-condensed table-striped table-bordered">
         <thead>
             <tr>
-                <th><?php echo $this->Paginator->sort('name', __d('reports', 'Author')) ?></th>
+                <th><?php echo $this->Paginator->sort('name', __d('elabs', 'Author')) ?></th>
                 <th><?php echo $this->Paginator->sort('email', __d('elabs', 'E-Mail')) ?></th>
-                <th><?php echo $this->Paginator->sort('url', __d('reports', 'source')) ?></th>
+                <th><?php echo $this->Paginator->sort('url', __d('elabs', 'source')) ?></th>
                 <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
@@ -54,7 +54,7 @@ $this->start('pageContent');
                         <div class="btn-group btn-group-xs">
                             <?php
                             // See content
-                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('admin', 'Full details')]), ['action' => 'view', $report->id], ['escape' => false, 'class' => 'btn btn-primary']);
+                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('elabs', 'Full details')]), ['action' => 'view', $report->id], ['escape' => false, 'class' => 'btn btn-primary']);
                             echo $this->Form->postLink($this->Html->icon('times', ['title' => __d('elabs', 'Delete')]), ['action' => 'delete', $report->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $report->id), 'class' => 'btn btn-danger', 'escape' => false]);
                             ?>
                         </div>

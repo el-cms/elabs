@@ -36,9 +36,9 @@ class ActsController extends AdminAppController
         // Create config strings
         $this->config = [
             'models' => [
-                'Files' => __d('files', 'File'),
-                'Posts' => __d('posts', 'Article'),
-                'Projects' => __d('projects', 'Project'),
+                'Files' => __d('elabs', 'File'),
+                'Posts' => __d('elabs', 'Article'),
+                'Projects' => __d('elabs', 'Project'),
             ]
         ];
 

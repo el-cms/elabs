@@ -62,7 +62,7 @@ class ProjectsController extends UserAppController
             // Preparing data
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
-                $this->Flash->success(__d('project', 'The project has been saved.'));
+                $this->Flash->success(__d('elabs', 'The project has been saved.'));
                 $this->Act->add($project->id, 'add', 'Projects', $project->created);
                 $this->redirect(['action' => 'index']);
             } else {
@@ -95,13 +95,13 @@ class ProjectsController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
-                $this->Flash->success(__d('project', 'The project has been saved.'));
+                $this->Flash->success(__d('elabs', 'The project has been saved.'));
                 if ($this->request->data['isMinor'] == '0') {
                     $this->Act->add($project->id, 'edit', 'Projects', $project->modified);
                 }
                 $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__d('project', 'The project could not be saved. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The project could not be saved. Please, try again.'));
                 $errors = $project->errors();
                 $errorMessages = [];
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
@@ -132,10 +132,10 @@ class ProjectsController extends UserAppController
             ]
         ]);
         if ($this->Projects->delete($project)) {
-            $this->Flash->success(__d('project', 'The project has been deleted.'));
+            $this->Flash->success(__d('elabs', 'The project has been deleted.'));
             $this->Act->remove($id);
         } else {
-            $this->Flash->error(__d('project', 'The project could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('elabs', 'The project could not be deleted. Please, try again.'));
         }
         $this->redirect(['action' => 'index']);
     }

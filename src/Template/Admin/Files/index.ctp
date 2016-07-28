@@ -11,7 +11,7 @@
  */
 
 // Page title
-$this->assign('title', __d('files', 'List of files'));
+$this->assign('title', __d('elabs', 'List of files'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
@@ -25,16 +25,16 @@ $this->start('pageContent');
     <table class="table table-condensed table-striped table-bordered">
         <thead>
             <tr>
-                <th><?php echo $this->Paginator->sort('name', __d('files', 'Name')) ?>/<?php echo $this->Paginator->sort('filename', __d('files', 'F.name')) ?></th>
+                <th><?php echo $this->Paginator->sort('name', __d('elabs', 'Name')) ?>/<?php echo $this->Paginator->sort('filename', __d('elabs', 'F.name')) ?></th>
                 <th><?php echo $this->Paginator->sort('Users.username', __d('elabs', 'Owner')) ?></th>
-                <th><?php echo $this->Paginator->sort('weight', __d('files', 'Size')) ?></th>
+                <th><?php echo $this->Paginator->sort('weight', __d('elabs', 'Size')) ?></th>
                 <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
                 <th>
                     <?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?><br/>
                     <?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?>
                 </th>
-                <th><?php echo $this->Paginator->sort('Licenses.name', __d('licenses', 'License')) ?></th>
-                <th><?php echo $this->Paginator->sort('Languages.name', __d('language', 'Language')) ?></th>
+                <th><?php echo $this->Paginator->sort('Licenses.name', __d('elabs', 'License')) ?></th>
+                <th><?php echo $this->Paginator->sort('Languages.name', __d('elabs', 'Language')) ?></th>
                 <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
@@ -60,13 +60,13 @@ $this->start('pageContent');
                         <div class="btn-group btn-group-xs">
                             <?php
                             // See content
-                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('admin', 'Full details')]), ['action' => 'view', $file->id], [
+                            echo $this->Html->link($this->Html->icon('eye', ['title' => __d('elabs', 'Full details')]), ['action' => 'view', $file->id], [
                                 'class' => 'btn btn-primary',
                                 'escape' => false
                             ]);
                             // Lock/unlock
-                            $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('admin', 'Unlock')]);
-                            $lockIcon = $this->Html->icon('lock', ['title' => __d('admin', 'Lock')]);
+                            $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('elabs', 'Unlock')]);
+                            $lockIcon = $this->Html->icon('lock', ['title' => __d('elabs', 'Lock')]);
                             if ($file->status === 2):
                                 echo $this->Html->link($unlockIcon, ['action' => 'changeState', $file->id, 'unlock'], [
                                     'class' => 'btn btn-warning',
@@ -84,9 +84,9 @@ $this->start('pageContent');
                             endif;
                             // Close
                             if ($file->status != 3):
-                                echo $this->Html->link($this->Html->icon('times', ['title' => __d('admin', 'Close')]), ['action' => 'changeState', $file->id, 'remove'], [
+                                echo $this->Html->link($this->Html->icon('times', ['title' => __d('elabs', 'Close')]), ['action' => 'changeState', $file->id, 'remove'], [
                                     'class' => 'btn btn-danger',
-                                    'confirm' => __d('files', 'Are you sure you want to close this ?'),
+                                    'confirm' => __d('elabs', 'Are you sure you want to close this ?'),
                                     'escape' => false
                                 ]);
                             else:

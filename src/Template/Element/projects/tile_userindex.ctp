@@ -50,7 +50,7 @@
                     </dl>
                 </div>
                 <div class="col-sm-8">
-                    <div class="content-sub-heading"><?php echo __d('projects', 'Team') ?></div>
+                    <div class="content-sub-heading"><?php echo __d('elabs', 'Team') ?></div>
                     <?php echo $this->element('layout/dev_block') ?>
                 </div>
             </div>

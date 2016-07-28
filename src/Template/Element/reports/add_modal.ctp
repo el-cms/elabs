@@ -18,13 +18,13 @@
                 <?php
                 if (is_null($authUser)):
                     echo $this->Form->input('name', array(
-                        'label' => __d('reports', 'Your name'),
-                        'placeholder' => __d('reports', 'Name'),
+                        'label' => __d('elabs', 'Your name'),
+                        'placeholder' => __d('elabs', 'Name'),
                         'required' => true,
                     ));
                     echo $this->Form->input('email', array(
-                        'label' => __d('reports', 'Your email'),
-                        'placeholder' => __d('reports', 'Email'),
+                        'label' => __d('elabs', 'Your email'),
+                        'placeholder' => __d('elabs', 'Email'),
                         'required' => false,
                     ));
                     ?>
@@ -34,9 +34,9 @@
                 <?php
                 echo $this->Form->input('reason', array(
                     'type' => 'textarea',
-                    'label' => __d('reports', 'Reason for your report'),
+                    'label' => __d('elabs', 'Reason for your report'),
                     'class' => 'form-control',
-                    'placeholder' => __d('reports', 'Reason'),
+                    'placeholder' => __d('elabs', 'Reason'),
                     'required' => true
                 ));
                 ?>
@@ -44,7 +44,7 @@
             <div class="modal-footer">
                 <?php
                 echo $this->Form->hidden('url', ['id' => 'reportModalUrl']);
-                echo $this->Form->button(__d('reports', 'Send the report'), array(
+                echo $this->Form->button(__d('elabs', 'Send the report'), array(
                     'class' => 'btn btn-primary',
                 ));
                 ?>

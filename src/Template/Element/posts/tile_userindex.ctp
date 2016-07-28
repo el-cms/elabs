@@ -28,11 +28,11 @@
             <?php endif; ?>
             <span class="label label-language"><?php echo $post->language->id; ?></span>
             <?php if ($post->status === 1): ?>
-                <span class="label label-success"><?php echo __d('posts', 'Published') ?></span>
+                <span class="label label-success"><?php echo __d('elabs', 'Published') ?></span>
             <?php elseif ($post->status === 0): ?>
-                <span class="label label-default"><?php echo __d('posts', 'Draft') ?></span>
+                <span class="label label-default"><?php echo __d('elabs', 'Draft') ?></span>
             <?php else: ?>
-                <span class="label label-danger"><?php echo __d('posts', 'Locked') ?></span>
+                <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
             <span id="h-<?php echo $tileGroupId . $post->id ?>" lang="<?php echo $post->language->iso639_1?>"><?php echo h($post->title) ?></span>
         </span>
@@ -44,7 +44,7 @@
                 <div class="col-sm-4">
                     <dl>
                         <?php if ($post->published): ?>
-                            <dt><?php echo __d('posts', 'Publication date') ?></dt>
+                            <dt><?php echo __d('elabs', 'Publication date') ?></dt>
                             <dd><?php echo h($post->publication_date) ?></dd>
                         <?php endif; ?>
                         <dt><?php echo __d('elabs', 'Creation date') ?></dt>

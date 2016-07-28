@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('files', 'Your files'));
+$this->assign('title', __d('elabs', 'Your files'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
@@ -18,9 +18,9 @@ $this->Html->addCrumb($this->fetch('title'));
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');
-echo $this->Paginator->sort('name', __d('files', 'Name'));
-echo $this->Paginator->sort('weight', __d('files', 'File size'));
-echo $this->Paginator->sort('created', __d('files', 'Addition date'));
+echo $this->Paginator->sort('name', __d('elabs', 'Name'));
+echo $this->Paginator->sort('weight', __d('elabs', 'File size'));
+echo $this->Paginator->sort('created', __d('elabs', 'Addition date'));
 echo $this->Paginator->sort('modified', __d('elabs', 'Modification date'));
 $this->end();
 

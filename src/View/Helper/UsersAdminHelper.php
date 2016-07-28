@@ -21,22 +21,22 @@ class UsersAdminHelper extends Helper
     {
         switch ($role) {
             case 'author':
-                $desc = __d('users', 'Author');
+                $desc = __d('elabs', 'Author');
                 $icon = 'pencil';
                 break;
             case 'admin':
-                $desc = __d('users', 'Admin');
+                $desc = __d('elabs', 'Admin');
                 $icon = 'wrench';
                 break;
             default: // user
-                $desc = __d('users', 'User');
+                $desc = __d('elabs', 'User');
                 $icon = 'user';
                 break;
         }
 
         switch ($type) {
             case 'icon':
-                $text = __d('admin', '{0}&nbsp;{1}', [$this->Html->icon($icon), $desc]);
+                $text = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($icon), $desc]);
                 break;
             default: // Label
                 $text = sprintf('<span class="label">%s</span>', $desc);
@@ -58,19 +58,19 @@ class UsersAdminHelper extends Helper
         switch ($status) {
             case 0: // Waiting for approval
                 $statusIcon = 'exclamation';
-                $text = __d('user', 'Waiting');
+                $text = __d('elabs', 'Waiting');
                 break;
             case 1: // Approved
                 $statusIcon = 'check';
-                $text = __d('user', 'Approved');
+                $text = __d('elabs', 'Approved');
                 break;
             case 2: // Locked
                 $statusIcon = 'lock';
-                $text = __d('user', 'Locked');
+                $text = __d('elabs', 'Locked');
                 break;
             case 3: // Deleted
                 $statusIcon = 'times';
-                $text = __d('user', 'Closed');
+                $text = __d('elabs', 'Closed');
                 break;
         }
         if ($icon) {

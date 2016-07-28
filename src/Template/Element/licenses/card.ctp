@@ -11,9 +11,9 @@
             </div>
             <div class="card-content">
                 <?php
-                echo $this->Html->link(__d('licenses', "{0}&nbsp;{1} Articles", $this->Html->icon('font'), $license['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'license', $license['id']], ['class' => 'btn btn-block', 'escape' => false]);
-                echo $this->Html->link(__d('licenses', '{0}&nbsp;{1} Projects', $this->Html->icon('cogs'), $license['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'license', $license['id']], ['class' => 'btn btn-block', 'escape' => false]);
-                echo $this->Html->link(__d('licenses', '{0}&nbsp;{1} Files', $this->Html->icon('file'), $license['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'license', $license['id']], ['class' => 'btn btn-block', 'escape' => false]);
+                echo $this->Html->link(__d('elabs', "{0}&nbsp;{1} Articles", $this->Html->icon('font'), $license['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'license', $license['id']], ['class' => 'btn btn-block', 'escape' => false]);
+                echo $this->Html->link(__d('elabs', '{0}&nbsp;{1} Projects', $this->Html->icon('cogs'), $license['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'license', $license['id']], ['class' => 'btn btn-block', 'escape' => false]);
+                echo $this->Html->link(__d('elabs', '{0}&nbsp;{1} Files', $this->Html->icon('file'), $license['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'license', $license['id']], ['class' => 'btn btn-block', 'escape' => false]);
                 ?>
             </div>
         </div>

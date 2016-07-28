@@ -23,7 +23,7 @@ class UsersController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__d('users', 'Your informations are now up to date.'));
+                $this->Flash->success(__d('elabs', 'Your informations are now up to date.'));
                 $this->redirect(['action' => 'edit']);
             } else {
                 $this->Flash->error(__d('elabs', 'An error occured. Please, try again.'));
@@ -48,7 +48,7 @@ class UsersController extends UserAppController
                 $user = $this->Users->patchEntity($user, $this->request->data);
                 // Saving new password. Validation and hashing is made in UserTable.
                 if ($this->Users->save($user)) {
-                    $this->Flash->success(__d('users', 'Your password has been updated.'));
+                    $this->Flash->success(__d('elabs', 'Your password has been updated.'));
                     $this->redirect(['action' => 'edit']);
                 } else {
                     $errors = $user->errors();
@@ -60,11 +60,11 @@ class UsersController extends UserAppController
                     $this->redirect(['action' => 'edit']);
                 }
             } else {
-                $this->Flash->error(__d('users', 'Sorry, you have entered the wrong password.'));
+                $this->Flash->error(__d('elabs', 'Sorry, you have entered the wrong password.'));
                 $this->redirect(['action' => 'edit']);
             }
         } else {
-            $this->Flash->error(__d('users', 'To access this page, you need to fill the form first.'));
+            $this->Flash->error(__d('elabs', 'To access this page, you need to fill the form first.'));
             $this->redirect(['action' => 'edit']);
         }
     }
@@ -81,15 +81,15 @@ class UsersController extends UserAppController
             if ($user->comparePassword($this->request->data['current_password'])) {
                 $user->status = 3; // "deleted" state
                 $this->Users->save($user);
-                $this->Flash->Success(__d('users', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
+                $this->Flash->Success(__d('elabs', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
 //                $this->Act->removeAll();
                 $this->redirect($this->Auth->logout());
             } else {
-                $this->Flash->error(__d('users', 'Sorry, you have entered the wrong password.'));
+                $this->Flash->error(__d('elabs', 'Sorry, you have entered the wrong password.'));
                 $this->redirect(['action' => 'edit']);
             }
         } else {
-            $this->Flash->error(__d('users', 'To access this page, you need to fill the form first.'));
+            $this->Flash->error(__d('elabs', 'To access this page, you need to fill the form first.'));
             $this->redirect(['action' => 'edit']);
         }
     }

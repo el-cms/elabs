@@ -101,10 +101,10 @@ class UsersController extends AdminAppController
      */
     public function lock($id, $action = 'lock')
     {
-        $successMessage = __d('users', 'The account has been locked.');
+        $successMessage = __d('elabs', 'The account has been locked.');
         $bit = 2; // Lock by default
         if ($action === 'unlock') {
-            $successMessage = __d('users', 'The account has been unlocked.');
+            $successMessage = __d('elabs', 'The account has been unlocked.');
             $bit = 1;
         }
         $user = $this->Users->get($id, [
@@ -117,7 +117,7 @@ class UsersController extends AdminAppController
             }
         } else {
             if (!$this->request->is('ajax')) {
-                $this->Flash->Error(__d('users', 'An error occured'));
+                $this->Flash->Error(__d('elabs', 'An error occured'));
             }
         }
         $this->set('user', $user);
@@ -143,11 +143,11 @@ class UsersController extends AdminAppController
         if ($this->Users->save($user)) {
 //            $this->Act->removeAll($id);
             if (!$this->request->is('ajax')) {
-                $this->Flash->Success(__d('users', 'The account has been closed.'));
+                $this->Flash->Success(__d('elabs', 'The account has been closed.'));
             }
         } else {
             if (!$this->request->is('ajax')) {
-                $this->Flash->Error(__d('users', 'An error occured'));
+                $this->Flash->Error(__d('elabs', 'An error occured'));
             }
         }
         $this->set('user', $user);
@@ -172,11 +172,11 @@ class UsersController extends AdminAppController
         $user->status = 1;
         if ($this->Users->save($user)) {
             if (!$this->request->is('ajax')) {
-                $this->Flash->Success(__d('users', 'The account has been activated.'));
+                $this->Flash->Success(__d('elabs', 'The account has been activated.'));
             }
         } else {
             if (!$this->request->is('ajax')) {
-                $this->Flash->Error(__d('users', 'An error occured'));
+                $this->Flash->Error(__d('elabs', 'An error occured'));
             }
         }
         $this->set('user', $user);

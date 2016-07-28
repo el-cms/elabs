@@ -57,11 +57,11 @@ $this->start('pageContent');
 ?>
 <div class="panel">
     <div class="panel-body">
-        <h4><?php echo __d('reports', 'Reason') ?></h4>
+        <h4><?php echo __d('elabs', 'Reason') ?></h4>
         <?php
         echo h($report->reason);
         ?>
-        <h4><?php echo __d('reports', 'Session') ?></h4>
+        <h4><?php echo __d('elabs', 'Session') ?></h4>
         <pre><?php echo h($report->session); ?></pre>
     </div>
 </div>

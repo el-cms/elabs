@@ -91,7 +91,7 @@ class LanguagesController extends AdminAppController
      */
     public function delete($id = null)
     {
-        throw new \Cake\Network\Exception\NotImplementedException(__d('language', 'This feature needs some work...'));
+        throw new \Cake\Network\Exception\NotImplementedException(__d('elabs', 'This feature needs some work...'));
 //        $this->request->allowMethod(['post', 'delete']);
 //        $language = $this->Languages->get($id);
 //        if ($this->Languages->delete($language)) {

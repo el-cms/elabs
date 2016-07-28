@@ -17,9 +17,9 @@
         </div>
         <div class="card-content">
             <?php
-            echo $this->Html->link(__d('users', "{0}&nbsp;{1} Articles", $this->Html->icon('font'), $user['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
-            echo $this->Html->link(__d('users', '{0}&nbsp;{1} Projects', $this->Html->icon('cogs'), $user['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
-            echo $this->Html->link(__d('users', '{0}&nbsp;{1} Files', $this->Html->icon('file'), $user['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            echo $this->Html->link(__d('elabs', "{0}&nbsp;{1} Articles", $this->Html->icon('font'), $user['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1} Projects', $this->Html->icon('cogs'), $user['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1} Files', $this->Html->icon('file'), $user['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
             ?>
         </div>
     </div>

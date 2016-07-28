@@ -24,7 +24,7 @@ $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
     <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($project->license->icon), $project->license->name]), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
-    <li><strong><?php echo __d('licenses', 'Language:') ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
+    <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
     <li><strong><?php echo __d('elabs', 'Created on') ?></strong> <?php echo h($project->created) ?></li>
     <?php if ($project->has('modified')): ?>
         <li><strong><?php echo __d('elabs', 'Modified on') ?></strong> <?php echo h($project->modified) ?></li>

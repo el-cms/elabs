@@ -22,19 +22,19 @@ class ItemsAdminHelper extends Helper
         switch ($status) {
             case 0: // Waiting for approval
                 $statusIcon = 'exclamation';
-                $text = __d('user', 'Waiting');
+                $text = __d('elabs', 'Waiting');
                 break;
             case 1: // Approved
                 $statusIcon = 'check';
-                $text = __d('user', 'Published');
+                $text = __d('elabs', 'Published');
                 break;
             case 2: // Locked
                 $statusIcon = 'lock';
-                $text = __d('user', 'Locked');
+                $text = __d('elabs', 'Locked');
                 break;
             case 3: // Deleted
                 $statusIcon = 'times';
-                $text = __d('user', 'Removed');
+                $text = __d('elabs', 'Removed');
                 break;
         }
         if ($icon) {

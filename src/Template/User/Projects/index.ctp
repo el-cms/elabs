@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('projects', 'Your projects'));
+$this->assign('title', __d('elabs', 'Your projects'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Projects'));
@@ -17,7 +17,7 @@ $this->Html->addCrumb(__d('elabs', 'Projects'));
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');
-echo $this->Paginator->sort('name', __d('projects', 'Project name'));
+echo $this->Paginator->sort('name', __d('elabs', 'Project name'));
 echo $this->Paginator->sort('created', __d('elabs', 'Creation date'));
 echo $this->Paginator->sort('modified', __d('elabs', 'Update date'));
 $this->end();
@@ -48,7 +48,7 @@ $this->end();
 // Page actions
 // ------------
 $this->start('pageActions');
-echo $this->Html->link(__d('projects', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New project']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New project']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
 $this->end();
 
 // Page content

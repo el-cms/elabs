@@ -11,7 +11,7 @@
  */
 
 // Page title
-$this->assign('title', __d('languages', 'List of languages'));
+$this->assign('title', __d('elabs', 'List of languages'));
 
 // Block: Page actions
 // -------------------

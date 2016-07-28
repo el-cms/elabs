@@ -48,11 +48,11 @@ class ReportsController extends AppController
             }
             $report = $this->Reports->patchEntity($report, $this->request->data);
             if ($this->Reports->save($report)) {
-                $this->Flash->success(__d('reports', 'Thank you for your feedback'));
+                $this->Flash->success(__d('elabs', 'Thank you for your feedback'));
 
                 $this->redirect($this->referer());
             } else {
-                $this->Flash->error(__d('reports', 'The report could not be saved (and that should be a good reason to report it...). Please try again.'));
+                $this->Flash->error(__d('elabs', 'The report could not be saved (and that should be a good reason to report it...). Please try again.'));
 
                 $this->redirect($this->referer());
             }

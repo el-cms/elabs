@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('files', 'Add a file'));
+$this->assign('title', __d('elabs', 'Add a file'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
@@ -19,8 +19,8 @@ $this->Html->addCrumb($this->fetch('title'));
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('files', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Your files']), ['action' => 'index'], $linkOptions);
-echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Your files']), ['action' => 'index'], $linkOptions);
+echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block
@@ -28,7 +28,7 @@ $this->end();
 $this->start('pageContent');
 echo $this->Form->create($file, ['type' => 'file']);
 echo $this->Form->input('file', ['type' => 'file']);
-echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descArea', 'label' => __d('posts', 'Description')]);
+echo $this->Form->input('description', ['type' => 'textarea', 'required' => false, 'id' => 'descArea', 'label' => __d('elabs', 'Description')]);
 $this->CodeMirror->add('descArea');
 ?>
 <div class="row">
@@ -44,7 +44,7 @@ $this->CodeMirror->add('descArea');
         <?php echo $this->Form->input('sfw', ['label' => __d('elabs', 'This is SFW')]); ?>
     </div>
     <div class="col-sm-6">
-        <?php echo $this->Form->submit(__d('files', 'Add the file'), ['class' => 'btn-primary btn-block']); ?>
+        <?php echo $this->Form->submit(__d('elabs', 'Add the file'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>
 <?php
