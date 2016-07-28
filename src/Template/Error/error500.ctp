@@ -2,7 +2,7 @@
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
-$this->assign('title', __('Error: {0}', $message));
+$this->assign('title', __d('elabs', 'Error: {0}', $message));
 
 if (Configure::read('debug')):
     $this->layout = 'dev_error';

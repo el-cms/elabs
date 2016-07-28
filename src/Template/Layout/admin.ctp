@@ -35,7 +35,7 @@
                         <span class="sr-only">Toggle navigation</span>
                         <?php echo $this->Html->icon('bars') ?>
                     </button>
-                    <?php echo $this->Html->link(__('{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
+                    <?php echo $this->Html->link(__d('elabs', '{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
                 </div>
                 <!-- / Header and expand button -->
 
@@ -74,7 +74,7 @@
                                           echo $this->element('users/usermenu');
                                       else:
                                           ?>
-                                            <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __('Login/Register')]) ?></a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __d('elabs', 'Login/Register')]) ?></a></li>
                                         <?php
                                         endif;
                                     endif;
@@ -102,7 +102,7 @@
                 <!-- Title -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('wrench'), $this->fetch('title')]) ?></h1>
+                        <h1><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('wrench'), $this->fetch('title')]) ?></h1>
                     </div>
                 </div>
                 <!-- / Title -->

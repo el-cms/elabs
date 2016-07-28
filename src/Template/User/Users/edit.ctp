@@ -13,20 +13,20 @@ $this->assign('title', __d('elabs', 'Update your profile'));
 ?>
 <div class="panel">
     <ul id="userTabs" class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#tab-general" aria-expanded="true"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('user'), __d('elabs', 'Main informations')]) ?></a></li>
-        <li><a data-toggle="tab" href="#tab-password" aria-expanded="false"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('elabs', 'Change password')]) ?></a></li>
-        <li><a data-toggle="tab" href="#tab-close" aria-expanded="false"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('times'), __d('elabs', 'Close account')]) ?></a></li>
+        <li class="active"><a data-toggle="tab" href="#tab-general" aria-expanded="true"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('user'), __d('elabs', 'Main informations')]) ?></a></li>
+        <li><a data-toggle="tab" href="#tab-password" aria-expanded="false"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('elabs', 'Change password')]) ?></a></li>
+        <li><a data-toggle="tab" href="#tab-close" aria-expanded="false"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('times'), __d('elabs', 'Close account')]) ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
         <div class="tab-pane fade active in" id="tab-general">
             <div class="row">
                 <div class="col-sm-4">
-                    <?php echo $this->Html->link(__d('elabs ', '{0}&nbsp;{1} ', [$this->Html->icon('eye'), __d('elabs', 'View your profile online')]), ['prefix' => false, 'action' => 'view', $user->id], ['class' => 'btn btn-primary btn-block', 'escape' => false]) ?>
+                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1} ', [$this->Html->icon('eye'), __d('elabs', 'View your profile online')]), ['prefix' => false, 'action' => 'view', $user->id], ['class' => 'btn btn-primary btn-block', 'escape' => false]) ?>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
                     <p>
-                        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. 
+                        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
                     </p>
                 </div>
                 <div class="col-sm-8">
@@ -80,10 +80,10 @@ $this->assign('title', __d('elabs', 'Update your profile'));
             <div class="row">
                 <div class="col-sm-4">
                     <p class="text-red">
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </p>
                     <p>
-                        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. 
+                        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
                     </p>
                 </div>
                 <div class="col-sm-8">

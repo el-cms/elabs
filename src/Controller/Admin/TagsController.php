@@ -51,10 +51,10 @@ class TagsController extends AppController
         if ($this->request->is('post')) {
             $tag = $this->Tags->patchEntity($tag, $this->request->data);
             if ($this->Tags->save($tag)) {
-                $this->Flash->success(__('The tag has been saved.'));
+                $this->Flash->success(__d('elabs', 'The tag has been saved.'));
                 $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The tag could not be saved. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The tag could not be saved. Please, try again.'));
             }
         }
         $this->set(compact('tag'));
@@ -76,10 +76,10 @@ class TagsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $tag = $this->Tags->patchEntity($tag, $this->request->data);
             if ($this->Tags->save($tag)) {
-                $this->Flash->success(__('The tag has been saved.'));
+                $this->Flash->success(__d('elabs', 'The tag has been saved.'));
                 $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The tag could not be saved. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The tag could not be saved. Please, try again.'));
             }
         }
         $this->set(compact('tag'));
@@ -98,9 +98,9 @@ class TagsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $tag = $this->Tags->get($id);
         if ($this->Tags->delete($tag)) {
-            $this->Flash->success(__('The tag has been deleted.'));
+            $this->Flash->success(__d('elabs', 'The tag has been deleted.'));
         } else {
-            $this->Flash->error(__('The tag could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('elabs', 'The tag could not be deleted. Please, try again.'));
         }
         $this->redirect(['action' => 'index']);
     }

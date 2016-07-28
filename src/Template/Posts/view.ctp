@@ -25,7 +25,7 @@ $this->start('pageInfos');
         <li>
             <strong><?php echo __d('elabs', 'Safe content:') ?></strong>
             <span class="label label-<?php echo $post->sfw ? 'success' : 'danger'; ?>">
-                <?php echo $post->sfw ? __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('check-circle'), __('elabs', 'Yes')]) : __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('circle-o'), __('elabs', 'No')]); ?>
+                <?php echo $post->sfw ? __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('check-circle'), __d('elabs', 'elabs', 'Yes')]) : __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('circle-o'), __d('elabs', 'elabs', 'No')]); ?>
             </span>
         </li>
 </ul>

@@ -15,7 +15,7 @@
                 <?php echo $this->element('users/loginform') ?>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
+                <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __d('elabs', 'Cancel') ?></button>
             </div>
         </div>
     </div>

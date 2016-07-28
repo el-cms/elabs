@@ -114,7 +114,7 @@ if (!$acts->isEmpty()):
                               <?php echo $this->Time->format($actDate, "hh:mm") ?>
                             </div>
                             <div class="events event-<?php echo $class ?>">
-                              <?php echo $this->Html->link(__('{0} {1} {2} {3}', [$this->Html->icon($icon), $config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]), ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']], ['class' => 'full', 'escape' => false]); ?>
+                              <?php echo $this->Html->link(__d('elabs', '{0} {1} {2} {3}', [$this->Html->icon($icon), $config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]), ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']], ['class' => 'full', 'escape' => false]); ?>
                             </div>
                         </dd>
                     <?php
