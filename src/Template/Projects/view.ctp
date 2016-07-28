@@ -29,7 +29,7 @@ $this->start('pageInfos');
     <?php if ($project->has('modified')): ?>
         <li><strong><?php echo __d('elabs', 'Modified on') ?></strong> <?php echo h($project->modified) ?></li>
     <?php endif; ?>
-    <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $project->sfw ? 'success' : 'danger'; ?>"><?php echo $project->sfw ? __('Yes') : __('No'); ?></span></li>
+    <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $project->sfw ? 'success' : 'danger'; ?>"><?php echo $project->sfw ? __d('elabs', 'Yes') : __d('elabs', 'No'); ?></span></li>
     <li><strong><?php echo __d('elabs', 'Tags:') ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
 </ul>
 

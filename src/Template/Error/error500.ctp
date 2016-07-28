@@ -2,7 +2,7 @@
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
-$this->assign('title', __('Error: {0}', $message));
+$this->assign('title', __d('elabs', 'Error: {0}', $message));
 
 // Breadcrumbs
 $this->Html->addCrumb($this->fetch('title'));

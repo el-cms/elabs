@@ -11,7 +11,7 @@ $config = $this->Items->fileConfig($data['filename']);
             <li><a class="language-pill" lang="<?php echo $data['language']['iso639_1'] ?>"><?php echo $data['language']['name'] ?></a></li>
             <!-- SFW pill-->
             <?php if (!$data['sfw']): ?>
-                <li><a class="nsfw-pill"><?php echo __('NSFW') ?></a></li>
+                <li><a class="nsfw-pill"><?php echo __d('elabs', 'NSFW') ?></a></li>
             <?php endif; ?>
         </ul>
         <!-- Headings -->
@@ -27,7 +27,7 @@ $config = $this->Items->fileConfig($data['filename']);
                 <ul class="card-informations">
                     <?php if (!isset($userInfo) || $userInfo): ?>
                         <li>
-                            <?php echo __('{0}&nbsp;{1}', [$this->Html->icon('user'), __('Author:')]) ?>
+                            <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('user'), __d('elabs', 'Author:')]) ?>
                             <?php echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
                         </li>
                         <?php
@@ -35,8 +35,8 @@ $config = $this->Items->fileConfig($data['filename']);
                     if (!isset($licenseInfo) || $licenseInfo):
                         ?>
                         <li>
-                            <?php echo __('{0}&nbsp;{1}', [$this->Html->icon('copyright'), __('License:')]) ?>
-                            <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon($data['license']['icon']), $data['license']['name']]), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false]) ?>
+                            <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('copyright'), __d('elabs', 'License:')]) ?>
+                            <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($data['license']['icon']), $data['license']['name']]), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false]) ?>
                         </li>
                         <?php
                     endif;
@@ -44,7 +44,7 @@ $config = $this->Items->fileConfig($data['filename']);
                         ?>
                         <li>
                             <?php
-                            echo __('{0} {1}', [$this->Html->icon('calendar'), __d('elabs', 'Published on: {0}', h($data['publication_date']))]);
+                            echo __d('elabs', '{0} {1}', [$this->Html->icon('calendar'), __d('elabs', 'Published on: {0}', h($data['publication_date']))]);
                             if ($data['publication_date'] < $data['modified']):
                                 echo ' - ' . __d('elabs', 'Updated on: {0}', h($data['modified']));
                             endif;

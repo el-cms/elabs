@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="uModTitle"><?php echo __('Report something') ?></h4>
+                <h4 class="modal-title" id="uModTitle"><?php echo __d('elabs', 'Report something') ?></h4>
             </div>
             <?php
             echo $this->Form->create('Report', ['url' => $this->Url->build(['plugin' => null, 'prefix' => false, 'controller' => 'Reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
@@ -48,7 +48,7 @@
                     'class' => 'btn btn-primary',
                 ));
                 ?>
-                <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
+                <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __d('elabs', 'Cancel') ?></button>
             </div>
             <?php echo $this->Form->end(); ?>
         </div>

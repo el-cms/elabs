@@ -43,7 +43,7 @@ endif;
                         <span class="sr-only">Toggle navigation</span>
                         <?php echo $this->Html->icon('bars') ?>
                     </button>
-                    <?php echo $this->Html->link(__('{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
+                    <?php echo $this->Html->link(__d('elabs', '{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
                 </div>
                 <!-- / Header and expand button -->
 
@@ -82,7 +82,7 @@ endif;
                                             echo $this->element('users/usermenu');
                                         else:
                                             ?>
-                                            <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __('Login/Register')]) ?></a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __d('elabs', 'Login/Register')]) ?></a></li>
                                         <?php
                                         endif;
                                     endif;
@@ -121,7 +121,7 @@ endif;
                             <!-- Breadcrumbs -->
                             <?php
                             // Root
-                            echo $this->Html->getCrumbList([], ['text' => __('{0}&nbsp;{1}', [$this->Html->icon('user'), $authUser['username']]), 'url' => null, 'escape' => false])
+                            echo $this->Html->getCrumbList([], ['text' => __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('user'), $authUser['username']]), 'url' => null, 'escape' => false])
                             ?>
                             <!-- / Breadcrumbs -->
                         </div>

@@ -34,7 +34,7 @@ $config = $this->Items->fileConfig($file['filename']);
         <li><strong><?php echo __d('elabs', 'Modified on:') ?></strong> <?php echo h($file->modified) ?></li>
     <?php endif; ?>
     <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($file->language->name, $file->language->iso639_1) ?></li>
-    <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $file->sfw ? 'success' : 'danger'; ?>"><?php echo $file->sfw ? __('Yes') : __('No'); ?></span></li>
+    <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $file->sfw ? 'success' : 'danger'; ?>"><?php echo $file->sfw ? __d('elabs', 'Yes') : __d('elabs', 'No'); ?></span></li>
     <li><strong><?php echo __d('elabs', 'Tags:') ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
 </ul>
 <?php

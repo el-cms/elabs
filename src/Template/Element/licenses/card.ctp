@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <!-- Title -->
                     <h3>
-                      <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon($license->icon), h($license['name'])]), ['action' => 'view', $license->id], ['escape' => false]) ?>
+                      <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($license->icon), h($license['name'])]), ['action' => 'view', $license->id], ['escape' => false]) ?>
                     </h3>
                 </div>
             </div>

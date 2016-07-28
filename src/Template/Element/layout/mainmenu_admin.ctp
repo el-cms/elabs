@@ -32,9 +32,9 @@ $this->start('mainMenu');
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo __d('elabs', 'Maintenance') ?> <span class="caret"></span></a>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Acts:</li>
-        <li><?php echo $this->Form->postLink(__('{0}&nbsp;{1}', [$this->Html->icon('refresh'), __('Rebuild table')]), ['controller' => 'Acts', 'action' => 'clean'], ['escape' => false, 'confirm' => _('Are you sure you want to clear the table and rebuild it ?')]) ?></li>
+        <li><?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('refresh'), __d('elabs', 'Rebuild table')]), ['controller' => 'Acts', 'action' => 'clean'], ['escape' => false, 'confirm' => _('Are you sure you want to clear the table and rebuild it ?')]) ?></li>
         <li class="dropdown-header">General</li>
-        <li><?php echo $this->Form->postLink(__('{0}&nbsp;{1}', [$this->Html->icon('trash'), __('Clear the caches')]), ['controller' => 'Maintenance', 'action' => 'clearCache'], ['escape' => false, 'confirm' => _('Are you sure you want to clear the caches ?')]) ?></li>
+        <li><?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('trash'), __d('elabs', 'Clear the caches')]), ['controller' => 'Maintenance', 'action' => 'clearCache'], ['escape' => false, 'confirm' => _('Are you sure you want to clear the caches ?')]) ?></li>
     </ul>
 </li>
 <li>
@@ -45,10 +45,10 @@ $this->end();
 $this->start('secondMenu');
 ?>
 <li>
-    <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon('eye'), __d('elabs', 'View site online')]), '/', ['target' => '_blank']) ?>
+    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('eye'), __d('elabs', 'View site online')]), '/', ['target' => '_blank']) ?>
 </li>
 <li>
-    <?php echo $this->Html->link(__('{0}&nbsp;{1}', [$this->Html->icon('sign-out'), __d('elabs', 'Logout')]), ['prefix' => false, 'controller' => 'users', 'action' => 'logout']) ?>
+    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('sign-out'), __d('elabs', 'Logout')]), ['prefix' => false, 'controller' => 'users', 'action' => 'logout']) ?>
 </li>
 <?php
 $this->end();

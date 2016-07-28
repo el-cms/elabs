@@ -16,9 +16,9 @@ $this->Html->addCrumb($this->fetch('title'));
 ?>
 <div class="panel">
     <ul id="userTabs" class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#tab-general" aria-expanded="true"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('user'), __d('elabs', 'Main informations')]) ?></a></li>
-        <li><a data-toggle="tab" href="#tab-password" aria-expanded="false"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('elabs', 'Change password')]) ?></a></li>
-        <li><a data-toggle="tab" href="#tab-close" aria-expanded="false"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('times'), __d('elabs', 'Close account')]) ?></a></li>
+        <li class="active"><a data-toggle="tab" href="#tab-general" aria-expanded="true"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('user'), __d('elabs', 'Main informations')]) ?></a></li>
+        <li><a data-toggle="tab" href="#tab-password" aria-expanded="false"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('lock'), __d('elabs', 'Change password')]) ?></a></li>
+        <li><a data-toggle="tab" href="#tab-close" aria-expanded="false"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('times'), __d('elabs', 'Close account')]) ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
         <div class="tab-pane fade active in" id="tab-general">

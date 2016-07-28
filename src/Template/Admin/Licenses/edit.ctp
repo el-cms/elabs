@@ -18,7 +18,7 @@ $this->Html->addCrumb(__d('elabs', 'Edit {0}', [$license->name]));
 // Actions block
 // -------------
 $this->start('pageActions');
-echo $this->Form->postLink(__('{0}&nbsp;{1}', [$this->Html->icon('trash'), __('Delete')]), ['action' => 'delete', $license->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
+echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('trash'), __d('elabs', 'Delete')]), ['action' => 'delete', $license->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
 $this->end();
 
 // Related links block
