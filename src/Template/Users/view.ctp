@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('elabs', h($user->realname)));
+$this->assign('title', h($user->realname));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Authors'), ['action' => 'index']);
