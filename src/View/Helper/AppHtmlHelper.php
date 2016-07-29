@@ -74,7 +74,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
                 $separator = ', ';
             }
             if ($i == $count && $options['and'] && $i > 1) {
-                $separator = __d('elabs', ' et ');
+                $separator = __d('elabs', ' and ');
             }
             $out .= $separator . (($options['uppercase']) ? ucfirst($item) : $item);
             $i++;

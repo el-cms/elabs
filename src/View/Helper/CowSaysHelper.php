@@ -171,7 +171,7 @@ class CowSaysHelper extends Helper
         ],
         'square' => [
             'topLeft' => '+',
-            'topRigth' => '+',
+            'topRight' => '+',
             'bottomLeft' => '+',
             'bottomRight' => '+',
         ],
