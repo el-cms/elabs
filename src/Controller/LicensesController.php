@@ -41,14 +41,23 @@ class LicensesController extends AppController
                 'Posts' => [
                     'Users' => ['fields' => ['id', 'username']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                    'conditions' => [ // SFW is made after
+                        'Posts.status' => 1,
+                    ],
                 ],
                 'Projects' => [
                     'Users' => ['fields' => ['id', 'username']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                    'conditions' => [ // SFW is made after
+                        'Projects.status' => 1,
+                    ],
                 ],
                 'Files' => [
                     'Users' => ['fields' => ['id', 'username']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                    'conditions' => [ // SFW is made after
+                        'Files.status' => 1,
+                    ],
                 ]
             ],
             'order' => ['name' => 'ASC']

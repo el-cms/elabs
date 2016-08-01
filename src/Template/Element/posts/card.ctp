@@ -51,7 +51,7 @@
                         if ($data['publication_date'] < $data['modified']):
                             ?>
                             <li>
-                                <?php echo __d('elabs', 'Updated on: {0}', h($data['modified'])); ?>
+                                <?php echo $this->Html->iconT('refresh', __d('elabs', 'Updated on: {0}', h($data['modified']))); ?>
                             </li>
                             <?php
                         endif;

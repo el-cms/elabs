@@ -16,7 +16,7 @@ $this->Html->addCrumb(__d('elabs', 'Authors'));
 
 // Block: Pagination order links
 // -----------------------------
-$this->start('pageOrderMenu');
+$this->start('pageOrderBy');
 echo $this->Paginator->sort('realname', __d('elabs', 'Real name'));
 echo $this->Paginator->sort('username', __d('elabs', 'User name'));
 echo $this->Paginator->sort('created', __d('elabs', 'Join date'));
