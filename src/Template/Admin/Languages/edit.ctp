@@ -39,7 +39,7 @@ echo $this->Form->create($language)
     <div class="col-sm-4">
         <?php
         echo $this->Form->input(
-            'id', ['type' => 'text',
+                'id', ['type' => 'text',
             'required' => true,
             'label' => __d('elabs', 'ISO 639-2'),
             'help' => $this->Html->link(__d('elabs', 'ISO 639-2: 3 chars. code'), 'https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes', ['target' => '_blank'])
@@ -60,8 +60,18 @@ echo $this->Form->create($language)
         <?php echo $this->Form->input('name', ['label' => __d('elabs', 'Language, in native form')]); ?>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('has_site_translation', ['label' => __d('elabs', 'A translation exists for the site')]); ?>
+    </div>
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('translation_folder', ['label' => __d('elabs', 'Translation folder')]); ?>
+    </div>
+    <div class="col-sm-4">
+        <?php echo $this->Form->submit(__d('elabs', 'Save the changes'), ['class' => 'btn-primary btn block']); ?>
+    </div>
+</div>
 <?php
-echo $this->Form->submit(__d('elabs', 'Save the changes'), ['class' => 'btn-primary btn block']);
 echo $this->Form->end();
 $this->end();
 

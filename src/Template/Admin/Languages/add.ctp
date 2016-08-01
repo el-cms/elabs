@@ -52,8 +52,18 @@ echo $this->Form->create($language);
         <?php echo $this->Form->input('name', ['label' => __d('elabs', 'Language, in native form')]); ?>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('has_site_translation', ['label' => __d('elabs', 'A translation exists for the site')]); ?>
+    </div>
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('translation_folder', ['label' => __d('elabs', 'Translation folder')]); ?>
+    </div>
+    <div class="col-sm-4">
+        <?php echo $this->Form->submit(__d('elabs', 'Add'), ['class' => 'btn-primary btn block']); ?>
+    </div>
+</div>
 <?php
-echo $this->Form->submit(__d('elabs', 'Add'), ['class' => 'btn-primary']);
 echo $this->Form->end();
 $this->end();
 

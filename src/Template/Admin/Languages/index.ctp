@@ -35,6 +35,8 @@ $this->start('pageContent');
                 <th><?= $this->Paginator->sort('id', ['label' => 'ISO 639-2 (id)']) ?></th>
                 <th><?= $this->Paginator->sort('iso639_1', ['label' => 'ISO 639-1']) ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
+                <th><?= $this->Paginator->sort('Site translation') ?></th>
+                <th><?= $this->Paginator->sort('Folder') ?></th>
                 <th class="actions"><?= __d('elabs', 'Actions') ?></th>
             </tr>
         </thead>
@@ -44,6 +46,8 @@ $this->start('pageContent');
                     <td><?= h($language->id) ?></td>
                     <td><?= h($language->iso639_1) ?></td>
                     <td><?= $this->Html->langLabel($language->name, $language->iso639_1, ['label' => false]) ?></td>
+                    <td><?= $this->Html->checkIcon($language->has_site_translation) ?></td>
+                    <td><?= $language->translation_folder ?></td>
                     <td>
                         <div class="btn-group btn-group-xs">
                             <?php
