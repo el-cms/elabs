@@ -12,6 +12,8 @@ use Cake\ORM\Entity;
  * @property int $post_count
  * @property int $project_count
  * @property int $file_count
+ * @property bool $has_site_translation
+ * @property string $translation_folder
  *
  * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Post[] $posts
