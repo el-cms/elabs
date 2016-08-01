@@ -188,3 +188,48 @@ audio{
 .event-warning .img-cropped-wrapper:before{
     box-shadow: 0px -20px 10px -10px lighten($alert-warning, 10%) inset;
 }
+
+/*
+Margin helpers
+-------------- */
+// Margin top
+.margin-top-sm{
+    margin-top: $padding-small-vertical;
+}
+.margin-top-md{
+    margin-top: $padding-base-vertical;
+}
+.margin-top-lg{
+    margin-top: $padding-large-vertical;
+}
+// Margin right
+.margin-right-sm{
+    margin-right: $padding-small-horizontal;
+}
+.margin-right-md{
+    margin-right: $padding-base-horizontal;
+}
+.margin-right-lg{
+    margin-right: $padding-large-horizontal;
+}
+// Margin bottom
+.margin-top-sm{
+    margin-bottom: $padding-small-vertical;
+}
+.margin-bottom-md{
+    margin-bottom: $padding-base-vertical;
+}
+.margin-bottom-lg{
+    margin-bottom: $padding-large-vertical;
+}
+
+// Margin left
+.margin-left-sm{
+    margin-left: $padding-small-horizontal;
+}
+.margin-left-md{
+    margin-left: $padding-base-horizontal;
+}
+.margin-left-lg{
+    margin-left: $padding-large-horizontal;
+}

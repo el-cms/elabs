@@ -12,7 +12,7 @@ if (Cake\Core\Configure::read('cms.isRegistrationOpen')):
     echo $this->Html->link(__d('elabs', 'Register'), ['prefix' => false, 'controller' => 'users', 'action' => 'register'], ['class' => 'btn btn-block']);
 else:
     ?>
-    <div class="alert alert-warning"><?php echo __d('elabs', 'Registrations are closed for now... Come back later.') ?></div>
+    <div class="alert alert-warning margin-top-lg"><?php echo __d('elabs', 'Registrations are closed for now... Come back later.') ?></div>
 <?php
 endif;
 ?>
