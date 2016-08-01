@@ -210,7 +210,7 @@ class CowSaysHelper extends Helper
         // Determine the longer string lenght
         $maxLen = 0;
         foreach ($strings as $currentLine) {
-            $currLen = strlen(strip_tags($currentLine));
+            $currLen = mb_strlen(strip_tags($currentLine), \Cake\Core\Configure::read('App.encoding'));
             if ($maxLen < $currLen) {
                 $maxLen = $currLen;
             }
@@ -228,7 +228,7 @@ class CowSaysHelper extends Helper
             // Spaces
             $spaceFiller = '';
             // Determine number of spaces to add
-            $nbSpaces = $maxLen - (strlen(strip_tags($currentLine)));
+            $nbSpaces = $maxLen - (mb_strlen(strip_tags($currentLine), \Cake\Core\Configure::read('App.encoding')));
             // Line class
             if (!empty($options['msgClass']) && (!$isFinalLine || ($isFinalLine && empty($options['signClass'])))) {
                 $lineFinal = '<span class="' . $options['msgClass'] . '">' . $lineFinal . '</span>';
@@ -259,6 +259,7 @@ class CowSaysHelper extends Helper
         if (!empty($options['cowClass'])) {
             $finalCow = '<span class="' . $options['cowClass'] . '">' . $finalCow . '</span>';
         }
+
         // Final string to return
         return sprintf('<pre class = "cow-box">' . $finalCow . '</pre>', $this->lines[$options['speakLines']]['line'], $this->eyes[$options['eyes']][0], $this->eyes[$options['eyes']][1]);
     }
