@@ -93,7 +93,7 @@ class UsersTable extends Table
                 'rule' => function ($value, $context) {
                     return ($value === $context['data']['password_confirm']);
                 },
-                'message' => __d('users', 'Your password does not match your confirm password. Please try again'),
+                'message' => __d('elabs', 'Your password does not match your confirm password. Please try again'),
                 'on' => ['create', 'update'],
                 'allowEmpty' => false
             ]);

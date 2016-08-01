@@ -43,7 +43,7 @@ endif;
                         <span class="sr-only">Toggle navigation</span>
                         <?php echo $this->Html->icon('bars') ?>
                     </button>
-                    <?php echo $this->Html->link(__('{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
+                    <?php echo $this->Html->link(__dx('elabs', 'Navbar: [logo] [text]', '{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
                 </div>
                 <!-- / Header and expand button -->
 
@@ -63,30 +63,12 @@ endif;
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="avatar">
-                                        <?php
-                                        if (!is_null($authUser)):
-                                            echo $this->Gravatar->generate($authUser['email'], ["size" => "20px"]);
-                                        else:
-                                            echo $this->Html->icon('user');
-                                        endif;
-                                        ?>
+                                        <?php echo $this->Gravatar->generate($authUser['email'], ["size" => "20px"]); ?>
                                     </span>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <?php
-                                    if (!is_null($authUser)):
-                                        echo $this->element('users/usermenu');
-                                    else:
-                                        if (!is_null($authUser)):
-                                            echo $this->element('users/usermenu');
-                                        else:
-                                            ?>
-                                            <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __('Login/Register')]) ?></a></li>
-                                        <?php
-                                        endif;
-                                    endif;
-                                    ?>
+                                    <?php echo $this->element('layout/mainmenu_usermenu'); ?>
                                 </ul>
                             </li>
                         </ul>
@@ -121,32 +103,29 @@ endif;
                             <!-- Breadcrumbs -->
                             <?php
                             // Root
-                            echo $this->Html->getCrumbList([], ['text' => __('{0}&nbsp;{1}', [$this->Html->icon('user'), $authUser['username']]), 'url' => null, 'escape' => false])
+                            echo $this->Html->getCrumbList([], ['text' => $this->Html->iconT('user', $authUser['username']), 'url' => null, 'escape' => false])
                             ?>
                             <!-- / Breadcrumbs -->
                         </div>
                     </div>
                     <!-- / Title area -->
-
-                </div>
-                <!-- / Title -->
-            </div>
-        </div>
-        <!-- Toolbar -->
-        <?php
-        $pageToolbar = $this->fetch('pageToolbar');
-        if (!empty($pageToolbar)):
-            ?>
-            <div class="toolbar">
-                <div class="container">
-                    <?php echo $this->fetch('pageToolbar') ?>
                 </div>
             </div>
+            <!-- Toolbar -->
             <?php
-        endif;
-        ?>
-        <!-- / Toolbar -->
-    </div>
+            $pageToolbar = $this->fetch('pageToolbar');
+            if (!empty($pageToolbar)):
+                ?>
+                <div class="toolbar">
+                    <div class="container">
+                        <?php echo $this->fetch('pageToolbar') ?>
+                    </div>
+                </div>
+                <?php
+            endif;
+            ?>
+            <!-- / Toolbar -->
+        </div>
     <div class="container page-content">
         <!-- Content -->
         <?php echo $this->fetch('content') ?>

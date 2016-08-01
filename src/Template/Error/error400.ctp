@@ -1,7 +1,7 @@
 <?php
 use Cake\Core\Configure;
 
-$this->assign('title', __('Error: {0}', $message));
+$this->assign('title', __d('elabs', 'Error: {0}', $message));
 
 // Breadcrumbs
 $this->Html->addCrumb($this->fetch('title'));
@@ -39,7 +39,7 @@ endif;
 ?>
 <div class="text-center">
     <?php
-    $string = __d('cake', 'Error 404:') . "\n" . sprintf(__d('cake', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>");
+    $string = __d('elabs', 'Error 404:') . "\n" . sprintf(__d('elabs', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>");
     echo $this->CowSays->sayError($string);
     ?>
 </div>

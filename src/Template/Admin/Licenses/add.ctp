@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('licenses', 'New license'));
+$this->assign('title', __d('elabs', 'New license'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Licenses'), ['action' => 'index']);
@@ -19,7 +19,8 @@ $this->Html->addCrumb($this->fetch('title'));
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('licenses', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List licenses']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+$linkIcon=$this->Html->iconT('list', __d('elabs', 'List of licenses'));
+echo $this->Html->link($linkIcon, ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block

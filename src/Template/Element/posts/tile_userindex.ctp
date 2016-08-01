@@ -7,13 +7,13 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;View online', $this->Html->icon('eye')), ['prefix' => false, 'action' => 'view', $post->id], ['class' => ' ', 'escape' => false]); ?>
+                    <?php echo $this->Html->link($this->Html->iconT('eye', __d('elabs', 'View online')), ['prefix' => false, 'action' => 'view', $post->id], ['escape' => false]); ?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', $this->Html->icon('pencil')), ['action' => 'edit', $post->id], ['class' => ' ', 'escape' => false]) ?>
+                    <?php echo $this->Html->link($this->Html->iconT('pencil', __d('elabs', 'Edit')), ['action' => 'edit', $post->id], ['escape' => false]) ?>
                 </li>
                 <li>
-                    <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', $this->Html->icon('trash-o', ['class' => 'text-danger'])), ['action' => 'delete', $post->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $post->id), 'class' => ' ', 'escape' => false]) ?>
+                    <?php echo $this->Form->postLink($this->Html->iconT('trash-o', __d('elabs', 'Delete'), ['class' => 'text-danger']), ['action' => 'delete', $post->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $post->id), 'escape' => false]) ?>
                 </li>
             </ul>
         </div>
@@ -28,13 +28,13 @@
             <?php endif; ?>
             <span class="label label-language"><?php echo $post->language->id; ?></span>
             <?php if ($post->status === 1): ?>
-                <span class="label label-success"><?php echo __d('posts', 'Published') ?></span>
+                <span class="label label-success"><?php echo __d('elabs', 'Published') ?></span>
             <?php elseif ($post->status === 0): ?>
-                <span class="label label-default"><?php echo __d('posts', 'Draft') ?></span>
+                <span class="label label-default"><?php echo __d('elabs', 'Draft') ?></span>
             <?php else: ?>
-                <span class="label label-danger"><?php echo __d('posts', 'Locked') ?></span>
+                <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
-            <span id="h-<?php echo $tileGroupId . $post->id ?>" lang="<?php echo $post->language->iso639_1?>"><?php echo h($post->title) ?></span>
+            <span id="h-<?php echo $tileGroupId . $post->id ?>" lang="<?php echo $post->language->iso639_1 ?>"><?php echo h($post->title) ?></span>
         </span>
         <!-- / Badges and title -->
     </div>
@@ -44,7 +44,7 @@
                 <div class="col-sm-4">
                     <dl>
                         <?php if ($post->published): ?>
-                            <dt><?php echo __d('posts', 'Publication date') ?></dt>
+                            <dt><?php echo __d('elabs', 'Publication date') ?></dt>
                             <dd><?php echo h($post->publication_date) ?></dd>
                         <?php endif; ?>
                         <dt><?php echo __d('elabs', 'Creation date') ?></dt>
@@ -57,7 +57,7 @@
                         <dd><?php echo $this->element('layout/dev_inline') ?></dd>
                     </dl>
                 </div>
-                <div class="col-sm-8 rendered-text" lang="<?php echo $post->language->iso639_1?>">
+                <div class="col-sm-8 rendered-text" lang="<?php echo $post->language->iso639_1 ?>">
                     <?php echo $this->Html->displayMD($post->excerpt) ?>
                 </div>
             </div>

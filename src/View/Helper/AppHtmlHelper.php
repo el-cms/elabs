@@ -22,8 +22,10 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
      *
      * Options :
      *  - fixed: bool, If true, an fa-fw class will be applied (default)
+     *  - iconSet: string, icon prefix (usually 'glyphicon' or 'fa')
+     *  - class: Additionnal classes for the icon.
      *
-     * @param string $name Icon name or space separated names
+     * @param string $name Icon name or space separated names (ie: 'home' or 'home 3x')
      * @param array $options An array of options
      *
      * @return string
@@ -45,6 +47,20 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
         unset($options['fixed']);
 
         return parent::icon($name, $options);
+    }
+
+    /**
+     * Returns an icon with some text nearby.
+     *
+     * @param string $icon Icon name
+     * @param string $text Text to be placed next to the icon
+     * @param array $options Array of options for the icon (see icon() for a detailed list)
+     *
+     * @return string
+     */
+    public function iconT($icon, $text, $options = [])
+    {
+        return __dx('elabs', '[icon] [text]', '{0}&nbsp;{1}', [$this->icon($icon, $options), $text]);
     }
 
     /**
@@ -74,7 +90,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
                 $separator = ', ';
             }
             if ($i == $count && $options['and'] && $i > 1) {
-                $separator = __(' et ');
+                $separator = __d('elabs', ' and ');
             }
             $out .= $separator . (($options['uppercase']) ? ucfirst($item) : $item);
             $i++;
@@ -104,7 +120,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
         }
 
         if (isset($options['icon']) && $options['icon']) {
-            $linkTitle = (!$options['icon']) ? $titleText : __d('elabs', '{0}&nbsp;{1}', ['<span class="fa fa-fw fa-flag"></span>', $titleText]);
+            $linkTitle = (!$options['icon']) ? $titleText : $this->iconT('flag', $titleText);
             unset($options['icon']);
         } elseif (isset($options['icon']) && !$options['icon']) {
             $linkTitle = $titleText;
@@ -176,5 +192,19 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
         unset($options['tag']);
 
         return $this->tag($tag, $content, $options);
+    }
+
+    /**
+     * Create an icon with a checkmark or an empty circle
+     *
+     * @param bool $value Value used to create the icon
+     *
+     * @return string
+     */
+    public function checkIcon($value)
+    {
+        $icon = ($value) ? 'check-circle-o' : 'circle-o';
+        
+        return $this->icon($icon);
     }
 }

@@ -11,7 +11,7 @@
  */
 
 // Page title
-$this->assign('title', __d('licenses', 'List of licenses'));
+$this->assign('title', __d('elabs', 'List of licenses'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Licenses'), ['action' => 'index']);
@@ -20,7 +20,8 @@ $this->Html->addCrumb($this->fetch('title'));
 // Block: Page actions
 // -------------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New license']), ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
+$linkIcon=$this->Html->iconT('plus', __d('elabs', 'New license'));
+echo $this->Html->link($linkIcon, ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
 $this->end();
 
 // Block: Page content
@@ -31,11 +32,11 @@ $this->start('pageContent');
     <table class="table table-condensed table-striped table-bordered">
         <thead>
             <tr>
-                <th><?php echo $this->Paginator->sort('name', __d('licenses', 'Name')) ?></th>
-                <th><?php echo $this->Paginator->sort('link', __d('licenses', 'Link')) ?></th>
-                <th><?php echo $this->Paginator->sort('post_count', __d('licenses', 'Posts')) ?></th>
-                <th><?php echo $this->Paginator->sort('project_count', __d('licenses', 'Projects')) ?></th>
-                <th><?php echo $this->Paginator->sort('file_count', __d('licenses', 'Files')) ?></th>
+                <th><?php echo $this->Paginator->sort('name', __d('elabs', 'Name')) ?></th>
+                <th><?php echo $this->Paginator->sort('link', __d('elabs', 'Link')) ?></th>
+                <th><?php echo $this->Paginator->sort('post_count', __d('elabs', 'Articles')) ?></th>
+                <th><?php echo $this->Paginator->sort('project_count', __d('elabs', 'Projects')) ?></th>
+                <th><?php echo $this->Paginator->sort('file_count', __d('elabs', 'Files')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
         </thead>
@@ -45,7 +46,7 @@ $this->start('pageContent');
                 foreach ($licenses as $license):
                     ?>
                     <tr>
-                        <td><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($license->icon), h($license->name)]) ?></td>
+                        <td><?php echo $this->Html->iconT($license->icon, h($license->name)) ?></td>
                         <td><?php echo $this->Html->link(h($license->link), h($license->link)) ?></td>
                         <td><?php echo h($license->post_count) ?></td>
                         <td><?php echo h($license->project_count) ?></td>
@@ -53,11 +54,11 @@ $this->start('pageContent');
                         <td>
                             <div class="btn-group btn-group-xs">
                                 <?php
-                                echo $this->Html->link($this->Html->icon('pencil', ['title' => __d('admin', 'Edit')]), ['action' => 'edit', $license->id], [
+                                echo $this->Html->link($this->Html->icon('pencil', ['title' => __d('elabs', 'Edit')]), ['action' => 'edit', $license->id], [
                                     'class' => 'btn btn-primary',
                                     'escape' => false
                                 ]);
-                                echo $this->Form->postLink($this->Html->icon('trash', ['title' => __d('admin', 'Delete')]), ['action' => 'delete', $license->id], [
+                                echo $this->Form->postLink($this->Html->icon('trash', ['title' => __d('elabs', 'Delete')]), ['action' => 'delete', $license->id], [
                                     'confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id),
                                     'class' => 'btn btn-danger',
                                     'escape' => false])
@@ -70,7 +71,7 @@ $this->start('pageContent');
             else:
                 ?>
                 <tr>
-                    <td colspan="7" class="text-center"><?php echo __d('licenses', 'You have no licenses yet. Please add one.') ?></td>
+                    <td colspan="7" class="text-center"><?php echo __d('elabs', 'You have no licenses yet. Please add one.') ?></td>
                 </tr>
             <?php endif; ?>
         </tbody>

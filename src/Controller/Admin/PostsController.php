@@ -80,21 +80,21 @@ class PostsController extends AdminAppController
     {
         switch ($state) {
             case 'lock':
-                $successMessage = __d('users', 'The post has been locked.');
+                $successMessage = __d('elabs', 'The post has been locked.');
                 $this->Act->remove($id);
                 $bit = 2;
                 break;
             case 'unlock':
-                $successMessage = __d('users', 'The post has been unlocked.');
+                $successMessage = __d('elabs', 'The post has been unlocked.');
                 $bit = 1;
                 break;
             case 'remove':
-                $successMessage = __d('users', 'The post has been removed.');
+                $successMessage = __d('elabs', 'The post has been removed.');
                 $bit = 3;
                 $this->Act->remove($id, 'Posts', false);
                 break;
             default:
-                $successMessage = __d('users', 'The post has been locked.');
+                $successMessage = __d('elabs', 'The post has been locked.');
                 $bit = 2;
         }
         $post = $this->Posts->get($id, [
@@ -107,7 +107,7 @@ class PostsController extends AdminAppController
             }
         } else {
             if (!$this->request->is('ajax')) {
-                $this->Flash->Error(__d('users', 'An error occured'));
+                $this->Flash->Error(__d('elabs', 'An error occured. Please try again.'));
             }
         }
         $this->set('post', $post);

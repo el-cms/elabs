@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('users', h($user->realname)));
+$this->assign('title', h($user->realname));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Authors'), ['action' => 'index']);
@@ -25,10 +25,10 @@ $this->start('pageInfos');
     </div>
     <div class="col-sm-8">
         <ul class="list-unstyled">
-            <li><strong><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('user'), h($user->username)]) ?></strong></li>
-            <li><?php echo __('{0}&nbsp;{1}', [$this->Html->icon('calendar'), h($user->created)]) ?></li>
+            <li><strong><?php echo $this->Html->iconT('user', h($user->username)) ?></strong></li>
+            <li><?php echo $this->Html->iconT('calendar', h($user->created)) ?></li>
             <?php if ($user->has('website')): ?>
-                <li><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), $this->Html->link(__d('elabs', 'Website'), h($user->website), ['escape' => false, 'target' => '_blank'])]) ?></li>
+                <li><?php echo $this->Html->iconT('external-link', $this->Html->link(__d('elabs', 'Website'), h($user->website), ['escape' => false, 'target' => '_blank'])) ?></li>
             <?php endif; ?>
         </ul>
     </div>
@@ -47,9 +47,9 @@ if (!empty($user->bio)):
 <?php endif; ?>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('posts', 'Articles {0}', '<span class="badge">' . $user->post_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('projects', 'Projects {0}', '<span class="badge">' . $user->project_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('files', 'Files {0}', '<span class="badge">' . $user->file_count . '</span>') ?></a></li>
+        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $user->post_count . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $user->project_count . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $user->file_count . '</span>') ?></a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">

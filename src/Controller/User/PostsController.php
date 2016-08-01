@@ -70,7 +70,7 @@ class PostsController extends UserAppController
             // Preparing data
             $post = $this->Posts->patchEntity($post, $dataSent);
             if ($this->Posts->save($post)) {
-                $this->Flash->success(__d('posts', 'Your article has been saved.'));
+                $this->Flash->success(__d('elabs', 'Your article has been saved.'));
                 if ($post->status === 1) {
                     $this->Act->add($post->id, 'add', 'Posts', $post->created);
                 }
@@ -113,17 +113,17 @@ class PostsController extends UserAppController
                 if ($oldState === 0 && $post->status === 1) {
                     // New publication
                     $this->Act->add($post->id, 'add', 'Posts', $post->created);
-                    $this->Flash->success(__d('posts', 'Your article has been published.'));
+                    $this->Flash->success(__d('elabs', 'Your article has been published.'));
                 } elseif ($oldState === 1 && $post->status === 0) {
                     // Removed from publication
                     $this->Act->remove($post->id);
-                    $this->Flash->success(__d('posts', 'Your article has been unpublished.'));
+                    $this->Flash->success(__d('elabs', 'Your article has been unpublished.'));
                 } else {
                     // Updated
                     if ($this->request->data['isMinor'] == '0') {
                         $this->Act->add($post->id, 'edit', 'Posts', $post->modified);
                     }
-                    $this->Flash->success(__d('posts', 'Your article has been updated.'));
+                    $this->Flash->success(__d('elabs', 'Your article has been updated.'));
                 }
                 $this->redirect(['action' => 'index']);
             } else {
@@ -157,10 +157,10 @@ class PostsController extends UserAppController
             ]
         ]);
         if ($this->Posts->delete($post)) {
-            $this->Flash->success(__d('posts', 'Your article has been deleted.'));
+            $this->Flash->success(__d('elabs', 'Your article has been deleted.'));
             $this->Act->remove($id);
         } else {
-            $this->Flash->error(__d('posts', 'Your article could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('elabs', 'Your article could not be deleted. Please, try again.'));
         }
         $this->redirect(['action' => 'index']);
     }

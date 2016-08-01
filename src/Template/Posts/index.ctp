@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', __d('posts', 'Articles'));
+$this->assign('title', __d('elabs', 'Articles'));
 
 // Breadcrumbs
 $this->Html->addCrumb($this->fetch('title'));
@@ -17,8 +17,8 @@ $this->Html->addCrumb($this->fetch('title'));
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');
-echo $this->Paginator->sort('title', __d('posts', 'Title'));
-echo $this->Paginator->sort('publication_date', __d('posts', 'Publication date'));
+echo $this->Paginator->sort('title', __d('elabs', 'Title'));
+echo $this->Paginator->sort('publication_date', __d('elabs', 'Publication date'));
 $this->end();
 
 // Block: Page content

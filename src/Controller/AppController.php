@@ -18,6 +18,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\I18n\I18n;
 
 /**
  * Application Controller
@@ -58,8 +59,18 @@ class AppController extends Controller
             'loginRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index'],
             'logoutRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index']
         ]);
+
+        // SFW display
         if (is_null($this->request->session()->read('seeNSFW'))) {
             $this->_setSFWState('hide');
+        }
+
+        // Site language
+        if (is_null($this->request->session()->read('language'))) {
+            // Init the languages list
+            $this->_setLanguagesList();
+            // Add language info to session
+            $this->_setLanguage();
         }
     }
 
@@ -74,7 +85,13 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
         $this->Auth->allow();
+        // SFW
         $this->set('seeNSFW', $this->request->session()->read('seeNSFW'));
+        // Languages
+        $lang = $this->request->session()->read('language');
+        $this->set('availableLanguages', $this->request->session()->read('languages'));
+        $this->set('siteLanguage', $lang);
+        I18n::locale($this->_getFolderNameFromLangCode($lang));
     }
 
     /**
@@ -114,6 +131,92 @@ class AppController extends Controller
     }
 
     /**
+     * Finds available website translations and write them in session
+     *
+     * @return void
+     */
+    protected function _setLanguagesList()
+    {
+        $Languages = \Cake\ORM\TableRegistry::get('Languages');
+        $languages = $Languages->find('all', [
+            'conditions' => [
+                'has_site_translation' => true
+            ],
+            'fields' => ['name', 'has_site_translation', 'translation_folder', 'iso639_1'],
+            'order' => ['name' => 'asc'],
+        ]);
+        $this->request->session()->write('languages', $languages->toArray());
+    }
+
+    /**
+     * Changes the current language in session
+     *
+     * @param string $lang Language translation folder name
+     *
+     * @return void
+     */
+    protected function _setLanguage($lang = null)
+    {
+        $this->request->session()->write('language', $this->_getLangCodeFromFolderName($lang));
+    }
+
+    /**
+     * Returns the iso639-1 code for a given translation folder name.
+     * Note that the 'language' entry in session array should have been previously
+     * populated by `_setLanguagesList()`
+     *
+     * @param string $folderName Language folder name
+     *
+     * @return string
+     */
+    protected function _getLangCodeFromFolderName($folderName)
+    {
+        $langCode = null;
+        // Available languages
+        $availableLanguages = $this->request->session()->read('languages');
+        // Current languages
+        if (is_null($folderName)) {
+            $folderName = \Cake\Core\Configure::read('cms.defaultSiteLang');
+        }
+        // Find current language code in available languages
+        foreach ($availableLanguages as $l) {
+            if ($l['translation_folder'] === $folderName) {
+                $langCode = $l['iso639_1'];
+            }
+        }
+
+        return $langCode;
+    }
+
+    /**
+     * Returns the translation folder name for a given language iso639-1 code.
+     * Note that the 'language' entry in session array should have been previously
+     * populated by `_setLanguagesList()`
+     *
+     * @param string $langCode Language iso639-1 code.
+     *
+     * @return string
+     */
+    protected function _getFolderNameFromLangCode($langCode)
+    {
+        $folderName = null;
+        // Available languages
+        $availableLanguages = $this->request->session()->read('languages');
+        // Current languages
+        if (is_null($langCode)) {
+            $langCode = \Cake\Core\Configure::read('cms.defaultSiteLang');
+        }
+        // Find current language code in available languages
+        foreach ($availableLanguages as $l) {
+            if ($l['iso639_1'] === $langCode) {
+                $folderName = $l['translation_folder'];
+            }
+        }
+
+        return $folderName;
+    }
+
+    /**
      * Switch the value of SFW state.
      *
      * @param string $state New state, can be 'hide' or 'show'
@@ -123,6 +226,19 @@ class AppController extends Controller
     public function switchSFW($state = 'hide')
     {
         $this->_setSFWState($state);
+        $this->redirect($this->referer());
+    }
+
+    /**
+     * Changes the language to a given one.
+     *
+     * @param string $lang Language folder name in src/Locale
+     *
+     * @return void
+     */
+    public function changeLanguage($lang = null)
+    {
+        $this->_setLanguage($lang);
         $this->redirect($this->referer());
     }
 }

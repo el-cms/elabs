@@ -22,23 +22,23 @@ class ItemsAdminHelper extends Helper
         switch ($status) {
             case 0: // Waiting for approval
                 $statusIcon = 'exclamation';
-                $text = __d('user', 'Waiting');
+                $text = __d('elabs', 'Waiting');
                 break;
             case 1: // Approved
                 $statusIcon = 'check';
-                $text = __d('user', 'Published');
+                $text = __d('elabs', 'Published');
                 break;
             case 2: // Locked
                 $statusIcon = 'lock';
-                $text = __d('user', 'Locked');
+                $text = __d('elabs', 'Locked');
                 break;
             case 3: // Deleted
                 $statusIcon = 'times';
-                $text = __d('user', 'Removed');
+                $text = __d('elabs', 'Removed');
                 break;
         }
         if ($icon) {
-            return __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($statusIcon), $text]);
+            return $this->Html->iconT($statusIcon, $text);
         } else {
             return $text;
         }
@@ -66,11 +66,11 @@ class ItemsAdminHelper extends Helper
                 $text = __d('elabs', 'No');
         }
         if ($icon) {
-            $out = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($labelIcon), $text]);
+            $out = $this->Html->iconT($labelIcon, $text);
         } else {
             $out = $text;
         }
-        
+
         return '<span class="label label-' . $labelColor . '">' . $out . '</span>';
     }
 }

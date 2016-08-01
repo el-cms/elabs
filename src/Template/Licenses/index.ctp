@@ -9,20 +9,20 @@
  */
 
 // Page title
-$this->assign('title', __d('licenses', 'Licenses'));
+$this->assign('title', __d('elabs', 'Licenses'));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'About'), ['controller' => 'Pages', 'action' => 'display', 'about']);
 $this->Html->addCrumb(__d('elabs', 'Licenses'), ['action' => 'index']);
-$this->Html->addCrumb(__d('licenses', 'List of licenses'));
+$this->Html->addCrumb(__d('elabs', 'List of licenses'));
 
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');
-echo $this->Paginator->sort('name', __d('licenses', 'Real name'));
-echo $this->Paginator->sort('post_count', __d('licenses', 'Number of posts'));
-echo $this->Paginator->sort('project_count', __d('licenses', 'Number of projects'));
-echo $this->Paginator->sort('file_count', __d('licenses', 'Number of files'));
+echo $this->Paginator->sort('name', __d('elabs', 'Real name'));
+echo $this->Paginator->sort('post_count', __d('elabs', 'Number of articles'));
+echo $this->Paginator->sort('project_count', __d('elabs', 'Number of projects'));
+echo $this->Paginator->sort('file_count', __d('elabs', 'Number of files'));
 $this->end();
 
 // Block: Page content

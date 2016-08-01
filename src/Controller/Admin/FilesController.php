@@ -82,21 +82,21 @@ class FilesController extends AdminAppController
     {
         switch ($state) {
             case 'lock':
-                $successMessage = __d('users', 'The file has been locked.');
+                $successMessage = __d('elabs', 'The file has been locked.');
                 $this->Act->remove($id);
                 $bit = 2;
                 break;
             case 'unlock':
-                $successMessage = __d('users', 'The file has been unlocked.');
+                $successMessage = __d('elabs', 'The file has been unlocked.');
                 $bit = 1;
                 break;
             case 'remove':
-                $successMessage = __d('users', 'The file has been removed.');
+                $successMessage = __d('elabs', 'The file has been removed.');
                 $bit = 3;
                 $this->Act->remove($id, 'Files', false);
                 break;
             default:
-                $successMessage = __d('users', 'The file has been locked.');
+                $successMessage = __d('elabs', 'The file has been locked.');
                 $bit = 2;
         }
         $file = $this->Files->get($id, [
@@ -109,7 +109,7 @@ class FilesController extends AdminAppController
             }
         } else {
             if (!$this->request->is('ajax')) {
-                $this->Flash->Error(__d('users', 'An error occured'));
+                $this->Flash->Error(__d('elabs', 'An error occured. Please try again.'));
             }
         }
         $this->set('file', $file);

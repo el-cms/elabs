@@ -13,7 +13,6 @@ use Cake\ORM\TableRegistry;
  */
 class ActsController extends AdminAppController
 {
-
     /**
      * Config value, like strings and model names.
      * Filled in initialize();
@@ -36,9 +35,9 @@ class ActsController extends AdminAppController
         // Create config strings
         $this->config = [
             'models' => [
-                'Files' => __d('files', 'File'),
-                'Posts' => __d('posts', 'Article'),
-                'Projects' => __d('projects', 'Project'),
+                'Files' => __d('elabs', 'File'),
+                'Posts' => __d('elabs', 'Article'),
+                'Projects' => __d('elabs', 'Project'),
             ]
         ];
 
@@ -79,7 +78,7 @@ class ActsController extends AdminAppController
                 }
             }
             if ($errors > 0) {
-                $this->Flash->error(__d('elabs', '{0} errors occured during the cleanup. Please, try again.'));
+                $this->Flash->error(__dn('elabs', 'An error occured during the cleanup. Please, try again.', '{0,number} errors occured during the cleanup. Please, try again.', $errors, $errors));
             } else {
                 $this->Flash->success(__d('elabs', 'Acts table has been rebuilt.'));
             }

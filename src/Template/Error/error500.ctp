@@ -2,7 +2,7 @@
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
-$this->assign('title', __('Error: {0}', $message));
+$this->assign('title', __d('elabs', 'Error: {0}', $message));
 
 // Breadcrumbs
 $this->Html->addCrumb($this->fetch('title'));
@@ -36,7 +36,7 @@ endif;
 ?>
 <div class="text-center">
     <?php
-    $string = __d('cake', 'Error:') . "\n" . $message;
+    $string = __d('elabs', 'Error:') . "\n" . $message;
     echo $this->CowSays->sayError($string);
     ?>
 </div>

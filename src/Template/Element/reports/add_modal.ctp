@@ -3,28 +3,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="uModTitle"><?php echo __('Report something') ?></h4>
+                <h4 class="modal-title" id="uModTitle"><?php echo __d('elabs', 'Report something') ?></h4>
             </div>
             <?php
             echo $this->Form->create('Report', ['url' => $this->Url->build(['plugin' => null, 'prefix' => false, 'controller' => 'Reports', 'action' => 'add'], true), 'idPrefix' => 'reports']);
             ?>
             <div class="modal-body" id="modal-content">
                 <div class="alert alert-info">
-                    <?php
-                    echo $this->Html->icon('info-circle 2x', ['class' => 'pull-left']);
-                    echo __d('elabs', ' You have found something wrong or want to react about something ? Your comments are welcome.');
-                    ?>
+                    <?php echo $this->Html->iconT('info-circle 2x', __d('elabs', 'You have found something wrong or want to react about something ? Your comments are welcome.')); ?>
                 </div>
                 <?php
                 if (is_null($authUser)):
                     echo $this->Form->input('name', array(
-                        'label' => __d('reports', 'Your name'),
-                        'placeholder' => __d('reports', 'Name'),
+                        'label' => __d('elabs', 'Your name'),
+                        'placeholder' => __d('elabs', 'Name'),
                         'required' => true,
                     ));
                     echo $this->Form->input('email', array(
-                        'label' => __d('reports', 'Your email'),
-                        'placeholder' => __d('reports', 'Email'),
+                        'label' => __d('elabs', 'Your e-mail'),
+                        'placeholder' => __d('elabs', 'E-mail'),
                         'required' => false,
                     ));
                     ?>
@@ -34,9 +31,9 @@
                 <?php
                 echo $this->Form->input('reason', array(
                     'type' => 'textarea',
-                    'label' => __d('reports', 'Reason for your report'),
+                    'label' => __d('elabs', 'Reason for your report'),
                     'class' => 'form-control',
-                    'placeholder' => __d('reports', 'Reason'),
+                    'placeholder' => __d('elabs', 'Reason'),
                     'required' => true
                 ));
                 ?>
@@ -44,11 +41,11 @@
             <div class="modal-footer">
                 <?php
                 echo $this->Form->hidden('url', ['id' => 'reportModalUrl']);
-                echo $this->Form->button(__d('reports', 'Send the report'), array(
+                echo $this->Form->button(__d('elabs', 'Send the report'), array(
                     'class' => 'btn btn-primary',
                 ));
                 ?>
-                <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __('Cancel') ?></button>
+                <button class="btn btn-warning" data-dismiss="modal" type="button"><?php echo __d('elabs', 'Cancel') ?></button>
             </div>
             <?php echo $this->Form->end(); ?>
         </div>

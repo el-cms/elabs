@@ -17,11 +17,11 @@ $this->Html->addCrumb(__d('elabs', 'About'));
 // -----------------
 $this->start('pageLinks');
 $linkOptions = ['escape' => false, 'class' => 'list-group-item', 'target' => "_blank"];
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('github'), __d('elabs', 'Elabs on Github')]), 'https://github.com/el-cms/elabs', $linkOptions);
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('elabs', 'CakePHP')]), 'http://cakephp.org', $linkOptions);
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('elabs', 'Bootflat')]), 'http://bootflat.github.io', $linkOptions);
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('elabs', 'FontAwesome')]), 'http://fontawesome.io', $linkOptions);
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('elabs', 'CakePHP - Gravatar plugin')]), 'https://github.com/LowG33kDev/cakephp-gravatar-plugin/', $linkOptions);
+echo $this->Html->link($this->Html->iconT('github', __d('elabs', 'Elabs on Github')), 'https://github.com/el-cms/elabs', $linkOptions);
+echo $this->Html->link($this->Html->iconT('external-link', 'CakePHP'), 'http://cakephp.org', $linkOptions);
+echo $this->Html->link($this->Html->iconT('external-link', 'Bootflat'), 'http://bootflat.github.io', $linkOptions);
+echo $this->Html->link($this->Html->iconT('external-link', 'FontAwesome'), 'http://fontawesome.io', $linkOptions);
+echo $this->Html->link($this->Html->iconT('external-link', 'CakePHP - Gravatar plugin'), 'https://github.com/LowG33kDev/cakephp-gravatar-plugin/', $linkOptions);
 $this->end();
 
 // Block: Page content

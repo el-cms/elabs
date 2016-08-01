@@ -42,11 +42,11 @@ class LanguagesController extends AdminAppController
             // Manually set the id
             $language->id = $this->request->data['id'];
             if ($this->Languages->save($language)) {
-                $this->Flash->success(__('The language has been saved.'));
+                $this->Flash->success(__d('elabs', 'The language has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The language could not be saved. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The language could not be saved. Please, try again.'));
             }
         }
         $this->set(compact('language'));
@@ -68,11 +68,11 @@ class LanguagesController extends AdminAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $language = $this->Languages->patchEntity($language, $this->request->data);
             if ($this->Languages->save($language)) {
-                $this->Flash->success(__('The language has been saved.'));
+                $this->Flash->success(__d('elabs', 'The language has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The language could not be saved. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The language could not be saved. Please, try again.'));
             }
         }
         $this->set(compact('language'));
@@ -91,13 +91,13 @@ class LanguagesController extends AdminAppController
      */
     public function delete($id = null)
     {
-        throw new \Cake\Network\Exception\NotImplementedException(__d('language', 'This feature needs some work...'));
+        throw new \Cake\Network\Exception\NotImplementedException(__d('elabs', 'This feature needs some work...'));
 //        $this->request->allowMethod(['post', 'delete']);
 //        $language = $this->Languages->get($id);
 //        if ($this->Languages->delete($language)) {
-//            $this->Flash->success(__('The language has been deleted.'));
+//            $this->Flash->success(__d('elabs', 'The language has been deleted.'));
 //        } else {
-//            $this->Flash->error(__('The language could not be deleted. Please, try again.'));
+//            $this->Flash->error(__d('elabs', 'The language could not be deleted. Please, try again.'));
 //        }
 //
 //        return $this->redirect(['action' => 'index']);
