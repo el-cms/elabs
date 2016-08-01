@@ -10,7 +10,6 @@ return ['cms' => [
         'defaultMinPassLenght' => 8,
         'defaultMinUserNameLenght' => 6,
         'defaultSiteLang' => '', // Null for no specific lang.
-        'see_nsfw' => 1,
         'escapeMarkdown' => true,
         'adminCVUrl' => '#',
     ]
