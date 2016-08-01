@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-01 12:28+0000\n"
+"POT-Creation-Date: 2016-08-01 16:19+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Project"
 msgstr ""
 
-#: Controller/AppController.php:56
+#: Controller/AppController.php:57
 msgid "You are not allowed to view this page."
 msgstr ""
 
@@ -406,6 +406,7 @@ msgstr ""
 #: Template/Admin/Users/index.ctp:30
 #: Template/Element/reports/add_modal.ctp:19
 #: Template/Files/index.ctp:22
+#: Template/Languages/index.ctp:22
 #: Template/Projects/index.ctp:20
 #: Template/Tags/view.ctp:16
 #: Template/User/Files/index.ctp:21
@@ -464,6 +465,7 @@ msgstr ""
 #: Template/Admin/Files/index.ctp:37
 #: Template/Admin/Posts/index.ctp:36
 #: Template/Admin/Projects/index.ctp:36
+#: Template/Element/layout/mainmenu_languages.ctp:3
 msgid "Language"
 msgstr ""
 
@@ -475,7 +477,7 @@ msgid "Status"
 msgstr ""
 
 #: Template/Admin/Files/index.ctp:39
-#: Template/Admin/Languages/index.ctp:38
+#: Template/Admin/Languages/index.ctp:40
 #: Template/Admin/Licenses/index.ctp:40
 #: Template/Admin/Posts/index.ctp:38
 #: Template/Admin/Projects/index.ctp:38
@@ -547,6 +549,7 @@ msgstr ""
 #: Template/Admin/Files/view.ctp:28
 #: Template/Admin/Users/view.ctp:24
 #: Template/Files/view.ctp:27
+#: Template/Languages/view.ctp:24
 #: Template/Licenses/view.ctp:24
 msgid "Name:"
 msgstr ""
@@ -643,12 +646,15 @@ msgstr ""
 #: Template/Admin/Languages/edit.ctp:15
 #: Template/Admin/Languages/index.ctp:24
 #: Template/Element/layout/mainmenu_admin.ctp:23
+#: Template/Languages/index.ctp:12;16
+#: Template/Languages/view.ctp:16
 msgid "Languages"
 msgstr ""
 
 #: Template/Admin/Languages/add.ctp:22
 #: Template/Admin/Languages/edit.ctp:29
 #: Template/Admin/Languages/index.ctp:14
+#: Template/Languages/index.ctp:17
 msgid "List of languages"
 msgstr ""
 
@@ -677,7 +683,17 @@ msgstr ""
 msgid "Language, in native form"
 msgstr ""
 
-#: Template/Admin/Languages/add.ctp:56
+#: Template/Admin/Languages/add.ctp:57
+#: Template/Admin/Languages/edit.ctp:65
+msgid "A translation exists for the site"
+msgstr ""
+
+#: Template/Admin/Languages/add.ctp:60
+#: Template/Admin/Languages/edit.ctp:68
+msgid "Translation folder"
+msgstr ""
+
+#: Template/Admin/Languages/add.ctp:63
 msgid "Add"
 msgstr ""
 
@@ -690,7 +706,7 @@ msgid "Edit {0}"
 msgstr ""
 
 #: Template/Admin/Languages/edit.ctp:21
-#: Template/Admin/Languages/index.ctp:52
+#: Template/Admin/Languages/index.ctp:56
 #: Template/Admin/Licenses/edit.ctp:21
 #: Template/Admin/Licenses/index.ctp:61
 #: Template/Admin/Reports/index.ctp:58
@@ -710,7 +726,7 @@ msgid "Delete"
 msgstr ""
 
 #: Template/Admin/Languages/edit.ctp:22
-#: Template/Admin/Languages/index.ctp:52
+#: Template/Admin/Languages/index.ctp:56
 #: Template/Admin/Licenses/edit.ctp:22
 #: Template/Admin/Licenses/index.ctp:62
 #: Template/Admin/Reports/index.ctp:58
@@ -733,21 +749,21 @@ msgstr ""
 msgid "Add a language"
 msgstr ""
 
-#: Template/Admin/Languages/edit.ctp:64
+#: Template/Admin/Languages/edit.ctp:71
 #: Template/Admin/Licenses/edit.ctp:45
 #: Template/User/Posts/edit.ctp:62
 #: Template/User/Users/edit.ctp:50
 msgid "Save the changes"
 msgstr ""
 
-#: Template/Admin/Languages/index.ctp:50
+#: Template/Admin/Languages/index.ctp:54
 #: Template/Element/files/tile_userindex.ctp:10
 #: Template/Element/posts/tile_userindex.ctp:10
 #: Template/Element/projects/tile_userindex.ctp:10
 msgid "View online"
 msgstr ""
 
-#: Template/Admin/Languages/index.ctp:51
+#: Template/Admin/Languages/index.ctp:55
 #: Template/Admin/Licenses/index.ctp:57
 #: Template/Admin/Tags/index.ctp:26
 #: Template/Admin/Tags/view.ctp:44
@@ -1099,18 +1115,21 @@ msgid "This account has been closed, so no further actions are available."
 msgstr ""
 
 #: Template/Admin/Users/view.ctp:85
+#: Template/Languages/view.ctp:42
 #: Template/Licenses/view.ctp:46
 #: Template/Users/view.ctp:50
 msgid "Articles {0}"
 msgstr ""
 
 #: Template/Admin/Users/view.ctp:86
+#: Template/Languages/view.ctp:43
 #: Template/Licenses/view.ctp:47
 #: Template/Users/view.ctp:51
 msgid "Projects {0}"
 msgstr ""
 
 #: Template/Admin/Users/view.ctp:87
+#: Template/Languages/view.ctp:44
 #: Template/Licenses/view.ctp:48
 #: Template/Users/view.ctp:52
 msgid "Files {0}"
@@ -1171,6 +1190,28 @@ msgstr ""
 msgid "Updated on"
 msgstr ""
 
+#: Template/Element/languages/card.ctp:14
+#: Template/Element/licenses/card.ctp:14
+#: Template/Element/users/card.ctp:20;22;24
+msgid "{0} article"
+msgid_plural "{0} articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Template/Element/languages/card.ctp:16
+#: Template/Element/licenses/card.ctp:16
+msgid "{0} project"
+msgid_plural "{0} projects"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Template/Element/languages/card.ctp:18
+#: Template/Element/licenses/card.ctp:18
+msgid "{0} file"
+msgid_plural "{0} files"
+msgstr[0] ""
+msgstr[1] ""
+
 #: Template/Element/layout/dev_block.ctp:3
 msgid "This feature is under development."
 msgstr ""
@@ -1209,19 +1250,45 @@ msgstr ""
 msgid "Logo"
 msgstr ""
 
+#: Template/Element/layout/footer.ctp:6
+msgid "About the site"
+msgstr ""
+
 #: Template/Element/layout/footer.ctp:7
+#: Template/Languages/index.ctp:15
+#: Template/Languages/view.ctp:15
 #: Template/Licenses/index.ctp:15
 #: Template/Licenses/view.ctp:15
 #: Template/Pages/about.ctp:12;14
 msgid "About"
 msgstr ""
 
+#: Template/Element/layout/footer.ctp:8
+msgid "Sources"
+msgstr ""
+
+#: Template/Element/layout/footer.ctp:9
+msgid "Issues"
+msgstr ""
+
 #: Template/Element/layout/footer.ctp:10
 msgid "Licenses used"
 msgstr ""
 
+#: Template/Element/layout/footer.ctp:11
+msgid "Available languages"
+msgstr ""
+
 #: Template/Element/layout/footer.ctp:14
+msgid "About the author"
+msgstr ""
+
+#: Template/Element/layout/footer.ctp:15
 msgid "CV"
+msgstr ""
+
+#: Template/Element/layout/footer.ctp:16
+msgid "Contact"
 msgstr ""
 
 #: Template/Element/layout/footer.ctp:3
@@ -1243,7 +1310,7 @@ msgstr ""
 msgid "Show NSFW"
 msgstr ""
 
-#: Template/Element/layout/mainmenu.ctp:28
+#: Template/Element/layout/mainmenu.ctp:29
 msgid "Report this page"
 msgstr ""
 
@@ -1268,8 +1335,40 @@ msgid "View site online"
 msgstr ""
 
 #: Template/Element/layout/mainmenu_admin.ctp:51
-#: Template/Element/users/usermenu.ctp:8
+#: Template/Element/layout/mainmenu_usermenu.ctp:8
 msgid "Logout"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:5
+msgid "Update profile"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:11
+msgid "Articles:"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:13;18;23
+msgid "Manage"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:14
+msgid "Write something !"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:16
+msgid "Projects:"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:19
+msgid "Add a project !"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:21
+msgid "Files:"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:24
+msgid "Upload some files !"
 msgstr ""
 
 #: Template/Element/layout/pageloader.ctp:3
@@ -1307,25 +1406,6 @@ msgstr ""
 #: Template/Element/layouts/defaultview.ctp:19
 msgid "Informations"
 msgstr ""
-
-#: Template/Element/licenses/card.ctp:14
-#: Template/Element/users/card.ctp:20;22;24
-msgid "{0} article"
-msgid_plural "{0} articles"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Template/Element/licenses/card.ctp:16
-msgid "{0} project"
-msgid_plural "{0} projects"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Template/Element/licenses/card.ctp:18
-msgid "{0} file"
-msgid_plural "{0} files"
-msgstr[0] ""
-msgstr[1] ""
 
 #: Template/Element/posts/tile_userindex.ctp:31
 #: Template/User/Posts/add.ctp:50
@@ -1454,38 +1534,6 @@ msgstr ""
 msgid "Tell us why you want to come here"
 msgstr ""
 
-#: Template/Element/users/usermenu.ctp:5
-msgid "Update profile"
-msgstr ""
-
-#: Template/Element/users/usermenu.ctp:11
-msgid "Articles:"
-msgstr ""
-
-#: Template/Element/users/usermenu.ctp:13;18;23
-msgid "Manage"
-msgstr ""
-
-#: Template/Element/users/usermenu.ctp:14
-msgid "Write something !"
-msgstr ""
-
-#: Template/Element/users/usermenu.ctp:16
-msgid "Projects:"
-msgstr ""
-
-#: Template/Element/users/usermenu.ctp:19
-msgid "Add a project !"
-msgstr ""
-
-#: Template/Element/users/usermenu.ctp:21
-msgid "Files:"
-msgstr ""
-
-#: Template/Element/users/usermenu.ctp:24
-msgid "Upload some files !"
-msgstr ""
-
 #: Template/Error/error400.ctp:4
 #: Template/Error/error500.ctp:5
 msgid "Error: {0}"
@@ -1562,6 +1610,45 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
+#: Template/Languages/index.ctp:23
+msgid "Number of posts"
+msgstr ""
+
+#: Template/Languages/index.ctp:24
+#: Template/Licenses/index.ctp:24
+msgid "Number of projects"
+msgstr ""
+
+#: Template/Languages/index.ctp:25
+#: Template/Licenses/index.ctp:25
+msgid "Number of files"
+msgstr ""
+
+#: Template/Languages/view.ctp:12
+msgid "Language: {0}"
+msgstr ""
+
+#: Template/Languages/view.ctp:17
+msgid "Content in \"{0}\""
+msgstr ""
+
+#: Template/Languages/view.ctp:25
+msgid "Available translation:"
+msgstr ""
+
+#: Template/Languages/view.ctp:26
+msgid "iso639-1 code:"
+msgstr ""
+
+#: Template/Languages/view.ctp:27
+msgid "iso639-2 code:"
+msgstr ""
+
+#: Template/Languages/view.ctp:37
+#: Template/Licenses/view.ctp:41
+msgid "Some entries may be hidden, depending on your NSFW settings."
+msgstr ""
+
 #: Template/Layout/admin.ctp:46
 #: Template/Layout/default.ctp:46
 #: Template/Layout/user.ctp:46
@@ -1577,14 +1664,6 @@ msgstr ""
 msgid "Number of articles"
 msgstr ""
 
-#: Template/Licenses/index.ctp:24
-msgid "Number of projects"
-msgstr ""
-
-#: Template/Licenses/index.ctp:25
-msgid "Number of files"
-msgstr ""
-
 #: Template/Licenses/view.ctp:12
 msgid "License: {0}"
 msgstr ""
@@ -1595,10 +1674,6 @@ msgstr ""
 
 #: Template/Licenses/view.ctp:32
 msgid "More info online"
-msgstr ""
-
-#: Template/Licenses/view.ctp:41
-msgid "Some entries may be hidden, depending on your NSFW settings."
 msgstr ""
 
 #: Template/Pages/about.ctp:20
