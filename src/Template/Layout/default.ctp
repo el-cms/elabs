@@ -7,7 +7,7 @@ if (!empty($contentLanguage)):
 endif;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $siteLanguage ?>">
     <head>
         <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -76,7 +76,7 @@ endif;
                                 <ul class="dropdown-menu">
                                     <?php
                                     if (!is_null($authUser)):
-                                        echo $this->element('users/usermenu');
+                                        echo $this->element('layout/mainmenu_usermenu');
                                     else:
                                         ?>
                                         <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo $this->Html->iconT('sign-in', __d('elabs', 'Login/Register')) ?></a></li>
@@ -103,7 +103,7 @@ endif;
                 <div class="container">
                     <!-- Flash messages -->
                     <div class="row flash-messages">
-                        <div class="alert alert-warning">
+                        <div class="alert alert-warning" lang="en">
                             <strong>Note that this website is still under contruction (<a href="https://github.com/el-cms/elabs">sources are on <i class="fa fa-github"></i> Github</a>). Some features may not work or not be implemented. And there are bugs. Thank you.</strong>
                         </div>
                         <?php echo $this->Flash->render() ?>

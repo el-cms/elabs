@@ -24,7 +24,7 @@ $this->Html->addCrumb($this->fetch('title'));
         <div class="tab-pane fade active in" id="tab-general">
             <div class="row">
                 <div class="col-sm-4">
-                    <?php echo $this->Html->link($this->Html->icon('eye', __d('elabs', 'View your profile online')), ['prefix' => false, 'action' => 'view', $user->id], ['class' => 'btn btn-primary btn-block', 'escape' => false]) ?>
+                    <?php echo $this->Html->link($this->Html->iconT('eye', __d('elabs', 'View your profile online')), ['prefix' => false, 'action' => 'view', $user->id], ['class' => 'btn btn-primary btn-block', 'escape' => false]) ?>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>

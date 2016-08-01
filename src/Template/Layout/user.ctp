@@ -68,7 +68,7 @@ endif;
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <?php echo $this->element('users/usermenu'); ?>
+                                    <?php echo $this->element('layout/mainmenu_usermenu'); ?>
                                 </ul>
                             </li>
                         </ul>
