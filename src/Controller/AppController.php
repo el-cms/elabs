@@ -92,6 +92,12 @@ class AppController extends Controller
         $this->set('availableLanguages', $this->request->session()->read('languages'));
         $this->set('siteLanguage', $lang);
         I18n::locale($this->_getFolderNameFromLangCode($lang));
+        // User menu
+        $authUser = null;
+        if (!is_null($this->Auth->user('id'))) {
+            $authUser = $this->Auth->user();
+        }
+        $this->set('authUser', $authUser);
     }
 
     /**
@@ -109,13 +115,6 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
-
-        // Pass some data to the view
-        $authUser = null;
-        if (!is_null($this->Auth->user('id'))) {
-            $authUser = $this->Auth->user();
-        }
-        $this->set('authUser', $authUser);
     }
 
     /**
