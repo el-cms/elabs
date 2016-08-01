@@ -21,7 +21,7 @@ $this->Html->addCrumb(__d('elabs', 'Content with the {0} license', [h($license->
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('elabs', 'Name:') ?></strong> <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon(h($license->icon)), h($license->name)]) ?></li>
+    <li><strong><?php echo __d('elabs', 'Name:') ?></strong> <?php echo $this->Html->iconT(h($license->icon), h($license->name)) ?></li>
 </ul>
 <?php
 $this->end();
@@ -29,7 +29,7 @@ $this->end();
 // Block: Actions
 // --------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('elabs', 'More info online')]), h($license->link), ['escape' => false, "class" => "btn btn-block"]);
+echo $this->Html->link($this->Html->iconT('external-link', __d('elabs', 'More info online')), h($license->link), ['escape' => false, "class" => "btn btn-block"]);
 $this->end();
 
 // Block: Page content

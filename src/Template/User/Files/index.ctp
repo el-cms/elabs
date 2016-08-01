@@ -28,22 +28,31 @@ $this->end();
 // -------
 $this->start('pageFilters');
 $options = ['escape' => false];
-$active = [$this->Html->icon('check-circle-o')];
-$inactive = [$this->Html->icon('circle-o')];
-$clear = [$this->Html->icon('times')];
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['all', 'all'], $options);
+$active = 'check-circle-o';
+$inactive = 'circle-o';
+echo $this->Html->link($this->Html->iconT('times', __d('elabs', 'Clear filters')), ['all', 'all'], $options);
+?>
+<a class="btn-group-separator"></a>
+<?php
+$icon = ($filterNSFW === 'all') ? $active : $inactive;
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'All')), ['all', $filterStatus], $options);
 $icon = ($filterNSFW === 'safe') ? $active : $inactive;
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Only safe files', $icon), ['safe', $filterStatus], $options);
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Safe only')), ['safe', $filterStatus], $options);
 $icon = ($filterNSFW === 'unsafe') ? $active : $inactive;
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Only unsafe files', $icon), ['unsafe', $filterStatus], $options);
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Unsafe only')), ['unsafe', $filterStatus], $options);
+?>
+<a class="btn-group-separator"></a>
+<?php
+$icon = ($filterStatus === 'all') ? $active : $inactive;
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'All')), [$filterNSFW, 'all'], $options);
 $icon = ($filterStatus === 'locked') ? $active : $inactive;
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Only locked files', $icon), [$filterNSFW, 'locked'], $options);
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Locked only')), [$filterNSFW, 'locked'], $options);
 $this->end();
 
 // Page actions
 // ------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'Add a file']), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
+echo $this->Html->link($this->Html->iconT('plus', __d('elabs', 'Add a file')), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
 $this->end();
 
 // Page content

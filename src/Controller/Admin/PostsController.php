@@ -107,7 +107,7 @@ class PostsController extends AdminAppController
             }
         } else {
             if (!$this->request->is('ajax')) {
-                $this->Flash->Error(__d('elabs', 'An error occured'));
+                $this->Flash->Error(__d('elabs', 'An error occured. Please try again.'));
             }
         }
         $this->set('post', $post);

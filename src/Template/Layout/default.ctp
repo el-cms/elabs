@@ -43,7 +43,7 @@ endif;
                         <span class="sr-only">Toggle navigation</span>
                         <?php echo $this->Html->icon('bars') ?>
                     </button>
-                    <?php echo $this->Html->link(__d('elabs', '{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
+                    <?php echo $this->Html->link(__dx('elabs', 'Navbar: [logo] [text]', '{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
                 </div>
                 <!-- / Header and expand button -->
 
@@ -78,13 +78,9 @@ endif;
                                     if (!is_null($authUser)):
                                         echo $this->element('users/usermenu');
                                     else:
-                                        if (!is_null($authUser)):
-                                            echo $this->element('users/usermenu');
-                                        else:
-                                            ?>
-                                            <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('sign-in'), __d('elabs', 'Login/Register')]) ?></a></li>
-                                        <?php
-                                        endif;
+                                        ?>
+                                        <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo $this->Html->iconT('sign-in', __d('elabs', 'Login/Register')) ?></a></li>
+                                    <?php
                                     endif;
                                     ?>
                                 </ul>

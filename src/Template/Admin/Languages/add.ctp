@@ -19,7 +19,7 @@ $this->Html->addCrumb($this->fetch('title'));
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List languages']), ['prefix' => 'admin', 'controller' => 'Languages', 'action' => 'index'], $linkOptions);
+echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'List of languages')), ['prefix' => 'admin', 'controller' => 'Languages', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block

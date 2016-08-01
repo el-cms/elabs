@@ -26,8 +26,8 @@ $this->start('pageContent');
         <thead>
             <tr>
                 <th><?php echo $this->Paginator->sort('name', __d('elabs', 'Author')) ?></th>
-                <th><?php echo $this->Paginator->sort('email', __d('elabs', 'E-Mail')) ?></th>
-                <th><?php echo $this->Paginator->sort('url', __d('elabs', 'source')) ?></th>
+                <th><?php echo $this->Paginator->sort('email', __d('elabs', 'E-mail')) ?></th>
+                <th><?php echo $this->Paginator->sort('url', __d('elabs', 'Source')) ?></th>
                 <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
@@ -44,7 +44,7 @@ $this->start('pageContent');
                             $icon = 'circle-o';
                             $uname = $report['name'];
                         endif;
-                        echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($icon), $uname]);
+                        echo $this->Html->iconT($icon, $uname);
                         ?>
                     </td>
                     <td><?php echo $this->Html->icon((!empty($report->email) ? 'check-circle' : 'circle-o')); ?>

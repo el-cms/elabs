@@ -20,7 +20,7 @@ $this->Html->addCrumb(__d('elabs', 'List of licenses'));
 // -----------------------------
 $this->start('pageOrderBy');
 echo $this->Paginator->sort('name', __d('elabs', 'Real name'));
-echo $this->Paginator->sort('post_count', __d('elabs', 'Number of posts'));
+echo $this->Paginator->sort('post_count', __d('elabs', 'Number of articles'));
 echo $this->Paginator->sort('project_count', __d('elabs', 'Number of projects'));
 echo $this->Paginator->sort('file_count', __d('elabs', 'Number of files'));
 $this->end();

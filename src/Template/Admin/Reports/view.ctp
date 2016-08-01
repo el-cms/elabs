@@ -15,8 +15,6 @@ $this->assign('title', h($report->name));
 $this->Html->addCrumb(__d('elabs', 'Reports'), ['action' => 'index']);
 $this->Html->addCrumb($this->fetch('title'));
 
-
-
 // Block: Item informations
 // ------------------------
 $this->start('pageInfos');
@@ -30,10 +28,10 @@ else:
 endif;
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('elabs', 'Source') ?></strong> <?php echo $this->Html->link(h($report->url), h($report->url)) ?></li>
-    <li><strong><?php echo __d('elabs', 'Added on') ?></strong> <?php echo h($report->created) ?></li>
-    <li><strong><?php echo __d('elabs', 'Author') ?></strong> <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($icon), $uname]); ?></li>
-    <li><strong><?php echo __d('elabs', 'E-Mail') ?></strong> <?php echo h($report->email) ?></li>
+    <li><strong><?php echo __d('elabs', 'Source:') ?></strong> <?php echo $this->Html->link(h($report->url), h($report->url)) ?></li>
+    <li><strong><?php echo __d('elabs', 'Added on:') ?></strong> <?php echo h($report->created) ?></li>
+    <li><strong><?php echo __d('elabs', 'Author:') ?></strong> <?php echo $this->Html->iconT($icon, $uname); ?></li>
+    <li><strong><?php echo __d('elabs', 'E-mail:') ?></strong> <?php echo h($report->email) ?></li>
 </ul>
 <?php
 $this->end();
@@ -44,11 +42,19 @@ $this->start('pageActions');
 ?>
 <div class="btn-block btn-group btn-group-vertical">
     <?php
-    echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('trash-o'), 'Delete']), ['action' => 'delete', $report->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $report->id), 'escape' => false, 'class' => 'btn btn-danger']);
-    echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Reports list']), ['action' => 'index'], ['escape' => false, 'class' => 'btn btn-primary']);
+    $linkIcon = $this->Html->iconT('trash-o', __d('elabs', 'Delete'));
+    echo $this->Form->postLink($linkIcon, ['action' => 'delete', $report->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $report->id), 'escape' => false, 'class' => 'btn btn-danger']);
     ?>
 </div>
 <?php
+$this->end();
+
+// Related links block
+// -------------------
+$this->start('pageLinks');
+$linkOptions = ['class' => 'list-group-item', 'escape' => false];
+$linkIcon = $this->Html->iconT('list', __d('elabs', 'List of reports'));
+echo $this->Html->link($linkIcon, ['prefix' => 'admin', 'controller' => 'Reports', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Block: Page content

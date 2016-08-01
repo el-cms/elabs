@@ -10,10 +10,7 @@
             ?>
             <div class="modal-body" id="modal-content">
                 <div class="alert alert-info">
-                    <?php
-                    echo $this->Html->icon('info-circle 2x', ['class' => 'pull-left']);
-                    echo __d('elabs', ' You have found something wrong or want to react about something ? Your comments are welcome.');
-                    ?>
+                    <?php echo $this->Html->iconT('info-circle 2x', __d('elabs', 'You have found something wrong or want to react about something ? Your comments are welcome.')); ?>
                 </div>
                 <?php
                 if (is_null($authUser)):
@@ -23,8 +20,8 @@
                         'required' => true,
                     ));
                     echo $this->Form->input('email', array(
-                        'label' => __d('elabs', 'Your email'),
-                        'placeholder' => __d('elabs', 'Email'),
+                        'label' => __d('elabs', 'Your e-mail'),
+                        'placeholder' => __d('elabs', 'E-mail'),
                         'required' => false,
                     ));
                     ?>

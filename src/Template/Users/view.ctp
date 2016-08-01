@@ -25,10 +25,10 @@ $this->start('pageInfos');
     </div>
     <div class="col-sm-8">
         <ul class="list-unstyled">
-            <li><strong><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('user'), h($user->username)]) ?></strong></li>
-            <li><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('calendar'), h($user->created)]) ?></li>
+            <li><strong><?php echo $this->Html->iconT('user', h($user->username)) ?></strong></li>
+            <li><?php echo $this->Html->iconT('calendar', h($user->created)) ?></li>
             <?php if ($user->has('website')): ?>
-                <li><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), $this->Html->link(__d('elabs', 'Website'), h($user->website), ['escape' => false, 'target' => '_blank'])]) ?></li>
+                <li><?php echo $this->Html->iconT('external-link', $this->Html->link(__d('elabs', 'Website'), h($user->website), ['escape' => false, 'target' => '_blank'])) ?></li>
             <?php endif; ?>
         </ul>
     </div>

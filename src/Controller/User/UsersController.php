@@ -26,7 +26,7 @@ class UsersController extends UserAppController
                 $this->Flash->success(__d('elabs', 'Your informations are now up to date.'));
                 $this->redirect(['action' => 'edit']);
             } else {
-                $this->Flash->error(__d('elabs', 'An error occured. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'An error occured. Please try again.'));
             }
         }
         $this->set(compact('user'));
@@ -56,7 +56,7 @@ class UsersController extends UserAppController
                     array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                         $errorMessages[] = $a;
                     });
-                    $this->Flash->error(__d('elabs', 'An error occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
+                    $this->Flash->error(__d('elabs', 'An error occured. Please try again.'), ['params' => ['errors' => $errorMessages]]);
                     $this->redirect(['action' => 'edit']);
                 }
             } else {

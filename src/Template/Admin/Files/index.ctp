@@ -31,7 +31,7 @@ $this->start('pageContent');
                 <th><?php echo $this->Paginator->sort('sfw', __d('elabs', 'SFW')) ?></th>
                 <th>
                     <?php echo $this->Paginator->sort('created', __d('elabs', 'Creation date')) ?><br/>
-                    <?php echo $this->Paginator->sort('modified', __d('elabs', 'Mod. date')) ?>
+                    <?php echo $this->Paginator->sort('modified', __d('elabs', 'Modification date')) ?>
                 </th>
                 <th><?php echo $this->Paginator->sort('Licenses.name', __d('elabs', 'License')) ?></th>
                 <th><?php echo $this->Paginator->sort('Languages.name', __d('elabs', 'Language')) ?></th>
@@ -43,15 +43,15 @@ $this->start('pageContent');
             <?php foreach ($files as $file): ?>
                 <tr>
                     <td>
-                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('font'), h($file->name)]) ?></small><br/>
-                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('file-o'), h($file->filename)]) ?></small>
+                        <small><?php echo $this->Html->iconT('font', h($file->name)) ?></small><br/>
+                        <small><?php echo $this->Html->iconT('file-o', h($file->filename)) ?></small>
                     </td>
                     <td><?php echo $this->Html->link(h($file->user->username), ['controller' => 'users', 'action' => 'view', $file->user->id]) ?></td>
                     <td><?php echo $file->weight ?></td>
                     <td><?php echo $this->ItemsAdmin->sfwLabel($file->sfw) ?></td>
                     <td>
-                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('asterisk'), h($file->created)]) ?></small><br/>
-                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('refresh'), h($file->modified)]) ?></small>
+                        <small><?php echo $this->Html->iconT('asterisk', h($file->created)) ?></small><br/>
+                        <small><?php echo $this->Html->iconT('refresh', h($file->modified)) ?></small>
                     </td>
                     <td><?php echo $this->License->d($file->license, false) ?></td>
                     <td><?php echo $this->Html->langLabel($file->language->name, $file->language->iso639_1) ?></td>

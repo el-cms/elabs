@@ -20,7 +20,8 @@ $this->Html->addCrumb($this->fetch('title'));
 // Block: Page actions
 // -------------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New license']), ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
+$linkIcon=$this->Html->iconT('plus', __d('elabs', 'New license'));
+echo $this->Html->link($linkIcon, ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
 $this->end();
 
 // Block: Page content
@@ -33,7 +34,7 @@ $this->start('pageContent');
             <tr>
                 <th><?php echo $this->Paginator->sort('name', __d('elabs', 'Name')) ?></th>
                 <th><?php echo $this->Paginator->sort('link', __d('elabs', 'Link')) ?></th>
-                <th><?php echo $this->Paginator->sort('post_count', __d('elabs', 'Posts')) ?></th>
+                <th><?php echo $this->Paginator->sort('post_count', __d('elabs', 'Articles')) ?></th>
                 <th><?php echo $this->Paginator->sort('project_count', __d('elabs', 'Projects')) ?></th>
                 <th><?php echo $this->Paginator->sort('file_count', __d('elabs', 'Files')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
@@ -45,7 +46,7 @@ $this->start('pageContent');
                 foreach ($licenses as $license):
                     ?>
                     <tr>
-                        <td><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($license->icon), h($license->name)]) ?></td>
+                        <td><?php echo $this->Html->iconT($license->icon, h($license->name)) ?></td>
                         <td><?php echo $this->Html->link(h($license->link), h($license->link)) ?></td>
                         <td><?php echo h($license->post_count) ?></td>
                         <td><?php echo h($license->project_count) ?></td>

@@ -78,7 +78,7 @@ class FilesController extends UserAppController
             if (!$this->UpManager->checkFileType($pathInfo['extension'])) {
                 $this->Flash->error(__d('elabs', 'This filetype is not allowed.'));
             } elseif (!$this->UpManager->checkFileSize($fileInfos['size'])) {
-                $this->Flash->error(__d('elabs', 'File is too long. Max file size is {0}Kb', $this->UpManager->maxSize / 1024));
+                $this->Flash->error(__d('elabs', 'File is too big. Max file size is {0}Kb', $this->UpManager->maxSize / 1024));
             } else {
                 if (in_array($pathInfo['extension'], $this->UpManager->accepted['image'])) {
                     $this->UpManager->preparePath('thumb');

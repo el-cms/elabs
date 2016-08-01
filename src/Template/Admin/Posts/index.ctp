@@ -45,8 +45,8 @@ $this->start('pageContent');
                     <td><?php echo $this->Html->link(h($post->user->username), ['controller' => 'users', 'action' => 'view', $post->user->id]) ?></td>
                     <td><?php echo $this->ItemsAdmin->sfwLabel($post->sfw) ?></td>
                     <td>
-                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('asterisk'), h($post->created)]) ?></small><br/>
-                        <small><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('refresh'), h($post->modified)]) ?></small>
+                        <small><?php echo $this->Html->iconT('asterisk', h($post->created)) ?></small><br/>
+                        <small><?php echo $this->Html->iconT('refresh', h($post->modified)) ?></small>
                     </td>
                     <td><?php echo $this->License->d($post->license, false) ?></td>
                     <td><?php echo $this->Html->langLabel($post->language->name, $post->language->iso639_1) ?></td>

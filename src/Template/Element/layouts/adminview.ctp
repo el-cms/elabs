@@ -15,9 +15,9 @@
 // ----------------------------
 // (Order matters)
 $colContentLeft = [
+    'pageLinks' => ['title' => __d('elabs', 'Related links')],
     'pageActions' => ['title' => __d('elabs', 'Actions')],
     'pageInfos' => ['title' => __d('elabs', 'Informations')],
-    'pageLinks' => ['title' => __d('elabs', 'Related links')],
 ];
 $colContentMain = ['pageContent'];
 

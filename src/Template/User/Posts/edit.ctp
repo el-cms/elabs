@@ -18,15 +18,15 @@ $this->Html->addCrumb(__d('elabs', 'Edit {0}', [h($post->title)]));
 // Page actions
 // ------------
 $this->start('pageActions');
-echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('trash'), 'Delete']), ['action' => 'delete', $post->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $post->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
+echo $this->Form->postLink($this->Html->iconT('trash', __d('elabs', 'Delete')), ['action' => 'delete', $post->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $post->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
 $this->end();
 
 // Related links block
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Your articles']), ['action' => 'index'], $linkOptions);
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'Your articles')), ['action' => 'index'], $linkOptions);
+echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'List available licenses')), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block

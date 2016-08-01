@@ -16,7 +16,8 @@ $this->assign('title', __d('elabs', 'List of languages'));
 // Block: Page actions
 // -------------------
 $this->start('pageActions');
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'New language']), ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
+$linkIcon = $this->Html->iconT('plus', __d('elabs', 'New language'));
+echo $this->Html->link($linkIcon, ['action' => 'add'], ['class' => 'btn btn-success btn-block', 'escape' => false]);
 $this->end();
 
 // Breadcrumbs
@@ -42,7 +43,7 @@ $this->start('pageContent');
                 <tr>
                     <td><?= h($language->id) ?></td>
                     <td><?= h($language->iso639_1) ?></td>
-                    <td><?= $this->Html->langLabel($language->name, $language->iso639_1, ['label'=>false]) ?></td>
+                    <td><?= $this->Html->langLabel($language->name, $language->iso639_1, ['label' => false]) ?></td>
                     <td>
                         <div class="btn-group btn-group-xs">
                             <?php

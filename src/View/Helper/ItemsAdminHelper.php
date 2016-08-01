@@ -38,7 +38,7 @@ class ItemsAdminHelper extends Helper
                 break;
         }
         if ($icon) {
-            return __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($statusIcon), $text]);
+            return $this->Html->iconT($statusIcon, $text);
         } else {
             return $text;
         }
@@ -66,11 +66,11 @@ class ItemsAdminHelper extends Helper
                 $text = __d('elabs', 'No');
         }
         if ($icon) {
-            $out = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($labelIcon), $text]);
+            $out = $this->Html->iconT($labelIcon, $text);
         } else {
             $out = $text;
         }
-        
+
         return '<span class="label label-' . $labelColor . '">' . $out . '</span>';
     }
 }

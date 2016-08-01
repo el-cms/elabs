@@ -2,7 +2,7 @@
     <div class="card card-user">
         <div class="card-heading">
             <div class="card-heading-side">
-              <?php echo $this->Gravatar->generate($user['email'], ['image-options' => ['class' => 'img-rounded']]) ?>
+                <?php echo $this->Gravatar->generate($user['email'], ['image-options' => ['class' => 'img-rounded']]) ?>
             </div>
             <!-- Header -->
             <div class="card-header">
@@ -17,9 +17,12 @@
         </div>
         <div class="card-content">
             <?php
-            echo $this->Html->link(__d('elabs', "{0}&nbsp;{1} Articles", $this->Html->icon('font'), $user['post_count']), ['controller' => 'posts', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
-            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1} Projects', $this->Html->icon('cogs'), $user['project_count']), ['controller' => 'projects', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
-            echo $this->Html->link(__d('elabs', '{0}&nbsp;{1} Files', $this->Html->icon('file'), $user['file_count']), ['controller' => 'files', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            $linkTitle = $this->Html->iconT('font', __dn('elabs', '{0} article', '{0} articles', $post['post_count'], $post['post_count']));
+            echo $this->Html->link($linkTitle, ['controller' => 'posts', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            $linkTitle = $this->Html->iconT('cogs', __dn('elabs', '{0} article', '{0} articles', $post['post_count'], $post['post_count']));
+            echo $this->Html->link($linkTitle, ['controller' => 'projects', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
+            $linkTitle = $this->Html->iconT('files', __dn('elabs', '{0} article', '{0} articles', $post['post_count'], $post['post_count']));
+            echo $this->Html->link($linkTitle, ['controller' => 'files', 'action' => 'index', 'filter' => 'user', $user['id']], ['class' => 'btn btn-block', 'escape' => false]);
             ?>
         </div>
     </div>

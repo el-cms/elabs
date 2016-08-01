@@ -24,30 +24,37 @@
                 <ul class="card-informations">
                     <?php if (!isset($userInfo) || $userInfo): ?>
                         <li>
-                            <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('user'), __d('elabs', 'Manager:')]) ?>
-                            <?php echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
+                            <?php
+                            echo $this->Html->iconT('user', __d('elabs', 'Manager:'));
+                            echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']])
+                            ?>
                         </li>
                         <?php
                     endif;
                     if (!isset($licenseInfo) || $licenseInfo):
                         ?>
                         <li>
-                            <?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('copyright'), __d('elabs', 'License:')]) ?>
-                            <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($data['license']['icon']), $data['license']['name']]), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false]) ?>
+                            <?php
+                            echo $this->Html->iconT('copyright', __d('elabs', 'License:'));
+                            $linkIcon = $this->Html->iconT($data['license']['icon'], $data['license']['name']);
+                            echo $this->Html->link($linkIcon, ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false])
+                            ?>
                         </li>
                         <?php
                     endif;
                     if (!$event):
                         ?>
                         <li>
-                            <?php
-                            echo __d('elabs', '{0} {1}', [$this->Html->icon('calendar'), __d('elabs', 'Published on: {0}', h($data['publication_date']))]);
-                            if ($data['publication_date'] < $data['modified']):
-                                echo ' - ' . __d('elabs', 'Updated on: {0}', h($data['modified']));
-                            endif;
-                            ?>
+                            <?php echo $this->Html->iconT('calendar', __d('elabs', 'Published on: {0}', h($data['created']))); ?>
                         </li>
                         <?php
+                        if ($data['publication_date'] < $data['modified']):
+                            ?>
+                            <li>
+                                <?php echo $this->Html->iconT('refresh', __d('elabs', 'Updated on: {0}', h($data['modified']))); ?>
+                            </li>
+                            <?php
+                        endif;
                     endif;
                     ?>
                 </ul>

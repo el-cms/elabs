@@ -18,15 +18,16 @@ $this->Html->addCrumb(__d('elabs', 'Edit {0}', [$license->name]));
 // Actions block
 // -------------
 $this->start('pageActions');
-echo $this->Form->postLink(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('trash'), __d('elabs', 'Delete')]), ['action' => 'delete', $license->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
+$linkIcon=$this->Html->iconT('trash', __d('elabs', 'Delete'));
+echo $this->Form->postLink($linkIcon, ['action' => 'delete', $license->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $license->id), 'escape' => false, 'class' => 'btn btn-danger btn-block']);
 $this->end();
 
 // Related links block
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List licenses']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('plus'), 'Add a license']), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'add'], $linkOptions);
+echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'List of licenses')), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link($this->Html->iconT('plus', __d('elabs', 'Add a license')), ['prefix' => 'admin', 'controller' => 'Licenses', 'action' => 'add'], $linkOptions);
 $this->end();
 
 // Page content block
@@ -41,7 +42,7 @@ echo $this->Form->input('link');
         <?php echo $this->Form->select('icon', ['creative-commons' => 'Creative Commons', 'copyright' => 'Copyright sign']); ?>
     </div>
     <div class="col-sm-6">
-        <?php echo $this->Form->submit(__d('elabs', 'Save changes'), ['class' => 'btn-primary btn block']); ?>
+        <?php echo $this->Form->submit(__d('elabs', 'Save the changes'), ['class' => 'btn-primary btn block']); ?>
     </div>
 </div>
 <?php

@@ -32,18 +32,18 @@ $this->end();
 // --------------
 $this->start('pageFilters');
 $options = ['escape' => false];
-$active = [$this->Html->icon('check-circle-o')];
-$inactive = [$this->Html->icon('circle-o')];
-$clear = [$this->Html->icon('times')];
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Clear filters', $clear), ['action' => 'index'], $options);
+$active = 'check-circle-o';
+$inactive = 'circle-o';
+$clear = 'times';
+echo $this->Html->link($this->Html->iconT($clear, __d('elabs', 'Clear filters')), ['action' => 'index'], $options);
 $icon = ($filterUpdates === 'yes') ? $active : $inactive;
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide updates', $icon), [$filterPosts, $filterProjects, $filterFiles, (($filterUpdates === 'yes') ? 'no' : 'yes')], $options);
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide updates')), [$filterPosts, $filterProjects, $filterFiles, (($filterUpdates === 'yes') ? 'no' : 'yes')], $options);
 $icon = ($filterPosts === 'yes') ? $active : $inactive;
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide articles', $icon), [(($filterPosts === 'yes') ? 'no' : 'yes'), $filterProjects, $filterFiles, $filterUpdates], $options);
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide articles')), [(($filterPosts === 'yes') ? 'no' : 'yes'), $filterProjects, $filterFiles, $filterUpdates], $options);
 $icon = ($filterProjects === 'yes') ? $active : $inactive;
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide projects', $icon), [$filterPosts, (($filterProjects === 'yes') ? 'no' : 'yes'), $filterFiles, $filterUpdates], $options);
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide projects')), [$filterPosts, (($filterProjects === 'yes') ? 'no' : 'yes'), $filterFiles, $filterUpdates], $options);
 $icon = ($filterFiles === 'yes') ? $active : $inactive;
-echo $this->Html->link(__d('elabs', '{0}&nbsp;Hide files', $icon), [$filterPosts, $filterProjects, (($filterFiles === 'yes') ? 'no' : 'yes'), $filterUpdates], $options);
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide files')), [$filterPosts, $filterProjects, (($filterFiles === 'yes') ? 'no' : 'yes'), $filterUpdates], $options);
 $this->end();
 
 // Block: Page content
@@ -53,14 +53,14 @@ if (!$acts->isEmpty()):
     ?>
     <div class="timeline">
         <dl>
-          <?php
-          $lastDate = new Cake\I18n\Time();
-          // Items
-          foreach ($acts as $act):
-              $actDate = $act->created;
-              // Date change ?
-              if (!$this->Time->isSameDay($lastDate, $actDate)):
-                  ?>
+            <?php
+            $lastDate = new Cake\I18n\Time();
+            // Items
+            foreach ($acts as $act):
+                $actDate = $act->created;
+                // Date change ?
+                if (!$this->Time->isSameDay($lastDate, $actDate)):
+                    ?>
                     <dt><?php echo $this->Time->format($actDate, "dd/MM/yyyy") ?></dt>
                     <?php
                 endif;
@@ -74,10 +74,10 @@ if (!$acts->isEmpty()):
                         <dd class="pos-right clearfix">
                             <div class="circ circ-success"></div>
                             <div class="time">
-                              <?php echo $this->Time->format($actDate, "hh:mm") ?>
+                                <?php echo $this->Time->format($actDate, "hh:mm") ?>
                             </div>
                             <div class="events event-success">
-                              <?php echo $this->element(strtolower($act['model']) . '/card', ['data' => $act[$model], 'event' => 'true']); ?>
+                                <?php echo $this->element(strtolower($act['model']) . '/card', ['data' => $act[$model], 'event' => 'true']); ?>
                             </div>
                         </dd>
                         <?php
@@ -114,10 +114,17 @@ if (!$acts->isEmpty()):
                         <dd class="pos-left clearfix">
                             <div class="circ circ-<?php echo $class ?>"></div>
                             <div class="time">
-                              <?php echo $this->Time->format($actDate, "hh:mm") ?>
+                                <?php echo $this->Time->format($actDate, "hh:mm") ?>
                             </div>
                             <div class="events event-<?php echo $class ?>">
-                              <?php echo $this->Html->link(__d('elabs', '{0} {1} {2} {3}', [$this->Html->icon($icon), $config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]), ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']], ['class' => 'full', 'escape' => false]); ?>
+                                <?php
+                                // Text
+                                $linkText = __dx('elabs', 'Act update card: [model] title [action]', '{0} {1} {2}', [$config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]);
+                                // Icon
+                                $linkIcon = $this->Html->iconT($icon, $linkText);
+                                // Final link
+                                echo $this->Html->link($linkIcon, ['prefix' => false, 'controller' => $act['model'], 'action' => 'view', $act['fkid']], ['class' => 'full', 'escape' => false]);
+                                ?>
                             </div>
                         </dd>
                     <?php

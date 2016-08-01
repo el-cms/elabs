@@ -36,7 +36,7 @@ class UsersAdminHelper extends Helper
 
         switch ($type) {
             case 'icon':
-                $text = __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($icon), $desc]);
+                $text = $this->Html->iconT($icon, $desc);
                 break;
             default: // Label
                 $text = sprintf('<span class="label">%s</span>', $desc);
@@ -74,7 +74,7 @@ class UsersAdminHelper extends Helper
                 break;
         }
         if ($icon) {
-            return __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($statusIcon), $text]);
+            return $this->Html->iconT($statusIcon, $text);
         } else {
             return $text;
         }

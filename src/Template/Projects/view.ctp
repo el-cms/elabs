@@ -23,11 +23,11 @@ $this->Html->addCrumb($this->Html->langLabel($project->name, $project->language-
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($project->license->icon), $project->license->name]), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
+    <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->Html->link($this->Html->iconT($project->license->icon, $project->license->name), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
     <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
-    <li><strong><?php echo __d('elabs', 'Created on') ?></strong> <?php echo h($project->created) ?></li>
+    <li><strong><?php echo __d('elabs', 'Created on:') ?></strong> <?php echo h($project->created) ?></li>
     <?php if ($project->has('modified')): ?>
-        <li><strong><?php echo __d('elabs', 'Modified on') ?></strong> <?php echo h($project->modified) ?></li>
+        <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($project->modified) ?></li>
     <?php endif; ?>
     <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $project->sfw ? 'success' : 'danger'; ?>"><?php echo $project->sfw ? __d('elabs', 'Yes') : __d('elabs', 'No'); ?></span></li>
     <li><strong><?php echo __d('elabs', 'Tags:') ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
@@ -50,7 +50,7 @@ $this->end();
 // --------------
 if ($project->has('mainurl')):
     $this->start('pageActions');
-    echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('external-link'), __d('elabs', 'Website')]), $project->mainurl, ['escape' => false, 'class' => 'btn btn-block']);
+    echo $this->Html->link($this->Html->iconT('external-link', __d('elabs', 'Website')), $project->mainurl, ['escape' => false, 'class' => 'btn btn-block']);
     $this->end();
 endif;
 

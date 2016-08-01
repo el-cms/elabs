@@ -7,13 +7,13 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;View online', $this->Html->icon('eye')), ['prefix' => false, 'action' => 'view', $file->id], ['class' => ' ', 'escape' => false]); ?>
+                    <?php echo $this->Html->link($this->Html->iconT('eye', __d('elabs', 'View online')), ['prefix' => false, 'action' => 'view', $file->id], ['escape' => false]); ?>
                 </li>
                 <li>
-                    <?php echo $this->Html->link(__d('elabs', '{0}&nbsp;Edit', $this->Html->icon('pencil')), ['action' => 'edit', $file->id], ['class' => ' ', 'escape' => false]) ?>
+                    <?php echo $this->Html->link($this->Html->iconT('pencil', __d('elabs', 'Edit')), ['action' => 'edit', $file->id], ['escape' => false]) ?>
                 </li>
                 <li>
-                    <?php echo $this->Form->postLink(__d('elabs', '{0}&nbsp;Delete', $this->Html->icon('trash-o', ['class' => 'text-danger'])), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'escape' => false]) ?>
+                    <?php echo $this->Form->postLink($this->Html->iconT('trash-o', __d('elabs', 'Delete'), ['class'=>'text-danger']), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'escape' => false]) ?>
                 </li>
             </ul>
         </div>

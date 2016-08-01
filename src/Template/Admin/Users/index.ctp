@@ -63,7 +63,7 @@ $this->start('pageContent');
                 }
                 ?>
                 <tr id="userLine<?php echo $user->id ?>" class="<?php echo $style ?>">
-                    <td><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon($roleIcon), ucfirst(h($user->role))]) ?></td>
+                    <td><?php echo $this->Html->iconT($roleIcon, ucfirst(h($user->role))) ?></td>
                     <td><?php echo h($user->username) ?></td>
                     <td><?php echo h($user->realname) ?></td>
                     <td id="userStatus<?php echo $user->id ?>"><?php echo $this->UsersAdmin->statusLabel($user->status) ?></td>

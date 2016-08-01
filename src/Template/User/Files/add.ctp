@@ -19,8 +19,8 @@ $this->Html->addCrumb($this->fetch('title'));
 // -------------------
 $this->start('pageLinks');
 $linkOptions = ['class' => 'list-group-item', 'escape' => false];
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'Your files']), ['action' => 'index'], $linkOptions);
-echo $this->Html->link(__d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('list'), 'List available licenses']), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
+echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'Your files')), ['action' => 'index'], $linkOptions);
+echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'List available licenses')), ['prefix' => false, 'controller' => 'Licenses', 'action' => 'index'], $linkOptions);
 $this->end();
 
 // Page content block
@@ -36,7 +36,7 @@ $this->CodeMirror->add('descArea');
         <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
     </div>
     <div class="col-sm-6">
-        <?php echo $this->Form->input('language_id', ['options' => $languages, 'default'=>'fra']); ?>
+        <?php echo $this->Form->input('language_id', ['options' => $languages, 'default' => 'fra']); ?>
     </div>
 </div>
 <div class="row">

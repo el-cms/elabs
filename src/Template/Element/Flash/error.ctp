@@ -3,7 +3,7 @@
   <?php if (isset($params) AND isset($params['errors'])) : ?>
         <ul class="list">
             <?php foreach ($params['errors'] as $error) : ?>
-                <li><?php echo __d('elabs', '{0}&nbsp;{1}', [$this->Html->icon('warning'), h($error)]) ?></li>
+                <li><?php echo $this->Html->iconT('warning', h($error)) ?></li>
             <?php endforeach;
             ?>
         </ul>
