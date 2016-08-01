@@ -1,0 +1,1728 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-08-01 14:28+0200\n"
+"PO-Revision-Date: 2016-08-01 14:30+0200\n"
+"Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
+"Language-Team: EMAIL@ADDRESS\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#: Controller/ActsController.php:38
+msgid "has been updated"
+msgstr "a été mis à jour"
+
+#: Controller/ActsController.php:39
+msgid "has been removed"
+msgstr "a été supprimé"
+
+#: Controller/ActsController.php:42 Controller/Admin/ActsController.php:38
+msgid "File"
+msgstr "Fichier"
+
+#: Controller/ActsController.php:43 Controller/Admin/ActsController.php:39
+msgid "Article"
+msgstr "Article"
+
+#: Controller/ActsController.php:44 Controller/Admin/ActsController.php:40
+msgid "Project"
+msgstr "projet"
+
+#: Controller/AppController.php:56
+msgid "You are not allowed to view this page."
+msgstr "Vous n’êtes pas autorisé à voir cette page."
+
+#: Controller/ReportsController.php:51
+msgid "Thank you for your feedback"
+msgstr "Merci pour votre retour."
+
+#: Controller/ReportsController.php:55
+msgid ""
+"The report could not be saved (and that should be a good reason to report "
+"it...). Please try again."
+msgstr ""
+"Le rapport n’a pas pu être enregistré (et cela devrait être une bonne raison "
+"de le signaler...). Essayez de nouveau..."
+
+#: Controller/ReportsController.php:60
+msgid "Something went wrong with your request..."
+msgstr "Quelque chose s'est mal passé lors du traitement de votre demande."
+
+#: Controller/UsersController.php:27
+msgid "You are already registered"
+msgstr "Vous êtes déjà inscrit"
+
+#: Controller/UsersController.php:30
+msgid "Registrations are closed for now... Come back later..."
+msgstr "Les inscriptions sont fermées pour le moment... Revenez plus tard..."
+
+#: Controller/UsersController.php:130
+msgid "Your account has been created. An email will be sent to you when active"
+msgstr ""
+"Votre compte a été créé. Un email sera envoyé à vous lorsqu’il sera actif"
+
+#: Controller/UsersController.php:138 Controller/User/FilesController.php:159
+#: Controller/User/PostsController.php:84;135
+#: Controller/User/ProjectsController.php:74;110
+msgid "Some errors occured. Please, try again."
+msgstr "Des erreurs se sont produites. Veuillez re-essayer."
+
+#: Controller/UsersController.php:159
+msgid "Invalid username or password, try again. Is your accound active ?"
+msgstr ""
+"Nom d'utilisateur ou mot de passe invalide, essayez à nouveau. Votre compte "
+"est-il activé ?"
+
+#: Controller/UsersController.php:171
+msgid "You are logged out. See you later !"
+msgstr "Vous êtes déconnecté. A plus tard !"
+
+#: Controller/Admin/ActsController.php:83
+msgid "Acts table has been rebuilt."
+msgstr "La table 'acts' a été reconstruite."
+
+#: Controller/Admin/ActsController.php:86
+#: Controller/Admin/MaintenanceController.php:24
+msgid "Use the menu to access this functionality"
+msgstr "Utilisez le monu pour cette fonctionnalité"
+
+#: Controller/Admin/ActsController.php:81
+msgid "An error occured during the cleanup. Please, try again."
+msgid_plural "{0,number} errors occured during the cleanup. Please, try again."
+msgstr[0] "Une erreur est survenue durant le nettoyage. Veuillez ré-essayer."
+msgstr[1] ""
+"{0} erreurs sont survenues durant le nettoyage. Veuillez ré-essayer."
+
+#: Controller/Admin/AdminAppController.php:28
+#: Controller/User/UserAppController.php:31
+msgid "You should be logged in to access this page."
+msgstr ", Vous devez être connecté pour accéder à cette page."
+
+#: Controller/Admin/AdminAppController.php:31
+#: Controller/User/UserAppController.php:34
+msgid "You don't have enough rights to access this ressource."
+msgstr "Vous n’avez pas de droits suffisants pour accéder à cette ressource."
+
+#: Controller/Admin/FilesController.php:85;99
+msgid "The file has been locked."
+msgstr "Le fichier a été vérouillé."
+
+#: Controller/Admin/FilesController.php:90
+msgid "The file has been unlocked."
+msgstr "Le fichier a été dévérouillé."
+
+#: Controller/Admin/FilesController.php:94
+msgid "The file has been removed."
+msgstr "Le fichier a été enlevé."
+
+#: Controller/Admin/FilesController.php:112
+#: Controller/Admin/PostsController.php:110
+#: Controller/Admin/ProjectsController.php:111
+#: Controller/Admin/UsersController.php:120;150;179
+#: Controller/User/UsersController.php:29;59
+msgid "An error occured. Please try again."
+msgstr "Une erreur est survenue. Veuillez ré-essayer."
+
+#: Controller/Admin/LanguagesController.php:45;71
+msgid "The language has been saved."
+msgstr "La langue a été sauvegardée."
+
+#: Controller/Admin/LanguagesController.php:49;75
+msgid "The language could not be saved. Please, try again."
+msgstr "La langue n'a pas pu être sauvegardée. Veuillez essayer à nouveau."
+
+#: Controller/Admin/LanguagesController.php:94
+msgid "This feature needs some work..."
+msgstr "Cette fonctionnalité nécessite un peu de travail..."
+
+#: Controller/Admin/LicensesController.php:42
+msgid "The license has been saved."
+msgstr "La license a été sauvegardée."
+
+#: Controller/Admin/LicensesController.php:45
+msgid "The license could not be saved. Please, try again."
+msgstr "La licence n'a pas pu être sauvegardée. Veuillez essayer à nouveau."
+
+#: Controller/Admin/LicensesController.php:67
+msgid "The license has been updated."
+msgstr "La license a été mise à jour."
+
+#: Controller/Admin/LicensesController.php:70
+msgid "The license could not be updated. Please, try again."
+msgstr "La licence n'a pas pu être mise à jour. Veuillez essayer à nouveau."
+
+#: Controller/Admin/LicensesController.php:89
+msgid "The license has been deleted."
+msgstr "La license a été supprimée."
+
+#: Controller/Admin/LicensesController.php:91
+msgid "The license could not be deleted. Please, try again."
+msgstr "La licence n'a pas pu être supprimée. Veuillez essayer à nouveau."
+
+#: Controller/Admin/MaintenanceController.php:22
+msgid "The cache has been cleared"
+msgstr "Le cache a été vidé"
+
+#: Controller/Admin/PostsController.php:83;97
+msgid "The post has been locked."
+msgstr "Le post a été vérouillé."
+
+#: Controller/Admin/PostsController.php:88
+msgid "The post has been unlocked."
+msgstr "Le post a été dévérouillé."
+
+#: Controller/Admin/PostsController.php:92
+msgid "The post has been removed."
+msgstr "Le post a été supprimé."
+
+#: Controller/Admin/ProjectsController.php:84;98
+msgid "The project has been locked."
+msgstr "Le projet a été vérouillé."
+
+#: Controller/Admin/ProjectsController.php:89
+msgid "The project has been unlocked."
+msgstr "Le projet a été dévérouillé."
+
+#: Controller/Admin/ProjectsController.php:93
+msgid "The project has been removed."
+msgstr "Le projet a été enlevé."
+
+#: Controller/Admin/ReportsController.php:65
+msgid "The report has been deleted."
+msgstr "Le rapport a été supprimé."
+
+#: Controller/Admin/ReportsController.php:67
+msgid "The report could not be deleted. Please, try again."
+msgstr "Le rapport n'a pas pu être supprimé. Veuillez essayer à nouveau."
+
+#: Controller/Admin/TagsController.php:54;79
+msgid "The tag has been saved."
+msgstr ""
+
+#: Controller/Admin/TagsController.php:57;82
+msgid "The tag could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/TagsController.php:101
+msgid "The tag has been deleted."
+msgstr ""
+
+#: Controller/Admin/TagsController.php:103
+msgid "The tag could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/UsersController.php:104
+msgid "The account has been locked."
+msgstr "Le compte a été vérouillé"
+
+#: Controller/Admin/UsersController.php:107
+msgid "The account has been unlocked."
+msgstr "Le compte a été dévérouillé"
+
+#: Controller/Admin/UsersController.php:146
+msgid "The account has been closed."
+msgstr "Le compte a été fermé"
+
+#: Controller/Admin/UsersController.php:175
+msgid "The account has been activated."
+msgstr "Le compte a été activé"
+
+#: Controller/User/FilesController.php:79
+msgid "This filetype is not allowed."
+msgstr "Ce type de fichier n'est pas autorisé."
+
+#: Controller/User/FilesController.php:81
+msgid "File is too big. Max file size is {0}Kb"
+msgstr "Le fichier est trop grand. La taille maximale du fichier est de {0} Kb"
+
+#: Controller/User/FilesController.php:90
+msgid ""
+"The thumbnail could not be saved in the destination folder. Please, try "
+"again."
+msgstr "La miniature n'a pas pu être enregistrée. Veuillez essayer à nouveau."
+
+#: Controller/User/FilesController.php:110
+msgid ""
+"The file could not be saved in the destination folder. Please, try again."
+msgstr "Le fichier n'a pas pu être sauvegardé. Veuillez essayer à nouveau."
+
+#: Controller/User/FilesController.php:114;147
+msgid "The file has been saved."
+msgstr "Le fichier a été sauvegardé."
+
+#: Controller/User/FilesController.php:119;153
+msgid "The file could not be saved. Please, try again."
+msgstr "Le fihcier n'a pas pu être sauvegardé. Veuillez essayer à nouveau."
+
+#: Controller/User/FilesController.php:186
+msgid "The file has been deleted."
+msgstr "Le fichier a été supprimé."
+
+#: Controller/User/FilesController.php:189
+msgid "The file could not be deleted. Please, try again."
+msgstr "Le fichier n'a pas pu être supprimé. Veuillez essayer à nouveau."
+
+#: Controller/User/PostsController.php:73
+msgid "Your article has been saved."
+msgstr "Votre article a été sauvegardé."
+
+#: Controller/User/PostsController.php:116
+msgid "Your article has been published."
+msgstr "Votre article a été publié."
+
+#: Controller/User/PostsController.php:120
+msgid "Your article has been unpublished."
+msgstr "Votre article a été dé-publié."
+
+#: Controller/User/PostsController.php:126
+msgid "Your article has been updated."
+msgstr "Votre article a été mis à jour."
+
+#: Controller/User/PostsController.php:160
+msgid "Your article has been deleted."
+msgstr "Votre article a été supprimé."
+
+#: Controller/User/PostsController.php:163
+msgid "Your article could not be deleted. Please, try again."
+msgstr "Votre article n'a pas pu être supprimé. Veuillez essayer à nouveau."
+
+#: Controller/User/ProjectsController.php:65;98
+msgid "The project has been saved."
+msgstr "Le projet a été sauvegardé."
+
+#: Controller/User/ProjectsController.php:104
+msgid "The project could not be saved. Please, try again."
+msgstr "Le projet n'a pas pu être enregistré. Veuillez essayer à nouveau."
+
+#: Controller/User/ProjectsController.php:135
+msgid "The project has been deleted."
+msgstr "Le projet a été supprimé."
+
+#: Controller/User/ProjectsController.php:138
+msgid "The project could not be deleted. Please, try again."
+msgstr "Le projet n'a pas pu être supprimé. Veuillez essayer à nouveau."
+
+#: Controller/User/UsersController.php:26
+msgid "Your informations are now up to date."
+msgstr "Vos informations sont maintenant à jour."
+
+#: Controller/User/UsersController.php:51
+msgid "Your password has been updated."
+msgstr "Votre mot de passe a été mis à jour."
+
+#: Controller/User/UsersController.php:63;88
+msgid "Sorry, you have entered the wrong password."
+msgstr "Désolé, vous avez entré le mauvais mot de passe."
+
+#: Controller/User/UsersController.php:67;92
+msgid "To access this page, you need to fill the form first."
+msgstr ""
+"Pour accéder à cette page, vous devez remplir le formulaire en premier."
+
+#: Controller/User/UsersController.php:84
+msgid ""
+"Your account has been closed. If you want to re-open it, contact the "
+"administrator."
+msgstr ""
+"Votre compte a été fermé. Si vous souhaitez ré-ouvrir, contactez "
+"l’administrateur."
+
+#: Model/Table/UsersTable.php:96
+msgid "Your password does not match your confirm password. Please try again"
+msgstr "Vos mots de passe ne correspondent pas. Veuillez recommencer."
+
+#: Template/Acts/index.ctp:17
+msgid "Recent activity"
+msgstr "Activité récente"
+
+#: Template/Acts/index.ctp:20 Template/Element/layout/mainmenu.ctp:5
+msgid "Home"
+msgstr "Accueil"
+
+#: Template/Acts/index.ctp:25
+msgid "Date"
+msgstr "Date "
+
+#: Template/Acts/index.ctp:26
+msgid "Type"
+msgstr "Type"
+
+#: Template/Acts/index.ctp:27
+msgid "Action"
+msgstr "Action"
+
+#: Template/Acts/index.ctp:28 View/Helper/UsersAdminHelper.php:32
+msgid "User"
+msgstr "Utilisateur"
+
+#: Template/Acts/index.ctp:38 Template/User/Files/index.ctp:33
+#: Template/User/Posts/index.ctp:32 Template/User/Projects/index.ctp:31
+msgid "Clear filters"
+msgstr "Effacer les filtres"
+
+#: Template/Acts/index.ctp:40
+msgid "Hide updates"
+msgstr "Cacher les màj"
+
+#: Template/Acts/index.ctp:42
+msgid "Hide articles"
+msgstr "Cacher les articles"
+
+#: Template/Acts/index.ctp:44
+msgid "Hide projects"
+msgstr "Cacher les projets"
+
+#: Template/Acts/index.ctp:46
+msgid "Hide files"
+msgstr "Cacher les fichiers"
+
+#: Template/Acts/index.ctp:122
+msgctxt "Act update card: [model] title [action]"
+msgid "{0} {1} {2}"
+msgstr "{0} {1} {2}"
+
+#: Template/Admin/Files/index.ctp:14 Template/Admin/Files/view.ctp:75
+msgid "List of files"
+msgstr "Liste des fichiers"
+
+#: Template/Admin/Files/index.ctp:17 Template/Admin/Files/view.ctp:19
+#: Template/Admin/Licenses/index.ctp:39 Template/Admin/Users/index.ctp:152
+#: Template/Element/layout/mainmenu.ctp:14
+#: Template/Element/layout/mainmenu_admin.ctp:14 Template/Files/index.ctp:16
+#: Template/Files/nsfw.ctp:6 Template/Files/view.ctp:18
+#: Template/User/Files/add.ctp:15 Template/User/Files/edit.ctp:15
+#: Template/User/Files/index.ctp:15
+msgid "Files"
+msgstr "Fichiers"
+
+#: Template/Admin/Files/index.ctp:28 Template/Admin/Licenses/index.ctp:35
+#: Template/Admin/Projects/index.ctp:28 Template/Admin/Tags/view.ctp:16
+#: Template/Admin/Users/index.ctp:30 Template/Element/reports/add_modal.ctp:19
+#: Template/Files/index.ctp:22 Template/Projects/index.ctp:20
+#: Template/Tags/view.ctp:16 Template/User/Files/index.ctp:21
+msgid "Name"
+msgstr "Nom"
+
+#: Template/Admin/Files/index.ctp:28
+msgid "F.name"
+msgstr "Nom du f."
+
+#: Template/Admin/Files/index.ctp:29 Template/Admin/Projects/index.ctp:29
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: Template/Admin/Files/index.ctp:30
+msgid "Size"
+msgstr "Taille"
+
+#: Template/Admin/Files/index.ctp:31 Template/Admin/Posts/index.ctp:30
+#: Template/Admin/Projects/index.ctp:30
+msgid "SFW"
+msgstr "Sans danger"
+
+#: Template/Admin/Files/index.ctp:33 Template/Admin/Posts/index.ctp:33
+#: Template/Admin/Projects/index.ctp:32 Template/Admin/Reports/index.ctp:31
+#: Template/Element/files/tile_userindex.ctp:42
+#: Template/Element/posts/tile_userindex.ctp:50
+#: Template/Element/projects/tile_userindex.ctp:42 Template/Files/index.ctp:23
+#: Template/Projects/index.ctp:21 Template/User/Posts/index.ctp:22
+#: Template/User/Projects/index.ctp:21
+msgid "Creation date"
+msgstr "Date de création"
+
+#: Template/Admin/Files/index.ctp:34 Template/Files/index.ctp:24
+#: Template/Projects/index.ctp:22 Template/User/Files/index.ctp:24
+msgid "Modification date"
+msgstr "Date de modification"
+
+#: Template/Admin/Files/index.ctp:36 Template/Admin/Posts/index.ctp:35
+#: Template/Admin/Projects/index.ctp:35
+#: Template/Element/files/tile_userindex.ctp:46
+#: Template/Element/posts/tile_userindex.ctp:54
+#: Template/Element/projects/tile_userindex.ctp:46
+msgid "License"
+msgstr "Licence"
+
+#: Template/Admin/Files/index.ctp:37 Template/Admin/Posts/index.ctp:36
+#: Template/Admin/Projects/index.ctp:36
+msgid "Language"
+msgstr "Langue"
+
+#: Template/Admin/Files/index.ctp:38 Template/Admin/Posts/index.ctp:37
+#: Template/Admin/Projects/index.ctp:37 Template/Admin/Users/index.ctp:31
+msgid "Status"
+msgstr "Etat"
+
+#: Template/Admin/Files/index.ctp:39 Template/Admin/Languages/index.ctp:38
+#: Template/Admin/Licenses/index.ctp:40 Template/Admin/Posts/index.ctp:38
+#: Template/Admin/Projects/index.ctp:38 Template/Admin/Reports/index.ctp:32
+#: Template/Admin/Tags/add.ctp:3 Template/Admin/Tags/edit.ctp:3
+#: Template/Admin/Tags/index.ctp:3;16 Template/Admin/Tags/view.ctp:3;33
+#: Template/Admin/Users/index.ctp:33 Template/Element/layouts/adminform.ctp:6
+#: Template/Element/layouts/adminindex.ctp:23
+#: Template/Element/layouts/adminview.ctp:19
+#: Template/Element/layouts/defaultform.ctp:6
+#: Template/Element/layouts/defaultindex.ctp:23
+#: Template/Element/layouts/defaultview.ctp:18 Template/Tags/index.ctp:3;16
+#: Template/Tags/view.ctp:3;33
+msgid "Actions"
+msgstr "Actions"
+
+#: Template/Admin/Files/index.ctp:63 Template/Admin/Posts/index.ctp:58
+#: Template/Admin/Projects/index.ctp:58 Template/Admin/Reports/index.ctp:57
+#: Template/Admin/Users/index.ctp:82
+msgid "Full details"
+msgstr "Détails complets"
+
+#: Template/Admin/Files/index.ctp:68 Template/Admin/Files/view.ctp:48
+#: Template/Admin/Posts/index.ctp:63 Template/Admin/Posts/view.ctp:45
+#: Template/Admin/Projects/index.ctp:63 Template/Admin/Projects/view.ctp:45
+#: Template/Admin/Users/index.ctp:87 Template/Admin/Users/view.ctp:44
+msgid "Unlock"
+msgstr "Déverouiller"
+
+#: Template/Admin/Files/index.ctp:69 Template/Admin/Files/view.ctp:49
+#: Template/Admin/Posts/index.ctp:64 Template/Admin/Posts/view.ctp:46
+#: Template/Admin/Projects/index.ctp:64 Template/Admin/Projects/view.ctp:46
+#: Template/Admin/Users/index.ctp:88 Template/Admin/Users/view.ctp:46
+msgid "Lock"
+msgstr "Vérouiller"
+
+#: Template/Admin/Files/index.ctp:87 Template/Admin/Posts/index.ctp:82
+#: Template/Admin/Projects/index.ctp:82 Template/Admin/Users/index.ctp:117
+#: Template/Admin/Users/view.ctp:51
+msgid "Close"
+msgstr "Fremer"
+
+#: Template/Admin/Files/index.ctp:89 Template/Admin/Projects/index.ctp:84
+msgid "Are you sure you want to close this ?"
+msgstr "Êtes-vous sur(e) de vouloir fermer"
+
+#: Template/Admin/Files/view.ctp:27 Template/Admin/Projects/view.ctp:26
+msgid "Owner:"
+msgstr "Propriétaire :"
+
+#: Template/Admin/Files/view.ctp:28 Template/Admin/Users/view.ctp:24
+#: Template/Files/view.ctp:27 Template/Licenses/view.ctp:24
+msgid "Name:"
+msgstr "Nom :"
+
+#: Template/Admin/Files/view.ctp:29
+msgid "File name:"
+msgstr "Nom du fichier :"
+
+#: Template/Admin/Files/view.ctp:30 Template/Files/view.ctp:30
+msgid "File size:"
+msgstr "Taille du fichier :"
+
+#: Template/Admin/Files/view.ctp:31 Template/Admin/Posts/view.ctp:27
+#: Template/Admin/Projects/view.ctp:28 Template/Element/files/card.ctp:41
+#: Template/Element/posts/card.ctp:38 Template/Element/projects/card.ctp:38
+#: Template/Files/view.ctp:28 Template/Posts/view.ctp:27
+#: Template/Projects/view.ctp:26
+msgid "License:"
+msgstr "Licence :"
+
+#: Template/Admin/Files/view.ctp:32 Template/Admin/Posts/view.ctp:28
+#: Template/Admin/Projects/view.ctp:29 Template/Projects/view.ctp:28
+msgid "Created on:"
+msgstr "Créé le :"
+
+#: Template/Admin/Files/view.ctp:33 Template/Admin/Posts/view.ctp:29
+#: Template/Admin/Projects/view.ctp:30 Template/Files/view.ctp:34
+#: Template/Posts/view.ctp:31 Template/Projects/view.ctp:30
+msgid "Updated on:"
+msgstr "Modifié le :"
+
+#: Template/Admin/Files/view.ctp:34 Template/Admin/Posts/view.ctp:31
+#: Template/Admin/Projects/view.ctp:31 Template/Files/view.ctp:36
+#: Template/Posts/view.ctp:28 Template/Projects/view.ctp:27
+msgid "Language:"
+msgstr "Langue :"
+
+#: Template/Admin/Files/view.ctp:35 Template/Admin/Posts/view.ctp:32
+#: Template/Admin/Projects/view.ctp:32
+msgid "Safe:"
+msgstr "Sans danger :"
+
+#: Template/Admin/Files/view.ctp:36 Template/Admin/Posts/view.ctp:33
+#: Template/Admin/Projects/view.ctp:33 Template/Admin/Users/view.ctp:28
+msgid "Status:"
+msgstr "Etat :"
+
+#: Template/Admin/Files/view.ctp:64 Template/Admin/Posts/view.ctp:61
+#: Template/Admin/Projects/view.ctp:61
+msgid "Disable"
+msgstr "Désactiver  "
+
+#: Template/Admin/Files/view.ctp:65 Template/Admin/Posts/view.ctp:62
+#: Template/Admin/Projects/view.ctp:62
+msgid "Are you sure you want to disable # {0}?"
+msgstr "Êtes-vous sûr de vouloir désactiver # {0}?"
+
+#: Template/Admin/Files/view.ctp:85 Template/Admin/Posts/view.ctp:82
+#: Template/Admin/Projects/view.ctp:82
+msgid "Content"
+msgstr "Contenu"
+
+#: Template/Admin/Files/view.ctp:86 Template/Admin/Posts/view.ctp:83
+#: Template/Admin/Projects/view.ctp:83
+msgid "Related items"
+msgstr "Contenu lié"
+
+#: Template/Admin/Languages/add.ctp:12 Template/Admin/Languages/index.ctp:19
+msgid "New language"
+msgstr "Nouvelle langue"
+
+#: Template/Admin/Languages/add.ctp:15 Template/Admin/Languages/edit.ctp:15
+#: Template/Admin/Languages/index.ctp:24
+#: Template/Element/layout/mainmenu_admin.ctp:23
+msgid "Languages"
+msgstr "Langues"
+
+#: Template/Admin/Languages/add.ctp:22 Template/Admin/Languages/edit.ctp:29
+#: Template/Admin/Languages/index.ctp:14
+msgid "List of languages"
+msgstr "Liste des langues"
+
+#: Template/Admin/Languages/add.ctp:36 Template/Admin/Languages/edit.ctp:44
+msgid "ISO 639-2"
+msgstr "ISO 639-2"
+
+#: Template/Admin/Languages/add.ctp:37 Template/Admin/Languages/edit.ctp:45
+msgid "ISO 639-2: 3 chars. code"
+msgstr "ISO 639-2 : code de 3 caractères."
+
+#: Template/Admin/Languages/add.ctp:46 Template/Admin/Languages/edit.ctp:54
+msgid "ISO 639-1"
+msgstr "ISO 639-1"
+
+#: Template/Admin/Languages/add.ctp:47 Template/Admin/Languages/edit.ctp:55
+msgid "ISO 639-1: 2 chars. code"
+msgstr "ISO 639-1 : code de 2 caractères."
+
+#: Template/Admin/Languages/add.ctp:52 Template/Admin/Languages/edit.ctp:60
+msgid "Language, in native form"
+msgstr "Langue maternelle"
+
+#: Template/Admin/Languages/add.ctp:56
+msgid "Add"
+msgstr "Ajouter"
+
+#: Template/Admin/Languages/edit.ctp:16 Template/Admin/Licenses/edit.ctp:16
+#: Template/User/Files/edit.ctp:16 Template/User/Posts/edit.ctp:16
+#: Template/User/Projects/edit.ctp:16
+msgid "Edit {0}"
+msgstr "Edition de {0}"
+
+#: Template/Admin/Languages/edit.ctp:21 Template/Admin/Languages/index.ctp:52
+#: Template/Admin/Licenses/edit.ctp:21 Template/Admin/Licenses/index.ctp:61
+#: Template/Admin/Reports/index.ctp:58 Template/Admin/Reports/view.ctp:45
+#: Template/Admin/Tags/edit.ctp:5 Template/Admin/Tags/index.ctp:27
+#: Template/Admin/Tags/view.ctp:46 Template/Element/files/tile_userindex.ctp:16
+#: Template/Element/posts/tile_userindex.ctp:16
+#: Template/Element/projects/tile_userindex.ctp:16 Template/Tags/index.ctp:27
+#: Template/Tags/view.ctp:46 Template/User/Files/edit.ctp:21
+#: Template/User/Posts/edit.ctp:21 Template/User/Projects/edit.ctp:21
+msgid "Delete"
+msgstr "Supprimer"
+
+#: Template/Admin/Languages/edit.ctp:22 Template/Admin/Languages/index.ctp:52
+#: Template/Admin/Licenses/edit.ctp:22 Template/Admin/Licenses/index.ctp:62
+#: Template/Admin/Reports/index.ctp:58 Template/Admin/Reports/view.ctp:46
+#: Template/Admin/Tags/edit.ctp:7 Template/Admin/Tags/index.ctp:27
+#: Template/Admin/Tags/view.ctp:5;46
+#: Template/Element/files/tile_userindex.ctp:16
+#: Template/Element/posts/tile_userindex.ctp:16
+#: Template/Element/projects/tile_userindex.ctp:16 Template/Tags/index.ctp:27
+#: Template/Tags/view.ctp:5;46 Template/User/Files/edit.ctp:21
+#: Template/User/Posts/edit.ctp:21 Template/User/Projects/edit.ctp:21
+msgid "Are you sure you want to delete # {0}?"
+msgstr "Êtes-vous sûr de vouloir supprimer # {0}?"
+
+#: Template/Admin/Languages/edit.ctp:30
+msgid "Add a language"
+msgstr "Ajouter une langue"
+
+#: Template/Admin/Languages/edit.ctp:64 Template/Admin/Licenses/edit.ctp:45
+#: Template/User/Posts/edit.ctp:62 Template/User/Users/edit.ctp:50
+msgid "Save the changes"
+msgstr "Enregistrer les changements"
+
+#: Template/Admin/Languages/index.ctp:50
+#: Template/Element/files/tile_userindex.ctp:10
+#: Template/Element/posts/tile_userindex.ctp:10
+#: Template/Element/projects/tile_userindex.ctp:10
+msgid "View online"
+msgstr "Voir en ligne"
+
+#: Template/Admin/Languages/index.ctp:51 Template/Admin/Licenses/index.ctp:57
+#: Template/Admin/Tags/index.ctp:26 Template/Admin/Tags/view.ctp:44
+#: Template/Element/files/tile_userindex.ctp:13
+#: Template/Element/posts/tile_userindex.ctp:13
+#: Template/Element/projects/tile_userindex.ctp:13 Template/Tags/index.ctp:26
+#: Template/Tags/view.ctp:44
+msgid "Edit"
+msgstr "Editer"
+
+#: Template/Admin/Licenses/add.ctp:12 Template/Admin/Licenses/index.ctp:23
+msgid "New license"
+msgstr "Nouvelle licence"
+
+#: Template/Admin/Licenses/add.ctp:15 Template/Admin/Licenses/edit.ctp:15
+#: Template/Admin/Licenses/index.ctp:17
+#: Template/Element/layout/mainmenu_admin.ctp:20
+#: Template/Licenses/index.ctp:12;16 Template/Licenses/view.ctp:16
+msgid "Licenses"
+msgstr "Licences"
+
+#: Template/Admin/Licenses/add.ctp:22 Template/Admin/Licenses/edit.ctp:29
+#: Template/Admin/Licenses/index.ctp:14 Template/Licenses/index.ctp:17
+msgid "List of licenses"
+msgstr "Liste des licences"
+
+#: Template/Admin/Licenses/add.ctp:38
+msgid "Create"
+msgstr "Créer "
+
+#: Template/Admin/Licenses/edit.ctp:30
+msgid "Add a license"
+msgstr "Ajouter une licence"
+
+#: Template/Admin/Licenses/index.ctp:36
+msgid "Link"
+msgstr "Lien"
+
+#: Template/Admin/Licenses/index.ctp:37 Template/Admin/Posts/index.ctp:17
+#: Template/Admin/Posts/view.ctp:18 Template/Admin/Users/index.ctp:148
+#: Template/Element/layout/mainmenu.ctp:8
+#: Template/Element/layout/mainmenu_admin.ctp:8 Template/Posts/index.ctp:12
+#: Template/Posts/nsfw.ctp:6 Template/Posts/view.ctp:18
+#: Template/User/Posts/add.ctp:15 Template/User/Posts/edit.ctp:15
+#: Template/User/Posts/index.ctp:15
+msgid "Articles"
+msgstr "Articles"
+
+#: Template/Admin/Licenses/index.ctp:38 Template/Admin/Projects/index.ctp:17
+#: Template/Admin/Projects/view.ctp:18 Template/Admin/Users/index.ctp:150
+#: Template/Element/layout/mainmenu.ctp:11
+#: Template/Element/layout/mainmenu_admin.ctp:11 Template/Projects/index.ctp:12
+#: Template/Projects/nsfw.ctp:6 Template/Projects/view.ctp:18
+#: Template/User/Projects/add.ctp:15 Template/User/Projects/edit.ctp:15
+#: Template/User/Projects/index.ctp:15
+msgid "Projects"
+msgstr "Projets"
+
+#: Template/Admin/Licenses/index.ctp:74
+msgid "You have no licenses yet. Please add one."
+msgstr ""
+"Vous n'avez aucune license pour le moment. Vous devriez en ajouter une."
+
+#: Template/Admin/Posts/index.ctp:14 Template/Admin/Posts/view.ctp:72
+msgid "List of articles"
+msgstr "Liste des articles"
+
+#: Template/Admin/Posts/index.ctp:28 Template/Posts/index.ctp:20
+#: Template/User/Posts/index.ctp:20
+msgid "Title"
+msgstr "Titre"
+
+#: Template/Admin/Posts/index.ctp:29 Template/Admin/Reports/index.ctp:28
+#: View/Helper/UsersAdminHelper.php:24
+msgid "Author"
+msgstr "Auteur"
+
+#: Template/Admin/Posts/index.ctp:32 Template/Admin/Projects/index.ctp:33
+msgid "Mod. date"
+msgstr "Date de màj"
+
+#: Template/Admin/Posts/view.ctp:26 Template/Admin/Reports/view.ctp:33
+#: Template/Element/files/card.ctp:31 Template/Element/posts/card.ctp:28
+#: Template/Posts/view.ctp:26
+msgid "Author:"
+msgstr "Auteur :"
+
+#: Template/Admin/Posts/view.ctp:30
+msgid "Published on:"
+msgstr "Publié le :"
+
+#: Template/Admin/Projects/index.ctp:14 Template/Admin/Projects/view.ctp:72
+msgid "List of projects"
+msgstr "Liste des projets"
+
+#: Template/Admin/Projects/view.ctp:27
+msgid "Url:"
+msgstr "Url :"
+
+#: Template/Admin/Reports/index.ctp:14 Template/Admin/Reports/view.ctp:56
+msgid "List of reports"
+msgstr "Liste des rapports"
+
+#: Template/Admin/Reports/index.ctp:17 Template/Admin/Reports/view.ctp:15
+#: Template/Element/layout/mainmenu_admin.ctp:29
+msgid "Reports"
+msgstr "Rapports"
+
+#: Template/Admin/Reports/index.ctp:29
+#: Template/Element/reports/add_modal.ctp:24
+#: Template/Element/users/loginform.ctp:3
+#: Template/Element/users/registerform.ctp:4 Template/User/Users/edit.ctp:41
+msgid "E-mail"
+msgstr "E-mail"
+
+#: Template/Admin/Reports/index.ctp:30
+msgid "Source"
+msgstr "Source"
+
+#: Template/Admin/Reports/view.ctp:31
+msgid "Source:"
+msgstr "Source :"
+
+#: Template/Admin/Reports/view.ctp:32 Template/Files/view.ctp:32
+msgid "Added on:"
+msgstr "Ajouté le :"
+
+#: Template/Admin/Reports/view.ctp:34
+msgid "E-mail:"
+msgstr "E-mail :"
+
+#: Template/Admin/Reports/view.ctp:66 Template/Element/reports/add_modal.ctp:36
+msgid "Reason"
+msgstr "Raison"
+
+#: Template/Admin/Reports/view.ctp:70
+msgid "Session"
+msgstr "Session"
+
+#: Template/Admin/Tags/add.ctp:4 Template/Admin/Tags/edit.ctp:10
+#: Template/Admin/Tags/view.ctp:6 Template/Tags/view.ctp:6
+msgid "List Tags"
+msgstr ""
+
+#: Template/Admin/Tags/add.ctp:5 Template/Admin/Tags/edit.ctp:11
+#: Template/Admin/Tags/index.ctp:5 Template/Admin/Tags/view.ctp:8
+#: Template/Tags/index.ctp:5 Template/Tags/view.ctp:8
+msgid "List Itemtags"
+msgstr ""
+
+#: Template/Admin/Tags/add.ctp:6 Template/Admin/Tags/edit.ctp:12
+#: Template/Admin/Tags/index.ctp:6 Template/Admin/Tags/view.ctp:9
+#: Template/Tags/index.ctp:6 Template/Tags/view.ctp:9
+msgid "New Itemtag"
+msgstr ""
+
+#: Template/Admin/Tags/add.ctp:12
+msgid "Add Tag"
+msgstr "Ajouter un tag"
+
+#: Template/Admin/Tags/add.ctp:17 Template/Admin/Tags/edit.ctp:23
+msgid "Submit"
+msgstr ""
+
+#: Template/Admin/Tags/edit.ctp:18 Template/Admin/Tags/view.ctp:4
+#: Template/Tags/view.ctp:4
+msgid "Edit Tag"
+msgstr ""
+
+#: Template/Admin/Tags/index.ctp:4 Template/Admin/Tags/view.ctp:7
+#: Template/Tags/index.ctp:4 Template/Tags/view.ctp:7
+msgid "New Tag"
+msgstr ""
+
+#: Template/Admin/Tags/index.ctp:10
+#: Template/Element/files/tile_userindex.ctp:48
+#: Template/Element/layout/mainmenu_admin.ctp:26
+#: Template/Element/posts/tile_userindex.ctp:56
+#: Template/Element/projects/tile_userindex.ctp:48 Template/Tags/index.ctp:10
+msgid "Tags"
+msgstr ""
+
+#: Template/Admin/Tags/index.ctp:25 Template/Admin/Tags/view.ctp:42
+#: Template/Tags/index.ctp:25 Template/Tags/view.ctp:42
+msgid "View"
+msgstr "Voir"
+
+#: Template/Admin/Tags/index.ctp:35 Template/Tags/index.ctp:35
+msgid "previous"
+msgstr ""
+
+#: Template/Admin/Tags/index.ctp:37 Template/Tags/index.ctp:37
+msgid "next"
+msgstr ""
+
+#: Template/Admin/Tags/view.ctp:5 Template/Tags/view.ctp:5
+msgid "Delete Tag"
+msgstr ""
+
+#: Template/Admin/Tags/view.ctp:20;29 Template/Tags/view.ctp:20;29
+msgid "Id"
+msgstr "Id"
+
+#: Template/Admin/Tags/view.ctp:25 Template/Tags/view.ctp:25
+msgid "Related Itemtags"
+msgstr ""
+
+#: Template/Admin/Tags/view.ctp:30 Template/Tags/view.ctp:30
+msgid "Model"
+msgstr "Modèle"
+
+#: Template/Admin/Tags/view.ctp:31 Template/Tags/view.ctp:31
+msgid "Fkid"
+msgstr "Fkid"
+
+#: Template/Admin/Tags/view.ctp:32 Template/Tags/view.ctp:32
+msgid "Tag Id"
+msgstr ""
+
+#: Template/Admin/Users/index.ctp:14 Template/Admin/Users/view.ctp:68
+msgid "List of users"
+msgstr "Liste des utilisateurs"
+
+#: Template/Admin/Users/index.ctp:17 Template/Admin/Users/view.ctp:15
+#: Template/Element/layout/mainmenu_admin.ctp:17
+msgid "Users"
+msgstr "Utilisateurs :"
+
+#: Template/Admin/Users/index.ctp:28
+msgid "Role"
+msgstr "Rôles"
+
+#: Template/Admin/Users/index.ctp:29
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: Template/Admin/Users/index.ctp:32 Template/Users/index.ctp:22
+msgid "Join date"
+msgstr "Date d'inscription"
+
+#: Template/Admin/Users/index.ctp:74
+msgid "Quick details"
+msgstr "Détails rapides"
+
+#: Template/Admin/Users/index.ctp:89
+msgid "Activate"
+msgstr "Activer"
+
+#: Template/Admin/Users/index.ctp:146
+msgid "Last update"
+msgstr "Dernière mise à jour"
+
+#: Template/Admin/Users/index.ctp:154
+msgid "Bio"
+msgstr "Bio"
+
+#: Template/Admin/Users/index.ctp:193;218;250;280
+#: Template/Element/reports/add_modal.ctp:79
+msgid "\"Request failed: \" + textStatus"
+msgstr "\"Echec de la requête : \" + textStatus"
+
+#: Template/Admin/Users/index.ctp:202
+msgid "An error occured when you tried to close this account."
+msgstr "Une erreur est survenue lors de la fermeture du compte."
+
+#: Template/Admin/Users/index.ctp:232
+msgid "Unknown user status"
+msgstr "Statut d'utilisateur inconnu."
+
+#: Template/Admin/Users/view.ctp:23
+msgid "Username:"
+msgstr "Nom d'utilisateur :"
+
+#: Template/Admin/Users/view.ctp:25
+msgid "Website:"
+msgstr "Site internet :"
+
+#: Template/Admin/Users/view.ctp:26
+msgid "Member since:"
+msgstr "Membre depuis :"
+
+#: Template/Admin/Users/view.ctp:27
+msgid "Last update:"
+msgstr "Dernière mise à jour :"
+
+#: Template/Admin/Users/view.ctp:48
+msgid "Lock/unlock"
+msgstr "Verrouiller / déverrouiller"
+
+#: Template/Admin/Users/view.ctp:51
+msgid "Are you sure you want to close this account ?"
+msgstr "Êtes-vous sûr(e) de vouloir fermer ce compte?"
+
+#: Template/Admin/Users/view.ctp:56
+msgid "This account has been closed, so no further actions are available."
+msgstr "Ce compte a été fermé. Aucune action n'est disponible."
+
+#: Template/Admin/Users/view.ctp:85 Template/Licenses/view.ctp:46
+#: Template/Users/view.ctp:50
+msgid "Articles {0}"
+msgstr "Articles {0}"
+
+#: Template/Admin/Users/view.ctp:86 Template/Licenses/view.ctp:47
+#: Template/Users/view.ctp:51
+msgid "Projects {0}"
+msgstr "Projets {0}"
+
+#: Template/Admin/Users/view.ctp:87 Template/Licenses/view.ctp:48
+#: Template/Users/view.ctp:52
+msgid "Files {0}"
+msgstr "Fichiers {0}"
+
+#: Template/Element/acts/tile_nsfw.ctp:22
+msgid "This element may not be safe, therefore it is hidden."
+msgstr "Cet élément est NSFW. Il est donc caché."
+
+#: Template/Element/files/card.ctp:14
+#: Template/Element/files/tile_userindex.ctp:27
+#: Template/Element/posts/card.ctp:11
+#: Template/Element/posts/tile_userindex.ctp:27
+#: Template/Element/projects/card.ctp:11
+#: Template/Element/projects/tile_userindex.ctp:27
+msgid "NSFW"
+msgstr "NSFW"
+
+#: Template/Element/files/card.ctp:51 Template/Element/posts/card.ctp:48
+#: Template/Element/projects/card.ctp:48
+msgid "Published on: {0}"
+msgstr "Publié le : {0}"
+
+#: Template/Element/files/card.ctp:57 Template/Element/posts/card.ctp:54
+#: Template/Element/projects/card.ctp:54
+msgid "Updated on: {0}"
+msgstr "Modifié le : {0}"
+
+#: Template/Element/files/card_content_audio.ctp:3
+#: Template/Element/files/view_content_audio.ctp:3
+msgid "Your browser does not support the audio element."
+msgstr "Votre navigateur ne supporte pas la balise audio."
+
+#: Template/Element/files/card_content_video.ctp:3
+#: Template/Element/files/view_content_video.ctp:3
+msgid "Your browser does not support the video element."
+msgstr "Votre navigateur ne supporte pas la balise vidéo."
+
+#: Template/Element/files/tile_userindex.ctp:25
+#: Template/Element/posts/tile_userindex.ctp:25
+#: Template/Element/projects/tile_userindex.ctp:25
+msgid "Safe"
+msgstr "SFW"
+
+#: Template/Element/files/tile_userindex.ctp:31
+#: Template/Element/posts/tile_userindex.ctp:35
+#: Template/Element/projects/tile_userindex.ctp:31
+#: View/Helper/ItemsAdminHelper.php:33 View/Helper/UsersAdminHelper.php:69
+msgid "Locked"
+msgstr "Vérrouillé"
+
+#: Template/Element/files/tile_userindex.ctp:44
+#: Template/Element/posts/tile_userindex.ctp:52
+#: Template/Element/projects/tile_userindex.ctp:44
+msgid "Updated on"
+msgstr "Modifié le"
+
+#: Template/Element/layout/dev_block.ctp:3
+msgid "This feature is under development."
+msgstr "Cette fonctionnalité est en cours de développement."
+
+#: Template/Element/layout/dev_inline.ctp:2
+msgid "Under development."
+msgstr "En développement."
+
+#: Template/Element/layout/empty.ctp:3
+msgid "Sorry, there is nothing to display here."
+msgstr "Désolé, il n’y à rien à afficher."
+
+#: Template/Element/layout/empty.ctp:8
+msgid "Alternatively, you can {0} or {1} and start adding your own content!"
+msgstr ""
+"Vous pouvez aussi {0} ou {1} et commencer à ajouter votre propre contenu !"
+
+#: Template/Element/layout/empty.ctp:10
+msgid "Alternatively, you can start adding content!"
+msgstr "Vous pouvez aussi ajouter votre propre contenu !"
+
+#: Template/Element/layout/empty.ctp:8
+msgctxt "You can [register] or login"
+msgid "register"
+msgstr "créer un compte"
+
+#: Template/Element/layout/empty.ctp:8
+msgctxt "You can register or [login]"
+msgid "login"
+msgstr "vous identifier"
+
+#: Template/Element/layout/empty_admin.ctp:3
+msgid "There is no element to display here."
+msgstr "Il n'y a rien à afficher ici."
+
+#: Template/Element/layout/footer.ctp:3
+msgid "Logo"
+msgstr "Logo"
+
+#: Template/Element/layout/footer.ctp:7 Template/Licenses/index.ctp:15
+#: Template/Licenses/view.ctp:15 Template/Pages/about.ctp:12;14
+msgid "About"
+msgstr "A propos"
+
+#: Template/Element/layout/footer.ctp:10
+msgid "Licenses used"
+msgstr "Licences utilisées"
+
+#: Template/Element/layout/footer.ctp:14
+msgid "CV"
+msgstr "CV"
+
+#: Template/Element/layout/footer.ctp:3
+msgctxt "[site name] - logo"
+msgid "{0} - logo"
+msgstr "{0} - logo"
+
+#: Template/Element/layout/mainmenu.ctp:17 Template/Users/index.ctp:12;15
+#: Template/Users/view.ctp:15
+msgid "Authors"
+msgstr "Auteurs"
+
+#: Template/Element/layout/mainmenu.ctp:25
+msgid "Hide NSFW"
+msgstr "Cacher NSFW"
+
+#: Template/Element/layout/mainmenu.ctp:25
+msgid "Show NSFW"
+msgstr "Montrer NSFW"
+
+#: Template/Element/layout/mainmenu.ctp:28
+msgid "Report this page"
+msgstr "Rapporter cette page"
+
+#: Template/Element/layout/mainmenu_admin.ctp:5
+msgid "Dashboard"
+msgstr "Panneau de contrôle"
+
+#: Template/Element/layout/mainmenu_admin.ctp:32
+msgid "Maintenance"
+msgstr "Maintenance"
+
+#: Template/Element/layout/mainmenu_admin.ctp:35
+msgid "Rebuild table"
+msgstr "Recontruire la table"
+
+#: Template/Element/layout/mainmenu_admin.ctp:37
+msgid "Clear the caches"
+msgstr "Vider les caches"
+
+#: Template/Element/layout/mainmenu_admin.ctp:48
+msgid "View site online"
+msgstr "Voir le site en ligne"
+
+#: Template/Element/layout/mainmenu_admin.ctp:51
+#: Template/Element/users/usermenu.ctp:8
+msgid "Logout"
+msgstr "Déconnexion "
+
+#: Template/Element/layout/pageloader.ctp:3
+msgid "Page is loading..."
+msgstr "Chargement..."
+
+#: Template/Element/layout/paginationlinks.ctp:4
+msgid "Previous"
+msgstr "Précédente"
+
+#: Template/Element/layout/paginationlinks.ctp:6
+msgid "Next"
+msgstr "Suivante"
+
+#: Template/Element/layouts/adminform.ctp:6
+#: Template/Element/layouts/adminindex.ctp:24
+#: Template/Element/layouts/adminview.ctp:18
+#: Template/Element/layouts/defaultform.ctp:6
+#: Template/Element/layouts/defaultindex.ctp:24
+#: Template/Element/layouts/defaultview.ctp:20
+msgid "Related links"
+msgstr "Liens connexes"
+
+#: Template/Element/layouts/adminindex.ctp:19
+#: Template/Element/layouts/defaultindex.ctp:19
+msgid "Order by:"
+msgstr "Trier par :"
+
+#: Template/Element/layouts/adminindex.ctp:20
+#: Template/Element/layouts/defaultindex.ctp:20
+msgid "Filters:"
+msgstr "Filtres :"
+
+#: Template/Element/layouts/adminview.ctp:20
+#: Template/Element/layouts/defaultview.ctp:19
+msgid "Informations"
+msgstr "Informations"
+
+#: Template/Element/licenses/card.ctp:14
+#: Template/Element/users/card.ctp:20;22;24
+msgid "{0} article"
+msgid_plural "{0} articles"
+msgstr[0] "{0} article"
+msgstr[1] "{0} articles"
+
+#: Template/Element/licenses/card.ctp:16
+msgid "{0} project"
+msgid_plural "{0} projects"
+msgstr[0] "{0} projet"
+msgstr[1] "{0} projets"
+
+#: Template/Element/licenses/card.ctp:18
+msgid "{0} file"
+msgid_plural "{0} files"
+msgstr[0] "{0} fichier"
+msgstr[1] "{0} fichiers"
+
+#: Template/Element/posts/tile_userindex.ctp:31 Template/User/Posts/add.ctp:50
+#: Template/User/Posts/edit.ctp:56 View/Helper/ItemsAdminHelper.php:29
+msgid "Published"
+msgstr "Publié"
+
+#: Template/Element/posts/tile_userindex.ctp:33
+msgid "Draft"
+msgstr "Brouillon "
+
+#: Template/Element/posts/tile_userindex.ctp:47 Template/Posts/index.ctp:21
+#: Template/User/Posts/index.ctp:21
+msgid "Publication date"
+msgstr "Date de publication"
+
+#: Template/Element/projects/card.ctp:28
+msgid "Manager:"
+msgstr "Manager :"
+
+#: Template/Element/projects/tile_userindex.ctp:53
+msgid "Team"
+msgstr "Équipe"
+
+#: Template/Element/reports/add_modal.ctp:6
+msgid "Report something"
+msgstr "Rapporter quelque chose"
+
+#: Template/Element/reports/add_modal.ctp:13
+msgid ""
+"You have found something wrong or want to react about something ? Your "
+"comments are welcome."
+msgstr ""
+"Vous avez trouvé quelque chose qui ne va pas ou vous souhaitez réagir à "
+"propos du contenu ? Vos commentaires sont les bienvenus."
+
+#: Template/Element/reports/add_modal.ctp:18
+msgid "Your name"
+msgstr "Votre nom"
+
+#: Template/Element/reports/add_modal.ctp:23
+msgid "Your e-mail"
+msgstr "Votre e-mail"
+
+#: Template/Element/reports/add_modal.ctp:34
+msgid "Reason for your report"
+msgstr "Sujet de votre rapport"
+
+#: Template/Element/reports/add_modal.ctp:44
+msgid "Send the report"
+msgstr "Envoyer le rapport"
+
+#: Template/Element/reports/add_modal.ctp:48
+#: Template/Element/users/loginmodal.ctp:18
+msgid "Cancel"
+msgstr "﻿Annuler"
+
+#: Template/Element/users/card.ctp:13
+msgid "Since {0}"
+msgstr "Depuis {0}"
+
+#: Template/Element/users/loginform.ctp:4
+msgid "Password"
+msgstr "Mot de passe"
+
+#: Template/Element/users/loginform.ctp:5
+#: Template/Element/users/loginmodal.ctp:6 Template/Users/login.ctp:11;14
+msgid "Login"
+msgstr "Identification"
+
+#: Template/Element/users/loginform.ctp:10
+msgid "or"
+msgstr "ou"
+
+#: Template/Element/users/loginform.ctp:12
+#: Template/Element/users/registerform.ctp:10 Template/Users/register.ctp:11;14
+msgid "Register"
+msgstr "S’inscrire"
+
+#: Template/Element/users/loginform.ctp:15
+msgid "Registrations are closed for now... Come back later."
+msgstr "Les inscriptions sont fermées pour le moment... Revenez plus tard."
+
+#: Template/Element/users/registerform.ctp:4
+msgid "Your e-mail won't be given/sold to third-parties"
+msgstr "Votre adresse e-mail ne sera pas donnée ou vendue à des tiers"
+
+#: Template/Element/users/registerform.ctp:5 Template/Users/index.ctp:21
+msgid "User name"
+msgstr "Nom d'utilisateur"
+
+#: Template/Element/users/registerform.ctp:5
+msgid "User name should be small caps, alphanumeric and underscores only"
+msgstr ""
+"Le nom d'utilisateur doit être en miniuscules, avec des caractères "
+"alphanumériques et souligné (_) seulement."
+
+#: Template/Element/users/registerform.ctp:6 Template/Licenses/index.ctp:22
+#: Template/User/Users/edit.ctp:42 Template/Users/index.ctp:20
+msgid "Real name"
+msgstr "Nom réel"
+
+#: Template/Element/users/registerform.ctp:6
+msgid "Your real name, if you don't mind"
+msgstr "Votre vrai nom, si cela ne vous dérange pas"
+
+#: Template/Element/users/registerform.ctp:7
+msgid "A strong password is a good start."
+msgstr "Un mot de passe fort est un bon début."
+
+#: Template/Element/users/registerform.ctp:8
+msgid "Password confirmation"
+msgstr "Confirmez le mot de passe"
+
+#: Template/Element/users/registerform.ctp:8
+msgid "Verify you didn't made a typo"
+msgstr "Vérifiez que vous ne l'avez pas fait une faute de frappe"
+
+#: Template/Element/users/registerform.ctp:9 Template/User/Users/edit.ctp:44
+msgid "About you"
+msgstr "A propos de vous"
+
+#: Template/Element/users/registerform.ctp:9
+msgid "Tell us why you want to come here"
+msgstr "Dites-nous pourquoi vous voulez venir ici"
+
+#: Template/Element/users/usermenu.ctp:5
+msgid "Update profile"
+msgstr "Mettre le profil à jour"
+
+#: Template/Element/users/usermenu.ctp:11
+msgid "Articles:"
+msgstr "Articles:"
+
+#: Template/Element/users/usermenu.ctp:13;18;23
+msgid "Manage"
+msgstr "Gérer"
+
+#: Template/Element/users/usermenu.ctp:14
+msgid "Write something !"
+msgstr "Ecrire quelque chose !"
+
+#: Template/Element/users/usermenu.ctp:16
+msgid "Projects:"
+msgstr "Projets :"
+
+#: Template/Element/users/usermenu.ctp:19
+msgid "Add a project !"
+msgstr "Ajouter un projet !"
+
+#: Template/Element/users/usermenu.ctp:21
+msgid "Files:"
+msgstr "Fichiers :"
+
+#: Template/Element/users/usermenu.ctp:24
+msgid "Upload some files !"
+msgstr "Ajoutez des fichiers !"
+
+#: Template/Error/error400.ctp:4 Template/Error/error500.ctp:5
+msgid "Error: {0}"
+msgstr "Erreur : {0}"
+
+#: Template/Error/error400.ctp:42
+msgid "Error 404:"
+msgstr "Erreur 404 :"
+
+#: Template/Error/error400.ctp:42
+msgid "The requested address %s was not found on this server."
+msgstr "L'adresse %s n'a pas été trouvée sur ce serveur."
+
+#: Template/Error/error500.ctp:39
+msgid "Error:"
+msgstr "Erreur :"
+
+#: Template/Files/index.ctp:12
+msgid "Files list"
+msgstr "Liste des fichiers"
+
+#: Template/Files/nsfw.ctp:3 Template/Posts/nsfw.ctp:3
+#: Template/Projects/nsfw.ctp:3
+msgid "Nope."
+msgstr "Non."
+
+#: Template/Files/nsfw.ctp:9 Template/Posts/nsfw.ctp:9
+#: Template/Projects/nsfw.ctp:9
+msgid "This content is not suitable for everyone."
+msgstr "Ce contenu n'est pas adapté pour tout le monde."
+
+#: Template/Files/nsfw.ctp:11 Template/Posts/nsfw.ctp:11
+#: Template/Projects/nsfw.ctp:11
+msgid ""
+"If you really want to see it, please click on the \"Show NSFW\" button in "
+"the menu."
+msgstr ""
+"Si vous voulez vraiment le voir, cliquez sur le bouton \"Afficher NSFW\" "
+"dans le menu."
+
+#: Template/Files/view.ctp:29
+msgid "Creator:"
+msgstr "Créateur:"
+
+#: Template/Files/view.ctp:31
+msgid "Mime type:"
+msgstr "Type Mime"
+
+#: Template/Files/view.ctp:37 Template/Posts/view.ctp:34
+#: Template/Projects/view.ctp:32
+msgid "Safe content:"
+msgstr "Contenu sans danger :"
+
+#: Template/Files/view.ctp:37 Template/Posts/view.ctp:36
+#: Template/Projects/view.ctp:32 View/Helper/ItemsAdminHelper.php:61
+msgid "Yes"
+msgstr "Oui"
+
+#: Template/Files/view.ctp:37 Template/Posts/view.ctp:36
+#: Template/Projects/view.ctp:32 View/Helper/ItemsAdminHelper.php:66
+msgid "No"
+msgstr "Non"
+
+#: Template/Files/view.ctp:38 Template/Projects/view.ctp:33
+msgid "Tags:"
+msgstr ""
+
+#: Template/Files/view.ctp:46
+msgid "Download"
+msgstr "Telecharger"
+
+#: Template/Layout/admin.ctp:46 Template/Layout/default.ctp:46
+#: Template/Layout/user.ctp:46
+msgctxt "Navbar: [logo] [text]"
+msgid "{0} {1}"
+msgstr "{0} {1}"
+
+#: Template/Layout/default.ctp:82
+msgid "Login/Register"
+msgstr "Identification / Inscription"
+
+#: Template/Licenses/index.ctp:23
+msgid "Number of articles"
+msgstr "Nombre d'articles"
+
+#: Template/Licenses/index.ctp:24
+msgid "Number of projects"
+msgstr "Nombre de projets"
+
+#: Template/Licenses/index.ctp:25
+msgid "Number of files"
+msgstr "Nombre de fichiers"
+
+#: Template/Licenses/view.ctp:12
+msgid "License: {0}"
+msgstr "Licence : {0}"
+
+#: Template/Licenses/view.ctp:17
+msgid "Content with the {0} license"
+msgstr "Contenu avec la license {0}"
+
+#: Template/Licenses/view.ctp:32
+msgid "More info online"
+msgstr "Plus d'informations en ligne"
+
+#: Template/Licenses/view.ctp:41
+msgid "Some entries may be hidden, depending on your NSFW settings."
+msgstr ""
+"Certaines entrées peuvent être masqués, en fonction de vos paramètres NSFW."
+
+#: Template/Pages/about.ctp:20
+msgid "Elabs on Github"
+msgstr "Elabs sur Github"
+
+#: Template/Posts/view.ctp:29
+msgid "Publication date:"
+msgstr "Date de publication :"
+
+#: Template/Projects/view.ctp:36
+msgid "Members"
+msgstr "Membres"
+
+#: Template/Projects/view.ctp:53 Template/User/Users/edit.ctp:43
+#: Template/Users/view.ctp:31
+msgid "Website"
+msgstr "Site internet "
+
+#: Template/User/Files/add.ctp:12 Template/User/Files/index.ctp:55
+msgid "Add a file"
+msgstr "Ajouter un fichier"
+
+#: Template/User/Files/add.ctp:22 Template/User/Files/edit.ctp:28
+#: Template/User/Files/index.ctp:12
+msgid "Your files"
+msgstr "Vos fichiers"
+
+#: Template/User/Files/add.ctp:23 Template/User/Files/edit.ctp:30
+#: Template/User/Posts/add.ctp:23 Template/User/Posts/edit.ctp:29
+#: Template/User/Projects/add.ctp:23 Template/User/Projects/edit.ctp:30
+msgid "List available licenses"
+msgstr "Liste des licences disponibles"
+
+#: Template/User/Files/add.ctp:31 Template/User/Files/edit.ctp:37
+msgid "Description"
+msgstr "Description"
+
+#: Template/User/Files/add.ctp:44 Template/User/Files/edit.ctp:50
+#: Template/User/Posts/add.ctp:47 Template/User/Posts/edit.ctp:53
+#: Template/User/Projects/add.ctp:48 Template/User/Projects/edit.ctp:55
+msgid "This is SFW"
+msgstr "Cesi est sans danger."
+
+#: Template/User/Files/add.ctp:47
+msgid "Add the file"
+msgstr "Ajouter le fichier"
+
+#: Template/User/Files/edit.ctp:29
+msgid "New file"
+msgstr "Nouveau fichier"
+
+#: Template/User/Files/edit.ctp:53 Template/User/Posts/edit.ctp:59
+#: Template/User/Projects/edit.ctp:58
+msgid "Minor update"
+msgstr "Mise à jour mineure"
+
+#: Template/User/Files/edit.ctp:56
+msgid "Update"
+msgstr "Mettre à jour  "
+
+#: Template/User/Files/index.ctp:22
+msgid "File size"
+msgstr "Taille de fichier"
+
+#: Template/User/Files/index.ctp:23
+msgid "Addition date"
+msgstr "Date d'ajout"
+
+#: Template/User/Files/index.ctp:38;47 Template/User/Projects/index.ctp:36;45
+msgid "All"
+msgstr "Tout"
+
+#: Template/User/Files/index.ctp:40 Template/User/Posts/index.ctp:39
+#: Template/User/Projects/index.ctp:38
+msgid "Safe only"
+msgstr "Seulement SFW"
+
+#: Template/User/Files/index.ctp:42 Template/User/Posts/index.ctp:41
+#: Template/User/Projects/index.ctp:40
+msgid "Unsafe only"
+msgstr "NSFW seulement"
+
+#: Template/User/Files/index.ctp:49 Template/User/Posts/index.ctp:52
+#: Template/User/Projects/index.ctp:47
+msgid "Locked only"
+msgstr "Verrouillés seulement"
+
+#: Template/User/Posts/add.ctp:12 Template/User/Posts/index.ctp:58
+msgid "New article"
+msgstr "Nouvel article"
+
+#: Template/User/Posts/add.ctp:22 Template/User/Posts/edit.ctp:28
+#: Template/User/Posts/index.ctp:12
+msgid "Your articles"
+msgstr "Vos articles"
+
+#: Template/User/Posts/add.ctp:32 Template/User/Posts/edit.ctp:38
+msgid "Introduction"
+msgstr "Introduction"
+
+#: Template/User/Posts/add.ctp:34 Template/User/Posts/edit.ctp:40
+msgid "Article contents"
+msgstr "Contenu de l'article"
+
+#: Template/User/Posts/add.ctp:53
+msgid "Save the article"
+msgstr "Enregistrer l'article"
+
+#: Template/User/Posts/index.ctp:23 Template/User/Projects/index.ctp:22
+msgid "Update date"
+msgstr "Date de mise à jour"
+
+#: Template/User/Posts/index.ctp:37;46
+msgid "Show all"
+msgstr "Tout montrer"
+
+#: Template/User/Posts/index.ctp:48
+msgid "Pub. only"
+msgstr "Publiés seulement"
+
+#: Template/User/Posts/index.ctp:50
+msgid "Drafts only"
+msgstr "Brouillons seulement"
+
+#: Template/User/Projects/add.ctp:12 Template/User/Projects/edit.ctp:29
+#: Template/User/Projects/index.ctp:53
+msgid "New project"
+msgstr "Nouveau projet"
+
+#: Template/User/Projects/add.ctp:22 Template/User/Projects/edit.ctp:28
+#: Template/User/Projects/index.ctp:12
+msgid "Your projects"
+msgstr "Vos projets"
+
+#: Template/User/Projects/add.ctp:32 Template/User/Projects/edit.ctp:39
+msgid "Short description"
+msgstr "Description courte"
+
+#: Template/User/Projects/add.ctp:33 Template/User/Projects/edit.ctp:41
+msgid "Full description"
+msgstr "Description complète"
+
+#: Template/User/Projects/add.ctp:35 Template/User/Projects/edit.ctp:43
+msgid "Main URL"
+msgstr "URL principale"
+
+#: Template/User/Projects/add.ctp:51
+msgid "Save this project"
+msgstr "Enregistrer ce projet"
+
+#: Template/User/Projects/edit.ctp:61
+msgid "Update the project"
+msgstr "Mettre à jour le projet"
+
+#: Template/User/Projects/index.ctp:20
+msgid "Project name"
+msgstr "Nom du projet"
+
+#: Template/User/Users/edit.ctp:12
+msgid "Update your profile"
+msgstr "Mettre à jour le profil"
+
+#: Template/User/Users/edit.ctp:19
+msgid "General informations"
+msgstr "Informations générales"
+
+#: Template/User/Users/edit.ctp:20
+msgid "Change password"
+msgstr "Modifier le mot de passe "
+
+#: Template/User/Users/edit.ctp:21
+msgid "Close account"
+msgstr "Fermer le compte"
+
+#: Template/User/Users/edit.ctp:27
+msgid "View your profile online"
+msgstr "Voir le profil en ligne"
+
+#: Template/User/Users/edit.ctp:45
+msgid "Show NSFW content by default"
+msgstr "Montrer le contenu NSFW oar défaut"
+
+#: Template/User/Users/edit.ctp:70;95
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#: Template/User/Users/edit.ctp:71
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: Template/User/Users/edit.ctp:72
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#: Template/User/Users/edit.ctp:75
+msgid "Update password"
+msgstr "Mise à jour de mot de passe"
+
+#: Template/User/Users/edit.ctp:98
+msgid "Close your account"
+msgstr "Fermer votre compte"
+
+#: View/Helper/AppHtmlHelper.php:93
+msgid " and "
+msgstr " et "
+
+#: View/Helper/AppHtmlHelper.php:119
+msgid "Report this"
+msgstr "Rapporter ceci"
+
+#: View/Helper/AppHtmlHelper.php:63
+msgctxt "[icon] [text]"
+msgid "{0}&nbsp;{1}"
+msgstr "{0}&nbsp;{1}"
+
+#: View/Helper/ItemsAdminHelper.php:25 View/Helper/UsersAdminHelper.php:61
+msgid "Waiting"
+msgstr "En attente"
+
+#: View/Helper/ItemsAdminHelper.php:37
+msgid "Removed"
+msgstr "Supprimé"
+
+#: View/Helper/UsersAdminHelper.php:28
+msgid "Admin"
+msgstr "Admin"
+
+#: View/Helper/UsersAdminHelper.php:65
+msgid "Approved"
+msgstr "Approuvé"
+
+#: View/Helper/UsersAdminHelper.php:73
+msgid "Closed"
+msgstr "Fermé"
+
+#~ msgid "Web site"
+#~ msgstr "Site web"
+
+#~ msgid "Save changes"
+#~ msgstr "Enregistrer"
+
+#~ msgid "register"
+#~ msgstr "vous enregistrer"
+
+#~ msgid "login"
+#~ msgstr "vous identifier"
+
+#~ msgid "Number of posts"
+#~ msgstr "Nombre de posts"
+
+#~ msgid "Created on"
+#~ msgstr "Créé le"
+
+#~ msgid "Modified on"
+#~ msgstr "Modifié le"
+
+#~ msgid "List files"
+#~ msgstr "Liste des fichiers"
+
+#~ msgid "List languages"
+#~ msgstr "Liste des langues"
+
+#~ msgid "List licenses"
+#~ msgstr "Liste des licences"
+
+#~ msgid "An error occured"
+#~ msgstr "Une erreur est survenue"
+
+#~ msgid ""
+#~ "Alternatively, you can {0} or {1} and start adding your own content !"
+#~ msgstr ""
+#~ "Vous pouvez {0} ou {1} et commencer à ajouter votre propre contenu !"
+
+#~ msgid "Added on"
+#~ msgstr "Ajouté le"
+
+#~ msgid ""
+#~ " You have found something wrong or want to react about something ? Your "
+#~ "comments are welcome."
+#~ msgstr ""
+#~ "Vous avez trouvé quelque chose qui ne va pas ou vous souhaitez réagir à "
+#~ "propos du contenu ? Vos commentaires sont les bienvenus."
