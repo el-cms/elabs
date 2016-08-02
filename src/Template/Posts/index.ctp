@@ -8,11 +8,28 @@
  *   defaultindex.ctp
  */
 
-// Page title
-$this->assign('title', __d('elabs', 'Articles'));
-
-// Breadcrumbs
-$this->Html->addCrumb($this->fetch('title'));
+// Title and breadcrumbs
+switch ($filter):
+    case 'language':
+        $this->assign('title', __d('elabs', 'Articles in "{0}"', $this->Html->langLabel($filterData->name, $filterData->iso639_1, ['label' => false])));
+        $this->Html->addCrumb(__d('elabs', 'Languages'), ['controller' => 'Languages', 'action' => 'index']);
+        $this->Html->addCrumb($filterData->name, ['controller' => 'Languages', 'action' => 'view', $filterData->id], ['lang' => $filterData->iso639_1]);
+        break;
+    case 'license':
+        $this->assign('title', __d('elabs', 'Articles with license "{0}"', $filterData->name));
+        $this->Html->addCrumb(__d('elabs', 'Licenses'), ['controller' => 'Licenses', 'action' => 'index']);
+        $this->Html->addCrumb($filterData->name, ['controller' => 'Licenses', 'action' => 'view', Cake\Utility\Text::slug($filterData->id . '-' . $filterData->name)]);
+        break;
+    case 'user':
+        $this->assign('title', __d('elabs', 'Articles by {0}', $filterData->realname));
+        $this->Html->addCrumb(__d('elabs', 'Authors'), ['controller' => 'Users', 'action' => 'index']);
+        $this->Html->addCrumb($filterData->realname, ['controller' => 'Users', 'action' => 'view', $filterData->username]);
+        break;
+    default:
+        $this->assign('title', __d('elabs', 'Articles list'));
+        $this->Html->addCrumb(__d('elabs ', 'Articles '), ['action' => 'index']);
+endswitch;
+$this->Html->addCrumb(__d('elabs', 'Articles list'));
 
 // Block: Pagination order links
 // -----------------------------
