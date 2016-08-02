@@ -15,6 +15,9 @@ class PostsController extends AppController
     /**
      * Index method
      *
+     * @param string $filter Filter name
+     * @param mixed $id Id to filter on
+     *
      * @return void
      */
     public function index($filter = null, $id = null)
