@@ -11,12 +11,12 @@
             </div>
             <div class="card-content">
                 <?php
-                $linkTitle = $this->Html->iconT('font', __dn('elabs', '{0} article', '{0} articles', $language['post_count'], $language['post_count']));
-                echo $this->Html->link($linkTitle, ['controller' => 'posts', 'action' => 'index', 'filter' => 'license', $language['id']], ['class' => 'btn btn-block', 'escape' => false]);
-                $linkTitle = $this->Html->iconT('cogs', __dn('elabs', '{0} project', '{0} projects', $language['project_count'], $language['project_count']));
-                echo $this->Html->link($linkTitle, ['controller' => 'projects', 'action' => 'index', 'filter' => 'license', $language['id']], ['class' => 'btn btn-block', 'escape' => false]);
-                $linkTitle = $this->Html->iconT('file', __dn('elabs', '{0} file', '{0} files', $language['file_count'], $language['file_count']));
-                echo $this->Html->link($linkTitle, ['controller' => 'files', 'action' => 'index', 'filter' => 'license', $language['id']], ['class' => 'btn btn-block', 'escape' => false]);
+                $linkTitle = $this->Html->iconT('font', __dn('elabs', '{0} article', '{0} articles', $language->post_count, $language->post_count));
+                echo $this->Html->link($linkTitle, ['controller' => 'Posts', 'action' => 'index', 'language', $language->id], ['class' => 'btn btn-block', 'escape' => false]);
+                $linkTitle = $this->Html->iconT('cogs', __dn('elabs', '{0} project', '{0} projects', $language->project_count, $language->project_count));
+                echo $this->Html->link($linkTitle, ['controller' => 'Projects', 'action' => 'index', 'language', $language->id], ['class' => 'btn btn-block', 'escape' => false]);
+                $linkTitle = $this->Html->iconT('file', __dn('elabs', '{0} file', '{0} files', $language->file_count, $language->file_count));
+                echo $this->Html->link($linkTitle, ['controller' => 'Files', 'action' => 'index', 'language', $language->id], ['class' => 'btn btn-block', 'escape' => false]);
                 ?>
             </div>
         </div>

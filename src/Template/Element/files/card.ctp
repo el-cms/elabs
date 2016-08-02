@@ -27,18 +27,16 @@ $config = $this->Items->fileConfig($data['filename']);
                 <ul class="card-informations">
                     <?php if (!isset($userInfo) || $userInfo): ?>
                         <li>
-                            <?php
-                            echo $this->Html->iconT('user', __d('elabs', 'Author:'));
-                            echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']])
-                            ?>
+                            <?php echo $this->Html->iconT('user', __d('elabs', 'Author:')); ?>
+                            <?php echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
                         </li>
                         <?php
                     endif;
                     if (!isset($licenseInfo) || $licenseInfo):
                         ?>
                         <li>
+                            <?php echo $this->Html->iconT('copyright', __d('elabs', 'License:')); ?>
                             <?php
-                            echo $this->Html->iconT('copyright', __d('elabs', 'License:'));
                             $linkIcon = $this->Html->iconT($data['license']['icon'], $data['license']['name']);
                             echo $this->Html->link($linkIcon, ['prefix' => false, 'controller' => 'Licenses', 'action' => 'view', $data['license']['id']], ['escape' => false])
                             ?>
