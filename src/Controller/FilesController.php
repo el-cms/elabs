@@ -17,7 +17,7 @@ class FilesController extends AppController
      *
      * @return void
      */
-    public function index()
+    public function index($filter = null, $id = null)
     {
         $findOptions = [
             'fields' => [
@@ -32,8 +32,34 @@ class FilesController extends AppController
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['created', 'name', 'modified'],
         ];
+
+        // Sfw condition
         if (!$this->request->session()->read('seeNSFW')) {
             $findOptions['conditions']['sfw'] = true;
+        }
+
+        // Other conditions:
+        if (!is_null($filter)) {
+            switch ($filter) {
+                case 'language':
+                    $findOptions['conditions']['Languages.id'] = $id;
+                    break;
+                case 'license':
+                    $findOptions['conditions']['Licenses.id'] = $id;
+                    break;
+                case 'user':
+                    $findOptions['conditions']['Users.id'] = $id;
+                    break;
+                default:
+                    throw new \Cake\Network\Exception\NotFoundException;
+            }
+            // Get additionnal infos infos
+            $modelName = \Cake\Utility\Inflector::camelize(\Cake\Utility\Inflector::pluralize($filter));
+            $FilterModel = \Cake\ORM\TableRegistry::get($modelName);
+            $filterData = $FilterModel->get($id);
+
+            $this->set('filterData', $filterData);
+            $this->set('filter', $filter);
         }
         $this->paginate = $findOptions;
         $this->set('files', $this->paginate($this->Files));
