@@ -18,7 +18,7 @@ $this->Html->addCrumb(__d('elabs', 'Edit {0}', [$file->name]));
 // Actions block
 // -------------
 $this->start('pageActions');
-echo $this->Form->postLink($this->Html->icon('trash', __d('elabs', 'Delete')), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'escape' => false, 'class' => 'btn btn-danger btn-sm btn-block']);
+echo $this->Form->postLink($this->Html->iconT('trash', __d('elabs', 'Delete')), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'escape' => false, 'class' => 'btn btn-danger btn-sm btn-block']);
 $this->end();
 
 // Related links block
