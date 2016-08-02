@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-02 12:29+0000\n"
+"POT-Creation-Date: 2016-08-02 12:47+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -334,47 +334,11 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: Template/Acts/index.ctp:25
-msgid "Date"
-msgstr ""
-
-#: Template/Acts/index.ctp:26
-msgid "Type"
-msgstr ""
-
-#: Template/Acts/index.ctp:27
-msgid "Action"
-msgstr ""
-
-#: Template/Acts/index.ctp:28
-#: View/Helper/UsersAdminHelper.php:32
-msgid "User"
-msgstr ""
-
-#: Template/Acts/index.ctp:38
-#: Template/User/Files/index.ctp:33
-#: Template/User/Posts/index.ctp:32
-#: Template/User/Projects/index.ctp:31
-msgid "Clear filters"
-msgstr ""
-
-#: Template/Acts/index.ctp:40
+#: Template/Acts/index.ctp:29
 msgid "Hide updates"
 msgstr ""
 
-#: Template/Acts/index.ctp:42
-msgid "Hide articles"
-msgstr ""
-
-#: Template/Acts/index.ctp:44
-msgid "Hide projects"
-msgstr ""
-
-#: Template/Acts/index.ctp:46
-msgid "Hide files"
-msgstr ""
-
-#: Template/Acts/index.ctp:122
+#: Template/Acts/index.ctp:105
 msgctxt "Act update card: [model] title [action]"
 msgid "{0} {1} {2}"
 msgstr ""
@@ -1811,6 +1775,12 @@ msgstr ""
 msgid "Addition date"
 msgstr ""
 
+#: Template/User/Files/index.ctp:33
+#: Template/User/Posts/index.ctp:32
+#: Template/User/Projects/index.ctp:31
+msgid "Clear filters"
+msgstr ""
+
 #: Template/User/Files/index.ctp:38;47
 #: Template/User/Projects/index.ctp:36;45
 msgid "All"
@@ -1983,6 +1953,10 @@ msgstr ""
 
 #: View/Helper/UsersAdminHelper.php:28
 msgid "Admin"
+msgstr ""
+
+#: View/Helper/UsersAdminHelper.php:32
+msgid "User"
 msgstr ""
 
 #: View/Helper/UsersAdminHelper.php:65

@@ -18,12 +18,12 @@ switch ($filter):
     case 'license':
         $this->assign('title', __d('elabs', 'Files with license "{0}"', $filterData->name));
         $this->Html->addCrumb(__d('elabs', 'Licenses'), ['controller' => 'Licenses', 'action' => 'index']);
-        $this->Html->addCrumb($filterData->name, ['controller' => 'Licenses', 'action' => 'view', Cake\Utility\Text::slug($filterData->id . '-' . $filterData->name)]);
+        $this->Html->addCrumb($filterData->name, ['controller' => 'Licenses', 'action' => 'view', $filterData->id]);
         break;
     case 'user':
         $this->assign('title', __d('elabs', 'Files by {0}', $filterData->realname));
         $this->Html->addCrumb(__d('elabs', 'Authors'), ['controller' => 'Users', 'action' => 'index']);
-        $this->Html->addCrumb($filterData->realname, ['controller' => 'Users', 'action' => 'view', $filterData->username]);
+        $this->Html->addCrumb($filterData->realname, ['controller' => 'Users', 'action' => 'view', $filterData->id]);
         break;
     default:
         $this->assign('title', __d('elabs', 'Files list'));

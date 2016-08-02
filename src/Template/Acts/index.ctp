@@ -19,31 +19,14 @@ $this->assign('title', __d('elabs', 'Recent activity'));
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Home'));
 
-// Block: Pagination order links
-// -----------------------------
-$this->start('pageOrderBy');
-echo $this->Paginator->sort('id', __d('elabs', 'Date'));
-echo $this->Paginator->sort('model', __d('elabs', 'Type'));
-echo $this->Paginator->sort('type', __d('elabs', 'Action'));
-echo $this->Paginator->sort('user_id', __d('elabs', 'User'));
-$this->end();
-
 // Block: Filters
 // --------------
 $this->start('pageFilters');
 $options = ['escape' => false];
 $active = 'check-circle-o';
 $inactive = 'circle-o';
-$clear = 'times';
-echo $this->Html->link($this->Html->iconT($clear, __d('elabs', 'Clear filters')), ['action' => 'index'], $options);
-$icon = ($filterUpdates === 'yes') ? $active : $inactive;
-echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide updates')), [$filterPosts, $filterProjects, $filterFiles, (($filterUpdates === 'yes') ? 'no' : 'yes')], $options);
-$icon = ($filterPosts === 'yes') ? $active : $inactive;
-echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide articles')), [(($filterPosts === 'yes') ? 'no' : 'yes'), $filterProjects, $filterFiles, $filterUpdates], $options);
-$icon = ($filterProjects === 'yes') ? $active : $inactive;
-echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide projects')), [$filterPosts, (($filterProjects === 'yes') ? 'no' : 'yes'), $filterFiles, $filterUpdates], $options);
-$icon = ($filterFiles === 'yes') ? $active : $inactive;
-echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide files')), [$filterPosts, $filterProjects, (($filterFiles === 'yes') ? 'no' : 'yes'), $filterUpdates], $options);
+$icon = ($filterUpdates === 'hideUpdates') ? $active : $inactive;
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Hide updates')), [(($filterUpdates === 'hideUpdates') ? 'showUpdates' : 'hideUpdates')], $options);
 $this->end();
 
 // Block: Page content

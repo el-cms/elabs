@@ -54,14 +54,11 @@ class ActsController extends AppController
     /**
      * Index method
      *
-     * @param string $hidePosts Hides the posts, 'yes' or 'no'
-     * @param string $hideProjects Hides the projects, 'yes' or 'no'
-     * @param string $hideFiles Hides the files, 'yes' or 'no'
-     * @param string $hideUpdates Hides the updates, 'yes' or 'no'
+     * @param string $updateFilter Hides the updates, 'yes' or 'no'
      *
      * @return void
      */
-    public function index($hidePosts = 'no', $hideProjects = 'no', $hideFiles = 'no', $hideUpdates = 'no')
+    public function index($updateFilter = 'showUpdates')
     {
         // Commons fields to get from Licenses table
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
@@ -99,11 +96,11 @@ class ActsController extends AppController
                     'Languages' => $languageConfig,
                 ],
             ],
-//            'fields' => ['id', 'type', 'fkid', 'model', 'Users.id', 'Users.username'],
             'limit' => 30,
             'order' => [
                 'Acts.created' => 'desc'
-            ]
+            ],
+            'sortWhiteList' => [],
         ];
 
         // SFW conditions :
@@ -112,30 +109,15 @@ class ActsController extends AppController
             $this->paginate['contain']['Projects']['conditions']['Projects.sfw'] = true;
             $this->paginate['contain']['Files']['conditions']['Files.sfw'] = true;
         }
-        // Filters
-        $models = []; // Models to be displayed
-        if ($hideProjects === 'no') {
-            $models[] = 'Projects';
-        }
-        if ($hidePosts === 'no') {
-            $models[] = 'Posts';
-        }
-        if ($hideFiles === 'no') {
-            $models[] = 'Files';
-        }
-        $this->paginate['conditions']['model IN'] = $models;
 
-        if ($hideUpdates === 'yes') {
+        if ($updateFilter === 'hideUpdates') {
             $this->paginate['conditions']['type'] = 'add';
         }
 
         $acts = $this->paginate($this->Acts);
 
         // Pass variables to view
-        $this->set('filterUpdates', $hideUpdates);
-        $this->set('filterProjects', $hideProjects);
-        $this->set('filterPosts', $hidePosts);
-        $this->set('filterFiles', $hideFiles);
+        $this->set('filterUpdates', $updateFilter);
         $this->set('acts', $acts);
         $this->set('config', $this->config);
         $this->set('_serialize', ['acts']);
