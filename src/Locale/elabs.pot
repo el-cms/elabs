@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-01 16:19+0000\n"
+"POT-Creation-Date: 2016-08-02 12:29+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -379,6 +379,12 @@ msgctxt "Act update card: [model] title [action]"
 msgid "{0} {1} {2}"
 msgstr ""
 
+#: Template/Admin/Dashboard/index.ctp:12
+#: Template/Element/layout/mainmenu_admin.ctp:5
+#: Template/User/Dashboard/index.ctp:12
+msgid "Dashboard"
+msgstr ""
+
 #: Template/Admin/Files/index.ctp:14
 #: Template/Admin/Files/view.ctp:75
 msgid "List of files"
@@ -390,7 +396,7 @@ msgstr ""
 #: Template/Admin/Users/index.ctp:152
 #: Template/Element/layout/mainmenu.ctp:14
 #: Template/Element/layout/mainmenu_admin.ctp:14
-#: Template/Files/index.ctp:16
+#: Template/Files/index.ctp:30
 #: Template/Files/nsfw.ctp:6
 #: Template/Files/view.ctp:18
 #: Template/User/Files/add.ctp:15
@@ -405,9 +411,9 @@ msgstr ""
 #: Template/Admin/Tags/view.ctp:16
 #: Template/Admin/Users/index.ctp:30
 #: Template/Element/reports/add_modal.ctp:19
-#: Template/Files/index.ctp:22
+#: Template/Files/index.ctp:37
 #: Template/Languages/index.ctp:22
-#: Template/Projects/index.ctp:20
+#: Template/Projects/index.ctp:37
 #: Template/Tags/view.ctp:16
 #: Template/User/Files/index.ctp:21
 msgid "Name"
@@ -439,16 +445,16 @@ msgstr ""
 #: Template/Element/files/tile_userindex.ctp:42
 #: Template/Element/posts/tile_userindex.ctp:50
 #: Template/Element/projects/tile_userindex.ctp:42
-#: Template/Files/index.ctp:23
-#: Template/Projects/index.ctp:21
+#: Template/Files/index.ctp:38
+#: Template/Projects/index.ctp:38
 #: Template/User/Posts/index.ctp:22
 #: Template/User/Projects/index.ctp:21
 msgid "Creation date"
 msgstr ""
 
 #: Template/Admin/Files/index.ctp:34
-#: Template/Files/index.ctp:24
-#: Template/Projects/index.ctp:22
+#: Template/Files/index.ctp:39
+#: Template/Projects/index.ctp:39
 #: Template/User/Files/index.ctp:24
 msgid "Modification date"
 msgstr ""
@@ -566,9 +572,9 @@ msgstr ""
 #: Template/Admin/Files/view.ctp:31
 #: Template/Admin/Posts/view.ctp:27
 #: Template/Admin/Projects/view.ctp:28
-#: Template/Element/files/card.ctp:41
-#: Template/Element/posts/card.ctp:38
-#: Template/Element/projects/card.ctp:38
+#: Template/Element/files/card.ctp:38
+#: Template/Element/posts/card.ctp:35
+#: Template/Element/projects/card.ctp:35
 #: Template/Files/view.ctp:28
 #: Template/Posts/view.ctp:27
 #: Template/Projects/view.ctp:26
@@ -646,8 +652,11 @@ msgstr ""
 #: Template/Admin/Languages/edit.ctp:15
 #: Template/Admin/Languages/index.ctp:24
 #: Template/Element/layout/mainmenu_admin.ctp:23
+#: Template/Files/index.ctp:15
 #: Template/Languages/index.ctp:12;16
 #: Template/Languages/view.ctp:16
+#: Template/Posts/index.ctp:15
+#: Template/Projects/index.ctp:15
 msgid "Languages"
 msgstr ""
 
@@ -784,8 +793,11 @@ msgstr ""
 #: Template/Admin/Licenses/edit.ctp:15
 #: Template/Admin/Licenses/index.ctp:17
 #: Template/Element/layout/mainmenu_admin.ctp:20
+#: Template/Files/index.ctp:20
 #: Template/Licenses/index.ctp:12;16
 #: Template/Licenses/view.ctp:16
+#: Template/Posts/index.ctp:20
+#: Template/Projects/index.ctp:20
 msgid "Licenses"
 msgstr ""
 
@@ -814,7 +826,7 @@ msgstr ""
 #: Template/Admin/Users/index.ctp:148
 #: Template/Element/layout/mainmenu.ctp:8
 #: Template/Element/layout/mainmenu_admin.ctp:8
-#: Template/Posts/index.ctp:12
+#: Template/Posts/index.ctp:30
 #: Template/Posts/nsfw.ctp:6
 #: Template/Posts/view.ctp:18
 #: Template/User/Posts/add.ctp:15
@@ -829,7 +841,7 @@ msgstr ""
 #: Template/Admin/Users/index.ctp:150
 #: Template/Element/layout/mainmenu.ctp:11
 #: Template/Element/layout/mainmenu_admin.ctp:11
-#: Template/Projects/index.ctp:12
+#: Template/Projects/index.ctp:30
 #: Template/Projects/nsfw.ctp:6
 #: Template/Projects/view.ctp:18
 #: Template/User/Projects/add.ctp:15
@@ -848,7 +860,7 @@ msgid "List of articles"
 msgstr ""
 
 #: Template/Admin/Posts/index.ctp:28
-#: Template/Posts/index.ctp:20
+#: Template/Posts/index.ctp:37
 #: Template/User/Posts/index.ctp:20
 msgid "Title"
 msgstr ""
@@ -866,8 +878,8 @@ msgstr ""
 
 #: Template/Admin/Posts/view.ctp:26
 #: Template/Admin/Reports/view.ctp:33
-#: Template/Element/files/card.ctp:31
-#: Template/Element/posts/card.ctp:28
+#: Template/Element/files/card.ctp:30
+#: Template/Element/posts/card.ctp:27
 #: Template/Posts/view.ctp:26
 msgid "Author:"
 msgstr ""
@@ -1148,15 +1160,15 @@ msgstr ""
 msgid "NSFW"
 msgstr ""
 
-#: Template/Element/files/card.ctp:51
-#: Template/Element/posts/card.ctp:48
-#: Template/Element/projects/card.ctp:48
+#: Template/Element/files/card.ctp:49
+#: Template/Element/posts/card.ctp:46
+#: Template/Element/projects/card.ctp:46
 msgid "Published on: {0}"
 msgstr ""
 
-#: Template/Element/files/card.ctp:57
-#: Template/Element/posts/card.ctp:54
-#: Template/Element/projects/card.ctp:54
+#: Template/Element/files/card.ctp:55
+#: Template/Element/posts/card.ctp:52
+#: Template/Element/projects/card.ctp:52
 msgid "Updated on: {0}"
 msgstr ""
 
@@ -1192,7 +1204,7 @@ msgstr ""
 
 #: Template/Element/languages/card.ctp:14
 #: Template/Element/licenses/card.ctp:14
-#: Template/Element/users/card.ctp:20;22;24
+#: Template/Element/users/card.ctp:20
 msgid "{0} article"
 msgid_plural "{0} articles"
 msgstr[0] ""
@@ -1200,6 +1212,7 @@ msgstr[1] ""
 
 #: Template/Element/languages/card.ctp:16
 #: Template/Element/licenses/card.ctp:16
+#: Template/Element/users/card.ctp:22
 msgid "{0} project"
 msgid_plural "{0} projects"
 msgstr[0] ""
@@ -1207,6 +1220,7 @@ msgstr[1] ""
 
 #: Template/Element/languages/card.ctp:18
 #: Template/Element/licenses/card.ctp:18
+#: Template/Element/users/card.ctp:24
 msgid "{0} file"
 msgid_plural "{0} files"
 msgstr[0] ""
@@ -1297,6 +1311,9 @@ msgid "{0} - logo"
 msgstr ""
 
 #: Template/Element/layout/mainmenu.ctp:17
+#: Template/Files/index.ctp:25
+#: Template/Posts/index.ctp:25
+#: Template/Projects/index.ctp:25
 #: Template/Users/index.ctp:12;15
 #: Template/Users/view.ctp:15
 msgid "Authors"
@@ -1312,10 +1329,6 @@ msgstr ""
 
 #: Template/Element/layout/mainmenu.ctp:29
 msgid "Report this page"
-msgstr ""
-
-#: Template/Element/layout/mainmenu_admin.ctp:5
-msgid "Dashboard"
 msgstr ""
 
 #: Template/Element/layout/mainmenu_admin.ctp:32
@@ -1419,13 +1432,13 @@ msgid "Draft"
 msgstr ""
 
 #: Template/Element/posts/tile_userindex.ctp:47
-#: Template/Posts/index.ctp:21
+#: Template/Posts/index.ctp:38
 #: Template/User/Posts/index.ctp:21
 msgid "Publication date"
 msgstr ""
 
-#: Template/Element/projects/card.ctp:28
-msgid "Manager:"
+#: Template/Element/projects/card.ctp:27
+msgid "Manager: "
 msgstr ""
 
 #: Template/Element/projects/tile_userindex.ctp:53
@@ -1551,7 +1564,19 @@ msgstr ""
 msgid "Error:"
 msgstr ""
 
-#: Template/Files/index.ctp:12
+#: Template/Files/index.ctp:14
+msgid "Files in \"{0}\""
+msgstr ""
+
+#: Template/Files/index.ctp:19
+msgid "Files with license \"{0}\""
+msgstr ""
+
+#: Template/Files/index.ctp:24
+msgid "Files by {0}"
+msgstr ""
+
+#: Template/Files/index.ctp:29;32
 msgid "Files list"
 msgstr ""
 
@@ -1680,8 +1705,40 @@ msgstr ""
 msgid "Elabs on Github"
 msgstr ""
 
+#: Template/Posts/index.ctp:14
+msgid "Articles in \"{0}\""
+msgstr ""
+
+#: Template/Posts/index.ctp:19
+msgid "Articles with license \"{0}\""
+msgstr ""
+
+#: Template/Posts/index.ctp:24
+msgid "Articles by {0}"
+msgstr ""
+
+#: Template/Posts/index.ctp:29;32
+msgid "Articles list"
+msgstr ""
+
 #: Template/Posts/view.ctp:29
 msgid "Publication date:"
+msgstr ""
+
+#: Template/Projects/index.ctp:14
+msgid "Projects in \"{0}\""
+msgstr ""
+
+#: Template/Projects/index.ctp:19
+msgid "Projects with license \"{0}\""
+msgstr ""
+
+#: Template/Projects/index.ctp:24
+msgid "Projects by {0}"
+msgstr ""
+
+#: Template/Projects/index.ctp:29;32
+msgid "Projects list"
 msgstr ""
 
 #: Template/Projects/view.ctp:36

@@ -27,7 +27,7 @@ switch ($filter):
         break;
     default:
         $this->assign('title', __d('elabs', 'Articles list'));
-        $this->Html->addCrumb(__d('elabs ', 'Articles '), ['action' => 'index']);
+        $this->Html->addCrumb(__d('elabs', 'Articles'), ['action' => 'index']);
 endswitch;
 $this->Html->addCrumb(__d('elabs', 'Articles list'));
 
