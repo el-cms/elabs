@@ -12,20 +12,19 @@ class ActsTableTest extends TestCase
 {
 
     /**
+     * Test subject
+     *
+     * @var \App\Model\Table\ActsTable
+     */
+    public $Acts;
+
+    /**
      * Fixtures
      *
      * @var array
      */
     public $fixtures = [
-        'app.acts',
-        'app.users',
-        'app.files',
-        'app.licenses',
-        'app.posts',
-        'app.projects',
-        'app.project_users',
-        'app.itemfiles',
-        'app.reports'
+        'app.acts'
     ];
 
     /**
@@ -68,16 +67,6 @@ class ActsTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

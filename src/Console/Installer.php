@@ -49,7 +49,12 @@ class Installer
                 }
                 throw new Exception('This is not a valid answer. Please choose Y or n.');
             };
-            $setFolderPermissions = $io->askAndValidate('<info>Set Folder Permissions ? (Default to Y)</info> [<comment>Y,n</comment>]? ', $validator, 10, 'Y');
+            $setFolderPermissions = $io->askAndValidate(
+                '<info>Set Folder Permissions ? (Default to Y)</info> [<comment>Y,n</comment>]? ',
+                $validator,
+                10,
+                'Y'
+            );
 
             if (in_array($setFolderPermissions, ['Y', 'y'])) {
                 static::setFolderPermissions($rootDir, $io);

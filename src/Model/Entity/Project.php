@@ -4,22 +4,29 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Project Entity.
+ * Project Entity
  *
  * @property string $id
  * @property string $name
  * @property string $short_description
  * @property string $description
- * @property bool $sfw
  * @property string $mainurl
+ * @property bool $sfw
+ * @property int $status
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
- * @property int $status
  * @property int $license_id
- * @property \App\Model\Entity\License $license
  * @property string $user_id
+ * @property string $language_id
+ *
+ * @property \App\Model\Entity\License $license
  * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\ProjectUser[] $project_users
+ * @property \App\Model\Entity\Language $language
+ * @property \App\Model\Entity\File[] $files
+ * @property \App\Model\Entity\Note[] $notes
+ * @property \App\Model\Entity\Post[] $posts
+ * @property \App\Model\Entity\Tag[] $tags
+ * @property \App\Model\Entity\Team[] $teams
  * @property \App\Model\Entity\Act[] $acts
  */
 class Project extends Entity
@@ -36,6 +43,6 @@ class Project extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

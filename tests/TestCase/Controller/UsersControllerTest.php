@@ -17,9 +17,24 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.users',
-        'app.events',
+        'app.files',
+        'app.languages',
+        'app.notes',
+        'app.licenses',
         'app.posts',
-        'app.projects'
+        'app.tags',
+        'app.files_tags',
+        'app.notes_tags',
+        'app.posts_tags',
+        'app.projects',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.teams_users',
+        'app.reports'
     ];
 
     /**

@@ -2,7 +2,6 @@
 
 namespace App\Model\Table;
 
-use App\Model\Entity\File;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -11,9 +10,23 @@ use Cake\Validation\Validator;
 /**
  * Files Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Users
+ * @property \Cake\ORM\Association\BelongsTo $Languages
  * @property \Cake\ORM\Association\BelongsTo $Licenses
- * @property \Cake\ORM\Association\HasMany $Itemfiles
+ * @property \Cake\ORM\Association\BelongsTo $Users
+ * @property \Cake\ORM\Association\BelongsToMany $Tags
+ * @property \Cake\ORM\Association\BelongsToMany $Projects
+ * @property \Cake\ORM\Association\HasMany $Acts
+ *
+ * @method \App\Model\Entity\File get($primaryKey, $options = [])
+ * @method \App\Model\Entity\File newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\File[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\File|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\File patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\File[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\File findOrCreate($search, callable $callback = null)
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \Cake\ORM\Behavior\CounterCacheBehavior
  */
 class FilesTable extends Table
 {
@@ -39,20 +52,27 @@ class FilesTable extends Table
             'Languages' => ['file_count' => ['conditions' => ['status' => 1]]],
         ]);
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
+        $this->belongsTo('Languages', [
+            'foreignKey' => 'language_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Licenses', [
             'foreignKey' => 'license_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Languages', [
-            'foreignKey' => 'language_id',
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->hasMany('Itemfiles', [
-            'foreignKey' => 'file_id'
+        $this->belongsToMany('Tags', [
+            'foreignKey' => 'file_id',
+            'targetForeignKey' => 'tag_id',
+            'joinTable' => 'files_tags'
+        ]);
+        $this->belongsToMany('Projects', [
+            'foreignKey' => 'file_id',
+            'targetForeignKey' => 'project_id',
+            'joinTable' => 'projects_files'
         ]);
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',
@@ -69,7 +89,7 @@ class FilesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->add('id', 'valid', ['rule' => 'uuid'])
+                ->uuid('id')
                 ->allowEmpty('id', 'create');
 
         $validator
@@ -80,7 +100,7 @@ class FilesTable extends Table
                 ->notEmpty('filename');
 
         $validator
-                ->add('weight', 'valid', ['rule' => 'numeric'])
+                ->integer('weight')
                 ->requirePresence('weight', 'create')
                 ->notEmpty('weight');
 
@@ -92,14 +112,14 @@ class FilesTable extends Table
                 ->notEmpty('mime');
 
         $validator
-                ->add('sfw', 'valid', ['rule' => 'boolean'])
-                ->requirePresence('sfw', 'create')
-                ->notEmpty('sfw');
+            ->boolean('sfw')
+            ->requirePresence('sfw', 'create')
+            ->notEmpty('sfw');
 
         $validator
-                ->add('status', 'valid', ['rule' => 'numeric'])
-                ->requirePresence('status', 'create')
-                ->notEmpty('status');
+            ->integer('status')
+            ->requirePresence('status', 'create')
+            ->notEmpty('status');
 
         return $validator;
     }
@@ -113,8 +133,9 @@ class FilesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->existsIn(['language_id'], 'Languages'));
         $rules->add($rules->existsIn(['license_id'], 'Licenses'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
     }

@@ -1,26 +1,26 @@
 <?php
-
 namespace App\Controller\Admin;
 
-use App\Controller\AppController;
+use App\Controller\AdminAppController;
 
 /**
  * Tags Controller
  *
  * @property \App\Model\Table\TagsTable $Tags
  */
-class TagsController extends AppController
+class TagsController extends AdminAppController
 {
 
     /**
      * Index method
      *
-     * @return void
+     * @return \Cake\Network\Response|null
      */
     public function index()
     {
-        $this->paginate = ['order' => ['created' => 'desc']];
-        $this->set('tags', $this->paginate($this->Tags));
+        $tags = $this->paginate($this->Tags);
+
+        $this->set(compact('tags'));
         $this->set('_serialize', ['tags']);
     }
 
@@ -28,14 +28,15 @@ class TagsController extends AppController
      * View method
      *
      * @param string|null $id Tag id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @return \Cake\Network\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
         $tag = $this->Tags->get($id, [
-            'contain' => ['Itemtags']
+            'contain' => ['Files', 'Notes', 'Posts', 'Projects']
         ]);
+
         $this->set('tag', $tag);
         $this->set('_serialize', ['tag']);
     }
@@ -43,7 +44,7 @@ class TagsController extends AppController
     /**
      * Add method
      *
-     * @return void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -51,13 +52,18 @@ class TagsController extends AppController
         if ($this->request->is('post')) {
             $tag = $this->Tags->patchEntity($tag, $this->request->data);
             if ($this->Tags->save($tag)) {
-                $this->Flash->success(__d('elabs', 'The tag has been saved.'));
-                $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('The tag has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__d('elabs', 'The tag could not be saved. Please, try again.'));
+                $this->Flash->error(__('The tag could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('tag'));
+        $files = $this->Tags->Files->find('list', ['limit' => 200]);
+        $notes = $this->Tags->Notes->find('list', ['limit' => 200]);
+        $posts = $this->Tags->Posts->find('list', ['limit' => 200]);
+        $projects = $this->Tags->Projects->find('list', ['limit' => 200]);
+        $this->set(compact('tag', 'files', 'notes', 'posts', 'projects'));
         $this->set('_serialize', ['tag']);
     }
 
@@ -65,24 +71,29 @@ class TagsController extends AppController
      * Edit method
      *
      * @param string|null $id Tag id.
-     * @return void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
     {
         $tag = $this->Tags->get($id, [
-            'contain' => []
+            'contain' => ['Files', 'Notes', 'Posts', 'Projects']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $tag = $this->Tags->patchEntity($tag, $this->request->data);
             if ($this->Tags->save($tag)) {
-                $this->Flash->success(__d('elabs', 'The tag has been saved.'));
-                $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('The tag has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__d('elabs', 'The tag could not be saved. Please, try again.'));
+                $this->Flash->error(__('The tag could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('tag'));
+        $files = $this->Tags->Files->find('list', ['limit' => 200]);
+        $notes = $this->Tags->Notes->find('list', ['limit' => 200]);
+        $posts = $this->Tags->Posts->find('list', ['limit' => 200]);
+        $projects = $this->Tags->Projects->find('list', ['limit' => 200]);
+        $this->set(compact('tag', 'files', 'notes', 'posts', 'projects'));
         $this->set('_serialize', ['tag']);
     }
 
@@ -90,18 +101,19 @@ class TagsController extends AppController
      * Delete method
      *
      * @param string|null $id Tag id.
-     * @return void Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @return \Cake\Network\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $tag = $this->Tags->get($id);
         if ($this->Tags->delete($tag)) {
-            $this->Flash->success(__d('elabs', 'The tag has been deleted.'));
+            $this->Flash->success(__('The tag has been deleted.'));
         } else {
-            $this->Flash->error(__d('elabs', 'The tag could not be deleted. Please, try again.'));
+            $this->Flash->error(__('The tag could not be deleted. Please, try again.'));
         }
-        $this->redirect(['action' => 'index']);
+
+        return $this->redirect(['action' => 'index']);
     }
 }

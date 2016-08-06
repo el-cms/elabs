@@ -12,6 +12,13 @@ class ReportsTableTest extends TestCase
 {
 
     /**
+     * Test subject
+     *
+     * @var \App\Model\Table\ReportsTable
+     */
+    public $Reports;
+
+    /**
      * Fixtures
      *
      * @var array
@@ -19,13 +26,23 @@ class ReportsTableTest extends TestCase
     public $fixtures = [
         'app.reports',
         'app.users',
-        'app.acts',
         'app.files',
+        'app.languages',
+        'app.notes',
         'app.licenses',
         'app.posts',
+        'app.tags',
+        'app.posts_tags',
         'app.projects',
-        'app.project_users',
-        'app.itemfiles'
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.notes_tags',
+        'app.files_tags',
+        'app.teams_users'
     ];
 
     /**

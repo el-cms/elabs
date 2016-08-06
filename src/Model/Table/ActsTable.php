@@ -2,7 +2,6 @@
 
 namespace App\Model\Table;
 
-use App\Model\Entity\Act;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -11,7 +10,15 @@ use Cake\Validation\Validator;
 /**
  * Acts Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Users
+ * @method \App\Model\Entity\Act get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Act newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Act[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Act|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Act patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Act[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Act findOrCreate($search, callable $callback = null)
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class ActsTable extends Table
 {
@@ -30,6 +37,16 @@ class ActsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Files', [
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Files'],
+        ]);
+        $this->belongsTo('Notes', [
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Notes'],
+        ]);
         $this->belongsTo('Posts', [
             'foreignKey' => 'fkid',
             'conditions' => ['Acts.model' => 'Posts'],
@@ -37,10 +54,6 @@ class ActsTable extends Table
         $this->belongsTo('Projects', [
             'foreignKey' => 'fkid',
             'conditions' => ['Acts.model' => 'Projects'],
-        ]);
-        $this->belongsTo('Files', [
-            'foreignKey' => 'fkid',
-            'conditions' => ['Acts.model' => 'Files'],
         ]);
     }
 
@@ -53,7 +66,7 @@ class ActsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->integer('id')
             ->allowEmpty('id', 'create');
 
         $validator
@@ -61,7 +74,7 @@ class ActsTable extends Table
             ->notEmpty('model');
 
         $validator
-            ->add('fkid', 'valid', ['rule' => 'uuid'])
+            ->uuid('fkid')
             ->requirePresence('fkid', 'create')
             ->notEmpty('fkid');
 

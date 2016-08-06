@@ -12,6 +12,13 @@ class PostsTableTest extends TestCase
 {
 
     /**
+     * Test subject
+     *
+     * @var \App\Model\Table\PostsTable
+     */
+    public $Posts;
+
+    /**
      * Fixtures
      *
      * @var array
@@ -19,13 +26,21 @@ class PostsTableTest extends TestCase
     public $fixtures = [
         'app.posts',
         'app.users',
-        'app.acts',
         'app.files',
+        'app.languages',
+        'app.notes',
         'app.licenses',
         'app.projects',
-        'app.project_users',
-        'app.itemfiles',
-        'app.reports'
+        'app.tags',
+        'app.notes_tags',
+        'app.projects_notes',
+        'app.files_tags',
+        'app.projects_files',
+        'app.reports',
+        'app.teams',
+        'app.teams_users',
+        'app.posts_tags',
+        'app.projects_posts'
     ];
 
     /**

@@ -12,6 +12,13 @@ class ProjectsTableTest extends TestCase
 {
 
     /**
+     * Test subject
+     *
+     * @var \App\Model\Table\ProjectsTable
+     */
+    public $Projects;
+
+    /**
      * Fixtures
      *
      * @var array
@@ -20,12 +27,22 @@ class ProjectsTableTest extends TestCase
         'app.projects',
         'app.licenses',
         'app.files',
+        'app.languages',
+        'app.notes',
         'app.users',
-        'app.acts',
         'app.posts',
+        'app.tags',
+        'app.posts_tags',
+        'app.projects_posts',
         'app.reports',
-        'app.itemfiles',
-        'app.project_users'
+        'app.teams',
+        'app.teams_users',
+        'app.notes_tags',
+        'app.projects_notes',
+        'app.files_tags',
+        'app.projects_files',
+        'app.projects_tags',
+        'app.teams_projects'
     ];
 
     /**
