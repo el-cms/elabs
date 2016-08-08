@@ -1,7 +1,7 @@
 {
-    "name": "cakephp/app",
-    "description": "CakePHP skeleton app",
-    "homepage": "http://cakephp.org",
+    "name": "elabs/cms",
+    "description": "experimentslabs.com CMS",
+    "homepage": "http://experimentslabs.com",
     "type": "project",
     "license": "MIT",
     "require": {
@@ -13,7 +13,8 @@
         "friendsofcake/search": "master",
         "mobiledetect/mobiledetectlib": "2.*",
         "php": ">=5.4.16",
-        "tanuck/cakephp-markdown": "dev-master"
+        "tanuck/cakephp-markdown": "dev-master",
+        "lowg33kdev/cakephp-gravatar-plugin": "1.1.0"
     },
     "require-dev": {
         "psy/psysh": "@stable",
