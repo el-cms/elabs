@@ -34,8 +34,19 @@ class UsersControllerTest extends IntegrationTestCase
         'app.teams',
         'app.teams_projects',
         'app.teams_users',
+        'app.acts',
         'app.reports'
     ];
+
+    /**
+     * Test beforeFilter method
+     *
+     * @return void
+     */
+    public function testBeforeFilter()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
 
     /**
      * Test index method
@@ -58,31 +69,31 @@ class UsersControllerTest extends IntegrationTestCase
     }
 
     /**
-     * Test add method
+     * Test register method
      *
      * @return void
      */
-    public function testAdd()
+    public function testRegister()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test edit method
+     * Test login method
      *
      * @return void
      */
-    public function testEdit()
+    public function testLogin()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test delete method
+     * Test logout method
      *
      * @return void
      */
-    public function testDelete()
+    public function testLogout()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

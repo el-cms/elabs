@@ -16,7 +16,7 @@ class ReportsTableTest extends TestCase
      *
      * @var \App\Model\Table\ReportsTable
      */
-    public $Reports;
+    public $ReportsTable;
 
     /**
      * Fixtures
@@ -32,6 +32,8 @@ class ReportsTableTest extends TestCase
         'app.licenses',
         'app.posts',
         'app.tags',
+        'app.files_tags',
+        'app.notes_tags',
         'app.posts_tags',
         'app.projects',
         'app.projects_files',
@@ -40,9 +42,8 @@ class ReportsTableTest extends TestCase
         'app.projects_tags',
         'app.teams',
         'app.teams_projects',
-        'app.notes_tags',
-        'app.files_tags',
-        'app.teams_users'
+        'app.teams_users',
+        'app.acts'
     ];
 
     /**
@@ -54,7 +55,7 @@ class ReportsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('Reports') ? [] : ['className' => 'App\Model\Table\ReportsTable'];
-        $this->Reports = TableRegistry::get('Reports', $config);
+        $this->ReportsTable = TableRegistry::get('Reports', $config);
     }
 
     /**
@@ -64,7 +65,7 @@ class ReportsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Reports);
+        unset($this->ReportsTable);
 
         parent::tearDown();
     }

@@ -30,6 +30,7 @@ class TeamsControllerTest extends IntegrationTestCase
         'app.posts_tags',
         'app.projects_tags',
         'app.projects_posts',
+        'app.acts',
         'app.reports',
         'app.teams_users',
         'app.projects_notes',

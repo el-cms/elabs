@@ -16,7 +16,7 @@ class TeamsUsersTableTest extends TestCase
      *
      * @var \App\Model\Table\TeamsUsersTable
      */
-    public $TeamsUsers;
+    public $TeamsUsersTable;
 
     /**
      * Fixtures
@@ -39,6 +39,7 @@ class TeamsUsersTableTest extends TestCase
         'app.posts_tags',
         'app.projects_tags',
         'app.projects_posts',
+        'app.acts',
         'app.reports',
         'app.projects_notes',
         'app.projects_files',
@@ -54,7 +55,7 @@ class TeamsUsersTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('TeamsUsers') ? [] : ['className' => 'App\Model\Table\TeamsUsersTable'];
-        $this->TeamsUsers = TableRegistry::get('TeamsUsers', $config);
+        $this->TeamsUsersTable = TableRegistry::get('TeamsUsers', $config);
     }
 
     /**
@@ -64,7 +65,7 @@ class TeamsUsersTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->TeamsUsers);
+        unset($this->TeamsUsersTable);
 
         parent::tearDown();
     }

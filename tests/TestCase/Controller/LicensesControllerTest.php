@@ -20,15 +20,22 @@ class LicensesControllerTest extends IntegrationTestCase
         'app.files',
         'app.languages',
         'app.notes',
+        'app.users',
         'app.posts',
+        'app.tags',
+        'app.files_tags',
+        'app.notes_tags',
+        'app.posts_tags',
         'app.projects',
         'app.projects_files',
-        'app.users',
-        'app.reports',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.projects_tags',
         'app.teams',
+        'app.teams_projects',
         'app.teams_users',
-        'app.tags',
-        'app.files_tags'
+        'app.acts',
+        'app.reports'
     ];
 
     /**
@@ -47,36 +54,6 @@ class LicensesControllerTest extends IntegrationTestCase
      * @return void
      */
     public function testView()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test add method
-     *
-     * @return void
-     */
-    public function testAdd()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

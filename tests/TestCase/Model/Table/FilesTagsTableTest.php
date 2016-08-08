@@ -16,7 +16,7 @@ class FilesTagsTableTest extends TestCase
      *
      * @var \App\Model\Table\FilesTagsTable
      */
-    public $FilesTags;
+    public $FilesTagsTable;
 
     /**
      * Fixtures
@@ -27,16 +27,23 @@ class FilesTagsTableTest extends TestCase
         'app.files_tags',
         'app.files',
         'app.languages',
-        'app.licenses',
-        'app.users',
         'app.notes',
+        'app.users',
         'app.posts',
+        'app.licenses',
         'app.projects',
-        'app.reports',
-        'app.teams',
-        'app.teams_users',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
         'app.tags',
-        'app.projects_files'
+        'app.notes_tags',
+        'app.posts_tags',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.teams_users',
+        'app.acts',
+        'app.reports'
     ];
 
     /**
@@ -48,7 +55,7 @@ class FilesTagsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('FilesTags') ? [] : ['className' => 'App\Model\Table\FilesTagsTable'];
-        $this->FilesTags = TableRegistry::get('FilesTags', $config);
+        $this->FilesTagsTable = TableRegistry::get('FilesTags', $config);
     }
 
     /**
@@ -58,7 +65,7 @@ class FilesTagsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->FilesTags);
+        unset($this->FilesTagsTable);
 
         parent::tearDown();
     }

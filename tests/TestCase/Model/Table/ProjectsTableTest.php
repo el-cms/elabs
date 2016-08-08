@@ -16,7 +16,7 @@ class ProjectsTableTest extends TestCase
      *
      * @var \App\Model\Table\ProjectsTable
      */
-    public $Projects;
+    public $ProjectsTable;
 
     /**
      * Fixtures
@@ -32,17 +32,18 @@ class ProjectsTableTest extends TestCase
         'app.users',
         'app.posts',
         'app.tags',
+        'app.files_tags',
+        'app.notes_tags',
         'app.posts_tags',
+        'app.projects_tags',
         'app.projects_posts',
+        'app.acts',
         'app.reports',
         'app.teams',
+        'app.teams_projects',
         'app.teams_users',
-        'app.notes_tags',
         'app.projects_notes',
-        'app.files_tags',
-        'app.projects_files',
-        'app.projects_tags',
-        'app.teams_projects'
+        'app.projects_files'
     ];
 
     /**
@@ -54,7 +55,7 @@ class ProjectsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('Projects') ? [] : ['className' => 'App\Model\Table\ProjectsTable'];
-        $this->Projects = TableRegistry::get('Projects', $config);
+        $this->ProjectsTable = TableRegistry::get('Projects', $config);
     }
 
     /**
@@ -64,7 +65,7 @@ class ProjectsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Projects);
+        unset($this->ProjectsTable);
 
         parent::tearDown();
     }

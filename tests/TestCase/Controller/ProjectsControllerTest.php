@@ -24,15 +24,16 @@ class ProjectsControllerTest extends IntegrationTestCase
         'app.users',
         'app.posts',
         'app.tags',
-        'app.posts_tags',
-        'app.notes_tags',
         'app.files_tags',
+        'app.notes_tags',
+        'app.posts_tags',
         'app.projects_tags',
         'app.projects_posts',
+        'app.acts',
         'app.reports',
         'app.teams',
-        'app.teams_users',
         'app.teams_projects',
+        'app.teams_users',
         'app.projects_notes',
         'app.projects_files'
     ];
@@ -53,36 +54,6 @@ class ProjectsControllerTest extends IntegrationTestCase
      * @return void
      */
     public function testView()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test add method
-     *
-     * @return void
-     */
-    public function testAdd()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

@@ -16,7 +16,7 @@ class PostsTableTest extends TestCase
      *
      * @var \App\Model\Table\PostsTable
      */
-    public $Posts;
+    public $PostsTable;
 
     /**
      * Fixtures
@@ -31,16 +31,19 @@ class PostsTableTest extends TestCase
         'app.notes',
         'app.licenses',
         'app.projects',
-        'app.tags',
-        'app.notes_tags',
-        'app.projects_notes',
-        'app.files_tags',
         'app.projects_files',
-        'app.reports',
-        'app.teams',
-        'app.teams_users',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.tags',
+        'app.files_tags',
+        'app.notes_tags',
         'app.posts_tags',
-        'app.projects_posts'
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.teams_users',
+        'app.acts',
+        'app.reports'
     ];
 
     /**
@@ -52,7 +55,7 @@ class PostsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('Posts') ? [] : ['className' => 'App\Model\Table\PostsTable'];
-        $this->Posts = TableRegistry::get('Posts', $config);
+        $this->PostsTable = TableRegistry::get('Posts', $config);
     }
 
     /**
@@ -62,7 +65,7 @@ class PostsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Posts);
+        unset($this->PostsTable);
 
         parent::tearDown();
     }

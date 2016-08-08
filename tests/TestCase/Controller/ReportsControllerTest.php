@@ -24,35 +24,26 @@ class ReportsControllerTest extends IntegrationTestCase
         'app.licenses',
         'app.posts',
         'app.tags',
+        'app.files_tags',
+        'app.notes_tags',
         'app.posts_tags',
-        'app.projects_tags',
         'app.projects',
         'app.projects_files',
         'app.projects_notes',
         'app.projects_posts',
+        'app.projects_tags',
         'app.teams',
         'app.teams_projects',
         'app.teams_users',
-        'app.notes_tags',
-        'app.files_tags'
+        'app.acts'
     ];
 
     /**
-     * Test index method
+     * Test beforeFilter method
      *
      * @return void
      */
-    public function testIndex()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test view method
-     *
-     * @return void
-     */
-    public function testView()
+    public function testBeforeFilter()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
@@ -63,26 +54,6 @@ class ReportsControllerTest extends IntegrationTestCase
      * @return void
      */
     public function testAdd()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

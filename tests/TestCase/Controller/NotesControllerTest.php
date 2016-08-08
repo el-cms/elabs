@@ -21,16 +21,21 @@ class NotesControllerTest extends IntegrationTestCase
         'app.files',
         'app.languages',
         'app.posts',
+        'app.licenses',
         'app.projects',
         'app.projects_files',
         'app.projects_notes',
-        'app.licenses',
+        'app.projects_posts',
         'app.tags',
         'app.files_tags',
         'app.notes_tags',
-        'app.reports',
+        'app.posts_tags',
+        'app.projects_tags',
         'app.teams',
-        'app.teams_users'
+        'app.teams_projects',
+        'app.teams_users',
+        'app.acts',
+        'app.reports'
     ];
 
     /**

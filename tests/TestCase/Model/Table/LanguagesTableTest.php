@@ -16,7 +16,7 @@ class LanguagesTableTest extends TestCase
      *
      * @var \App\Model\Table\LanguagesTable
      */
-    public $Languages;
+    public $LanguagesTable;
 
     /**
      * Fixtures
@@ -27,16 +27,23 @@ class LanguagesTableTest extends TestCase
         'app.languages',
         'app.files',
         'app.licenses',
+        'app.posts',
         'app.users',
         'app.notes',
-        'app.posts',
-        'app.projects',
-        'app.reports',
-        'app.teams',
-        'app.teams_users',
         'app.tags',
         'app.files_tags',
-        'app.projects_files'
+        'app.notes_tags',
+        'app.posts_tags',
+        'app.projects',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.teams_users',
+        'app.acts',
+        'app.reports'
     ];
 
     /**
@@ -48,7 +55,7 @@ class LanguagesTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('Languages') ? [] : ['className' => 'App\Model\Table\LanguagesTable'];
-        $this->Languages = TableRegistry::get('Languages', $config);
+        $this->LanguagesTable = TableRegistry::get('Languages', $config);
     }
 
     /**
@@ -58,7 +65,7 @@ class LanguagesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Languages);
+        unset($this->LanguagesTable);
 
         parent::tearDown();
     }

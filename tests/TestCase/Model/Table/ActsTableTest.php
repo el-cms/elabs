@@ -16,7 +16,7 @@ class ActsTableTest extends TestCase
      *
      * @var \App\Model\Table\ActsTable
      */
-    public $Acts;
+    public $ActsTable;
 
     /**
      * Fixtures
@@ -24,7 +24,26 @@ class ActsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.acts'
+        'app.acts',
+        'app.files',
+        'app.languages',
+        'app.notes',
+        'app.users',
+        'app.posts',
+        'app.licenses',
+        'app.projects',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.tags',
+        'app.files_tags',
+        'app.notes_tags',
+        'app.posts_tags',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.teams_users',
+        'app.reports'
     ];
 
     /**
@@ -36,7 +55,7 @@ class ActsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('Acts') ? [] : ['className' => 'App\Model\Table\ActsTable'];
-        $this->Acts = TableRegistry::get('Acts', $config);
+        $this->ActsTable = TableRegistry::get('Acts', $config);
     }
 
     /**
@@ -46,7 +65,7 @@ class ActsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Acts);
+        unset($this->ActsTable);
 
         parent::tearDown();
     }

@@ -16,7 +16,7 @@ class LicensesTableTest extends TestCase
      *
      * @var \App\Model\Table\LicensesTable
      */
-    public $Licenses;
+    public $LicensesTable;
 
     /**
      * Fixtures
@@ -28,15 +28,22 @@ class LicensesTableTest extends TestCase
         'app.files',
         'app.languages',
         'app.notes',
-        'app.posts',
-        'app.projects',
         'app.users',
-        'app.reports',
-        'app.teams',
-        'app.teams_users',
+        'app.posts',
         'app.tags',
         'app.files_tags',
-        'app.projects_files'
+        'app.notes_tags',
+        'app.posts_tags',
+        'app.projects',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.teams_users',
+        'app.acts',
+        'app.reports'
     ];
 
     /**
@@ -48,7 +55,7 @@ class LicensesTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('Licenses') ? [] : ['className' => 'App\Model\Table\LicensesTable'];
-        $this->Licenses = TableRegistry::get('Licenses', $config);
+        $this->LicensesTable = TableRegistry::get('Licenses', $config);
     }
 
     /**
@@ -58,7 +65,7 @@ class LicensesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Licenses);
+        unset($this->LicensesTable);
 
         parent::tearDown();
     }

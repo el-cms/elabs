@@ -17,17 +17,17 @@ class FilesTagsFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'file_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'tag_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'tag_id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
-            'fk_files_has_tags_tags1_idx' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
-            'fk_files_has_tags_files1_idx' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
+            'file_id' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
+            'tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'fk_files_has_tags_files1' => ['type' => 'foreign', 'columns' => ['file_id'], 'references' => ['files', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
-            'fk_files_has_tags_tags1' => ['type' => 'foreign', 'columns' => ['tag_id'], 'references' => ['tags', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'files_tags_ibfk_1' => ['type' => 'foreign', 'columns' => ['file_id'], 'references' => ['files', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'files_tags_ibfk_2' => ['type' => 'foreign', 'columns' => ['tag_id'], 'references' => ['tags', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -44,7 +44,7 @@ class FilesTagsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'file_id' => '77e11d7e-2707-498c-b79c-83de87731428',
+            'file_id' => '402917de-a540-4e82-bc4d-c0a87ade0d3b',
             'tag_id' => 1
         ],
     ];

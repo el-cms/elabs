@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\FilesTagsController;
+use App\Controller\AppController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\FilesTagsController Test Case
+ * App\Controller\AppController Test Case
  */
-class FilesTagsControllerTest extends IntegrationTestCase
+class AppControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,67 +16,55 @@ class FilesTagsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.files_tags',
-        'app.files',
-        'app.languages',
-        'app.licenses',
-        'app.users',
-        'app.notes',
-        'app.posts',
-        'app.projects',
-        'app.projects_files',
-        'app.reports',
-        'app.teams',
-        'app.teams_users',
-        'app.tags'
+        'app.app'
     ];
 
     /**
-     * Test index method
+     * Test initialize method
      *
      * @return void
      */
-    public function testIndex()
+    public function testInitialize()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test view method
+     * Test beforeFilter method
      *
      * @return void
      */
-    public function testView()
+    public function testBeforeFilter()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test add method
+     * Test beforeRender method
      *
      * @return void
      */
-    public function testAdd()
+    public function testBeforeRender()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test edit method
+     * Test switchSFW method
      *
      * @return void
      */
-    public function testEdit()
+    public function testSwitchSFW()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
-     * Test delete method
+     * Test changeLanguage method
      *
      * @return void
      */
-    public function testDelete()
+    public function testChangeLanguage()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

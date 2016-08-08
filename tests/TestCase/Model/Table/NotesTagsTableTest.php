@@ -16,7 +16,7 @@ class NotesTagsTableTest extends TestCase
      *
      * @var \App\Model\Table\NotesTagsTable
      */
-    public $NotesTags;
+    public $NotesTagsTable;
 
     /**
      * Fixtures
@@ -30,15 +30,20 @@ class NotesTagsTableTest extends TestCase
         'app.files',
         'app.languages',
         'app.posts',
-        'app.projects',
         'app.licenses',
+        'app.projects',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
         'app.tags',
         'app.files_tags',
-        'app.projects_files',
-        'app.reports',
+        'app.posts_tags',
+        'app.projects_tags',
         'app.teams',
+        'app.teams_projects',
         'app.teams_users',
-        'app.projects_notes'
+        'app.acts',
+        'app.reports'
     ];
 
     /**
@@ -50,7 +55,7 @@ class NotesTagsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::exists('NotesTags') ? [] : ['className' => 'App\Model\Table\NotesTagsTable'];
-        $this->NotesTags = TableRegistry::get('NotesTags', $config);
+        $this->NotesTagsTable = TableRegistry::get('NotesTags', $config);
     }
 
     /**
@@ -60,7 +65,7 @@ class NotesTagsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->NotesTags);
+        unset($this->NotesTagsTable);
 
         parent::tearDown();
     }

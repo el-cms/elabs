@@ -18,17 +18,24 @@ class FilesControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.files',
         'app.languages',
-        'app.licenses',
-        'app.users',
         'app.notes',
+        'app.users',
         'app.posts',
+        'app.licenses',
         'app.projects',
         'app.projects_files',
-        'app.reports',
-        'app.teams',
-        'app.teams_users',
+        'app.projects_notes',
+        'app.projects_posts',
         'app.tags',
-        'app.files_tags'
+        'app.files_tags',
+        'app.notes_tags',
+        'app.posts_tags',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.teams_users',
+        'app.acts',
+        'app.reports'
     ];
 
     /**
@@ -52,31 +59,11 @@ class FilesControllerTest extends IntegrationTestCase
     }
 
     /**
-     * Test add method
+     * Test download method
      *
      * @return void
      */
-    public function testAdd()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
+    public function testDownload()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
