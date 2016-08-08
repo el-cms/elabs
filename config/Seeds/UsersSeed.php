@@ -1,8 +1,9 @@
 <?php
 
-use Migrations\AbstractSeed;
-use \Cake\Auth\DefaultPasswordHasher;
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\I18n\FrozenTime;
 use Cake\Utility\Text;
+use Migrations\AbstractSeed;
 
 /**
  * Users seed.
@@ -22,8 +23,21 @@ class UsersSeed extends AbstractSeed
      */
     public function run()
     {
+        $time = FrozenTime::now();
         $data = [
-            ['id' => Text::uuid(), 'email' => 'admin@example.com', 'username' => 'administrator', 'realname' => 'Manuel Tancoigne', 'password' => (new DefaultPasswordHasher)->hash('adminadmin'), 'created' => '2015-11-09 09:54:45', 'modified' => '2016-07-18 06:38:05', 'role' => 'admin', 'see_nsfw' => '1', 'status' => '1', 'preferences' => '{}']
+            [
+                'id' => Text::uuid(),
+                'email' => 'admin@example.com',
+                'username' => 'administrator',
+                'realname' => 'Administrator',
+                'password' => (new DefaultPasswordHasher)->hash('adminadmin'),
+                'created' => $time,
+                'modified' => $time,
+                'role' => 'admin',
+                'see_nsfw' => '1',
+                'status' => '1',
+                'preferences' => '{}'
+            ]
         ];
 
         $table = $this->table('users');

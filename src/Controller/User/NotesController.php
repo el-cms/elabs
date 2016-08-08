@@ -14,7 +14,7 @@ class NotesController extends UserAppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Network\Response|void
      */
     public function index()
     {
@@ -31,7 +31,7 @@ class NotesController extends UserAppController
      * View method
      *
      * @param string|null $id Note id.
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Network\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
@@ -106,7 +106,7 @@ class NotesController extends UserAppController
      * Delete method
      *
      * @param string|null $id Note id.
-     * @return \Cake\Network\Response|null Redirects to index.
+     * @return \Cake\Network\Response|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)

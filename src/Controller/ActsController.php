@@ -78,7 +78,7 @@ class ActsController extends AppController
                     'Languages' => $languageConfig,
                 ],
                 'Projects' => [
-                    'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id',],
+                    'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
                         'Projects.status' => 1,
                     ],

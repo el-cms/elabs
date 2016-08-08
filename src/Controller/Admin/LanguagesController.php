@@ -83,7 +83,7 @@ class LanguagesController extends AdminAppController
      * Delete method
      *
      * @param string|null $id Language id.
-     * @ return \Cake\Network\Response|null Redirects to index.
+     * @ return \Cake\Network\Response|void Redirects to index.
      *
      * @return void
      *
