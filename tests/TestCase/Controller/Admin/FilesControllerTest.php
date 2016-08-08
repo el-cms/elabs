@@ -17,13 +17,18 @@ class FilesControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.files',
-        'app.users',
-        'app.acts',
-        'app.posts',
+        'app.languages',
         'app.licenses',
+        'app.users',
+        'app.notes',
+        'app.posts',
         'app.projects',
-        'app.project_users',
-        'app.itemfiles'
+        'app.projects_files',
+        'app.reports',
+        'app.teams',
+        'app.teams_users',
+        'app.tags',
+        'app.files_tags'
     ];
 
     /**

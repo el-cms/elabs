@@ -4,22 +4,27 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Post Entity.
+ * Post Entity
  *
  * @property string $id
  * @property string $title
  * @property string $excerpt
  * @property string $text
  * @property bool $sfw
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
  * @property int $status
  * @property \Cake\I18n\Time $publication_date
+ * @property \Cake\I18n\Time $created
+ * @property \Cake\I18n\Time $modified
  * @property string $user_id
- * @property \App\Model\Entity\User $user
  * @property int $license_id
+ * @property string $language_id
+ *
+ * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\License $license
+ * @property \App\Model\Entity\Language $language
+ * @property \App\Model\Entity\Tag[] $tags
  * @property \App\Model\Entity\Act[] $acts
+ * @property \App\Model\Entity\Project[] $projects
  */
 class Post extends Entity
 {
@@ -35,6 +40,6 @@ class Post extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

@@ -4,12 +4,16 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Tag Entity.
+ * Tag Entity
  *
  * @property int $id
  * @property string $name
  * @property int $itemtag_count
- * @property \App\Model\Entity\Itemtag[] $itemtags
+ *
+ * @property \App\Model\Entity\File[] $files
+ * @property \App\Model\Entity\Note[] $notes
+ * @property \App\Model\Entity\Post[] $posts
+ * @property \App\Model\Entity\Project[] $projects
  */
 class Tag extends Entity
 {
@@ -25,6 +29,6 @@ class Tag extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

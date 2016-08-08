@@ -19,7 +19,7 @@ class ErrorController extends \App\Controller\AppController
      * Constructor
      *
      * @param \Cake\Network\Request|null $request Request instance.
-     * @param \Cake\Network\Response|null $response Response instance.
+     * @param \Cake\Network\Response|void $response Response instance.
      */
     public function __construct($request = null, $response = null)
     {

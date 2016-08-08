@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * File Entity.
+ * File Entity
  *
  * @property string $id
  * @property string $name
@@ -12,16 +12,20 @@ use Cake\ORM\Entity;
  * @property int $weight
  * @property string $description
  * @property string $mime
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
  * @property bool $sfw
  * @property int $status
- * @property string $user_id
- * @property \App\Model\Entity\User $user
+ * @property \Cake\I18n\Time $created
+ * @property \Cake\I18n\Time $modified
+ * @property string $language_id
  * @property int $license_id
+ * @property string $user_id
+ *
+ * @property \App\Model\Entity\Language $language
  * @property \App\Model\Entity\License $license
- * @property \App\Model\Entity\Itemfile[] $itemfiles
+ * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Tag[] $tags
  * @property \App\Model\Entity\Act[] $acts
+ * @property \App\Model\Entity\Project[] $projects
  */
 class File extends Entity
 {
@@ -37,6 +41,6 @@ class File extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

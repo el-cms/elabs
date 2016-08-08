@@ -18,14 +18,17 @@ class LanguagesControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.languages',
         'app.files',
-        'app.users',
-        'app.posts',
         'app.licenses',
+        'app.users',
+        'app.notes',
+        'app.posts',
         'app.projects',
-        'app.project_users',
-        'app.acts',
+        'app.projects_files',
         'app.reports',
-        'app.itemfiles'
+        'app.teams',
+        'app.teams_users',
+        'app.tags',
+        'app.files_tags'
     ];
 
     /**

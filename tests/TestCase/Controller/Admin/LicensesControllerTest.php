@@ -17,8 +17,18 @@ class LicensesControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.licenses',
+        'app.files',
+        'app.languages',
+        'app.notes',
         'app.posts',
-        'app.projects'
+        'app.projects',
+        'app.projects_files',
+        'app.users',
+        'app.reports',
+        'app.teams',
+        'app.teams_users',
+        'app.tags',
+        'app.files_tags'
     ];
 
     /**

@@ -62,8 +62,8 @@ class ProjectsController extends AppController
             $filterData = $FilterModel->get($id);
 
             $this->set('filterData', $filterData);
-            $this->set('filter', $filter);
         }
+        $this->set('filter', $filter);
         $this->paginate = $findOptions;
         $this->set('projects', $this->paginate($this->Projects));
         $this->set('_serialize', ['projects']);

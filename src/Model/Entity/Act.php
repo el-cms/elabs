@@ -4,13 +4,13 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Act Entity.
+ * Act Entity
  *
  * @property int $id
  * @property string $model
  * @property string $fkid
  * @property string $type
- * @property string $user_id
+ * @property \Cake\I18n\Time $created
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Post $post
  * @property \App\Model\Entity\Project $project
@@ -30,6 +30,6 @@ class Act extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

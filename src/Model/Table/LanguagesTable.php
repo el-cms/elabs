@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
  * Languages Model
  *
  * @property \Cake\ORM\Association\HasMany $Files
+ * @property \Cake\ORM\Association\HasMany $Notes
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
  *
@@ -42,6 +43,9 @@ class LanguagesTable extends Table
         $this->hasMany('Files', [
             'foreignKey' => 'language_id'
         ]);
+        $this->hasMany('Notes', [
+            'foreignKey' => 'language_id'
+        ]);
         $this->hasMany('Posts', [
             'foreignKey' => 'language_id'
         ]);
@@ -71,19 +75,32 @@ class LanguagesTable extends Table
                 ->notEmpty('name');
 
         $validator
-                ->integer('post_count')
-                ->requirePresence('post_count', 'create')
-                ->notEmpty('post_count');
+            ->boolean('has_site_translation')
+            ->requirePresence('has_site_translation', 'create')
+            ->notEmpty('has_site_translation');
 
         $validator
-                ->integer('project_count')
-                ->requirePresence('project_count', 'create')
-                ->notEmpty('project_count');
+            ->allowEmpty('translation_folder');
 
         $validator
-                ->integer('file_count')
-                ->requirePresence('file_count', 'create')
-                ->notEmpty('file_count');
+            ->integer('file_count')
+            ->requirePresence('file_count', 'create')
+            ->notEmpty('file_count');
+
+        $validator
+            ->integer('note_count')
+            ->requirePresence('note_count', 'create')
+            ->notEmpty('note_count');
+
+        $validator
+            ->integer('post_count')
+            ->requirePresence('post_count', 'create')
+            ->notEmpty('post_count');
+
+        $validator
+            ->integer('project_count')
+            ->requirePresence('project_count', 'create')
+            ->notEmpty('project_count');
 
         return $validator;
     }

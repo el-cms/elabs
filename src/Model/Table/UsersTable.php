@@ -2,7 +2,6 @@
 
 namespace App\Model\Table;
 
-use App\Model\Entity\User;
 use Cake\Core\Configure;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -13,9 +12,21 @@ use Cake\Validation\Validator;
  * Users Model
  *
  * @property \Cake\ORM\Association\HasMany $Files
+ * @property \Cake\ORM\Association\HasMany $Notes
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
  * @property \Cake\ORM\Association\HasMany $Reports
+ * @property \Cake\ORM\Association\BelongsToMany $Teams
+ *
+ * @method \App\Model\Entity\User get($primaryKey, $options = [])
+ * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null)
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UsersTable extends Table
 {
@@ -39,6 +50,9 @@ class UsersTable extends Table
         $this->hasMany('Files', [
             'foreignKey' => 'user_id'
         ]);
+        $this->hasMany('Notes', [
+            'foreignKey' => 'user_id'
+        ]);
         $this->hasMany('Posts', [
             'foreignKey' => 'user_id'
         ]);
@@ -47,6 +61,11 @@ class UsersTable extends Table
         ]);
         $this->hasMany('Reports', [
             'foreignKey' => 'user_id'
+        ]);
+        $this->belongsToMany('Teams', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'team_id',
+            'joinTable' => 'teams_users'
         ]);
     }
 
@@ -59,11 +78,11 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'uuid'])
+            ->uuid('id')
             ->allowEmpty('id', 'create');
 
         $validator
-            ->add('email', 'valid', ['rule' => 'email'])
+            ->email('email')
             ->requirePresence('email', 'create')
             ->notEmpty('email', 'Your email is needed for login');
 
@@ -115,34 +134,43 @@ class UsersTable extends Table
                 'message' => 'Please enter a valid role']);
 
         $validator
-            ->add('seeNSFW', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('seeNSFW', 'create')
-            ->notEmpty('seeNSFW');
+            ->boolean('see_nsfw')
+            ->requirePresence('see_nsfw', 'create')
+            ->notEmpty('see_nsfw');
 
         $validator
-            ->add('status', 'valid', ['rule' => 'numeric'])
+            ->integer('status')
             ->requirePresence('status', 'create')
             ->notEmpty('status');
 
         $validator
-            ->add('post_count', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('post_count', 'create')
-            ->notEmpty('post_count');
-
-        $validator
-            ->add('project_count', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('project_count', 'create')
-            ->notEmpty('project_count');
-
-        $validator
-            ->add('file_count', 'valid', ['rule' => 'numeric'])
+            ->integer('file_count')
             ->requirePresence('file_count', 'create')
             ->notEmpty('file_count');
 
         $validator
-            ->add('project_user_count', 'valid', ['rule' => 'numeric'])
+            ->integer('note_count')
+            ->requirePresence('note_count', 'create')
+            ->notEmpty('note_count');
+
+        $validator
+            ->integer('post_count')
+            ->requirePresence('post_count', 'create')
+            ->notEmpty('post_count');
+
+        $validator
+            ->integer('project_count')
+            ->requirePresence('project_count', 'create')
+            ->notEmpty('project_count');
+
+        $validator
+            ->integer('project_user_count')
             ->requirePresence('project_user_count', 'create')
             ->notEmpty('project_user_count');
+
+        $validator
+            ->requirePresence('preferences', 'create')
+            ->notEmpty('preferences');
 
         return $validator;
     }

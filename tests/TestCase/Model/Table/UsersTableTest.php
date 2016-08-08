@@ -12,19 +12,36 @@ class UsersTableTest extends TestCase
 {
 
     /**
+     * Test subject
+     *
+     * @var \App\Model\Table\UsersTable
+     */
+    public $Users;
+
+    /**
      * Fixtures
      *
      * @var array
      */
     public $fixtures = [
         'app.users',
-        'app.acts',
         'app.files',
+        'app.languages',
+        'app.notes',
         'app.licenses',
         'app.posts',
+        'app.tags',
+        'app.files_tags',
+        'app.notes_tags',
+        'app.posts_tags',
         'app.projects',
-        'app.project_users',
-        'app.itemfiles',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.teams_users',
         'app.reports'
     ];
 

@@ -26,14 +26,17 @@ class LanguagesTableTest extends TestCase
     public $fixtures = [
         'app.languages',
         'app.files',
-        'app.users',
-        'app.posts',
         'app.licenses',
+        'app.users',
+        'app.notes',
+        'app.posts',
         'app.projects',
-        'app.project_users',
-        'app.acts',
         'app.reports',
-        'app.itemfiles'
+        'app.teams',
+        'app.teams_users',
+        'app.tags',
+        'app.files_tags',
+        'app.projects_files'
     ];
 
     /**

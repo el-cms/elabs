@@ -2,7 +2,6 @@
 
 namespace App\Model\Table;
 
-use App\Model\Entity\Report;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -12,6 +11,16 @@ use Cake\Validation\Validator;
  * Reports Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
+ *
+ * @method \App\Model\Entity\Report get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Report newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Report[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Report|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Report patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Report[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Report findOrCreate($search, callable $callback = null)
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class ReportsTable extends Table
 {
@@ -46,14 +55,14 @@ class ReportsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->integer('id')
             ->allowEmpty('id', 'create');
 
         $validator
             ->allowEmpty('name');
 
         $validator
-            ->add('email', 'valid', ['rule' => 'email'])
+            ->email('email')
             ->allowEmpty('email');
 
         $validator

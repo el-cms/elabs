@@ -1,30 +1,38 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?php echo __d('elabs', 'Actions') ?></li>
-        <li><?php echo $this->Html->link(__d('elabs', 'New Tag'), ['action' => 'add']) ?></li>
-        <li><?php echo $this->Html->link(__d('elabs', 'List Itemtags'), ['controller' => 'Itemtags', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__d('elabs', 'New Itemtag'), ['controller' => 'Itemtags', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('New Tag'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Files'), ['controller' => 'Files', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New File'), ['controller' => 'Files', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Notes'), ['controller' => 'Notes', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Note'), ['controller' => 'Notes', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tags index large-9 medium-8 columns content">
-    <h3><?php echo __d('elabs', 'Tags') ?></h3>
+    <h3><?= __('Tags') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?php echo $this->Paginator->sort('id') ?></th>
-                <th><?php echo $this->Paginator->sort('name') ?></th>
-                <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
+                <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('name') ?></th>
+                <th><?= $this->Paginator->sort('itemtag_count') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($tags as $tag): ?>
             <tr>
-                <td><?php echo $tag->id ?></td>
-                <td><?php echo h($tag->name) ?></td>
+                <td><?= $this->Number->format($tag->id) ?></td>
+                <td><?= h($tag->name) ?></td>
+                <td><?= $this->Number->format($tag->itemtag_count) ?></td>
                 <td class="actions">
-                    <?php echo $this->Html->link(__d('elabs', 'View'), ['action' => 'view', $tag->id]) ?>
-                    <?php echo $this->Html->link(__d('elabs', 'Edit'), ['action' => 'edit', $tag->id]) ?>
-                    <?php echo $this->Form->postLink(__d('elabs', 'Delete'), ['action' => 'delete', $tag->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $tag->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $tag->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tag->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $tag->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -32,10 +40,10 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?php echo $this->Paginator->prev('< ' . __d('elabs', 'previous')) ?>
-            <?php echo $this->Paginator->numbers() ?>
-            <?php echo $this->Paginator->next(__d('elabs', 'next') . ' >') ?>
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
         </ul>
-        <p><?php echo $this->Paginator->counter() ?></p>
+        <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>

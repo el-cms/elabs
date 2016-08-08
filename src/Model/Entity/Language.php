@@ -9,13 +9,15 @@ use Cake\ORM\Entity;
  * @property string $id
  * @property string $iso639_1
  * @property string $name
- * @property int $post_count
- * @property int $project_count
- * @property int $file_count
  * @property bool $has_site_translation
  * @property string $translation_folder
+ * @property int $file_count
+ * @property int $note_count
+ * @property int $post_count
+ * @property int $project_count
  *
  * @property \App\Model\Entity\File[] $files
+ * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
  */

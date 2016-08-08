@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\License;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -13,6 +12,14 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\HasMany $Files
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
+ *
+ * @method \App\Model\Entity\License get($primaryKey, $options = [])
+ * @method \App\Model\Entity\License newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\License[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\License|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\License patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\License[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\License findOrCreate($search, callable $callback = null)
  */
 class LicensesTable extends Table
 {
@@ -51,7 +58,7 @@ class LicensesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->integer('id')
             ->allowEmpty('id', 'create');
 
         $validator
@@ -59,25 +66,30 @@ class LicensesTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->allowEmpty('mainurl');
+            ->allowEmpty('link');
 
         $validator
             ->allowEmpty('icon');
 
         $validator
-            ->add('post_count', 'valid', ['rule' => 'numeric'])
+            ->integer('file_count')
+            ->requirePresence('file_count', 'create')
+            ->notEmpty('file_count');
+
+        $validator
+            ->integer('post_count')
             ->requirePresence('post_count', 'create')
             ->notEmpty('post_count');
 
         $validator
-            ->add('project_count', 'valid', ['rule' => 'numeric'])
+            ->integer('project_count')
             ->requirePresence('project_count', 'create')
             ->notEmpty('project_count');
 
         $validator
-            ->add('file_count', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('file_count', 'create')
-            ->notEmpty('file_count');
+            ->integer('note_count')
+            ->requirePresence('note_count', 'create')
+            ->notEmpty('note_count');
 
         return $validator;
     }

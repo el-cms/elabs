@@ -16,10 +16,7 @@ class ActsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.acts',
-        'app.users',
-        'app.posts',
-        'app.projects'
+        'app.acts'
     ];
 
     /**

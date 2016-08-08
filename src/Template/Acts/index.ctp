@@ -37,7 +37,7 @@ if (!$acts->isEmpty()):
     <div class="timeline">
         <dl>
             <?php
-            $lastDate = new Cake\I18n\Time();
+            $lastDate = new Cake\I18n\FrozenTime();
             // Items
             foreach ($acts as $act):
                 $actDate = $act->created;

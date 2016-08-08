@@ -62,8 +62,8 @@ class FilesController extends AppController
             $filterData = $FilterModel->get($id);
 
             $this->set('filterData', $filterData);
-            $this->set('filter', $filter);
         }
+        $this->set('filter', $filter);
         $this->paginate = $findOptions;
         $this->set('files', $this->paginate($this->Files));
         $this->set('_serialize', ['files']);

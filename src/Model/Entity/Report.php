@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Report Entity.
+ * Report Entity
  *
  * @property int $id
  * @property string $name
@@ -14,6 +14,7 @@ use Cake\ORM\Entity;
  * @property string $session
  * @property \Cake\I18n\Time $created
  * @property string $user_id
+ *
  * @property \App\Model\Entity\User $user
  */
 class Report extends Entity
@@ -30,6 +31,6 @@ class Report extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

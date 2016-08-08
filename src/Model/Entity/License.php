@@ -4,15 +4,17 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * License Entity.
+ * License Entity
  *
  * @property int $id
  * @property string $name
- * @property string $mainurl
+ * @property string $link
  * @property string $icon
+ * @property int $file_count
  * @property int $post_count
  * @property int $project_count
- * @property int $file_count
+ * @property int $note_count
+ *
  * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
@@ -31,6 +33,6 @@ class License extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

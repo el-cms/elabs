@@ -12,13 +12,37 @@ class TagsTableTest extends TestCase
 {
 
     /**
+     * Test subject
+     *
+     * @var \App\Model\Table\TagsTable
+     */
+    public $Tags;
+
+    /**
      * Fixtures
      *
      * @var array
      */
     public $fixtures = [
         'app.tags',
-        'app.itemtags'
+        'app.files',
+        'app.languages',
+        'app.notes',
+        'app.users',
+        'app.posts',
+        'app.licenses',
+        'app.projects',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
+        'app.projects_tags',
+        'app.teams',
+        'app.teams_projects',
+        'app.posts_tags',
+        'app.reports',
+        'app.teams_users',
+        'app.notes_tags',
+        'app.files_tags'
     ];
 
     /**

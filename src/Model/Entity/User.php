@@ -6,7 +6,7 @@ use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 
 /**
- * User Entity.
+ * User Entity
  *
  * @property string $id
  * @property string $email
@@ -18,16 +18,21 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property string $role
- * @property bool $seeNSFW
+ * @property bool $see_nsfw
  * @property int $status
+ * @property int $file_count
+ * @property int $note_count
  * @property int $post_count
  * @property int $project_count
- * @property int $file_count
  * @property int $project_user_count
+ * @property string $preferences
+ *
  * @property \App\Model\Entity\File[] $files
+ * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
  * @property \App\Model\Entity\Report[] $reports
+ * @property \App\Model\Entity\Team[] $teams
  */
 class User extends Entity
 {
@@ -43,7 +48,16 @@ class User extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
+    ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array
+     */
+    protected $_hidden = [
+        'password'
     ];
 
     /**
