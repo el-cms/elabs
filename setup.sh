@@ -99,6 +99,7 @@ bin/cake Migrations migrate
 bin/cake Migrations seed
 
 echo ""
+echo -e "${EL_BOX_TOP_LINE}";
 echo -e "+-------------------------------------------------------------------+${EL_BOX_SHADOW_LIGHT}"
 echo -e "|                                                                   |${EL_BOX_SHADOW_LIGHT}"
 echo -e "| \e[34mSetup is over.\e[39m                                                    |${EL_BOX_SHADOW_LIGHT}"
