@@ -54,7 +54,7 @@ class NotesTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Licenses', [
-            'foreignKey' => 'licenses_id',
+            'foreignKey' => 'license_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsToMany('Tags', [
@@ -113,7 +113,7 @@ class NotesTable extends Table
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
-        $rules->add($rules->existsIn(['licenses_id'], 'Licenses'));
+        $rules->add($rules->existsIn(['license_id'], 'Licenses'));
 
         return $rules;
     }

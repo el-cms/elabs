@@ -25,7 +25,7 @@
                 <th><?= $this->Paginator->sort('status') ?></th>
                 <th><?= $this->Paginator->sort('user_id') ?></th>
                 <th><?= $this->Paginator->sort('language_id') ?></th>
-                <th><?= $this->Paginator->sort('licenses_id') ?></th>
+                <th><?= $this->Paginator->sort('license_id') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>

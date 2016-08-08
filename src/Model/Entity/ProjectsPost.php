@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $project_id
- * @property string $posts_id
+ * @property string $post_id
  *
  * @property \App\Model\Entity\Project $project
  * @property \App\Model\Entity\Post $post

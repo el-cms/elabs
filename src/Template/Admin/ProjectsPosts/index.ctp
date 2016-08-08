@@ -15,7 +15,7 @@
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('project_id') ?></th>
-                <th><?= $this->Paginator->sort('posts_id') ?></th>
+                <th><?= $this->Paginator->sort('post_id') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>

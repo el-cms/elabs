@@ -30,7 +30,7 @@
             echo $this->Form->input('status');
             echo $this->Form->input('user_id', ['options' => $users]);
             echo $this->Form->input('language_id', ['options' => $languages]);
-            echo $this->Form->input('licenses_id', ['options' => $licenses]);
+            echo $this->Form->input('license_id', ['options' => $licenses]);
             echo $this->Form->input('tags._ids', ['options' => $tags]);
             echo $this->Form->input('projects._ids', ['options' => $projects]);
         ?>

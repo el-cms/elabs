@@ -12,7 +12,7 @@ use Cake\ORM\Entity;
  * @property int $status
  * @property string $user_id
  * @property string $language_id
- * @property int $licenses_id
+ * @property int $license_id
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Language $language

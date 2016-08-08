@@ -98,7 +98,7 @@
                 <td><?= h($notes->status) ?></td>
                 <td><?= h($notes->user_id) ?></td>
                 <td><?= h($notes->language_id) ?></td>
-                <td><?= h($notes->licenses_id) ?></td>
+                <td><?= h($notes->license_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Notes', 'action' => 'view', $notes->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Notes', 'action' => 'edit', $notes->id]) ?>

@@ -42,7 +42,7 @@ class ProjectsPostsTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Posts', [
-            'foreignKey' => 'posts_id',
+            'foreignKey' => 'post_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -72,7 +72,7 @@ class ProjectsPostsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['project_id'], 'Projects'));
-        $rules->add($rules->existsIn(['posts_id'], 'Posts'));
+        $rules->add($rules->existsIn(['post_id'], 'Posts'));
 
         return $rules;
     }
