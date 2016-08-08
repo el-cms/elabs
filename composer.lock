@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "778e76a28d07821768b22ed50de2e5af",
-    "content-hash": "6ff6e00f74962763121245a8b72707ef",
+    "hash": "043b77b806a1e6dff8c5e5a9970fdc5e",
+    "content-hash": "85e200d21291001fd18182034c4f7088",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -548,6 +548,52 @@
                 "search"
             ],
             "time": "2016-07-06 16:59:09"
+        },
+        {
+            "name": "lowg33kdev/cakephp-gravatar-plugin",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LowG33kDev/cakephp-gravatar-plugin.git",
+                "reference": "f40a24f7175548ce23956830cfc309fc43daf5f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LowG33kDev/cakephp-gravatar-plugin/zipball/f40a24f7175548ce23956830cfc309fc43daf5f6",
+                "reference": "f40a24f7175548ce23956830cfc309fc43daf5f6",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "~3.0"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "dev-master",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Gravatar\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Loïc Marchand",
+                    "homepage": "https://github.com/LowG33kDev",
+                    "role": "Author"
+                }
+            ],
+            "description": "CakePHP Gravatar plugin",
+            "homepage": "https://github.com/LowG33kDev/cakephp-gravatar-plugin",
+            "keywords": [
+                "cakephp",
+                "gravatar"
+            ],
+            "time": "2015-03-26 23:20:57"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
