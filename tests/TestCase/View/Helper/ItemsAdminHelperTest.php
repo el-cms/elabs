@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\View\Helper;
 
 use App\View\Helper\ItemsAdminHelper;
@@ -10,7 +11,6 @@ use Cake\View\View;
  */
 class ItemsAdminHelperTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -49,7 +49,21 @@ class ItemsAdminHelperTest extends TestCase
      */
     public function testStatusLabel()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        // Removed, no icon
+        $result = 'Removed';
+        $this->assertEquals($result, $this->ItemsAdminHelper->statusLabel(3, false));
+
+        $this->markTestIncomplete('Issue with AppHtmlHelper::iconT() not available in test.');
+
+        // Waiting
+        $result = '<i class="fa-exclamation fa-fw fa"></i>&nbsp;Waiting';
+        $this->assertEquals($result, $this->ItemsAdminHelper->statusLabel(0));
+        // Approved
+        $result = '<i class="fa-exclamation fa-fw fa"></i>&nbsp;Published';
+        $this->assertEquals($result, $this->ItemsAdminHelper->statusLabel(1));
+        // Locked
+        $result = '<i class="fa-exclamation fa-fw fa"></i>&nbsp;Locked';
+        $this->assertEquals($result, $this->ItemsAdminHelper->statusLabel(2));
     }
 
     /**
@@ -59,6 +73,17 @@ class ItemsAdminHelperTest extends TestCase
      */
     public function testSfwLabel()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        // No, no icon
+        $result = '<span class="label label-danger">No</span>';
+        $this->assertEquals($result, $this->ItemsAdminHelper->sfwLabel(0, false));
+
+        $this->markTestIncomplete('Issue with AppHtmlHelper::iconT() not available in test.');
+
+        // Yes
+        $result = '<span class="label label-success"><i class="fa-check fa-fw fa"></i>&nbsp;Yes</span>';
+        $this->assertEquals($result, $this->ItemsAdminHelper->sfwLabel(1));
+        // No
+        $result = '<span class="label label-danger"><i class="fa-times fa-fw fa"></i>&nbsp;No</span>';
+        $this->assertEquals($result, $this->ItemsAdminHelper->sfwLabel(0));
     }
 }

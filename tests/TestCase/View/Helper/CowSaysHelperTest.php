@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\View\Helper;
 
 use App\View\Helper\CowSaysHelper;
@@ -10,7 +11,6 @@ use Cake\View\View;
  */
 class CowSaysHelperTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -49,7 +49,53 @@ class CowSaysHelperTest extends TestCase
      */
     public function testSay()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        // Basic
+        $results = '<pre class = "cow-box">/-------------\
+| Hello world |
+\-------------/
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||</pre>';
+
+        $this->assertEquals($results, $this->CowSaysHelper->say('Hello world'));
+
+        // Custom:
+
+        /**
+         * $options += [
+          'sign' => null, // Signature
+          'cow' => 'default', // Type of cow
+          'eyes' => 'default', // Eyes type
+          'speakLines' => 'default', // Lines between balloon and cow
+          'corners' => 'default', // Change the balloon corners
+          'signClass' => null, // Signature class
+          'msgClass' => null, // Message class
+          'balloonClass' => null, // Ballon text class
+          'cowClass' => null, // Whole cow text class
+          ];
+         *
+         */
+        $results = '<pre class = "cow-box"><span class="cow_class"><span class="balloon_class">+-------------+
+( <span class="msg_class">Hello, nice</span> )
+( <span class="msg_class">world</span>       )
+(     <span class="sign_class">~ Me ~ </span> )
++-------------+</span>
+        o   ^__^
+         o  (xx)\_______
+            (__)\       )\/\
+             U  ||----w |
+                ||     ||</span></pre>';
+        $this->assertEquals($results, $this->CowSaysHelper->say("Hello, nice\nworld", [
+                    'sign' => 'Me',
+                    'eyes' => 'dead',
+                    'speakLines' => 'think',
+                    'corners' => 'square',
+                    'signClass' => 'sign_class',
+                    'msgClass' => 'msg_class',
+                    'balloonClass' => 'balloon_class',
+                    'cowClass' => 'cow_class']));
     }
 
     /**
@@ -59,6 +105,6 @@ class CowSaysHelperTest extends TestCase
      */
     public function testSayError()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->markTestSkipped('Everything is random here.');
     }
 }

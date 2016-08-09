@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\View\Helper;
 
 use App\View\Helper\AppHtmlHelper;
@@ -10,7 +11,6 @@ use Cake\View\View;
  */
 class AppHtmlHelperTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -49,7 +49,25 @@ class AppHtmlHelperTest extends TestCase
      */
     public function testIcon()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        // No options
+        $result = '<i class="fa-home fa-fw fa"></i>';
+        $this->assertEquals($result, $this->AppHtmlHelper->icon('home'));
+
+        // Fixed = false
+        $result = '<i class="fa-home fa"></i>';
+        $this->assertEquals($result, $this->AppHtmlHelper->icon('home', ['fixed' => false]));
+
+        // Other icon set
+        $result = '<i class="gi-home gi-fw gi"></i>';
+        $this->assertEquals($result, $this->AppHtmlHelper->icon('home', ['iconSet' => 'gi']));
+
+        // Additionnal class
+        $result = '<i class="some_class fa-home fa-fw fa"></i>';
+        $this->assertEquals($result, $this->AppHtmlHelper->icon('home', ['class' => 'some_class']));
+
+        // All combined
+        $result = '<i class="some_class gi-home gi"></i>';
+        $this->assertEquals($result, $this->AppHtmlHelper->icon('home', ['class' => 'some_class', 'iconSet' => 'gi', 'fixed' => false]));
     }
 
     /**
@@ -59,7 +77,25 @@ class AppHtmlHelperTest extends TestCase
      */
     public function testIconT()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        // No options
+        $result = '<i class="fa-home fa-fw fa"></i>&nbsp;test';
+        $this->assertEquals($result, $this->AppHtmlHelper->iconT('home', 'test'));
+
+        // Fixed = false
+        $result = '<i class="fa-home fa"></i>&nbsp;test';
+        $this->assertEquals($result, $this->AppHtmlHelper->iconT('home', 'test', ['fixed' => false]));
+
+        // Other icon set
+        $result = '<i class="gi-home gi-fw gi"></i>&nbsp;test';
+        $this->assertEquals($result, $this->AppHtmlHelper->iconT('home', 'test', ['iconSet' => 'gi']));
+
+        // Additionnal class
+        $result = '<i class="some_class fa-home fa-fw fa"></i>&nbsp;test';
+        $this->assertEquals($result, $this->AppHtmlHelper->iconT('home', 'test', ['class' => 'some_class']));
+
+        // All combined
+        $result = '<i class="some_class gi-home gi"></i>&nbsp;test';
+        $this->assertEquals($result, $this->AppHtmlHelper->iconT('home', 'test', ['class' => 'some_class', 'iconSet' => 'gi', 'fixed' => false]));
     }
 
     /**
@@ -69,7 +105,23 @@ class AppHtmlHelperTest extends TestCase
      */
     public function testArrayToString()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $array = ['some', 'strings', 'to', 'assemble', 'put together'];
+
+        // Simple call
+        $result = "Some, strings, to, assemble and put together";
+        $this->assertEquals($result, $this->AppHtmlHelper->arrayToString($array));
+
+        // No uppercase
+        $result = "some, strings, to, assemble and put together";
+        $this->assertEquals($result, $this->AppHtmlHelper->arrayToString($array, ['uppercase' => false]));
+
+        // No 'And' separator
+        $result = "Some, strings, to, assemble, put together";
+        $this->assertEquals($result, $this->AppHtmlHelper->arrayToString($array, ['and' => false]));
+
+        // All options
+        $result = "some, strings, to, assemble, put together";
+        $this->assertEquals($result, $this->AppHtmlHelper->arrayToString($array, ['uppercase' => false, 'and' => false]));
     }
 
     /**
@@ -79,7 +131,25 @@ class AppHtmlHelperTest extends TestCase
      */
     public function testReportLink()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        //function reportLink($target = null, $options = []) title icon
+        // Simple call
+        $result = '<a href="#" data-toggle="modal" data-target="#reportModal" data-itemtarget="/">Report this</a>';
+        $this->assertEquals($result, $this->AppHtmlHelper->reportLink());
+
+        $result = '<a href="#" data-toggle="modal" data-target="#reportModal" data-itemtarget="otherTarget">Report this</a>';
+        $this->assertEquals($result, $this->AppHtmlHelper->reportLink('otherTarget'));
+
+        // Custom title
+        $result = '<a href="#" data-toggle="modal" data-target="#reportModal" data-itemtarget="/">Other title</a>';
+        $this->assertEquals($result, $this->AppHtmlHelper->reportLink(null, ['title' => 'Other title']));
+
+        // Custom icon
+        $result = '<a href="#" data-toggle="modal" data-target="#reportModal" data-itemtarget="/"><i class="fa-flag fa-fw fa"></i>&nbsp;Report this</a>';
+        $this->assertEquals($result, $this->AppHtmlHelper->reportLink(null, ['icon' => true]));
+
+        // All together
+        $result = '<a href="#" data-toggle="modal" data-target="#reportModal" data-itemtarget="otherTarget"><i class="fa-flag fa-fw fa"></i>&nbsp;Other title</a>';
+        $this->assertEquals($result, $this->AppHtmlHelper->reportLink('otherTarget', ['title' => 'Other title', 'icon' => true]));
     }
 
     /**
@@ -89,7 +159,7 @@ class AppHtmlHelperTest extends TestCase
      */
     public function testDisplayMD()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->markTestSkipped('Test too complex to be in a helper file.');
     }
 
     /**
@@ -99,7 +169,34 @@ class AppHtmlHelperTest extends TestCase
      */
     public function testLangLabel()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        /*
+         * public function langLabel($content, $isoCode, $options = [])
+          {
+          $options += [
+          'class' => null,
+          'label' => true,
+          'tag' => 'span',
+          ];
+         */
+        // Simple call
+        $result = '<span class="label label-language" lang="eng">English</span>';
+        $this->assertEquals($result, $this->AppHtmlHelper->langLabel('English', 'eng'));
+
+        // Class option
+        $result = '<span class="other classes label label-language" lang="eng">English</span>';
+        $this->assertEquals($result, $this->AppHtmlHelper->langLabel('English', 'eng', ['class' => 'other classes']));
+
+        // Label option
+        $result = '<span lang="eng">English</span>';
+        $this->assertEquals($result, $this->AppHtmlHelper->langLabel('English', 'eng', ['label' => false]));
+
+        // Tag
+        $result = '<div class="label label-language" lang="eng">English</div>';
+        $this->assertEquals($result, $this->AppHtmlHelper->langLabel('English', 'eng', ['tag' => 'div']));
+
+        // All tests
+        $result = '<div class="other class" lang="eng">English</div>';
+        $this->assertEquals($result, $this->AppHtmlHelper->langLabel('English', 'eng', ['label' => false, 'class' => 'other class', 'tag' => 'div']));
     }
 
     /**
@@ -109,6 +206,12 @@ class AppHtmlHelperTest extends TestCase
      */
     public function testCheckIcon()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        // True
+        $result = '<i class="fa-check-circle-o fa-fw fa"></i>';
+        $this->assertEquals($result, $this->AppHtmlHelper->checkIcon(true));
+
+        // False
+        $result = '<i class="fa-circle-o fa-fw fa"></i>';
+        $this->assertEquals($result, $this->AppHtmlHelper->checkIcon(false));
     }
 }

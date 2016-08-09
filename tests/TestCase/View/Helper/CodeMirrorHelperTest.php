@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\View\Helper;
 
 use App\View\Helper\CodeMirrorHelper;
@@ -10,7 +11,6 @@ use Cake\View\View;
  */
 class CodeMirrorHelperTest extends TestCase
 {
-
     /**
      * Test subject
      *

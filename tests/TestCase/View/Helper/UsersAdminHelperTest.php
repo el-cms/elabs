@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\View\Helper;
 
 use App\View\Helper\UsersAdminHelper;
@@ -10,7 +11,6 @@ use Cake\View\View;
  */
 class UsersAdminHelperTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -49,7 +49,7 @@ class UsersAdminHelperTest extends TestCase
      */
     public function testRoleLabel()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->markTestIncomplete('Issue with AppHtmlHelper::iconT() not available in test.');
     }
 
     /**
@@ -59,6 +59,6 @@ class UsersAdminHelperTest extends TestCase
      */
     public function testStatusLabel()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->markTestIncomplete('Issue with AppHtmlHelper::iconT() not available in test.');
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\View\Helper;
 
 use App\View\Helper\ElabsTimeHelper;
@@ -10,7 +11,6 @@ use Cake\View\View;
  */
 class ElabsTimeHelperTest extends TestCase
 {
-
     /**
      * Test subject
      *
@@ -49,6 +49,8 @@ class ElabsTimeHelperTest extends TestCase
      */
     public function testIsSameDay()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->assertEquals(true, $this->ElabsTimeHelper->isSameDay(\Cake\I18n\FrozenTime::now(), \Cake\I18n\FrozenTime::now()));
+        $this->assertEquals(false, $this->ElabsTimeHelper->isSameDay(\Cake\I18n\FrozenTime::now()->yesterday(), \Cake\I18n\FrozenTime::now()->tomorrow()));
+        $this->assertEquals(true, $this->ElabsTimeHelper->isSameDay(\Cake\I18n\FrozenTime::now()->yesterday(), \Cake\I18n\FrozenTime::now()->subDay()));
     }
 }

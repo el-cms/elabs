@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\View\Helper;
 
 use App\View\Helper\LicenseHelper;
@@ -10,13 +11,14 @@ use Cake\View\View;
  */
 class LicenseHelperTest extends TestCase
 {
-
     /**
      * Test subject
      *
      * @var \App\View\Helper\LicenseHelper
      */
     public $LicenseHelper;
+
+    public $fixtures=['app.Licenses'];
 
     /**
      * setUp method
@@ -49,6 +51,10 @@ class LicenseHelperTest extends TestCase
      */
     public function testD()
     {
+        $this->markTestIncomplete('Issue with AppHtmlHelper::iconT() not available in test.');
+        $licenses = \Cake\ORM\TableRegistry::get('Licenses');
+        $license = $licenses->get('1');
+        debug($this->LicenseHelper->d($license));
         $this->markTestIncomplete('Not implemented yet.');
     }
 }
