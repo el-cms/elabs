@@ -5,6 +5,7 @@ return ['cms' => [
         'isRegistrationOpen' => true,
         'defaultRole' => 'author',
         'defaultUserStatus' => 0,
+        'defaultUserPreferences' => [],
         'defaultLockedUser' => false,
         'defaultSeeNSFW' => false,
         'defaultMinPassLenght' => 8,

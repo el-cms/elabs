@@ -46,7 +46,7 @@ class UsersController extends AppController
             ],
             'sortWhitelist' => ['username', 'realname', 'created'],
             // Email should only be used for Gravatar.
-            'fields' => ['id', 'username', 'realname', 'email', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count']
+            'fields' => ['id', 'username', 'realname', 'email', 'website', 'created', 'post_count', 'project_count', 'file_count']
         ];
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
@@ -64,7 +64,7 @@ class UsersController extends AppController
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
         $languageConfig = ['fields' => ['id', 'name', 'iso639_1']];
         $options = [
-            'fields' => ['id', 'username', 'realname', 'email', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count', 'project_user_count'],
+            'fields' => ['id', 'username', 'realname', 'email', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count'],
             'contain' => [
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
@@ -116,22 +116,26 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             //Adding defaults
-            $this->request->data['seeNSFW'] = Configure::read('cms.defaultSeeNSFW');
+            $this->request->data['see_nsfw'] = Configure::read('cms.defaultSeeNSFW');
             $this->request->data['role'] = Configure::read('cms.defaultRole');
             $this->request->data['status'] = Configure::read('cms.defaultUserStatus');
             $this->request->data['locked'] = Configure::read('cms.defaultLockedUser');
+            $this->request->data['file_count'] = 0;
+            $this->request->data['note_count'] = 0;
             $this->request->data['post_count'] = 0;
             $this->request->data['project_count'] = 0;
-            $this->request->data['file_count'] = 0;
-            $this->request->data['project_user_count'] = 0;
+            $this->request->data['preferences'] = json_encode(Configure::read('cms.defaultPreferences'));
 
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__d('elabs', 'Your account has been created. An email will be sent to you when active'));
                 $this->redirect(['action' => 'index']);
             } else {
+//                debug($user);die;
                 $errors = $user->errors();
                 $errorMessages = [];
+//                debug($errors);
+//                die;
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
                 });

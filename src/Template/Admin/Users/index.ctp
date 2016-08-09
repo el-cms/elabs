@@ -283,7 +283,7 @@ $this->append('pageBottomScripts');
         $('#uModTitle').html(response.user.realname);
         $('#uModBio').html(response.user.bio);
         $('#uModArticleCount').html(response.user.post_count);
-        $('#uModProjectCount').html((response.user.project_count + response.user.project_user_count) + ' (' + response.user.project_user_count + ')');
+        $('#uModProjectCount').html((response.user.project_count));
         $('#uModFileCount').html(response.user.file_count);
       });
     }

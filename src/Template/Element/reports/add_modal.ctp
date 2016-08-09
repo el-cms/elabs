@@ -60,32 +60,8 @@ $this->append('pageBottomScripts');
     $('#reportModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
       var itemTarget = button.data('itemtarget'); // Button that triggered the modal
-//      var id = button.data('id'); // Extract info from data-* attributes
-//      var action = button.data('action'); // Extract info from data-* attributes
-//      alert(itemTarget);
       $('#reportModalUrl').val(itemTarget);
     });
-//    function showReportModal(target) {
-//      var request = $.ajax({
-//        type: "POST",
-//        url: "<?php echo $this->Url->build(['plugin' => null, 'prefix' => false, 'controller' => 'Reports', 'action' => 'add']); ?>" + '/' + id,
-//        dataType: 'json',
-//        async: true
-//      });
-//      //      request.done(function (msg) {
-//      //        $("#log").html(msg);
-//      //      });
-//      request.fail(function (jqXHR, textStatus) {
-//        alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
-//      });
-//      request.success(function (response) {
-//        $('#rModTitle').html(response.user.realname);
-//        $('#rModBio').html(response.user.bio);
-//        $('#rModArticleCount').html(response.user.post_count);
-//        $('#rModProjectCount').html((response.user.project_count + response.user.project_user_count) + ' (' + response.user.project_user_count + ')');
-//        $('#rModFileCount').html(response.user.file_count);
-//      });
-//    }
 </script>
 <?php
 $this->end();

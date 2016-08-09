@@ -67,11 +67,11 @@ class UsersController extends AdminAppController
     {
         if ($this->request->is('ajax')) {
             $user = $this->Users->get($id, [
-                'fields' => ['id', 'username', 'realname', 'created', 'modified', 'status', 'bio', 'post_count', 'project_count', 'file_count', 'project_user_count'],
+                'fields' => ['id', 'username', 'realname', 'created', 'modified', 'status', 'bio', 'post_count', 'project_count', 'file_count'],
             ]);
         } else {
             $user = $this->Users->get($id, [
-                'fields' => ['id', 'username', 'realname', 'website', 'created', 'modified', 'status', 'post_count', 'project_count', 'file_count', 'project_user_count'],
+                'fields' => ['id', 'username', 'realname', 'website', 'created', 'modified', 'status', 'post_count', 'project_count', 'file_count'],
                 'contain' => [
                     'Posts' => [
                         'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],

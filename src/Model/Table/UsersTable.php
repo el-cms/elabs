@@ -164,11 +164,6 @@ class UsersTable extends Table
             ->notEmpty('project_count');
 
         $validator
-            ->integer('project_user_count')
-            ->requirePresence('project_user_count', 'create')
-            ->notEmpty('project_user_count');
-
-        $validator
             ->requirePresence('preferences', 'create')
             ->notEmpty('preferences');
 

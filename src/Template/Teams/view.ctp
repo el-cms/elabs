@@ -113,7 +113,6 @@
                 <td><?= h($users->note_count) ?></td>
                 <td><?= h($users->post_count) ?></td>
                 <td><?= h($users->project_count) ?></td>
-                <td><?= h($users->project_user_count) ?></td>
                 <td><?= h($users->preferences) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
