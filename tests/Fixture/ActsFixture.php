@@ -94,5 +94,19 @@ class ActsFixture extends TestFixture
             'type' => 'add',
             'created' => '2016-08-09 01:21:23'
         ],
+        [
+            'id' => 9,
+            'model' => 'Posts',
+            'fkid' => 'd5f4a0fa-2956-465e-ab99-2c975df276b9',
+            'type' => 'edit',
+            'created' => '2016-08-08 02:21:23'
+        ],
+        [
+            'id' => 10,
+            'model' => 'Posts',
+            'fkid' => 'd5f4a0fa-2956-465e-ab99-2c975df276b9',
+            'type' => 'edit',
+            'created' => '2016-08-08 03:21:23'
+        ],
     ];
 }

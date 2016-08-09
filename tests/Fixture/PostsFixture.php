@@ -104,7 +104,7 @@ class PostsFixture extends TestFixture
             'status' => 1,
             'publication_date' => '2016-08-09 01:21:23',
             'created' => '2016-08-09 01:21:23',
-            'modified' => '2016-08-09 01:21:23',
+            'modified' => '2016-08-09 03:21:23',
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'license_id' => 1,
             'language_id' => 'eng'
