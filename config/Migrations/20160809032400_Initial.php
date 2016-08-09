@@ -191,7 +191,7 @@ class Initial extends AbstractMigration
                 ->addColumn('reason', 'text', ['default' => null, 'limit' => null, 'null' => false])
                 ->addColumn('session', 'text', ['default' => null, 'limit' => null, 'null' => true])
                 ->addColumn('created', 'datetime', ['default' => null, 'limit' => null, 'null' => false])
-                ->addColumn('user_id', 'uuid', ['default' => null, 'limit' => null, 'null' => false])
+                ->addColumn('user_id', 'uuid', ['default' => null, 'limit' => null, 'null' => true])
                 ->addIndex(['user_id'])
                 ->create();
 
