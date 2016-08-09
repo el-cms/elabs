@@ -90,13 +90,13 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
                 $separator = ', ';
             }
             if ($i == $count && $options['and'] && $i > 1) {
-                $separator = __d('elabs', ' and ');
+                $separator = __d('elabs', ' {0} ', ['and']);
             }
-            $out .= $separator . (($options['uppercase']) ? ucfirst($item) : $item);
+            $out .= $separator . $item;
             $i++;
         }
 
-        return $out;
+        return (($options['uppercase']) ? ucfirst($out) : $out);
     }
 
     /**
@@ -104,6 +104,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
      *
      * Options:
      *   - icon:  mixed (string, bool), null, an icon to place before the link
+     *   - title: string, null Alternative text
      *
      * @param mixed $target string or array, the current page
      * @param array $options an array of options
@@ -142,7 +143,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
      *
      * Options:
      *   - raw: bool, false, return raw text with no formatting (text will be escaped)
-     *   - protect: bool, false, Escape content. this value will overwrite cms.escapeMarkdown
+     *   - protect: bool, false, Escape content. This value will overwrite cms.escapeMarkdown
      *
      * @param string $text Raw markdown text
      * @param array $options An array of options
@@ -182,7 +183,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
             'tag' => 'span',
         ];
         if ($options['label']) {
-            $options['class'] .= 'label label-language';
+            $options = $this->injectClasses('label label-language', $options);
         }
         $tag = $options['tag'];
 
@@ -204,7 +205,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
     public function checkIcon($value)
     {
         $icon = ($value) ? 'check-circle-o' : 'circle-o';
-        
+
         return $this->icon($icon);
     }
 }

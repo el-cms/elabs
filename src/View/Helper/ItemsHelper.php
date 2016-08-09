@@ -49,7 +49,7 @@ class ItemsHelper extends Helper
             ];
         } else {
             return [
-                'icon' => 'file-image-o',
+                'icon' => 'file-o',
                 'element' => 'other',
             ];
         }
