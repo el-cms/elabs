@@ -57,7 +57,7 @@ class LanguagesSeed extends AbstractSeed
             ['id' => 'div', 'iso639_1' => 'dv', 'name' => '‫ދިވެހި', 'has_site_translation' => false, 'translation_folder' => null],
             ['id' => 'dzo', 'iso639_1' => 'dz', 'name' => 'རྫོང་ཁ', 'has_site_translation' => false, 'translation_folder' => null],
             ['id' => 'ell', 'iso639_1' => 'el', 'name' => 'Ελληνικά', 'has_site_translation' => false, 'translation_folder' => null],
-            ['id' => 'eng', 'iso639_1' => 'en', 'name' => 'English', 'has_site_translation' => true, 'translation_folder' => null],
+            ['id' => 'eng', 'iso639_1' => 'en', 'name' => 'English', 'has_site_translation' => true, 'translation_folder' => ''],
             ['id' => 'epo', 'iso639_1' => 'eo', 'name' => 'Esperanto', 'has_site_translation' => false, 'translation_folder' => null],
             ['id' => 'est', 'iso639_1' => 'et', 'name' => 'Eesti keel', 'has_site_translation' => false, 'translation_folder' => null],
             ['id' => 'eus', 'iso639_1' => 'eu', 'name' => 'Euskara', 'has_site_translation' => false, 'translation_folder' => null],
