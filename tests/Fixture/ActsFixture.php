@@ -40,10 +40,59 @@ class ActsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'model' => 'Lorem ipsum dolor sit amet',
-            'fkid' => 'bd204617-e11e-403f-be44-7901e3c6cf54',
-            'type' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-08-08 20:30:58'
+            'model' => 'Posts',
+            'fkid' => '6e0c6123-2dbd-47d3-868b-9797cd9f3039',
+            'type' => 'add',
+            'created' => '2016-08-09 00:42:25'
+        ],
+        [
+            'id' => 2,
+            'model' => 'Projects',
+            'fkid' => 'e5e2988e-2f1c-4902-ba1a-e0f577413f23',
+            'type' => 'add',
+            'created' => '2016-08-09 00:44:45'
+        ],
+        [
+            'id' => 3,
+            'model' => 'Projects',
+            'fkid' => '9a9b6e60-6572-4b47-a161-e37ae81e16a8',
+            'type' => 'add',
+            'created' => '2016-08-09 00:45:25'
+        ],
+        [
+            'id' => 4,
+            'model' => 'Projects',
+            'fkid' => '47a35a14-62ac-4f68-b617-01fea96ffa30',
+            'type' => 'add',
+            'created' => '2016-08-09 00:46:17'
+        ],
+        [
+            'id' => 5,
+            'model' => 'Files',
+            'fkid' => 'cafc0f93-d435-468e-afc7-30a38ee811eb',
+            'type' => 'add',
+            'created' => '2016-08-09 00:46:45'
+        ],
+        [
+            'id' => 6,
+            'model' => 'Files',
+            'fkid' => '63c22253-9f07-41de-abcf-c9e0a9eaf7e9',
+            'type' => 'add',
+            'created' => '2016-08-09 00:47:16'
+        ],
+        [
+            'id' => 7,
+            'model' => 'Files',
+            'fkid' => '4aa59eb5-35c6-42c1-91e2-f8c6a6cb8539',
+            'type' => 'add',
+            'created' => '2016-08-09 00:48:02'
+        ],
+        [
+            'id' => 8,
+            'model' => 'Posts',
+            'fkid' => 'd5f4a0fa-2956-465e-ab99-2c975df276b9',
+            'type' => 'add',
+            'created' => '2016-08-09 01:21:23'
         ],
     ];
 }

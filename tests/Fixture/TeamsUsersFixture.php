@@ -42,10 +42,5 @@ class TeamsUsersFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'team_id' => 1,
-            'user_id' => '3700aac3-5070-4005-9c09-e7bc41f68d20'
-        ],
     ];
 }

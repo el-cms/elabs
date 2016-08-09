@@ -54,18 +54,46 @@ class ProjectsFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => '9d90d187-6736-4fa6-a1a2-1d0cc229d1b5',
-            'name' => 'Lorem ipsum dolor sit amet',
-            'short_description' => 'Lorem ipsum dolor sit amet',
-            'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-            'mainurl' => 'Lorem ipsum dolor sit amet',
-            'sfw' => 1,
+            'id' => '47a35a14-62ac-4f68-b617-01fea96ffa30',
+            'name' => 'Aother nice project',
+            'short_description' => 'This is a short thing !',
+            'description' => 'This is longer.',
+            'mainurl' => 'http://another-project.com',
+            'sfw' => true,
             'status' => 1,
-            'created' => '2016-08-08 20:31:03',
-            'modified' => '2016-08-08 20:31:03',
+            'created' => '2016-08-09 00:46:17',
+            'modified' => '2016-08-09 00:46:17',
             'license_id' => 1,
-            'user_id' => '989aeca0-f541-4db8-8eeb-34aab99f047b',
-            'language_id' => 'L'
+            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
+            'language_id' => 'eng'
+        ],
+        [
+            'id' => '9a9b6e60-6572-4b47-a161-e37ae81e16a8',
+            'name' => 'Very unsafe project',
+            'short_description' => 'Some unsafe stuff',
+            'description' => 'that\'s _it_',
+            'mainurl' => '',
+            'sfw' => false,
+            'status' => 1,
+            'created' => '2016-08-09 00:45:25',
+            'modified' => '2016-08-09 00:45:25',
+            'license_id' => 4,
+            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
+            'language_id' => 'epo'
+        ],
+        [
+            'id' => 'e5e2988e-2f1c-4902-ba1a-e0f577413f23',
+            'name' => 'A test project',
+            'short_description' => '__With a bold desc__',
+            'description' => 'This is the description',
+            'mainurl' => 'http://example.com',
+            'sfw' => true,
+            'status' => 1,
+            'created' => '2016-08-09 00:44:45',
+            'modified' => '2016-08-09 00:44:45',
+            'license_id' => 1,
+            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
+            'language_id' => 'fra'
         ],
     ];
 }

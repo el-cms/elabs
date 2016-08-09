@@ -42,10 +42,5 @@ class NotesTagsFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'note_id' => '8518d8f1-43ff-4f21-9674-a3d55b88368a',
-            'tag_id' => 1
-        ],
     ];
 }

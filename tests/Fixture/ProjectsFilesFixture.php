@@ -42,10 +42,5 @@ class ProjectsFilesFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'project_id' => '32306834-3771-40b0-bbd5-1653e629cb77',
-            'file_id' => 'a0ad9618-c6ab-422b-868e-c65865f56420'
-        ],
     ];
 }

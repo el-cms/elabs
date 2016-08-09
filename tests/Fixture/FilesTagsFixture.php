@@ -42,10 +42,5 @@ class FilesTagsFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'file_id' => '402917de-a540-4e82-bc4d-c0a87ade0d3b',
-            'tag_id' => 1
-        ],
     ];
 }

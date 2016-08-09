@@ -42,10 +42,5 @@ class ProjectsNotesFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'project_id' => 'b4a6ec0a-5393-46eb-9b23-bbfbbbfe6d2f',
-            'note_id' => '204b9335-6caa-4346-840a-38ae950ddc90'
-        ],
     ];
 }

@@ -48,14 +48,5 @@ class NotesFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 'bbb055bc-167b-4817-9d8d-ffe1ec881bb8',
-            'text' => 'Lorem ipsum dolor sit amet',
-            'sfw' => 1,
-            'status' => 1,
-            'user_id' => 'c562740d-0fbc-4aca-a853-4668e566958f',
-            'language_id' => 'L',
-            'license_id' => 1
-        ],
     ];
 }

@@ -42,10 +42,5 @@ class ProjectsTagsFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'project_id' => '51458ce3-f939-4ecf-ad78-780c72b4e097',
-            'tag_id' => 1
-        ],
     ];
 }

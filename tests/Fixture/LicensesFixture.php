@@ -43,13 +43,43 @@ class LicensesFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'name' => 'Lorem ipsum dolor sit amet',
-            'link' => 'Lorem ipsum dolor sit amet',
-            'icon' => 'Lorem ipsum dolor ',
-            'file_count' => 1,
-            'post_count' => 1,
+            'name' => 'CC BY',
+            'link' => 'http://creativecommons.org/licenses/by/',
+            'icon' => 'creative-commons',
+            'file_count' => 3,
+            'post_count' => 2,
+            'project_count' => 2,
+            'note_count' => 0
+        ],
+        [
+            'id' => 2,
+            'name' => 'CC BY-NC',
+            'link' => 'http://creativecommons.org/licenses/by-nc/',
+            'icon' => 'creative-commons',
+            'file_count' => 0,
+            'post_count' => 0,
+            'project_count' => 0,
+            'note_count' => 0
+        ],
+        [
+            'id' => 3,
+            'name' => 'CC BY-NC-SA 2.0',
+            'link' => 'http://creativecommons.org/licenses/by-nc-sa/',
+            'icon' => 'creative-commons',
+            'file_count' => 0,
+            'post_count' => 0,
+            'project_count' => 0,
+            'note_count' => 0
+        ],
+        [
+            'id' => 4,
+            'name' => 'MIT',
+            'link' => 'https://tldrlegal.com/license/mit-license',
+            'icon' => 'copyright',
+            'file_count' => 0,
+            'post_count' => 0,
             'project_count' => 1,
-            'note_count' => 1
+            'note_count' => 0
         ],
     ];
 }

@@ -42,10 +42,5 @@ class ProjectsPostsFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'project_id' => 'af904b65-ec07-4ca6-8955-d00a6cb7040e',
-            'post_id' => '7229c674-3b48-4a91-afdc-6d34420cc426'
-        ],
     ];
 }

@@ -42,10 +42,5 @@ class PostsTagsFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'post_id' => '93d192c3-391e-42ee-8775-0ca9652ccbb3',
-            'tag_id' => 1
-        ],
     ];
 }

@@ -42,10 +42,5 @@ class TeamsProjectsFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
-            'id' => 1,
-            'team_id' => 1,
-            'project_id' => 'f3d3f581-f704-4c60-be97-ed21d1a6de1b'
-        ],
     ];
 }
