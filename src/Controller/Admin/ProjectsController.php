@@ -62,7 +62,7 @@ class ProjectsController extends AdminAppController
                 'Users' => ['fields' => ['id', 'username']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'ProjectUsers']
+                ]
         ]);
         $this->set('project', $project);
         $this->set('_serialize', ['project']);

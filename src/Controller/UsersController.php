@@ -131,11 +131,8 @@ class UsersController extends AppController
                 $this->Flash->success(__d('elabs', 'Your account has been created. An email will be sent to you when active'));
                 $this->redirect(['action' => 'index']);
             } else {
-//                debug($user);die;
                 $errors = $user->errors();
                 $errorMessages = [];
-//                debug($errors);
-//                die;
                 array_walk_recursive($errors, function ($a) use (&$errorMessages) {
                     $errorMessages[] = $a;
                 });

@@ -62,7 +62,6 @@ class FilesController extends AdminAppController
                 'Users' => ['fields' => ['id', 'username']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Itemfiles',
                 ]
         ]);
         $this->set('file', $file);

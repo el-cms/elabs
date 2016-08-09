@@ -82,7 +82,6 @@ class FilesController extends AppController
             'contain' => [
                 'Users',
                 'Licenses',
-                'Itemfiles',
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ]
         ]);

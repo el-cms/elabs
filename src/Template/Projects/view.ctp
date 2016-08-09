@@ -36,11 +36,6 @@ $this->start('pageInfos');
 <h5 class="list-group-item-heading"><?php echo __d('elabs', 'Members') ?></h5>
 <ul class="list-unstyled">
     <li><?php echo $project->has('user') ? $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) : '' ?></li>
-    <?php if (!empty($project->project_users)): ?>
-        <?php foreach ($project->project_users as $projectUsers): ?>
-            <li><?php echo $this->Html->link(h($projectUsers->id), ['controller' => 'ProjectUsers', 'action' => 'view', $projectUsers->id]) ?></li>
-        <?php endforeach; ?>
-    <?php endif; ?>
     <li><?php echo $this->element('layout/dev_inline') ?></li>
 </ul>
 <?php

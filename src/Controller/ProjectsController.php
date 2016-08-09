@@ -83,7 +83,7 @@ class ProjectsController extends AppController
                 'Licenses',
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'ProjectUsers'],
+                ],
             'conditions' => [
                 'Projects.status' => 1,
             ],
