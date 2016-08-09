@@ -1,19 +1,14 @@
-<?php
-// Define the lang attribute for titles
-$contentLanguage = $this->fetch('contentLanguage');
-$langAttribute = '';
-if (!empty($contentLanguage)):
-    $langAttribute = ' lang="' . $contentLanguage . '"';
-endif;
-?>
 <!DOCTYPE html>
-<html lang="<?php echo $siteLanguage ?>">
+<?php
+$pagePrefix = $this->request->params['prefix'];
+?>
+<html lang="en">
     <head>
         <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta content="initial-scale=1.0, width=device-width" name="viewport">
-        <title<?php echo $langAttribute ?>>
-            <?php echo strip_tags($this->fetch('title')). ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
+        <title>
+            <?php echo strip_tags($this->fetch('title')) . ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
         </title>
         <?php echo $this->Html->meta('icon') ?>
 
@@ -32,10 +27,9 @@ endif;
     <body>
         <?php
         echo $this->element('layout/pageloader');
-        echo $this->element('layout/mainmenu_admin');
         ?>
         <!-- Navbar -->
-        <nav class="navbar navbar-admin navbar-fixed-top">
+        <nav class="navbar<?php echo(!empty($pagePrefix) ? ' navbar-' . $pagePrefix : '') ?> navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Header and expand button -->
                 <div class="navbar-header">
@@ -52,28 +46,11 @@ endif;
                     <!-- Main menu -->
                     <div>
                         <ul class="nav navbar-nav">
-                            <?php echo $this->fetch('mainMenu'); ?>
+                            <li><?php echo $this->Html->link($this->Html->iconT('chevron-left', __d('elabs', 'Back')), $this->request->referer(), ['escape' => false]) ?></li>
+                            <li><?php echo $this->Html->link(__d('elabs', 'Home'), '/') ?></li>
                         </ul>
                     </div>
                     <!-- / Main menu -->
-
-                    <!-- Right menu -->
-                    <div>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="avatar">
-                                        <?php echo $this->Gravatar->generate($authUser['email'], ["size" => "20px"]); ?>
-                                    </span>
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <?php echo $this->element('layout/mainmenu_usermenu'); ?>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- / Right menu -->
                 </div>
                 <!-- / Links -->
             </div>
@@ -81,7 +58,7 @@ endif;
         <!-- / Navbar-->
 
         <!-- Page header -->
-        <div class="page-header page-header-admin">
+        <div class="page-header<?php echo(!empty($pagePrefix) ? ' page-header-' . $pagePrefix : '') ?>">
             <div class="container-fluid">
                 <!-- Flash messages -->
                 <div class="row flash-messages">
@@ -93,7 +70,7 @@ endif;
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- Title -->
-                        <h1<?php echo $langAttribute ?>><?php echo $this->fetch('title') ?></h1>
+                        <h1><?php echo $this->fetch('title') ?></h1>
                         <!-- / Title -->
 
                         <!-- Breadcrumbs -->
@@ -107,20 +84,6 @@ endif;
                 <!-- / Title area -->
 
             </div>
-            <!-- Toolbar -->
-            <?php
-            $pageToolbar = $this->fetch('pageToolbar');
-            if (!empty($pageToolbar)):
-                ?>
-                <div class="toolbar">
-                    <div class="container">
-                        <?php echo $this->fetch('pageToolbar') ?>
-                    </div>
-                </div>
-                <?php
-            endif;
-            ?>
-            <!-- / Toolbar -->
         </div>
         <!-- / Header -->
 
@@ -135,7 +98,7 @@ endif;
         <!-- / Main content -->
 
         <!-- Footer -->
-        <footer class="footer footer-admin">
+        <footer class="footer<?php echo(!empty($pagePrefix) ? ' footer-' . $pagePrefix : '') ?>">
             <div class="container-fluid">
                 <?php echo $this->element('layout/footer'); ?>
             </div>
@@ -143,7 +106,6 @@ endif;
         <!-- Javascript at the end -->
         <?php echo $this->Html->script('lib/jquery.min.js') ?>
         <?php echo $this->Html->script('bootstrap.min.js') ?>
-        <?php echo $this->Html->script('bootstrap-tagsinput.min.js') ?>
         <!-- Custom scripts -->
         <?php echo $this->fetch('pageBottomScripts') ?>
         <?php echo $this->Html->script('custom.js') ?>

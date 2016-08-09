@@ -1,13 +1,30 @@
 <?php
+
 use Cake\Core\Configure;
 
-$this->assign('title', __d('elabs', 'Error: {0}', $message));
+// Overrides of Cake messages
+$errorHint = $message;
+switch ($code):
+    case 404:
+        $errorMessage = 'Page not found';
+        $errorHint = sprintf(__d('elabs', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>");
+        break;
+    case 405:
+        $errorMessage = __d('elabs', 'Method not allowed');
+        break;
+    default:
+        $errorMessage = __d('elabs', 'A wild unexpected error occured.');
+endswitch;
+
+$this->assign('title', __d('elabs', 'Error {0}: {1}', [$code, $errorMessage]));
 
 // Breadcrumbs
 $this->Html->addCrumb($this->fetch('title'));
 
+// Helpers
 $this->loadHelper('CowSays');
 
+// Dev view
 if (Configure::read('debug')):
     $this->layout = 'dev_error';
 
@@ -36,10 +53,11 @@ if (Configure::read('debug')):
 
     $this->end();
 endif;
+
+// Production view:
+$this->layout = 'err400';
+//echo '<pre>';var_dump($this->request);die;
 ?>
 <div class="text-center">
-    <?php
-    $string = __d('elabs', 'Error 404:') . "\n" . sprintf(__d('elabs', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>");
-    echo $this->CowSays->sayError($string);
-    ?>
+    <?php echo $this->CowSays->sayError($errorHint); ?>
 </div>

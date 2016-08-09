@@ -7,7 +7,7 @@ if (!empty($contentLanguage)):
 endif;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $siteLanguage ?>">
     <head>
         <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
