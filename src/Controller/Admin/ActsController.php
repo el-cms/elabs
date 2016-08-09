@@ -82,9 +82,9 @@ class ActsController extends AdminAppController
             } else {
                 $this->Flash->success(__d('elabs', 'Acts table has been rebuilt.'));
             }
+            $this->redirect($this->request->referer());
         } else {
-            $this->Flash->warning(__d('elabs', 'Use the menu to access this functionality'));
+            throw new \Cake\Network\Exception\MethodNotAllowedException(__d('elabs', 'Use the menu to access this functionality'));
         }
-        $this->redirect($this->request->referer());
     }
 }

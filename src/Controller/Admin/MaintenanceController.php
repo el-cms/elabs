@@ -20,9 +20,9 @@ class MaintenanceController extends AdminAppController
         if ($this->request->is('POST')) {
             \Cake\Cache\Cache::clearAll();
             $this->Flash->success(__d('elabs', 'The cache has been cleared'));
+            $this->redirect($this->request->referer());
         } else {
-            $this->Flash->warning(__d('elabs', 'Use the menu to access this functionality'));
+            throw new \Cake\Network\Exception\MethodNotAllowedException(__d('elabs', 'Use the menu to access this functionality'));
         }
-        $this->redirect($this->request->referer());
     }
 }
