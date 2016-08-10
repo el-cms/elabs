@@ -41,11 +41,15 @@ class UsersController extends UserAppController
     public function updatePassword()
     {
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $userId = $this->Auth->user('id');
+            $dataSent = $this->request->data();
             // Getting user data
-            $user = $this->Users->get($this->Auth->user('id'));
+            $user = $this->Users->get($userId);
+            // Force id
+            $dataSent['id'] = $userId;
             // Checking old password
-            if ($user->comparePassword($this->request->data['current_password'])) {
-                $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($user->comparePassword($dataSent['current_password'])) {
+                $user = $this->Users->patchEntity($user, $dataSent);
                 // Saving new password. Validation and hashing is made in UserTable.
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__d('elabs', 'Your password has been updated.'));

@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\ActsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -55,6 +54,9 @@ class ActsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        $this->get('/acts');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 }

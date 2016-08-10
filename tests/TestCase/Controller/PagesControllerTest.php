@@ -11,15 +11,6 @@ class PagesControllerTest extends IntegrationTestCase
 {
 
     /**
-     * Fixtures
-     *
-     * @var array
-     */
-    public $fixtures = [
-        'app.pages'
-    ];
-
-    /**
      * Test beforeFilter method
      *
      * @return void
@@ -36,6 +27,9 @@ class PagesControllerTest extends IntegrationTestCase
      */
     public function testDisplay()
     {
+        $this->get('/pages/display/about');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 }

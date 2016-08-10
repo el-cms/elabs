@@ -45,6 +45,9 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        $this->get('/posts');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -55,6 +58,9 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
+        $this->get('/posts/view/6e0c6123-2dbd-47d3-868b-9797cd9f3039');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 }

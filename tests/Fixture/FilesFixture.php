@@ -67,7 +67,7 @@ class FilesFixture extends TestFixture
             'modified' => '2016-08-09 00:48:02',
             'language_id' => 'eng',
             'license_id' => 1,
-            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685'
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32'
         ],
         [
             'id' => '63c22253-9f07-41de-abcf-c9e0a9eaf7e9',
@@ -82,7 +82,7 @@ class FilesFixture extends TestFixture
             'modified' => '2016-08-09 00:47:16',
             'language_id' => 'fra',
             'license_id' => 1,
-            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685'
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32'
         ],
         [
             'id' => 'cafc0f93-d435-468e-afc7-30a38ee811eb',
@@ -97,7 +97,37 @@ class FilesFixture extends TestFixture
             'modified' => '2016-08-09 00:46:45',
             'language_id' => 'fra',
             'license_id' => 1,
-            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685'
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32'
+        ],
+        [
+            'id' => 'fffc0f93-d435-468e-afc7-30a38ee811eb',
+            'name' => '37985.gif',
+            'filename' => '/2016/08/1470703605.gif',
+            'weight' => 1854775,
+            'description' => 'An unsafe deleted file',
+            'mime' => 'image/gif',
+            'sfw' => false,
+            'status' => 3,
+            'created' => '2016-08-09 00:46:45',
+            'modified' => '2016-08-09 00:46:45',
+            'language_id' => 'fra',
+            'license_id' => 1,
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32'
+        ],
+        [
+            'id' => 'fff0f93-d435-468e-afc7-30a38ee811eb',
+            'name' => '37985.gif',
+            'filename' => '/2016/08/1470703605.gif',
+            'weight' => 1854775,
+            'description' => 'An unsafe locked file',
+            'mime' => 'image/gif',
+            'sfw' => false,
+            'status' => 2,
+            'created' => '2016-08-09 00:46:45',
+            'modified' => '2016-08-09 00:46:45',
+            'language_id' => 'fra',
+            'license_id' => 1,
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32'
         ],
     ];
 }

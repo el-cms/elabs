@@ -55,6 +55,9 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        $this->get('/users');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -65,6 +68,9 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
+        $this->get('users/view/70c8fff0-1338-48d2-b93b-942a26e4d685');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -75,6 +81,9 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testRegister()
     {
+        $this->get('/users/register');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -85,6 +94,9 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testLogin()
     {
+        $this->get('/users/login');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -95,6 +107,9 @@ class UsersControllerTest extends IntegrationTestCase
      */
     public function testLogout()
     {
+        $this->get('/users/logout');
+
+        $this->assertRedirect();
         $this->markTestIncomplete('Not implemented yet.');
     }
 }

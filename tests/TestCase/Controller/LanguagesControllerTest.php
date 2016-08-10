@@ -45,6 +45,9 @@ class LanguagesControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        $this->get('/languages');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -55,6 +58,9 @@ class LanguagesControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
+        $this->get('/languages/view/eng');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 }

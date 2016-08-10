@@ -45,6 +45,9 @@ class LicensesControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        $this->get('/licenses');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -55,6 +58,9 @@ class LicensesControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
+        $this->get('/licenses/view/1');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 }

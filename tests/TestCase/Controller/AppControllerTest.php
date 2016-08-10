@@ -16,7 +16,6 @@ class AppControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.app'
     ];
 
     /**

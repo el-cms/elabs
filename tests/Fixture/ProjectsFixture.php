@@ -64,7 +64,7 @@ class ProjectsFixture extends TestFixture
             'created' => '2016-08-09 00:46:17',
             'modified' => '2016-08-09 00:46:17',
             'license_id' => 1,
-            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'eng'
         ],
         [
@@ -78,7 +78,7 @@ class ProjectsFixture extends TestFixture
             'created' => '2016-08-09 00:45:25',
             'modified' => '2016-08-09 00:45:25',
             'license_id' => 4,
-            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'epo'
         ],
         [
@@ -92,7 +92,7 @@ class ProjectsFixture extends TestFixture
             'created' => '2016-08-09 00:44:45',
             'modified' => '2016-08-09 00:44:45',
             'license_id' => 1,
-            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'fra'
         ],
     ];

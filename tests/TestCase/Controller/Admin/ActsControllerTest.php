@@ -46,11 +46,10 @@ class ActsControllerTest extends IntegrationTestCase
         // -----------
         $this->post('/admin/acts/clean');
 
-        // From the fixtures, acts count is 10.
-        // Should be 9 after clean, as the duplicate updates will be removed.
+        // Take a look at the fixtures/list.md for counts
         $Acts = \Cake\ORM\TableRegistry::get('Acts');
         $nb = $Acts->find()->count();
-        $this->assertEquals(9, $nb);
+        $this->assertEquals(11, $nb);
 
         // No error
         $this->assertResponseEmpty();

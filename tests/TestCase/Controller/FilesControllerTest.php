@@ -45,6 +45,9 @@ class FilesControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        $this->get('/acts');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -55,6 +58,9 @@ class FilesControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
+        $this->get('/files/view/4aa59eb5-35c6-42c1-91e2-f8c6a6cb8539');
+
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 

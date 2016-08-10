@@ -59,7 +59,7 @@ class LicensesControllerTest extends IntegrationTestCase
 
         // Insertions
         // ----------
-        // Count posts before insert
+        // Count licenses before insert
         $nb = $Licenses->find()->count();
         $postData = [
             'name' => 'Test_License',

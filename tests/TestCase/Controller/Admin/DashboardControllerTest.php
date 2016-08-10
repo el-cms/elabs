@@ -39,5 +39,7 @@ class DashboardControllerTest extends IntegrationTestCase
         $this->get('/admin/dashboard');
         // Exception
         $this->assertResponseOk();
+
+        $this->markTestIncomplete();
     }
 }
