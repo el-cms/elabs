@@ -110,8 +110,8 @@ class UsersFixture extends TestFixture
         [
             'id' => 'e0b4c82b-3e99-4fe3-9b5f-dd71fac997e3',
             'email' => 'locked@example.com',
-            'username' => 'locked_user',
-            'realname' => 'I\'m Locked',
+            'username' => 'not_activated',
+            'realname' => 'I\'m not activated',
             'password' => '$2y$10$GxcIuTXH6.Ty2mDk7juaPOABxdTA7XW1MHfxnrr7AL2q/3VGiZRGC',
             'website' => null,
             'bio' => 'Some text',

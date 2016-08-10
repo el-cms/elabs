@@ -37,6 +37,7 @@ class LicensesController extends AdminAppController
             $this->request->data['post_count'] = 0;
             $this->request->data['project_count'] = 0;
             $this->request->data['file_count'] = 0;
+            $this->request->data['note_count'] = 0;
             $license = $this->Licenses->patchEntity($license, $this->request->data);
             if ($this->Licenses->save($license)) {
                 $this->Flash->success(__d('elabs', 'The license has been saved.'));
@@ -83,13 +84,14 @@ class LicensesController extends AdminAppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $license = $this->Licenses->get($id);
-        if ($this->Licenses->delete($license)) {
-            $this->Flash->success(__d('elabs', 'The license has been deleted.'));
-        } else {
-            $this->Flash->error(__d('elabs', 'The license could not be deleted. Please, try again.'));
-        }
-        $this->redirect(['action' => 'index']);
+        throw new \Cake\Network\Exception\NotImplementedException(__d('elabs', 'This feature needs some work...'));
+//        $this->request->allowMethod(['post', 'delete']);
+//        $license = $this->Licenses->get($id);
+//        if ($this->Licenses->delete($license)) {
+//            $this->Flash->success(__d('elabs', 'The license has been deleted.'));
+//        } else {
+//            $this->Flash->error(__d('elabs', 'The license could not be deleted. Please, try again.'));
+//        }
+//        $this->redirect(['action' => 'index']);
     }
 }

@@ -1,22 +1,37 @@
 <?php
-namespace App\Test\TestCase\Controller;
 
-use App\Controller\Admin/MaintenanceController;
+namespace App\Test\TestCase\Controller\Admin;
+
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\Admin/MaintenanceController Test Case
+ * App\Controller\Admin\MaintenanceController Test Case
  */
-class Admin/MaintenanceControllerTest extends IntegrationTestCase
+class MaintenanceControllerTest extends IntegrationTestCase
 {
+    /**
+     * Fixtures
+     *
+     * @var array
+     */
+    public $fixtures = [
+        'app.languages', // Needed for some layout vars
+    ];
 
     /**
-     * Test initial setup
+     * Users credentials to put in session in order to create a fake authentication
      *
-     * @return void
+     * @var array
      */
-    public function testInitialization()
+    public $userCreds = [
+        'admin' => ['Auth' => ['User' => ['id' => '70c8fff0-1338-48d2-b93b-942a26e4d685', 'email' => 'admin@example.com', 'username' => 'administrator', 'realname' => 'Administrator', 'website' => null, 'bio' => null, 'created' => null, 'modified' => null, 'role' => 'admin', 'see_nsfw' => true, 'status' => 1, 'file_count' => 3, 'note_count' => 0, 'post_count' => 1, 'project_count' => 3, 'preferences' => '{}']]],
+    ];
+
+    /**
+     * Test clearCache method
+     */
+    public function testClearCache()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->markTestIncomplete();
     }
 }

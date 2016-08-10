@@ -99,7 +99,8 @@ class FilesController extends AdminAppController
                 $bit = 2;
         }
         $file = $this->Files->get($id, [
-            'fields' => ['id', 'status']
+            'fields' => ['id', 'status'],
+            'conditions'=>['status !='=>'3'],
         ]);
         $file->status = $bit;
         if ($this->Files->save($file)) {

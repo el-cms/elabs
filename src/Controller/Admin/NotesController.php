@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller\Admin;
 
-use App\Controller\AdminAppController;
+use App\Controller\Admin\AdminAppController;
 
 /**
  * Notes Controller
@@ -45,80 +45,54 @@ class NotesController extends AdminAppController
     }
 
     /**
-     * Add method
+     * Changes a note's status.
      *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     * @param int $id Note id
+     *
+     * @param string $state The new state (lock, unlock or remove)
+     *
+     * @return void
      */
-    public function add()
+    public function changeState($id, $state = 'lock')
     {
-        $note = $this->Notes->newEntity();
-        if ($this->request->is('post')) {
-            $note = $this->Notes->patchEntity($note, $this->request->data);
-            if ($this->Notes->save($note)) {
-                $this->Flash->success(__('The note has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The note could not be saved. Please, try again.'));
-            }
+        switch ($state) {
+            case 'lock':
+                $successMessage = __d('elabs', 'The note has been locked.');
+                $this->Act->remove($id);
+                $bit = 2;
+                break;
+            case 'unlock':
+                $successMessage = __d('elabs', 'The note has been unlocked.');
+                $bit = 1;
+                break;
+            case 'remove':
+                $successMessage = __d('elabs', 'The note has been removed.');
+                $bit = 3;
+                $this->Act->remove($id, 'Projects', false);
+                break;
+            default:
+                $successMessage = __d('elabs', 'The note has been locked.');
+                $bit = 2;
         }
-        $users = $this->Notes->Users->find('list', ['limit' => 200]);
-        $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
-        $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
-        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-        $projects = $this->Notes->Projects->find('list', ['limit' => 200]);
-        $this->set(compact('note', 'users', 'languages', 'licenses', 'tags', 'projects'));
-        $this->set('_serialize', ['note']);
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Note id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
         $note = $this->Notes->get($id, [
-            'contain' => ['Tags', 'Projects']
+            'fields' => ['id', 'status'],
+            'conditions'=>['status !='=>'3'],
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $note = $this->Notes->patchEntity($note, $this->request->data);
-            if ($this->Notes->save($note)) {
-                $this->Flash->success(__('The note has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The note could not be saved. Please, try again.'));
+        $note->status = $bit;
+        if ($this->Notes->save($note)) {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Success($successMessage);
+            }
+        } else {
+            if (!$this->request->is('ajax')) {
+                $this->Flash->Error(__d('elabs', 'An error occured. Please try again.'));
             }
         }
-        $users = $this->Notes->Users->find('list', ['limit' => 200]);
-        $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
-        $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
-        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-        $projects = $this->Notes->Projects->find('list', ['limit' => 200]);
-        $this->set(compact('note', 'users', 'languages', 'licenses', 'tags', 'projects'));
+        $this->set('note', $note);
         $this->set('_serialize', ['note']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Note id.
-     * @return \Cake\Network\Response|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $note = $this->Notes->get($id);
-        if ($this->Notes->delete($note)) {
-            $this->Flash->success(__('The note has been deleted.'));
-        } else {
-            $this->Flash->error(__('The note could not be deleted. Please, try again.'));
+        // Ready fo ajax calls
+        if (!$this->request->is('ajax')) {
+            $this->redirect(['action' => 'index']);
         }
-
-        return $this->redirect(['action' => 'index']);
     }
 }

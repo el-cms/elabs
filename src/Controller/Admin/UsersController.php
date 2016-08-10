@@ -108,7 +108,8 @@ class UsersController extends AdminAppController
             $bit = 1;
         }
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status']
+            'fields' => ['id', 'status'],
+            'conditions'=>['status !=' => 3]
         ]);
         $user->status = $bit;
         if ($this->Users->save($user)) {
@@ -137,7 +138,8 @@ class UsersController extends AdminAppController
     public function close($id)
     {
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status']
+            'fields' => ['id', 'status'],
+            'conditions'=>['status !=' => 3]
         ]);
         $user->status = 3;
         if ($this->Users->save($user)) {
@@ -167,7 +169,8 @@ class UsersController extends AdminAppController
     public function activate($id)
     {
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status']
+            'fields' => ['id', 'status'],
+            'conditions'=>['status' => 0]
         ]);
         $user->status = 1;
         if ($this->Users->save($user)) {

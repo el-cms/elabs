@@ -38,6 +38,7 @@ class LanguagesController extends AdminAppController
             $this->request->data['post_count'] = 0;
             $this->request->data['project_count'] = 0;
             $this->request->data['file_count'] = 0;
+            $this->request->data['note_count'] = 0;
             $language = $this->Languages->patchEntity($language, $this->request->data);
             // Manually set the id
             $language->id = $this->request->data['id'];
