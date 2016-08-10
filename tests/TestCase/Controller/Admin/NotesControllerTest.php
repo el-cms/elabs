@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\Controller\Admin;
 
 use Cake\TestSuite\IntegrationTestCase;
@@ -8,7 +9,6 @@ use Cake\TestSuite\IntegrationTestCase;
  */
 class NotesControllerTest extends IntegrationTestCase
 {
-
     /**
      * Fixtures
      *
@@ -19,7 +19,6 @@ class NotesControllerTest extends IntegrationTestCase
         'app.licenses',
         'app.notes',
         'app.users',
-        // 'app.acts'
     ];
 
     /**
@@ -53,7 +52,7 @@ class NotesControllerTest extends IntegrationTestCase
         $notePk = '';
         // Set session data
         $this->session($this->userCreds['admin']);
-        $this->get('/admin/notes/view/'.$notePk);
+        $this->get('/admin/notes/view/' . $notePk);
 
         // No error
         $this->assertResponseOk();
@@ -111,5 +110,4 @@ class NotesControllerTest extends IntegrationTestCase
         // Ajax
         $this->markTestIncomplete('Missing ajax test');
     }
-
 }

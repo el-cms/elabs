@@ -30,8 +30,8 @@ class TagsControllerTest extends IntegrationTestCase
     /**
      * Tests for this controller are not ready as for now, the controller is not finished.
      */
-    public function testTagsController(){
+    public function testTagsController()
+    {
         $this->markTestIncomplete('Those tests are not implemented for this controller yet.');
     }
-
 }

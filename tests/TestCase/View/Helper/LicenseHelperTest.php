@@ -17,8 +17,7 @@ class LicenseHelperTest extends TestCase
      * @var \App\View\Helper\LicenseHelper
      */
     public $LicenseHelper;
-
-    public $fixtures=['app.Licenses'];
+    public $fixtures = ['app.Licenses'];
 
     /**
      * setUp method

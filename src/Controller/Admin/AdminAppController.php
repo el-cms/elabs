@@ -11,6 +11,7 @@ use \Cake\Network\Exception\ForbiddenException;
  */
 class AdminAppController extends AppController
 {
+
     /**
      * Before filder callback.
      *

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\Controller\Admin;
 
 use Cake\TestSuite\IntegrationTestCase;
@@ -8,7 +9,6 @@ use Cake\TestSuite\IntegrationTestCase;
  */
 class PostsControllerTest extends IntegrationTestCase
 {
-
     /**
      * Fixtures
      *
@@ -110,5 +110,4 @@ class PostsControllerTest extends IntegrationTestCase
         // Ajax
         $this->markTestIncomplete('Missing ajax test');
     }
-
 }

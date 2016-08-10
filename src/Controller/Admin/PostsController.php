@@ -99,7 +99,7 @@ class PostsController extends AdminAppController
         }
         $post = $this->Posts->get($id, [
             'fields' => ['id', 'status'],
-            'conditions'=>['status !='=>'3'],
+            'conditions' => ['status !=' => '3'],
         ]);
         $post->status = $bit;
         if ($this->Posts->save($post)) {

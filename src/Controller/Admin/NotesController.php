@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\AdminAppController;
@@ -76,7 +77,7 @@ class NotesController extends AdminAppController
         }
         $note = $this->Notes->get($id, [
             'fields' => ['id', 'status'],
-            'conditions'=>['status !='=>'3'],
+            'conditions' => ['status !=' => '3'],
         ]);
         $note->status = $bit;
         if ($this->Notes->save($note)) {

@@ -122,5 +122,4 @@ class LicensesControllerTest extends IntegrationTestCase
 
         $this->assertResponseFailure();
     }
-
 }

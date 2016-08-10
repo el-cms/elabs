@@ -9,7 +9,7 @@ use Cake\TestSuite\IntegrationTestCase;
  */
 class ProjectsControllerTest extends IntegrationTestCase
 {
-        /**
+    /**
      * Fixtures
      *
      * @var array

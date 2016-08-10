@@ -50,19 +50,19 @@ class ItemsHelperTest extends TestCase
     public function testFileConfig()
     {
         // Image
-        $results = ['icon' => 'file-image-o', 'element' => 'image',];
+        $results = ['icon' => 'file-image-o', 'element' => 'image'];
         $this->assertEquals($results, $this->ItemsHelper->fileConfig('test.jpg'));
         // Audio
-        $results = ['icon' => 'file-audio-o', 'element' => 'audio',];
+        $results = ['icon' => 'file-audio-o', 'element' => 'audio'];
         $this->assertEquals($results, $this->ItemsHelper->fileConfig('test.mp3'));
         // Video
-        $results = ['icon' => 'file-video-o', 'element' => 'video',];
+        $results = ['icon' => 'file-video-o', 'element' => 'video'];
         $this->assertEquals($results, $this->ItemsHelper->fileConfig('test.mp4'));
         // Text
-        $results = ['icon' => 'file-text-o', 'element' => 'text',];
+        $results = ['icon' => 'file-text-o', 'element' => 'text'];
         $this->assertEquals($results, $this->ItemsHelper->fileConfig('test.md'));
         // Other
-        $results = ['icon' => 'file-o', 'element' => 'other',];
+        $results = ['icon' => 'file-o', 'element' => 'other'];
         $this->assertEquals($results, $this->ItemsHelper->fileConfig('test.blend'));
     }
 }

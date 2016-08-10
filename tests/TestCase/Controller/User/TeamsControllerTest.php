@@ -1,13 +1,13 @@
 <?php
-namespace App\Test\TestCase\Controller;
+namespace App\Test\TestCase\Controller\User;
 
-use App\Controller\User/TeamsController;
+use App\Controller\User\TeamsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\User/TeamsController Test Case
+ * App\Controller\User\TeamsController Test Case
  */
-class User/TeamsControllerTest extends IntegrationTestCase
+class TeamsControllerTest extends IntegrationTestCase
 {
 
     /**

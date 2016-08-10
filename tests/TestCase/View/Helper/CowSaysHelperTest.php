@@ -62,21 +62,6 @@ class CowSaysHelperTest extends TestCase
         $this->assertEquals($results, $this->CowSaysHelper->say('Hello world'));
 
         // Custom:
-
-        /**
-         * $options += [
-          'sign' => null, // Signature
-          'cow' => 'default', // Type of cow
-          'eyes' => 'default', // Eyes type
-          'speakLines' => 'default', // Lines between balloon and cow
-          'corners' => 'default', // Change the balloon corners
-          'signClass' => null, // Signature class
-          'msgClass' => null, // Message class
-          'balloonClass' => null, // Ballon text class
-          'cowClass' => null, // Whole cow text class
-          ];
-         *
-         */
         $results = '<pre class = "cow-box"><span class="cow_class"><span class="balloon_class">+-------------+
 ( <span class="msg_class">Hello, nice</span> )
 ( <span class="msg_class">world</span>       )

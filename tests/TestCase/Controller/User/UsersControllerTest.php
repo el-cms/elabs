@@ -1,13 +1,13 @@
 <?php
-namespace App\Test\TestCase\Controller;
+namespace App\Test\TestCase\Controller\User;
 
-use App\Controller\User/UsersController;
+use App\Controller\User\UsersController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\User/UsersController Test Case
+ * App\Controller\User\UsersController Test Case
  */
-class User/UsersControllerTest extends IntegrationTestCase
+class UsersControllerTest extends IntegrationTestCase
 {
 
     /**

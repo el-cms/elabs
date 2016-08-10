@@ -62,7 +62,7 @@ class ProjectsController extends AdminAppController
                 'Users' => ['fields' => ['id', 'username']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                ]
+            ]
         ]);
         $this->set('project', $project);
         $this->set('_serialize', ['project']);
@@ -99,7 +99,8 @@ class ProjectsController extends AdminAppController
                 $bit = 2;
         }
         $project = $this->Projects->get($id, [
-            'fields' => ['id', 'status']
+            'fields' => ['id', 'status'],
+            'conditions' => ['status !=' => '3'],
         ]);
         $project->status = $bit;
         if ($this->Projects->save($project)) {

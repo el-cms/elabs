@@ -62,7 +62,7 @@ class FilesController extends AdminAppController
                 'Users' => ['fields' => ['id', 'username']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                ]
+            ]
         ]);
         $this->set('file', $file);
         $this->set('_serialize', ['file']);
@@ -100,7 +100,7 @@ class FilesController extends AdminAppController
         }
         $file = $this->Files->get($id, [
             'fields' => ['id', 'status'],
-            'conditions'=>['status !='=>'3'],
+            'conditions' => ['status !=' => '3'],
         ]);
         $file->status = $bit;
         if ($this->Files->save($file)) {
