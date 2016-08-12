@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-02 12:47+0000\n"
+"POT-Creation-Date: 2016-08-12 19:38+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -28,12 +28,12 @@ msgid "File"
 msgstr ""
 
 #: Controller/ActsController.php:43
-#: Controller/Admin/ActsController.php:39
+#: Controller/Admin/ActsController.php:40
 msgid "Article"
 msgstr ""
 
 #: Controller/ActsController.php:44
-#: Controller/Admin/ActsController.php:40
+#: Controller/Admin/ActsController.php:41
 msgid "Project"
 msgstr ""
 
@@ -61,108 +61,118 @@ msgstr ""
 msgid "Registrations are closed for now... Come back later..."
 msgstr ""
 
-#: Controller/UsersController.php:130
+#: Controller/UsersController.php:131
 msgid "Your account has been created. An email will be sent to you when active"
 msgstr ""
 
-#: Controller/UsersController.php:138
+#: Controller/UsersController.php:139
 #: Controller/User/FilesController.php:159
 #: Controller/User/PostsController.php:84;135
 #: Controller/User/ProjectsController.php:74;110
 msgid "Some errors occured. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:159
+#: Controller/UsersController.php:160
 msgid "Invalid username or password, try again. Is your accound active ?"
 msgstr ""
 
-#: Controller/UsersController.php:171
+#: Controller/UsersController.php:172
 msgid "You are logged out. See you later !"
 msgstr ""
 
-#: Controller/Admin/ActsController.php:83
+#: Controller/Admin/ActsController.php:39
+msgid "Note"
+msgstr ""
+
+#: Controller/Admin/ActsController.php:89
 msgid "Acts table has been rebuilt."
 msgstr ""
 
-#: Controller/Admin/ActsController.php:86
-#: Controller/Admin/MaintenanceController.php:24
+#: Controller/Admin/ActsController.php:93
+#: Controller/Admin/MaintenanceController.php:25
 msgid "Use the menu to access this functionality"
 msgstr ""
 
-#: Controller/Admin/ActsController.php:81
+#: Controller/Admin/ActsController.php:87
 msgid "An error occured during the cleanup. Please, try again."
 msgid_plural "{0,number} errors occured during the cleanup. Please, try again."
 msgstr[0] ""
 msgstr[1] ""
 
-#: Controller/Admin/AdminAppController.php:28
+#: Controller/Admin/AdminAppController.php:29
 #: Controller/User/UserAppController.php:31
 msgid "You should be logged in to access this page."
 msgstr ""
 
-#: Controller/Admin/AdminAppController.php:31
+#: Controller/Admin/AdminAppController.php:32
 #: Controller/User/UserAppController.php:34
 msgid "You don't have enough rights to access this ressource."
 msgstr ""
 
-#: Controller/Admin/FilesController.php:85;99
+#: Controller/Admin/FilesController.php:84;98
 msgid "The file has been locked."
 msgstr ""
 
-#: Controller/Admin/FilesController.php:90
+#: Controller/Admin/FilesController.php:89
 msgid "The file has been unlocked."
 msgstr ""
 
-#: Controller/Admin/FilesController.php:94
+#: Controller/Admin/FilesController.php:93
 msgid "The file has been removed."
 msgstr ""
 
 #: Controller/Admin/FilesController.php:112
-#: Controller/Admin/PostsController.php:110
-#: Controller/Admin/ProjectsController.php:111
-#: Controller/Admin/UsersController.php:120;150;179
-#: Controller/User/UsersController.php:29;59
+#: Controller/Admin/NotesController.php:89
+#: Controller/Admin/PostsController.php:111
+#: Controller/Admin/ProjectsController.php:112
+#: Controller/Admin/UsersController.php:121;152;182
+#: Controller/User/UsersController.php:29;63
 msgid "An error occured. Please try again."
 msgstr ""
 
-#: Controller/Admin/LanguagesController.php:45;71
+#: Controller/Admin/LanguagesController.php:46;72
 msgid "The language has been saved."
 msgstr ""
 
-#: Controller/Admin/LanguagesController.php:49;75
+#: Controller/Admin/LanguagesController.php:50;76
 msgid "The language could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/Admin/LanguagesController.php:94
+#: Controller/Admin/LanguagesController.php:95
+#: Controller/Admin/LicensesController.php:87
 msgid "This feature needs some work..."
 msgstr ""
 
-#: Controller/Admin/LicensesController.php:42
+#: Controller/Admin/LicensesController.php:43
 msgid "The license has been saved."
 msgstr ""
 
-#: Controller/Admin/LicensesController.php:45
+#: Controller/Admin/LicensesController.php:46
 msgid "The license could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/Admin/LicensesController.php:67
+#: Controller/Admin/LicensesController.php:68
 msgid "The license has been updated."
 msgstr ""
 
-#: Controller/Admin/LicensesController.php:70
+#: Controller/Admin/LicensesController.php:71
 msgid "The license could not be updated. Please, try again."
-msgstr ""
-
-#: Controller/Admin/LicensesController.php:89
-msgid "The license has been deleted."
-msgstr ""
-
-#: Controller/Admin/LicensesController.php:91
-msgid "The license could not be deleted. Please, try again."
 msgstr ""
 
 #: Controller/Admin/MaintenanceController.php:22
 msgid "The cache has been cleared"
+msgstr ""
+
+#: Controller/Admin/NotesController.php:61;75
+msgid "The note has been locked."
+msgstr ""
+
+#: Controller/Admin/NotesController.php:66
+msgid "The note has been unlocked."
+msgstr ""
+
+#: Controller/Admin/NotesController.php:70
+msgid "The note has been removed."
 msgstr ""
 
 #: Controller/Admin/PostsController.php:83;97
@@ -197,22 +207,6 @@ msgstr ""
 msgid "The report could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/Admin/TagsController.php:54;79
-msgid "The tag has been saved."
-msgstr ""
-
-#: Controller/Admin/TagsController.php:57;82
-msgid "The tag could not be saved. Please, try again."
-msgstr ""
-
-#: Controller/Admin/TagsController.php:101
-msgid "The tag has been deleted."
-msgstr ""
-
-#: Controller/Admin/TagsController.php:103
-msgid "The tag could not be deleted. Please, try again."
-msgstr ""
-
 #: Controller/Admin/UsersController.php:104
 msgid "The account has been locked."
 msgstr ""
@@ -221,11 +215,11 @@ msgstr ""
 msgid "The account has been unlocked."
 msgstr ""
 
-#: Controller/Admin/UsersController.php:146
+#: Controller/Admin/UsersController.php:148
 msgid "The account has been closed."
 msgstr ""
 
-#: Controller/Admin/UsersController.php:175
+#: Controller/Admin/UsersController.php:178
 msgid "The account has been activated."
 msgstr ""
 
@@ -305,23 +299,23 @@ msgstr ""
 msgid "Your informations are now up to date."
 msgstr ""
 
-#: Controller/User/UsersController.php:51
+#: Controller/User/UsersController.php:55
 msgid "Your password has been updated."
 msgstr ""
 
-#: Controller/User/UsersController.php:63;88
+#: Controller/User/UsersController.php:67;92
 msgid "Sorry, you have entered the wrong password."
 msgstr ""
 
-#: Controller/User/UsersController.php:67;92
+#: Controller/User/UsersController.php:71;96
 msgid "To access this page, you need to fill the form first."
 msgstr ""
 
-#: Controller/User/UsersController.php:84
+#: Controller/User/UsersController.php:88
 msgid "Your account has been closed. If you want to re-open it, contact the administrator."
 msgstr ""
 
-#: Model/Table/UsersTable.php:96
+#: Model/Table/UsersTable.php:115
 msgid "Your password does not match your confirm password. Please try again"
 msgstr ""
 
@@ -331,6 +325,7 @@ msgstr ""
 
 #: Template/Acts/index.ctp:20
 #: Template/Element/layout/mainmenu.ctp:5
+#: Template/Layout/err400.ctp:50
 msgid "Home"
 msgstr ""
 
@@ -378,7 +373,6 @@ msgstr ""
 #: Template/Files/index.ctp:37
 #: Template/Languages/index.ctp:22
 #: Template/Projects/index.ctp:37
-#: Template/Tags/view.ctp:16
 #: Template/User/Files/index.ctp:21
 msgid "Name"
 msgstr ""
@@ -463,8 +457,6 @@ msgstr ""
 #: Template/Element/layouts/defaultform.ctp:6
 #: Template/Element/layouts/defaultindex.ctp:23
 #: Template/Element/layouts/defaultview.ctp:18
-#: Template/Tags/index.ctp:3;16
-#: Template/Tags/view.ctp:3;33
 msgid "Actions"
 msgstr ""
 
@@ -690,8 +682,6 @@ msgstr ""
 #: Template/Element/files/tile_userindex.ctp:16
 #: Template/Element/posts/tile_userindex.ctp:16
 #: Template/Element/projects/tile_userindex.ctp:16
-#: Template/Tags/index.ctp:27
-#: Template/Tags/view.ctp:46
 #: Template/User/Files/edit.ctp:21
 #: Template/User/Posts/edit.ctp:21
 #: Template/User/Projects/edit.ctp:21
@@ -710,8 +700,6 @@ msgstr ""
 #: Template/Element/files/tile_userindex.ctp:16
 #: Template/Element/posts/tile_userindex.ctp:16
 #: Template/Element/projects/tile_userindex.ctp:16
-#: Template/Tags/index.ctp:27
-#: Template/Tags/view.ctp:5;46
 #: Template/User/Files/edit.ctp:21
 #: Template/User/Posts/edit.ctp:21
 #: Template/User/Projects/edit.ctp:21
@@ -743,8 +731,6 @@ msgstr ""
 #: Template/Element/files/tile_userindex.ctp:13
 #: Template/Element/posts/tile_userindex.ctp:13
 #: Template/Element/projects/tile_userindex.ctp:13
-#: Template/Tags/index.ctp:26
-#: Template/Tags/view.ctp:44
 msgid "Edit"
 msgstr ""
 
@@ -909,7 +895,6 @@ msgstr ""
 #: Template/Admin/Tags/add.ctp:4
 #: Template/Admin/Tags/edit.ctp:10
 #: Template/Admin/Tags/view.ctp:6
-#: Template/Tags/view.ctp:6
 msgid "List Tags"
 msgstr ""
 
@@ -917,8 +902,6 @@ msgstr ""
 #: Template/Admin/Tags/edit.ctp:11
 #: Template/Admin/Tags/index.ctp:5
 #: Template/Admin/Tags/view.ctp:8
-#: Template/Tags/index.ctp:5
-#: Template/Tags/view.ctp:8
 msgid "List Itemtags"
 msgstr ""
 
@@ -926,8 +909,6 @@ msgstr ""
 #: Template/Admin/Tags/edit.ctp:12
 #: Template/Admin/Tags/index.ctp:6
 #: Template/Admin/Tags/view.ctp:9
-#: Template/Tags/index.ctp:6
-#: Template/Tags/view.ctp:9
 msgid "New Itemtag"
 msgstr ""
 
@@ -942,14 +923,11 @@ msgstr ""
 
 #: Template/Admin/Tags/edit.ctp:18
 #: Template/Admin/Tags/view.ctp:4
-#: Template/Tags/view.ctp:4
 msgid "Edit Tag"
 msgstr ""
 
 #: Template/Admin/Tags/index.ctp:4
 #: Template/Admin/Tags/view.ctp:7
-#: Template/Tags/index.ctp:4
-#: Template/Tags/view.ctp:7
 msgid "New Tag"
 msgstr ""
 
@@ -958,54 +936,43 @@ msgstr ""
 #: Template/Element/layout/mainmenu_admin.ctp:26
 #: Template/Element/posts/tile_userindex.ctp:56
 #: Template/Element/projects/tile_userindex.ctp:48
-#: Template/Tags/index.ctp:10
 msgid "Tags"
 msgstr ""
 
 #: Template/Admin/Tags/index.ctp:25
 #: Template/Admin/Tags/view.ctp:42
-#: Template/Tags/index.ctp:25
-#: Template/Tags/view.ctp:42
 msgid "View"
 msgstr ""
 
 #: Template/Admin/Tags/index.ctp:35
-#: Template/Tags/index.ctp:35
 msgid "previous"
 msgstr ""
 
 #: Template/Admin/Tags/index.ctp:37
-#: Template/Tags/index.ctp:37
 msgid "next"
 msgstr ""
 
 #: Template/Admin/Tags/view.ctp:5
-#: Template/Tags/view.ctp:5
 msgid "Delete Tag"
 msgstr ""
 
 #: Template/Admin/Tags/view.ctp:20;29
-#: Template/Tags/view.ctp:20;29
 msgid "Id"
 msgstr ""
 
 #: Template/Admin/Tags/view.ctp:25
-#: Template/Tags/view.ctp:25
 msgid "Related Itemtags"
 msgstr ""
 
 #: Template/Admin/Tags/view.ctp:30
-#: Template/Tags/view.ctp:30
 msgid "Model"
 msgstr ""
 
 #: Template/Admin/Tags/view.ctp:31
-#: Template/Tags/view.ctp:31
 msgid "Fkid"
 msgstr ""
 
 #: Template/Admin/Tags/view.ctp:32
-#: Template/Tags/view.ctp:32
 msgid "Tag Id"
 msgstr ""
 
@@ -1050,7 +1017,6 @@ msgid "Bio"
 msgstr ""
 
 #: Template/Admin/Users/index.ctp:193;218;250;280
-#: Template/Element/reports/add_modal.ctp:79
 msgid "\"Request failed: \" + textStatus"
 msgstr ""
 
@@ -1511,17 +1477,24 @@ msgstr ""
 msgid "Tell us why you want to come here"
 msgstr ""
 
-#: Template/Error/error400.ctp:4
+#: Template/Error/error400.ctp:10
+msgid "The requested address %s was not found on this server."
+msgstr ""
+
+#: Template/Error/error400.ctp:13
+msgid "Method not allowed"
+msgstr ""
+
+#: Template/Error/error400.ctp:16
+msgid "A wild unexpected error occured."
+msgstr ""
+
+#: Template/Error/error400.ctp:19
+msgid "Error {0}: {1}"
+msgstr ""
+
 #: Template/Error/error500.ctp:5
 msgid "Error: {0}"
-msgstr ""
-
-#: Template/Error/error400.ctp:42
-msgid "Error 404:"
-msgstr ""
-
-#: Template/Error/error400.ctp:42
-msgid "The requested address %s was not found on this server."
 msgstr ""
 
 #: Template/Error/error500.ctp:39
@@ -1640,6 +1613,7 @@ msgstr ""
 
 #: Template/Layout/admin.ctp:46
 #: Template/Layout/default.ctp:46
+#: Template/Layout/err400.ctp:40
 #: Template/Layout/user.ctp:46
 msgctxt "Navbar: [logo] [text]"
 msgid "{0} {1}"
@@ -1647,6 +1621,10 @@ msgstr ""
 
 #: Template/Layout/default.ctp:82
 msgid "Login/Register"
+msgstr ""
+
+#: Template/Layout/err400.ctp:49
+msgid "Back"
 msgstr ""
 
 #: Template/Licenses/index.ctp:23
@@ -1709,7 +1687,7 @@ msgstr ""
 msgid "Members"
 msgstr ""
 
-#: Template/Projects/view.ctp:53
+#: Template/Projects/view.ctp:48
 #: Template/User/Users/edit.ctp:43
 #: Template/Users/view.ctp:31
 msgid "Website"
@@ -1930,10 +1908,10 @@ msgid "Close your account"
 msgstr ""
 
 #: View/Helper/AppHtmlHelper.php:93
-msgid " and "
+msgid " {0} "
 msgstr ""
 
-#: View/Helper/AppHtmlHelper.php:119
+#: View/Helper/AppHtmlHelper.php:120
 msgid "Report this"
 msgstr ""
 
