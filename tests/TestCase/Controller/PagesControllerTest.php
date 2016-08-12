@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\PagesController;
@@ -11,16 +12,6 @@ class PagesControllerTest extends IntegrationTestCase
 {
 
     /**
-     * Test beforeFilter method
-     *
-     * @return void
-     */
-    public function testBeforeFilter()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
      * Test display method
      *
      * @return void
@@ -28,8 +19,6 @@ class PagesControllerTest extends IntegrationTestCase
     public function testDisplay()
     {
         $this->get('/pages/display/about');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 }

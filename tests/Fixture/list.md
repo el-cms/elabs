@@ -1,5 +1,5 @@
 Acts:
-  - 10 elements:
+  - 10 elements (8 add, 2 updates):
     - 2 posts
     - 2 posts edit (same post)
     - 3 projetcs

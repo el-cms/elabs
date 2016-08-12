@@ -22,31 +22,8 @@ class UsersControllerTest extends IntegrationTestCase
         'app.notes',
         'app.licenses',
         'app.posts',
-        'app.tags',
-        'app.files_tags',
-        'app.notes_tags',
-        'app.posts_tags',
         'app.projects',
-        'app.projects_files',
-        'app.projects_notes',
-        'app.projects_posts',
-        'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
-        'app.acts',
-        'app.reports'
     ];
-
-    /**
-     * Test beforeFilter method
-     *
-     * @return void
-     */
-    public function testBeforeFilter()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
 
     /**
      * Test index method
@@ -56,9 +33,7 @@ class UsersControllerTest extends IntegrationTestCase
     public function testIndex()
     {
         $this->get('/users');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
@@ -69,9 +44,7 @@ class UsersControllerTest extends IntegrationTestCase
     public function testView()
     {
         $this->get('users/view/70c8fff0-1338-48d2-b93b-942a26e4d685');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
@@ -82,7 +55,6 @@ class UsersControllerTest extends IntegrationTestCase
     public function testRegister()
     {
         $this->get('/users/register');
-
         $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
@@ -95,7 +67,6 @@ class UsersControllerTest extends IntegrationTestCase
     public function testLogin()
     {
         $this->get('/users/login');
-
         $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
@@ -108,7 +79,6 @@ class UsersControllerTest extends IntegrationTestCase
     public function testLogout()
     {
         $this->get('/users/logout');
-
         $this->assertRedirect();
         $this->markTestIncomplete('Not implemented yet.');
     }

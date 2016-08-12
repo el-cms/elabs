@@ -17,25 +17,12 @@ class LanguagesControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.languages',
-        'app.files',
-        'app.licenses',
         'app.posts',
-        'app.users',
+        'app.files',
         'app.notes',
-        'app.tags',
-        'app.files_tags',
-        'app.notes_tags',
-        'app.posts_tags',
         'app.projects',
-        'app.projects_files',
-        'app.projects_notes',
-        'app.projects_posts',
-        'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
-        'app.acts',
-        'app.reports'
+        'app.users',
+        'app.licenses'
     ];
 
     /**
@@ -46,9 +33,7 @@ class LanguagesControllerTest extends IntegrationTestCase
     public function testIndex()
     {
         $this->get('/languages');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
@@ -59,8 +44,6 @@ class LanguagesControllerTest extends IntegrationTestCase
     public function testView()
     {
         $this->get('/languages/view/eng');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 }

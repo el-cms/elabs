@@ -16,17 +16,8 @@ class AppControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
+        'app.languages'
     ];
-
-    /**
-     * Test initialize method
-     *
-     * @return void
-     */
-    public function testInitialize()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
 
     /**
      * Test beforeFilter method

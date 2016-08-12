@@ -22,20 +22,7 @@ class LicensesControllerTest extends IntegrationTestCase
         'app.notes',
         'app.users',
         'app.posts',
-        'app.tags',
-        'app.files_tags',
-        'app.notes_tags',
-        'app.posts_tags',
         'app.projects',
-        'app.projects_files',
-        'app.projects_notes',
-        'app.projects_posts',
-        'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
-        'app.acts',
-        'app.reports'
     ];
 
     /**
@@ -46,9 +33,7 @@ class LicensesControllerTest extends IntegrationTestCase
     public function testIndex()
     {
         $this->get('/licenses');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
@@ -59,8 +44,6 @@ class LicensesControllerTest extends IntegrationTestCase
     public function testView()
     {
         $this->get('/licenses/view/1');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\Controller;
 
 use Cake\TestSuite\IntegrationTestCase;
@@ -8,7 +9,6 @@ use Cake\TestSuite\IntegrationTestCase;
  */
 class ActsControllerTest extends IntegrationTestCase
 {
-
     /**
      * Fixtures
      *
@@ -23,29 +23,7 @@ class ActsControllerTest extends IntegrationTestCase
         'app.posts',
         'app.licenses',
         'app.projects',
-        'app.projects_files',
-        'app.projects_notes',
-        'app.projects_posts',
-        'app.tags',
-        'app.files_tags',
-        'app.notes_tags',
-        'app.posts_tags',
-        'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
-        'app.reports'
     ];
-
-    /**
-     * Test initialize method
-     *
-     * @return void
-     */
-    public function testInitialize()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
 
     /**
      * Test index method
@@ -54,9 +32,17 @@ class ActsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        // Base page
+        // ---------
         $this->get('/acts');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
+        $nb = count($this->_controller->viewVars['acts']);
+        $this->assertEquals(10, $nb);
+        // Filters
+        // -------
+        $this->get('/acts/index/hideUpdates');
+        $nb = count($this->_controller->viewVars['acts']);
+        $this->assertEquals(8, $nb);
+        $this->assertResponseOk();
     }
 }

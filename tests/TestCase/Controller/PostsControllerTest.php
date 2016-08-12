@@ -18,24 +18,9 @@ class PostsControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.posts',
         'app.users',
-        'app.files',
         'app.languages',
-        'app.notes',
         'app.licenses',
-        'app.projects',
-        'app.projects_files',
-        'app.projects_notes',
-        'app.projects_posts',
         'app.tags',
-        'app.files_tags',
-        'app.notes_tags',
-        'app.posts_tags',
-        'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
-        'app.acts',
-        'app.reports'
     ];
 
     /**
@@ -46,9 +31,7 @@ class PostsControllerTest extends IntegrationTestCase
     public function testIndex()
     {
         $this->get('/posts');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
@@ -59,8 +42,6 @@ class PostsControllerTest extends IntegrationTestCase
     public function testView()
     {
         $this->get('/posts/view/6e0c6123-2dbd-47d3-868b-9797cd9f3039');
-
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 }
