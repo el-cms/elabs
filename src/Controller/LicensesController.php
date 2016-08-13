@@ -45,6 +45,14 @@ class LicensesController extends AppController
                         'Posts.status' => 1,
                     ],
                 ],
+                'Notes' => [
+//                    'fields' => ['id', 'text', 'sfw', 'modified', 'created', 'user_id', 'license_id', 'language_id'],
+                    'Users' => ['fields' => ['id', 'username']],
+                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                    'conditions' => [ // SFW is made after
+                        'Notes.status' => 1,
+                    ],
+                ],
                 'Projects' => [
                     'Users' => ['fields' => ['id', 'username']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
@@ -64,9 +72,10 @@ class LicensesController extends AppController
         ];
         // SFW conditions :
         if (!$this->request->session()->read('seeNSFW')) {
+            $findOptions['contain']['Files']['conditions']['Files.sfw'] = true;
+            $findOptions['contain']['Notes']['conditions']['Notes.sfw'] = true;
             $findOptions['contain']['Posts']['conditions']['Posts.sfw'] = true;
             $findOptions['contain']['Projects']['conditions']['Projects.sfw'] = true;
-            $findOptions['contain']['Files']['conditions']['Files.sfw'] = true;
         }
         $license = $this->Licenses->get($id, $findOptions);
         $this->set('license', $license);

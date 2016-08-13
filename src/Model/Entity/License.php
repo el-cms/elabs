@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property int $note_count
  *
  * @property \App\Model\Entity\File[] $files
+ * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
  */

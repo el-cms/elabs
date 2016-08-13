@@ -64,12 +64,20 @@ class UsersController extends AppController
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
         $languageConfig = ['fields' => ['id', 'name', 'iso639_1']];
         $options = [
-            'fields' => ['id', 'username', 'realname', 'email', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count'],
+            'fields' => ['id', 'username', 'realname', 'email', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count', 'note_count'],
             'contain' => [
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
                     'conditions' => [ // SFW is made after
                         'status' => 1,
+                    ],
+                    'Licenses' => $licenseConfig,
+                    'Languages' => $languageConfig,
+                ],
+                'Notes' => [
+                    'fields' => ['id', 'text', 'sfw', 'modified', 'created', 'user_id', 'license_id', 'language_id'],
+                    'conditions' => [ // SFW is made after
+                        'Notes.status' => 1,
                     ],
                     'Licenses' => $licenseConfig,
                     'Languages' => $languageConfig,
@@ -96,9 +104,10 @@ class UsersController extends AppController
 
         // SFW options
         if ($this->request->session()->read('seeNSFW') === false) {
-            $options['contain']['Posts']['conditions']['sfw'] = true;
-            $options['contain']['Projects']['conditions']['sfw'] = true;
-            $options['contain']['Files']['conditions']['sfw'] = true;
+            $options['contain']['Files']['conditions']['Files.sfw'] = true;
+            $options['contain']['Notes']['conditions']['Notes.sfw'] = true;
+            $options['contain']['Posts']['conditions']['Posts.sfw'] = true;
+            $options['contain']['Projects']['conditions']['Projects.sfw'] = true;
         }
 
         $user = $this->Users->get($id, $options);

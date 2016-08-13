@@ -46,7 +46,14 @@ class LanguagesController extends AppController
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
-                    'Languages' => $languageConfig,
+                ],
+                'Notes' => [
+                    'fields' => ['id', 'text', 'sfw', 'modified', 'created', 'user_id', 'license_id', 'language_id'],
+                    'conditions' => [ // SFW is made after
+                        'Notes.status' => 1,
+                    ],
+                    'Users' => $userConfig,
+                    'Licenses' => $licenseConfig,
                 ],
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
@@ -55,7 +62,6 @@ class LanguagesController extends AppController
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
-                    'Languages' => $languageConfig,
                 ],
                 'Files' => [
                     'fields' => ['id', 'name', 'description', 'filename', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
@@ -64,15 +70,15 @@ class LanguagesController extends AppController
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
-                    'Languages' => $languageConfig,
                 ],
             ],
         ];
         // SFW options
         if ($this->request->session()->read('seeNSFW') === false) {
-            $options['contain']['Posts']['conditions']['sfw'] = true;
-            $options['contain']['Projects']['conditions']['sfw'] = true;
-            $options['contain']['Files']['conditions']['sfw'] = true;
+            $options['contain']['Files']['conditions']['Files.sfw'] = true;
+            $options['contain']['Notes']['conditions']['Notes.sfw'] = true;
+            $options['contain']['Posts']['conditions']['Posts.sfw'] = true;
+            $options['contain']['Projects']['conditions']['Projects.sfw'] = true;
         }
 
         $language = $this->Languages->get($id, $options);

@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Licenses Model
  *
  * @property \Cake\ORM\Association\HasMany $Files
+ * @property \Cake\ORM\Association\HasMany $Notes
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
  *
@@ -39,6 +40,9 @@ class LicensesTable extends Table
         $this->primaryKey('id');
 
         $this->hasMany('Files', [
+            'foreignKey' => 'license_id'
+        ]);
+        $this->hasMany('Notes', [
             'foreignKey' => 'license_id'
         ]);
         $this->hasMany('Posts', [

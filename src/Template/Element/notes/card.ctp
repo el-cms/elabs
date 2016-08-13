@@ -46,10 +46,10 @@
                     if (!$event):
                         ?>
                         <li>
-                            <?php echo $this->Html->iconT('calendar', __dx('elabs', 'Note added on...', 'Created on: {0}', h($data['publication_date']))); ?>
+                            <?php echo $this->Html->iconT('calendar', __dx('elabs', 'Note added on...', 'Created on: {0}', h($data['created']))); ?>
                         </li>
                         <?php
-                        if ($data['publication_date'] < $data['modified']):
+                        if ($data['created'] < $data['modified']):
                             ?>
                             <li>
                                 <?php echo $this->Html->iconT('refresh', __dx('elabs', 'Note added on...', 'Updated on: {0}', h($data['modified']))); ?>
