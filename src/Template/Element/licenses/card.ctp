@@ -17,6 +17,8 @@
                 echo $this->Html->link($linkTitle, ['controller' => 'Projects', 'action' => 'index', 'license', $license->id], ['class' => 'btn btn-block', 'escape' => false]);
                 $linkTitle = $this->Html->iconT('file', __dn('elabs', '{0} file', '{0} files', $license->file_count, $license->file_count));
                 echo $this->Html->link($linkTitle, ['controller' => 'Files', 'action' => 'index', 'license', $license->id], ['class' => 'btn btn-block', 'escape' => false]);
+                $linkTitle = $this->Html->iconT('sticky-note', __dn('elabs', '{0} note', '{0} notes', $license->note_count, $license->note_count));
+                echo $this->Html->link($linkTitle, ['controller' => 'Notes', 'action' => 'index', 'license', $license->id], ['class' => 'btn btn-block', 'escape' => false]);
                 ?>
             </div>
         </div>

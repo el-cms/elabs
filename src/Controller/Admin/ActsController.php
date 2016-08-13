@@ -55,15 +55,15 @@ class ActsController extends AdminAppController
      */
     public function clean()
     {
-        $done = [];
+//        $done = [];
         $errors = 0;
         if ($this->request->is('POST')) {
             // Get connection:
             $connection = ConnectionManager::get('default');
             $truncate = $connection->query('truncate acts;');
-            $models = ['Files', 'Posts', 'Projects'];
+            $models = ['Files', 'Posts', 'Projects', 'Notes'];
             foreach ($models as $model) {
-                // $done[$model]=['add'=>0, 'edit'=>0];
+//                $done[$model]=['add'=>0, 'edit'=>0];
                 $query = $this->$model->find('all', ['conditions' => ['status' => 1]]);
                 foreach ($query as $item) {
                     // Add
@@ -71,10 +71,10 @@ class ActsController extends AdminAppController
                     if (!$this->Acts->save($act)) {
                         $errors ++;
                     }
-                    // $done[$model]['add']++;
+//                    $done[$model]['add']++;
                     // Edit
                     if ($item->created != $item->modified) {
-                        // $done[$model]['edit']++;
+//                        $done[$model]['edit']++;
                         $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $item->id, 'model' => $model, 'type' => 'edit', 'created' => $item->modified]); //, 'user_id' => $uid]);
                         if (!$this->Acts->save($act)) {
                             $errors ++;
@@ -82,7 +82,7 @@ class ActsController extends AdminAppController
                     }
                 }
             }
-            // debug($done);die;
+//            debug($done);die;
             if ($errors > 0) {
                 $this->Flash->error(__dn('elabs', 'An error occured during the cleanup. Please, try again.', '{0,number} errors occured during the cleanup. Please, try again.', $errors, $errors));
             } else {

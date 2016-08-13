@@ -24,6 +24,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Note[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Note findOrCreate($search, callable $callback = null)
  *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  * @mixin \Cake\ORM\Behavior\CounterCacheBehavior
  */
 class NotesTable extends Table
@@ -43,6 +44,7 @@ class NotesTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('Timestamp');
         $this->addBehavior('CounterCache', ['Users' => ['note_count'], 'Languages' => ['note_count'], 'Licenses' => ['note_count']]);
 
         $this->belongsTo('Users', [
@@ -66,10 +68,6 @@ class NotesTable extends Table
             'foreignKey' => 'note_id',
             'targetForeignKey' => 'project_id',
             'joinTable' => 'projects_notes'
-        ]);
-        $this->hasMany('Acts', [
-            'foreignKey' => 'fkid',
-            'conditions' => ['Acts.model' => 'Files']
         ]);
     }
 

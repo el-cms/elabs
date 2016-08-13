@@ -16,7 +16,14 @@ Files:
   - Published: 3
 
 Notes:
-  - 0 note
+  - 5 notes
+    - Sfw   Status User   Edited
+      false 1      Admin
+      false 1      Author
+      true  2      Author *
+      true  1      Author
+      true  1      author
+  - Published: 4
 
 Posts:
   - 9 posts
@@ -24,13 +31,13 @@ Posts:
       true  1      Admin
       true  0      Admin
       false 0      Author
-      true  1      Author
+      true  1      Author  *
       true  1      Admin
       false 0      Author
       false 1      Author
       true  2      Author
       false 3      Author
-  - published: 5
+  - published: 4
 
 Projects:
   - 3 projects:
@@ -40,6 +47,6 @@ Projects:
       true  1      Author
   - published : 3
 
-Total published : 11
-Total edited: 1 (twice the same)
-After AdminActs::clean(): 12 elements
+Total published : 14
+Total edited: 2
+After AdminActs::clean(): 17 elements

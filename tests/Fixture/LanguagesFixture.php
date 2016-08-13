@@ -51,7 +51,7 @@ class LanguagesFixture extends TestFixture
             'file_count' => 0,
             'note_count' => 0,
             'post_count' => 0,
-            'project_count' => 0
+            'project_count' => 5
         ],
         [
             'id' => 'abk',

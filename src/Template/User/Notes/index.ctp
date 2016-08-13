@@ -1,59 +1,76 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Note'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tags'), ['controller' => 'Tags', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tag'), ['controller' => 'Tags', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="notes index large-9 medium-8 columns content">
-    <h3><?= __('Notes') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('text') ?></th>
-                <th><?= $this->Paginator->sort('sfw') ?></th>
-                <th><?= $this->Paginator->sort('status') ?></th>
-                <th><?= $this->Paginator->sort('user_id') ?></th>
-                <th><?= $this->Paginator->sort('language_id') ?></th>
-                <th><?= $this->Paginator->sort('license_id') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($notes as $note): ?>
-            <tr>
-                <td><?= h($note->id) ?></td>
-                <td><?= h($note->text) ?></td>
-                <td><?= h($note->sfw) ?></td>
-                <td><?= $this->Number->format($note->status) ?></td>
-                <td><?= $note->has('user') ? $this->Html->link($note->user->id, ['controller' => 'Users', 'action' => 'view', $note->user->id]) : '' ?></td>
-                <td><?= $note->has('language') ? $this->Html->link($note->language->name, ['controller' => 'Languages', 'action' => 'view', $note->language->id]) : '' ?></td>
-                <td><?= $note->has('license') ? $this->Html->link($note->license->name, ['controller' => 'Licenses', 'action' => 'view', $note->license->id]) : '' ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $note->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $note->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $note->id], ['confirm' => __('Are you sure you want to delete # {0}?', $note->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+<?php
+/*
+ * File:
+ *   src/Templates/Users/Notes/index.ctp
+ * Description:
+ *   List of notes created by the logged in user
+ * Layout element:
+ *   defaultindex.ctp
+ */
+
+// Page title
+$this->assign('title', __d('elabs', 'Your notes'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Notes'));
+
+// Block: Pagination order links
+// -----------------------------
+$this->start('pageOrderBy');
+echo $this->Paginator->sort('created', __d('elabs', 'Creation date'));
+echo $this->Paginator->sort('modified', __d('elabs', 'Update date'));
+$this->end();
+
+// Filters
+// -------
+$this->start('pageFilters');
+$options = ['escape' => false];
+$active = 'check-circle-o';
+$inactive = 'circle-o';
+echo $this->Html->link($this->Html->iconT('times', __d('elabs', 'Clear filters')), ['all', 'all'], $options);
+?>
+<a class="btn-group-separator"></a>
+<?php
+$icon = ($filterNSFW === 'all') ? $active : $inactive;
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Show all')), ['all', $filterStatus], $options);
+$icon = ($filterNSFW === 'safe') ? $active : $inactive;
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Safe only')), ['safe', $filterStatus], $options);
+$icon = ($filterNSFW === 'unsafe') ? $active : $inactive;
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Unsafe only')), ['unsafe', $filterStatus], $options);
+$icon = ($filterStatus === 'all') ? $active : $inactive;
+?>
+<a class="btn-group-separator"></a>
+<?php
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Show all')), [$filterNSFW, 'all'], $options);
+$icon = ($filterStatus === 'locked') ? $active : $inactive;
+echo $this->Html->link($this->Html->iconT($icon, __d('elabs', 'Locked only')), [$filterNSFW, 'locked'], $options);
+$this->end();
+
+// Page actions
+// ------------
+$this->start('pageActions');
+echo $this->Html->link($this->Html->iconT('plus', __d('elabs', 'New note')), ['action' => 'add'], ['class' => 'btn btn-block', 'escape' => false]);
+$this->end();
+
+// Page content
+// ------------
+$this->start('pageContent');
+if (!$notes->isEmpty()):
+    $tileGroupId = 'tiles-notes-group';
+    ?>
+    <div class="panel-group" id="<?php echo $tileGroupId ?>" role="tablist" aria-multiselectable="true">
+        <?php
+        foreach ($notes as $note):
+            echo $this->element('notes/tile_userindex', ['tileGroupId' => $tileGroupId, 'note' => $note]);
+        endforeach;
+        ?>
     </div>
-</div>
+    <?php
+else:
+    echo $this->element('layout/empty');
+endif;
+$this->end();
+
+// Load the layout element
+// -----------------------
+echo $this->element('layouts/defaultindex');

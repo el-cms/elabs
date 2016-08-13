@@ -48,6 +48,7 @@ if (!empty($user->bio)):
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
         <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $user->post_count . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $user->note_count . '</span>') ?></a></li>
         <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $user->project_count . '</span>') ?></a></li>
         <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $user->file_count . '</span>') ?></a></li>
     </ul>
@@ -57,6 +58,18 @@ if (!empty($user->bio)):
             if (!empty($user->posts)):
                 foreach ($user->posts as $posts):
                     echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
+
+        <div class="tab-pane" id="notes-tab">
+            <?php
+            if (!empty($user->notes)):
+                foreach ($user->notes as $note):
+                    echo $this->element('notes/card', ['data' => $note, 'userInfo' => false, 'event' => false]);
                 endforeach;
             else:
                 echo $this->element('layout/empty', ['alternative' => false]);
