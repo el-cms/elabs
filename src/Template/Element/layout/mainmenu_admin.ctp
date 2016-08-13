@@ -14,6 +14,9 @@ $this->start('mainMenu');
     <?php echo $this->Html->link(__d('elabs', 'Files'), ['prefix' => 'admin', 'controller' => 'files', 'action' => 'index']) ?>
 </li>
 <li>
+    <?php echo $this->Html->link(__d('elabs', 'Notes'), ['prefix' => 'admin', 'controller' => 'notes', 'action' => 'index']) ?>
+</li>
+<li>
     <?php echo $this->Html->link(__d('elabs', 'Users'), ['prefix' => 'admin', 'controller' => 'users', 'action' => 'index']) ?>
 </li>
 <li>

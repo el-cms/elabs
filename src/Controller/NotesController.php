@@ -15,16 +15,55 @@ class NotesController extends AppController
     /**
      * Index method
      *
+     * @param string $filter Filter model name
+     * @param string $id Foreign key
+     *
      * @return \Cake\Network\Response|void
      */
-    public function index()
+    public function index($filter = null, $id = null)
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Languages', 'Licenses']
+        $findOptions = [
+            'fields' => ['id', 'text', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
+            'conditions' => ['Notes.status' => 1],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+            ],
+            'order' => ['created' => 'desc'],
+            'sortWhitelist' => ['created', 'modified'],
         ];
-        $notes = $this->paginate($this->Notes);
 
-        $this->set(compact('notes'));
+        // Sfw condition
+        if (!$this->request->session()->read('seeNSFW')) {
+            $findOptions['conditions']['sfw'] = true;
+        }
+
+        // Other conditions:
+        if (!is_null($filter)) {
+            switch ($filter) {
+                case 'language':
+                    $findOptions['conditions']['Languages.id'] = $id;
+                    break;
+                case 'license':
+                    $findOptions['conditions']['Licenses.id'] = $id;
+                    break;
+                case 'user':
+                    $findOptions['conditions']['Users.id'] = $id;
+                    break;
+                default:
+                    throw new \Cake\Network\Exception\NotFoundException;
+            }
+            // Get additionnal infos infos
+            $modelName = \Cake\Utility\Inflector::camelize(\Cake\Utility\Inflector::pluralize($filter));
+            $FilterModel = \Cake\ORM\TableRegistry::get($modelName);
+            $filterData = $FilterModel->get($id);
+
+            $this->set('filterData', $filterData);
+        }
+        $this->set('filter', $filter);
+        $this->paginate = $findOptions;
+        $this->set('notes', $this->paginate($this->Notes));
         $this->set('_serialize', ['notes']);
     }
 
@@ -38,88 +77,23 @@ class NotesController extends AppController
     public function view($id = null)
     {
         $note = $this->Notes->get($id, [
-            'contain' => ['Users', 'Languages', 'Licenses', 'Tags', 'Projects']
+            'fields' => ['id', 'text', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
+            'contain' => [
+                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+            ],
+            'conditions' => ['Notes.status' => 1],
         ]);
 
-        $this->set('note', $note);
-        $this->set('_serialize', ['note']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $note = $this->Notes->newEntity();
-        if ($this->request->is('post')) {
-            $note = $this->Notes->patchEntity($note, $this->request->data);
-            if ($this->Notes->save($note)) {
-                $this->Flash->success(__('The note has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The note could not be saved. Please, try again.'));
-            }
-        }
-        $users = $this->Notes->Users->find('list', ['limit' => 200]);
-        $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
-        $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
-        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-        $projects = $this->Notes->Projects->find('list', ['limit' => 200]);
-        $this->set(compact('note', 'users', 'languages', 'licenses', 'tags', 'projects'));
-        $this->set('_serialize', ['note']);
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Note id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $note = $this->Notes->get($id, [
-            'contain' => ['Tags', 'Projects']
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $note = $this->Notes->patchEntity($note, $this->request->data);
-            if ($this->Notes->save($note)) {
-                $this->Flash->success(__('The note has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The note could not be saved. Please, try again.'));
-            }
-        }
-        $users = $this->Notes->Users->find('list', ['limit' => 200]);
-        $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
-        $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
-        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-        $projects = $this->Notes->Projects->find('list', ['limit' => 200]);
-        $this->set(compact('note', 'users', 'languages', 'licenses', 'tags', 'projects'));
-        $this->set('_serialize', ['note']);
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Note id.
-     * @return \Cake\Network\Response|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $note = $this->Notes->get($id);
-        if ($this->Notes->delete($note)) {
-            $this->Flash->success(__('The note has been deleted.'));
+        // It will be great when i'll find a way to nicely handle exceptions/errors
+        if (!$note->sfw && !$this->request->session()->read('seeNSFW')) {
+            $this->set('title', __d('elabs', 'A note'));
+            // And make a proper common error page
+            $this->viewBuilder()->template('nsfw');
         } else {
-            $this->Flash->error(__('The note could not be deleted. Please, try again.'));
+            $this->set('note', $note);
+            $this->set('_serialize', ['note']);
         }
-
-        return $this->redirect(['action' => 'index']);
     }
 }

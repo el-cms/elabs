@@ -2,9 +2,6 @@
 
 namespace App\Controller\User;
 
-use App\Controller\AppController;
-use Cake\Filesystem\File;
-
 /**
  * Files Controller
  *

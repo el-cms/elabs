@@ -13,6 +13,11 @@ $linkConfig = ['escape' => false];
 <li><?php echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'Manage')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'posts', 'action' => 'index'], $linkConfig) ?></li>
 <li><?php echo $this->Html->link($this->Html->iconT('plus', __d('elabs', 'Write something !')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'posts', 'action' => 'add'], $linkConfig) ?></li>
 <li class="dropdown-header">
+    <?php echo __d('elabs', 'Notes:') ?>
+</li>
+<li><?php echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'Manage')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'notes', 'action' => 'index'], $linkConfig) ?></li>
+<li><?php echo $this->Html->link($this->Html->iconT('plus', __d('elabs', 'Write something !')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'notes', 'action' => 'add'], $linkConfig) ?></li>
+<li class="dropdown-header">
     <?php echo __d('elabs', 'Projects:') ?>
 </li>
 <li><?php echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'Manage')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'projects', 'action' => 'index'], $linkConfig) ?></li>

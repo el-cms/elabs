@@ -10,6 +10,8 @@ use Cake\ORM\Entity;
  * @property string $text
  * @property bool $sfw
  * @property int $status
+ * @property \Cake\I18n\Time $created
+ * @property \Cake\I18n\Time $modified
  * @property string $user_id
  * @property string $language_id
  * @property int $license_id

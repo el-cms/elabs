@@ -1,120 +1,103 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Note'), ['action' => 'edit', $note->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Note'), ['action' => 'delete', $note->id], ['confirm' => __('Are you sure you want to delete # {0}?', $note->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Notes'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Note'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Languages'), ['controller' => 'Languages', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Language'), ['controller' => 'Languages', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Licenses'), ['controller' => 'Licenses', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New License'), ['controller' => 'Licenses', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Tags'), ['controller' => 'Tags', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Tag'), ['controller' => 'Tags', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?> </li>
+<?php
+/*
+ * File:
+ *   src/Templates/Admin/Notes/view.ctp
+ * Description:
+ *   Administration - Displays a post
+ * Layout element:
+ *   adminview.ctp
+ */
+
+// Page title
+$this->assign('title', __d('elabs', 'A note'));
+
+// Language
+$this->assign('contentLanguage', $note->language->iso639_1);
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Notes'), ['action' => 'index']);
+$this->Html->addCrumb(__d('elabs', 'A note'));
+
+// Block: Item informations
+// ------------------------
+$this->start('pageInfos');
+?>
+<ul class="list-unstyled">
+    <li><strong><?php echo __d('elabs', 'Author:') ?></strong> <?php echo $this->Html->link($note->user->username, ['controller' => 'Users', 'action' => 'view', $note->user->id]) ?></li>
+    <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->License->d($note->license) ?></li>
+    <li><strong><?php echo __d('elabs', 'Created on:') ?></strong> <?php echo h($note->created) ?></li>
+    <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($note->modified) ?></li>
+    <li><strong><?php echo __d('elabs', 'Published on:') ?></strong> <?php echo h($note->publication_date) ?></li>
+    <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($note->language->name, $note->language->iso639_1) ?></li>
+    <li><strong><?php echo __d('elabs', 'Safe:') ?></strong> <?php echo $this->ItemsAdmin->sfwLabel($note->sfw) ?></li>
+    <li><strong><?php echo __d('elabs', 'Status:') ?></strong> <?php echo $this->ItemsAdmin->statusLabel($note->status) ?></li>
+</ul>
+<?php
+$this->end();
+
+// Block: Actions
+// --------------
+$this->start('pageActions');
+?>
+<div class="btn-group btn-group-vertical btn-block">
+    <?php
+    // Lock/unlock
+    $unlockIcon = $this->Html->iconT('unlock-alt', __d('elabs', 'Unlock'));
+    $lockIcon = $this->Html->iconT('lock', __d('elabs', 'Lock'));
+    if ($note->status === 2):
+        echo $this->Html->link($unlockIcon, ['action' => 'changeState', $note->id, 'unlock'], ['escape' => false, 'class' => 'btn btn-warning']);
+    elseif ($note->status === 1):
+        echo $this->Html->link($lockIcon, ['action' => 'changeState', $note->id, 'lock'], ['escape' => false, 'class' => 'btn btn-warning']);
+    else:
+        echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-warning disabled', 'escape' => false]);
+    endif;
+    // Close
+    $class = 'btn btn-danger';
+    $link = ['action' => 'changeState', $note->id, 'remove'];
+    if ($note->status === 3):
+        $class .= ' disabled';
+        $link = '#';
+    endif;
+    $linkIcon = $this->Html->iconT('times', __d('elabs', 'Disable'));
+    echo $this->Form->postLink($linkIcon, $link, ['confirm' => __d('elabs', 'Are you sure you want to disable # {0}?', $note->id), 'escape' => false, 'class' => $class]);
+    ?>
+</div>
+<?php
+$this->end();
+
+// Related links block
+// -------------------
+$this->start('pageLinks');
+$linkOptions = ['class' => 'list-group-item', 'escape' => false];
+$linkIcon = $this->Html->iconT('list', __d('elabs', 'List of articles'));
+echo $this->Html->link($linkIcon, ['prefix' => 'admin', 'controller' => 'Notes', 'action' => 'index'], $linkOptions);
+$this->end();
+
+// Block: Page content
+// -------------------
+$this->start('pageContent');
+?>
+<div class="panel">
+    <ul id="postTabs" class="nav nav-tabs nav-justified">
+        <li class="active"><a data-toggle="tab" href="#tab-content" aria-expanded="true"><?php echo __d('elabs', 'Content') ?></a></li>
+        <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('elabs', 'Related items') ?></a></li>
     </ul>
-</nav>
-<div class="notes view large-9 medium-8 columns content">
-    <h3><?= h($note->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= h($note->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Text') ?></th>
-            <td><?= h($note->text) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('User') ?></th>
-            <td><?= $note->has('user') ? $this->Html->link($note->user->id, ['controller' => 'Users', 'action' => 'view', $note->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Language') ?></th>
-            <td><?= $note->has('language') ? $this->Html->link($note->language->name, ['controller' => 'Languages', 'action' => 'view', $note->language->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('License') ?></th>
-            <td><?= $note->has('license') ? $this->Html->link($note->license->name, ['controller' => 'Licenses', 'action' => 'view', $note->license->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Status') ?></th>
-            <td><?= $this->Number->format($note->status) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Sfw') ?></th>
-            <td><?= $note->sfw ? __('Yes') : __('No'); ?></td>
-        </tr>
-    </table>
-    <div class="related">
-        <h4><?= __('Related Tags') ?></h4>
-        <?php if (!empty($note->tags)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th><?= __('Itemtag Count') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($note->tags as $tags): ?>
-            <tr>
-                <td><?= h($tags->id) ?></td>
-                <td><?= h($tags->name) ?></td>
-                <td><?= h($tags->itemtag_count) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Tags', 'action' => 'view', $tags->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Tags', 'action' => 'edit', $tags->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Tags', 'action' => 'delete', $tags->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tags->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Projects') ?></h4>
-        <?php if (!empty($note->projects)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th><?= __('Short Description') ?></th>
-                <th><?= __('Description') ?></th>
-                <th><?= __('Mainurl') ?></th>
-                <th><?= __('Sfw') ?></th>
-                <th><?= __('Status') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th><?= __('License Id') ?></th>
-                <th><?= __('User Id') ?></th>
-                <th><?= __('Language Id') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($note->projects as $projects): ?>
-            <tr>
-                <td><?= h($projects->id) ?></td>
-                <td><?= h($projects->name) ?></td>
-                <td><?= h($projects->short_description) ?></td>
-                <td><?= h($projects->description) ?></td>
-                <td><?= h($projects->mainurl) ?></td>
-                <td><?= h($projects->sfw) ?></td>
-                <td><?= h($projects->status) ?></td>
-                <td><?= h($projects->created) ?></td>
-                <td><?= h($projects->modified) ?></td>
-                <td><?= h($projects->license_id) ?></td>
-                <td><?= h($projects->user_id) ?></td>
-                <td><?= h($projects->language_id) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Projects', 'action' => 'view', $projects->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Projects', 'action' => 'edit', $projects->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Projects', 'action' => 'delete', $projects->id], ['confirm' => __('Are you sure you want to delete # {0}?', $projects->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
+    <div id = "userTabsContent" class = "tab-content">
+        <div class="tab-pane fade active in" id="tab-content" lang="<?php echo $note->language->iso639_1 ?>">
+            <?php
+            echo $this->Html->displayMD($note->text);
+            ?>
+        </div>
+        <div class="tab-pane" id="tab-related">
+            <?php
+            echo $this->element('layout/dev_block');
+            ?>
+        </div>
     </div>
 </div>
+<?php
+$this->end();
+
+// Load the layout element
+// -----------------------
+echo $this->element('layouts/adminview');
