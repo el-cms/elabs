@@ -3,7 +3,7 @@ language: php
 sudo: false
 
 php:
-  - 7.0
+  - 5.6
 
 before_script:
   - sh -c "composer require 'cakephp/cakephp-codesniffer:dev-master'"
@@ -11,7 +11,11 @@ before_script:
 
 script:
     # removed ./config for now because of missing namespaces in Migrations/seeds.
+  - sh -c "vendor/bin/phpunit"
   - sh -c "vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot"
 
 notifications:
   email: false
+  
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
