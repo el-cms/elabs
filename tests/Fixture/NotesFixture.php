@@ -50,5 +50,60 @@ class NotesFixture extends TestFixture
      * @var array
      */
     public $records = [
+        [
+            'id' => '70c8fff0-1338-48d2-b93b-942a26eddddd',
+            'text' => 'This is note #1',
+            'sfw' => false,
+            'status' => 1,
+            'created' => '2016-08-13 08:13:53',
+            'modified' => '2016-08-13 08:13:53',
+            'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
+            'language_id' => 'aar',
+            'license_id' => 1
+        ],
+        [
+            'id' => 'c5fba703-fd07-4a1c-b7b0-345a76c36c31',
+            'text' => 'This is note #2',
+            'sfw' => false,
+            'status' => 1,
+            'created' => '2016-08-13 08:13:53',
+            'modified' => '2016-08-13 09:13:53',
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
+            'language_id' => 'aar',
+            'license_id' => 1
+        ],
+        [
+            'id' => 'c5fba703-fd07-4a1c-b7b0-345a76c36c32',
+            'text' => 'This is note #3',
+            'sfw' => true,
+            'status' => 2,
+            'created' => '2016-08-13 08:13:53',
+            'modified' => '2016-08-13 08:13:53',
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
+            'language_id' => 'aar',
+            'license_id' => 1
+        ],
+        [
+            'id' => 'c5fba703-fd07-4a1c-b7b0-345a76c36c33',
+            'text' => 'This is note #4',
+            'sfw' => true,
+            'status' => 1,
+            'created' => '2016-08-13 08:13:53',
+            'modified' => '2016-08-13 08:13:53',
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
+            'language_id' => 'aar',
+            'license_id' => 1
+        ],
+        [
+            'id' => 'c5fba703-fd07-4a1c-b7b0-345a76c36c34',
+            'text' => 'This is note #5',
+            'sfw' => true,
+            'status' => 1,
+            'created' => '2016-08-13 08:13:53',
+            'modified' => '2016-08-13 08:13:53',
+            'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
+            'language_id' => 'aar',
+            'license_id' => 1
+        ],
     ];
 }

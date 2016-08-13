@@ -49,7 +49,7 @@ class LicensesFixture extends TestFixture
             'file_count' => 3,
             'post_count' => 2,
             'project_count' => 2,
-            'note_count' => 0
+            'note_count' => 5
         ],
         [
             'id' => 2,

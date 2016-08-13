@@ -19,6 +19,7 @@ class NotesControllerTest extends IntegrationTestCase
         'app.licenses',
         'app.notes',
         'app.users',
+        'app.acts'
     ];
 
     /**
@@ -48,8 +49,7 @@ class NotesControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
-        $this->markTestIncomplete('Missing fixtures');
-        $notePk = '';
+        $notePk = 'c5fba703-fd07-4a1c-b7b0-345a76c36c32';
         // Set session data
         $this->session($this->userCreds['admin']);
         $this->get('/admin/notes/view/' . $notePk);
@@ -63,8 +63,7 @@ class NotesControllerTest extends IntegrationTestCase
      */
     public function testChangeStateToLocked()
     {
-        $this->markTestIncomplete('Missing fixtures');
-        $notePk = '';
+        $notePk = 'c5fba703-fd07-4a1c-b7b0-345a76c36c32';
         $Notes = \Cake\ORM\TableRegistry::get('Notes');
 
         // Set session data
@@ -103,11 +102,7 @@ class NotesControllerTest extends IntegrationTestCase
         // Checks the new state
         $nb = $Notes->find('all', ['conditions' => ['id' => $notePk, 'status' => 2]])->count();
         $this->assertEquals(0, $nb, 'Removed note was unlocked');
-
         // Error
         $this->assertResponseError();
-
-        // Ajax
-        $this->markTestIncomplete('Missing ajax test');
     }
 }

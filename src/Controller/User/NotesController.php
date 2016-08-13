@@ -101,6 +101,13 @@ class NotesController extends UserAppController
             'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            if ($note->status != STATUS_DELETED) {
+                // Force note status
+                $this->request->data['status'] = STATUS_PUBLISHED;
+            } else {
+                // Small dose of paranoïa
+                throw new \Cake\Network\Exception\NotFoundException(__d('elabs', 'Target note not found.'));
+            }
             $note = $this->Notes->patchEntity($note, $this->request->data);
             if ($this->Notes->save($note)) {
                 $this->Flash->success(__d('elabs', 'The note has been saved.'));
