@@ -42,6 +42,7 @@ class ActsController extends AppController
                 'Files' => __d('elabs', 'File'),
                 'Posts' => __d('elabs', 'Article'),
                 'Projects' => __d('elabs', 'Project'),
+                'Notes' => __d('elabs', 'Note'),
             ]
         ];
 
@@ -95,6 +96,15 @@ class ActsController extends AppController
                     'Users' => $userConfig,
                     'Languages' => $languageConfig,
                 ],
+                'Notes' => [
+                    'fields' => ['id', 'text', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'],
+                    'conditions' => [ // SFW is made after
+                        'Notes.status' => 1,
+                    ],
+                    'Licenses' => $licenseConfig,
+                    'Users' => $userConfig,
+                    'Languages' => $languageConfig,
+                ],
             ],
             'limit' => 30,
             'order' => [
@@ -108,6 +118,7 @@ class ActsController extends AppController
             $this->paginate['contain']['Posts']['conditions']['Posts.sfw'] = true;
             $this->paginate['contain']['Projects']['conditions']['Projects.sfw'] = true;
             $this->paginate['contain']['Files']['conditions']['Files.sfw'] = true;
+            $this->paginate['contain']['Notes']['conditions']['Notes.sfw'] = true;
         }
 
         if ($updateFilter === 'hideUpdates') {

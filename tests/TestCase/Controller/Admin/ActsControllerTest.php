@@ -49,7 +49,7 @@ class ActsControllerTest extends IntegrationTestCase
         // Take a look at the fixtures/list.md for counts
         $Acts = \Cake\ORM\TableRegistry::get('Acts');
         $nb = $Acts->find()->count();
-        $this->assertEquals(11, $nb);
+        $this->assertEquals(16, $nb);
 
         // No error
         $this->assertResponseEmpty();

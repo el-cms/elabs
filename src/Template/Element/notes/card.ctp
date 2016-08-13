@@ -1,12 +1,9 @@
-<?php
-$config = $this->Items->fileConfig($data['filename']);
-?>
 <div class="card<?php echo ($event ? ' card-event' : '') ?><?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-main">
         <!-- Card toolbar -->
         <ul class="card-toolbar">
             <!-- Report link -->
-            <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Files', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
+            <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Notes', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
             <!-- Language pill -->
             <li><a class="language-pill" lang="<?php echo $data['language']['iso639_1'] ?>"><?php echo $data['language']['name'] ?></a></li>
             <!-- SFW pill-->
@@ -18,16 +15,19 @@ $config = $this->Items->fileConfig($data['filename']);
         <div class="card-heading">
             <!-- Icon -->
             <div class="card-heading-side">
-                <?php echo $this->Html->icon($config['icon'] . ' 3x') ?>
+                <?php echo $this->Html->icon('sticky-note-o 3x') ?>
             </div>
             <!-- Header -->
             <div class="card-header">
                 <!-- Title -->
-                <h3><?php echo $this->Html->link(h($data['name']), ['prefix' => false, 'controller' => 'Files', 'action' => 'view', $data['id']]) ?></h3>
                 <ul class="card-informations">
                     <?php if (!isset($userInfo) || $userInfo): ?>
                         <li>
-                            <?php echo $this->Html->iconT('user', __d('elabs', 'Author:')); ?>
+                            <?php echo $this->Html->icon('link') ?>
+                            <?php echo $this->Html->link(__d('elabs', 'Permalink'), ['controller' => 'Notes', 'action' => 'view', $data['id']], ['escape' => false]) ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Html->iconT('user', __d('elabs', 'Author:')) ?>
                             <?php echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
                         </li>
                         <?php
@@ -46,13 +46,13 @@ $config = $this->Items->fileConfig($data['filename']);
                     if (!$event):
                         ?>
                         <li>
-                            <?php echo $this->Html->iconT('calendar', __dx('elabs', 'File added on...', 'Added on: {0}', h($data['created']))); ?>
+                            <?php echo $this->Html->iconT('calendar', __dx('elabs', 'Note added on...', 'Created on: {0}', h($data['created']))); ?>
                         </li>
                         <?php
-                        if ($data['publication_date'] < $data['modified']):
+                        if ($data['created'] < $data['modified']):
                             ?>
                             <li>
-                                <?php echo $this->Html->iconT('refresh', __d('elabs', 'Updated on: {0}', h($data['modified']))); ?>
+                                <?php echo $this->Html->iconT('refresh', __dx('elabs', 'Note added on...', 'Updated on: {0}', h($data['modified']))); ?>
                             </li>
                             <?php
                         endif;
@@ -63,10 +63,7 @@ $config = $this->Items->fileConfig($data['filename']);
         </div>
         <!-- Content -->
         <div class="card-content" lang="<?php echo $data['language']['iso639_1'] ?>">
-            <?php
-            echo $this->element('files/card_content_' . $config['element'], ['data' => $data]);
-            echo $this->Html->displayMD($data['description'])
-            ?>
+            <?php echo $this->Html->displayMD($data['text']) ?>
         </div>
     </div>
 </div>

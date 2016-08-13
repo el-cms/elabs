@@ -41,6 +41,7 @@ class NotesControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/notes/view/c5fba703-fd07-4a1c-b7b0-345a76c36c33');
+        $this->assertResponseOk();
     }
 }

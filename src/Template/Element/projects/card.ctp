@@ -43,7 +43,7 @@
                     if (!$event):
                         ?>
                         <li>
-                            <?php echo $this->Html->iconT('calendar', __d('elabs', 'Published on: {0}', h($data['created']))); ?>
+                            <?php echo $this->Html->iconT('calendar', __d('elabs', 'Created on: {0}', h($data['created']))); ?>
                         </li>
                         <?php
                         if ($data['publication_date'] < $data['modified']):

@@ -40,6 +40,7 @@ if (!$seeNSFW):
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
         <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $this->Number->format($language->post_count) . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $this->Number->format($language->note_count) . '</span>') ?></a></li>
         <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $this->Number->format($language->project_count) . '</span>') ?></a></li>
         <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $this->Number->format($language->file_count) . '</span>') ?></a></li>
     </ul>
@@ -49,6 +50,18 @@ if (!$seeNSFW):
             if (!empty($language->posts)):
                 foreach ($language->posts as $posts):
                     echo $this->element('posts/card', ['data' => $posts, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
+
+        <div class="tab-pane" id="notes-tab">
+            <?php
+            if (!empty($language->notes)):
+                foreach ($language->notes as $note):
+                    echo $this->element('notes/card', ['data' => $note, 'event' => false]);
                 endforeach;
             else:
                 echo $this->element('layout/empty', ['alternative' => false]);
