@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1471095390">
-  <project timestamp="1471095390">
+<coverage generated="1471184459">
+  <project timestamp="1471184459">
     <package name="App\Console">
       <file name="/var/www/html/src/Console/Installer.php">
         <class name="Installer" namespace="App\Console">
