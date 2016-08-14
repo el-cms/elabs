@@ -32,7 +32,7 @@ endif;
         echo $this->element('layout/pageloader');
         ?>
         <!-- Navbar -->
-        <nav class="navbar<?php echo(!empty($pagePrefix) ? ' navbar-' . $pagePrefix : '') ?> navbar-fixed-top">
+        <nav class="navbar<?php echo(!empty($pagePrefix) ? ' navbar-' . $pagePrefix : ' navbar-default') ?> navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Header and expand button -->
                 <div class="navbar-header">
@@ -101,7 +101,7 @@ endif;
         <!-- / Main content -->
 
         <!-- Footer -->
-        <footer class="footer<?php echo(!empty($pagePrefix) ? ' footer-' . $pagePrefix : '') ?>">
+        <footer class="footer<?php echo(!empty($pagePrefix) ? ' footer-' . $pagePrefix : ' footer-default') ?>">
             <div class="container-fluid">
                 <?php echo $this->element('layout/footer'); ?>
             </div>
