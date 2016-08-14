@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
-$pagePrefix = $this->request->params['prefix'];
+$pagePrefix = '';
+if (key_exists('prefix', $this->request->params)):
+    $pagePrefix = $this->request->params['prefix'];
+endif;
 ?>
 <html lang="en">
     <head>
@@ -37,7 +40,7 @@ $pagePrefix = $this->request->params['prefix'];
                         <span class="sr-only">Toggle navigation</span>
                         <?php echo $this->Html->icon('bars') ?>
                     </button>
-                    <?php echo $this->Html->link(__dx('elabs', 'Navbar: [logo] [text]', '{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
+                    <?php echo $this->Html->link(__d('elabs', '{0} {1}', [$this->Html->image('logo-32.png'), Cake\Core\Configure::read('cms.siteName')]), '/', ['escape' => false, 'class' => 'navbar-brand']) ?>
                 </div>
                 <!-- / Header and expand button -->
 
