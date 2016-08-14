@@ -33,7 +33,7 @@ class ReportsController extends AppController
     public function add()
     {
         $report = $this->Reports->newEntity();
-        if ($this->request->is('post')) {
+        if ($this->request->is('post') && empty($this->request->data('body'))) {
             // Preparing data
             if (empty($this->request->data['url'])) {
                 $this->request->data['url'] = $this->referer();
@@ -53,13 +53,11 @@ class ReportsController extends AppController
                 $this->redirect($this->referer());
             } else {
                 $this->Flash->error(__d('elabs', 'The report could not be saved (and that should be a good reason to report it...). Please try again.'));
-
-                $this->redirect($this->referer());
             }
-        } else {
-            $this->Flash->error(__d('elabs', 'Something went wrong with your request...'));
-
-            $this->redirect($this->referer());
         }
+//        else {
+//            $this->Flash->error(__d('elabs', 'Something went wrong with your request...'));
+//        }
+        $this->redirect($this->referer());
     }
 }
