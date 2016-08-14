@@ -46,7 +46,7 @@ $config = $this->Items->fileConfig($data['filename']);
                     if (!$event):
                         ?>
                         <li>
-                            <?php echo $this->Html->iconT('calendar', __dx('elabs', 'File added on...', 'Added on: {0}', h($data['created']))); ?>
+                            <?php echo $this->Html->iconT('calendar', __dx('elabs-x', 'File added on...', 'Added on: {0}', h($data['created']))); ?>
                         </li>
                         <?php
                         if ($data['publication_date'] < $data['modified']):

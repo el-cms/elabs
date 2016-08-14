@@ -5,7 +5,7 @@
         <?php
         if (isset($alternative) && $alternative):
             if (!isset($authUser['id'])):
-                echo __d('elabs', 'Alternatively, you can {0} or {1} and start adding your own content!', [$this->Html->link(__dx('elabs', 'You can [register] or login', 'register'), ['prefix' => false, 'controller' => 'users', 'action' => 'register']), $this->Html->link(__dx('elabs', 'You can register or [login]', 'login'), ['prefix' => false, 'controller' => 'users', 'action' => 'login'])]);
+                echo __d('elabs', 'Alternatively, you can {0} or {1} and start adding your own content!', [$this->Html->link(__dx('elabs-x', 'You can [register] or login', 'register'), ['prefix' => false, 'controller' => 'users', 'action' => 'register']), $this->Html->link(__dx('elabs-x', 'You can register or [login]', 'login'), ['prefix' => false, 'controller' => 'users', 'action' => 'login'])]);
             else:
                 echo __d('elabs', 'Alternatively, you can start adding content!');
             endif;

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-13 09:58+0200\n"
-"PO-Revision-Date: 2016-08-13 09:58+0200\n"
+"POT-Creation-Date: 2016-08-14 15:51+0200\n"
+"PO-Revision-Date: 2016-08-14 15:51+0200\n"
 "Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_FR\n"
@@ -43,7 +43,7 @@ msgstr "Note"
 msgid "You are not allowed to view this page."
 msgstr "Vous n’êtes pas autorisé à voir cette page."
 
-#: Controller/NotesController.php:88 Template/Admin/Notes/view.ctp:12;19
+#: Controller/NotesController.php:91 Template/Admin/Notes/view.ctp:12;19
 #: Template/Notes/view.ctp:12
 msgid "A note"
 msgstr "Une note"
@@ -72,25 +72,25 @@ msgstr "Vous êtes déjà inscrit"
 msgid "Registrations are closed for now... Come back later..."
 msgstr "Les inscriptions sont fermées pour le moment... Revenez plus tard..."
 
-#: Controller/UsersController.php:131
+#: Controller/UsersController.php:140
 msgid "Your account has been created. An email will be sent to you when active"
 msgstr ""
 "Votre compte a été créé. Un email sera envoyé à vous lorsqu’il sera actif"
 
-#: Controller/UsersController.php:139 Controller/User/FilesController.php:156
-#: Controller/User/NotesController.php:76;116
+#: Controller/UsersController.php:148 Controller/User/FilesController.php:156
+#: Controller/User/NotesController.php:79;126
 #: Controller/User/PostsController.php:84;135
 #: Controller/User/ProjectsController.php:74;110
 msgid "Some errors occured. Please, try again."
 msgstr "Des erreurs se sont produites. Veuillez re-essayer."
 
-#: Controller/UsersController.php:160
+#: Controller/UsersController.php:169
 msgid "Invalid username or password, try again. Is your accound active ?"
 msgstr ""
 "Nom d'utilisateur ou mot de passe invalide, essayez à nouveau. Votre compte "
 "est-il activé ?"
 
-#: Controller/UsersController.php:172
+#: Controller/UsersController.php:181
 msgid "You are logged out. See you later !"
 msgstr "Vous êtes déconnecté. A plus tard !"
 
@@ -269,19 +269,23 @@ msgstr "Le fichier a été supprimé."
 msgid "The file could not be deleted. Please, try again."
 msgstr "Le fichier n'a pas pu être supprimé. Veuillez essayer à nouveau."
 
-#: Controller/User/NotesController.php:65;103
+#: Controller/User/NotesController.php:68;113
 msgid "The note has been saved."
 msgstr "La note a été sauvegardée"
 
-#: Controller/User/NotesController.php:70;110
+#: Controller/User/NotesController.php:73;120
 msgid "The note could not be saved. Please, try again."
 msgstr "La note n'a pas pu être sauvegardée. Veuillez essayer à nouveau."
 
-#: Controller/User/NotesController.php:143
+#: Controller/User/NotesController.php:109
+msgid "Target note not found."
+msgstr "Note non trouvée."
+
+#: Controller/User/NotesController.php:153
 msgid "The note has been deleted."
 msgstr "La note a été supprimée"
 
-#: Controller/User/NotesController.php:146
+#: Controller/User/NotesController.php:156
 msgid "The note could not be deleted. Please, try again."
 msgstr "La note n'a pas pu être supprimée. Veuillez essayer à nouveau."
 
@@ -359,18 +363,13 @@ msgid "Recent activity"
 msgstr "Activité récente"
 
 #: Template/Acts/index.ctp:20 Template/Element/layout/mainmenu.ctp:5
-#: Template/Layout/err400.ctp:50
+#: Template/Layout/err400.ctp:53
 msgid "Home"
 msgstr "Accueil"
 
 #: Template/Acts/index.ctp:29
 msgid "Hide updates"
 msgstr "Cacher les màj"
-
-#: Template/Acts/index.ctp:105
-msgctxt "Act update card: [model] title [action]"
-msgid "{0} {1} {2}"
-msgstr "{0} {1} {2}"
 
 #: Template/Admin/Dashboard/index.ctp:12
 #: Template/Element/layout/mainmenu_admin.ctp:5
@@ -1001,13 +1000,13 @@ msgstr "Ce compte a été fermé. Aucune action n'est disponible."
 msgid "Articles {0}"
 msgstr "Articles {0}"
 
-#: Template/Admin/Users/view.ctp:86 Template/Languages/view.ctp:43
-#: Template/Licenses/view.ctp:47 Template/Users/view.ctp:51
+#: Template/Admin/Users/view.ctp:86 Template/Languages/view.ctp:44
+#: Template/Licenses/view.ctp:48 Template/Users/view.ctp:52
 msgid "Projects {0}"
 msgstr "Projets {0}"
 
-#: Template/Admin/Users/view.ctp:87 Template/Languages/view.ctp:44
-#: Template/Licenses/view.ctp:48 Template/Users/view.ctp:52
+#: Template/Admin/Users/view.ctp:87 Template/Languages/view.ctp:45
+#: Template/Licenses/view.ctp:49 Template/Users/view.ctp:53
 msgid "Files {0}"
 msgstr "Fichiers {0}"
 
@@ -1030,16 +1029,6 @@ msgstr "NSFW"
 #: Template/Element/projects/card.ctp:52
 msgid "Updated on: {0}"
 msgstr "Modifié le : {0}"
-
-#: Template/Element/notes/card.ctp:55
-msgctxt "Note added on..."
-msgid "Updated on: {0}"
-msgstr "Mise à jour le : {0}"
-
-#: Template/Element/files/card.ctp:49
-msgctxt "File added on..."
-msgid "Added on: {0}"
-msgstr "Ajouté le : {0}"
 
 #: Template/Element/files/card_content_audio.ctp:3
 #: Template/Element/files/view_content_audio.ctp:3
@@ -1094,6 +1083,13 @@ msgid_plural "{0} files"
 msgstr[0] "{0} fichier"
 msgstr[1] "{0} fichiers"
 
+#: Template/Element/languages/card.ctp:20 Template/Element/licenses/card.ctp:20
+#: Template/Element/users/card.ctp:26
+msgid "{0} note"
+msgid_plural "{0} notes"
+msgstr[0] "{0} note"
+msgstr[1] "{0} notes"
+
 #: Template/Element/layout/dev_block.ctp:3
 msgid "This feature is under development."
 msgstr "Cette fonctionnalité est en cours de développement."
@@ -1114,16 +1110,6 @@ msgstr ""
 #: Template/Element/layout/empty.ctp:10
 msgid "Alternatively, you can start adding content!"
 msgstr "Vous pouvez aussi ajouter votre propre contenu !"
-
-#: Template/Element/layout/empty.ctp:8
-msgctxt "You can [register] or login"
-msgid "register"
-msgstr "créer un compte"
-
-#: Template/Element/layout/empty.ctp:8
-msgctxt "You can register or [login]"
-msgid "login"
-msgstr "vous identifier"
 
 #: Template/Element/layout/empty_admin.ctp:3
 msgid "There is no element to display here."
@@ -1170,11 +1156,6 @@ msgstr "CV"
 #: Template/Element/layout/footer.ctp:16
 msgid "Contact"
 msgstr "Contact"
-
-#: Template/Element/layout/footer.ctp:3
-msgctxt "[site name] - logo"
-msgid "{0} - logo"
-msgstr "{0} - logo"
 
 #: Template/Element/layout/mainmenu.ctp:20 Template/Files/index.ctp:25
 #: Template/Notes/index.ctp:25 Template/Posts/index.ctp:25
@@ -1290,16 +1271,7 @@ msgstr "Informations"
 
 #: Template/Element/notes/card.ctp:27
 msgid "Permalink"
-msgstr ""
-
-#: Template/Element/notes/card.ctp:49
-msgctxt "Note added on..."
-msgid "Created on: {0}"
-msgstr "Créée le : {0}"
-
-#: Template/Element/projects/card.ctp:46
-msgid "Created on: {0}"
-msgstr "Créée le : {0}"
+msgstr "Lien permanent"
 
 #: Template/Element/notes/tile_userindex.ctp:33
 #: Template/Element/posts/tile_userindex.ctp:33
@@ -1311,11 +1283,6 @@ msgstr "Brouillon "
 #: Template/User/Posts/edit.ctp:56 View/Helper/ItemsAdminHelper.php:29
 msgid "Published"
 msgstr "Publié"
-
-#: Template/Element/notes/tile_userindex.ctp:42
-msgctxt "Note deleted"
-msgid "Deleted"
-msgstr "Supprimée"
 
 #: Template/Element/posts/card.ctp:46
 msgid "Published on: {0}"
@@ -1329,6 +1296,10 @@ msgstr "Date de publication"
 #: Template/Element/projects/card.ctp:27
 msgid "Manager: "
 msgstr "Manager : "
+
+#: Template/Element/projects/card.ctp:46
+msgid "Created on: {0}"
+msgstr "Créée le : {0}"
 
 #: Template/Element/projects/tile_userindex.ctp:53
 msgid "Team"
@@ -1565,17 +1536,20 @@ msgid "Some entries may be hidden, depending on your NSFW settings."
 msgstr ""
 "Certaines entrées peuvent être masqués, en fonction de vos paramètres NSFW."
 
-#: Template/Layout/admin.ctp:46 Template/Layout/default.ctp:46
-#: Template/Layout/err400.ctp:40 Template/Layout/user.ctp:46
-msgctxt "Navbar: [logo] [text]"
-msgid "{0} {1}"
-msgstr "{0} {1}"
+#: Template/Languages/view.ctp:43 Template/Licenses/view.ctp:47
+#: Template/Users/view.ctp:51
+msgid "Notes {0}"
+msgstr "Notes {0}"
 
 #: Template/Layout/default.ctp:82
 msgid "Login/Register"
 msgstr "Identification / Inscription"
 
-#: Template/Layout/err400.ctp:49
+#: Template/Layout/err400.ctp:43
+msgid "{0} {1}"
+msgstr "{0} {1}"
+
+#: Template/Layout/err400.ctp:52
 msgid "Back"
 msgstr "Précédent"
 
@@ -1873,11 +1847,6 @@ msgstr " {0} "
 msgid "Report this"
 msgstr "Rapporter ceci"
 
-#: View/Helper/AppHtmlHelper.php:63
-msgctxt "[icon] [text]"
-msgid "{0}&nbsp;{1}"
-msgstr "{0}&nbsp;{1}"
-
 #: View/Helper/ItemsAdminHelper.php:25 View/Helper/UsersAdminHelper.php:61
 msgid "Waiting"
 msgstr "En attente"
@@ -1902,14 +1871,69 @@ msgstr "Approuvé"
 msgid "Closed"
 msgstr "Fermé"
 
-#~ msgid "List of notes"
-#~ msgstr "Liste des notes"
+#~ msgid "{0} {1} {2}"
+#~ msgstr "{0} {1} {2}"
+
+#~ msgid "Added on: {0}"
+#~ msgstr "Ajouté le : {0}"
+
+#~ msgid "register"
+#~ msgstr "vous inscrire"
+
+#~ msgid "login"
+#~ msgstr "vous connecter"
+
+#~ msgid "{0} - logo"
+#~ msgstr "{0} - logo"
 
 #~ msgid "Deleted"
 #~ msgstr "Suprimé"
 
+#~ msgid "{0}&nbsp;{1}"
+#~ msgstr "{0}&nbsp;{1}"
+
+#~ msgctxt "Act update card: [model] title [action]"
+#~ msgid "{0} {1} {2}"
+#~ msgstr "{0} {1} {2}"
+
+#~ msgctxt "Note added on..."
+#~ msgid "Updated on: {0}"
+#~ msgstr "Mise à jour le : {0}"
+
+#~ msgctxt "File added on..."
 #~ msgid "Added on: {0}"
 #~ msgstr "Ajouté le : {0}"
+
+#~ msgctxt "You can [register] or login"
+#~ msgid "register"
+#~ msgstr "créer un compte"
+
+#~ msgctxt "You can register or [login]"
+#~ msgid "login"
+#~ msgstr "vous identifier"
+
+#~ msgctxt "[site name] - logo"
+#~ msgid "{0} - logo"
+#~ msgstr "{0} - logo"
+
+#~ msgctxt "Note added on..."
+#~ msgid "Created on: {0}"
+#~ msgstr "Créée le : {0}"
+
+#~ msgctxt "Note deleted"
+#~ msgid "Deleted"
+#~ msgstr "Supprimée"
+
+#~ msgctxt "Navbar: [logo] [text]"
+#~ msgid "{0} {1}"
+#~ msgstr "{0} {1}"
+
+#~ msgctxt "[icon] [text]"
+#~ msgid "{0}&nbsp;{1}"
+#~ msgstr "{0}&nbsp;{1}"
+
+#~ msgid "List of notes"
+#~ msgstr "Liste des notes"
 
 #~ msgid "The license has been deleted."
 #~ msgstr "La license a été supprimée."

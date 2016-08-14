@@ -102,7 +102,7 @@ if (!$acts->isEmpty()):
                             <div class="events event-<?php echo $class ?>">
                                 <?php
                                 // Text
-                                $linkText = __dx('elabs', 'Act update card: [model] title [action]', '{0} {1} {2}', [$config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]);
+                                $linkText = __dx('elabs-x', 'Act update card: [model] title [action]', '{0} {1} {2}', [$config['models'][$act['model']], $itemTitle, $config['strings'][$act['type']]]);
                                 // Icon
                                 $linkIcon = $this->Html->iconT($icon, $linkText);
                                 // Final link

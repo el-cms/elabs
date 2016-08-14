@@ -1,6 +1,6 @@
 <div class="clearfix">
     <div class="footer-logo">
-        <a href="/"><?php echo $this->Html->image('logo-32.png', ['alt' => __d('elabs', 'Logo'), 'title' => __dx('elabs', '[site name] - logo', '{0} - logo', Cake\Core\Configure::read('cms.siteName'))]) ?> <?php echo Cake\Core\Configure::read('cms.siteName') ?></a>
+        <a href="/"><?php echo $this->Html->image('logo-32.png', ['alt' => __d('elabs', 'Logo'), 'title' => __dx('elabs-x', '[site name] - logo', '{0} - logo', Cake\Core\Configure::read('cms.siteName'))]) ?> <?php echo Cake\Core\Configure::read('cms.siteName') ?></a>
     </div>
     <dl class="footer-nav">
         <dt class="nav-title"><?php echo __d('elabs', 'About the site') ?></dt>

@@ -39,7 +39,7 @@
                     ?><span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span><?php
                         break;
                     case 3:
-                        ?><span class="label label-danger"><?php echo __dx('elabs', 'Note deleted', 'Deleted') ?></span><?php
+                        ?><span class="label label-danger"><?php echo __dx('elabs-x', 'Note deleted', 'Deleted') ?></span><?php
                         break;
                 endswitch;
                 ?>
