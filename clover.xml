@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1471184459">
-  <project timestamp="1471184459">
+<coverage generated="1471192390">
+  <project timestamp="1471192390">
     <package name="App\Console">
       <file name="/var/www/html/src/Console/Installer.php">
         <class name="Installer" namespace="App\Console">
@@ -651,14 +651,14 @@
       </file>
       <file name="/var/www/html/src/Controller/ReportsController.php">
         <class name="ReportsController" namespace="App\Controller">
-          <metrics complexity="6" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="0" elements="33" coveredelements="0"/>
+          <metrics complexity="7" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="0" elements="30" coveredelements="0"/>
         </class>
         <line num="21" type="method" name="beforeFilter" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="22" type="stmt" count="0"/>
         <line num="23" type="stmt" count="0"/>
         <line num="25" type="stmt" count="0"/>
         <line num="26" type="stmt" count="0"/>
-        <line num="33" type="method" name="add" visibility="public" complexity="5" crap="30" count="0"/>
+        <line num="33" type="method" name="add" visibility="public" complexity="6" crap="42" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="35" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
@@ -679,14 +679,11 @@
         <line num="53" type="stmt" count="0"/>
         <line num="54" type="stmt" count="0"/>
         <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
         <line num="57" type="stmt" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
         <line num="62" type="stmt" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="64" type="stmt" count="0"/>
-        <metrics loc="65" ncloc="45" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="0" elements="33" coveredelements="0"/>
+        <metrics loc="63" ncloc="37" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="0" elements="30" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Controller/TagsController.php">
         <class name="TagsController" namespace="App\Controller">
@@ -3807,6 +3804,6 @@
         <metrics loc="82" ncloc="54" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="18" elements="41" coveredelements="18"/>
       </file>
     </package>
-    <metrics files="92" loc="8671" ncloc="5343" classes="92" methods="247" coveredmethods="81" conditionals="0" coveredconditionals="0" statements="2985" coveredstatements="1624" elements="3232" coveredelements="1705"/>
+    <metrics files="92" loc="8669" ncloc="5335" classes="92" methods="247" coveredmethods="81" conditionals="0" coveredconditionals="0" statements="2982" coveredstatements="1624" elements="3229" coveredelements="1705"/>
   </project>
 </coverage>

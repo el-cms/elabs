@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-14 15:51+0200\n"
-"PO-Revision-Date: 2016-08-14 15:51+0200\n"
+"POT-Creation-Date: 2016-08-14 18:32+0200\n"
+"PO-Revision-Date: 2016-08-14 18:32+0200\n"
 "Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_FR\n"
@@ -59,10 +59,6 @@ msgid ""
 msgstr ""
 "Le rapport n’a pas pu être enregistré (et cela devrait être une bonne raison "
 "de le signaler...). Essayez de nouveau..."
-
-#: Controller/ReportsController.php:60
-msgid "Something went wrong with your request..."
-msgstr "Quelque chose s'est mal passé lors du traitement de votre demande."
 
 #: Controller/UsersController.php:27
 msgid "You are already registered"
@@ -370,6 +366,10 @@ msgstr "Accueil"
 #: Template/Acts/index.ctp:29
 msgid "Hide updates"
 msgstr "Cacher les màj"
+
+#: Template/Acts/index.ctp:105
+msgid "{0} {1} {2}"
+msgstr "{0} {1} {2}"
 
 #: Template/Admin/Dashboard/index.ctp:12
 #: Template/Element/layout/mainmenu_admin.ctp:5
@@ -1025,8 +1025,12 @@ msgstr "Cet élément est NSFW. Il est donc caché."
 msgid "NSFW"
 msgstr "NSFW"
 
-#: Template/Element/files/card.ctp:55 Template/Element/posts/card.ctp:52
-#: Template/Element/projects/card.ctp:52
+#: Template/Element/files/card.ctp:49
+msgid "Added on: {0}"
+msgstr "Ajouté le : {0}"
+
+#: Template/Element/files/card.ctp:55 Template/Element/notes/card.ctp:55
+#: Template/Element/posts/card.ctp:52 Template/Element/projects/card.ctp:52
 msgid "Updated on: {0}"
 msgstr "Modifié le : {0}"
 
@@ -1107,6 +1111,14 @@ msgid "Alternatively, you can {0} or {1} and start adding your own content!"
 msgstr ""
 "Vous pouvez aussi {0} ou {1} et commencer à ajouter votre propre contenu !"
 
+#: Template/Element/layout/empty.ctp:8
+msgid "register"
+msgstr "vous inscrire"
+
+#: Template/Element/layout/empty.ctp:8
+msgid "login"
+msgstr "vous connecter"
+
 #: Template/Element/layout/empty.ctp:10
 msgid "Alternatively, you can start adding content!"
 msgstr "Vous pouvez aussi ajouter votre propre contenu !"
@@ -1118,6 +1130,10 @@ msgstr "Il n'y a rien à afficher ici."
 #: Template/Element/layout/footer.ctp:3
 msgid "Logo"
 msgstr "Logo"
+
+#: Template/Element/layout/footer.ctp:3
+msgid "{0} - logo"
+msgstr "{0} - logo"
 
 #: Template/Element/layout/footer.ctp:6
 msgid "About the site"
@@ -1273,6 +1289,10 @@ msgstr "Informations"
 msgid "Permalink"
 msgstr "Lien permanent"
 
+#: Template/Element/notes/card.ctp:49 Template/Element/projects/card.ctp:46
+msgid "Created on: {0}"
+msgstr "Créée le : {0}"
+
 #: Template/Element/notes/tile_userindex.ctp:33
 #: Template/Element/posts/tile_userindex.ctp:33
 msgid "Draft"
@@ -1283,6 +1303,10 @@ msgstr "Brouillon "
 #: Template/User/Posts/edit.ctp:56 View/Helper/ItemsAdminHelper.php:29
 msgid "Published"
 msgstr "Publié"
+
+#: Template/Element/notes/tile_userindex.ctp:42
+msgid "Deleted"
+msgstr "Suprimé"
 
 #: Template/Element/posts/card.ctp:46
 msgid "Published on: {0}"
@@ -1296,10 +1320,6 @@ msgstr "Date de publication"
 #: Template/Element/projects/card.ctp:27
 msgid "Manager: "
 msgstr "Manager : "
-
-#: Template/Element/projects/card.ctp:46
-msgid "Created on: {0}"
-msgstr "Créée le : {0}"
 
 #: Template/Element/projects/tile_userindex.ctp:53
 msgid "Team"
@@ -1329,11 +1349,15 @@ msgstr "Votre e-mail"
 msgid "Reason for your report"
 msgstr "Sujet de votre rapport"
 
-#: Template/Element/reports/add_modal.ctp:44
+#: Template/Element/reports/add_modal.ctp:41
+msgid "This field must stay empty. It will prove us that you're an human."
+msgstr "Ce champ doit rester vide. Il nous prouvera que vous êtes humain."
+
+#: Template/Element/reports/add_modal.ctp:47
 msgid "Send the report"
 msgstr "Envoyer le rapport"
 
-#: Template/Element/reports/add_modal.ctp:48
+#: Template/Element/reports/add_modal.ctp:51
 #: Template/Element/users/loginmodal.ctp:18
 msgid "Cancel"
 msgstr "﻿Annuler"
@@ -1541,13 +1565,14 @@ msgstr ""
 msgid "Notes {0}"
 msgstr "Notes {0}"
 
+#: Template/Layout/admin.ctp:46 Template/Layout/default.ctp:46
+#: Template/Layout/err400.ctp:43 Template/Layout/user.ctp:46
+msgid "{0} {1}"
+msgstr "{0} {1}"
+
 #: Template/Layout/default.ctp:82
 msgid "Login/Register"
 msgstr "Identification / Inscription"
-
-#: Template/Layout/err400.ctp:43
-msgid "{0} {1}"
-msgstr "{0} {1}"
 
 #: Template/Layout/err400.ctp:52
 msgid "Back"
@@ -1839,6 +1864,10 @@ msgstr "Mise à jour de mot de passe"
 msgid "Close your account"
 msgstr "Fermer votre compte"
 
+#: View/Helper/AppHtmlHelper.php:63
+msgid "{0}&nbsp;{1}"
+msgstr "{0}&nbsp;{1}"
+
 #: View/Helper/AppHtmlHelper.php:93
 msgid " {0} "
 msgstr " {0} "
@@ -1871,26 +1900,8 @@ msgstr "Approuvé"
 msgid "Closed"
 msgstr "Fermé"
 
-#~ msgid "{0} {1} {2}"
-#~ msgstr "{0} {1} {2}"
-
-#~ msgid "Added on: {0}"
-#~ msgstr "Ajouté le : {0}"
-
-#~ msgid "register"
-#~ msgstr "vous inscrire"
-
-#~ msgid "login"
-#~ msgstr "vous connecter"
-
-#~ msgid "{0} - logo"
-#~ msgstr "{0} - logo"
-
-#~ msgid "Deleted"
-#~ msgstr "Suprimé"
-
-#~ msgid "{0}&nbsp;{1}"
-#~ msgstr "{0}&nbsp;{1}"
+#~ msgid "Something went wrong with your request..."
+#~ msgstr "Quelque chose s'est mal passé lors du traitement de votre demande."
 
 #~ msgctxt "Act update card: [model] title [action]"
 #~ msgid "{0} {1} {2}"

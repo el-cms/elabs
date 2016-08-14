@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-14 13:51+0000\n"
+"POT-Creation-Date: 2016-08-14 16:32+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -58,10 +58,6 @@ msgstr ""
 
 #: Controller/ReportsController.php:55
 msgid "The report could not be saved (and that should be a good reason to report it...). Please try again."
-msgstr ""
-
-#: Controller/ReportsController.php:60
-msgid "Something went wrong with your request..."
 msgstr ""
 
 #: Controller/UsersController.php:27
@@ -359,6 +355,10 @@ msgstr ""
 
 #: Template/Acts/index.ctp:29
 msgid "Hide updates"
+msgstr ""
+
+#: Template/Acts/index.ctp:105
+msgid "{0} {1} {2}"
 msgstr ""
 
 #: Template/Admin/Dashboard/index.ctp:12
@@ -1187,7 +1187,12 @@ msgstr ""
 msgid "NSFW"
 msgstr ""
 
+#: Template/Element/files/card.ctp:49
+msgid "Added on: {0}"
+msgstr ""
+
 #: Template/Element/files/card.ctp:55
+#: Template/Element/notes/card.ctp:55
 #: Template/Element/posts/card.ctp:52
 #: Template/Element/projects/card.ctp:52
 msgid "Updated on: {0}"
@@ -1274,6 +1279,14 @@ msgstr ""
 msgid "Alternatively, you can {0} or {1} and start adding your own content!"
 msgstr ""
 
+#: Template/Element/layout/empty.ctp:8
+msgid "register"
+msgstr ""
+
+#: Template/Element/layout/empty.ctp:8
+msgid "login"
+msgstr ""
+
 #: Template/Element/layout/empty.ctp:10
 msgid "Alternatively, you can start adding content!"
 msgstr ""
@@ -1284,6 +1297,10 @@ msgstr ""
 
 #: Template/Element/layout/footer.ctp:3
 msgid "Logo"
+msgstr ""
+
+#: Template/Element/layout/footer.ctp:3
+msgid "{0} - logo"
 msgstr ""
 
 #: Template/Element/layout/footer.ctp:6
@@ -1446,6 +1463,11 @@ msgstr ""
 msgid "Permalink"
 msgstr ""
 
+#: Template/Element/notes/card.ctp:49
+#: Template/Element/projects/card.ctp:46
+msgid "Created on: {0}"
+msgstr ""
+
 #: Template/Element/notes/tile_userindex.ctp:33
 #: Template/Element/posts/tile_userindex.ctp:33
 msgid "Draft"
@@ -1457,6 +1479,10 @@ msgstr ""
 #: Template/User/Posts/edit.ctp:56
 #: View/Helper/ItemsAdminHelper.php:29
 msgid "Published"
+msgstr ""
+
+#: Template/Element/notes/tile_userindex.ctp:42
+msgid "Deleted"
 msgstr ""
 
 #: Template/Element/posts/card.ctp:46
@@ -1471,10 +1497,6 @@ msgstr ""
 
 #: Template/Element/projects/card.ctp:27
 msgid "Manager: "
-msgstr ""
-
-#: Template/Element/projects/card.ctp:46
-msgid "Created on: {0}"
 msgstr ""
 
 #: Template/Element/projects/tile_userindex.ctp:53
@@ -1501,11 +1523,15 @@ msgstr ""
 msgid "Reason for your report"
 msgstr ""
 
-#: Template/Element/reports/add_modal.ctp:44
+#: Template/Element/reports/add_modal.ctp:41
+msgid "This field must stay empty. It will prove us that you're an human."
+msgstr ""
+
+#: Template/Element/reports/add_modal.ctp:47
 msgid "Send the report"
 msgstr ""
 
-#: Template/Element/reports/add_modal.ctp:48
+#: Template/Element/reports/add_modal.ctp:51
 #: Template/Element/users/loginmodal.ctp:18
 msgid "Cancel"
 msgstr ""
@@ -1729,12 +1755,15 @@ msgstr ""
 msgid "Notes {0}"
 msgstr ""
 
-#: Template/Layout/default.ctp:82
-msgid "Login/Register"
+#: Template/Layout/admin.ctp:46
+#: Template/Layout/default.ctp:46
+#: Template/Layout/err400.ctp:43
+#: Template/Layout/user.ctp:46
+msgid "{0} {1}"
 msgstr ""
 
-#: Template/Layout/err400.ctp:43
-msgid "{0} {1}"
+#: Template/Layout/default.ctp:82
+msgid "Login/Register"
 msgstr ""
 
 #: Template/Layout/err400.ctp:52
@@ -2061,6 +2090,10 @@ msgstr ""
 
 #: Template/User/Users/edit.ctp:98
 msgid "Close your account"
+msgstr ""
+
+#: View/Helper/AppHtmlHelper.php:63
+msgid "{0}&nbsp;{1}"
 msgstr ""
 
 #: View/Helper/AppHtmlHelper.php:93

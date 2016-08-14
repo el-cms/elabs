@@ -60,7 +60,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
      */
     public function iconT($icon, $text, $options = [])
     {
-        return __dx('elabs-x', '[icon] [text]', '{0}&nbsp;{1}', [$this->icon($icon, $options), $text]);
+        return __d('elabs', '{0}&nbsp;{1}', [$this->icon($icon, $options), $text]);
     }
 
     /**
