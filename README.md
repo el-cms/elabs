@@ -1,4 +1,8 @@
-[![Build Status](https://travis-ci.org/el-cms/elabs.svg?branch=master)](https://travis-ci.org/el-cms/elabs) [![codecov](https://codecov.io/gh/el-cms/elabs/branch/master/graph/badge.svg)](https://codecov.io/gh/el-cms/elabs)
+[![Build Status](https://travis-ci.org/el-cms/elabs.svg?branch=master)](https://travis-ci.org/el-cms/elabs)
+[![codecov](https://codecov.io/gh/el-cms/elabs/branch/master/graph/badge.svg)](https://codecov.io/gh/el-cms/elabs)
+
+[![Gitter](https://badges.gitter.im/elabs-cms/Lobby.svg)](https://gitter.im/elabs-cms/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)[as much as I can]
+
 # ELabs
 CMS for ExperimentsLabs.com based on CakePHP 3
 
