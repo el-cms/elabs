@@ -23,14 +23,72 @@ class UsersController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
+                $this->updateAuthUser($user);
                 $this->Flash->success(__d('elabs', 'Your informations are now up to date.'));
                 $this->redirect(['action' => 'edit']);
             } else {
                 $this->Flash->error(__d('elabs', 'An error occured. Please try again.'));
             }
         }
-        $this->set(compact('user'));
+        $this->Languages = \Cake\ORM\TableRegistry::get('Languages');
+        $sLanguages = $this->Languages->find('list', ['fields' => ['id'=>'translation_folder', 'name'], 'conditions' => ['has_site_translation' => true]]);
+        $wLanguages = $this->Languages->find('list');
+        $this->Licenses = \Cake\ORM\TableRegistry::get('Licenses');
+        $licenses = $this->Licenses->find('list');
+        $this->set(compact('user', 'wLanguages', 'sLanguages', 'licenses'));
         $this->set('_serialize', ['user']);
+    }
+
+    public function updatePrefs()
+    {
+        $user = $this->Users->get($this->Auth->user('id'));
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            // Preparing data. Keys from site defaults will be used to avoid wrong keys.
+            $defaults = \Cake\Core\Configure::read('cms.defaultUserPreferences');
+            $userPrefs = [];
+            foreach ($defaults as $k => $v) {
+                $userPrefs[$k] = $this->request->data['preferences'][$k];
+            }
+            $user = $this->Users->patchEntity($user, ['preferences' => json_encode($userPrefs)]);
+            if ($this->Users->save($user)) {
+                $this->updateAuthUser($user);
+                $this->Flash->success(__d('elabs', 'Your preferences have been updated.'));
+                $this->redirect(['action' => 'edit']);
+            } else {
+                $this->Flash->error(__d('elabs', 'An error occured. Please try again.'));
+            }
+        } else {
+            die('nope');
+        }
+    }
+
+    /**
+     * Update the session of an user with new values
+     *
+     * @param \App\Model\Entity\User $user Updated user data
+     *
+     * @return void
+     */
+    protected function updateAuthUser(\App\Model\Entity\User $user)
+    {
+        $this->Auth->setUser([
+            'id' => $user->id,
+            'email' => $user->email,
+            'username' => $user->username,
+            'realname' => $user->realname,
+            'website' => $user->website,
+            'bio' => $user->bio,
+            'created' => $user->created,
+            'modified' => $user->modified,
+            'role' => $user->role,
+            'status' => $user->status,
+            'file_count' => $user->file_count,
+            'note_count' => $user->note_count,
+            'post_count' => $user->post_count,
+            'project_count' => $user->project_count,
+            'preferences' => $user->preferences
+        ]);
+        $this->_setUserPreferences($user->preferences);
     }
 
     /**

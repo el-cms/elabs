@@ -130,6 +130,32 @@ class AppController extends Controller
     }
 
     /**
+     * Sets values in session with user preferences.
+     *
+     *
+     * @return void
+     */
+    protected function _setUserPreferences()
+    {
+        $preferences = json_decode($this->Auth->user('preferences'), true);
+        $this->_setLanguage($preferences['defaultSiteLanguage']);
+        $this->_setSFWState(($preferences['showNSFW'] === '1') ? 'show' : 'hide');
+        $this->request->session()->write('defaultWritingLanguage', $preferences['defaultWritingLanguage']);
+        $this->request->session()->write('defaultWritingLicense', $preferences['defaultWritingLicense']);
+    }
+
+    /**
+     * Clear user specific preferences
+     *
+     * @return void
+     */
+    protected function _clearUserPreferences()
+    {
+        $this->request->session()->delete('defaultWritingLanguage');
+        $this->request->session()->delete('defaultWritingLicense');
+    }
+
+    /**
      * Finds available website translations and write them in session
      *
      * @return void
@@ -156,6 +182,7 @@ class AppController extends Controller
      */
     protected function _setLanguage($lang = null)
     {
+        $this->Flash->success($lang);
         $this->request->session()->write('language', $this->_getLangCodeFromFolderName($lang));
     }
 

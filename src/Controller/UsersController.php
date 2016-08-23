@@ -24,7 +24,7 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
         if (in_array($this->request->action, ['register', 'login']) && !empty($this->Auth->user('id'))) {
-            throw new ForbiddenException(__d('elabs', 'You are already registered'));
+            throw new ForbiddenException(__d('elabs', 'You are already logged in'));
         }
         if (!Configure::read('cms.isRegistrationOpen') && $this->request->action === 'register') {
             throw new ForbiddenException(__d('elabs', 'Registrations are closed for now... Come back later...'), 403);
@@ -163,7 +163,8 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                $this->request->session()->write('seeNSFW', $this->Auth->User('seeNSFW'));
+                // Overwrite preferences:
+                $this->_setUserPreferences();
                 $this->redirect($this->Auth->redirectUrl());
             } else {
                 $this->Flash->error(__d('elabs', 'Invalid username or password, try again. Is your accound active ?'));
@@ -178,6 +179,8 @@ class UsersController extends AppController
      */
     public function logout()
     {
+        // Remove user preferences
+        $this->_clearUserPreferences();
         $this->Flash->success(__d('elabs', 'You are logged out. See you later !'));
         $this->redirect($this->Auth->logout());
     }
