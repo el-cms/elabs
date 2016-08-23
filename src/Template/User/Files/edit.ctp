@@ -42,7 +42,7 @@ $this->CodeMirror->add('descArea');
         <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
     </div>
     <div class="col-sm-6">
-        <?php echo $this->Form->input('language_id', ['options' => $languages, 'default' => 'fra']); ?>
+        <?php echo $this->Form->input('language_id', ['options' => $languages]); ?>
     </div>
 </div>
 <div class="row">
