@@ -9,7 +9,12 @@ return ['cms' => [
         'isRegistrationOpen' => true,
         'defaultRole' => 'author',
         'defaultUserStatus' => 0,
-        'defaultUserPreferences' => [],
+        'defaultUserPreferences' => [
+            'showNSFW' => false,
+            'defaultSiteLanguage' => 'eng',
+            'defaultWritingLanguage' => 'eng',
+            'defaultWritingLicense' => '1',
+        ],
         'defaultLockedUser' => false,
         'defaultSeeNSFW' => false,
         'defaultMinPassLenght' => 8,
