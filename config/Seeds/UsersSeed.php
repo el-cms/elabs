@@ -1,7 +1,6 @@
 <?php
 
 use Cake\Auth\DefaultPasswordHasher;
-use Cake\I18n\FrozenTime;
 use Cake\Utility\Text;
 use Migrations\AbstractSeed;
 
@@ -23,7 +22,7 @@ class UsersSeed extends AbstractSeed
      */
     public function run()
     {
-        $time = FrozenTime::now();
+        $time = Cake\I18n\Time::now();
         $data = [
             [
                 'id' => Text::uuid(),
@@ -36,7 +35,7 @@ class UsersSeed extends AbstractSeed
                 'role' => 'admin',
                 'see_nsfw' => '1',
                 'status' => '1',
-                'preferences' => '{}'
+                'preferences' => json_encode(Cake\Core\Configure::read('cms.defaultUserPreferences'))
             ]
         ];
 
