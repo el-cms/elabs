@@ -134,11 +134,6 @@ class UsersTable extends Table
                 'message' => 'Please enter a valid role']);
 
         $validator
-            ->boolean('see_nsfw')
-            ->requirePresence('see_nsfw', 'create')
-            ->notEmpty('see_nsfw');
-
-        $validator
             ->integer('status')
             ->requirePresence('status', 'create')
             ->notEmpty('status');
