@@ -33,10 +33,10 @@ $this->CodeMirror->add('descArea');
 ?>
 <div class="row">
     <div class="col-sm-6">
-        <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
+        <?php echo $this->Form->input('license_id', ['options' => $licenses, 'default' => $this->request->session()->read('defaultWritingLicense')]); ?>
     </div>
     <div class="col-sm-6">
-        <?php echo $this->Form->input('language_id', ['options' => $languages, 'default' => 'fra']); ?>
+        <?php echo $this->Form->input('language_id', ['options' => $languages, 'default' => $this->request->session()->read('defaultWritingLanguage')]); ?>
     </div>
 </div>
 <div class="row">

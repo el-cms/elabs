@@ -18,7 +18,6 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property string $role
- * @property bool $see_nsfw
  * @property int $status
  * @property int $file_count
  * @property int $note_count

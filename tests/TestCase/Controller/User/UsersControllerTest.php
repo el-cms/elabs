@@ -25,7 +25,7 @@ class UsersControllerTest extends IntegrationTestCase
      * @var array
      */
     public $userCreds = [
-        'author' => ['Auth' => ['User' => ['id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'email' => 'test@example.com', 'username' => 'real_test', 'realname' => 'The real tester', 'password' => '$2y$10$wpJrqUvcAlUbLUxLnP8P5.OU7TXtfjT4/K5RYGdjJVkh6BqNEh3XC', 'website' => null, 'bio' => 'Some things', 'created' => '2016-08-09 01:15:26', 'modified' => '2016-08-09 01:18:01', 'role' => 'author', 'see_nsfw' => false, 'status' => 1, 'file_count' => 0, 'note_count' => 0, 'post_count' => 1, 'project_count' => 0, 'preferences' => 'null']]],
+        'author' => ['Auth' => ['User' => ['id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'email' => 'test@example.com', 'username' => 'real_test', 'realname' => 'The real tester', 'password' => '$2y$10$wpJrqUvcAlUbLUxLnP8P5.OU7TXtfjT4/K5RYGdjJVkh6BqNEh3XC', 'website' => null, 'bio' => 'Some things', 'created' => '2016-08-09 01:15:26', 'modified' => '2016-08-09 01:18:01', 'role' => 'author', 'status' => 1, 'file_count' => 0, 'note_count' => 0, 'post_count' => 1, 'project_count' => 0, 'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}']]],
     ];
 
     /**
@@ -48,13 +48,12 @@ class UsersControllerTest extends IntegrationTestCase
             'email' => 'test@example.com',
             'realname' => 'The real tester',
             'website' => 'http://some-example.com',
-            'bio' => 'Some things',
+            'bio' => 'Some other things',
             'role' => 'author',
-            'see_nsfw' => true,
-            'preferences' => '{}'];
+            'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'];
         $this->post('/user/users/edit', $postData);
         $this->assertRedirect('/user/users/edit');
-        $this->assertEquals(true, $this->_controller->viewVars['user']['see_nsfw']);
+        $this->assertEquals('Some other things', $this->_controller->viewVars['user']['bio']);
 
         // Faking the user id in post:
         $adminId = '70c8fff0-1338-48d2-b93b-942a26e4d685';
@@ -65,8 +64,7 @@ class UsersControllerTest extends IntegrationTestCase
             'website' => 'http://some-example.com',
             'bio' => 'Some things',
             'role' => 'author',
-            'see_nsfw' => true,
-            'preferences' => '{}'];
+            'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'];
         $this->post('/user/users/edit', $postData);
         $this->assertNotEquals($adminId, $this->_controller->viewVars['user']['id']);
         $this->assertRedirect('/user/users/edit');
