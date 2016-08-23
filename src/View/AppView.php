@@ -42,7 +42,7 @@ class AppView extends View
 
         $this->loadHelper('Html', ['className' => 'AppHtml', 'App' => \Cake\Core\Configure::read('App')]);
         $this->loadHelper('Form', [
-            'className' => 'BootstrapUI.Form',
+            'className' => 'Form',
             'templates' => [
                 'select' => '<select name="{{name}}"{{attrs}} class="form-control">{{content}}</select>',
                 'dateWidget' => '<ul class="list-inline"><li class="year">{{year}}</li><li class="month">{{month}}</li><li class="day">{{day}}</li></ul>',
