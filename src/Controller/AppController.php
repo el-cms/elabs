@@ -182,7 +182,6 @@ class AppController extends Controller
      */
     protected function _setLanguage($lang = null)
     {
-        $this->Flash->success($lang);
         $this->request->session()->write('language', $this->_getLangCodeFromFolderName($lang));
     }
 

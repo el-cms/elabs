@@ -57,7 +57,7 @@ $this->start('pageContent');
             <fieldset>
                 <?php
                 $userPrefs = json_decode($authUser['preferences'], true);
-                $userPrefs+=Cake\Core\Configure::read('cms.defaultUserPreferences');
+                $userPrefs += Cake\Core\Configure::read('cms.defaultUserPreferences');
                 // Default site lang
                 echo $this->Form->input('preferences[defaultSiteLanguage]', [
                     'type' => 'select',

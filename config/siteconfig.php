@@ -10,8 +10,8 @@ return ['cms' => [
         'defaultRole' => 'author',
         'defaultUserStatus' => 0,
         'defaultUserPreferences' => [
-            'showNSFW' => false,
-            'defaultSiteLanguage' => 'eng',
+            'showNSFW' => '0',
+            'defaultSiteLanguage' => '',
             'defaultWritingLanguage' => 'eng',
             'defaultWritingLicense' => '1',
         ],

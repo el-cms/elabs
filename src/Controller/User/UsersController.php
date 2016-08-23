@@ -31,7 +31,7 @@ class UsersController extends UserAppController
             }
         }
         $this->Languages = \Cake\ORM\TableRegistry::get('Languages');
-        $sLanguages = $this->Languages->find('list', ['fields' => ['id'=>'translation_folder', 'name'], 'conditions' => ['has_site_translation' => true]]);
+        $sLanguages = $this->Languages->find('list', ['fields' => ['id' => 'translation_folder', 'name'], 'conditions' => ['has_site_translation' => true]]);
         $wLanguages = $this->Languages->find('list');
         $this->Licenses = \Cake\ORM\TableRegistry::get('Licenses');
         $licenses = $this->Licenses->find('list');
@@ -39,6 +39,11 @@ class UsersController extends UserAppController
         $this->set('_serialize', ['user']);
     }
 
+    /**
+     * Updates user preferences
+     *
+     * @return void Redirects on successful edit
+     */
     public function updatePrefs()
     {
         $user = $this->Users->get($this->Auth->user('id'));
