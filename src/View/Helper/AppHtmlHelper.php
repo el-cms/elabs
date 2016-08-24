@@ -60,7 +60,16 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
      */
     public function iconT($icon, $text, $options = [])
     {
-        return __d('elabs', '{0}&nbsp;{1}', [$this->icon($icon, $options), $text]);
+        $options +=[
+            'revert' => false // Reverse the icon place
+        ];
+        $revert = $options['revert'];
+        unset($options['revert']);
+        if ($revert) {
+            return __d('elabs', '{0}&nbsp;{1}', [$text, $this->icon($icon, $options)]);
+        } else {
+            return __d('elabs', '{0}&nbsp;{1}', [$this->icon($icon, $options), $text]);
+        }
     }
 
     /**
