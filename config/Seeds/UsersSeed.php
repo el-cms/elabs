@@ -22,7 +22,7 @@ class UsersSeed extends AbstractSeed
      */
     public function run()
     {
-        $time = Cake\I18n\Time::now();
+        $time = date("Y-m-d H:i:s");
         $data = [
             [
                 'id' => Text::uuid(),
@@ -33,7 +33,6 @@ class UsersSeed extends AbstractSeed
                 'created' => $time,
                 'modified' => $time,
                 'role' => 'admin',
-                'see_nsfw' => '1',
                 'status' => '1',
                 'preferences' => json_encode(Cake\Core\Configure::read('cms.defaultUserPreferences'))
             ]
