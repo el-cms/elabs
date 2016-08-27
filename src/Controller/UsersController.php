@@ -73,6 +73,7 @@ class UsersController extends AppController
                     ],
                     'Licenses' => $licenseConfig,
                     'Languages' => $languageConfig,
+                    'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
                 ],
                 'Notes' => [
                     'fields' => ['id', 'text', 'sfw', 'modified', 'created', 'user_id', 'license_id', 'language_id'],
@@ -81,6 +82,7 @@ class UsersController extends AppController
                     ],
                     'Licenses' => $licenseConfig,
                     'Languages' => $languageConfig,
+                    'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
                 ],
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id'],
@@ -97,6 +99,7 @@ class UsersController extends AppController
                     ],
                     'Licenses' => $licenseConfig,
                     'Languages' => $languageConfig,
+                    'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
                 ],
             ],
             'conditions' => ['OR' => [['status' => 1], ['status' => 2]]],

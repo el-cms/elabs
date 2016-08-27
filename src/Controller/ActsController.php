@@ -77,6 +77,7 @@ class ActsController extends AppController
                     'Licenses' => $licenseConfig,
                     'Users' => $userConfig,
                     'Languages' => $languageConfig,
+                    'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
                 ],
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
@@ -95,6 +96,7 @@ class ActsController extends AppController
                     'Licenses' => $licenseConfig,
                     'Users' => $userConfig,
                     'Languages' => $languageConfig,
+                    'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
                 ],
                 'Notes' => [
                     'fields' => ['id', 'text', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'],
@@ -104,6 +106,7 @@ class ActsController extends AppController
                     'Licenses' => $licenseConfig,
                     'Users' => $userConfig,
                     'Languages' => $languageConfig,
+                    'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
                 ],
             ],
             'limit' => 30,

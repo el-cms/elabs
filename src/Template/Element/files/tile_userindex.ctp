@@ -13,7 +13,7 @@
                     <?php echo $this->Html->link($this->Html->iconT('pencil', __d('elabs', 'Edit')), ['action' => 'edit', $file->id], ['escape' => false]) ?>
                 </li>
                 <li>
-                    <?php echo $this->Form->postLink($this->Html->iconT('trash-o', __d('elabs', 'Delete'), ['class'=>'text-danger']), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'escape' => false]) ?>
+                    <?php echo $this->Form->postLink($this->Html->iconT('trash-o', __d('elabs', 'Delete'), ['class' => 'text-danger']), ['action' => 'delete', $file->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $file->id), 'escape' => false]) ?>
                 </li>
             </ul>
         </div>
@@ -47,6 +47,19 @@
                         <dd><?php echo $this->Html->link(h($file->license->name), ['prefix' => false, 'controller' => 'licenses', 'action' => 'view', $file->license_id]); ?></dd>
                         <dt><?php echo __d('elabs', 'Tags') ?></dt>
                         <dd><?php echo $this->element('layout/dev_inline') ?></dd>
+                        <dt><?php echo __d('elabs', 'Projects') ?></dt>
+                        <dd>
+                            <?php
+                            $nbProj = count($file->projects);
+                            if ($nbProj > 0):
+                                echo $this->Html->arrayToString(array_map(function($project) {
+                                            return $this->Html->Link($project->name, ['controller' => 'Projects', 'action' => 'view', $project->id]);
+                                        }, $file->projects));
+                            else:
+                                echo __d('elabs', 'No projects');
+                            endif;
+                            ?>
+                        </dd>
                     </dl>
                 </div>
                 <div class="col-sm-8"  lang="<?php echo $file->language->iso639_1 ?>">
