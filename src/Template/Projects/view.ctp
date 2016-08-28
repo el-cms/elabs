@@ -59,6 +59,50 @@ $this->start('pageContent');
     echo $this->Html->displayMD($project->description);
     ?>
 </div>
+<div class="panel">
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . count($project->posts) . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . count($project->notes) . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . count($project->files) . '</span>') ?></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="posts-tab">
+            <?php
+            if (!empty($project->posts)):
+                foreach ($project->posts as $posts):
+                    echo $this->element('posts/card', ['data' => $posts, 'projectInfos' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
+
+        <div class="tab-pane" id="notes-tab">
+            <?php
+            if (!empty($project->notes)):
+                foreach ($project->notes as $note):
+                    echo $this->element('notes/card', ['data' => $note, 'projectInfos' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
+
+        <div class="tab-pane" id="files-tab">
+            <?php
+            if (!empty($project->files)):
+                foreach ($project->files as $files):
+                    echo $this->element('files/card', ['data' => $files, 'projectInfos' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
+    </div>
+</div>
 <?php
 $this->end();
 

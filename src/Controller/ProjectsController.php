@@ -78,12 +78,20 @@ class ProjectsController extends AppController
      */
     public function view($id = null)
     {
+        $containConfig = [
+            'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+            'Licenses' => ['fields' => ['id', 'name']],
+            'Users' => ['fields' => ['id', 'username', 'realname']],
+        ];
         $project = $this->Projects->get($id, [
             'contain' => [
                 'Licenses',
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                ],
+                'Files' => $containConfig,
+                'Notes' => $containConfig,
+                'Posts' => $containConfig,
+            ],
             'conditions' => [
                 'Projects.status' => 1,
             ],
