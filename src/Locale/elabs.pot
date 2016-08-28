@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-14 16:32+0000\n"
+"POT-Creation-Date: 2016-08-28 20:20+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "You are not allowed to view this page."
 msgstr ""
 
-#: Controller/NotesController.php:91
+#: Controller/NotesController.php:93
 #: Template/Admin/Notes/view.ctp:12;19
 #: Template/Notes/view.ctp:12
 msgid "A note"
@@ -61,30 +61,30 @@ msgid "The report could not be saved (and that should be a good reason to report
 msgstr ""
 
 #: Controller/UsersController.php:27
-msgid "You are already registered"
+msgid "You are already logged in"
 msgstr ""
 
 #: Controller/UsersController.php:30
 msgid "Registrations are closed for now... Come back later..."
 msgstr ""
 
-#: Controller/UsersController.php:140
+#: Controller/UsersController.php:143
 msgid "Your account has been created. An email will be sent to you when active"
 msgstr ""
 
-#: Controller/UsersController.php:148
-#: Controller/User/FilesController.php:156
-#: Controller/User/NotesController.php:79;126
-#: Controller/User/PostsController.php:84;135
+#: Controller/UsersController.php:151
+#: Controller/User/FilesController.php:164
+#: Controller/User/NotesController.php:80;130
+#: Controller/User/PostsController.php:85;140
 #: Controller/User/ProjectsController.php:74;110
 msgid "Some errors occured. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:169
+#: Controller/UsersController.php:173
 msgid "Invalid username or password, try again. Is your accound active ?"
 msgstr ""
 
-#: Controller/UsersController.php:181
+#: Controller/UsersController.php:187
 msgid "You are logged out. See you later !"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgstr ""
 #: Controller/Admin/PostsController.php:111
 #: Controller/Admin/ProjectsController.php:112
 #: Controller/Admin/UsersController.php:121;152;182
-#: Controller/User/UsersController.php:29;63
+#: Controller/User/UsersController.php:30;63;126
 msgid "An error occured. Please try again."
 msgstr ""
 
@@ -227,79 +227,79 @@ msgstr ""
 msgid "The account has been activated."
 msgstr ""
 
-#: Controller/User/FilesController.php:76
+#: Controller/User/FilesController.php:77
 msgid "This filetype is not allowed."
 msgstr ""
 
-#: Controller/User/FilesController.php:78
+#: Controller/User/FilesController.php:79
 msgid "File is too big. Max file size is {0}Kb"
 msgstr ""
 
-#: Controller/User/FilesController.php:87
+#: Controller/User/FilesController.php:88
 msgid "The thumbnail could not be saved in the destination folder. Please, try again."
 msgstr ""
 
-#: Controller/User/FilesController.php:107
+#: Controller/User/FilesController.php:109
 msgid "The file could not be saved in the destination folder. Please, try again."
 msgstr ""
 
-#: Controller/User/FilesController.php:111;144
+#: Controller/User/FilesController.php:115;152
 msgid "The file has been saved."
 msgstr ""
 
-#: Controller/User/FilesController.php:116;150
+#: Controller/User/FilesController.php:120;158
 msgid "The file could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/User/FilesController.php:183
+#: Controller/User/FilesController.php:192
 msgid "The file has been deleted."
 msgstr ""
 
-#: Controller/User/FilesController.php:186
+#: Controller/User/FilesController.php:195
 msgid "The file could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/User/NotesController.php:68;113
+#: Controller/User/NotesController.php:69;117
 msgid "The note has been saved."
 msgstr ""
 
-#: Controller/User/NotesController.php:73;120
+#: Controller/User/NotesController.php:74;124
 msgid "The note could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/User/NotesController.php:109
+#: Controller/User/NotesController.php:113
 msgid "Target note not found."
 msgstr ""
 
-#: Controller/User/NotesController.php:153
+#: Controller/User/NotesController.php:157
 msgid "The note has been deleted."
 msgstr ""
 
-#: Controller/User/NotesController.php:156
+#: Controller/User/NotesController.php:160
 msgid "The note could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/User/PostsController.php:73
+#: Controller/User/PostsController.php:74
 msgid "Your article has been saved."
 msgstr ""
 
-#: Controller/User/PostsController.php:116
+#: Controller/User/PostsController.php:121
 msgid "Your article has been published."
 msgstr ""
 
-#: Controller/User/PostsController.php:120
+#: Controller/User/PostsController.php:125
 msgid "Your article has been unpublished."
 msgstr ""
 
-#: Controller/User/PostsController.php:126
+#: Controller/User/PostsController.php:131
 msgid "Your article has been updated."
 msgstr ""
 
-#: Controller/User/PostsController.php:160
+#: Controller/User/PostsController.php:166
 msgid "Your article has been deleted."
 msgstr ""
 
-#: Controller/User/PostsController.php:163
+#: Controller/User/PostsController.php:169
 msgid "Your article could not be deleted. Please, try again."
 msgstr ""
 
@@ -319,23 +319,27 @@ msgstr ""
 msgid "The project could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/User/UsersController.php:26
+#: Controller/User/UsersController.php:27
 msgid "Your informations are now up to date."
 msgstr ""
 
-#: Controller/User/UsersController.php:55
+#: Controller/User/UsersController.php:60
+msgid "Your preferences have been updated."
+msgstr ""
+
+#: Controller/User/UsersController.php:118
 msgid "Your password has been updated."
 msgstr ""
 
-#: Controller/User/UsersController.php:67;92
+#: Controller/User/UsersController.php:130;155
 msgid "Sorry, you have entered the wrong password."
 msgstr ""
 
-#: Controller/User/UsersController.php:71;96
+#: Controller/User/UsersController.php:134;159
 msgid "To access this page, you need to fill the form first."
 msgstr ""
 
-#: Controller/User/UsersController.php:88
+#: Controller/User/UsersController.php:151
 msgid "Your account has been closed. If you want to re-open it, contact the administrator."
 msgstr ""
 
@@ -773,9 +777,9 @@ msgstr ""
 
 #: Template/Admin/Languages/edit.ctp:71
 #: Template/Admin/Licenses/edit.ctp:45
-#: Template/User/Notes/edit.ctp:56
-#: Template/User/Posts/edit.ctp:62
-#: Template/User/Users/edit.ctp:50
+#: Template/User/Notes/edit.ctp:59
+#: Template/User/Posts/edit.ctp:65
+#: Template/User/Users/edit.ctp:50;88
 msgid "Save the changes"
 msgstr ""
 
@@ -854,8 +858,11 @@ msgstr ""
 #: Template/Admin/Projects/index.ctp:17
 #: Template/Admin/Projects/view.ctp:18
 #: Template/Admin/Users/index.ctp:150
+#: Template/Element/files/tile_userindex.ctp:50
 #: Template/Element/layout/mainmenu.ctp:11
 #: Template/Element/layout/mainmenu_admin.ctp:11
+#: Template/Element/notes/tile_userindex.ctp:60
+#: Template/Element/posts/tile_userindex.ctp:56
 #: Template/Projects/index.ctp:30
 #: Template/Projects/nsfw.ctp:6
 #: Template/Projects/view.ctp:18
@@ -956,7 +963,7 @@ msgstr ""
 #: Template/Element/reports/add_modal.ctp:24
 #: Template/Element/users/loginform.ctp:3
 #: Template/Element/users/registerform.ctp:4
-#: Template/User/Users/edit.ctp:41
+#: Template/User/Users/edit.ctp:42
 msgid "E-mail"
 msgstr ""
 
@@ -1028,8 +1035,8 @@ msgstr ""
 #: Template/Admin/Tags/index.ctp:10
 #: Template/Element/files/tile_userindex.ctp:48
 #: Template/Element/layout/mainmenu_admin.ctp:29
-#: Template/Element/notes/tile_userindex.ctp:60
-#: Template/Element/posts/tile_userindex.ctp:56
+#: Template/Element/notes/tile_userindex.ctp:73
+#: Template/Element/posts/tile_userindex.ctp:69
 #: Template/Element/projects/tile_userindex.ctp:48
 msgid "Tags"
 msgstr ""
@@ -1154,6 +1161,7 @@ msgstr ""
 #: Template/Admin/Users/view.ctp:85
 #: Template/Languages/view.ctp:42
 #: Template/Licenses/view.ctp:46
+#: Template/Projects/view.ctp:64
 #: Template/Users/view.ctp:50
 msgid "Articles {0}"
 msgstr ""
@@ -1168,6 +1176,7 @@ msgstr ""
 #: Template/Admin/Users/view.ctp:87
 #: Template/Languages/view.ctp:45
 #: Template/Licenses/view.ctp:49
+#: Template/Projects/view.ctp:66
 #: Template/Users/view.ctp:53
 msgid "Files {0}"
 msgstr ""
@@ -1197,6 +1206,27 @@ msgstr ""
 #: Template/Element/projects/card.ctp:52
 msgid "Updated on: {0}"
 msgstr ""
+
+#: Template/Element/files/card.ctp:68
+#: Template/Element/notes/card.ctp:68
+#: Template/Element/posts/card.ctp:65
+#: Template/Layout/admin.ctp:46
+#: Template/Layout/default.ctp:46
+#: Template/Layout/err400.ctp:43
+#: Template/Layout/user.ctp:46
+msgid "{0} {1}"
+msgstr ""
+
+#: Template/Element/files/card.ctp:68
+#: Template/Element/notes/card.ctp:68
+#: Template/Element/posts/card.ctp:65
+#: Template/Files/view.ctp:43
+#: Template/Notes/view.ctp:44
+#: Template/Posts/view.ctp:44
+msgid "Project:"
+msgid_plural "Projects:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: Template/Element/files/card_content_audio.ctp:3
 #: Template/Element/files/view_content_audio.ctp:3
@@ -1229,6 +1259,12 @@ msgstr ""
 #: Template/Element/posts/tile_userindex.ctp:52
 #: Template/Element/projects/tile_userindex.ctp:44
 msgid "Updated on"
+msgstr ""
+
+#: Template/Element/files/tile_userindex.ctp:59
+#: Template/Element/notes/tile_userindex.ctp:69
+#: Template/Element/posts/tile_userindex.ctp:65
+msgid "No projects"
 msgstr ""
 
 #: Template/Element/languages/card.ctp:14
@@ -1475,8 +1511,8 @@ msgstr ""
 
 #: Template/Element/notes/tile_userindex.ctp:36
 #: Template/Element/posts/tile_userindex.ctp:31
-#: Template/User/Posts/add.ctp:50
-#: Template/User/Posts/edit.ctp:56
+#: Template/User/Posts/add.ctp:53
+#: Template/User/Posts/edit.ctp:59
 #: View/Helper/ItemsAdminHelper.php:29
 msgid "Published"
 msgstr ""
@@ -1579,7 +1615,7 @@ msgstr ""
 
 #: Template/Element/users/registerform.ctp:6
 #: Template/Licenses/index.ctp:22
-#: Template/User/Users/edit.ctp:42
+#: Template/User/Users/edit.ctp:43
 #: Template/Users/index.ctp:20
 msgid "Real name"
 msgstr ""
@@ -1601,7 +1637,7 @@ msgid "Verify you didn't made a typo"
 msgstr ""
 
 #: Template/Element/users/registerform.ctp:9
-#: Template/User/Users/edit.ctp:44
+#: Template/User/Users/edit.ctp:45
 msgid "About you"
 msgstr ""
 
@@ -1701,12 +1737,12 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: Template/Files/view.ctp:38
+#: Template/Files/view.ctp:64
 #: Template/Projects/view.ctp:33
 msgid "Tags:"
 msgstr ""
 
-#: Template/Files/view.ctp:46
+#: Template/Files/view.ctp:72
 msgid "Download"
 msgstr ""
 
@@ -1751,15 +1787,9 @@ msgstr ""
 
 #: Template/Languages/view.ctp:43
 #: Template/Licenses/view.ctp:47
+#: Template/Projects/view.ctp:65
 #: Template/Users/view.ctp:51
 msgid "Notes {0}"
-msgstr ""
-
-#: Template/Layout/admin.ctp:46
-#: Template/Layout/default.ctp:46
-#: Template/Layout/err400.ctp:43
-#: Template/Layout/user.ctp:46
-msgid "{0} {1}"
 msgstr ""
 
 #: Template/Layout/default.ctp:82
@@ -1843,7 +1873,7 @@ msgid "Members"
 msgstr ""
 
 #: Template/Projects/view.ctp:48
-#: Template/User/Users/edit.ctp:43
+#: Template/User/Users/edit.ctp:44
 #: Template/Users/view.ctp:31
 msgid "Website"
 msgstr ""
@@ -1875,18 +1905,18 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: Template/User/Files/add.ctp:44
-#: Template/User/Files/edit.ctp:50
-#: Template/User/Notes/add.ctp:44
-#: Template/User/Notes/edit.ctp:50
-#: Template/User/Posts/add.ctp:47
-#: Template/User/Posts/edit.ctp:53
+#: Template/User/Files/add.ctp:47
+#: Template/User/Files/edit.ctp:53
+#: Template/User/Notes/add.ctp:47
+#: Template/User/Notes/edit.ctp:53
+#: Template/User/Posts/add.ctp:50
+#: Template/User/Posts/edit.ctp:56
 #: Template/User/Projects/add.ctp:48
 #: Template/User/Projects/edit.ctp:55
 msgid "This is SFW"
 msgstr ""
 
-#: Template/User/Files/add.ctp:47
+#: Template/User/Files/add.ctp:50
 msgid "Add the file"
 msgstr ""
 
@@ -1894,14 +1924,14 @@ msgstr ""
 msgid "New file"
 msgstr ""
 
-#: Template/User/Files/edit.ctp:53
-#: Template/User/Notes/edit.ctp:53
-#: Template/User/Posts/edit.ctp:59
+#: Template/User/Files/edit.ctp:56
+#: Template/User/Notes/edit.ctp:56
+#: Template/User/Posts/edit.ctp:62
 #: Template/User/Projects/edit.ctp:58
 msgid "Minor update"
 msgstr ""
 
-#: Template/User/Files/edit.ctp:56
+#: Template/User/Files/edit.ctp:59
 msgid "Update"
 msgstr ""
 
@@ -1957,7 +1987,7 @@ msgstr ""
 msgid "Your notes"
 msgstr ""
 
-#: Template/User/Notes/add.ctp:47
+#: Template/User/Notes/add.ctp:50
 msgid "Save the note"
 msgstr ""
 
@@ -1997,7 +2027,7 @@ msgstr ""
 msgid "Article contents"
 msgstr ""
 
-#: Template/User/Posts/add.ctp:53
+#: Template/User/Posts/add.ctp:56
 msgid "Save the article"
 msgstr ""
 
@@ -2052,55 +2082,71 @@ msgstr ""
 msgid "Update your profile"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:19
-msgid "General informations"
-msgstr ""
-
-#: Template/User/Users/edit.ctp:20
-msgid "Change password"
-msgstr ""
-
 #: Template/User/Users/edit.ctp:21
-msgid "Close account"
-msgstr ""
-
-#: Template/User/Users/edit.ctp:27
 msgid "View your profile online"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:45
-msgid "Show NSFW content by default"
+#: Template/User/Users/edit.ctp:30
+msgid "General informations"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:70;95
-msgid "Current password"
+#: Template/User/Users/edit.ctp:31
+msgid "Preferences"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:71
-msgid "New password"
+#: Template/User/Users/edit.ctp:32
+msgid "Change password"
+msgstr ""
+
+#: Template/User/Users/edit.ctp:33
+msgid "Close account"
+msgstr ""
+
+#: Template/User/Users/edit.ctp:66
+msgid "Default site language"
 msgstr ""
 
 #: Template/User/Users/edit.ctp:72
-msgid "Confirmation"
+msgid "Default language for new content"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:75
-msgid "Update password"
+#: Template/User/Users/edit.ctp:78
+msgid "Default license for new content"
+msgstr ""
+
+#: Template/User/Users/edit.ctp:83
+msgid "Display NSFW content"
+msgstr ""
+
+#: Template/User/Users/edit.ctp:96;109
+msgid "Current password"
+msgstr ""
+
+#: Template/User/Users/edit.ctp:97
+msgid "New password"
 msgstr ""
 
 #: Template/User/Users/edit.ctp:98
+msgid "Confirmation"
+msgstr ""
+
+#: Template/User/Users/edit.ctp:101
+msgid "Update password"
+msgstr ""
+
+#: Template/User/Users/edit.ctp:112
 msgid "Close your account"
 msgstr ""
 
-#: View/Helper/AppHtmlHelper.php:63
+#: View/Helper/AppHtmlHelper.php:69;71
 msgid "{0}&nbsp;{1}"
 msgstr ""
 
-#: View/Helper/AppHtmlHelper.php:93
+#: View/Helper/AppHtmlHelper.php:102
 msgid " {0} "
 msgstr ""
 
-#: View/Helper/AppHtmlHelper.php:120
+#: View/Helper/AppHtmlHelper.php:129
 msgid "Report this"
 msgstr ""
 
