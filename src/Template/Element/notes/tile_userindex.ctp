@@ -57,6 +57,19 @@
                         <dd><?php echo h($note->modified) ?></dd>
                         <dt><?php echo __d('elabs', 'License') ?></dt>
                         <dd><?php echo $this->Html->link(h($note->license->name), ['prefix' => false, 'controller' => 'licenses', 'action' => 'view', $note->license_id]); ?></dd>
+                        <dt><?php echo __d('elabs', 'Projects') ?></dt>
+                        <dd>
+                            <?php
+                            $nbProj = count($note->projects);
+                            if ($nbProj > 0):
+                                echo $this->Html->arrayToString(array_map(function($project) {
+                                            return $this->Html->Link($project->name, ['controller' => 'Projects', 'action' => 'view', $project->id]);
+                                        }, $note->projects));
+                            else:
+                                echo __d('elabs', 'No projects');
+                            endif;
+                            ?>
+                        </dd>
                         <dt><?php echo __d('elabs', 'Tags') ?></dt>
                         <dd><?php echo $this->element('layout/dev_inline') ?></dd>
                     </dl>

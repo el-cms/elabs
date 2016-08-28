@@ -29,6 +29,7 @@ class NotesController extends AppController
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
             ],
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['created', 'modified'],
@@ -82,6 +83,7 @@ class NotesController extends AppController
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
             ],
             'conditions' => ['Notes.status' => 1],
         ]);

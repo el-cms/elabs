@@ -27,6 +27,7 @@ class NotesController extends UserAppController
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
             ],
             'conditions' => [
                 'user_id' => $this->Auth->user('id'),
@@ -82,8 +83,8 @@ class NotesController extends UserAppController
         $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
         $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
 //        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-//        $projects = $this->Notes->Projects->find('list', ['limit' => 200]);
-        $this->set(compact('note', 'languages', 'licenses')); //, 'tags', 'projects'));
+        $projects = $this->Notes->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('note', 'languages', 'licenses', 'projects')); //, 'tags'));
         $this->set('_serialize', ['note']);
     }
 
@@ -97,7 +98,10 @@ class NotesController extends UserAppController
     public function edit($id = null)
     {
         $note = $this->Notes->get($id, [
-//            'contain' => ['Tags', 'Projects']
+            'contain' => [
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
+            //'Tags',
+            ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -129,8 +133,8 @@ class NotesController extends UserAppController
         $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
         $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
 //        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-//        $projects = $this->Notes->Projects->find('list', ['limit' => 200]);
-        $this->set(compact('note', 'languages', 'licenses')); //, 'tags', 'projects'));
+        $projects = $this->Notes->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('note', 'languages', 'licenses', 'projects')); //, 'tags'));
         $this->set('_serialize', ['note']);
     }
 
