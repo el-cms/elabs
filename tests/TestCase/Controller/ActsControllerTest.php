@@ -23,6 +23,9 @@ class ActsControllerTest extends IntegrationTestCase
         'app.posts',
         'app.licenses',
         'app.projects',
+        'app.projects_files',
+        'app.projects_notes',
+        'app.projects_posts',
     ];
 
     /**

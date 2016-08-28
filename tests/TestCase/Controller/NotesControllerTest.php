@@ -20,7 +20,9 @@ class NotesControllerTest extends IntegrationTestCase
         'app.users',
         'app.languages',
         'app.projects',
-        'app.licenses'
+        'app.licenses',
+        'app.projects',
+        'app.projects_notes',
     ];
 
     /**

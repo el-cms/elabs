@@ -21,6 +21,8 @@ class PostsControllerTest extends IntegrationTestCase
         'app.languages',
         'app.licenses',
         'app.tags',
+        'app.projects',
+        'app.projects_posts'
     ];
 
     /**
