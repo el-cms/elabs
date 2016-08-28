@@ -27,7 +27,8 @@ class PostsController extends UserAppController
             'fields' => ['id', 'title', 'excerpt', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']]
+                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
@@ -86,7 +87,8 @@ class PostsController extends UserAppController
         }
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
         $languages = $this->Posts->Languages->find('list', ['limit' => 200]);
-        $this->set(compact('post', 'licenses', 'languages'));
+        $projects = $this->Posts->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('post', 'licenses', 'languages', 'projects'));
         $this->set('_serialize', ['post']);
     }
 
@@ -101,6 +103,9 @@ class PostsController extends UserAppController
     {
         $post = $this->Posts->get($id, [
             'conditions' => ['user_id' => $this->Auth->user('id')],
+            'contain' => [
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
+            ]
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Old publication state
@@ -137,7 +142,8 @@ class PostsController extends UserAppController
         }
         $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
         $languages = $this->Posts->Languages->find('list', ['limit' => 200]);
-        $this->set(compact('post', 'users', 'licenses', 'languages'));
+        $projects = $this->Posts->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('post', 'users', 'licenses', 'languages', 'projects'));
         $this->set('_serialize', ['post']);
     }
 

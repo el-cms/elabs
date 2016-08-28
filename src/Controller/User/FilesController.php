@@ -37,6 +37,7 @@ class FilesController extends UserAppController
             'contain' => [
                 'Licenses' => ['fields' => ['id', 'name']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
@@ -100,6 +101,7 @@ class FilesController extends UserAppController
                     'user_id' => $this->Auth->user('id'),
                     'license_id' => $this->request->data['license_id'],
                     'language_id' => $this->request->data['language_id'],
+                    'projects' => $this->request->data['projects'],
                     'status' => 1
                 ];
 
@@ -107,6 +109,8 @@ class FilesController extends UserAppController
                     $this->Flash->error(__d('elabs', 'The file could not be saved in the destination folder. Please, try again.'));
                 } else {
                     $file = $this->Files->patchEntity($file, $fileItem);
+//                    debug($this->request->data);
+//                    debug($file);die;
                     if ($this->Files->save($file)) {
                         $this->Flash->success(__d('elabs', 'The file has been saved.'));
                         $this->Act->add($file->id, 'add', 'Files', $file->created);
@@ -120,7 +124,8 @@ class FilesController extends UserAppController
         }
         $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
         $languages = $this->Files->Languages->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'licenses', 'languages'));
+        $projects = $this->Files->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('file', 'licenses', 'languages', 'projects'));
         $this->set('_serialize', ['file']);
     }
 
@@ -137,6 +142,9 @@ class FilesController extends UserAppController
     {
         $file = $this->Files->get($id, [
             'conditions' => ['user_id' => $this->Auth->user('id')],
+            'contain' => [
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
+            ]
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $file = $this->Files->patchEntity($file, $this->request->data);
@@ -158,7 +166,8 @@ class FilesController extends UserAppController
         }
         $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
         $languages = $this->Files->Languages->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'licenses', 'languages'));
+        $projects = $this->Files->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('file', 'licenses', 'languages', 'projects'));
         $this->set('_serialize', ['file']);
     }
 

@@ -31,6 +31,7 @@ class FilesController extends AppController
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
             ],
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['created', 'name', 'modified'],
@@ -80,9 +81,10 @@ class FilesController extends AppController
     {
         $file = $this->Files->get($id, [
             'contain' => [
-                'Users',
+                'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses',
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
             ]
         ]);
         // It will be great when i'll find a way to nicely handle exceptions/errors

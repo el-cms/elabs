@@ -27,7 +27,7 @@ $this->start('pageInfos');
     <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->Html->link($this->Html->iconT($note->license->icon, $note->license->name), ['controller' => 'Licenses', 'action' => 'view', $note->license->id], ['escape' => false]) ?></li>
     <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($note->language->name, $note->language->iso639_1) ?></li>
     <li><strong><?php echo __d('elabs', 'Created on:') ?></strong> <?php echo h($note->created) ?></li>
-    <?php if ($note->has('modified')): ?>
+    <?php if ($note->modified != $note->created): ?>
         <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($note->modified) ?></li>
     <?php endif; ?>
     <li>
@@ -36,6 +36,32 @@ $this->start('pageInfos');
             <?php echo $note->sfw ? $this->Html->iconT('check-circle', __d('elabs', 'Yes')) : $this->Html->iconT('circle-o', __d('elabs', 'No')); ?>
         </span>
     </li>
+    <?php
+    $nbProj = count($note->projects);
+    if ($nbProj > 0):
+        ?>
+        <li>
+            <strong><?php echo __dn('elabs', 'Project:', 'Projects:', $nbProj) ?></strong>
+            <?php
+            if ($nbProj === 1):
+                echo $this->Html->link(h($note->projects[0]->name), ['controller' => 'Projects', 'action' => 'view', $note->projects[0]->id]);
+            else:
+                ?>
+                <ul>
+                    <?php foreach ($note->projects as $project):
+                        ?>
+                        <li><?php echo $this->Html->link(h($project->name), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?></li>
+                        <?php
+                    endforeach;
+                    ?>
+                </ul>
+            <?php
+            endif;
+            ?>
+        </li>
+        <?php
+    endif;
+    ?>
 </ul>
 <?php
 $this->end();

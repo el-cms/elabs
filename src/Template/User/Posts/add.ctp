@@ -35,11 +35,14 @@ echo $this->Form->input('text', ['required' => false, 'id' => 'textArea', 'label
 $this->CodeMirror->add('textArea');
 ?>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <?php echo $this->Form->input('license_id', ['options' => $licenses, 'default' => $this->request->session()->read('defaultWritingLicense')]); ?>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <?php echo $this->Form->input('language_id', ['options' => $languages, 'default' => $this->request->session()->read('defaultWritingLanguage')]); ?>
+    </div>
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('projects._ids', ['options' => $projects]); ?>
     </div>
 </div>
 <div class="row">

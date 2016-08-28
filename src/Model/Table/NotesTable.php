@@ -45,7 +45,11 @@ class NotesTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-        $this->addBehavior('CounterCache', ['Users' => ['note_count'], 'Languages' => ['note_count'], 'Licenses' => ['note_count']]);
+        $this->addBehavior('CounterCache', [
+            'Users' => ['file_count' => ['conditions' => ['status' => 1]]],
+            'Licenses' => ['file_count' => ['conditions' => ['status' => 1]]],
+            'Languages' => ['file_count' => ['conditions' => ['status' => 1]]],
+        ]);
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',

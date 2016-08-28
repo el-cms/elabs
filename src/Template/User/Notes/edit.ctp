@@ -38,11 +38,14 @@ echo $this->Form->input('text', ['type' => 'textarea', 'required' => 'false', 'i
 $this->CodeMirror->add('noteArea', [], ['%s.setSize(null, "150")']);
 ?>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <?php echo $this->Form->input('language_id', ['options' => $languages]); ?>
+    </div>
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('projects._ids', ['options' => $projects]); ?>
     </div>
 </div>
 <div class="row">

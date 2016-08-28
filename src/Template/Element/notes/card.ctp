@@ -57,6 +57,19 @@
                             <?php
                         endif;
                     endif;
+                    $nbProj = count($data['projects']);
+                    if ((!isset($projectInfo) || $projectInfo) && $nbProj > 0):
+                        ?>
+                        <li>
+                            <?php
+                            $projectsList = $this->Html->arrayToString(array_map(function($project) {
+                                        return $this->Html->Link($project->name, ['controller' => 'Projects', 'action' => 'view', $project->id]);
+                                    }, $data['projects']));
+                            echo $this->Html->iconT('puzzle-piece', __d('elabs', '{0} {1}', [__dn('elabs', 'Project:', 'Projects:', $nbProj), $projectsList]));
+                            ?>
+                        </li>
+                        <?php
+                    endif;
                     ?>
                 </ul>
             </div>

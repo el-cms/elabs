@@ -22,6 +22,9 @@ class FilesControllerTest extends IntegrationTestCase
         'app.licenses',
         'app.tags',
         'app.files_tags',
+        'app.projects',
+        'app.projects_files'
+
     ];
 
     /**

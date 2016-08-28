@@ -20,6 +20,9 @@ class ProjectsControllerTest extends IntegrationTestCase
         'app.licenses',
         'app.languages',
         'app.users',
+        'app.files',
+        'app.notes',
+        'app.posts'
     ];
 
     /**
