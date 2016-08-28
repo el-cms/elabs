@@ -30,7 +30,7 @@ $config = $this->Items->fileConfig($file['filename']);
     <li><strong><?php echo __d('elabs', 'File size:') ?></strong> <?php echo $file->weight ?></li>
     <li><strong><?php echo __d('elabs', 'Mime type:') ?></strong> <?php echo $file->mime ?></li>
     <li><strong><?php echo __d('elabs', 'Added on:') ?></strong> <?php echo h($file->created) ?></li>
-    <?php if ($file->has('modified')): ?>
+    <?php if ($file->modified != $file->created): ?>
         <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($file->modified) ?></li>
     <?php endif; ?>
     <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($file->language->name, $file->language->iso639_1) ?></li>
