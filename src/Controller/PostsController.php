@@ -31,6 +31,7 @@ class PostsController extends AppController
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
             ],
             'order' => ['publication_date' => 'desc'],
             'sortWhitelist' => ['publication_date', 'title'],
@@ -83,6 +84,7 @@ class PostsController extends AppController
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
             ],
             'conditions' => ['Posts.status' => 1],
         ]);
