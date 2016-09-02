@@ -50,6 +50,7 @@ endif;
 <?php
 // Custom scripts
 // --------------
+echo $this->Html->script('marked.min.js');
 $this->append('pageBottomScripts');
 echo $this->CodeMirror->scripts();
 echo $this->Html->script('lib/jquery.fs.selecter.min');
@@ -60,4 +61,6 @@ echo $this->Html->script('lib/jquery.fs.selecter.min');
     });
 </script>
 <?php
+// Preview area
+echo $this->element('layout/modal_text_preview');
 $this->end();

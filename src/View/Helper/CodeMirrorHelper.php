@@ -11,7 +11,6 @@ use Cake\View\Helper;
  */
 class CodeMirrorHelper extends Helper
 {
-
     /**
      * Array of codeMirror definitions.
      *
@@ -73,7 +72,7 @@ class CodeMirrorHelper extends Helper
         foreach ($additionnalCode as $a) {
             $element .= sprintf($a . ';', $elementName);
         }
-        $this->_stack[] = $element;
+        $this->_stack[$elementName] = $element;
     }
 
     /**
@@ -83,14 +82,20 @@ class CodeMirrorHelper extends Helper
     public function scripts()
     {
         $out = $this->Html->css('codemirror.css', ['block' => true]) .
-            $this->Html->script('lib/codemirror.js') .
-            $this->Html->script('lib/codemirror/active-line.js') .
-            $this->Html->script('lib/codemirror/matchbrackets.js') .
-            $this->Html->script('lib/codemirror/modes/markdown.js') .
-            $this->Html->script('lib/codemirror/modes/xml.js') .
-            '<script>';
-        foreach ($this->_stack as $cm) {
+                $this->Html->script('lib/codemirror.js') .
+                $this->Html->script('lib/codemirror/active-line.js') .
+                $this->Html->script('lib/codemirror/matchbrackets.js') .
+                $this->Html->script('lib/codemirror/modes/markdown.js') .
+                $this->Html->script('lib/codemirror/modes/xml.js') .
+                $this->Html->script('toolbar.js') .
+                '<script>';
+        $i = 0;
+
+        // Toolbars
+        foreach ($this->_stack as $editor => $cm) {
             $out .= $cm;
+            $out .= 'cm_toolbar(' . $editor . ', \'' . $editor . '\');';
+            $i++;
         }
         $out .= '</script>';
 
