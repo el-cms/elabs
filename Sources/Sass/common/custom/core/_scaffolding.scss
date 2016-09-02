@@ -233,3 +233,9 @@ Margin helpers
 .margin-left-lg{
     margin-left: $padding-large-horizontal;
 }
+
+.page-content table{
+    @extend .table;
+    @extend .table-condensed;
+    @extend .table-striped;
+}
