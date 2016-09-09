@@ -85,6 +85,8 @@ $this->start('pageContent');
     </div>
 </div>
 <?php
+
+echo $this->cell('Comments::AddForm', ['authUser'=>$authUser]);
 $this->end();
 
 // Load the layout element

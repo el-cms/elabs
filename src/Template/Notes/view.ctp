@@ -74,6 +74,8 @@ $this->start('pageContent');
     <?php echo $this->Html->displayMD($note->text); ?>
 </div>
 <?php
+echo $this->cell('Comments::AddForm', ['authUser'=>$authUser]);
+
 $this->end();
 
 // Load the layout element
