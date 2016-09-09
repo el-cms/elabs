@@ -10,7 +10,7 @@
 
 // Additionnal helpers
 $this->loadHelper('Items');
-$this->loadHelper('License');
+$this->loadHelper('License');qqsdqd;
 $this->loadHelper('Time', ['className' => 'ElabsTime']);
 
 // Page title
