@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use Cake\Routing\Router;
 
 /**
  * Comments Controller
@@ -65,18 +66,21 @@ class CommentsController extends AppController
         $comment = $this->Comments->newEntity();
         // the body field should be empty as it's a honeypot for bots
         if ($this->request->is('post') && empty($this->request->data('body'))) {
-            // Getting the route
-            $route = \Cake\Routing\Router::parse($this->referer());
-
+            $data = $this->request->data;
             // Preparing data
             if (!empty($this->Auth->user('id'))) {
-                $this->request->data['user_id'] = $this->Auth->user('id');
-                $this->request->data['name'] = $this->Auth->user('username');
-                $this->request->data['email'] = $this->Auth->user('email');
+                $data['user_id'] = $this->Auth->user('id');
+                $data['name'] = $this->Auth->user('username');
+                $data['email'] = $this->Auth->user('email');
             } else {
-                $this->request->data['user_id'] = null;
+                $data['user_id'] = null;
             }
-            $comment = $this->Comments->patchEntity($comment, $this->request->data);
+            unset($data['body']);
+            // Getting the route
+            $route = Router::parse(str_replace(Router::url('/', true), '', $this->referer(true)));
+            $data['fkid'] = $route['pass'][0];
+            $data['model'] = $route['controller'];
+            $comment = $this->Comments->patchEntity($comment, $data);
             if ($this->Comments->save($comment)) {
                 if ($comment->allow_contact) {
                     $this->Flash->success(__d('elabs', 'Thank you for your comment. The author will contact you soon.'));
@@ -85,7 +89,7 @@ class CommentsController extends AppController
                 }
                 $this->redirect($this->referer());
             } else {
-                $this->Flash->error(__d('elabs', 'The report could not be saved (and that should be a good reason to report it...). Please try again.'));
+                $this->Flash->error(__d('elabs', 'The comment could not be saved. Please try again.'));
             }
         }
         $this->redirect($this->referer());
