@@ -16,6 +16,7 @@ class FilesControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
+        'app.comments',
         'app.files',
         'app.languages',
         'app.users',
