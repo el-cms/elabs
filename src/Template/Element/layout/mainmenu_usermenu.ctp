@@ -2,6 +2,9 @@
 $linkConfig = ['escape' => false];
 ?>
 <li>
+    <?php echo $this->Html->link($this->Html->iconT('dashboard', __d('elabs', 'dashboard')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'dashboard', 'action' => 'index'], $linkConfig) ?>
+</li>
+<li>
     <?php echo $this->Html->link($this->Html->iconT('pencil', __d('elabs', 'Update profile')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'users', 'action' => 'edit'], $linkConfig) ?>
 </li>
 <li>
