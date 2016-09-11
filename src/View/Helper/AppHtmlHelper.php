@@ -211,7 +211,7 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
      * @param bool $returnIcon If fals, function will only return icon class.
      * @return string
      */
-    public function checkIcon($value, $returnIcon = false)
+    public function checkIcon($value, $returnIcon = true)
     {
         $icon = ($value) ? 'check-circle-o' : 'circle-o';
         if ($returnIcon) {
