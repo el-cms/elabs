@@ -208,13 +208,16 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
      * Create an icon with a checkmark or an empty circle
      *
      * @param bool $value Value used to create the icon
-     *
+     * @param bool $returnIcon If fals, function will only return icon class.
      * @return string
      */
-    public function checkIcon($value)
+    public function checkIcon($value, $returnIcon = true)
     {
         $icon = ($value) ? 'check-circle-o' : 'circle-o';
-
-        return $this->icon($icon);
+        if ($returnIcon) {
+            return $this->icon($icon);
+        } else {
+            return $icon;
+        }
     }
 }

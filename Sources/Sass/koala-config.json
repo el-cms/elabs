@@ -8,11 +8,7 @@
 	"ignores": [
         "*.css", 
         "*.less", 
-        "common/bootstrap-sass", 
-        "common/bootstrap-tagsinput-latest", 
-        "common/Font-Awesome-master", 
-        "common/codemirror",
-        "common/bootflat.github.io-master"
+        "lib" 
         ],
 	"options": {
 		"outputStyle": "compressed",

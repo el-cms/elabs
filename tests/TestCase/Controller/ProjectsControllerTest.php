@@ -17,6 +17,7 @@ class ProjectsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.projects',
+        'app.comments',
         'app.licenses',
         'app.languages',
         'app.users',

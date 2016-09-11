@@ -17,7 +17,7 @@ endif;
         </title>
         <?php echo $this->Html->meta('icon') ?>
 
-        <?php echo $this->Html->css('frontend.css', array('media' => 'screen')) ?>
+        <?php echo $this->Html->css('style.css', array('media' => 'screen')) ?>
 
         <?php echo $this->fetch('meta') ?>
         <?php echo $this->fetch('css') ?>
@@ -32,7 +32,7 @@ endif;
     <body>
         <?php
         echo $this->element('layout/pageloader');
-        echo $this->element('layout/mainmenu');
+        echo $this->element('layout/mainmenu_user');
         ?>
         <!-- Navbar -->
         <nav class="navbar navbar-user navbar-fixed-top">
