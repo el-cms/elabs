@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-28 20:20+0000\n"
+"POT-Creation-Date: 2016-09-11 12:26+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -44,6 +44,18 @@ msgstr ""
 
 #: Controller/AppController.php:57
 msgid "You are not allowed to view this page."
+msgstr ""
+
+#: Controller/CommentsController.php:86
+msgid "Thank you for your comment. The author will contact you soon."
+msgstr ""
+
+#: Controller/CommentsController.php:88
+msgid "Thank you for your comment."
+msgstr ""
+
+#: Controller/CommentsController.php:92
+msgid "The comment could not be saved. Please try again."
 msgstr ""
 
 #: Controller/NotesController.php:93
@@ -227,6 +239,14 @@ msgstr ""
 msgid "The account has been activated."
 msgstr ""
 
+#: Controller/User/CommentsController.php:76
+msgid "The comment has been deleted."
+msgstr ""
+
+#: Controller/User/CommentsController.php:78
+msgid "The comment could not be deleted. Please, try again."
+msgstr ""
+
 #: Controller/User/FilesController.php:77
 msgid "This filetype is not allowed."
 msgstr ""
@@ -367,6 +387,7 @@ msgstr ""
 
 #: Template/Admin/Dashboard/index.ctp:12
 #: Template/Element/layout/mainmenu_admin.ctp:5
+#: Template/Element/layout/mainmenu_user.ctp:8
 #: Template/User/Dashboard/index.ctp:12
 msgid "Dashboard"
 msgstr ""
@@ -382,6 +403,7 @@ msgstr ""
 #: Template/Admin/Users/index.ctp:152
 #: Template/Element/layout/mainmenu.ctp:14
 #: Template/Element/layout/mainmenu_admin.ctp:14
+#: Template/Element/layout/mainmenu_user.ctp:17
 #: Template/Files/index.ctp:30
 #: Template/Files/nsfw.ctp:6
 #: Template/Files/view.ctp:18
@@ -396,6 +418,7 @@ msgstr ""
 #: Template/Admin/Projects/index.ctp:28
 #: Template/Admin/Tags/view.ctp:16
 #: Template/Admin/Users/index.ctp:30
+#: Template/Cell/Comments/add_form.ctp:12
 #: Template/Element/reports/add_modal.ctp:19
 #: Template/Files/index.ctp:37
 #: Template/Languages/index.ctp:22
@@ -760,6 +783,7 @@ msgstr ""
 #: Template/Admin/Tags/edit.ctp:7
 #: Template/Admin/Tags/index.ctp:27
 #: Template/Admin/Tags/view.ctp:5;46
+#: Template/Element/comments/card.ctp:40
 #: Template/Element/files/tile_userindex.ctp:16
 #: Template/Element/notes/tile_userindex.ctp:16
 #: Template/Element/posts/tile_userindex.ctp:16
@@ -845,6 +869,7 @@ msgstr ""
 #: Template/Admin/Users/index.ctp:148
 #: Template/Element/layout/mainmenu.ctp:8
 #: Template/Element/layout/mainmenu_admin.ctp:8
+#: Template/Element/layout/mainmenu_user.ctp:11
 #: Template/Posts/index.ctp:30
 #: Template/Posts/nsfw.ctp:6
 #: Template/Posts/view.ctp:18
@@ -861,6 +886,7 @@ msgstr ""
 #: Template/Element/files/tile_userindex.ctp:50
 #: Template/Element/layout/mainmenu.ctp:11
 #: Template/Element/layout/mainmenu_admin.ctp:11
+#: Template/Element/layout/mainmenu_user.ctp:14
 #: Template/Element/notes/tile_userindex.ctp:60
 #: Template/Element/posts/tile_userindex.ctp:56
 #: Template/Projects/index.ctp:30
@@ -885,6 +911,7 @@ msgstr ""
 #: Template/Admin/Notes/view.ctp:18
 #: Template/Element/layout/mainmenu.ctp:17
 #: Template/Element/layout/mainmenu_admin.ctp:17
+#: Template/Element/layout/mainmenu_user.ctp:20
 #: Template/Notes/index.ctp:30
 #: Template/Notes/nsfw.ctp:6
 #: Template/Notes/view.ctp:18
@@ -960,6 +987,7 @@ msgid "Reports"
 msgstr ""
 
 #: Template/Admin/Reports/index.ctp:29
+#: Template/Cell/Comments/add_form.ctp:21
 #: Template/Element/reports/add_modal.ctp:24
 #: Template/Element/users/loginform.ctp:3
 #: Template/Element/users/registerform.ctp:4
@@ -1181,8 +1209,51 @@ msgstr ""
 msgid "Files {0}"
 msgstr ""
 
+#: Template/Cell/Comments/add_form.ctp:4
+msgid "Add comment"
+msgstr ""
+
+#: Template/Cell/Comments/add_form.ctp:11
+#: Template/Element/reports/add_modal.ctp:18
+msgid "Your name"
+msgstr ""
+
+#: Template/Cell/Comments/add_form.ctp:20
+#: Template/Element/reports/add_modal.ctp:23
+msgid "Your e-mail"
+msgstr ""
+
+#: Template/Cell/Comments/add_form.ctp:28
+msgid "You're about to post your comment as:"
+msgstr ""
+
+#: Template/Cell/Comments/add_form.ctp:33
+msgid "Your comment"
+msgstr ""
+
+#: Template/Cell/Comments/add_form.ctp:36
+msgid "Allow the author to contact me by email"
+msgstr ""
+
+#: Template/Cell/Comments/add_form.ctp:39
+msgid "Send"
+msgstr ""
+
+#: Template/Cell/Comments/add_form.ctp:43
+#: Template/Element/reports/add_modal.ctp:41
+msgid "This field must stay empty. It will prove us that you're an human."
+msgstr ""
+
 #: Template/Element/acts/tile_nsfw.ctp:22
 msgid "This element may not be safe, therefore it is hidden."
+msgstr ""
+
+#: Template/Element/comments/card.ctp:47
+msgid "Posted on: {0}"
+msgstr ""
+
+#: Template/Element/comments/card.ctp:57
+msgid "Author: {1}"
 msgstr ""
 
 #: Template/Element/files/card.ctp:14
@@ -1399,6 +1470,7 @@ msgid "Show NSFW"
 msgstr ""
 
 #: Template/Element/layout/mainmenu.ctp:32
+#: Template/Element/layout/mainmenu_user.ctp:33
 msgid "Report this page"
 msgstr ""
 
@@ -1419,43 +1491,56 @@ msgid "View site online"
 msgstr ""
 
 #: Template/Element/layout/mainmenu_admin.ctp:54
-#: Template/Element/layout/mainmenu_usermenu.ctp:8
+#: Template/Element/layout/mainmenu_usermenu.ctp:11
 msgid "Logout"
 msgstr ""
 
+#: Template/Element/layout/mainmenu_user.ctp:5
+msgid "Back to website"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_user.ctp:24
+#: Template/User/Comments/index.ctp:17;20
+msgid "Comments"
+msgstr ""
+
 #: Template/Element/layout/mainmenu_usermenu.ctp:5
+msgid "dashboard"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:8
 msgid "Update profile"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:11
+#: Template/Element/layout/mainmenu_usermenu.ctp:14
 msgid "Articles:"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:13;18;23;28
+#: Template/Element/layout/mainmenu_usermenu.ctp:16;21;26;31
 msgid "Manage"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:14;19
+#: Template/Element/layout/mainmenu_usermenu.ctp:17;22
 msgid "Write something !"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:16
+#: Template/Element/layout/mainmenu_usermenu.ctp:19
 msgid "Notes:"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:21
+#: Template/Element/layout/mainmenu_usermenu.ctp:24
 msgid "Projects:"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:24
+#: Template/Element/layout/mainmenu_usermenu.ctp:27
 msgid "Add a project !"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:26
+#: Template/Element/layout/mainmenu_usermenu.ctp:29
 msgid "Files:"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:29
+#: Template/Element/layout/mainmenu_usermenu.ctp:32
 msgid "Upload some files !"
 msgstr ""
 
@@ -1547,20 +1632,8 @@ msgstr ""
 msgid "You have found something wrong or want to react about something ? Your comments are welcome."
 msgstr ""
 
-#: Template/Element/reports/add_modal.ctp:18
-msgid "Your name"
-msgstr ""
-
-#: Template/Element/reports/add_modal.ctp:23
-msgid "Your e-mail"
-msgstr ""
-
 #: Template/Element/reports/add_modal.ctp:34
 msgid "Reason for your report"
-msgstr ""
-
-#: Template/Element/reports/add_modal.ctp:41
-msgid "This field must stay empty. It will prove us that you're an human."
 msgstr ""
 
 #: Template/Element/reports/add_modal.ctp:47

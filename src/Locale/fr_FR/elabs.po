@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-08-28 22:21+0200\n"
-"PO-Revision-Date: 2016-08-28 22:24+0200\n"
+"POT-Creation-Date: 2016-09-11 14:26+0200\n"
+"PO-Revision-Date: 2016-09-11 14:26+0200\n"
 "Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr_FR\n"
@@ -42,6 +42,18 @@ msgstr "Note"
 #: Controller/AppController.php:57
 msgid "You are not allowed to view this page."
 msgstr "Vous n’êtes pas autorisé à voir cette page."
+
+#: Controller/CommentsController.php:86
+msgid "Thank you for your comment. The author will contact you soon."
+msgstr "Merci pour votre commentaire. L'auteur vous contactera bientôt."
+
+#: Controller/CommentsController.php:88
+msgid "Thank you for your comment."
+msgstr "Merci pour votre commentaire."
+
+#: Controller/CommentsController.php:92
+msgid "The comment could not be saved. Please try again."
+msgstr "Le commentaire n'a pas pu être sauvegardé. Veuillez ré-essayer."
 
 #: Controller/NotesController.php:93 Template/Admin/Notes/view.ctp:12;19
 #: Template/Notes/view.ctp:12
@@ -230,6 +242,14 @@ msgstr "Le compte a été fermé"
 msgid "The account has been activated."
 msgstr "Le compte a été activé"
 
+#: Controller/User/CommentsController.php:76
+msgid "The comment has been deleted."
+msgstr "Le commentaire a été supprimé"
+
+#: Controller/User/CommentsController.php:78
+msgid "The comment could not be deleted. Please, try again."
+msgstr "Le commentaire n'a pas pu être supprimé. Veuillez ré-essayer."
+
 #: Controller/User/FilesController.php:77
 msgid "This filetype is not allowed."
 msgstr "Ce type de fichier n'est pas autorisé."
@@ -377,6 +397,7 @@ msgstr "{0} {1} {2}"
 
 #: Template/Admin/Dashboard/index.ctp:12
 #: Template/Element/layout/mainmenu_admin.ctp:5
+#: Template/Element/layout/mainmenu_user.ctp:8
 #: Template/User/Dashboard/index.ctp:12
 msgid "Dashboard"
 msgstr "Panneau de contrôle"
@@ -388,7 +409,8 @@ msgstr "Liste des fichiers"
 #: Template/Admin/Files/index.ctp:17 Template/Admin/Files/view.ctp:19
 #: Template/Admin/Licenses/index.ctp:39 Template/Admin/Users/index.ctp:152
 #: Template/Element/layout/mainmenu.ctp:14
-#: Template/Element/layout/mainmenu_admin.ctp:14 Template/Files/index.ctp:30
+#: Template/Element/layout/mainmenu_admin.ctp:14
+#: Template/Element/layout/mainmenu_user.ctp:17 Template/Files/index.ctp:30
 #: Template/Files/nsfw.ctp:6 Template/Files/view.ctp:18
 #: Template/User/Files/add.ctp:15 Template/User/Files/edit.ctp:15
 #: Template/User/Files/index.ctp:15
@@ -397,9 +419,10 @@ msgstr "Fichiers"
 
 #: Template/Admin/Files/index.ctp:28 Template/Admin/Licenses/index.ctp:35
 #: Template/Admin/Projects/index.ctp:28 Template/Admin/Tags/view.ctp:16
-#: Template/Admin/Users/index.ctp:30 Template/Element/reports/add_modal.ctp:19
-#: Template/Files/index.ctp:37 Template/Languages/index.ctp:22
-#: Template/Projects/index.ctp:37 Template/User/Files/index.ctp:21
+#: Template/Admin/Users/index.ctp:30 Template/Cell/Comments/add_form.ctp:12
+#: Template/Element/reports/add_modal.ctp:19 Template/Files/index.ctp:37
+#: Template/Languages/index.ctp:22 Template/Projects/index.ctp:37
+#: Template/User/Files/index.ctp:21
 msgid "Name"
 msgstr "Nom"
 
@@ -658,7 +681,7 @@ msgstr "Supprimer"
 #: Template/Admin/Licenses/edit.ctp:22 Template/Admin/Licenses/index.ctp:62
 #: Template/Admin/Reports/index.ctp:58 Template/Admin/Reports/view.ctp:46
 #: Template/Admin/Tags/edit.ctp:7 Template/Admin/Tags/index.ctp:27
-#: Template/Admin/Tags/view.ctp:5;46
+#: Template/Admin/Tags/view.ctp:5;46 Template/Element/comments/card.ctp:40
 #: Template/Element/files/tile_userindex.ctp:16
 #: Template/Element/notes/tile_userindex.ctp:16
 #: Template/Element/posts/tile_userindex.ctp:16
@@ -728,7 +751,8 @@ msgstr "Lien"
 #: Template/Admin/Licenses/index.ctp:37 Template/Admin/Posts/index.ctp:17
 #: Template/Admin/Posts/view.ctp:18 Template/Admin/Users/index.ctp:148
 #: Template/Element/layout/mainmenu.ctp:8
-#: Template/Element/layout/mainmenu_admin.ctp:8 Template/Posts/index.ctp:30
+#: Template/Element/layout/mainmenu_admin.ctp:8
+#: Template/Element/layout/mainmenu_user.ctp:11 Template/Posts/index.ctp:30
 #: Template/Posts/nsfw.ctp:6 Template/Posts/view.ctp:18
 #: Template/User/Posts/add.ctp:15 Template/User/Posts/edit.ctp:15
 #: Template/User/Posts/index.ctp:15
@@ -740,6 +764,7 @@ msgstr "Articles"
 #: Template/Element/files/tile_userindex.ctp:50
 #: Template/Element/layout/mainmenu.ctp:11
 #: Template/Element/layout/mainmenu_admin.ctp:11
+#: Template/Element/layout/mainmenu_user.ctp:14
 #: Template/Element/notes/tile_userindex.ctp:60
 #: Template/Element/posts/tile_userindex.ctp:56 Template/Projects/index.ctp:30
 #: Template/Projects/nsfw.ctp:6 Template/Projects/view.ctp:18
@@ -759,7 +784,8 @@ msgstr "Liste de notes"
 
 #: Template/Admin/Notes/index.ctp:17 Template/Admin/Notes/view.ctp:18
 #: Template/Element/layout/mainmenu.ctp:17
-#: Template/Element/layout/mainmenu_admin.ctp:17 Template/Notes/index.ctp:30
+#: Template/Element/layout/mainmenu_admin.ctp:17
+#: Template/Element/layout/mainmenu_user.ctp:20 Template/Notes/index.ctp:30
 #: Template/Notes/nsfw.ctp:6 Template/Notes/view.ctp:18
 #: Template/User/Notes/add.ctp:15 Template/User/Notes/edit.ctp:15
 #: Template/User/Notes/index.ctp:15
@@ -818,7 +844,7 @@ msgstr "Liste des rapports"
 msgid "Reports"
 msgstr "Rapports"
 
-#: Template/Admin/Reports/index.ctp:29
+#: Template/Admin/Reports/index.ctp:29 Template/Cell/Comments/add_form.ctp:21
 #: Template/Element/reports/add_modal.ctp:24
 #: Template/Element/users/loginform.ctp:3
 #: Template/Element/users/registerform.ctp:4 Template/User/Users/edit.ctp:42
@@ -1019,9 +1045,52 @@ msgstr "Projets {0}"
 msgid "Files {0}"
 msgstr "Fichiers {0}"
 
+#: Template/Cell/Comments/add_form.ctp:4
+msgid "Add comment"
+msgstr "Ajouter un commentaire"
+
+#: Template/Cell/Comments/add_form.ctp:11
+#: Template/Element/reports/add_modal.ctp:18
+msgid "Your name"
+msgstr "Votre nom"
+
+#: Template/Cell/Comments/add_form.ctp:20
+#: Template/Element/reports/add_modal.ctp:23
+msgid "Your e-mail"
+msgstr "Votre e-mail"
+
+#: Template/Cell/Comments/add_form.ctp:28
+msgid "You're about to post your comment as:"
+msgstr "Vous allez poster votre commentaire en tant que :"
+
+#: Template/Cell/Comments/add_form.ctp:33
+msgid "Your comment"
+msgstr "Votre commentaire"
+
+#: Template/Cell/Comments/add_form.ctp:36
+msgid "Allow the author to contact me by email"
+msgstr "Autoriser l'auteur à me contacter par mail"
+
+#: Template/Cell/Comments/add_form.ctp:39
+msgid "Send"
+msgstr "Envoyer"
+
+#: Template/Cell/Comments/add_form.ctp:43
+#: Template/Element/reports/add_modal.ctp:41
+msgid "This field must stay empty. It will prove us that you're an human."
+msgstr "Ce champ doit rester vide. Il nous prouvera que vous êtes humain."
+
 #: Template/Element/acts/tile_nsfw.ctp:22
 msgid "This element may not be safe, therefore it is hidden."
 msgstr "Cet élément est NSFW. Il est donc caché."
+
+#: Template/Element/comments/card.ctp:47
+msgid "Posted on: {0}"
+msgstr "Posté le"
+
+#: Template/Element/comments/card.ctp:57
+msgid "Author: {1}"
+msgstr "Auteur : {1}"
 
 #: Template/Element/files/card.ctp:14
 #: Template/Element/files/tile_userindex.ctp:27
@@ -1219,6 +1288,7 @@ msgid "Show NSFW"
 msgstr "Montrer NSFW"
 
 #: Template/Element/layout/mainmenu.ctp:32
+#: Template/Element/layout/mainmenu_user.ctp:33
 msgid "Report this page"
 msgstr "Rapporter cette page"
 
@@ -1239,43 +1309,56 @@ msgid "View site online"
 msgstr "Voir le site en ligne"
 
 #: Template/Element/layout/mainmenu_admin.ctp:54
-#: Template/Element/layout/mainmenu_usermenu.ctp:8
+#: Template/Element/layout/mainmenu_usermenu.ctp:11
 msgid "Logout"
 msgstr "Déconnexion "
 
+#: Template/Element/layout/mainmenu_user.ctp:5
+msgid "Back to website"
+msgstr "Retours au site"
+
+#: Template/Element/layout/mainmenu_user.ctp:24
+#: Template/User/Comments/index.ctp:17;20
+msgid "Comments"
+msgstr "Commentaires"
+
 #: Template/Element/layout/mainmenu_usermenu.ctp:5
+msgid "dashboard"
+msgstr "panneau de contrôle"
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:8
 msgid "Update profile"
 msgstr "Mettre le profil à jour"
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:11
+#: Template/Element/layout/mainmenu_usermenu.ctp:14
 msgid "Articles:"
 msgstr "Articles:"
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:13;18;23;28
+#: Template/Element/layout/mainmenu_usermenu.ctp:16;21;26;31
 msgid "Manage"
 msgstr "Gérer"
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:14;19
+#: Template/Element/layout/mainmenu_usermenu.ctp:17;22
 msgid "Write something !"
 msgstr "Ecrire quelque chose !"
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:16
+#: Template/Element/layout/mainmenu_usermenu.ctp:19
 msgid "Notes:"
 msgstr "Notes :"
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:21
+#: Template/Element/layout/mainmenu_usermenu.ctp:24
 msgid "Projects:"
 msgstr "Projets :"
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:24
+#: Template/Element/layout/mainmenu_usermenu.ctp:27
 msgid "Add a project !"
 msgstr "Ajouter un projet !"
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:26
+#: Template/Element/layout/mainmenu_usermenu.ctp:29
 msgid "Files:"
 msgstr "Fichiers :"
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:29
+#: Template/Element/layout/mainmenu_usermenu.ctp:32
 msgid "Upload some files !"
 msgstr "Ajoutez des fichiers !"
 
@@ -1367,21 +1450,9 @@ msgstr ""
 "Vous avez trouvé quelque chose qui ne va pas ou vous souhaitez réagir à "
 "propos du contenu ? Vos commentaires sont les bienvenus."
 
-#: Template/Element/reports/add_modal.ctp:18
-msgid "Your name"
-msgstr "Votre nom"
-
-#: Template/Element/reports/add_modal.ctp:23
-msgid "Your e-mail"
-msgstr "Votre e-mail"
-
 #: Template/Element/reports/add_modal.ctp:34
 msgid "Reason for your report"
 msgstr "Sujet de votre rapport"
-
-#: Template/Element/reports/add_modal.ctp:41
-msgid "This field must stay empty. It will prove us that you're an human."
-msgstr "Ce champ doit rester vide. Il nous prouvera que vous êtes humain."
 
 #: Template/Element/reports/add_modal.ctp:47
 msgid "Send the report"
