@@ -47,19 +47,19 @@ class CommentsTable extends Table
 
         $this->belongsTo('Files', [
             'foreignKey' => 'fkid',
-            'conditions' => ['Acts.model' => 'Files'],
+            'conditions' => ['Comments.model' => 'Files'],
         ]);
         $this->belongsTo('Notes', [
             'foreignKey' => 'fkid',
-            'conditions' => ['Acts.model' => 'Notes'],
+            'conditions' => ['Comments.model' => 'Notes'],
         ]);
         $this->belongsTo('Posts', [
             'foreignKey' => 'fkid',
-            'conditions' => ['Acts.model' => 'Posts'],
+            'conditions' => ['Comments.model' => 'Posts'],
         ]);
         $this->belongsTo('Projects', [
             'foreignKey' => 'fkid',
-            'conditions' => ['Acts.model' => 'Projects'],
+            'conditions' => ['Comments.model' => 'Projects'],
         ]);
     }
 

@@ -21,6 +21,6 @@ class CommentsCell extends Cell
 
     public function display()
     {
-        
+
     }
 }
