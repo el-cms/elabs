@@ -3,7 +3,7 @@
 // -----------------------------------------
 
 // Variables, can't be variations of the bootstrap variables as loaded first
-@import "custom/core/variables.scss";
+@import "core/variables.scss";
 
 // Base from Bootstrap
 @import "custom_bootstrap.scss";
@@ -12,7 +12,7 @@
 @import "custom_bootflat.scss";
 
 // Font-Awesome
-@import "Font-Awesome-master/scss/font-awesome.scss";
+@import "lib/Font-Awesome-master/scss/font-awesome.scss";
 
 // Overrides
 // ---------
@@ -22,33 +22,33 @@
 // Reset and dependencies
 
 // Core CSS
-@import "custom/core/scaffolding";
-@import "custom/core/forms";
-@import "custom/core/type.scss";
+@import "core/scaffolding";
+@import "core/forms";
+@import "core/type.scss";
 
 // Components
-@import "custom/components/events";
-@import "custom/components/breadcrumbs";
-@import "custom/components/labels";
-@import "custom/components/navbar";
-@import "custom/components/pagination";
-@import "custom/components/alerts";
-@import "custom/components/list-group";
+@import "components/events";
+@import "components/breadcrumbs";
+@import "components/labels";
+@import "components/navbar";
+@import "components/pagination";
+@import "components/alerts";
+@import "components/list-group";
 
 // Components w/ JavaScript
-@import "custom/jscomponents/accordions";
+@import "jscomponents/accordion";
 // Utility classes
 
 // Elabs-specific components and theme overrides
 // ---------------------------------------------
-@import "custom/components/cow.scss";
-@import "custom/components/tiles.scss";
-@import "custom/components/cards.scss";
-@import "custom/components/timeline.scss";
-@import "custom/components/page-loader.scss";
-@import "custom/components/toolbars.scss";
-@import "custom/components/empty.scss";
+@import "components/cow.scss";
+@import "components/tiles.scss";
+@import "components/cards.scss";
+@import "components/timeline.scss";
+@import "components/page-loader.scss";
+@import "components/toolbars.scss";
+@import "components/empty.scss";
 
 // Shared addons
 // -------------
-@import "custom/addons/codemirror.scss";
+@import "addons/codemirror.scss";
