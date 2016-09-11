@@ -5,19 +5,13 @@
 /logs/*
 
 # Upload dir
-/webroot/uploads/thumbs
-/webroot/uploads/20*
+/webroot/uploads
 
 # Netbeans IDE project dir
 /nbproject/private/
 
 # Sass external sources
-/Sources/Sass/common/bootstrap-sass
-/Sources/Sass/common/bootstrap-tagsinput-latest
-/Sources/Sass/common/bootstrap-datetimepicker-master
-/Sources/Sass/common/bootflat.github.io-master
-/Sources/Sass/common/Font-Awesome-master
-/Sources/Sass/common/codemirror
+/Sources/Sass/lib
 
 # .htaccess files
 .htaccess

@@ -1,0 +1,54 @@
+//
+// Files common to both backend and frontend
+// -----------------------------------------
+
+// Variables, can't be variations of the bootstrap variables as loaded first
+@import "core/variables.scss";
+
+// Base from Bootstrap
+@import "custom_bootstrap.scss";
+
+// Theme
+@import "custom_bootflat.scss";
+
+// Font-Awesome
+@import "lib/Font-Awesome-master/scss/font-awesome.scss";
+
+// Overrides
+// ---------
+
+// Core variables and mixins
+
+// Reset and dependencies
+
+// Core CSS
+@import "core/scaffolding";
+@import "core/forms";
+@import "core/type.scss";
+
+// Components
+@import "components/events";
+@import "components/breadcrumbs";
+@import "components/labels";
+@import "components/navbar";
+@import "components/pagination";
+@import "components/alerts";
+@import "components/list-group";
+
+// Components w/ JavaScript
+@import "jscomponents/accordion";
+// Utility classes
+
+// Elabs-specific components and theme overrides
+// ---------------------------------------------
+@import "components/cow.scss";
+@import "components/tiles.scss";
+@import "components/cards.scss";
+@import "components/timeline.scss";
+@import "components/page-loader.scss";
+@import "components/toolbars.scss";
+@import "components/empty.scss";
+
+// Shared addons
+// -------------
+@import "addons/codemirror.scss";
