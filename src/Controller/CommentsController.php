@@ -34,7 +34,7 @@ class CommentsController extends AppController
 
         // Create config strings
         $this->config = [
-            'models' => [ 'Files', 'Posts', 'Projects', 'Notes',]
+            'models' => [ 'Files', 'Posts', 'Projects', 'Notes']
         ];
 
         // Load models

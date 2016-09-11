@@ -21,7 +21,7 @@ $this->start('mainMenu');
 </li>
 <li class="separator"></li>
 <li>
-    <?php echo $this->Html->link(__d('elabs', 'Comments'), ['prefix' => 'user', 'plugin' => null, 'controller' => 'users', 'action' => 'index']) ?>
+    <?php echo $this->Html->link(__d('elabs', 'Comments'), ['prefix' => 'user', 'plugin' => null, 'controller' => 'comments', 'action' => 'index']) ?>
 </li>
 
 <?php

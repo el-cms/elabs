@@ -41,19 +41,20 @@ $contentType = strtolower(\Cake\Utility\Inflector::singularize($data['model']));
                         ?>
                     </li>
                     <li lang="<?php echo $data[$contentType]['language']['iso639_1'] ?>">
-                        <?php echo $this->Html->iconT($cardIcon, $this->Html->link($itemTitle, ['prefix' => null, 'controller' => $data['model'], 'action' => 'view', $data['fkid']])); ?>
+                        <?php echo $this->Html->iconT($cardIcon, $this->Html->link($itemTitle, ['prefix' => false, 'controller' => $data['model'], 'action' => 'view', $data['fkid']])); ?>
                     </li>
                     <li>
                         <?php echo $this->Html->iconT('calendar', __d('elabs', 'Posted on: {0}', h($data['created']))); ?>
                     </li>
                     <li>
                         <?php
-                        echo $this->Html->iconT('user', __d('elabs', 'Author:'));
                         if (!empty($data['user_id'])):
-                            echo $this->Html->link($data['name'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user_id']]);
+                            $authorName = $this->Html->link($data['name'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user_id']]);
                         else:
-                            echo $data['name'];
+                            $authorName = $data['name'];
                         endif;
+
+                        echo $this->Html->iconT('user', __d('elabs', '{0} {1}', [__d('elabs', 'Author:'), $authorName]));
                         ?>
                     </li>
                     <li>
