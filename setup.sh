@@ -16,19 +16,22 @@ EL_BOX_TOP_LINE="  ${EL_BOX_SHADOW_LIGHT}${EL_BOX_SHADOW_LIGHT}${EL_BOX_SHADOW_L
 export EL_BOX_SHADOW_LIGHT;
 export EL_BOX_SHADOW_DARK;
 export EL_BOX_TOP_LINE;
+
 # Get the absolute path to current dir:
-pushd `dirname $0` > /dev/null
-ELABS_DIR=`pwd`
-popd > /dev/null
+pushd `dirname .` > /dev/null;
+ELABS_DIR=`pwd`;
+popd > /dev/null;
+
 # Make ELABS_DIR available in other scripts
 export ELABS_DIR
+
 echo ""
 echo -e "${EL_BOX_TOP_LINE}";
 echo -e "+-------------------------------------------------------------------+${EL_BOX_SHADOW_LIGHT}"
 echo -e "|                                                                   |${EL_BOX_SHADOW_LIGHT}"
 echo -e "|  \e[33mExperimentsLabs Installer\e[39m                                        |${EL_BOX_SHADOW_LIGHT}"
 echo -e "|  \e[33m=========================\e[39m                                        |${EL_BOX_SHADOW_LIGHT}"
-echo -e "|                                                                   |${EL_BOX_SHADOW_DARK}"
+echo -e "|                                                                   |${EL_BOX_SHADOW_LIGHT}"
 echo -e "+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+${EL_BOX_SHADOW_LIGHT}"
 echo -e "|                                                                   |${EL_BOX_SHADOW_LIGHT}"
 echo -e "| \e[34mNow, the installer will download some js and css files.\e[39m           |${EL_BOX_SHADOW_LIGHT}"

@@ -10,6 +10,18 @@
 #============================================================================
 
 WEBROOT=$ELABS_DIR"/webroot";
+SASS_DIR=$ELABS_DIR"/Sources/Sass"
+SASS_LIBS_DIR=$SASS_DIR"/lib"
+
+function remove_sources(){
+    echo -e "";
+    echo "...Removing downloaded sources";
+    rm -rf "bootstrap-sass";
+    rm -rf "Font-Awesome-master";
+    rm -rf "codemirror";
+    rm -rf "bootflat.github.io-master";
+    # rm -rf "bootstrap-tagsinput-latest";
+}
 
 echo -e "|                                                                   |${EL_BOX_SHADOW_LIGHT}";
 echo -e "| \e[34mNotes about Prism js/css\e[39m                                          |${EL_BOX_SHADOW_LIGHT}";
@@ -30,7 +42,7 @@ echo -e "| \e[34m--------------------------\e[39m                               
 echo -e "| If you don't run this tool for the first time, please MANUALLY    |${EL_BOX_SHADOW_LIGHT}";
 echo -e "| REMOVE THE EXISTING DIRECTORIES FROM Sources/Sass/common/.        |${EL_BOX_SHADOW_LIGHT}";
 echo -e "| You should ONLY have the 'custom' dir and some scss files.        |${EL_BOX_SHADOW_LIGHT}";
-echo -e "|                                                                   |${EL_BOX_SHADOW_DARK}";
+echo -e "|                                                                   |${EL_BOX_SHADOW_LIGHT}";
 echo -e "+-------------------------------------------------------------------+";
 echo '';
 
@@ -48,7 +60,15 @@ case $KEEPSOURCES in
 esac;
 echo "";
 
-cd $ELABS_DIR"/Sources/Sass/common/";
+# Check arguments
+scriptOption='';
+if [ "$1" == "update" ]; then
+    remove_sources;
+else
+    mkdir $SASS_LIBS_DIR;
+fi;
+
+cd $SASS_LIBS_DIR;
 
 echo -e "\e[34m Downloading...\e[39m";
 echo -e "\e[34m --------------\e[39m";
@@ -123,14 +143,9 @@ cp bootflat.github.io-master/bootflat/js/jquery.fs.selecter.min.js $WEBROOT/js/l
 # Remove the sources
 # ==================
 if [ 'n' == $KEEPSOURCES ]; then
-    echo -e "";
-    echo "...Removing downloaded sources";
-    rm -rf "bootstrap-sass";
-    rm -rf "Font-Awesome-master";
-    rm -rf "codemirror";
-    rm -rf "bootflat.github.io-master";
-    # rm -rf "bootstrap-tagsinput-latest";
+    remove_sources;
 fi;
+
 echo -e "";
 echo -e "\e[34mDone.\e[39m";
 echo -e "";
