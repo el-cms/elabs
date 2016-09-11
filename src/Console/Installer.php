@@ -98,6 +98,7 @@ class Installer
     {
         $paths = [
             'logs',
+            'webroot/uploads',
             'tmp',
             'tmp/cache',
             'tmp/cache/models',
