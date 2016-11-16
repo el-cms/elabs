@@ -3,6 +3,7 @@
 /config/app.php
 /tmp/*
 /logs/*
+/config/Migrations/schema-dump-default.lock
 
 # Upload dir
 /webroot/uploads
@@ -18,4 +19,4 @@
 /webroot/.htaccess
 
 # Additionnal plugins
-/plugins/Gravatar
+/plugins/Cv
