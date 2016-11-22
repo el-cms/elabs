@@ -35,6 +35,7 @@ class AppController extends Controller
      * Initialization hook method.
      *
      * Use this method to add common initialization code like loading components.
+     *
      * e.g. `$this->loadComponent('Security');`
      *
      * @return void
@@ -104,12 +105,11 @@ class AppController extends Controller
      * Before render callback.
      *
      * @param \Cake\Event\Event $event The beforeRender event.
-     *
-     * @return void
+     * @return \Cake\Network\Response|null|void
      */
     public function beforeRender(Event $event)
     {
-        $this->set('currentController', \Cake\Utility\Inflector::underscore($this->request->params['controller']));
+        //$this->set('currentController', \Cake\Utility\Inflector::underscore($this->request->params['controller']));
         if (!array_key_exists('_serialize', $this->viewVars) &&
                 in_array($this->response->type(), ['application/json', 'application/xml', 'text/csv'])
         ) {
