@@ -49,7 +49,11 @@ class AppView extends View
                 'help' => '<p class="help-block"><i class="fa fa-info-circle"></i> {{content}}</p>',
             ]
         ]);
-        $this->loadHelper('Flash', ['className' => 'BootstrapUI.Flash']);
+        $this->loadHelper('Flash', [
+            'className' => 'BootstrapUI.Flash',
+            // Changing default element
+            'element' => 'Flash/default',
+        ]);
 //        $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
         $this->loadHelper('Gravatar.Gravatar');
         $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
