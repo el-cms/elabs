@@ -4,6 +4,7 @@ define('STATUS_DRAFT', 0);
 define('STATUS_PUBLISHED', 1);
 define('STATUS_LOCKED', 2);
 define('STATUS_DELETED', 3);
+
 return ['cms' => [
         'siteName' => 'YourSite',
         'isRegistrationOpen' => true,

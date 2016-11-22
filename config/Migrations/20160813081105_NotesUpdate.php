@@ -1,12 +1,18 @@
 <?php
+
+namespace Migrations;
+
 use Migrations\AbstractMigration;
 
 class NotesUpdate extends AbstractMigration
 {
-
+    /**
+     * Updates the tables in db
+     *
+     * @return void
+     */
     public function up()
     {
-
         $this->table('notes')
             ->addColumn('created', 'datetime', [
                 'default' => null,
@@ -21,13 +27,16 @@ class NotesUpdate extends AbstractMigration
             ->update();
     }
 
+    /**
+     * Rollback changes
+     *
+     * @return void
+     */
     public function down()
     {
-
         $this->table('notes')
             ->removeColumn('created')
             ->removeColumn('modified')
             ->update();
     }
 }
-

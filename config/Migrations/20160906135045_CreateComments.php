@@ -1,4 +1,7 @@
 <?php
+
+namespace Migrations;
+
 use Migrations\AbstractMigration;
 
 class CreateComments extends AbstractMigration
@@ -6,9 +9,13 @@ class CreateComments extends AbstractMigration
 
     public $autoId = false;
 
+    /**
+     * Creates the tables in db
+     *
+     * @return void
+     */
     public function up()
     {
-
         $this->table('comments')
             ->addColumn('id', 'integer', [
                 'autoIncrement' => true,
@@ -78,6 +85,11 @@ class CreateComments extends AbstractMigration
             ->update();
     }
 
+    /**
+     * Deletes the table in db
+     *
+     * @return void
+     */
     public function down()
     {
         $this->table('comments')
@@ -88,4 +100,3 @@ class CreateComments extends AbstractMigration
         $this->dropTable('comments');
     }
 }
-

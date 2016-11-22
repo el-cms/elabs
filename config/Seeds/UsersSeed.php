@@ -1,5 +1,7 @@
 <?php
 
+namespace Seeds;
+
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\Utility\Text;
 use Migrations\AbstractSeed;
