@@ -22,6 +22,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\License $license
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Language $language
+ * @property \App\Model\Entity\Album[] $albums
  * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts

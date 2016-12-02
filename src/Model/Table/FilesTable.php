@@ -74,6 +74,11 @@ class FilesTable extends Table
             'targetForeignKey' => 'project_id',
             'joinTable' => 'projects_files'
         ]);
+        $this->belongsToMany('Albums', [
+            'foreignKey' => 'file_id',
+            'targetForeignKey' => 'album_id',
+            'joinTable' => 'albumss_files'
+        ]);
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',
             'conditions' => ['Acts.model' => 'Files']

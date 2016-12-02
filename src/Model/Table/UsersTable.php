@@ -62,6 +62,9 @@ class UsersTable extends Table
         $this->hasMany('Reports', [
             'foreignKey' => 'user_id'
         ]);
+        $this->hasMany('Albums', [
+            'foreignKey' => 'user_id'
+        ]);
         $this->belongsToMany('Teams', [
             'foreignKey' => 'user_id',
             'targetForeignKey' => 'team_id',

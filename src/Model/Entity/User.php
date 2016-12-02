@@ -26,6 +26,7 @@ use Cake\ORM\Entity;
  * @property int $project_user_count
  * @property string $preferences
  *
+ * @property \App\Model\Entity\Album[] $albums
  * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts
