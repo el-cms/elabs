@@ -1,7 +1,5 @@
 <?php
 
-namespace Migrations;
-
 use Migrations\AbstractMigration;
 
 class Initial extends AbstractMigration

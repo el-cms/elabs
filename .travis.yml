@@ -6,7 +6,6 @@ sudo: false
 
 php:
   - 7.0
-  - 7.1
 
 matrix:
   fast_finish: true
@@ -23,7 +22,8 @@ before_script:
 script:
     # removed ./config for now because of missing namespaces in Migrations/seeds.
   - if [[ $PHPCS != 1 ]]; then phpunit; fi
-  - if [[ $PHPCS = 1 ]]; then vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./config ./webroot; fi
+  # .config is removed from tests
+  - if [[ $PHPCS = 1 ]]; then vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot; fi
 
 notifications:
   email: false

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1479829810">
-  <project timestamp="1479829810">
+<coverage generated="1480637685">
+  <project timestamp="1480637685">
     <package name="App">
       <file name="/var/www/html/src/Application.php">
         <class name="Application" namespace="App">

@@ -1,7 +1,5 @@
 <?php
 
-namespace Seeds;
-
 use Migrations\AbstractSeed;
 
 /**
