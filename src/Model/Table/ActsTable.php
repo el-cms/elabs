@@ -55,6 +55,10 @@ class ActsTable extends Table
             'foreignKey' => 'fkid',
             'conditions' => ['Acts.model' => 'Projects'],
         ]);
+        $this->belongsTo('Albums', [
+            'foreignKey' => 'fkid',
+            'conditions' => ['Acts.model' => 'Albums'],
+        ]);
     }
 
     /**
