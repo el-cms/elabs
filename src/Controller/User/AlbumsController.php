@@ -54,10 +54,11 @@ class AlbumsController extends UserAppController
         if ($this->request->is('post')) {
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
+            $dataSent['status'] = STATUS_PUBLISHED;
             $album = $this->Albums->patchEntity($album, $dataSent);
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__('The album has been saved.'));
-                $this->Act->add($album->id, 'add', 'Album', $album->created);
+                $this->Act->add($album->id, 'add', 'Albums', $album->created);
                 
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -93,8 +94,7 @@ class AlbumsController extends UserAppController
             $album = $this->Albums->patchEntity($album, $this->request->data);
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__('The album has been saved.'));
-                $this->Act->add($album->id, 'edit', 'Album', $album->created);
-
+                $this->Act->add($album->id, 'edit', 'Albums', $album->created);
 
                 return $this->redirect(['action' => 'index']);
             } else {
