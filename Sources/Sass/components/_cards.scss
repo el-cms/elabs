@@ -15,9 +15,9 @@
     @at-root &-sm {
         padding: 5px;
     }
-/*    &:last-child{
-        margin-bottom:0;
-    }*/
+    /*    &:last-child{
+            margin-bottom:0;
+        }*/
 
     // The toolbar
     .card-toolbar{
@@ -169,4 +169,30 @@
     .card{
         background-color: #F0F0F0;
     }
+}
+
+/**
+    Album items
+*/
+.card-mini-item{
+    display:table-cell;
+    vertical-align: middle;
+    border-radius:$border-radius-small;
+    background-color:$body-background-color;
+    padding:$padding-small-vertical;
+    height:150px;
+    max-width:200px;
+    .card-mini-item-content{
+        width:100%;
+        overflow-x: hidden;
+        text-align:center;
+        video, audio{
+            display:block;
+            width:200 - $padding-small-vertical;
+        }
+    }
+    &:hover{
+        background-color:darken($body-background-color, 15%);
+    }
+
 }
