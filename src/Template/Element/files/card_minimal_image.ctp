@@ -1,0 +1,1 @@
+<?php echo $this->Html->image('../uploads/thumbs' . $data['filename'], ['alt' => h($data['title'])]) ?>
