@@ -39,6 +39,7 @@ class ActsController extends AdminAppController
                 'Notes' => __d('elabs', 'Note'),
                 'Posts' => __d('elabs', 'Article'),
                 'Projects' => __d('elabs', 'Project'),
+                'Albums' => __d('elabs', 'Album'),
             ]
         ];
 
@@ -61,7 +62,7 @@ class ActsController extends AdminAppController
             // Get connection:
             $connection = ConnectionManager::get('default');
             $truncate = $connection->query('truncate acts;');
-            $models = ['Files', 'Posts', 'Projects', 'Notes'];
+            $models = ['Files', 'Posts', 'Projects', 'Notes', 'Albums'];
             foreach ($models as $model) {
 //                $done[$model]=['add'=>0, 'edit'=>0];
                 $query = $this->$model->find('all', ['conditions' => ['status' => 1]]);

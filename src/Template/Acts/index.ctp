@@ -133,6 +133,10 @@ else:
 endif;
 $this->end();
 
+// Additionnal JS
+// --------------
+$this->Html->script('scrollbar',['block'=>'pageBottomScripts']);
+
 // Load the layout element
 // -----------------------
 echo $this->element('layouts/defaultindex');
