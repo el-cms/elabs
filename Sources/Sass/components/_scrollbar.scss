@@ -1,9 +1,10 @@
 /**
-Scrollbar widget 
+Scrollbar widget
+Margins are defined after, as they differs with .card-event and .card
 */
 .scrollbar {
-    margin: 0 (-$padding-large-horizontal)+2; // Leave a 2px border on sides
     padding: $padding-small-vertical 0;
+    margin: 0 (-$padding-small-horizontal)+2; // Leave a 2px border on sides
     box-shadow: 0 5px 10px -5px rgba(77,77,77,0.8) inset,
         0 -5px 10px -5px rgba(77,77,77,0.5) inset;
     background-color:rgba(0,0,0,.1);
@@ -26,6 +27,10 @@ Scrollbar widget
             }
         }
     }
+}
+
+.card-event .scrollbar{
+    margin: 0 (-$padding-large-horizontal)+2; // Leave a 2px border on sides
 }
 
 /*
