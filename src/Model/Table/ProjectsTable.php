@@ -96,7 +96,7 @@ class ProjectsTable extends Table
         $this->belongsToMany('Albums', [
             'foreignKey' => 'project_id',
             'targetForeignKey' => 'album_id',
-            'joinTable' => 'albumss_files'
+            'joinTable' => 'albums_files'
         ]);
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',
