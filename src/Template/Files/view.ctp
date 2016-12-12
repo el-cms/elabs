@@ -28,6 +28,27 @@ $config = $this->Items->fileConfig($file['filename']);
     <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->License->d($file->license, true) ?></li>
     <li><strong><?php echo __d('elabs', 'Creator:') ?></strong> <?php echo $file->has('user') ? $this->Html->link($file->user->username, ['controller' => 'Users', 'action' => 'view', $file->user->id]) : '' ?></li>
     <li><strong><?php echo __d('elabs', 'File size:') ?></strong> <?php echo $file->weight ?></li>
+    <?php
+    $nbAlbs = count($file->albums);
+    if ($nbAlbs > 0):
+        ?>
+        <li>
+            <strong><?php echo __dn('elabs', 'Album:', 'Albums:', $nbAlbs) ?></strong>
+            <?php
+            if ($nbAlbs === 1):
+                echo $this->Html->link(h($file->albums[0]->name), ['controller' => 'Albums', 'action' => 'view', $file->albums[0]->id]);
+            else:
+                ?>
+                <ul>
+                    <?php foreach ($file->albums as $album): ?>
+                        <li><?php echo $this->Html->link(h($album->name), ['controller' => 'Albums', 'action' => 'view', $album->id]); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </li>
+        <?php
+    endif;
+    ?>
     <li><strong><?php echo __d('elabs', 'Mime type:') ?></strong> <?php echo $file->mime ?></li>
     <li><strong><?php echo __d('elabs', 'Added on:') ?></strong> <?php echo h($file->created) ?></li>
     <?php if ($file->modified != $file->created): ?>
@@ -85,8 +106,7 @@ $this->start('pageContent');
     </div>
 </div>
 <?php
-
-echo $this->cell('Comments::AddForm', ['authUser'=>$authUser]);
+echo $this->cell('Comments::AddForm', ['authUser' => $authUser]);
 $this->end();
 
 // Load the layout element

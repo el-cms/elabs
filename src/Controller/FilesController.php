@@ -32,6 +32,7 @@ class FilesController extends AppController
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
+                'Albums' => ['fields' => ['id', 'name', 'AlbumsFiles.file_id']],
             ],
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['created', 'name', 'modified'],
@@ -85,6 +86,7 @@ class FilesController extends AppController
                 'Licenses',
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
+                'Albums' => ['fields' => ['id', 'name', 'AlbumsFiles.file_id']],
             ]
         ]);
         // It will be great when i'll find a way to nicely handle exceptions/errors

@@ -70,6 +70,19 @@ $config = $this->Items->fileConfig($data['filename']);
                         </li>
                         <?php
                     endif;
+                    $nbAlbs = count($data['albums']);
+                    if ((!isset($albumInfo) || $albumInfo) && $nbAlbs > 0):
+                        ?>
+                        <li>
+                            <?php
+                            $albumsList = $this->Html->arrayToString(array_map(function($album) {
+                                        return $this->Html->Link($album->name, ['controller' => 'Albums', 'action' => 'view', $album->id]);
+                                    }, $data['albums']));
+                            echo $this->Html->iconT('book', __d('elabs', '{0} {1}', [__dn('elabs', 'Album:', 'Albums:', $nbProj), $albumsList]));
+                            ?>
+                        </li>
+                        <?php
+                    endif;
                     ?>
                 </ul>
             </div>
