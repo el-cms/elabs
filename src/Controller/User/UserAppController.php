@@ -27,7 +27,7 @@ class UserAppController extends AppController
         if (in_array($this->Auth->user('role'), ['author', 'admin'])) {
             $this->Auth->allow();
         } else {
-            if (!$this->Auth->user('id')) {
+            if (is_null($this->Auth->user('id'))) {
                 $this->Flash->Error(__d('elabs', 'You should be logged in to access this page.'));
                 $this->redirect($this->Auth->config('loginAction'));
             } else {
