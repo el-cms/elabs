@@ -25,6 +25,8 @@
             echo $this->Html->link($linkTitle, ['controller' => 'Files', 'action' => 'index', 'user', $user->id], ['class' => 'btn btn-block', 'escape' => false]);
             $linkTitle = $this->Html->iconT('sticky-note', __dn('elabs', '{0} note', '{0} notes', $user->note_count, $user->note_count));
             echo $this->Html->link($linkTitle, ['controller' => 'Notes', 'action' => 'index', 'user', $user->id], ['class' => 'btn btn-block', 'escape' => false]);
+            $linkTitle = $this->Html->iconT('book', __dn('elabs', '{0} album', '{0} albums', $user->album_count, $user->album_count));
+            echo $this->Html->link($linkTitle, ['controller' => 'Albums', 'action' => 'index', 'user', $user->id], ['class' => 'btn btn-block', 'escape' => false]);
             ?>
         </div>
     </div>

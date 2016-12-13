@@ -42,6 +42,11 @@ class AlbumsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+        
+        $this->addBehavior('CounterCache', [
+            'Users' => ['album_count' => ['conditions' => ['status' => 1]]],
+            'Languages' => ['album_count' => ['conditions' => ['status' => 1]]],
+        ]);
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',

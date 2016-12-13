@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Licenses
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsTo $Languages
+ * @property \Cake\ORM\Association\BelongsToMany $Albums
  * @property \Cake\ORM\Association\BelongsToMany $Files
  * @property \Cake\ORM\Association\BelongsToMany $Notes
  * @property \Cake\ORM\Association\BelongsToMany $Posts
@@ -96,7 +97,7 @@ class ProjectsTable extends Table
         $this->belongsToMany('Albums', [
             'foreignKey' => 'project_id',
             'targetForeignKey' => 'album_id',
-            'joinTable' => 'albums_files'
+            'joinTable' => 'projects_albums'
         ]);
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',

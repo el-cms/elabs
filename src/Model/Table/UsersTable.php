@@ -157,6 +157,11 @@ class UsersTable extends Table
             ->notEmpty('post_count');
 
         $validator
+            ->integer('album_count')
+            ->requirePresence('album_count', 'create')
+            ->notEmpty('album_count');
+
+        $validator
             ->integer('project_count')
             ->requirePresence('project_count', 'create')
             ->notEmpty('project_count');
