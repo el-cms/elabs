@@ -4,6 +4,14 @@ Acts:
     - 2 posts edit (same post)
     - 3 projetcs
     - 3 files
+    - 2 albums
+
+---
+Albums:
+  - 2 albums
+    - Sfw   Status User    Edited
+      false 1      author  *
+      true  1      admin 
 
 Files:
   - 5 files
@@ -47,6 +55,6 @@ Projects:
       true  1      Author
   - published : 3
 
-Total published : 14
-Total edited: 2
-After AdminActs::clean(): 17 elements
+Total published : 16
+Total edited: 3
+After AdminActs::clean(): 15 elements

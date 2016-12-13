@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
@@ -9,7 +10,6 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class AlbumsFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -21,6 +21,7 @@ class AlbumsFixture extends TestFixture
         'name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'description' => ['type' => 'text', 'length' => null, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null],
         'sfw' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'status' => ['type' => 'integer', 'length' => 1, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'user_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
@@ -47,15 +48,30 @@ class AlbumsFixture extends TestFixture
      * @var array
      */
     public $records = [
-        [
+            [
+            //Author
             'id' => '1727fe48-2825-4fd1-a5a1-357d5bd09531',
             'name' => 'Lorem ipsum dolor sit amet',
             'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
             'sfw' => 1,
+            'status' => 1,
+            'created' => '2016-12-02 01:42:17',
+            'modified' => '2016-12-10 01:42:17',
+            'user_id' => '38bffe56-5406-4f18-a9d2-f3b2a59608a5',
+            'language_id' => 'fra'
+        ],
+            [
+            // Admin
+            'id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
+            'name' => 'Lorem ipsum dolor sit amet',
+            'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+            'sfw' => 1,
+            'status' => 1,
             'created' => '2016-12-02 01:42:17',
             'modified' => '2016-12-02 01:42:17',
-            'user_id' => 'bcb84273-e0bb-4629-8c4a-b205e32aff12',
-            'language_id' => 'L'
+            'user_id' => '38bffe56-5406-4f18-a9d2-f3b2a59608a5',
+            'language_id' => 'eng'
         ],
     ];
+
 }

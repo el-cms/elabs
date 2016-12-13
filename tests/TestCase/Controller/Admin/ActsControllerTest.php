@@ -16,6 +16,7 @@ class ActsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.acts',
+        'app.albums',
         'app.files',
         'app.languages', // Needed for some layout vars
         'app.notes',
@@ -52,6 +53,7 @@ class ActsControllerTest extends IntegrationTestCase
         $this->assertEquals(16, $nb);
 
         // No error
+        $this->assertResponseEquals('');
         $this->assertResponseEmpty();
 
         // User should be redirected to '/' as no referer is available in tests
