@@ -15,7 +15,10 @@ class AlbumsController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @param string $filter Parameter to filter on
+     * @param string $id Id of the model to filter
+     *
+     * @return \Cake\Network\Response|void
      */
     public function index($filter = null, $id = null)
     {
@@ -76,7 +79,7 @@ class AlbumsController extends AppController
      * View method
      *
      * @param string|null $id Album id.
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Network\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)

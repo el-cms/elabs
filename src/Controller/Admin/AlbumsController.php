@@ -14,7 +14,7 @@ class AlbumsController extends AdminAppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Network\Response|void
      */
     public function index()
     {
@@ -31,7 +31,7 @@ class AlbumsController extends AdminAppController
      * View method
      *
      * @param string|null $id Album id.
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Network\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)

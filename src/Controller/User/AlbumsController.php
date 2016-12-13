@@ -15,7 +15,9 @@ class AlbumsController extends UserAppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @param string $nsfw NSFW filter
+     *
+     * @return \Cake\Network\Response|void
      */
     public function index($nsfw = 'all')
     {
@@ -59,7 +61,7 @@ class AlbumsController extends UserAppController
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__('The album has been saved.'));
                 $this->Act->add($album->id, 'add', 'Albums', $album->created);
-                
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('elabs', 'The album could not be saved. Please, try again.'));

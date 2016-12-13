@@ -59,7 +59,7 @@ class AlbumsFixture extends TestFixture
             'modified' => '2016-12-10 01:42:17',
             'user_id' => '38bffe56-5406-4f18-a9d2-f3b2a59608a5',
             'language_id' => 'fra'
-        ],
+            ],
             [
             // Admin
             'id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
@@ -71,7 +71,6 @@ class AlbumsFixture extends TestFixture
             'modified' => '2016-12-02 01:42:17',
             'user_id' => '38bffe56-5406-4f18-a9d2-f3b2a59608a5',
             'language_id' => 'eng'
-        ],
+            ],
     ];
-
 }
