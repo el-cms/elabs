@@ -16,8 +16,13 @@ switch ($data['model']):
         $cardIcon = 'cogs';
         $itemTitle = $data['project']['name'];
         break;
+    case 'Albums':
+        $cardIcon = 'book';
+        $itemTitle = $data['album']['name'];
+        break;
     default:
         $cardIcon = 'interrogation-mark';
+        $itemTitle = 'UNKNOWN ITEM';
 endswitch;
 $contentType = strtolower(\Cake\Utility\Inflector::singularize($data['model']));
 ?>
