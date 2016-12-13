@@ -21,7 +21,7 @@ class FilesController extends UserAppController
         $this->loadComponent('UpManager');
         $this->loadComponent('SimpleImage');
     }
-
+    
     /**
      * Index method
      *
@@ -102,6 +102,7 @@ class FilesController extends UserAppController
                     'license_id' => $this->request->data['license_id'],
                     'language_id' => $this->request->data['language_id'],
                     'projects' => $this->request->data['projects'],
+                    'albums' => $this->request->data['albums'],
                     'status' => 1
                 ];
 

@@ -75,7 +75,7 @@ $this->start('pageContent');
         foreach ($album->files as $file):
             $config = $this->Items->fileConfig($file['filename']);
             ?>
-            <div class="col-lg-4 thumbnail-col">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 thumbnail-col">
                 <div class="thumbnail thumbnail-square">
                     <?php echo $this->element('files/card_minimal_' . $config['element'], ['data' => $file]) ?>
                 </div>

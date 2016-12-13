@@ -15,6 +15,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsToMany $Tags
  * @property \Cake\ORM\Association\BelongsToMany $Projects
+ * @property \Cake\ORM\Association\BelongsToMany $Albums
  * @property \Cake\ORM\Association\HasMany $Acts
  *
  * @method \App\Model\Entity\File get($primaryKey, $options = [])
