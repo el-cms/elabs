@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1481700602">
-  <project timestamp="1481700602">
+<coverage generated="1481706720">
+  <project timestamp="1481706720">
     <package name="App">
       <file name="/var/www/html/src/Application.php">
         <class name="Application" namespace="App">
@@ -2197,37 +2197,19 @@
       </file>
       <file name="/var/www/html/src/Model/Table/FilesTagsTable.php">
         <class name="FilesTagsTable" namespace="App\Model\Table">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="32" type="method" name="initialize" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
         <line num="44" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
         <line num="48" type="stmt" count="0"/>
-        <line num="56" type="method" name="validationDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="72" type="method" name="buildRules" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="73" type="stmt" count="0"/>
-        <line num="74" type="stmt" count="0"/>
-        <line num="75" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <metrics loc="79" ncloc="46" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+        <metrics loc="79" ncloc="46" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Table/LanguagesTable.php">
         <class name="LanguagesTable" namespace="App\Model\Table">
@@ -2359,37 +2341,19 @@
       </file>
       <file name="/var/www/html/src/Model/Table/NotesTagsTable.php">
         <class name="NotesTagsTable" namespace="App\Model\Table">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="32" type="method" name="initialize" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
         <line num="44" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
         <line num="48" type="stmt" count="0"/>
-        <line num="56" type="method" name="validationDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="72" type="method" name="buildRules" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="73" type="stmt" count="0"/>
-        <line num="74" type="stmt" count="0"/>
-        <line num="75" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <metrics loc="79" ncloc="46" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+        <metrics loc="79" ncloc="46" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Table/PostsTable.php">
         <class name="PostsTable" namespace="App\Model\Table">
@@ -2444,37 +2408,19 @@
       </file>
       <file name="/var/www/html/src/Model/Table/PostsTagsTable.php">
         <class name="PostsTagsTable" namespace="App\Model\Table">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="32" type="method" name="initialize" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
         <line num="44" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
         <line num="48" type="stmt" count="0"/>
-        <line num="56" type="method" name="validationDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="72" type="method" name="buildRules" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="73" type="stmt" count="0"/>
-        <line num="74" type="stmt" count="0"/>
-        <line num="75" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <metrics loc="79" ncloc="46" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+        <metrics loc="79" ncloc="46" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Table/ProjectsFilesTable.php">
         <class name="ProjectsFilesTable" namespace="App\Model\Table">
@@ -2581,37 +2527,19 @@
       </file>
       <file name="/var/www/html/src/Model/Table/ProjectsTagsTable.php">
         <class name="ProjectsTagsTable" namespace="App\Model\Table">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="32" type="method" name="initialize" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
         <line num="44" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
         <line num="48" type="stmt" count="0"/>
-        <line num="56" type="method" name="validationDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="72" type="method" name="buildRules" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="73" type="stmt" count="0"/>
-        <line num="74" type="stmt" count="0"/>
-        <line num="75" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <metrics loc="79" ncloc="46" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+        <metrics loc="79" ncloc="46" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Table/ReportsTable.php">
         <class name="ReportsTable" namespace="App\Model\Table">
@@ -2633,153 +2561,71 @@
       </file>
       <file name="/var/www/html/src/Model/Table/TagsTable.php">
         <class name="TagsTable" namespace="App\Model\Table">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="0" elements="41" coveredelements="0"/>
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="14" coveredelements="0"/>
         </class>
         <line num="34" type="method" name="initialize" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="35" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="39" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="42" type="stmt" count="0"/>
         <line num="43" type="stmt" count="0"/>
-        <line num="44" type="stmt" count="0"/>
-        <line num="45" type="stmt" count="0"/>
-        <line num="46" type="stmt" count="0"/>
         <line num="47" type="stmt" count="0"/>
         <line num="48" type="stmt" count="0"/>
-        <line num="49" type="stmt" count="0"/>
-        <line num="50" type="stmt" count="0"/>
-        <line num="51" type="stmt" count="0"/>
         <line num="52" type="stmt" count="0"/>
         <line num="53" type="stmt" count="0"/>
-        <line num="54" type="stmt" count="0"/>
-        <line num="55" type="stmt" count="0"/>
-        <line num="56" type="stmt" count="0"/>
         <line num="57" type="stmt" count="0"/>
         <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="61" type="stmt" count="0"/>
         <line num="62" type="stmt" count="0"/>
-        <line num="70" type="method" name="validationDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="71" type="stmt" count="0"/>
-        <line num="72" type="stmt" count="0"/>
-        <line num="73" type="stmt" count="0"/>
-        <line num="74" type="stmt" count="0"/>
-        <line num="76" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <line num="80" type="stmt" count="0"/>
-        <line num="81" type="stmt" count="0"/>
-        <line num="82" type="stmt" count="0"/>
-        <line num="83" type="stmt" count="0"/>
-        <line num="85" type="stmt" count="0"/>
-        <line num="86" type="stmt" count="0"/>
-        <metrics loc="87" ncloc="59" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="0" elements="41" coveredelements="0"/>
+        <metrics loc="87" ncloc="59" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="14" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Table/TeamsProjectsTable.php">
         <class name="TeamsProjectsTable" namespace="App\Model\Table">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="32" type="method" name="initialize" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
         <line num="44" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
         <line num="48" type="stmt" count="0"/>
-        <line num="56" type="method" name="validationDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="72" type="method" name="buildRules" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="73" type="stmt" count="0"/>
-        <line num="74" type="stmt" count="0"/>
-        <line num="75" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <metrics loc="79" ncloc="46" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+        <metrics loc="79" ncloc="46" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Table/TeamsTable.php">
         <class name="TeamsTable" namespace="App\Model\Table">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="0" elements="29" coveredelements="0"/>
+          <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="32" type="method" name="initialize" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
-        <line num="44" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
         <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
-        <line num="48" type="stmt" count="0"/>
-        <line num="49" type="stmt" count="0"/>
         <line num="50" type="stmt" count="0"/>
-        <line num="58" type="method" name="validationDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="61" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <line num="64" type="stmt" count="0"/>
-        <line num="65" type="stmt" count="0"/>
-        <line num="66" type="stmt" count="0"/>
-        <line num="68" type="stmt" count="0"/>
-        <line num="69" type="stmt" count="0"/>
-        <line num="71" type="stmt" count="0"/>
-        <line num="72" type="stmt" count="0"/>
-        <metrics loc="73" ncloc="47" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="0" elements="29" coveredelements="0"/>
+        <metrics loc="73" ncloc="47" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Table/TeamsUsersTable.php">
         <class name="TeamsUsersTable" namespace="App\Model\Table">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+          <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
         <line num="32" type="method" name="initialize" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="33" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
         <line num="36" type="stmt" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="38" type="stmt" count="0"/>
         <line num="40" type="stmt" count="0"/>
         <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
         <line num="44" type="stmt" count="0"/>
         <line num="45" type="stmt" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
         <line num="48" type="stmt" count="0"/>
-        <line num="56" type="method" name="validationDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="57" type="stmt" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="62" type="stmt" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="72" type="method" name="buildRules" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="73" type="stmt" count="0"/>
-        <line num="74" type="stmt" count="0"/>
-        <line num="75" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <metrics loc="79" ncloc="46" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+        <metrics loc="79" ncloc="46" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Table/UsersTable.php">
         <class name="UsersTable" namespace="App\Model\Table">
@@ -2954,55 +2800,55 @@
     <package name="App\View\Helper">
       <file name="/var/www/html/src/View/Helper/AppHtmlHelper.php">
         <class name="AppHtmlHelper" namespace="App\View\Helper">
-          <metrics complexity="30" methods="7" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="61" coveredstatements="45" elements="68" coveredelements="49"/>
+          <metrics complexity="30" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="61" coveredstatements="58" elements="68" coveredelements="63"/>
         </class>
-        <line num="33" type="method" name="icon" visibility="public" complexity="3" crap="3" count="50"/>
-        <line num="36" type="stmt" count="50"/>
-        <line num="40" type="stmt" count="50"/>
-        <line num="41" type="stmt" count="50"/>
-        <line num="42" type="stmt" count="50"/>
-        <line num="44" type="stmt" count="50"/>
-        <line num="45" type="stmt" count="50"/>
-        <line num="47" type="stmt" count="50"/>
-        <line num="49" type="stmt" count="50"/>
-        <line num="61" type="method" name="iconT" visibility="public" complexity="2" crap="2" count="50"/>
-        <line num="65" type="stmt" count="50"/>
-        <line num="66" type="stmt" count="50"/>
-        <line num="67" type="stmt" count="50"/>
-        <line num="68" type="stmt" count="50"/>
+        <line num="33" type="method" name="icon" visibility="public" complexity="3" crap="3" count="54"/>
+        <line num="36" type="stmt" count="54"/>
+        <line num="40" type="stmt" count="54"/>
+        <line num="41" type="stmt" count="54"/>
+        <line num="42" type="stmt" count="54"/>
+        <line num="44" type="stmt" count="54"/>
+        <line num="45" type="stmt" count="54"/>
+        <line num="47" type="stmt" count="54"/>
+        <line num="49" type="stmt" count="54"/>
+        <line num="61" type="method" name="iconT" visibility="public" complexity="2" crap="2" count="52"/>
+        <line num="65" type="stmt" count="52"/>
+        <line num="66" type="stmt" count="52"/>
+        <line num="67" type="stmt" count="52"/>
+        <line num="68" type="stmt" count="52"/>
         <line num="69" type="stmt" count="20"/>
-        <line num="71" type="stmt" count="50"/>
-        <line num="87" type="method" name="arrayToString" visibility="public" complexity="7" crap="56" count="0"/>
-        <line num="90" type="stmt" count="0"/>
-        <line num="93" type="stmt" count="0"/>
-        <line num="94" type="stmt" count="0"/>
-        <line num="95" type="stmt" count="0"/>
-        <line num="96" type="stmt" count="0"/>
-        <line num="97" type="stmt" count="0"/>
-        <line num="98" type="stmt" count="0"/>
-        <line num="99" type="stmt" count="0"/>
-        <line num="101" type="stmt" count="0"/>
-        <line num="102" type="stmt" count="0"/>
-        <line num="104" type="stmt" count="0"/>
-        <line num="105" type="stmt" count="0"/>
-        <line num="108" type="stmt" count="0"/>
-        <line num="123" type="method" name="reportLink" visibility="public" complexity="8" crap="8.12" count="31"/>
-        <line num="125" type="stmt" count="31"/>
-        <line num="126" type="stmt" count="30"/>
-        <line num="127" type="stmt" count="30"/>
-        <line num="129" type="stmt" count="9"/>
-        <line num="132" type="stmt" count="31"/>
-        <line num="133" type="stmt" count="9"/>
-        <line num="134" type="stmt" count="9"/>
-        <line num="135" type="stmt" count="30"/>
+        <line num="71" type="stmt" count="52"/>
+        <line num="87" type="method" name="arrayToString" visibility="public" complexity="7" crap="7" count="1"/>
+        <line num="90" type="stmt" count="1"/>
+        <line num="93" type="stmt" count="1"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="97" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="1"/>
+        <line num="99" type="stmt" count="1"/>
+        <line num="101" type="stmt" count="1"/>
+        <line num="102" type="stmt" count="1"/>
+        <line num="104" type="stmt" count="1"/>
+        <line num="105" type="stmt" count="1"/>
+        <line num="108" type="stmt" count="1"/>
+        <line num="123" type="method" name="reportLink" visibility="public" complexity="8" crap="8.12" count="32"/>
+        <line num="125" type="stmt" count="32"/>
+        <line num="126" type="stmt" count="31"/>
+        <line num="127" type="stmt" count="31"/>
+        <line num="129" type="stmt" count="10"/>
+        <line num="132" type="stmt" count="32"/>
+        <line num="133" type="stmt" count="10"/>
+        <line num="134" type="stmt" count="10"/>
+        <line num="135" type="stmt" count="31"/>
         <line num="136" type="stmt" count="0"/>
         <line num="137" type="stmt" count="0"/>
-        <line num="139" type="stmt" count="30"/>
-        <line num="142" type="stmt" count="31"/>
-        <line num="143" type="stmt" count="31"/>
-        <line num="144" type="stmt" count="31"/>
-        <line num="145" type="stmt" count="31"/>
-        <line num="147" type="stmt" count="31"/>
+        <line num="139" type="stmt" count="31"/>
+        <line num="142" type="stmt" count="32"/>
+        <line num="143" type="stmt" count="32"/>
+        <line num="144" type="stmt" count="32"/>
+        <line num="145" type="stmt" count="32"/>
+        <line num="147" type="stmt" count="32"/>
         <line num="162" type="method" name="displayMD" visibility="public" complexity="5" crap="5" count="19"/>
         <line num="165" type="stmt" count="19"/>
         <line num="168" type="stmt" count="19"/>
@@ -3010,21 +2856,21 @@
         <line num="171" type="stmt" count="19"/>
         <line num="172" type="stmt" count="19"/>
         <line num="175" type="stmt" count="19"/>
-        <line num="187" type="method" name="langLabel" visibility="public" complexity="2" crap="2" count="16"/>
-        <line num="190" type="stmt" count="16"/>
-        <line num="194" type="stmt" count="16"/>
-        <line num="195" type="stmt" count="13"/>
-        <line num="197" type="stmt" count="16"/>
-        <line num="199" type="stmt" count="16"/>
-        <line num="201" type="stmt" count="16"/>
-        <line num="202" type="stmt" count="16"/>
-        <line num="204" type="stmt" count="16"/>
-        <line num="214" type="method" name="checkIcon" visibility="public" complexity="3" crap="3.14" count="2"/>
-        <line num="216" type="stmt" count="2"/>
-        <line num="217" type="stmt" count="2"/>
-        <line num="218" type="stmt" count="2"/>
+        <line num="187" type="method" name="langLabel" visibility="public" complexity="2" crap="2" count="17"/>
+        <line num="190" type="stmt" count="17"/>
+        <line num="194" type="stmt" count="17"/>
+        <line num="195" type="stmt" count="14"/>
+        <line num="197" type="stmt" count="17"/>
+        <line num="199" type="stmt" count="17"/>
+        <line num="201" type="stmt" count="17"/>
+        <line num="202" type="stmt" count="17"/>
+        <line num="204" type="stmt" count="17"/>
+        <line num="214" type="method" name="checkIcon" visibility="public" complexity="3" crap="3.14" count="3"/>
+        <line num="216" type="stmt" count="3"/>
+        <line num="217" type="stmt" count="3"/>
+        <line num="218" type="stmt" count="3"/>
         <line num="220" type="stmt" count="0"/>
-        <metrics loc="223" ncloc="135" classes="1" methods="7" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="61" coveredstatements="45" elements="68" coveredelements="49"/>
+        <metrics loc="223" ncloc="135" classes="1" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="61" coveredstatements="58" elements="68" coveredelements="63"/>
       </file>
       <file name="/var/www/html/src/View/Helper/CodeMirrorHelper.php">
         <class name="CodeMirrorHelper" namespace="App\View\Helper">
@@ -3062,72 +2908,72 @@
       </file>
       <file name="/var/www/html/src/View/Helper/CowSaysHelper.php">
         <class name="CowSaysHelper" namespace="App\View\Helper">
-          <metrics complexity="20" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="48" elements="54" coveredelements="51"/>
+          <metrics complexity="20" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="50" elements="54" coveredelements="54"/>
         </class>
-        <line num="188" type="method" name="say" visibility="public" complexity="14" crap="14.04" count="11"/>
-        <line num="191" type="stmt" count="11"/>
-        <line num="203" type="stmt" count="11"/>
-        <line num="206" type="stmt" count="11"/>
-        <line num="207" type="stmt" count="11"/>
-        <line num="211" type="stmt" count="11"/>
-        <line num="212" type="stmt" count="11"/>
-        <line num="213" type="stmt" count="11"/>
-        <line num="214" type="stmt" count="11"/>
-        <line num="215" type="stmt" count="11"/>
-        <line num="220" type="stmt" count="11"/>
-        <line num="221" type="stmt" count="11"/>
-        <line num="222" type="stmt" count="11"/>
-        <line num="223" type="stmt" count="11"/>
-        <line num="225" type="stmt" count="11"/>
-        <line num="227" type="stmt" count="11"/>
-        <line num="229" type="stmt" count="11"/>
-        <line num="231" type="stmt" count="11"/>
-        <line num="233" type="stmt" count="11"/>
-        <line num="234" type="stmt" count="11"/>
-        <line num="237" type="stmt" count="11"/>
-        <line num="238" type="stmt" count="11"/>
-        <line num="241" type="stmt" count="11"/>
-        <line num="242" type="stmt" count="11"/>
-        <line num="244" type="stmt" count="11"/>
-        <line num="247" type="stmt" count="11"/>
-        <line num="248" type="stmt" count="11"/>
-        <line num="252" type="stmt" count="11"/>
-        <line num="254" type="stmt" count="11"/>
-        <line num="255" type="stmt" count="0"/>
-        <line num="258" type="stmt" count="11"/>
-        <line num="259" type="stmt" count="11"/>
-        <line num="260" type="stmt" count="0"/>
-        <line num="264" type="stmt" count="11"/>
+        <line num="188" type="method" name="say" visibility="public" complexity="14" crap="14" count="12"/>
+        <line num="191" type="stmt" count="12"/>
+        <line num="203" type="stmt" count="12"/>
+        <line num="206" type="stmt" count="12"/>
+        <line num="207" type="stmt" count="12"/>
+        <line num="211" type="stmt" count="12"/>
+        <line num="212" type="stmt" count="12"/>
+        <line num="213" type="stmt" count="12"/>
+        <line num="214" type="stmt" count="12"/>
+        <line num="215" type="stmt" count="12"/>
+        <line num="220" type="stmt" count="12"/>
+        <line num="221" type="stmt" count="12"/>
+        <line num="222" type="stmt" count="12"/>
+        <line num="223" type="stmt" count="12"/>
+        <line num="225" type="stmt" count="12"/>
+        <line num="227" type="stmt" count="12"/>
+        <line num="229" type="stmt" count="12"/>
+        <line num="231" type="stmt" count="12"/>
+        <line num="233" type="stmt" count="12"/>
+        <line num="234" type="stmt" count="12"/>
+        <line num="237" type="stmt" count="12"/>
+        <line num="238" type="stmt" count="12"/>
+        <line num="241" type="stmt" count="12"/>
+        <line num="242" type="stmt" count="12"/>
+        <line num="244" type="stmt" count="12"/>
+        <line num="247" type="stmt" count="12"/>
+        <line num="248" type="stmt" count="12"/>
+        <line num="252" type="stmt" count="12"/>
+        <line num="254" type="stmt" count="12"/>
+        <line num="255" type="stmt" count="1"/>
+        <line num="258" type="stmt" count="12"/>
+        <line num="259" type="stmt" count="12"/>
+        <line num="260" type="stmt" count="1"/>
+        <line num="264" type="stmt" count="12"/>
         <line num="274" type="method" name="sayError" visibility="public" complexity="1" crap="1" count="11"/>
         <line num="276" type="stmt" count="11"/>
         <line num="277" type="stmt" count="11"/>
         <line num="278" type="stmt" count="11"/>
         <line num="279" type="stmt" count="11"/>
         <line num="281" type="stmt" count="11"/>
-        <line num="292" type="method" name="_signature" visibility="protected" complexity="2" crap="2" count="11"/>
-        <line num="294" type="stmt" count="11"/>
-        <line num="295" type="stmt" count="11"/>
-        <line num="296" type="stmt" count="11"/>
-        <line num="299" type="stmt" count="11"/>
-        <line num="311" type="method" name="_createLine" visibility="protected" complexity="3" crap="3" count="11"/>
-        <line num="313" type="stmt" count="11"/>
-        <line num="314" type="stmt" count="11"/>
-        <line num="315" type="stmt" count="11"/>
-        <line num="316" type="stmt" count="11"/>
-        <line num="318" type="stmt" count="11"/>
-        <line num="319" type="stmt" count="11"/>
-        <line num="321" type="stmt" count="11"/>
-        <line num="324" type="stmt" count="11"/>
-        <metrics loc="326" ncloc="212" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="48" elements="54" coveredelements="51"/>
+        <line num="292" type="method" name="_signature" visibility="protected" complexity="2" crap="2" count="12"/>
+        <line num="294" type="stmt" count="12"/>
+        <line num="295" type="stmt" count="12"/>
+        <line num="296" type="stmt" count="12"/>
+        <line num="299" type="stmt" count="12"/>
+        <line num="311" type="method" name="_createLine" visibility="protected" complexity="3" crap="3" count="12"/>
+        <line num="313" type="stmt" count="12"/>
+        <line num="314" type="stmt" count="12"/>
+        <line num="315" type="stmt" count="12"/>
+        <line num="316" type="stmt" count="12"/>
+        <line num="318" type="stmt" count="12"/>
+        <line num="319" type="stmt" count="12"/>
+        <line num="321" type="stmt" count="12"/>
+        <line num="324" type="stmt" count="12"/>
+        <metrics loc="326" ncloc="212" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="50" elements="54" coveredelements="54"/>
       </file>
       <file name="/var/www/html/src/View/Helper/ElabsTimeHelper.php">
         <class name="ElabsTimeHelper" namespace="App\View\Helper">
           <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
         </class>
-        <line num="22" type="method" name="isSameDay" visibility="public" complexity="2" crap="2" count="1"/>
-        <line num="24" type="stmt" count="1"/>
-        <line num="25" type="stmt" count="1"/>
-        <line num="28" type="stmt" count="1"/>
+        <line num="22" type="method" name="isSameDay" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="24" type="stmt" count="2"/>
+        <line num="25" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="2"/>
         <metrics loc="30" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </file>
       <file name="/var/www/html/src/View/Helper/FormHelper.php">
@@ -3191,20 +3037,20 @@
       </file>
       <file name="/var/www/html/src/View/Helper/ItemsHelper.php">
         <class name="ItemsHelper" namespace="App\View\Helper">
-          <metrics complexity="5" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="11" coveredelements="8"/>
+          <metrics complexity="5" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
         </class>
-        <line num="27" type="method" name="fileConfig" visibility="public" complexity="5" crap="5.20" count="8"/>
-        <line num="29" type="stmt" count="8"/>
-        <line num="30" type="stmt" count="8"/>
-        <line num="32" type="stmt" count="2"/>
-        <line num="35" type="stmt" count="8"/>
-        <line num="37" type="stmt" count="0"/>
-        <line num="40" type="stmt" count="8"/>
-        <line num="42" type="stmt" count="5"/>
-        <line num="45" type="stmt" count="8"/>
-        <line num="47" type="stmt" count="0"/>
-        <line num="52" type="stmt" count="8"/>
-        <metrics loc="57" ncloc="47" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" elements="11" coveredelements="8"/>
+        <line num="27" type="method" name="fileConfig" visibility="public" complexity="5" crap="5" count="9"/>
+        <line num="29" type="stmt" count="9"/>
+        <line num="30" type="stmt" count="9"/>
+        <line num="32" type="stmt" count="3"/>
+        <line num="35" type="stmt" count="9"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="9"/>
+        <line num="42" type="stmt" count="6"/>
+        <line num="45" type="stmt" count="9"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="9"/>
+        <metrics loc="57" ncloc="47" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
       </file>
       <file name="/var/www/html/src/View/Helper/LicenseHelper.php">
         <class name="LicenseHelper" namespace="App\View\Helper">
@@ -3242,6 +3088,6 @@
         <metrics loc="82" ncloc="54" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="18" elements="20" coveredelements="18"/>
       </file>
     </package>
-    <metrics files="103" loc="9792" ncloc="6101" classes="103" methods="217" coveredmethods="120" conditionals="0" coveredconditionals="0" statements="2380" coveredstatements="1338" elements="2597" coveredelements="1458"/>
+    <metrics files="103" loc="9792" ncloc="6101" classes="103" methods="203" coveredmethods="123" conditionals="0" coveredconditionals="0" statements="2240" coveredstatements="1355" elements="2443" coveredelements="1478"/>
   </project>
 </coverage>
