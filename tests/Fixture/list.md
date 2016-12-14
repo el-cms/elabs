@@ -57,4 +57,4 @@ Projects:
 
 Total published : 16
 Total edited: 3
-After AdminActs::clean(): 15 elements
+After AdminActs::clean(): 19 elements

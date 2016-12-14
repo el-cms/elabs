@@ -95,7 +95,7 @@ class ProjectsController extends AppController
                     'Languages' => $containConfig['Languages'],
                     'Users' => $containConfig['Users'],
                     'Files' => [
-                        'fields' => ['id', 'name', 'filename','AlbumsFiles.album_id'],
+                        'fields' => ['id', 'name', 'filename', 'AlbumsFiles.album_id'],
                     ],
                 ]
             ],
