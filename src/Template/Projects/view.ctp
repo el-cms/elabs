@@ -64,6 +64,7 @@ $this->start('pageContent');
         <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . count($project->posts) . '</span>') ?></a></li>
         <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . count($project->notes) . '</span>') ?></a></li>
         <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . count($project->files) . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . count($project->albums) . '</span>') ?></a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">
@@ -101,12 +102,28 @@ $this->start('pageContent');
             endif;
             ?>
         </div>
+
+        <div class="tab-pane" id="albums-tab">
+            <?php
+            if (!empty($project->albums)):
+                foreach ($project->albums as $albums):
+                    echo $this->element('albums/card', ['data' => $albums, 'projectInfos' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
     </div>
 </div>
 <?php
 echo $this->cell('Comments::AddForm', ['authUser'=>$authUser]);
 
 $this->end();
+
+// Additionnal JS
+// --------------
+$this->Html->script('scrollbar',['block'=>'pageBottomScripts']);
 
 // Load the layout element
 // -----------------------

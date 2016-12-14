@@ -20,6 +20,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
+ * @property \App\Model\Entity\Album[] $albums
  */
 class Language extends Entity
 {

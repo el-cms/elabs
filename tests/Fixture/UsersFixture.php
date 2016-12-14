@@ -32,6 +32,7 @@ class UsersFixture extends TestFixture
         'note_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'post_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'project_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'album_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'preferences' => ['type' => 'text', 'length' => null, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
@@ -65,6 +66,7 @@ class UsersFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 0,
             'project_count' => 0,
+            'album_count' => 0,
             'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'
         ],
         [
@@ -83,6 +85,7 @@ class UsersFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 1,
             'project_count' => 3,
+            'album_count' => 0,
             'preferences' => '{"showNSFW":"1","defaultSiteLanguage":"fr_FR","defaultWritingLanguage":"fra","defaultWritingLicense":"3"}'
         ],
         [
@@ -101,6 +104,7 @@ class UsersFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 1,
             'project_count' => 0,
+            'album_count' => 0,
             'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"hin","defaultWritingLicense":"2"}'
         ],
         [
@@ -119,6 +123,7 @@ class UsersFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 0,
             'project_count' => 0,
+            'album_count' => 0,
             'preferences' => '{"showNSFW":"1","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'
         ],
     ];

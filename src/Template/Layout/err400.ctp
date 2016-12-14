@@ -15,7 +15,7 @@ endif;
         </title>
         <?php echo $this->Html->meta('icon') ?>
 
-        <?php echo $this->Html->css('frontend.css', array('media' => 'screen')) ?>
+        <?php echo $this->Html->css('style.css', array('media' => 'screen')) ?>
 
         <?php echo $this->fetch('meta') ?>
         <?php echo $this->fetch('css') ?>

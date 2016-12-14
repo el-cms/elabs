@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\UsersController;
@@ -9,13 +10,13 @@ use Cake\TestSuite\IntegrationTestCase;
  */
 class UsersControllerTest extends IntegrationTestCase
 {
-
     /**
      * Fixtures
      *
      * @var array
      */
     public $fixtures = [
+        'app.albums',
         'app.users',
         'app.files',
         'app.languages',
@@ -23,6 +24,7 @@ class UsersControllerTest extends IntegrationTestCase
         'app.licenses',
         'app.posts',
         'app.projects',
+        'app.projects_posts',
     ];
 
     /**
@@ -56,7 +58,6 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->get('/users/register');
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
@@ -68,7 +69,6 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->get('/users/login');
         $this->assertResponseOk();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 
     /**
@@ -80,6 +80,5 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->get('/users/logout');
         $this->assertRedirect();
-        $this->markTestIncomplete('Not implemented yet.');
     }
 }

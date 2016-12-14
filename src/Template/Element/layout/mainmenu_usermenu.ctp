@@ -30,3 +30,8 @@ $linkConfig = ['escape' => false];
 </li>
 <li><?php echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'Manage')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'files', 'action' => 'index'], $linkConfig) ?></li>
 <li><?php echo $this->Html->link($this->Html->iconT('plus', __d('elabs', 'Upload some files !')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'files', 'action' => 'add'], $linkConfig) ?></li>
+<li class="dropdown-header">
+    <?php echo __d('elabs', 'Albums:') ?>
+</li>
+<li><?php echo $this->Html->link($this->Html->iconT('list', __d('elabs', 'Manage')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'albums', 'action' => 'index'], $linkConfig) ?></li>
+<li><?php echo $this->Html->link($this->Html->iconT('plus', __d('elabs', 'Create an album !')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'albums', 'action' => 'add'], $linkConfig) ?></li>

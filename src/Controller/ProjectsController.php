@@ -91,6 +91,13 @@ class ProjectsController extends AppController
                 'Files' => $containConfig,
                 'Notes' => $containConfig,
                 'Posts' => $containConfig,
+                'Albums' => [
+                    'Languages' => $containConfig['Languages'],
+                    'Users' => $containConfig['Users'],
+                    'Files' => [
+                        'fields' => ['id', 'name', 'filename', 'AlbumsFiles.album_id'],
+                    ],
+                ]
             ],
             'conditions' => [
                 'Projects.status' => 1,

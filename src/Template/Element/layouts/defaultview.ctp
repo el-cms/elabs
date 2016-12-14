@@ -52,7 +52,7 @@ $this->end();
     // --------
     if ($haveLeftCol):
         ?>
-        <div class="col-sm-4">
+        <div class="col-sm-4 col-xs-12">
             <div class="list-group">
                 <?php echo $this->fetch('leftCol'); ?>
             </div>
@@ -63,7 +63,7 @@ $this->end();
     // Page content
     // ------------
     ?>
-    <div class="col-sm-<?php echo ($haveLeftCol) ? 8 : 12 ?>">
+    <div class="col-sm-<?php echo ($haveLeftCol) ? 8 : 12 ?> col-xs-12">
         <?php
         echo $this->fetch('pageContent');
         ?>

@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Table\ActsTable;
+use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 
 /**
  * Acts Controller
  *
- * @property \App\Model\Table\ActsTable $Acts
+ * @property ActsTable $Acts
  */
 class ActsController extends AppController
 {
@@ -43,6 +45,7 @@ class ActsController extends AppController
                 'Posts' => __d('elabs', 'Article'),
                 'Projects' => __d('elabs', 'Project'),
                 'Notes' => __d('elabs', 'Note'),
+                'Albums' => __d('elabs', 'Album'),
             ]
         ];
 
@@ -108,6 +111,22 @@ class ActsController extends AppController
                     'Languages' => $languageConfig,
                     'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
                 ],
+                'Albums' => [
+                    'fields' => ['id', 'name', 'created', 'modified', 'sfw', 'user_id', 'language_id'],
+                    'conditions' => [], // SFW is made after
+                    'Users' => $userConfig,
+                    'Languages' => $languageConfig,
+                    'Projects' => [
+                        'fields' => ['id', 'name', 'ProjectsAlbums.album_id'],
+                        'conditions' => ['status' => STATUS_PUBLISHED],
+                    ],
+                    'Files' => [
+                        'fields' => ['id', 'name', 'filename', 'sfw', 'AlbumsFiles.album_id'],
+                        'conditions' => [
+                            'status' => STATUS_PUBLISHED,
+                        ],
+                    ],
+                ],
             ],
             'limit' => 30,
             'order' => [
@@ -122,6 +141,7 @@ class ActsController extends AppController
             $this->paginate['contain']['Projects']['conditions']['Projects.sfw'] = true;
             $this->paginate['contain']['Files']['conditions']['Files.sfw'] = true;
             $this->paginate['contain']['Notes']['conditions']['Notes.sfw'] = true;
+            $this->paginate['contain']['Albums']['conditions']['Albums.sfw'] = true;
         }
 
         if ($updateFilter === 'hideUpdates') {

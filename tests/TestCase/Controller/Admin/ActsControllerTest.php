@@ -16,6 +16,7 @@ class ActsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.acts',
+        'app.albums',
         'app.files',
         'app.languages', // Needed for some layout vars
         'app.notes',
@@ -49,9 +50,10 @@ class ActsControllerTest extends IntegrationTestCase
         // Take a look at the fixtures/list.md for counts
         $Acts = \Cake\ORM\TableRegistry::get('Acts');
         $nb = $Acts->find()->count();
-        $this->assertEquals(16, $nb);
+        $this->assertEquals(19, $nb);
 
         // No error
+        $this->assertResponseEquals('');
         $this->assertResponseEmpty();
 
         // User should be redirected to '/' as no referer is available in tests

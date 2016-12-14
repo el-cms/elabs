@@ -62,6 +62,9 @@ class UsersTable extends Table
         $this->hasMany('Reports', [
             'foreignKey' => 'user_id'
         ]);
+        $this->hasMany('Albums', [
+            'foreignKey' => 'user_id'
+        ]);
         $this->belongsToMany('Teams', [
             'foreignKey' => 'user_id',
             'targetForeignKey' => 'team_id',
@@ -152,6 +155,11 @@ class UsersTable extends Table
             ->integer('post_count')
             ->requirePresence('post_count', 'create')
             ->notEmpty('post_count');
+
+        $validator
+            ->integer('album_count')
+            ->requirePresence('album_count', 'create')
+            ->notEmpty('album_count');
 
         $validator
             ->integer('project_count')

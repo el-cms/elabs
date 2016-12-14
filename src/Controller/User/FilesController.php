@@ -102,6 +102,7 @@ class FilesController extends UserAppController
                     'license_id' => $this->request->data['license_id'],
                     'language_id' => $this->request->data['language_id'],
                     'projects' => $this->request->data['projects'],
+                    'albums' => $this->request->data['albums'],
                     'status' => 1
                 ];
 
@@ -123,9 +124,10 @@ class FilesController extends UserAppController
             }
         }
         $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Files->Languages->find('list', ['limit' => 200]);
+        $languages = $this->Files->Languages->find('list');
         $projects = $this->Files->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('file', 'licenses', 'languages', 'projects'));
+        $albums = $this->Files->Albums->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('file', 'licenses', 'languages', 'projects', 'albums'));
         $this->set('_serialize', ['file']);
     }
 
@@ -144,6 +146,7 @@ class FilesController extends UserAppController
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'contain' => [
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
+                'Albums' => ['fields' => ['id', 'name', 'AlbumsFiles.file_id']],
             ]
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -165,9 +168,10 @@ class FilesController extends UserAppController
             }
         }
         $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Files->Languages->find('list', ['limit' => 200]);
+        $languages = $this->Files->Languages->find('list');
         $projects = $this->Files->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('file', 'licenses', 'languages', 'projects'));
+        $albums = $this->Files->Albums->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('file', 'licenses', 'languages', 'projects', 'albums'));
         $this->set('_serialize', ['file']);
     }
 

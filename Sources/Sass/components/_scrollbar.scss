@@ -1,0 +1,57 @@
+/**
+Scrollbar widget
+Margins are defined after, as they differs with .card-event and .card
+*/
+.scrollbar {
+    padding: $padding-small-vertical 0;
+    margin: 0 (-$padding-small-horizontal)+2; // Leave a 2px border on sides
+    box-shadow: 0 5px 10px -5px rgba(77,77,77,0.8) inset,
+        0 -5px 10px -5px rgba(77,77,77,0.5) inset;
+    background-color:rgba(0,0,0,.1);
+    /* 
+    Content wrapper with no overflow */
+    .scrollbar-viewport {
+        overflow: hidden;
+        margin:0;
+        /* 
+        Scrollbar content */
+        .scrollbar-content {
+            margin:0;
+            display: table;
+            border-spacing: $padding-small-horizontal;
+            border-collapse: separate;
+            /* 
+            Elements */
+            .scrollbar-item {
+                display: table-cell;
+            }
+        }
+    }
+}
+
+.card-event .scrollbar{
+    margin: 0 (-$padding-large-horizontal)+2; // Leave a 2px border on sides
+}
+
+/*
+Scrollbar buttons */
+.scrollbar-buttons{
+    display:inline-block;
+    position: relative;
+    top:1.5em;
+    left:50%;
+    padding:0;
+    border-radius:$border-radius-small;
+    background-color:$well-background-color;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.8);
+    z-index: 100;
+    transform: translateX(-50%);
+    .scrollbar-direction-left,
+    .scrollbar-direction-right, {
+        display:inline-block;
+        padding: $padding-small-vertical $padding-small-horizontal;
+        &:hover{
+            background-color:darken($well-background-color, 15%);
+        }
+    }
+}

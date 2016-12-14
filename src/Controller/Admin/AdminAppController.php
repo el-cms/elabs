@@ -25,7 +25,7 @@ class AdminAppController extends AppController
         if ($this->Auth->user('role') === 'admin') {
             $this->Auth->allow();
         } else {
-            if (!$this->Auth->user('id')) {
+            if (is_null($this->Auth->user('id'))) {
                 $this->Flash->Error(__d('elabs', 'You should be logged in to access this page.'));
                 $this->redirect($this->Auth->config('loginAction'));
             } else {

@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Post $post
  * @property \App\Model\Entity\Project $project
  * @property \App\Model\Entity\File $file
+ * @property \App\Model\Entity\Album $album
  */
 class Act extends Entity
 {

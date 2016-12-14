@@ -10,6 +10,12 @@ switch ($model):
     case 'Projects':
         $icon = 'cogs';
         break;
+    case 'Notes':
+        $icon = 'sticky-note-o';
+        break;
+    case 'Albums':
+        $icon = 'book';
+        break;
     default:
         $icon = 'question';
 endswitch;

@@ -15,9 +15,9 @@
     @at-root &-sm {
         padding: 5px;
     }
-/*    &:last-child{
-        margin-bottom:0;
-    }*/
+    /*    &:last-child{
+            margin-bottom:0;
+        }*/
 
     // The toolbar
     .card-toolbar{
@@ -143,13 +143,6 @@
     .card-toolbar{
         margin: -#{$padding-large-vertical} -#{$padding-large-horizontal};
     }
-    /*.nsfw-pill{
-        top: 0;
-        left: $padding-base-horizontal;
-    }
-    .report-link{
-        margin: -#{$padding-large-vertical} -#{$padding-large-horizontal};
-    }*/
     .card-informations{
         li{
             display:block;
@@ -169,4 +162,32 @@
     .card{
         background-color: #F0F0F0;
     }
+}
+
+/**
+    Album items
+*/
+.card-mini-item,{
+    display:table-cell;
+    vertical-align: middle;
+    border-radius:$border-radius-small;
+    background-color:$well-background-color;
+    @include box-shadow($value: $well-shadow);
+    padding:$padding-small-vertical;
+    height:150px;
+    max-width:200px;
+    .card-mini-item-content{
+        width:100%;
+        max-height: 150px;
+        overflow: hidden;
+        text-align:center;
+        video, audio{
+            display:block;
+            width:200 - $padding-small-vertical;
+        }
+    }
+    &:hover{
+        background-color:darken($body-background-color, 15%);
+    }
+
 }

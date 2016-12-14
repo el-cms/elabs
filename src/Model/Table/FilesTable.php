@@ -15,6 +15,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsToMany $Tags
  * @property \Cake\ORM\Association\BelongsToMany $Projects
+ * @property \Cake\ORM\Association\BelongsToMany $Albums
  * @property \Cake\ORM\Association\HasMany $Acts
  *
  * @method \App\Model\Entity\File get($primaryKey, $options = [])
@@ -73,6 +74,11 @@ class FilesTable extends Table
             'foreignKey' => 'file_id',
             'targetForeignKey' => 'project_id',
             'joinTable' => 'projects_files'
+        ]);
+        $this->belongsToMany('Albums', [
+            'foreignKey' => 'file_id',
+            'targetForeignKey' => 'album_id',
+            'joinTable' => 'albums_files'
         ]);
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',

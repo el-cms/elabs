@@ -22,10 +22,12 @@ use Cake\ORM\Entity;
  * @property int $file_count
  * @property int $note_count
  * @property int $post_count
+ * @property int $album_count
  * @property int $project_count
  * @property int $project_user_count
  * @property string $preferences
  *
+ * @property \App\Model\Entity\Album[] $albums
  * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts

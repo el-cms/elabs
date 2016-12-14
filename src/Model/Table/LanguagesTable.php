@@ -14,6 +14,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\HasMany $Notes
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
+ * @property \Cake\ORM\Association\HasMany $Albums
  *
  * @method \App\Model\Entity\Language get($primaryKey, $options = [])
  * @method \App\Model\Entity\Language newEntity($data = null, array $options = [])
@@ -50,6 +51,9 @@ class LanguagesTable extends Table
             'foreignKey' => 'language_id'
         ]);
         $this->hasMany('Projects', [
+            'foreignKey' => 'language_id'
+        ]);
+        $this->hasMany('Albums', [
             'foreignKey' => 'language_id'
         ]);
     }

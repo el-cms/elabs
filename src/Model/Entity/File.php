@@ -26,6 +26,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Tag[] $tags
  * @property \App\Model\Entity\Act[] $acts
  * @property \App\Model\Entity\Project[] $projects
+ * @property \App\Model\Entity\Album[] $albums
  */
 class File extends Entity
 {

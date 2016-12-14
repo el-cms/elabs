@@ -51,13 +51,14 @@ if (!empty($user->bio)):
         <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $user->note_count . '</span>') ?></a></li>
         <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $user->project_count . '</span>') ?></a></li>
         <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $user->file_count . '</span>') ?></a></li>
+        <li><a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . $user->album_count . '</span>') ?></a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">
             <?php
             if (!empty($user->posts)):
-                foreach ($user->posts as $posts):
-                    echo $this->element('posts/card', ['data' => $posts, 'userInfo' => false, 'event' => false]);
+                foreach ($user->posts as $post):
+                    echo $this->element('posts/card', ['data' => $post, 'userInfo' => false, 'event' => false]);
                 endforeach;
             else:
                 echo $this->element('layout/empty', ['alternative' => false]);
@@ -80,8 +81,8 @@ if (!empty($user->bio)):
         <div class="tab-pane" id="projects-tab">
             <?php
             if (!empty($user->projects)):
-                foreach ($user->projects as $projects):
-                    echo $this->element('projects/card', ['data' => $projects, 'userInfo' => false, 'event' => false]);
+                foreach ($user->projects as $project):
+                    echo $this->element('projects/card', ['data' => $project, 'userInfo' => false, 'event' => false]);
                 endforeach;
             else:
                 echo $this->element('layout/empty', ['alternative' => false]);
@@ -92,8 +93,20 @@ if (!empty($user->bio)):
         <div class="tab-pane" id="files-tab">
             <?php
             if (!empty($user->files)):
-                foreach ($user->files as $files):
-                    echo $this->element('files/card', ['data' => $files, 'userInfo' => false, 'event' => false]);
+                foreach ($user->files as $file):
+                    echo $this->element('files/card', ['data' => $file, 'userInfo' => false, 'event' => false]);
+                endforeach;
+            else:
+                echo $this->element('layout/empty', ['alternative' => false]);
+            endif;
+            ?>
+        </div>
+        
+        <div class="tab-pane" id="albums-tab">
+            <?php
+            if (!empty($user->albums)):
+                foreach ($user->albums as $album):
+                    echo $this->element('albums/card', ['data' => $album, 'userInfo' => false, 'event' => false]);
                 endforeach;
             else:
                 echo $this->element('layout/empty', ['alternative' => false]);
@@ -104,6 +117,10 @@ if (!empty($user->bio)):
 </div>
 <?php
 $this->end();
+
+// Additionnal JS
+// --------------
+$this->Html->script('scrollbar',['block'=>'pageBottomScripts']);
 
 // Load the layout element
 // -----------------------

@@ -1,7 +1,26 @@
 <?php
-$class = 'message';
-if (!empty($params['class'])) {
-    $class .= '  alert-' . $params['class'];
+
+$class = array_unique((array) $params['class']);
+$message = (isset($params['escape']) && $params['escape'] === false) ? $message : h($message);
+
+// Error messages
+$list = null;
+if (isset($params) AND isset($params['errors'])) :
+    // Make the message bold
+    $message = $this->Html->tag('strong', $message);
+    $items = [];
+    foreach ($params['errors'] as $error) :
+        $items[] = $this->Html->tag('li', $this->Html->iconT('warning', h($error)));
+    endforeach;
+    $list = $this->Html->tag('ul', $items, ['class' => 'list-unstyled']);
+endif;
+
+// Button
+if (in_array('alert-dismissible', $class)) {
+    $button = <<<BUTTON
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+BUTTON;
 }
-?>
-<div class="alert<?php echo h($class) ?>"><?php echo h($message) ?></div>
+$message = $button . $message;
+
+echo $this->Html->div($class, $message . $list, $params['attributes']);

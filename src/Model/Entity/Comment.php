@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property string $message
  * @property string $user_id
  *
+ * @property \App\Model\Entity\Album $album
  * @property \App\Model\Entity\File $file
  * @property \App\Model\Entity\Note $note
  * @property \App\Model\Entity\Post $post
