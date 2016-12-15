@@ -116,7 +116,7 @@ class ActsController extends AppController
                     'conditions' => [], // SFW is made after
                     'Users' => $userConfig,
                     'Languages' => $languageConfig,
-                    'conditions'=>[
+                    'conditions' => [
                         'Albums.status' => STATUS_PUBLISHED,
                     ],
                     'Projects' => [
