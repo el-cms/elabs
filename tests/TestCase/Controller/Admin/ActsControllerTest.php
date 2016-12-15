@@ -43,12 +43,17 @@ class ActsControllerTest extends IntegrationTestCase
         // Set session data
         $this->session($this->userCreds['admin']);
 
+        $Acts = \Cake\ORM\TableRegistry::get('Acts');
+
+        // Initial count
+        $nb = $Acts->find()->count();
+        $this->assertEquals(10, $nb);
+
         // POST method
         // -----------
         $this->post('/admin/acts/clean');
 
         // Take a look at the fixtures/list.md for counts
-        $Acts = \Cake\ORM\TableRegistry::get('Acts');
         $nb = $Acts->find()->count();
         $this->assertEquals(19, $nb);
 

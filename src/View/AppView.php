@@ -59,6 +59,7 @@ class AppView extends View
         $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
 
         $this->Paginator->templates([
+// Templates kept here as comments for reference
 //            'nextActive' => '<li class="next"><a rel="next" href="{{url}}">{{text}}</a></li>',
 //            'nextDisabled' => '<li class="next disabled"><a href="" onclick="return false;">{{text}}</a></li>',
 //            'prevActive' => '<li class="prev"><a rel="prev" href="{{url}}">{{text}}</a></li>',
