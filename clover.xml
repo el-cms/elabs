@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1481837447">
-  <project timestamp="1481837447">
+<coverage generated="1481842974">
+  <project timestamp="1481842974">
     <package name="App">
       <file name="/var/www/html/src/Application.php">
         <class name="Application" namespace="App">
@@ -201,7 +201,7 @@
       </file>
       <file name="/var/www/html/src/Controller/AlbumsController.php">
         <class name="AlbumsController" namespace="App\Controller">
-          <metrics complexity="7" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="0" elements="56" coveredelements="0"/>
+          <metrics complexity="9" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="59" coveredstatements="0" elements="61" coveredelements="0"/>
         </class>
         <line num="23" type="method" name="index" visibility="public" complexity="6" crap="42" count="0"/>
         <line num="24" type="stmt" count="0"/>
@@ -251,15 +251,20 @@
         <line num="74" type="stmt" count="0"/>
         <line num="75" type="stmt" count="0"/>
         <line num="76" type="stmt" count="0"/>
-        <line num="85" type="method" name="view" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="85" type="method" name="view" visibility="public" complexity="3" crap="12" count="0"/>
         <line num="86" type="stmt" count="0"/>
         <line num="87" type="stmt" count="0"/>
         <line num="88" type="stmt" count="0"/>
         <line num="89" type="stmt" count="0"/>
-        <line num="91" type="stmt" count="0"/>
         <line num="92" type="stmt" count="0"/>
         <line num="93" type="stmt" count="0"/>
-        <metrics loc="94" ncloc="68" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="0" elements="56" coveredelements="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <metrics loc="100" ncloc="72" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="59" coveredstatements="0" elements="61" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Controller/AppController.php">
         <class name="AppController" namespace="App\Controller">
@@ -628,7 +633,7 @@
       </file>
       <file name="/var/www/html/src/Controller/ProjectsController.php">
         <class name="ProjectsController" namespace="App\Controller">
-          <metrics complexity="9" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="24" elements="40" coveredelements="25"/>
+          <metrics complexity="10" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="44" coveredstatements="30" elements="46" coveredelements="31"/>
         </class>
         <line num="23" type="method" name="index" visibility="public" complexity="6" crap="13.15" count="1"/>
         <line num="26" type="stmt" count="1"/>
@@ -655,22 +660,28 @@
         <line num="68" type="stmt" count="1"/>
         <line num="69" type="stmt" count="1"/>
         <line num="70" type="stmt" count="1"/>
-        <line num="79" type="method" name="view" visibility="public" complexity="3" crap="3" count="1"/>
+        <line num="79" type="method" name="view" visibility="public" complexity="4" crap="4" count="1"/>
         <line num="82" type="stmt" count="1"/>
-        <line num="86" type="stmt" count="1"/>
         <line num="88" type="stmt" count="1"/>
         <line num="91" type="stmt" count="1"/>
         <line num="92" type="stmt" count="1"/>
         <line num="93" type="stmt" count="1"/>
         <line num="95" type="stmt" count="1"/>
         <line num="96" type="stmt" count="1"/>
-        <line num="101" type="stmt" count="1"/>
-        <line num="103" type="stmt" count="1"/>
+        <line num="100" type="stmt" count="1"/>
+        <line num="102" type="stmt" count="1"/>
+        <line num="104" type="stmt" count="1"/>
         <line num="108" type="stmt" count="1"/>
+        <line num="109" type="stmt" count="1"/>
+        <line num="110" type="stmt" count="1"/>
+        <line num="111" type="stmt" count="1"/>
         <line num="112" type="stmt" count="1"/>
-        <line num="113" type="stmt" count="1"/>
         <line num="115" type="stmt" count="1"/>
-        <metrics loc="116" ncloc="88" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="24" elements="40" coveredelements="25"/>
+        <line num="118" type="stmt" count="1"/>
+        <line num="122" type="stmt" count="1"/>
+        <line num="123" type="stmt" count="1"/>
+        <line num="125" type="stmt" count="1"/>
+        <metrics loc="126" ncloc="98" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="44" coveredstatements="30" elements="46" coveredelements="31"/>
       </file>
       <file name="/var/www/html/src/Controller/ReportsController.php">
         <class name="ReportsController" namespace="App\Controller">
@@ -797,7 +808,7 @@
       </file>
       <file name="/var/www/html/src/Controller/UsersController.php">
         <class name="UsersController" namespace="App\Controller">
-          <metrics complexity="16" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="47" coveredstatements="45" elements="53" coveredelements="50"/>
+          <metrics complexity="16" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="46" elements="54" coveredelements="51"/>
         </class>
         <line num="23" type="method" name="beforeFilter" visibility="public" complexity="5" crap="5.93" count="5"/>
         <line num="25" type="stmt" count="5"/>
@@ -837,25 +848,26 @@
         <line num="121" type="stmt" count="1"/>
         <line num="122" type="stmt" count="1"/>
         <line num="123" type="stmt" count="1"/>
-        <line num="126" type="stmt" count="1"/>
+        <line num="124" type="stmt" count="1"/>
         <line num="127" type="stmt" count="1"/>
         <line num="128" type="stmt" count="1"/>
         <line num="129" type="stmt" count="1"/>
-        <line num="136" type="method" name="register" visibility="public" complexity="3" crap="3" count="1"/>
-        <line num="138" type="stmt" count="1"/>
+        <line num="130" type="stmt" count="1"/>
+        <line num="137" type="method" name="register" visibility="public" complexity="3" crap="3" count="1"/>
         <line num="139" type="stmt" count="1"/>
-        <line num="164" type="stmt" count="1"/>
+        <line num="140" type="stmt" count="1"/>
         <line num="165" type="stmt" count="1"/>
         <line num="166" type="stmt" count="1"/>
-        <line num="173" type="method" name="login" visibility="public" complexity="3" crap="3" count="1"/>
-        <line num="175" type="stmt" count="1"/>
-        <line num="186" type="stmt" count="1"/>
-        <line num="193" type="method" name="logout" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="196" type="stmt" count="1"/>
+        <line num="167" type="stmt" count="1"/>
+        <line num="174" type="method" name="login" visibility="public" complexity="3" crap="3" count="1"/>
+        <line num="176" type="stmt" count="1"/>
+        <line num="187" type="stmt" count="1"/>
+        <line num="194" type="method" name="logout" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="197" type="stmt" count="1"/>
         <line num="198" type="stmt" count="1"/>
         <line num="199" type="stmt" count="1"/>
-        <metrics loc="200" ncloc="142" classes="1" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="48" elements="56" coveredelements="53"/>
+        <line num="200" type="stmt" count="1"/>
+        <metrics loc="201" ncloc="143" classes="1" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="51" coveredstatements="49" elements="57" coveredelements="54"/>
       </file>
     </package>
     <package name="App\Controller\Admin">
@@ -2003,7 +2015,7 @@
         <class name="Language" namespace="App\Model\Entity">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
-        <metrics loc="42" ncloc="14" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        <metrics loc="41" ncloc="13" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
       <file name="/var/www/html/src/Model/Entity/License.php">
         <class name="License" namespace="App\Model\Entity">
@@ -3137,6 +3149,6 @@
         <metrics loc="82" ncloc="54" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="18" elements="20" coveredelements="18"/>
       </file>
     </package>
-    <metrics files="104" loc="9906" ncloc="6156" classes="104" methods="203" coveredmethods="126" conditionals="0" coveredconditionals="0" statements="2283" coveredstatements="1414" elements="2486" coveredelements="1540"/>
+    <metrics files="104" loc="9922" ncloc="6170" classes="104" methods="203" coveredmethods="126" conditionals="0" coveredconditionals="0" statements="2295" coveredstatements="1421" elements="2498" coveredelements="1547"/>
   </project>
 </coverage>

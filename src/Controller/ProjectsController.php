@@ -83,26 +83,36 @@ class ProjectsController extends AppController
             'Licenses' => ['fields' => ['id', 'name']],
             'Users' => ['fields' => ['id', 'username', 'realname']],
         ];
-        $project = $this->Projects->get($id, [
+        $select = [
             'contain' => [
                 'Licenses',
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Files' => $containConfig,
-                'Notes' => $containConfig,
-                'Posts' => $containConfig,
+                'Files' => $containConfig + ['conditions' => ['Files.status' => STATUS_PUBLISHED]],
+                'Notes' => $containConfig + ['conditions' => ['Notes.status' => STATUS_PUBLISHED]],
+                'Posts' => $containConfig + ['conditions' => ['Posts.status' => STATUS_PUBLISHED]],
                 'Albums' => [
                     'Languages' => $containConfig['Languages'],
                     'Users' => $containConfig['Users'],
                     'Files' => [
-                        'fields' => ['id', 'name', 'filename', 'AlbumsFiles.album_id'],
+                        'fields' => ['id', 'name', 'filename', 'sfw', 'AlbumsFiles.album_id'],
                     ],
+                    'conditions' => ['Albums.status' => STATUS_PUBLISHED],
                 ]
             ],
             'conditions' => [
                 'Projects.status' => STATUS_PUBLISHED,
             ],
-        ]);
+        ];
+
+        if (!$this->request->session()->read('seeNSFW')) {
+            $select['contain']['Files']['conditions']['sfw'] = true;
+            $select['contain']['Notes']['conditions']['sfw'] = true;
+            $select['contain']['Posts']['conditions']['sfw'] = true;
+            $select['contain']['Albums']['conditions']['sfw'] = true;
+        }
+
+        $project = $this->Projects->get($id, $select);
 
         //SFW state
         if (!$project->sfw && !$this->request->session()->read('seeNSFW')) {

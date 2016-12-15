@@ -77,7 +77,13 @@ $this->start('pageContent');
             ?>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 thumbnail-col">
                 <div class="thumbnail thumbnail-square">
-                    <?php echo $this->element('files/card_minimal_' . $config['element'], ['data' => $file]) ?>
+                    <?php
+                    if ($file->sfw):
+                        echo $this->element('files/card_minimal_' . $config['element'], ['data' => $file]);
+                    else:
+                        echo $this->element('layout/nsfw_block');
+                    endif;
+                    ?>
                 </div>
             </div>
         <?php endforeach; ?>

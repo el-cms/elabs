@@ -46,9 +46,9 @@ class NotesTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('CounterCache', [
-            'Users' => ['file_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
-            'Licenses' => ['file_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
-            'Languages' => ['file_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
+            'Users' => ['note_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
+            'Licenses' => ['note_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
+            'Languages' => ['note_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
         ]);
 
         $this->belongsTo('Users', [

@@ -53,11 +53,11 @@ class AlbumsController extends AppController
                 case 'language':
                     $findOptions['conditions']['Languages.id'] = $id;
                     break;
-                case 'license':
-                    $findOptions['conditions']['Licenses.id'] = $id;
-                    break;
                 case 'user':
                     $findOptions['conditions']['Users.id'] = $id;
+                    break;
+                case 'project':
+                    $findOptions['conditions']['Projects.id'] = $id;
                     break;
                 default:
                     throw new \Cake\Network\Exception\NotFoundException;
@@ -88,7 +88,13 @@ class AlbumsController extends AppController
             'contain' => ['Users', 'Languages', 'Files', 'Projects']
         ]);
 
-        $this->set('album', $album);
-        $this->set('_serialize', ['album']);
+        //SFW state
+        if (!$album->sfw && !$this->request->session()->read('seeNSFW')) {
+            $this->set('name', $album->name);
+            $this->viewBuilder()->template('nsfw');
+        } else {
+            $this->set('album', $album);
+            $this->set('_serialize', ['album']);
+        }
     }
 }

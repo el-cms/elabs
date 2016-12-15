@@ -121,6 +121,7 @@ class UsersController extends AppController
             $options['contain']['Notes']['conditions']['Notes.sfw'] = true;
             $options['contain']['Posts']['conditions']['Posts.sfw'] = true;
             $options['contain']['Projects']['conditions']['Projects.sfw'] = true;
+            $options['contain']['Albums']['conditions']['Albums.sfw'] = true;
         }
 
         $user = $this->Users->get($id, $options);
