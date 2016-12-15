@@ -21,10 +21,10 @@ $this->Html->addCrumb(__d('elabs', 'Content in "{0}"', $this->Html->langLabel(h(
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('elabs', 'Name:') ?></strong> <span lang="<?php echo $language->iso639_1 ?>"><?php echo h($language->name) ?></span></li>
-    <li><strong><?php echo __d('elabs', 'Available translation:') ?></strong> <?php echo $this->Html->checkIcon($language->has_site_translation) ?></li>
-    <li><strong><?php echo __d('elabs', 'iso639-1 code:') ?></strong> <?php echo h($language->iso639_1) ?></li>
-    <li><strong><?php echo __d('elabs', 'iso639-2 code:') ?></strong> <?php echo h($language->id) ?></li>
+    <li><strong><?php echo $this->Html->iconT('font', __d('elabs', 'Name:')) ?></strong> <span lang="<?php echo $language->iso639_1 ?>"><?php echo h($language->name) ?></span></li>
+    <li><strong><?php echo $this->Html->iconT('info', __d('elabs', 'Available translation:')) ?></strong> <?php echo $this->Html->checkIcon($language->has_site_translation) ?></li>
+    <li><strong><?php echo $this->Html->iconT('info', __d('elabs', 'iso639-1 code:')) ?></strong> <?php echo h($language->iso639_1) ?></li>
+    <li><strong><?php echo $this->Html->iconT('info', __d('elabs', 'iso639-2 code:')) ?></strong> <?php echo h($language->id) ?></li>
 </ul>
 <?php
 $this->end();

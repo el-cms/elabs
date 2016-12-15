@@ -21,7 +21,7 @@ $this->Html->addCrumb(__d('elabs', 'Content with the {0} license', [h($license->
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('elabs', 'Name:') ?></strong> <?php echo $this->Html->iconT(h($license->icon), h($license->name)) ?></li>
+    <li><strong><?php echo $this->Html->iconT('font', __d('elabs', 'Name:')) ?></strong> <?php echo $this->Html->iconT(h($license->icon), h($license->name)) ?></li>
 </ul>
 <?php
 $this->end();

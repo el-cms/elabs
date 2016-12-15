@@ -23,14 +23,20 @@ $this->Html->addCrumb($this->Html->langLabel($project->name, $project->language-
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->Html->link($this->Html->iconT($project->license->icon, $project->license->name), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
-    <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
-    <li><strong><?php echo __d('elabs', 'Created on:') ?></strong> <?php echo h($project->created) ?></li>
+    <li><strong><?php echo $this->Html->iconT('font', __d('elabs', 'Name:')) ?></strong> <?php echo $project->name ?></li>
+    <li><strong><?php echo $this->Html->iconT('copyright', __d('elabs', 'License:')) ?></strong> <?php echo $this->Html->link($this->Html->iconT($project->license->icon, $project->license->name), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
+    <li><strong><?php echo $this->Html->iconT('calendar', __d('elabs', 'Created on:')) ?></strong> <?php echo h($project->created) ?></li>
     <?php if ($project->has('modified')): ?>
-        <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($project->modified) ?></li>
+        <li><strong><?php echo $this->Html->iconT('calendar', __d('elabs', 'Updated on:')) ?></strong> <?php echo h($project->modified) ?></li>
     <?php endif; ?>
-    <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $project->sfw ? 'success' : 'danger'; ?>"><?php echo $project->sfw ? __d('elabs', 'Yes') : __d('elabs', 'No'); ?></span></li>
-    <li><strong><?php echo __d('elabs', 'Tags:') ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
+    <li><strong><?php echo $this->Html->iconT('language', __d('elabs', 'Language:')) ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('info', __d('elabs', 'Safe content:')) ?></strong>
+        <span class="label label-<?php echo $project->sfw ? 'success' : 'danger'; ?>">
+            <?php echo $project->sfw ? $this->Html->iconT('check-circle', __d('elabs', 'Yes')) : $this->Html->iconT('circle-o', __d('elabs', 'No')); ?>
+        </span>
+    </li>
+    <li><strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
 </ul>
 
 <h5 class="list-group-item-heading"><?php echo __d('elabs', 'Members') ?></h5>
@@ -117,13 +123,13 @@ $this->start('pageContent');
     </div>
 </div>
 <?php
-echo $this->cell('Comments::AddForm', ['authUser'=>$authUser]);
+echo $this->cell('Comments::AddForm', ['authUser' => $authUser]);
 
 $this->end();
 
 // Additionnal JS
 // --------------
-$this->Html->script('scrollbar',['block'=>'pageBottomScripts']);
+$this->Html->script('scrollbar', ['block' => 'pageBottomScripts']);
 
 // Load the layout element
 // -----------------------
