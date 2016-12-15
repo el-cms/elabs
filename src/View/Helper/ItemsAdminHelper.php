@@ -20,19 +20,19 @@ class ItemsAdminHelper extends Helper
     public function statusLabel($status, $icon = true)
     {
         switch ($status) {
-            case 0: // Waiting for approval
+            case STATUS_DRAFT: // Waiting for approval
                 $statusIcon = 'exclamation';
                 $text = __d('elabs', 'Waiting');
                 break;
-            case 1: // Approved
+            case STATUS_ACTIVE: // Approved
                 $statusIcon = 'check';
                 $text = __d('elabs', 'Published');
                 break;
-            case 2: // Locked
+            case STATUS_LOCKED: // Locked
                 $statusIcon = 'lock';
                 $text = __d('elabs', 'Locked');
                 break;
-            case 3: // Deleted
+            case STATUS_DELETED: // Deleted
                 $statusIcon = 'times';
                 $text = __d('elabs', 'Removed');
                 break;

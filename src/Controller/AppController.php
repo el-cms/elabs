@@ -51,7 +51,7 @@ class AppController extends Controller
             'authenticate' => [
                 'Form' => [
                     'fields' => ['username' => 'email'],
-                    'scope' => ['status' => 1],
+                    'scope' => ['status' => STATUS_PUBLISHED],
                 ],
             ],
             'loginAction' => ['prefix' => false, 'controller' => 'Users', 'action' => 'login'],

@@ -29,18 +29,18 @@
             <span class="label label-language"><?php echo $note->language->id; ?></span>
             <?php
             switch ($note->status):
-                case 0:
+                case STATUS_DRAFT:
                     ?><span class="label label-default"><?php echo __d('elabs', 'Draft') ?></span><?php
                     break;
-                case 1:
+                case STATUS_ACTIVE:
                     ?><span class="label label-success"><?php echo __d('elabs', 'Published') ?></span><?php
                     break;
-                case 2:
+                case STATUS_LOCKED:
                     ?><span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span><?php
-                        break;
-                    case 3:
-                        ?><span class="label label-danger"><?php echo __d('elabs', 'Deleted') ?></span><?php
-                        break;
+                    break;
+                case STATUS_DELETED:
+                    ?><span class="label label-danger"><?php echo __d('elabs', 'Deleted') ?></span><?php
+                    break;
                 endswitch;
                 ?>
         </span>

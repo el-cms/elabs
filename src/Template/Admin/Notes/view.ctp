@@ -44,9 +44,9 @@ $this->start('pageActions');
     // Lock/unlock
     $unlockIcon = $this->Html->iconT('unlock-alt', __d('elabs', 'Unlock'));
     $lockIcon = $this->Html->iconT('lock', __d('elabs', 'Lock'));
-    if ($note->status === 2):
+    if ($note->status === STATUS_LOCKED):
         echo $this->Html->link($unlockIcon, ['action' => 'changeState', $note->id, 'unlock'], ['escape' => false, 'class' => 'btn btn-warning']);
-    elseif ($note->status === 1):
+    elseif ($note->status === STATUS_PUBLISHED):
         echo $this->Html->link($lockIcon, ['action' => 'changeState', $note->id, 'lock'], ['escape' => false, 'class' => 'btn btn-warning']);
     else:
         echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-warning disabled', 'escape' => false]);
@@ -54,7 +54,7 @@ $this->start('pageActions');
     // Close
     $class = 'btn btn-danger';
     $link = ['action' => 'changeState', $note->id, 'remove'];
-    if ($note->status === 3):
+    if ($note->status === STATUS_DELETED):
         $class .= ' disabled';
         $link = '#';
     endif;

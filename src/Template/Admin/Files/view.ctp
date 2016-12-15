@@ -47,9 +47,9 @@ $this->start('pageActions');
     // Lock/unlock
     $unlockIcon = $this->Html->iconT('unlock-alt', __d('elabs', 'Unlock'));
     $lockIcon = $this->Html->iconT('lock', __d('elabs', 'Lock'));
-    if ($file->status === 2):
+    if ($file->status === STATUS_LOCKED):
         echo $this->Html->link($unlockIcon, ['action' => 'changeState', $file->id, 'unlock'], ['escape' => false, 'class' => 'btn btn-warning']);
-    elseif ($file->status === 1):
+    elseif ($file->status === STATUS_PUBLISHED):
         echo $this->Html->link($lockIcon, ['action' => 'changeState', $file->id, 'lock'], ['escape' => false, 'class' => 'btn btn-warning']);
     else:
         echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-warning disabled', 'escape' => false]);
@@ -57,7 +57,7 @@ $this->start('pageActions');
     // Close
     $class = 'btn btn-danger';
     $link = ['action' => 'changeState', $file->id, 'remove'];
-    if ($file->status === 3):
+    if ($file->status === STATUS_DELETED):
         $class .= ' disabled';
         $link = '#';
     endif;

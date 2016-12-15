@@ -146,7 +146,7 @@ class UsersController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->get($this->Auth->user('id'));
             if ($user->comparePassword($this->request->data['current_password'])) {
-                $user->status = 3; // "deleted" state
+                $user->status = STATUS_DELETED;
                 $this->Users->save($user);
                 $this->Flash->Success(__d('elabs', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
 //                $this->Act->removeAll();

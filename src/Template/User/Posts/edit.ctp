@@ -56,7 +56,7 @@ $this->CodeMirror->add('textArea');
         <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
     </div>
     <div class="col-sm-3">
-        <?php echo $this->Form->input('status', ['required' => false, 'type' => 'checkbox', 'value' => '1', 'class' => 'access_hide', 'label' => __d('elabs', 'Published')]); ?>
+        <?php echo $this->Form->input('status', ['required' => false, 'type' => 'checkbox', 'value' => STATUS_PUBLISHED, 'class' => 'access_hide', 'label' => __d('elabs', 'Published')]); ?>
     </div>
     <div class="col-sm-3">
         <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>

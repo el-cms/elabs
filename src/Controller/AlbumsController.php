@@ -26,7 +26,7 @@ class AlbumsController extends AppController
             'fields' => [
                 'id', 'name', 'description', 'created', 'modified', 'sfw', 'status', 'user_id',
             ],
-            'conditions' => ['Albums.status' => 1],
+            'conditions' => ['Albums.status' => STATUS_PUBLISHED],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],

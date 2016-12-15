@@ -26,7 +26,7 @@ class PostsController extends AppController
             'fields' => [
                 'id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id', 'language_id',
             ],
-            'conditions' => ['Posts.status' => 1],
+            'conditions' => ['Posts.status' => STATUS_PUBLISHED],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
@@ -86,7 +86,7 @@ class PostsController extends AppController
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
             ],
-            'conditions' => ['Posts.status' => 1],
+            'conditions' => ['Posts.status' => STATUS_PUBLISHED],
         ]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors

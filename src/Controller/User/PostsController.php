@@ -35,16 +35,16 @@ class PostsController extends UserAppController
             'sortWhitelist' => ['title', 'status', 'publication_date', 'created', 'modified', 'sfw'],
         ];
         if ($nsfw === 'safe') {
-            $this->paginate['conditions']['sfw'] = 1;
+            $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {
-            $this->paginate['conditions']['sfw'] = 0;
+            $this->paginate['conditions']['sfw'] = SFW_UNSAFE;
         }
         if ($published === 'drafts') {
-            $this->paginate['conditions']['status'] = 0;
+            $this->paginate['conditions']['status'] = STATUS_DRAFT;
         } elseif ($published === 'published') {
-            $this->paginate['conditions']['status'] = 1;
+            $this->paginate['conditions']['status'] = STATUS_PUBLISHED;
         } elseif ($published === 'locked') {
-            $this->paginate['conditions']['status'] = 2;
+            $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
         $this->set('posts', $this->paginate($this->Posts));
         $this->set('filterNSFW', $nsfw);
@@ -64,7 +64,7 @@ class PostsController extends UserAppController
             // Assigning values:
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
-            if ($dataSent['status'] === '1') {
+            if ($dataSent['status'] == STATUS_PUBLISHED) {
                 $dataSent['publication_date'] = Time::now();
             }
 
@@ -72,7 +72,7 @@ class PostsController extends UserAppController
             $post = $this->Posts->patchEntity($post, $dataSent);
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__d('elabs', 'Your article has been saved.'));
-                if ($post->status === 1) {
+                if ($post->status === STATUS_PUBLISHED) {
                     $this->Act->add($post->id, 'add', 'Posts', $post->created);
                 }
                 $this->redirect(['action' => 'index']);
@@ -110,16 +110,16 @@ class PostsController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Old publication state
             $oldState = $post->status;
-            if ($oldState === 0 && $this->request->data['status'] === '1') {
+            if ($oldState === STATUS_DRAFT && $this->request->data['status'] == STATUS_PUBLISHED) {
                 $this->request->data['publication_date'] = Time::now();
             }
             $post = $this->Posts->patchEntity($post, $this->request->data);
             if ($this->Posts->save($post)) {
-                if ($oldState === 0 && $post->status === 1) {
+                if ($oldState === STATUS_DRAFT && $post->status === STATUS_PUBLISHED) {
                     // New publication
                     $this->Act->add($post->id, 'add', 'Posts', $post->created);
                     $this->Flash->success(__d('elabs', 'Your article has been published.'));
-                } elseif ($oldState === 1 && $post->status === 0) {
+                } elseif ($oldState === STATUS_PUBLISHED && $post->status === STATUS_DRAFT) {
                     // Removed from publication
                     $this->Act->remove($post->id);
                     $this->Flash->success(__d('elabs', 'Your article has been unpublished.'));

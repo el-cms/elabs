@@ -26,7 +26,7 @@ class FilesController extends AppController
             'fields' => [
                 'id', 'name', 'filename', 'weight', 'description', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'mime',
             ],
-            'conditions' => ['Files.status' => 1],
+            'conditions' => ['Files.status' => STATUS_PUBLISHED],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],

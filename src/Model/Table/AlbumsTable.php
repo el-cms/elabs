@@ -44,8 +44,8 @@ class AlbumsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->addBehavior('CounterCache', [
-            'Users' => ['album_count' => ['conditions' => ['status' => 1]]],
-            'Languages' => ['album_count' => ['conditions' => ['status' => 1]]],
+            'Users' => ['album_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
+            'Languages' => ['album_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
         ]);
 
         $this->belongsTo('Users', [

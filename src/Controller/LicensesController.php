@@ -42,7 +42,7 @@ class LicensesController extends AppController
                     'Users' => ['fields' => ['id', 'username']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'conditions' => [ // SFW is made after
-                        'Posts.status' => 1,
+                        'Posts.status' => STATUS_PUBLISHED,
                     ],
                 ],
                 'Notes' => [
@@ -50,21 +50,21 @@ class LicensesController extends AppController
                     'Users' => ['fields' => ['id', 'username']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'conditions' => [ // SFW is made after
-                        'Notes.status' => 1,
+                        'Notes.status' => STATUS_PUBLISHED,
                     ],
                 ],
                 'Projects' => [
                     'Users' => ['fields' => ['id', 'username']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'conditions' => [ // SFW is made after
-                        'Projects.status' => 1,
+                        'Projects.status' => STATUS_PUBLISHED,
                     ],
                 ],
                 'Files' => [
                     'Users' => ['fields' => ['id', 'username']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'conditions' => [ // SFW is made after
-                        'Files.status' => 1,
+                        'Files.status' => STATUS_PUBLISHED,
                     ],
                 ]
             ],

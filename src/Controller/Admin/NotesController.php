@@ -69,24 +69,24 @@ class NotesController extends AdminAppController
             case 'lock':
                 $successMessage = __d('elabs', 'The note has been locked.');
                 $this->Act->remove($id);
-                $bit = 2;
+                $bit = STATUS_LOCKED;
                 break;
             case 'unlock':
                 $successMessage = __d('elabs', 'The note has been unlocked.');
-                $bit = 1;
+                $bit = STATUS_PUBLISHED;
                 break;
             case 'remove':
                 $successMessage = __d('elabs', 'The note has been removed.');
-                $bit = 3;
+                $bit = STATUS_DELETED;
                 $this->Act->remove($id, 'Projects', false);
                 break;
             default:
                 $successMessage = __d('elabs', 'The note has been locked.');
-                $bit = 2;
+                $bit = STATUS_LOCKED;
         }
         $note = $this->Notes->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => '3'],
+            'conditions' => ['status !=' => STATUS_DELETED],
         ]);
         $note->status = $bit;
         if ($this->Notes->save($note)) {

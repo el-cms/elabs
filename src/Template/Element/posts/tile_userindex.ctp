@@ -27,9 +27,9 @@
                 <span class="label text-monospace label-danger"><?php echo __d('elabs', 'NSFW') ?></span>
             <?php endif; ?>
             <span class="label label-language"><?php echo $post->language->id; ?></span>
-            <?php if ($post->status === 1): ?>
+            <?php if ($post->status === STATUS_ACTIVE): ?>
                 <span class="label label-success"><?php echo __d('elabs', 'Published') ?></span>
-            <?php elseif ($post->status === 0): ?>
+            <?php elseif ($post->status === STATUS_DRAFT): ?>
                 <span class="label label-default"><?php echo __d('elabs', 'Draft') ?></span>
             <?php else: ?>
                 <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>

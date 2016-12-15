@@ -65,7 +65,7 @@ class ActsController extends AdminAppController
             $models = ['Files', 'Posts', 'Projects', 'Notes', 'Albums'];
             foreach ($models as $model) {
 //                $done[$model]=['add'=>0, 'edit'=>0];
-                $query = $this->$model->find('all', ['conditions' => ['status' => 1]]);
+                $query = $this->$model->find('all', ['conditions' => ['status' => STATUS_PUBLISHED]]);
                 foreach ($query as $item) {
                     // Add
                     $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $item->id, 'model' => $model, 'type' => 'add', 'created' => $item->created]); //, 'user_id' => $uid]);

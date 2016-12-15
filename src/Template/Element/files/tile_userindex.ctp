@@ -27,7 +27,7 @@
                 <span class="label text-monospace label-danger"><?php echo __d('elabs', 'NSFW') ?></span>
             <?php endif; ?>
             <?php echo $this->Html->langLabel($file->language->id, $file->language->iso639_1) ?>
-            <?php if ($file->status === 2): ?>
+            <?php if ($file->status === STATUS_LOCKED): ?>
                 <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
             <span id="h-<?php echo $tileGroupId . $file->id ?>"><?php echo h($file->name) ?></span>

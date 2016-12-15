@@ -25,7 +25,7 @@ class ProjectsController extends AppController
         $findOptions = [
             'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
             'conditions' => [
-                'Projects.status' => 1,
+                'Projects.status' => STATUS_PUBLISHED,
             ],
             'sortWithelist' => ['created', 'modified', 'name'],
             'contain' => [
@@ -100,7 +100,7 @@ class ProjectsController extends AppController
                 ]
             ],
             'conditions' => [
-                'Projects.status' => 1,
+                'Projects.status' => STATUS_PUBLISHED,
             ],
         ]);
 

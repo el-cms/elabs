@@ -24,7 +24,7 @@ class NotesController extends AppController
     {
         $findOptions = [
             'fields' => ['id', 'text', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
-            'conditions' => ['Notes.status' => 1],
+            'conditions' => ['Notes.status' => STATUS_PUBLISHED],
             'contain' => [
                 'Users' => ['fields' => ['id', 'username', 'realname']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
@@ -85,7 +85,7 @@ class NotesController extends AppController
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
             ],
-            'conditions' => ['Notes.status' => 1],
+            'conditions' => ['Notes.status' => STATUS_PUBLISHED],
         ]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors

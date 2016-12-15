@@ -27,7 +27,7 @@
                 <span class="label text-monospace label-danger"><?php echo __d('elabs', 'NSFW') ?></span>
             <?php endif; ?>
             <span class="label label-language"><?php echo $project->language->id; ?></span>
-            <?php if ($project->status === 2): ?>
+            <?php if ($project->status === STATUS_LOCKED): ?>
                 <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
             <span id="h-<?php echo $tileGroupId . $project->id ?>" lang="<?php echo $project->language->iso639_1 ?>"><?php echo h($project->name) ?></span>

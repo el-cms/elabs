@@ -42,7 +42,7 @@ class LanguagesController extends AppController
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
-                        'Posts.status' => 1,
+                        'Posts.status' => STATUS_PUBLISHED,
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
@@ -50,7 +50,7 @@ class LanguagesController extends AppController
                 'Notes' => [
                     'fields' => ['id', 'text', 'sfw', 'modified', 'created', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
-                        'Notes.status' => 1,
+                        'Notes.status' => STATUS_PUBLISHED,
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
@@ -58,7 +58,7 @@ class LanguagesController extends AppController
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
-                        'Projects.status' => 1,
+                        'Projects.status' => STATUS_PUBLISHED,
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
@@ -66,7 +66,7 @@ class LanguagesController extends AppController
                 'Files' => [
                     'fields' => ['id', 'name', 'description', 'filename', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
-                        'Files.status' => 1,
+                        'Files.status' => STATUS_PUBLISHED,
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,

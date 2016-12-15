@@ -1,9 +1,15 @@
 <?php
 
-define('STATUS_DRAFT', 0);
-define('STATUS_PUBLISHED', 1);
+// Same status code but different meanings
+define('STATUS_INACTIVE', 0); // Users
+define('STATUS_DRAFT', 0); // Content
+define('STATUS_ACTIVE', 1); // Users
+define('STATUS_PUBLISHED', 1); // Content
 define('STATUS_LOCKED', 2);
 define('STATUS_DELETED', 3);
+
+define('SFW_SAFE', 1);
+define('SFW_UNSAFE', 0);
 
 return ['cms' => [
         'siteName' => 'YourSite',

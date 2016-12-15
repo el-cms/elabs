@@ -102,14 +102,14 @@ class UsersController extends AdminAppController
     public function lock($id, $action = 'lock')
     {
         $successMessage = __d('elabs', 'The account has been locked.');
-        $bit = 2; // Lock by default
+        $bit = STATUS_LOCKED; // Lock by default
         if ($action === 'unlock') {
             $successMessage = __d('elabs', 'The account has been unlocked.');
             $bit = 1;
         }
         $user = $this->Users->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => 3]
+            'conditions' => ['status !=' => STATUS_DELETED]
         ]);
         $user->status = $bit;
         if ($this->Users->save($user)) {
@@ -139,9 +139,9 @@ class UsersController extends AdminAppController
     {
         $user = $this->Users->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => 3]
+            'conditions' => ['status !=' => STATUS_DELETED]
         ]);
-        $user->status = 3;
+        $user->status = STATUS_DELETED;
         if ($this->Users->save($user)) {
 //            $this->Act->removeAll($id);
             if (!$this->request->is('ajax')) {
@@ -170,7 +170,7 @@ class UsersController extends AdminAppController
     {
         $user = $this->Users->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status' => 0]
+            'conditions' => ['status' => STATUS_INACTIVE]
         ]);
         $user->status = 1;
         if ($this->Users->save($user)) {

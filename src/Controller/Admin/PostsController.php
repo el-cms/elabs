@@ -82,24 +82,24 @@ class PostsController extends AdminAppController
             case 'lock':
                 $successMessage = __d('elabs', 'The post has been locked.');
                 $this->Act->remove($id);
-                $bit = 2;
+                $bit = STATUS_LOCKED;
                 break;
             case 'unlock':
                 $successMessage = __d('elabs', 'The post has been unlocked.');
-                $bit = 1;
+                $bit = STATUS_PUBLISHED;
                 break;
             case 'remove':
                 $successMessage = __d('elabs', 'The post has been removed.');
-                $bit = 3;
+                $bit = STATUS_DELETED;
                 $this->Act->remove($id, 'Posts', false);
                 break;
             default:
                 $successMessage = __d('elabs', 'The post has been locked.');
-                $bit = 2;
+                $bit = STATUS_LOCKED;
         }
         $post = $this->Posts->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => '3'],
+            'conditions' => ['status !=' => STATUS_DELETED],
         ]);
         $post->status = $bit;
         if ($this->Posts->save($post)) {
