@@ -88,7 +88,7 @@ class Installer
             $io->write('Created `config/app.php` file');
         }
     }
-    
+
     /**
      * Create the config/siteconfig.php file if it does not exist.
      *

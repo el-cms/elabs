@@ -15,13 +15,31 @@ class LanguagesController extends AppController
     /**
      * Index method
      *
+     * @param string $filter Filter to apply to the query
+     *
      * @return void
      */
-    public function index()
+    public function index($filter = 'hideEmpties')
     {
-        $languages = $this->paginate($this->Languages);
+        $query = $this->Languages->find();
 
-        $this->set(compact('languages'));
+        // Filters
+        if ($filter === 'hideEmpties') {
+            $query->where([
+                    ['OR' =>
+                        [
+                        'album_count >' => '0',
+                        'file_count >' => '0',
+                        'note_count >' => '0',
+                        'post_count >' => '0',
+                        'project_count >' => '0',
+                        ]
+                    ]
+            ]);
+        }
+
+        $languages = $this->paginate($query);
+        $this->set(compact('languages', 'filter'));
         $this->set('_serialize', ['languages']);
     }
 
@@ -41,7 +59,7 @@ class LanguagesController extends AppController
             'contain' => [
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id', 'language_id'],
-                    'conditions' => [ // SFW is made after
+                    'conditions' => [// SFW is made after
                         'Posts.status' => STATUS_PUBLISHED,
                     ],
                     'Users' => $userConfig,
@@ -49,7 +67,7 @@ class LanguagesController extends AppController
                 ],
                 'Notes' => [
                     'fields' => ['id', 'text', 'sfw', 'modified', 'created', 'user_id', 'license_id', 'language_id'],
-                    'conditions' => [ // SFW is made after
+                    'conditions' => [// SFW is made after
                         'Notes.status' => STATUS_PUBLISHED,
                     ],
                     'Users' => $userConfig,
@@ -57,7 +75,7 @@ class LanguagesController extends AppController
                 ],
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
-                    'conditions' => [ // SFW is made after
+                    'conditions' => [// SFW is made after
                         'Projects.status' => STATUS_PUBLISHED,
                     ],
                     'Users' => $userConfig,
@@ -65,7 +83,7 @@ class LanguagesController extends AppController
                 ],
                 'Files' => [
                     'fields' => ['id', 'name', 'description', 'filename', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
-                    'conditions' => [ // SFW is made after
+                    'conditions' => [// SFW is made after
                         'Files.status' => STATUS_PUBLISHED,
                     ],
                     'Users' => $userConfig,
