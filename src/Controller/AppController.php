@@ -61,14 +61,25 @@ class AppController extends Controller
             'logoutRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index']
         ]);
 
-        // SFW display
+        /*
+         * Enable the following components for recommended CakePHP security settings.
+         * see http://book.cakephp.org/3.0/en/controllers/components/security.html
+         */
+        //$this->loadComponent('Security');
+        //$this->loadComponent('Csrf');
+
+        /*
+         * Safe for work option
+         */
         if (is_null($this->request->session()->read('seeNSFW'))) {
             $this->_setSFWState('hide');
         }
 
-        // Site language
+        /*
+         * Site language option
+         */
         if (is_null($this->request->session()->read('language'))) {
-            // Init the languages list
+            // Create the languages list
             $this->_setLanguagesList();
             // Add language info to session
             $this->_setLanguage();
@@ -85,15 +96,16 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        // "Public" AppController, so all actions allowed
         $this->Auth->allow();
-        // SFW
+        // Making the seeNSFW variable available in view
         $this->set('seeNSFW', $this->request->session()->read('seeNSFW'));
-        // Languages
+        // Making language list and current language variables available in views
         $lang = $this->request->session()->read('language');
         $this->set('availableLanguages', $this->request->session()->read('languages'));
         $this->set('siteLanguage', $lang);
         I18n::locale($this->_getFolderNameFromLangCode($lang));
-        // User menu
+        // Making currently authentified user infos available in view
         $authUser = null;
         if (!is_null($this->Auth->user('id'))) {
             $authUser = $this->Auth->user();
@@ -111,7 +123,7 @@ class AppController extends Controller
     {
         //$this->set('currentController', \Cake\Utility\Inflector::underscore($this->request->params['controller']));
         if (!array_key_exists('_serialize', $this->viewVars) &&
-                in_array($this->response->type(), ['application/json', 'application/xml', 'text/csv'])
+                in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
             $this->set('_serialize', true);
         }
@@ -138,6 +150,7 @@ class AppController extends Controller
     protected function _setUserPreferences()
     {
         $preferences = json_decode($this->Auth->user('preferences'), true);
+        $preferences += \Cake\Core\Configure::read('cms.defaultUserPreferences');
         $this->_setLanguage($preferences['defaultSiteLanguage']);
         $this->_setSFWState(($preferences['showNSFW'] === '1') ? 'show' : 'hide');
         $this->request->session()->write('defaultWritingLanguage', $preferences['defaultWritingLanguage']);

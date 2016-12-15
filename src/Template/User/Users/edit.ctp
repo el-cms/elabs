@@ -8,6 +8,8 @@
  *   defaultindex.ctp
  */
 
+use Cake\Core\Configure;
+
 // Page title
 $this->assign('title', __d('elabs', 'Update your profile'));
 
@@ -41,7 +43,7 @@ $this->start('pageContent');
                 <?php
                 echo $this->Form->input('email', ['label' => __d('elabs', 'E-mail')]);
                 echo $this->Form->input('realname', ['label' => __d('elabs', 'Real name')]);
-                echo $this->Form->input('website', ['label' => __d('elabs', 'Website'), 'placeholder'=>'http://']);
+                echo $this->Form->input('website', ['label' => __d('elabs', 'Website'), 'placeholder' => 'http://']);
                 echo $this->Form->input('bio', ['label' => __d('elabs', 'About you'), 'id' => 'bioArea']);
                 echo $this->element('layout/loader_codemirror', ['textareas' => ['bioArea']]);
                 ?>
@@ -57,7 +59,7 @@ $this->start('pageContent');
             <fieldset>
                 <?php
                 $userPrefs = json_decode($authUser['preferences'], true);
-                $userPrefs += Cake\Core\Configure::read('cms.defaultUserPreferences');
+                $userPrefs = $userPrefs + Configure::read('cms.defaultUserPreferences');
                 // Default site lang
                 echo $this->Form->input('preferences[defaultSiteLanguage]', [
                     'type' => 'select',
