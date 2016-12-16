@@ -7,6 +7,7 @@
  * Layout element:
  *   adminview.ctp
  */
+use Cake\Core\Configure;
 
 // Page title
 $this->assign('title', h($user->realname));
@@ -25,14 +26,23 @@ $this->start('pageInfos');
     </div>
     <div class="col-sm-8">
         <ul class="list-unstyled">
-            <li><strong><?php echo $this->Html->iconT('user', h($user->username)) ?></strong></li>
-            <li><?php echo $this->Html->iconT('calendar', h($user->created)) ?></li>
-            <?php if ($user->has('website')): ?>
-                <li><?php echo $this->Html->iconT('external-link', $this->Html->link(__d('elabs', 'Website'), h($user->website), ['escape' => false, 'target' => '_blank'])) ?></li>
-            <?php endif; ?>
+            <li><strong><?php echo $this->Html->iconT('user', h($user->realname)) ?></strong></li>
+            <li><?php echo $this->Html->iconT('user', h($user->username)) ?></li>
         </ul>
     </div>
 </div>
+<ul class="list-unstyled margin-top-md">
+    <li><strong><?php echo $this->Html->iconT('calendar', 'Joined:') ?></strong> <?php echo $this->Time->nice($user->created) ?></li>
+    <?php if ($user->has('website')): ?>
+        <li><?php echo $this->Html->iconT('external-link', $this->Html->link(__d('elabs', 'Website'), h($user->website), ['escape' => false, 'target' => '_blank'])) ?></li>
+    <?php endif; ?>
+    <li class="separator"></li>
+    <li><strong><?php echo $this->Html->iconT('font', __dn('elabs', '{0} article', '{0} articles', $user->post_count, [$user->post_count])) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('sticky-note', __dn('elabs', '{0} note', '{0} notes', $user->note_count, $user->note_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('file-o', __dn('elabs', '{0} file', '{0} files', $user->file_count, $user->file_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('cogs', __dn('elabs', '{0} project', '{0} projects', $user->project_count, $user->project_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('book', __dn('elabs', '{0} album', '{0} albums', $user->album_count, $user->album_count)) ?></strong></li>
+</ul>
 <?php
 $this->end();
 
@@ -47,13 +57,58 @@ if (!empty($user->bio)):
 <?php endif; ?>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $user->post_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $user->note_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $user->project_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $user->file_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . $user->album_count . '</span>') ?></a></li>
+        <li class="active">
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all posts for this author')]), ['controller' => 'Posts', 'action' => 'index', 'user', $user->id], ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles') ?></a>
+        </li>
+        <li>
+<?php
+echo $this->Html->link(
+        $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all notes for this author')]), ['controller' => 'Notes', 'action' => 'index', 'user', $user->id], ['escape' => false, 'class' => 'tab-btn-right']
+)
+?>
+            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all projects for this author')]), ['controller' => 'Projects', 'action' => 'index', 'user', $user->id], ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all files for this author')]), ['controller' => 'Files', 'action' => 'index', 'user', $user->id], ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all albums for this author')]), ['controller' => 'Albums', 'action' => 'index', 'user', $user->id], ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums') ?></a>
+        </li>
     </ul>
     <div class="tab-content">
+        <h4>
+            <?php echo __d('elabs', 'Last {0} elements posted by {1}', [Configure::read('cms.maxRelatedData'), $user->username]) ?>
+        </h4>
+        <?php
+        if (!$seeNSFW):
+            ?>
+            <div class="alert alert-info alert-sm">
+                <?php echo $this->Html->iconT('info', __d('elabs','Some entries may be hidden, depending on your NSFW settings.')) ?>
+            </div>
+        <?php endif; ?>
         <div class="tab-pane fade active in" id="posts-tab">
             <?php
             if (!empty($user->posts)):
@@ -101,7 +156,7 @@ if (!empty($user->bio)):
             endif;
             ?>
         </div>
-        
+
         <div class="tab-pane" id="albums-tab">
             <?php
             if (!empty($user->albums)):
@@ -115,13 +170,14 @@ if (!empty($user->bio)):
         </div>
     </div>
 </div>
-<?php
-$this->end();
+            <?php
+            $this->end();
 
 // Additionnal JS
 // --------------
-$this->Html->script('scrollbar',['block'=>'pageBottomScripts']);
+            $this->Html->script('scrollbar', ['block' => 'pageBottomScripts']);
 
 // Load the layout element
 // -----------------------
-echo $this->element('layouts/adminview');
+            echo $this->element('layouts/adminview');
+            

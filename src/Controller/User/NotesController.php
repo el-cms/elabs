@@ -37,9 +37,9 @@ class NotesController extends UserAppController
             'sorWhiteList' => ['text', 'created', 'modified'],
         ];
         if ($nsfw === 'safe') {
-            $this->paginate['conditions']['sfw'] = 1;
+            $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {
-            $this->paginate['conditions']['sfw'] = 0;
+            $this->paginate['conditions']['sfw'] = SFW_UNSAFE;
         }
         if ($status === 'locked') {
             $this->paginate['conditions']['status'] = STATUS_LOCKED;

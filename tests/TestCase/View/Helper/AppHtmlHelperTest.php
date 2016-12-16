@@ -179,7 +179,7 @@ class AppHtmlHelperTest extends TestCase
           ];
          */
         // Simple call
-        $result = '<span class="label label-language" lang="eng">English</span>';
+        /*$result = '<span class="label label-language" lang="eng">English</span>';
         $this->assertEquals($result, $this->AppHtmlHelper->langLabel('English', 'eng'));
 
         // Class option
@@ -197,6 +197,8 @@ class AppHtmlHelperTest extends TestCase
         // All tests
         $result = '<div class="other class" lang="eng">English</div>';
         $this->assertEquals($result, $this->AppHtmlHelper->langLabel('English', 'eng', ['label' => false, 'class' => 'other class', 'tag' => 'div']));
+         */
+        $this->markTestIncomplete();
     }
 
     /**
@@ -213,5 +215,19 @@ class AppHtmlHelperTest extends TestCase
         // False
         $result = '<i class="fa-circle-o fa-fw fa"></i>';
         $this->assertEquals($result, $this->AppHtmlHelper->checkIcon(false));
+    }
+
+    /**
+     * Test langAttr method
+     *
+     * @return void
+     */
+    public function testLangAttr()
+    {
+//        $this->assertEquals('', $this->AppHtmlHelper->langAttr('en'));
+//        $this->assertEquals('', $this->AppHtmlHelper->langAttr('en', true));
+//        $this->assertEquals(' lang="fr"', $this->AppHtmlHelper->langAttr('fr'));
+//        $this->assertEquals('lang="fr"', $this->AppHtmlHelper->langAttr('fr', true));
+        $this->markTestIncomplete();
     }
 }

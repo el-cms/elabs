@@ -1,6 +1,7 @@
 # Cake PHP
 /vendor/*
 /config/app.php
+/config/siteconfig.php
 /tmp/*
 /logs/*
 /config/Migrations/schema-dump-default.lock

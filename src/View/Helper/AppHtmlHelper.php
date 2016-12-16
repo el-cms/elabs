@@ -196,7 +196,9 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
         }
         $tag = $options['tag'];
 
-        $options['lang'] = $isoCode;
+        if ($isoCode != $this->_config['pageLanguage']) {
+            $options['lang'] = $isoCode;
+        }
 
         unset($options['label']);
         unset($options['tag']);
@@ -219,5 +221,21 @@ class AppHtmlHelper extends \BootstrapUI\View\Helper\HtmlHelper
         } else {
             return $icon;
         }
+    }
+
+    /**
+     * Returns a "lang" attribute (prefixed with a space) to insert in tags.
+     * If the current page language is the same, an empty string is returned.
+     *
+     * @param bool $lang If set to true, there will be no space before the attribute.
+     * @param string $nospace Language code
+     *
+     * @return string
+     */
+    public function langAttr($lang, $nospace = false)
+    {
+        $space = ($nospace ? '' : ' ');
+
+        return ($this->_config['pageLanguage'] != $lang && !empty($lang)) ? $space . 'lang="' . $lang . '"' : '';
     }
 }

@@ -3,11 +3,16 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Table\FilesTable;
+use Cake\Network\Exception\NotFoundException;
+use Cake\Network\Response;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
 
 /**
  * Files Controller
  *
- * @property \App\Model\Table\FilesTable $Files
+ * @property FilesTable $Files
  */
 class FilesController extends AppController
 {
@@ -22,52 +27,53 @@ class FilesController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $findOptions = [
-            'fields' => [
-                'id', 'name', 'filename', 'weight', 'description', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'mime',
-            ],
-            'conditions' => ['Files.status' => 1],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
-                'Albums' => ['fields' => ['id', 'name', 'AlbumsFiles.file_id']],
-            ],
-            'order' => ['created' => 'desc'],
-            'sortWhitelist' => ['created', 'name', 'modified'],
-        ];
+        $query = $this->Files->find();
+        $query->select(['id', 'name', 'filename', 'weight', 'description', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'mime'])
+                ->where(['Files.status' => STATUS_PUBLISHED])
+                ->contain([
+                    'Users' => ['fields' => ['id', 'username', 'realname']],
+                    'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                    'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
+                    'Albums' => ['fields' => ['id', 'name', 'AlbumsFiles.file_id']],
+                ])
+                ->order(['Files.created' => 'desc']);
 
         // Sfw condition
         if (!$this->request->session()->read('seeNSFW')) {
-            $findOptions['conditions']['sfw'] = true;
+            $query->where(['Files.sfw' => true]);
         }
 
         // Other conditions:
         if (!is_null($filter)) {
             switch ($filter) {
                 case 'language':
-                    $findOptions['conditions']['Languages.id'] = $id;
+                    $query->where(['Languages.id' => $id]);
                     break;
                 case 'license':
-                    $findOptions['conditions']['Licenses.id'] = $id;
+                    $query->where(['Licenses.id' => $id]);
                     break;
                 case 'user':
-                    $findOptions['conditions']['Users.id'] = $id;
+                    $query->where(['Users.id' => $id]);
+                    break;
+                case 'project':
+                    $query->matching('Projects', function ($q) use ($id) {
+                        return $q->where(['Projects.id' => $id]);
+                    });
                     break;
                 default:
-                    throw new \Cake\Network\Exception\NotFoundException;
+                    throw new NotFoundException;
             }
             // Get additionnal infos infos
-            $modelName = \Cake\Utility\Inflector::camelize(\Cake\Utility\Inflector::pluralize($filter));
-            $FilterModel = \Cake\ORM\TableRegistry::get($modelName);
+            $modelName = Inflector::camelize(Inflector::pluralize($filter));
+            $FilterModel = TableRegistry::get($modelName);
             $filterData = $FilterModel->get($id);
 
             $this->set('filterData', $filterData);
         }
+
         $this->set('filter', $filter);
-        $this->paginate = $findOptions;
-        $this->set('files', $this->paginate($this->Files));
+        $this->set('files', $this->paginate($query));
         $this->set('_serialize', ['files']);
     }
 
@@ -76,7 +82,7 @@ class FilesController extends AppController
      *
      * @param string|null $id File id.
      * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws NotFoundException When record not found.
      */
     public function view($id = null)
     {
@@ -104,7 +110,7 @@ class FilesController extends AppController
      * Forces user to download the file
      * @param int $id File id
      *
-     * @return \Cake\Network\Response
+     * @return Response
      */
     public function download($id)
     {

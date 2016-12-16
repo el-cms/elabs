@@ -33,12 +33,12 @@ class ProjectsController extends UserAppController
         ];
 
         if ($nsfw === 'safe') {
-            $this->paginate['conditions']['sfw'] = 1;
+            $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {
-            $this->paginate['conditions']['sfw'] = 0;
+            $this->paginate['conditions']['sfw'] = SFW_UNSAFE;
         }
         if ($status === 'locked') {
-            $this->paginate['conditions']['status'] = 2;
+            $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
 
         $this->set('projects', $this->paginate($this->Projects));
@@ -58,7 +58,7 @@ class ProjectsController extends UserAppController
         if ($this->request->is('post')) {
             // New values :
             $this->request->data['user_id'] = $this->Auth->user('id');
-            $this->request->data['status'] = 1;
+            $this->request->data['status'] = STATUS_PUBLISHED;
             // Preparing data
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {

@@ -12,7 +12,8 @@
  * @since         0.10.8
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-/**
+
+/*
  * Configure paths required to find CakePHP + general filepath
  * constants
  */
@@ -41,7 +42,6 @@ use Cake\Error\ErrorHandler;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Network\Request;
-//use Cake\Routing\DispatcherFactory;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 
@@ -173,7 +173,7 @@ Type::build('date')
 Type::build('datetime')
     ->useImmutable();
 
-/**
+/*
  * Custom configuration files
  */
 Configure::load('siteconfig', 'default');
@@ -197,22 +197,17 @@ Configure::load('siteconfig', 'default');
 Plugin::load('Migrations'); //Loads a single plugin named Migrations
 
 /*
+ * Custom data types
+ */
+Type::map('json', 'App\Database\Type\JsonType');
+
+/*
  * Only try to load DebugKit in development mode
  * Debug Kit should not be installed on a production system
  */
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
-
-/**
- * Connect middleware/dispatcher filters.
- */
-/*DispatcherFactory::add('Asset');
-DispatcherFactory::add('Routing');
-DispatcherFactory::add('ControllerFactory');
-
-// Json Type
-//Type::map('json', 'App\Database\Type\JsonType');
 
 /*
  * Plugins
@@ -222,5 +217,5 @@ Plugin::load('BootstrapUI');
 
 // Markdown renderer
 Plugin::load('Tanuck/Markdown');
-Plugin::load('Ajax', ['bootstrap' => true]);
-Plugin::load('Search');
+//Plugin::load('Ajax', ['bootstrap' => true]);
+//Plugin::load('Search');

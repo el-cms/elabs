@@ -45,12 +45,12 @@ class FilesController extends UserAppController
         ];
 
         if ($nsfw === 'safe') {
-            $this->paginate['conditions']['sfw'] = 1;
+            $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {
-            $this->paginate['conditions']['sfw'] = 0;
+            $this->paginate['conditions']['sfw'] = SFW_UNSAFE;
         }
         if ($status === 'locked') {
-            $this->paginate['conditions']['status'] = 2;
+            $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
 
         $this->set('files', $this->paginate($this->Files));
@@ -103,7 +103,7 @@ class FilesController extends UserAppController
                     'language_id' => $this->request->data['language_id'],
                     'projects' => $this->request->data['projects'],
                     'albums' => $this->request->data['albums'],
-                    'status' => 1
+                    'status' => STATUS_PUBLISHED
                 ];
 
                 if (!move_uploaded_file($fileInfos['tmp_name'], WWW_ROOT . $this->UpManager->baseDir . $currentFilePath)) {

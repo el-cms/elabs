@@ -32,7 +32,7 @@ $contentType = strtolower(\Cake\Utility\Inflector::singularize($data['model']));
         <!-- Card toolbar -->
         <ul class="card-toolbar">
             <!-- Language pill -->
-            <li><a class="language-pill" lang="<?php echo $data[$contentType]['language']['iso639_1'] ?>"><?php echo $data[$contentType]['language']['name'] ?></a></li>
+            <li><a class="language-pill"<?php echo $this->Html->langAttr($data[$contentType]['language']['iso639_1']) ?>><?php echo $data[$contentType]['language']['name'] ?></a></li>
         </ul>
         <!-- Headings -->
         <div class="card-heading">
@@ -45,7 +45,7 @@ $contentType = strtolower(\Cake\Utility\Inflector::singularize($data['model']));
                         echo $this->Form->postLink($this->Html->icon('trash-o'), ['action' => 'delete', $data['id']], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $data->id), 'escape' => false, 'class' => 'btn btn-danger btn-xs']);
                         ?>
                     </li>
-                    <li lang="<?php echo $data[$contentType]['language']['iso639_1'] ?>">
+                    <li<?php echo $this->Html->langAttr($data[$contentType]['language']['iso639_1']) ?>>
                         <?php echo $this->Html->iconT($cardIcon, $this->Html->link($itemTitle, ['prefix' => false, 'controller' => $data['model'], 'action' => 'view', $data['fkid']])); ?>
                     </li>
                     <li>
@@ -59,7 +59,7 @@ $contentType = strtolower(\Cake\Utility\Inflector::singularize($data['model']));
                             $authorName = $data['name'];
                         endif;
 
-                        echo $this->Html->iconT('user', __d('elabs', 'Author: {1}', $authorName));
+                        echo $this->Html->iconT('user', __d('elabs', 'Author: {0}', $authorName));
                         ?>
                     </li>
                     <li>

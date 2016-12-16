@@ -3,11 +3,16 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Table\ProjectsTable;
+use Cake\Core\Configure;
+use Cake\Network\Exception\NotFoundException;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
 
 /**
  * Projects Controller
  *
- * @property \App\Model\Table\ProjectsTable $Projects
+ * @property ProjectsTable $Projects
  */
 class ProjectsController extends AppController
 {
@@ -25,7 +30,7 @@ class ProjectsController extends AppController
         $findOptions = [
             'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
             'conditions' => [
-                'Projects.status' => 1,
+                'Projects.status' => STATUS_PUBLISHED,
             ],
             'sortWithelist' => ['created', 'modified', 'name'],
             'contain' => [
@@ -54,11 +59,11 @@ class ProjectsController extends AppController
                     $findOptions['conditions']['Users.id'] = $id;
                     break;
                 default:
-                    throw new \Cake\Network\Exception\NotFoundException;
+                    throw new NotFoundException;
             }
             // Get additionnal infos infos
-            $modelName = \Cake\Utility\Inflector::camelize(\Cake\Utility\Inflector::pluralize($filter));
-            $FilterModel = \Cake\ORM\TableRegistry::get($modelName);
+            $modelName = Inflector::camelize(Inflector::pluralize($filter));
+            $FilterModel = TableRegistry::get($modelName);
             $filterData = $FilterModel->get($id);
 
             $this->set('filterData', $filterData);
@@ -74,35 +79,77 @@ class ProjectsController extends AppController
      *
      * @param string|null $id Project id.
      * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws NotFoundException When record not found.
      */
     public function view($id = null)
     {
+        $seeNSFW = $this->request->session()->read('seeNSFW');
         $containConfig = [
             'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            'Licenses' => ['fields' => ['id', 'name']],
+            'Licenses' => ['fields' => ['id', 'name', 'icon']],
             'Users' => ['fields' => ['id', 'username', 'realname']],
         ];
-        $project = $this->Projects->get($id, [
-            'contain' => [
-                'Licenses',
-                'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Files' => $containConfig,
-                'Notes' => $containConfig,
-                'Posts' => $containConfig,
-                'Albums' => [
-                    'Languages' => $containConfig['Languages'],
-                    'Users' => $containConfig['Users'],
-                    'Files' => [
-                        'fields' => ['id', 'name', 'filename', 'AlbumsFiles.album_id'],
-                    ],
-                ]
-            ],
-            'conditions' => [
-                'Projects.status' => 1,
-            ],
-        ]);
+
+        $query = $this->Projects->find();
+        $query->select()
+                ->where(['Projects.status' => STATUS_PUBLISHED, 'Projects.id' => $id])
+                ->contain([
+                    'Users' => ['fields' => ['id', 'username', 'realname']],
+                    'Licenses',
+                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                    'Files' => function ($q) use ($seeNSFW, $containConfig) {
+                        $q = $q
+                                ->where(['Files.status' => STATUS_PUBLISHED])
+                                ->contain($containConfig)
+                                ->limit(Configure::read('cms.maxRelatedData'));
+                        if (!$seeNSFW) {
+                            $q = $q->where(['sfw' => true]);
+                        }
+
+                        return $q;
+                    },
+                    'Notes' => function ($q) use ($seeNSFW, $containConfig) {
+                        $q = $q->select()
+                                ->where(['Notes.status' => STATUS_PUBLISHED])
+                                ->contain($containConfig)
+                                ->limit(Configure::read('cms.maxRelatedData'));
+                        if (!$seeNSFW) {
+                            $q = $q->where(['sfw' => true]);
+                        }
+
+                        return $q;
+                    },
+                    'Posts' => function ($q) use ($seeNSFW, $containConfig) {
+                        $q = $q->select()
+                                ->where(['Posts.status' => STATUS_PUBLISHED])
+                                ->contain($containConfig)
+                                ->limit(Configure::read('cms.maxRelatedData'));
+                        if (!$seeNSFW) {
+                            $q = $q->where(['sfw' => true]);
+                        }
+
+                        return $q;
+                    },
+                    'Albums' => function ($q) use ($seeNSFW, $containConfig) {
+                        $q = $q->select()
+                                ->where(['Albums.status' => STATUS_PUBLISHED])
+                                ->contain([
+                                    'Languages' => $containConfig['Languages'],
+                                    'Users' => $containConfig['Users'],
+                                    'Files' => [
+                                        'fields' => ['id', 'name', 'filename', 'sfw', 'AlbumsFiles.album_id'],
+                                    ]
+                                ])
+                                ->limit(Configure::read('cms.maxRelatedData'));
+                        if (!$seeNSFW) {
+                            $q = $q->where(['sfw' => true]);
+                        }
+
+                        return $q;
+                    }
+                ]);
+
+        $project = $query->firstOrFail();
 
         //SFW state
         if (!$project->sfw && !$this->request->session()->read('seeNSFW')) {

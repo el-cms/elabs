@@ -75,7 +75,7 @@ class ActsController extends AppController
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'created', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
-                        'Posts.status' => 1,
+                        'Posts.status' => STATUS_PUBLISHED,
                     ],
                     'Licenses' => $licenseConfig,
                     'Users' => $userConfig,
@@ -85,7 +85,7 @@ class ActsController extends AppController
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
-                        'Projects.status' => 1,
+                        'Projects.status' => STATUS_PUBLISHED,
                     ],
                     'Licenses' => $licenseConfig,
                     'Users' => $userConfig,
@@ -94,7 +94,7 @@ class ActsController extends AppController
                 'Files' => [
                     'fields' => ['id', 'name', 'description', 'filename', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
-                        'Files.status' => 1,
+                        'Files.status' => STATUS_PUBLISHED,
                     ],
                     'Licenses' => $licenseConfig,
                     'Users' => $userConfig,
@@ -104,7 +104,7 @@ class ActsController extends AppController
                 'Notes' => [
                     'fields' => ['id', 'text', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [ // SFW is made after
-                        'Notes.status' => 1,
+                        'Notes.status' => STATUS_PUBLISHED,
                     ],
                     'Licenses' => $licenseConfig,
                     'Users' => $userConfig,
@@ -116,6 +116,9 @@ class ActsController extends AppController
                     'conditions' => [], // SFW is made after
                     'Users' => $userConfig,
                     'Languages' => $languageConfig,
+                    'conditions' => [
+                        'Albums.status' => STATUS_PUBLISHED,
+                    ],
                     'Projects' => [
                         'fields' => ['id', 'name', 'ProjectsAlbums.album_id'],
                         'conditions' => ['status' => STATUS_PUBLISHED],

@@ -42,7 +42,7 @@ class UsersController extends AppController
             'sortWhiteList' => ['username', 'realname', 'created'],
             'order' => ['Users.realname' => 'asc'],
             'conditions' => [
-                'OR' => [['status' => 1], ['status' => 2]]
+                'OR' => [['status' => STATUS_PUBLISHED], ['status' => STATUS_LOCKED]]
             ],
             'sortWhitelist' => ['username', 'realname', 'created'],
             // Email should only be used for Gravatar.
@@ -69,7 +69,7 @@ class UsersController extends AppController
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
                     'conditions' => [// SFW is made after
-                        'status' => 1,
+                        'status' => STATUS_PUBLISHED,
                     ],
                     'Licenses' => $licenseConfig,
                     'Languages' => $languageConfig,
@@ -78,7 +78,7 @@ class UsersController extends AppController
                 'Notes' => [
                     'fields' => ['id', 'text', 'sfw', 'modified', 'created', 'user_id', 'license_id', 'language_id'],
                     'conditions' => [// SFW is made after
-                        'Notes.status' => 1,
+                        'Notes.status' => STATUS_PUBLISHED,
                     ],
                     'Licenses' => $licenseConfig,
                     'Languages' => $languageConfig,
@@ -87,7 +87,7 @@ class UsersController extends AppController
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id'],
                     'conditions' => [// SFW is made after
-                        'status' => 1,
+                        'status' => STATUS_PUBLISHED,
                     ],
                     'Licenses' => $licenseConfig,
                     'Languages' => $languageConfig,
@@ -95,7 +95,7 @@ class UsersController extends AppController
                 'Files' => [
                     'fields' => ['id', 'name', 'description', 'filename', 'sfw', 'created', 'modified', 'user_id', 'license_id'],
                     'conditions' => [// SFW is made after
-                        'status' => 1,
+                        'status' => STATUS_PUBLISHED,
                     ],
                     'Licenses' => $licenseConfig,
                     'Languages' => $languageConfig,
@@ -104,7 +104,7 @@ class UsersController extends AppController
                 'Albums' => [
                     'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'user_id'],
                     'conditions' => [// SFW is made after
-                        'status' => 1,
+                        'status' => STATUS_PUBLISHED,
                     ],
                     'Languages' => $languageConfig,
                     'Files' => [
@@ -112,7 +112,7 @@ class UsersController extends AppController
                     ],
                 ],
             ],
-            'conditions' => ['OR' => [['status' => 1], ['status' => 2]]],
+            'conditions' => ['OR' => [['status' => STATUS_PUBLISHED], ['status' => STATUS_LOCKED]]],
         ];
 
         // SFW options
@@ -121,6 +121,7 @@ class UsersController extends AppController
             $options['contain']['Notes']['conditions']['Notes.sfw'] = true;
             $options['contain']['Posts']['conditions']['Posts.sfw'] = true;
             $options['contain']['Projects']['conditions']['Projects.sfw'] = true;
+            $options['contain']['Albums']['conditions']['Albums.sfw'] = true;
         }
 
         $user = $this->Users->get($id, $options);

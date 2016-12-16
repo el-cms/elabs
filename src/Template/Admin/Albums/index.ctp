@@ -62,12 +62,12 @@ $this->start('pageContent');
                             // Lock/unlock
                             $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('elabs', 'Unlock')]);
                             $lockIcon = $this->Html->icon('lock', ['title' => __d('elabs', 'Lock')]);
-                            if ($album->status === 2):
+                            if ($album->status === STATUS_LOCKED):
                                 echo $this->Html->link($unlockIcon, ['action' => 'changeState', $album->id, 'unlock'], [
                                     'class' => 'btn btn-warning',
                                     'escape' => false,
                                 ]);
-                            elseif ($album->status === 1):
+                            elseif ($album->status === STATUS_PUBLISHED):
                                 echo $this->Html->link($lockIcon, ['action' => 'changeState', $album->id, 'lock'], [
                                     'class' => 'btn btn-warning',
                                     'escape' => false,
@@ -78,7 +78,7 @@ $this->start('pageContent');
                             <?php
                             endif;
                             // Close
-                            if ($album->status != 3):
+                            if ($album->status != STATUS_DELETED):
                                 echo $this->Html->link($this->Html->icon('times', ['title' => __d('elabs', 'Close')]), ['action' => 'changeState', $album->id, 'remove'], [
                                     'class' => 'btn btn-danger',
                                     'confirm' => __d('elabs', 'Are you sure you want to close this ?'),

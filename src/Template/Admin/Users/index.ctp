@@ -87,21 +87,21 @@ $this->start('pageContent');
                             $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('elabs', 'Unlock')]);
                             $lockIcon = $this->Html->icon('lock', ['title' => __d('elabs', 'Lock')]);
                             $activateIcon = $this->Html->icon('check', ['title' => __d('elabs', 'Activate')]);
-                            if ($user->status === 2):
+                            if ($user->status === STATUS_LOCKED):
                                 echo $this->Html->link($unlockIcon, '#', [
                                     'onClick' => "lock('{$user->id}', 'unlock')",
                                     'class' => 'btn btn-warning',
                                     'escape' => false,
                                     'id' => 'btnLockLnk' . $user->id
                                 ]);
-                            elseif ($user->status === 1):
+                            elseif ($user->status === STATUS_ACTIVE):
                                 echo $this->Html->link($lockIcon, '#', [
                                     'onClick' => "lock('{$user->id}', 'lock')",
                                     'class' => 'btn btn-warning',
                                     'escape' => false,
                                     'id' => 'btnLockLnk' . $user->id
                                 ]);
-                            elseif ($user->status === 0):
+                            elseif ($user->status === STATUS_INACTIVE):
                                 echo $this->Html->link($activateIcon, '#', [
                                     'onClick' => "activate('{$user->id}')",
                                     'class' => 'btn btn-warning',
@@ -113,7 +113,7 @@ $this->start('pageContent');
                                 <a class="btn disabled"><?php echo $this->Html->icon('fw', ['fixed' => false]) ?></a>
                             <?php
                             endif;
-                            if ($user->status != 3):
+                            if ($user->status != STATUS_DELETED):
                                 echo $this->Html->link($this->Html->icon('times', ['title' => __d('elabs', 'Close')]), '#', [
                                     'onClick' => "closeAccount('{$user->id}')",
                                     'class' => 'btn btn-danger',
@@ -194,10 +194,10 @@ $this->append('pageBottomScripts');
       });
       request.success(function (response) {
         console.log(response);
-        if (response.user.status === 3) {
+        if (response.user.status === <?php echo STATUS_DELETED ?>) {
           $('#userLine' + id).removeClass();
           $('#userLine' + id).addClass('disabled');
-          $('#userStatus' + id).html('<?php echo $this->UsersAdmin->statusLabel(3) ?>');
+          $('#userStatus' + id).html('<?php echo $this->UsersAdmin->statusLabel(STATUS_DELETED) ?>');
         } else {
           alert('<?php echo __d('elabs', 'An error occured when you tried to close this account.') ?>');
         }
@@ -218,14 +218,14 @@ $this->append('pageBottomScripts');
         alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
-        if (response.user.status === 1) {
+        if (response.user.status === <?php echo STATUS_ACTIVE ?>) {
           lineColor = 'success';
-          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(1) ?>';
+          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(STATUS_ACTIVE) ?>';
           lnkIcon = '<?php echo $lockIcon ?>';
           lnkAction = 'lock(\'' + id + '\', \'lock\')';
-        } else if (response.user.status === 2) {
+        } else if (response.user.status === <?php echo STATUS_LOCKED?>) {
           lineColor = 'danger';
-          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(2) ?>';
+          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(STATUS_LOCKED) ?>';
           lnkIcon = '<?php echo $unlockIcon ?>';
           lnkAction = 'lock(\'' + id + '\', \'unlock\')';
         } else {
@@ -250,9 +250,9 @@ $this->append('pageBottomScripts');
         alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
-        if (response.user.status === 1) {
+        if (response.user.status === <?php echo STATUS_ACTIVE ?>) {
           lineColor = 'success';
-          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(1) ?>';
+          statusLabel = '<?php echo $this->UsersAdmin->statusLabel(STATUS_ACTIVE) ?>';
           lnkIcon = '<?php echo $lockIcon ?>';
           lnkAction = 'lock(\'' + id + '\', \'lock\')';
         }

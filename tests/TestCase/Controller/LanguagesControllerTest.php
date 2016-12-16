@@ -33,6 +33,7 @@ class LanguagesControllerTest extends IntegrationTestCase
     public function testIndex()
     {
         $this->get('/languages');
+//        $this->assertResponseEquals('');
         $this->assertResponseOk();
     }
 

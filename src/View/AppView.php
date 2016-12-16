@@ -15,6 +15,7 @@
 
 namespace App\View;
 
+use Cake\Core\Configure;
 use Cake\View\View;
 
 /**
@@ -40,7 +41,11 @@ class AppView extends View
     {
         parent::initialize();
 
-        $this->loadHelper('Html', ['className' => 'AppHtml', 'App' => \Cake\Core\Configure::read('App')]);
+        $this->loadHelper('Html', [
+            'className' => 'AppHtml',
+            'App' => Configure::read('App'),
+            'pageLanguage' => $this->request->session()->read('language'),
+        ]);
         $this->loadHelper('Form', [
             'className' => 'Form',
             'templates' => [
@@ -55,10 +60,11 @@ class AppView extends View
             'element' => 'Flash/default',
         ]);
 //        $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
-        $this->loadHelper('Gravatar.Gravatar');
+        $this->loadHelper('Gravatar.Gravatar', ['secure' => Configure::read('cms.useGravatarSecureUrls')]);
         $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
 
         $this->Paginator->templates([
+// Templates kept here as comments for reference
 //            'nextActive' => '<li class="next"><a rel="next" href="{{url}}">{{text}}</a></li>',
 //            'nextDisabled' => '<li class="next disabled"><a href="" onclick="return false;">{{text}}</a></li>',
 //            'prevActive' => '<li class="prev"><a rel="prev" href="{{url}}">{{text}}</a></li>',

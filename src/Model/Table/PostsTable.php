@@ -48,9 +48,9 @@ class PostsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->addBehavior('CounterCache', [
-            'Users' => ['post_count' => ['conditions' => ['status' => 1]]],
-            'Licenses' => ['post_count' => ['conditions' => ['status' => 1]]],
-            'Languages' => ['post_count' => ['conditions' => ['status' => 1]]],
+            'Users' => ['post_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
+            'Licenses' => ['post_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
+            'Languages' => ['post_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
         ]);
 
         $this->belongsTo('Users', [

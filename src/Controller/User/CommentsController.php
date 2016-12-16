@@ -48,9 +48,10 @@ class CommentsController extends UserAppController
                 ],
                 'Albums' => [
                     'conditions' => ['Albums.user_id' => $userId],
-                    'fields' => ['id', 'title', 'user_id', 'language_id'],
+                    'fields' => ['id', 'name', 'user_id', 'language_id'],
                     'Languages' => $languageConfig,
                 ],
+                'Users' => $userConfig,
             ],
             'limit' => 30,
             'order' => [

@@ -7,6 +7,7 @@
  * Layout element:
  *   defaultview.ctp
  */
+use Cake\Core\Configure;
 
 // Page title
 $this->assign('title', h($project->name));
@@ -23,14 +24,26 @@ $this->Html->addCrumb($this->Html->langLabel($project->name, $project->language-
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
-    <li><strong><?php echo __d('elabs', 'License:') ?></strong> <?php echo $this->Html->link($this->Html->iconT($project->license->icon, $project->license->name), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
-    <li><strong><?php echo __d('elabs', 'Language:') ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
-    <li><strong><?php echo __d('elabs', 'Created on:') ?></strong> <?php echo h($project->created) ?></li>
+    <li><strong><?php echo $this->Html->iconT('font', __d('elabs', 'Name:')) ?></strong> <?php echo $project->name ?></li>
+    <li><strong><?php echo $this->Html->iconT('copyright', __d('elabs', 'License:')) ?></strong> <?php echo $this->Html->link($this->Html->iconT($project->license->icon, $project->license->name), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
+    <li><strong><?php echo $this->Html->iconT('calendar', __d('elabs', 'Created on:')) ?></strong> <?php echo h($project->created) ?></li>
     <?php if ($project->has('modified')): ?>
-        <li><strong><?php echo __d('elabs', 'Updated on:') ?></strong> <?php echo h($project->modified) ?></li>
+        <li><strong><?php echo $this->Html->iconT('calendar', __d('elabs', 'Updated on:')) ?></strong> <?php echo h($project->modified) ?></li>
     <?php endif; ?>
-    <li><strong><?php echo __d('elabs', 'Safe content:') ?></strong> <span class="label label-<?php echo $project->sfw ? 'success' : 'danger'; ?>"><?php echo $project->sfw ? __d('elabs', 'Yes') : __d('elabs', 'No'); ?></span></li>
-    <li><strong><?php echo __d('elabs', 'Tags:') ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
+    <li><strong><?php echo $this->Html->iconT('language', __d('elabs', 'Language:')) ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('info', __d('elabs', 'Safe content:')) ?></strong>
+        <span class="label label-<?php echo $project->sfw ? 'success' : 'danger'; ?>">
+            <?php echo $project->sfw ? $this->Html->iconT('check-circle', __d('elabs', 'Yes')) : $this->Html->iconT('circle-o', __d('elabs', 'No')); ?>
+        </span>
+    </li>
+    <li class="separator"></li>
+    <li><strong><?php echo $this->Html->iconT('font', __dn('elabs', '{0} article', '{0} articles', $project->post_count, [$project->post_count])) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('sticky-note', __dn('elabs', '{0} note', '{0} notes', $project->note_count, $project->note_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('file-o', __dn('elabs', '{0} file','{0} files', $project->file_count, $project->file_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('book', __dn('elabs', '{0} album', '{0} albums', $project->album_count, $project->album_count)) ?></strong></li>
+    <li class="separator"></li>
+    <li><strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
 </ul>
 
 <h5 class="list-group-item-heading"><?php echo __d('elabs', 'Members') ?></h5>
@@ -53,7 +66,7 @@ endif;
 // -------------------
 $this->start('pageContent');
 ?>
-<div lang="<?php echo $project->language->id ?>">
+<div<?php echo $this->Html->langAttr($project->language->iso369_1) ?>>
     <?php
     echo $this->Html->displayMD($project->short_description);
     echo $this->Html->displayMD($project->description);
@@ -61,12 +74,58 @@ $this->start('pageContent');
 </div>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . count($project->posts) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . count($project->notes) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . count($project->files) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . count($project->albums) . '</span>') ?></a></li>
+        <li class="active">
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all posts in this project')]), 
+                    ['controller' => 'posts', 'action' => 'index', 'project', $project->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all notes in this project')]), 
+                    ['controller' => 'notes', 'action' => 'index', 'project', $project->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all files in this project')]), 
+                    ['controller' => 'files', 'action' => 'index', 'project', $project->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all albums in this project')]), 
+                    ['controller' => 'albums', 'action' => 'index', 'project', $project->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums') ?></a>
+        </li>
     </ul>
     <div class="tab-content">
+        <h4>
+            <?php echo __d('elabs', 'Last {0} elements added to project', [Configure::read('cms.maxRelatedData')]) ?>
+        </h4>
+        <?php
+        if (!$seeNSFW):
+            ?>
+            <div class="alert alert-info alert-sm">
+                <?php echo $this->Html->iconT('info', __d('elabs','Some entries may be hidden, depending on your NSFW settings.')) ?>
+            </div>
+        <?php endif; ?>
         <div class="tab-pane fade active in" id="posts-tab">
             <?php
             if (!empty($project->posts)):
@@ -117,13 +176,13 @@ $this->start('pageContent');
     </div>
 </div>
 <?php
-echo $this->cell('Comments::AddForm', ['authUser'=>$authUser]);
+echo $this->cell('Comments::AddForm', ['authUser' => $authUser]);
 
 $this->end();
 
 // Additionnal JS
 // --------------
-$this->Html->script('scrollbar',['block'=>'pageBottomScripts']);
+$this->Html->script('scrollbar', ['block' => 'pageBottomScripts']);
 
 // Load the layout element
 // -----------------------

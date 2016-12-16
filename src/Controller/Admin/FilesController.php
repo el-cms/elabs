@@ -83,24 +83,24 @@ class FilesController extends AdminAppController
             case 'lock':
                 $successMessage = __d('elabs', 'The file has been locked.');
                 $this->Act->remove($id);
-                $bit = 2;
+                $bit = STATUS_LOCKED;
                 break;
             case 'unlock':
                 $successMessage = __d('elabs', 'The file has been unlocked.');
-                $bit = 1;
+                $bit = STATUS_PUBLISHED;
                 break;
             case 'remove':
                 $successMessage = __d('elabs', 'The file has been removed.');
-                $bit = 3;
+                $bit = STATUS_DELETED;
                 $this->Act->remove($id, 'Files', false);
                 break;
             default:
                 $successMessage = __d('elabs', 'The file has been locked.');
-                $bit = 2;
+                $bit = STATUS_LOCKED;
         }
         $file = $this->Files->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => '3'],
+            'conditions' => ['status !=' => STATUS_DELETED],
         ]);
         $file->status = $bit;
         if ($this->Files->save($file)) {

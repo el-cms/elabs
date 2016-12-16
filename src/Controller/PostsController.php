@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Table\PostsTable;
+use Cake\Network\Exception\NotFoundException;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
 
 /**
  * Posts Controller
  *
- * @property \App\Model\Table\PostsTable $Posts
+ * @property PostsTable $Posts
  */
 class PostsController extends AppController
 {
@@ -22,51 +26,52 @@ class PostsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $findOptions = [
-            'fields' => [
-                'id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id', 'language_id',
-            ],
-            'conditions' => ['Posts.status' => 1],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-            ],
-            'order' => ['publication_date' => 'desc'],
-            'sortWhitelist' => ['publication_date', 'title'],
-        ];
+        $query = $this->Posts->find();
+        $query->select(['id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id', 'language_id'])
+                ->where(['Posts.status' => STATUS_PUBLISHED])
+                ->contain([
+                    'Users' => ['fields' => ['id', 'username', 'realname']],
+                    'Licenses' => ['fields' => ['id', 'name', 'icon']],
+                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
+                    'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
+                ])
+                ->order(['publication_date' => 'desc']);
 
         // Sfw condition
         if (!$this->request->session()->read('seeNSFW')) {
-            $findOptions['conditions']['sfw'] = true;
+            $query->where(['Posts.sfw' => true]);
         }
 
         // Other conditions:
         if (!is_null($filter)) {
             switch ($filter) {
                 case 'language':
-                    $findOptions['conditions']['Languages.id'] = $id;
+                    $query->where(['Languages.id' => $id]);
                     break;
                 case 'license':
-                    $findOptions['conditions']['Licenses.id'] = $id;
+                    $query->where(['Licenses.id' => $id]);
                     break;
                 case 'user':
-                    $findOptions['conditions']['Users.id'] = $id;
+                    $query->where(['Users.id' => $id]);
+                    break;
+                case 'project':
+                    $query->matching('Projects', function ($q) use ($id) {
+                        return $q->where(['Projects.id' => $id]);
+                    });
                     break;
                 default:
-                    throw new \Cake\Network\Exception\NotFoundException;
+                    throw new NotFoundException;
             }
             // Get additionnal infos infos
-            $modelName = \Cake\Utility\Inflector::camelize(\Cake\Utility\Inflector::pluralize($filter));
-            $FilterModel = \Cake\ORM\TableRegistry::get($modelName);
+            $modelName = Inflector::camelize(Inflector::pluralize($filter));
+            $FilterModel = TableRegistry::get($modelName);
             $filterData = $FilterModel->get($id);
 
             $this->set('filterData', $filterData);
         }
+
         $this->set('filter', $filter);
-        $this->paginate = $findOptions;
-        $this->set('posts', $this->paginate($this->Posts));
+        $this->set('posts', $this->paginate($query));
         $this->set('_serialize', ['posts']);
     }
 
@@ -75,7 +80,7 @@ class PostsController extends AppController
      *
      * @param string|null $id Post id.
      * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws NotFoundException When record not found.
      */
     public function view($id = null)
     {
@@ -86,7 +91,7 @@ class PostsController extends AppController
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
             ],
-            'conditions' => ['Posts.status' => 1],
+            'conditions' => ['Posts.status' => STATUS_PUBLISHED],
         ]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors

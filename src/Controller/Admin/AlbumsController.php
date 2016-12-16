@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\AdminAppController;
@@ -59,24 +60,24 @@ class AlbumsController extends AdminAppController
             case 'lock':
                 $successMessage = __d('elabs', 'The album has been locked.');
                 $this->Act->remove($id, 'Albums', false);
-                $bit = 2;
+                $bit = STATUS_LOCKED;
                 break;
             case 'unlock':
                 $successMessage = __d('elabs', 'The album has been unlocked.');
-                $bit = 1;
+                $bit = STATUS_PUBLISHED;
                 break;
             case 'remove':
                 $successMessage = __d('elabs', 'The album has been removed.');
-                $bit = 3;
+                $bit = STATUS_DELETED;
                 $this->Act->remove($id, 'Albums', false);
                 break;
             default:
                 $successMessage = __d('elabs', 'The album has been locked.');
-                $bit = 2;
+                $bit = STATUS_LOCKED;
         }
         $album = $this->Albums->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => '3'],
+            'conditions' => ['status !=' => STATUS_DELETED],
         ]);
         $album->status = $bit;
         if ($this->Albums->save($album)) {

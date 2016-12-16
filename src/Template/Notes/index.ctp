@@ -13,7 +13,11 @@ switch ($filter):
     case 'language':
         $this->assign('title', __d('elabs', 'Notes in "{0}"', $this->Html->langLabel($filterData->name, $filterData->iso639_1, ['label' => false])));
         $this->Html->addCrumb(__d('elabs', 'Languages'), ['controller' => 'Languages', 'action' => 'index']);
-        $this->Html->addCrumb($filterData->name, ['controller' => 'Languages', 'action' => 'view', $filterData->id], ['lang' => $filterData->iso639_1]);
+        $options = [];
+        if ($this->Html->langAttr($filterData->iso639_1) != ''):
+            $options['lang'] = $filterData->iso639_1;
+        endif;
+        $this->Html->addCrumb($filterData->name, ['controller' => 'Languages', 'action' => 'view', $filterData->id], $options);
         break;
     case 'license':
         $this->assign('title', __d('elabs', 'Notes with license "{0}"', $filterData->name));
@@ -24,6 +28,11 @@ switch ($filter):
         $this->assign('title', __d('elabs', 'Notes by {0}', $filterData->realname));
         $this->Html->addCrumb(__d('elabs', 'Authors'), ['controller' => 'Users', 'action' => 'index']);
         $this->Html->addCrumb($filterData->realname, ['controller' => 'Users', 'action' => 'view', $filterData->id]);
+        break;
+    case 'project':
+        $this->assign('title', __d('elabs', 'Notes in project "{0}"', $filterData->name));
+        $this->Html->addCrumb(__d('elabs', 'Projects'), ['controller' => 'Projects', 'action' => 'index']);
+        $this->Html->addCrumb($filterData->name, ['controller' => 'Projects', 'action' => 'view', $filterData->id]);
         break;
     default:
         $this->assign('title', __d('elabs', 'Notes list'));

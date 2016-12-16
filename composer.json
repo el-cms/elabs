@@ -12,7 +12,7 @@
         "friendsofcake/bootstrap-ui": "^0.5.0",
         "friendsofcake/search": "master",
         "mobiledetect/mobiledetectlib": "2.*",
-        "php": ">=5.4.16",
+        "php": ">=7.0",
         "tanuck/cakephp-markdown": "dev-master",
         "lowg33kdev/cakephp-gravatar-plugin": "1.1.0"
     },

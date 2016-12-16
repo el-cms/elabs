@@ -37,6 +37,12 @@ class ProjectsNotesTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Projects' => ['note_count' => [
+                'contain' => ['Notes'],
+                'conditions' => ['Notes.status' => STATUS_PUBLISHED]]],
+        ]);
+
         $this->belongsTo('Projects', [
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'

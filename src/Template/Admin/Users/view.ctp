@@ -36,18 +36,18 @@ $this->start('pageActions');
 ?>
 <div class="btn-group btn-group-vertical btn-block">
     <?php
-    if ($user->status != 3):
-        if ($user->status === 0):
-            echo $this->Html->link($this->Html->iconT('check', _d('elabs', 'Activate')), ['action' => 'activate', $user->id], ['class' => 'btn btn-warning', 'escape' => false]);
+    if ($user->status != STATUS_DELETED):
+        if ($user->status === STATUS_ACTIVE):
+            echo $this->Html->link($this->Html->iconT('check', __d('elabs', 'Activate')), ['action' => 'activate', $user->id], ['class' => 'btn btn-warning', 'escape' => false]);
         endif;
-        if ($user->status === 2):
+        if ($user->status === STATUS_LOCKED):
             echo $this->Html->link($this->Html->iconT('unlock', __d('elabs', 'Unlock')), ['action' => 'lock', $user->id, 'unlock'], ['class' => 'btn btn-warning', 'escape' => false]);
-        elseif ($user->status === 1):
+        elseif ($user->status === STATUS_ACTIVE):
             echo $this->Html->link($this->Html->iconT('lock', __d('elabs', 'Lock')), ['action' => 'lock', $user->id, 'lock'], ['class' => 'btn btn-warning', 'escape' => false]);
         else:
             echo $this->Html->link($this->Html->iconT('lock', __d('elabs', 'Lock/unlock')), '#', ['class' => 'text-sec btn-warning disabled', 'escape' => false]);
         endif;
-        if ($user->status != 3):
+        if ($user->status != STATUS_DELETED):
             echo $this->Html->link($this->Html->iconT('times', __d('elabs', 'Close')), ['action' => 'close', $user->id], ['confirm' => __d('elabs', 'Are you sure you want to close this account ?'), 'class' => 'btn btn-danger', 'escape' => false]);
         endif;
     else:

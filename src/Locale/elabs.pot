@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2016-09-11 12:26+0000\n"
+"POT-Creation-Date: 2016-12-16 19:49+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,35 +14,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/ActsController.php:38
+#: Controller/ActsController.php:40
 msgid "has been updated"
 msgstr ""
 
-#: Controller/ActsController.php:39
+#: Controller/ActsController.php:41
 msgid "has been removed"
 msgstr ""
 
-#: Controller/ActsController.php:42
+#: Controller/ActsController.php:44
 #: Controller/Admin/ActsController.php:38
 msgid "File"
 msgstr ""
 
-#: Controller/ActsController.php:43
+#: Controller/ActsController.php:45
 #: Controller/Admin/ActsController.php:40
 msgid "Article"
 msgstr ""
 
-#: Controller/ActsController.php:44
+#: Controller/ActsController.php:46
 #: Controller/Admin/ActsController.php:41
 msgid "Project"
 msgstr ""
 
-#: Controller/ActsController.php:45
+#: Controller/ActsController.php:47
 #: Controller/Admin/ActsController.php:39
 msgid "Note"
 msgstr ""
 
-#: Controller/AppController.php:57
+#: Controller/ActsController.php:48
+#: Controller/Admin/ActsController.php:42
+msgid "Album"
+msgstr ""
+
+#: Controller/AppController.php:58
 msgid "You are not allowed to view this page."
 msgstr ""
 
@@ -58,7 +63,7 @@ msgstr ""
 msgid "The comment could not be saved. Please try again."
 msgstr ""
 
-#: Controller/NotesController.php:93
+#: Controller/NotesController.php:106
 #: Template/Admin/Notes/view.ctp:12;19
 #: Template/Notes/view.ctp:12
 msgid "A note"
@@ -80,36 +85,37 @@ msgstr ""
 msgid "Registrations are closed for now... Come back later..."
 msgstr ""
 
-#: Controller/UsersController.php:143
+#: Controller/UsersController.php:154
 msgid "Your account has been created. An email will be sent to you when active"
 msgstr ""
 
-#: Controller/UsersController.php:151
-#: Controller/User/FilesController.php:164
+#: Controller/UsersController.php:162
+#: Controller/User/AlbumsController.php:73
+#: Controller/User/FilesController.php:167
 #: Controller/User/NotesController.php:80;130
 #: Controller/User/PostsController.php:85;140
 #: Controller/User/ProjectsController.php:74;110
 msgid "Some errors occured. Please, try again."
 msgstr ""
 
-#: Controller/UsersController.php:173
+#: Controller/UsersController.php:184
 msgid "Invalid username or password, try again. Is your accound active ?"
 msgstr ""
 
-#: Controller/UsersController.php:187
+#: Controller/UsersController.php:198
 msgid "You are logged out. See you later !"
 msgstr ""
 
-#: Controller/Admin/ActsController.php:89
+#: Controller/Admin/ActsController.php:90
 msgid "Acts table has been rebuilt."
 msgstr ""
 
-#: Controller/Admin/ActsController.php:93
+#: Controller/Admin/ActsController.php:94
 #: Controller/Admin/MaintenanceController.php:25
 msgid "Use the menu to access this functionality"
 msgstr ""
 
-#: Controller/Admin/ActsController.php:87
+#: Controller/Admin/ActsController.php:88
 msgid "An error occured during the cleanup. Please, try again."
 msgid_plural "{0,number} errors occured during the cleanup. Please, try again."
 msgstr[0] ""
@@ -125,6 +131,28 @@ msgstr ""
 msgid "You don't have enough rights to access this ressource."
 msgstr ""
 
+#: Controller/Admin/AlbumsController.php:61;75
+msgid "The album has been locked."
+msgstr ""
+
+#: Controller/Admin/AlbumsController.php:66
+msgid "The album has been unlocked."
+msgstr ""
+
+#: Controller/Admin/AlbumsController.php:70
+msgid "The album has been removed."
+msgstr ""
+
+#: Controller/Admin/AlbumsController.php:89
+#: Controller/Admin/FilesController.php:112
+#: Controller/Admin/NotesController.php:98
+#: Controller/Admin/PostsController.php:111
+#: Controller/Admin/ProjectsController.php:112
+#: Controller/Admin/UsersController.php:121;152;182
+#: Controller/User/UsersController.php:30;63;126
+msgid "An error occured. Please try again."
+msgstr ""
+
 #: Controller/Admin/FilesController.php:84;98
 msgid "The file has been locked."
 msgstr ""
@@ -135,15 +163,6 @@ msgstr ""
 
 #: Controller/Admin/FilesController.php:93
 msgid "The file has been removed."
-msgstr ""
-
-#: Controller/Admin/FilesController.php:112
-#: Controller/Admin/NotesController.php:98
-#: Controller/Admin/PostsController.php:111
-#: Controller/Admin/ProjectsController.php:112
-#: Controller/Admin/UsersController.php:121;152;182
-#: Controller/User/UsersController.php:30;63;126
-msgid "An error occured. Please try again."
 msgstr ""
 
 #: Controller/Admin/LanguagesController.php:46;72
@@ -239,11 +258,15 @@ msgstr ""
 msgid "The account has been activated."
 msgstr ""
 
-#: Controller/User/CommentsController.php:76
+#: Controller/User/AlbumsController.php:67
+msgid "The album could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/User/CommentsController.php:81
 msgid "The comment has been deleted."
 msgstr ""
 
-#: Controller/User/CommentsController.php:78
+#: Controller/User/CommentsController.php:83
 msgid "The comment could not be deleted. Please, try again."
 msgstr ""
 
@@ -259,23 +282,23 @@ msgstr ""
 msgid "The thumbnail could not be saved in the destination folder. Please, try again."
 msgstr ""
 
-#: Controller/User/FilesController.php:109
+#: Controller/User/FilesController.php:110
 msgid "The file could not be saved in the destination folder. Please, try again."
 msgstr ""
 
-#: Controller/User/FilesController.php:115;152
+#: Controller/User/FilesController.php:116;155
 msgid "The file has been saved."
 msgstr ""
 
-#: Controller/User/FilesController.php:120;158
+#: Controller/User/FilesController.php:121;161
 msgid "The file could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/User/FilesController.php:192
+#: Controller/User/FilesController.php:196
 msgid "The file has been deleted."
 msgstr ""
 
-#: Controller/User/FilesController.php:195
+#: Controller/User/FilesController.php:199
 msgid "The file could not be deleted. Please, try again."
 msgstr ""
 
@@ -363,7 +386,7 @@ msgstr ""
 msgid "Your account has been closed. If you want to re-open it, contact the administrator."
 msgstr ""
 
-#: Model/Table/UsersTable.php:115
+#: Model/Table/UsersTable.php:118
 msgid "Your password does not match your confirm password. Please try again"
 msgstr ""
 
@@ -373,7 +396,7 @@ msgstr ""
 
 #: Template/Acts/index.ctp:20
 #: Template/Element/layout/mainmenu.ctp:5
-#: Template/Layout/err400.ctp:53
+#: Template/Layout/error.ctp:53
 msgid "Home"
 msgstr ""
 
@@ -385,61 +408,58 @@ msgstr ""
 msgid "{0} {1} {2}"
 msgstr ""
 
-#: Template/Admin/Dashboard/index.ctp:12
-#: Template/Element/layout/mainmenu_admin.ctp:5
-#: Template/Element/layout/mainmenu_user.ctp:8
-#: Template/User/Dashboard/index.ctp:12
-msgid "Dashboard"
-msgstr ""
-
+#: Template/Admin/Albums/index.ctp:14
 #: Template/Admin/Files/index.ctp:14
 #: Template/Admin/Files/view.ctp:75
 msgid "List of files"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:17
 #: Template/Admin/Files/index.ctp:17
 #: Template/Admin/Files/view.ctp:19
 #: Template/Admin/Licenses/index.ctp:39
 #: Template/Admin/Users/index.ctp:152
+#: Template/Element/albums/tile_userindex.ctp:63
 #: Template/Element/layout/mainmenu.ctp:14
 #: Template/Element/layout/mainmenu_admin.ctp:14
 #: Template/Element/layout/mainmenu_user.ctp:17
-#: Template/Files/index.ctp:30
+#: Template/Files/index.ctp:39
 #: Template/Files/nsfw.ctp:6
 #: Template/Files/view.ctp:18
+#: Template/Languages/view.ctp:81
+#: Template/Licenses/view.ctp:85
+#: Template/Projects/view.ctp:105
 #: Template/User/Files/add.ctp:15
 #: Template/User/Files/edit.ctp:15
 #: Template/User/Files/index.ctp:15
+#: Template/Users/view.ctp:90
 msgid "Files"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:28
 #: Template/Admin/Files/index.ctp:28
 #: Template/Admin/Licenses/index.ctp:35
 #: Template/Admin/Projects/index.ctp:28
 #: Template/Admin/Tags/view.ctp:16
 #: Template/Admin/Users/index.ctp:30
+#: Template/Albums/index.ctp:51
 #: Template/Cell/Comments/add_form.ctp:12
 #: Template/Element/reports/add_modal.ctp:19
-#: Template/Files/index.ctp:37
+#: Template/Files/index.ctp:46
 #: Template/Languages/index.ctp:22
 #: Template/Projects/index.ctp:37
+#: Template/User/Albums/index.ctp:21
 #: Template/User/Files/index.ctp:21
 msgid "Name"
 msgstr ""
 
-#: Template/Admin/Files/index.ctp:28
-msgid "F.name"
-msgstr ""
-
+#: Template/Admin/Albums/index.ctp:29
 #: Template/Admin/Files/index.ctp:29
 #: Template/Admin/Projects/index.ctp:29
 msgid "Owner"
 msgstr ""
 
-#: Template/Admin/Files/index.ctp:30
-msgid "Size"
-msgstr ""
-
+#: Template/Admin/Albums/index.ctp:30
 #: Template/Admin/Files/index.ctp:31
 #: Template/Admin/Notes/index.ctp:30
 #: Template/Admin/Posts/index.ctp:30
@@ -447,17 +467,20 @@ msgstr ""
 msgid "SFW"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:32
 #: Template/Admin/Files/index.ctp:33
 #: Template/Admin/Notes/index.ctp:33
 #: Template/Admin/Posts/index.ctp:33
 #: Template/Admin/Projects/index.ctp:32
 #: Template/Admin/Reports/index.ctp:31
+#: Template/Albums/index.ctp:52
+#: Template/Element/albums/tile_userindex.ctp:40
 #: Template/Element/files/tile_userindex.ctp:42
 #: Template/Element/notes/tile_userindex.ctp:54
 #: Template/Element/posts/tile_userindex.ctp:50
 #: Template/Element/projects/tile_userindex.ctp:42
-#: Template/Files/index.ctp:38
-#: Template/Notes/index.ctp:37
+#: Template/Files/index.ctp:47
+#: Template/Notes/index.ctp:46
 #: Template/Projects/index.ctp:38
 #: Template/User/Notes/index.ctp:20
 #: Template/User/Posts/index.ctp:22
@@ -465,25 +488,18 @@ msgstr ""
 msgid "Creation date"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:33
 #: Template/Admin/Files/index.ctp:34
-#: Template/Files/index.ctp:39
-#: Template/Notes/index.ctp:38
+#: Template/Albums/index.ctp:53
+#: Template/Files/index.ctp:48
+#: Template/Notes/index.ctp:47
 #: Template/Projects/index.ctp:39
+#: Template/User/Albums/index.ctp:23
 #: Template/User/Files/index.ctp:24
 msgid "Modification date"
 msgstr ""
 
-#: Template/Admin/Files/index.ctp:36
-#: Template/Admin/Notes/index.ctp:35
-#: Template/Admin/Posts/index.ctp:35
-#: Template/Admin/Projects/index.ctp:35
-#: Template/Element/files/tile_userindex.ctp:46
-#: Template/Element/notes/tile_userindex.ctp:58
-#: Template/Element/posts/tile_userindex.ctp:54
-#: Template/Element/projects/tile_userindex.ctp:46
-msgid "License"
-msgstr ""
-
+#: Template/Admin/Albums/index.ctp:35
 #: Template/Admin/Files/index.ctp:37
 #: Template/Admin/Notes/index.ctp:36
 #: Template/Admin/Posts/index.ctp:36
@@ -492,6 +508,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:36
 #: Template/Admin/Files/index.ctp:38
 #: Template/Admin/Notes/index.ctp:37
 #: Template/Admin/Posts/index.ctp:37
@@ -500,6 +517,7 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:37
 #: Template/Admin/Files/index.ctp:39
 #: Template/Admin/Languages/index.ctp:40
 #: Template/Admin/Licenses/index.ctp:40
@@ -521,6 +539,7 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:58
 #: Template/Admin/Files/index.ctp:63
 #: Template/Admin/Notes/index.ctp:58
 #: Template/Admin/Posts/index.ctp:58
@@ -530,6 +549,8 @@ msgstr ""
 msgid "Full details"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:63
+#: Template/Admin/Albums/view.ctp:41
 #: Template/Admin/Files/index.ctp:68
 #: Template/Admin/Files/view.ctp:48
 #: Template/Admin/Notes/index.ctp:63
@@ -543,6 +564,8 @@ msgstr ""
 msgid "Unlock"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:64
+#: Template/Admin/Albums/view.ctp:42
 #: Template/Admin/Files/index.ctp:69
 #: Template/Admin/Files/view.ctp:49
 #: Template/Admin/Notes/index.ctp:64
@@ -556,6 +579,7 @@ msgstr ""
 msgid "Lock"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:82
 #: Template/Admin/Files/index.ctp:87
 #: Template/Admin/Notes/index.ctp:82
 #: Template/Admin/Posts/index.ctp:82
@@ -565,79 +589,81 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: Template/Admin/Albums/index.ctp:84
 #: Template/Admin/Files/index.ctp:89
 #: Template/Admin/Projects/index.ctp:84
 msgid "Are you sure you want to close this ?"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:15
+#: Template/Albums/index.ctp:32;44
+#: Template/Albums/view.ctp:18
+#: Template/Element/layout/mainmenu.ctp:17
+#: Template/Element/layout/mainmenu_admin.ctp:17
+#: Template/Element/layout/mainmenu_user.ctp:20
+#: Template/Languages/view.ctp:91
+#: Template/Projects/view.ctp:115
+#: Template/User/Albums/add.ctp:14
+#: Template/User/Albums/edit.ctp:14
+#: Template/User/Albums/index.ctp:15
+#: Template/Users/view.ctp:98
+msgid "Albums"
+msgstr ""
+
+#: Template/Admin/Albums/view.ctp:23
 #: Template/Admin/Files/view.ctp:27
 #: Template/Admin/Projects/view.ctp:26
 msgid "Owner:"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:24
 #: Template/Admin/Files/view.ctp:28
 #: Template/Admin/Users/view.ctp:24
+#: Template/Albums/view.ctp:26
 #: Template/Files/view.ctp:27
-#: Template/Languages/view.ctp:24
-#: Template/Licenses/view.ctp:24
+#: Template/Languages/view.ctp:25
+#: Template/Licenses/view.ctp:25
+#: Template/Projects/view.ctp:27
 msgid "Name:"
 msgstr ""
 
-#: Template/Admin/Files/view.ctp:29
-msgid "File name:"
-msgstr ""
-
-#: Template/Admin/Files/view.ctp:30
-#: Template/Files/view.ctp:30
-msgid "File size:"
-msgstr ""
-
-#: Template/Admin/Files/view.ctp:31
-#: Template/Admin/Notes/view.ctp:27
-#: Template/Admin/Posts/view.ctp:27
-#: Template/Admin/Projects/view.ctp:28
-#: Template/Element/files/card.ctp:38
-#: Template/Element/notes/card.ctp:38
-#: Template/Element/posts/card.ctp:35
-#: Template/Element/projects/card.ctp:35
-#: Template/Files/view.ctp:28
-#: Template/Notes/view.ctp:27
-#: Template/Posts/view.ctp:27
-#: Template/Projects/view.ctp:26
-msgid "License:"
-msgstr ""
-
+#: Template/Admin/Albums/view.ctp:25
 #: Template/Admin/Files/view.ctp:32
 #: Template/Admin/Notes/view.ctp:28
 #: Template/Admin/Posts/view.ctp:28
 #: Template/Admin/Projects/view.ctp:29
 #: Template/Notes/view.ctp:29
-#: Template/Projects/view.ctp:28
+#: Template/Projects/view.ctp:29
 msgid "Created on:"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:26
 #: Template/Admin/Files/view.ctp:33
 #: Template/Admin/Notes/view.ctp:29
 #: Template/Admin/Posts/view.ctp:29
 #: Template/Admin/Projects/view.ctp:30
-#: Template/Files/view.ctp:34
+#: Template/Albums/view.ctp:30
+#: Template/Files/view.ctp:32
 #: Template/Notes/view.ctp:31
-#: Template/Posts/view.ctp:31
-#: Template/Projects/view.ctp:30
+#: Template/Posts/view.ctp:30
+#: Template/Projects/view.ctp:31
 msgid "Updated on:"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:27
 #: Template/Admin/Files/view.ctp:34
 #: Template/Admin/Notes/view.ctp:31
 #: Template/Admin/Posts/view.ctp:31
 #: Template/Admin/Projects/view.ctp:31
+#: Template/Albums/view.ctp:32
 #: Template/Files/view.ctp:36
 #: Template/Notes/view.ctp:28
-#: Template/Posts/view.ctp:28
-#: Template/Projects/view.ctp:27
+#: Template/Posts/view.ctp:32
+#: Template/Projects/view.ctp:33
 msgid "Language:"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:28
 #: Template/Admin/Files/view.ctp:35
 #: Template/Admin/Notes/view.ctp:32
 #: Template/Admin/Posts/view.ctp:32
@@ -645,6 +671,7 @@ msgstr ""
 msgid "Safe:"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:29
 #: Template/Admin/Files/view.ctp:36
 #: Template/Admin/Notes/view.ctp:33
 #: Template/Admin/Posts/view.ctp:33
@@ -653,6 +680,7 @@ msgstr ""
 msgid "Status:"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:57
 #: Template/Admin/Files/view.ctp:64
 #: Template/Admin/Notes/view.ctp:61
 #: Template/Admin/Posts/view.ctp:61
@@ -660,6 +688,7 @@ msgstr ""
 msgid "Disable"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:58
 #: Template/Admin/Files/view.ctp:65
 #: Template/Admin/Notes/view.ctp:62
 #: Template/Admin/Posts/view.ctp:62
@@ -667,6 +696,11 @@ msgstr ""
 msgid "Are you sure you want to disable # {0}?"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:68
+msgid "List of albums"
+msgstr ""
+
+#: Template/Admin/Albums/view.ctp:78
 #: Template/Admin/Files/view.ctp:85
 #: Template/Admin/Notes/view.ctp:82
 #: Template/Admin/Posts/view.ctp:82
@@ -674,11 +708,62 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
+#: Template/Admin/Albums/view.ctp:79
 #: Template/Admin/Files/view.ctp:86
 #: Template/Admin/Notes/view.ctp:83
 #: Template/Admin/Posts/view.ctp:83
 #: Template/Admin/Projects/view.ctp:83
 msgid "Related items"
+msgstr ""
+
+#: Template/Admin/Dashboard/index.ctp:12
+#: Template/Element/layout/mainmenu_admin.ctp:5
+#: Template/Element/layout/mainmenu_user.ctp:8
+#: Template/User/Dashboard/index.ctp:12
+msgid "Dashboard"
+msgstr ""
+
+#: Template/Admin/Files/index.ctp:28
+msgid "F.name"
+msgstr ""
+
+#: Template/Admin/Files/index.ctp:30
+msgid "Size"
+msgstr ""
+
+#: Template/Admin/Files/index.ctp:36
+#: Template/Admin/Notes/index.ctp:35
+#: Template/Admin/Posts/index.ctp:35
+#: Template/Admin/Projects/index.ctp:35
+#: Template/Element/files/tile_userindex.ctp:46
+#: Template/Element/notes/tile_userindex.ctp:58
+#: Template/Element/posts/tile_userindex.ctp:54
+#: Template/Element/projects/tile_userindex.ctp:46
+msgid "License"
+msgstr ""
+
+#: Template/Admin/Files/view.ctp:29
+msgid "File name:"
+msgstr ""
+
+#: Template/Admin/Files/view.ctp:30
+#: Template/Files/view.ctp:35
+msgid "File size:"
+msgstr ""
+
+#: Template/Admin/Files/view.ctp:31
+#: Template/Admin/Notes/view.ctp:27
+#: Template/Admin/Posts/view.ctp:27
+#: Template/Admin/Projects/view.ctp:28
+#: Template/Element/files/card.ctp:40
+#: Template/Element/notes/card.ctp:40
+#: Template/Element/posts/card.ctp:37
+#: Template/Element/projects/card.ctp:37
+#: Template/Files/view.ctp:29
+#: Template/Notes/view.ctp:27
+#: Template/Posts/view.ctp:27
+#: Template/Projects/view.ctp:28
+msgid "License:"
 msgstr ""
 
 #: Template/Admin/Languages/add.ctp:12
@@ -689,10 +774,11 @@ msgstr ""
 #: Template/Admin/Languages/add.ctp:15
 #: Template/Admin/Languages/edit.ctp:15
 #: Template/Admin/Languages/index.ctp:24
-#: Template/Element/layout/mainmenu_admin.ctp:26
+#: Template/Albums/index.ctp:20
+#: Template/Element/layout/mainmenu_admin.ctp:29
 #: Template/Files/index.ctp:15
 #: Template/Languages/index.ctp:12;16
-#: Template/Languages/view.ctp:16
+#: Template/Languages/view.ctp:17
 #: Template/Notes/index.ctp:15
 #: Template/Posts/index.ctp:15
 #: Template/Projects/index.ctp:15
@@ -747,6 +833,7 @@ msgstr ""
 
 #: Template/Admin/Languages/edit.ctp:16
 #: Template/Admin/Licenses/edit.ctp:16
+#: Template/User/Albums/edit.ctp:15
 #: Template/User/Files/edit.ctp:16
 #: Template/User/Notes/edit.ctp:16
 #: Template/User/Posts/edit.ctp:16
@@ -763,10 +850,12 @@ msgstr ""
 #: Template/Admin/Tags/edit.ctp:5
 #: Template/Admin/Tags/index.ctp:27
 #: Template/Admin/Tags/view.ctp:46
+#: Template/Element/albums/tile_userindex.ctp:16
 #: Template/Element/files/tile_userindex.ctp:16
 #: Template/Element/notes/tile_userindex.ctp:16
 #: Template/Element/posts/tile_userindex.ctp:16
 #: Template/Element/projects/tile_userindex.ctp:16
+#: Template/User/Albums/edit.ctp:20
 #: Template/User/Files/edit.ctp:21
 #: Template/User/Notes/edit.ctp:21
 #: Template/User/Posts/edit.ctp:21
@@ -783,11 +872,13 @@ msgstr ""
 #: Template/Admin/Tags/edit.ctp:7
 #: Template/Admin/Tags/index.ctp:27
 #: Template/Admin/Tags/view.ctp:5;46
-#: Template/Element/comments/card.ctp:40
+#: Template/Element/albums/tile_userindex.ctp:16
+#: Template/Element/comments/card.ctp:45
 #: Template/Element/files/tile_userindex.ctp:16
 #: Template/Element/notes/tile_userindex.ctp:16
 #: Template/Element/posts/tile_userindex.ctp:16
 #: Template/Element/projects/tile_userindex.ctp:16
+#: Template/User/Albums/edit.ctp:20
 #: Template/User/Files/edit.ctp:21
 #: Template/User/Notes/edit.ctp:21
 #: Template/User/Posts/edit.ctp:21
@@ -803,11 +894,12 @@ msgstr ""
 #: Template/Admin/Licenses/edit.ctp:45
 #: Template/User/Notes/edit.ctp:59
 #: Template/User/Posts/edit.ctp:65
-#: Template/User/Users/edit.ctp:50;88
+#: Template/User/Users/edit.ctp:52;90
 msgid "Save the changes"
 msgstr ""
 
 #: Template/Admin/Languages/index.ctp:54
+#: Template/Element/albums/tile_userindex.ctp:10
 #: Template/Element/files/tile_userindex.ctp:10
 #: Template/Element/notes/tile_userindex.ctp:10
 #: Template/Element/posts/tile_userindex.ctp:10
@@ -819,6 +911,7 @@ msgstr ""
 #: Template/Admin/Licenses/index.ctp:57
 #: Template/Admin/Tags/index.ctp:26
 #: Template/Admin/Tags/view.ctp:44
+#: Template/Element/albums/tile_userindex.ctp:13
 #: Template/Element/files/tile_userindex.ctp:13
 #: Template/Element/notes/tile_userindex.ctp:13
 #: Template/Element/posts/tile_userindex.ctp:13
@@ -834,11 +927,12 @@ msgstr ""
 #: Template/Admin/Licenses/add.ctp:15
 #: Template/Admin/Licenses/edit.ctp:15
 #: Template/Admin/Licenses/index.ctp:17
-#: Template/Element/layout/mainmenu_admin.ctp:23
-#: Template/Files/index.ctp:20
+#: Template/Albums/index.ctp:26
+#: Template/Element/layout/mainmenu_admin.ctp:26
+#: Template/Files/index.ctp:24
 #: Template/Licenses/index.ctp:12;16
-#: Template/Licenses/view.ctp:16
-#: Template/Notes/index.ctp:20
+#: Template/Licenses/view.ctp:17
+#: Template/Notes/index.ctp:24
 #: Template/Posts/index.ctp:20
 #: Template/Projects/index.ctp:20
 msgid "Licenses"
@@ -870,12 +964,16 @@ msgstr ""
 #: Template/Element/layout/mainmenu.ctp:8
 #: Template/Element/layout/mainmenu_admin.ctp:8
 #: Template/Element/layout/mainmenu_user.ctp:11
-#: Template/Posts/index.ctp:30
+#: Template/Languages/view.ctp:51
+#: Template/Licenses/view.ctp:55
+#: Template/Posts/index.ctp:35
 #: Template/Posts/nsfw.ctp:6
 #: Template/Posts/view.ctp:18
+#: Template/Projects/view.ctp:85
 #: Template/User/Posts/add.ctp:15
 #: Template/User/Posts/edit.ctp:15
 #: Template/User/Posts/index.ctp:15
+#: Template/Users/view.ctp:66
 msgid "Articles"
 msgstr ""
 
@@ -883,18 +981,27 @@ msgstr ""
 #: Template/Admin/Projects/index.ctp:17
 #: Template/Admin/Projects/view.ctp:18
 #: Template/Admin/Users/index.ctp:150
+#: Template/Albums/index.ctp:38
+#: Template/Albums/nsfw.ctp:6
+#: Template/Element/albums/tile_userindex.ctp:44
 #: Template/Element/files/tile_userindex.ctp:50
 #: Template/Element/layout/mainmenu.ctp:11
 #: Template/Element/layout/mainmenu_admin.ctp:11
 #: Template/Element/layout/mainmenu_user.ctp:14
 #: Template/Element/notes/tile_userindex.ctp:60
 #: Template/Element/posts/tile_userindex.ctp:56
+#: Template/Files/index.ctp:34
+#: Template/Languages/view.ctp:71
+#: Template/Licenses/view.ctp:75
+#: Template/Notes/index.ctp:34
+#: Template/Posts/index.ctp:30
 #: Template/Projects/index.ctp:30
 #: Template/Projects/nsfw.ctp:6
-#: Template/Projects/view.ctp:18
+#: Template/Projects/view.ctp:19
 #: Template/User/Projects/add.ctp:15
 #: Template/User/Projects/edit.ctp:15
 #: Template/User/Projects/index.ctp:15
+#: Template/Users/view.ctp:82
 msgid "Projects"
 msgstr ""
 
@@ -903,21 +1010,25 @@ msgid "You have no licenses yet. Please add one."
 msgstr ""
 
 #: Template/Admin/Notes/index.ctp:14
-#: Template/Notes/index.ctp:29;32
+#: Template/Notes/index.ctp:38;41
 msgid "Notes list"
 msgstr ""
 
 #: Template/Admin/Notes/index.ctp:17
 #: Template/Admin/Notes/view.ctp:18
-#: Template/Element/layout/mainmenu.ctp:17
-#: Template/Element/layout/mainmenu_admin.ctp:17
-#: Template/Element/layout/mainmenu_user.ctp:20
-#: Template/Notes/index.ctp:30
+#: Template/Element/layout/mainmenu.ctp:20
+#: Template/Element/layout/mainmenu_admin.ctp:20
+#: Template/Element/layout/mainmenu_user.ctp:23
+#: Template/Languages/view.ctp:61
+#: Template/Licenses/view.ctp:65
+#: Template/Notes/index.ctp:39
 #: Template/Notes/nsfw.ctp:6
 #: Template/Notes/view.ctp:18
+#: Template/Projects/view.ctp:95
 #: Template/User/Notes/add.ctp:15
 #: Template/User/Notes/edit.ctp:15
 #: Template/User/Notes/index.ctp:15
+#: Template/Users/view.ctp:74
 msgid "Notes"
 msgstr ""
 
@@ -941,9 +1052,9 @@ msgstr ""
 #: Template/Admin/Notes/view.ctp:26
 #: Template/Admin/Posts/view.ctp:26
 #: Template/Admin/Reports/view.ctp:33
-#: Template/Element/files/card.ctp:30
-#: Template/Element/notes/card.ctp:30
-#: Template/Element/posts/card.ctp:27
+#: Template/Element/files/card.ctp:32
+#: Template/Element/notes/card.ctp:32
+#: Template/Element/posts/card.ctp:29
 #: Template/Notes/view.ctp:26
 #: Template/Posts/view.ctp:26
 msgid "Author:"
@@ -961,7 +1072,7 @@ msgid "List of articles"
 msgstr ""
 
 #: Template/Admin/Posts/index.ctp:28
-#: Template/Posts/index.ctp:37
+#: Template/Posts/index.ctp:42
 #: Template/User/Posts/index.ctp:20
 msgid "Title"
 msgstr ""
@@ -982,7 +1093,7 @@ msgstr ""
 
 #: Template/Admin/Reports/index.ctp:17
 #: Template/Admin/Reports/view.ctp:15
-#: Template/Element/layout/mainmenu_admin.ctp:32
+#: Template/Element/layout/mainmenu_admin.ctp:35
 msgid "Reports"
 msgstr ""
 
@@ -991,7 +1102,7 @@ msgstr ""
 #: Template/Element/reports/add_modal.ctp:24
 #: Template/Element/users/loginform.ctp:3
 #: Template/Element/users/registerform.ctp:4
-#: Template/User/Users/edit.ctp:42
+#: Template/User/Users/edit.ctp:44
 msgid "E-mail"
 msgstr ""
 
@@ -1004,7 +1115,8 @@ msgid "Source:"
 msgstr ""
 
 #: Template/Admin/Reports/view.ctp:32
-#: Template/Files/view.ctp:32
+#: Template/Albums/view.ctp:28
+#: Template/Files/view.ctp:30
 msgid "Added on:"
 msgstr ""
 
@@ -1061,8 +1173,9 @@ msgid "New Tag"
 msgstr ""
 
 #: Template/Admin/Tags/index.ctp:10
+#: Template/Element/albums/tile_userindex.ctp:57
 #: Template/Element/files/tile_userindex.ctp:48
-#: Template/Element/layout/mainmenu_admin.ctp:29
+#: Template/Element/layout/mainmenu_admin.ctp:32
 #: Template/Element/notes/tile_userindex.ctp:73
 #: Template/Element/posts/tile_userindex.ctp:69
 #: Template/Element/projects/tile_userindex.ctp:48
@@ -1113,7 +1226,7 @@ msgstr ""
 
 #: Template/Admin/Users/index.ctp:17
 #: Template/Admin/Users/view.ctp:15
-#: Template/Element/layout/mainmenu_admin.ctp:20
+#: Template/Element/layout/mainmenu_admin.ctp:23
 msgid "Users"
 msgstr ""
 
@@ -1135,6 +1248,7 @@ msgid "Quick details"
 msgstr ""
 
 #: Template/Admin/Users/index.ctp:89
+#: Template/Admin/Users/view.ctp:41
 msgid "Activate"
 msgstr ""
 
@@ -1187,27 +1301,111 @@ msgid "This account has been closed, so no further actions are available."
 msgstr ""
 
 #: Template/Admin/Users/view.ctp:85
-#: Template/Languages/view.ctp:42
-#: Template/Licenses/view.ctp:46
-#: Template/Projects/view.ctp:64
-#: Template/Users/view.ctp:50
 msgid "Articles {0}"
 msgstr ""
 
 #: Template/Admin/Users/view.ctp:86
-#: Template/Languages/view.ctp:44
-#: Template/Licenses/view.ctp:48
-#: Template/Users/view.ctp:52
 msgid "Projects {0}"
 msgstr ""
 
 #: Template/Admin/Users/view.ctp:87
-#: Template/Languages/view.ctp:45
-#: Template/Licenses/view.ctp:49
-#: Template/Projects/view.ctp:66
-#: Template/Users/view.ctp:53
 msgid "Files {0}"
 msgstr ""
+
+#: Template/Albums/index.ctp:19
+msgid "Albums in \"{0}\""
+msgstr ""
+
+#: Template/Albums/index.ctp:25
+msgid "Albums with license \"{0}\""
+msgstr ""
+
+#: Template/Albums/index.ctp:31
+msgid "Albums by {0}"
+msgstr ""
+
+#: Template/Albums/index.ctp:37
+msgid "Albums in project {0}"
+msgstr ""
+
+#: Template/Albums/index.ctp:43;46
+msgid "Albums list"
+msgstr ""
+
+#: Template/Albums/nsfw.ctp:3
+#: Template/Files/nsfw.ctp:3
+#: Template/Notes/nsfw.ctp:3
+#: Template/Posts/nsfw.ctp:3
+#: Template/Projects/nsfw.ctp:3
+msgid "Nope."
+msgstr ""
+
+#: Template/Albums/nsfw.ctp:9
+#: Template/Files/nsfw.ctp:9
+#: Template/Notes/nsfw.ctp:9
+#: Template/Posts/nsfw.ctp:9
+#: Template/Projects/nsfw.ctp:9
+msgid "This content is not suitable for everyone."
+msgstr ""
+
+#: Template/Albums/nsfw.ctp:11
+#: Template/Files/nsfw.ctp:11
+#: Template/Notes/nsfw.ctp:11
+#: Template/Posts/nsfw.ctp:11
+#: Template/Projects/nsfw.ctp:11
+msgid "If you really want to see it, please click on the \"Show NSFW\" button in the menu."
+msgstr ""
+
+#: Template/Albums/view.ctp:27
+#: Template/Element/albums/card.ctp:27
+#: Template/Files/view.ctp:28
+msgid "Creator:"
+msgstr ""
+
+#: Template/Albums/view.ctp:33
+#: Template/Files/view.ctp:38
+#: Template/Notes/view.ctp:34
+#: Template/Posts/view.ctp:34
+#: Template/Projects/view.ctp:35
+msgid "Safe content:"
+msgstr ""
+
+#: Template/Albums/view.ctp:33
+#: Template/Files/view.ctp:40
+#: Template/Notes/view.ctp:36
+#: Template/Posts/view.ctp:36
+#: Template/Projects/view.ctp:37
+#: View/Helper/ItemsAdminHelper.php:61
+msgid "Yes"
+msgstr ""
+
+#: Template/Albums/view.ctp:33
+#: Template/Files/view.ctp:40
+#: Template/Notes/view.ctp:36
+#: Template/Posts/view.ctp:36
+#: Template/Projects/view.ctp:37
+#: View/Helper/ItemsAdminHelper.php:66
+msgid "No"
+msgstr ""
+
+#: Template/Albums/view.ctp:60
+#: Template/Files/view.ctp:91
+#: Template/Projects/view.ctp:46
+msgid "Tags:"
+msgstr ""
+
+#: Template/Albums/view.ctp:39
+#: Template/Element/albums/card.ctp:54
+#: Template/Element/files/card.ctp:70
+#: Template/Element/notes/card.ctp:70
+#: Template/Element/posts/card.ctp:67
+#: Template/Files/view.ctp:48
+#: Template/Notes/view.ctp:44
+#: Template/Posts/view.ctp:44
+msgid "Project:"
+msgid_plural "Projects:"
+msgstr[0] ""
+msgstr[1] ""
 
 #: Template/Cell/Comments/add_form.ctp:4
 msgid "Add comment"
@@ -1244,76 +1442,99 @@ msgstr ""
 msgid "This field must stay empty. It will prove us that you're an human."
 msgstr ""
 
-#: Template/Element/acts/tile_nsfw.ctp:22
+#: Template/Element/acts/tile_nsfw.ctp:28
 msgid "This element may not be safe, therefore it is hidden."
 msgstr ""
 
-#: Template/Element/comments/card.ctp:47
-msgid "Posted on: {0}"
-msgstr ""
-
-#: Template/Element/comments/card.ctp:57
-msgid "Author: {1}"
-msgstr ""
-
-#: Template/Element/files/card.ctp:14
+#: Template/Element/albums/card.ctp:11
+#: Template/Element/albums/tile_userindex.ctp:27
+#: Template/Element/files/card.ctp:16
 #: Template/Element/files/tile_userindex.ctp:27
-#: Template/Element/notes/card.ctp:11
+#: Template/Element/notes/card.ctp:13
 #: Template/Element/notes/tile_userindex.ctp:27
-#: Template/Element/posts/card.ctp:11
+#: Template/Element/posts/card.ctp:13
 #: Template/Element/posts/tile_userindex.ctp:27
-#: Template/Element/projects/card.ctp:11
+#: Template/Element/projects/card.ctp:13
 #: Template/Element/projects/tile_userindex.ctp:27
 msgid "NSFW"
 msgstr ""
 
-#: Template/Element/files/card.ctp:49
+#: Template/Element/albums/card.ctp:35
+#: Template/Element/files/card.ctp:51
 msgid "Added on: {0}"
 msgstr ""
 
-#: Template/Element/files/card.ctp:55
-#: Template/Element/notes/card.ctp:55
-#: Template/Element/posts/card.ctp:52
-#: Template/Element/projects/card.ctp:52
+#: Template/Element/albums/card.ctp:41
+#: Template/Element/files/card.ctp:57
+#: Template/Element/notes/card.ctp:57
+#: Template/Element/posts/card.ctp:54
+#: Template/Element/projects/card.ctp:54
 msgid "Updated on: {0}"
 msgstr ""
 
-#: Template/Element/files/card.ctp:68
-#: Template/Element/notes/card.ctp:68
-#: Template/Element/posts/card.ctp:65
-#: Template/Layout/admin.ctp:46
-#: Template/Layout/default.ctp:46
-#: Template/Layout/err400.ctp:43
-#: Template/Layout/user.ctp:46
+#: Template/Element/albums/card.ctp:54
+#: Template/Element/files/card.ctp:70;83
+#: Template/Element/notes/card.ctp:70
+#: Template/Element/posts/card.ctp:67
+#: Template/Layout/admin.ctp:42
+#: Template/Layout/default.ctp:42
+#: Template/Layout/error.ctp:43
+#: Template/Layout/user.ctp:42
 msgid "{0} {1}"
 msgstr ""
 
-#: Template/Element/files/card.ctp:68
-#: Template/Element/notes/card.ctp:68
-#: Template/Element/posts/card.ctp:65
-#: Template/Files/view.ctp:43
-#: Template/Notes/view.ctp:44
-#: Template/Posts/view.ctp:44
-msgid "Project:"
-msgid_plural "Projects:"
-msgstr[0] ""
-msgstr[1] ""
-
-#: Template/Element/files/card_content_audio.ctp:3
-#: Template/Element/files/view_content_audio.ctp:3
-msgid "Your browser does not support the audio element."
-msgstr ""
-
-#: Template/Element/files/card_content_video.ctp:3
-#: Template/Element/files/view_content_video.ctp:3
-msgid "Your browser does not support the video element."
-msgstr ""
-
+#: Template/Element/albums/tile_userindex.ctp:25
 #: Template/Element/files/tile_userindex.ctp:25
 #: Template/Element/notes/tile_userindex.ctp:25
 #: Template/Element/posts/tile_userindex.ctp:25
 #: Template/Element/projects/tile_userindex.ctp:25
 msgid "Safe"
+msgstr ""
+
+#: Template/Element/albums/tile_userindex.ctp:42
+#: Template/Element/files/tile_userindex.ctp:44
+#: Template/Element/notes/tile_userindex.ctp:56
+#: Template/Element/posts/tile_userindex.ctp:52
+#: Template/Element/projects/tile_userindex.ctp:44
+msgid "Updated on"
+msgstr ""
+
+#: Template/Element/albums/tile_userindex.ctp:53
+#: Template/Element/files/tile_userindex.ctp:59
+#: Template/Element/notes/tile_userindex.ctp:69
+#: Template/Element/posts/tile_userindex.ctp:65
+msgid "No projects"
+msgstr ""
+
+#: Template/Element/albums/tile_userindex.ctp:73
+msgid "No files"
+msgstr ""
+
+#: Template/Element/comments/card.ctp:52
+msgid "Posted on: {0}"
+msgstr ""
+
+#: Template/Element/comments/card.ctp:62
+msgid "Author: {1}"
+msgstr ""
+
+#: Template/Element/files/card.ctp:83
+#: Template/Files/view.ctp:74
+msgid "Album:"
+msgid_plural "Albums:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Template/Element/files/card_content_audio.ctp:3
+#: Template/Element/files/card_minimal_audio.ctp:5
+#: Template/Element/files/view_content_audio.ctp:3
+msgid "Your browser does not support the audio element."
+msgstr ""
+
+#: Template/Element/files/card_content_video.ctp:3
+#: Template/Element/files/card_minimal_video.ctp:2
+#: Template/Element/files/view_content_video.ctp:3
+msgid "Your browser does not support the video element."
 msgstr ""
 
 #: Template/Element/files/tile_userindex.ctp:31
@@ -1325,22 +1546,13 @@ msgstr ""
 msgid "Locked"
 msgstr ""
 
-#: Template/Element/files/tile_userindex.ctp:44
-#: Template/Element/notes/tile_userindex.ctp:56
-#: Template/Element/posts/tile_userindex.ctp:52
-#: Template/Element/projects/tile_userindex.ctp:44
-msgid "Updated on"
-msgstr ""
-
-#: Template/Element/files/tile_userindex.ctp:59
-#: Template/Element/notes/tile_userindex.ctp:69
-#: Template/Element/posts/tile_userindex.ctp:65
-msgid "No projects"
-msgstr ""
-
 #: Template/Element/languages/card.ctp:14
 #: Template/Element/licenses/card.ctp:14
 #: Template/Element/users/card.ctp:20
+#: Template/Languages/view.ctp:29
+#: Template/Licenses/view.ctp:27
+#: Template/Projects/view.ctp:41
+#: Template/Users/view.ctp:40
 msgid "{0} article"
 msgid_plural "{0} articles"
 msgstr[0] ""
@@ -1349,6 +1561,9 @@ msgstr[1] ""
 #: Template/Element/languages/card.ctp:16
 #: Template/Element/licenses/card.ctp:16
 #: Template/Element/users/card.ctp:22
+#: Template/Languages/view.ctp:32
+#: Template/Licenses/view.ctp:30
+#: Template/Users/view.ctp:43
 msgid "{0} project"
 msgid_plural "{0} projects"
 msgstr[0] ""
@@ -1357,6 +1572,10 @@ msgstr[1] ""
 #: Template/Element/languages/card.ctp:18
 #: Template/Element/licenses/card.ctp:18
 #: Template/Element/users/card.ctp:24
+#: Template/Languages/view.ctp:31
+#: Template/Licenses/view.ctp:29
+#: Template/Projects/view.ctp:43
+#: Template/Users/view.ctp:42
 msgid "{0} file"
 msgid_plural "{0} files"
 msgstr[0] ""
@@ -1365,8 +1584,22 @@ msgstr[1] ""
 #: Template/Element/languages/card.ctp:20
 #: Template/Element/licenses/card.ctp:20
 #: Template/Element/users/card.ctp:26
+#: Template/Languages/view.ctp:30
+#: Template/Licenses/view.ctp:28
+#: Template/Projects/view.ctp:42
+#: Template/Users/view.ctp:41
 msgid "{0} note"
 msgid_plural "{0} notes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Template/Element/languages/card.ctp:22
+#: Template/Element/users/card.ctp:28
+#: Template/Languages/view.ctp:33
+#: Template/Projects/view.ctp:44
+#: Template/Users/view.ctp:44
+msgid "{0} album"
+msgid_plural "{0} albums"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1416,9 +1649,9 @@ msgstr ""
 
 #: Template/Element/layout/footer.ctp:7
 #: Template/Languages/index.ctp:15
-#: Template/Languages/view.ctp:15
+#: Template/Languages/view.ctp:16
 #: Template/Licenses/index.ctp:15
-#: Template/Licenses/view.ctp:15
+#: Template/Licenses/view.ctp:16
 #: Template/Pages/about.ctp:12;14
 msgid "About"
 msgstr ""
@@ -1451,46 +1684,46 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: Template/Element/layout/mainmenu.ctp:20
-#: Template/Files/index.ctp:25
-#: Template/Notes/index.ctp:25
+#: Template/Element/layout/mainmenu.ctp:23
+#: Template/Files/index.ctp:29
+#: Template/Notes/index.ctp:29
 #: Template/Posts/index.ctp:25
 #: Template/Projects/index.ctp:25
 #: Template/Users/index.ctp:12;15
-#: Template/Users/view.ctp:15
+#: Template/Users/view.ctp:16
 msgid "Authors"
 msgstr ""
 
-#: Template/Element/layout/mainmenu.ctp:28
+#: Template/Element/layout/mainmenu.ctp:31
 msgid "Hide NSFW"
 msgstr ""
 
-#: Template/Element/layout/mainmenu.ctp:28
+#: Template/Element/layout/mainmenu.ctp:31
 msgid "Show NSFW"
 msgstr ""
 
-#: Template/Element/layout/mainmenu.ctp:32
-#: Template/Element/layout/mainmenu_user.ctp:33
+#: Template/Element/layout/mainmenu.ctp:35
+#: Template/Element/layout/mainmenu_user.ctp:36
 msgid "Report this page"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_admin.ctp:35
+#: Template/Element/layout/mainmenu_admin.ctp:38
 msgid "Maintenance"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_admin.ctp:38
+#: Template/Element/layout/mainmenu_admin.ctp:41
 msgid "Rebuild table"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_admin.ctp:40
+#: Template/Element/layout/mainmenu_admin.ctp:43
 msgid "Clear the caches"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_admin.ctp:51
+#: Template/Element/layout/mainmenu_admin.ctp:54
 msgid "View site online"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_admin.ctp:54
+#: Template/Element/layout/mainmenu_admin.ctp:57
 #: Template/Element/layout/mainmenu_usermenu.ctp:11
 msgid "Logout"
 msgstr ""
@@ -1499,7 +1732,7 @@ msgstr ""
 msgid "Back to website"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_user.ctp:24
+#: Template/Element/layout/mainmenu_user.ctp:27
 #: Template/User/Comments/index.ctp:17;20
 msgid "Comments"
 msgstr ""
@@ -1516,7 +1749,7 @@ msgstr ""
 msgid "Articles:"
 msgstr ""
 
-#: Template/Element/layout/mainmenu_usermenu.ctp:16;21;26;31
+#: Template/Element/layout/mainmenu_usermenu.ctp:16;21;26;31;36
 msgid "Manage"
 msgstr ""
 
@@ -1542,6 +1775,18 @@ msgstr ""
 
 #: Template/Element/layout/mainmenu_usermenu.ctp:32
 msgid "Upload some files !"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:34
+msgid "Albums:"
+msgstr ""
+
+#: Template/Element/layout/mainmenu_usermenu.ctp:37
+msgid "Create an album !"
+msgstr ""
+
+#: Template/Element/layout/nsfw_block.ctp:3
+msgid "This element may not be safe."
 msgstr ""
 
 #: Template/Element/layout/pageloader.ctp:3
@@ -1580,12 +1825,12 @@ msgstr ""
 msgid "Informations"
 msgstr ""
 
-#: Template/Element/notes/card.ctp:27
+#: Template/Element/notes/card.ctp:29
 msgid "Permalink"
 msgstr ""
 
-#: Template/Element/notes/card.ctp:49
-#: Template/Element/projects/card.ctp:46
+#: Template/Element/notes/card.ctp:51
+#: Template/Element/projects/card.ctp:48
 msgid "Created on: {0}"
 msgstr ""
 
@@ -1606,17 +1851,17 @@ msgstr ""
 msgid "Deleted"
 msgstr ""
 
-#: Template/Element/posts/card.ctp:46
+#: Template/Element/posts/card.ctp:48
 msgid "Published on: {0}"
 msgstr ""
 
 #: Template/Element/posts/tile_userindex.ctp:47
-#: Template/Posts/index.ctp:38
+#: Template/Posts/index.ctp:43
 #: Template/User/Posts/index.ctp:21
 msgid "Publication date"
 msgstr ""
 
-#: Template/Element/projects/card.ctp:27
+#: Template/Element/projects/card.ctp:29
 msgid "Manager: "
 msgstr ""
 
@@ -1688,7 +1933,7 @@ msgstr ""
 
 #: Template/Element/users/registerform.ctp:6
 #: Template/Licenses/index.ctp:22
-#: Template/User/Users/edit.ctp:43
+#: Template/User/Users/edit.ctp:45
 #: Template/Users/index.ctp:20
 msgid "Real name"
 msgstr ""
@@ -1710,7 +1955,7 @@ msgid "Verify you didn't made a typo"
 msgstr ""
 
 #: Template/Element/users/registerform.ctp:9
-#: Template/User/Users/edit.ctp:45
+#: Template/User/Users/edit.ctp:47
 msgid "About you"
 msgstr ""
 
@@ -1718,27 +1963,27 @@ msgstr ""
 msgid "Tell us why you want to come here"
 msgstr ""
 
-#: Template/Error/error400.ctp:10
+#: Template/Error/error400.ctp:44
 msgid "The requested address %s was not found on this server."
 msgstr ""
 
-#: Template/Error/error400.ctp:13
+#: Template/Error/error400.ctp:47
 msgid "Method not allowed"
 msgstr ""
 
-#: Template/Error/error400.ctp:16
+#: Template/Error/error400.ctp:50
 msgid "A wild unexpected error occured."
 msgstr ""
 
-#: Template/Error/error400.ctp:19
+#: Template/Error/error400.ctp:53
 msgid "Error {0}: {1}"
 msgstr ""
 
-#: Template/Error/error500.ctp:5
+#: Template/Error/error500.ctp:44
 msgid "Error: {0}"
 msgstr ""
 
-#: Template/Error/error500.ctp:39
+#: Template/Error/error500.ctp:57
 msgid "Error:"
 msgstr ""
 
@@ -1746,76 +1991,27 @@ msgstr ""
 msgid "Files in \"{0}\""
 msgstr ""
 
-#: Template/Files/index.ctp:19
+#: Template/Files/index.ctp:23
 msgid "Files with license \"{0}\""
 msgstr ""
 
-#: Template/Files/index.ctp:24
+#: Template/Files/index.ctp:28
 msgid "Files by {0}"
 msgstr ""
 
-#: Template/Files/index.ctp:29;32
+#: Template/Files/index.ctp:33
+msgid "Files in project \"{0}\""
+msgstr ""
+
+#: Template/Files/index.ctp:38;41
 msgid "Files list"
 msgstr ""
 
-#: Template/Files/nsfw.ctp:3
-#: Template/Notes/nsfw.ctp:3
-#: Template/Posts/nsfw.ctp:3
-#: Template/Projects/nsfw.ctp:3
-msgid "Nope."
-msgstr ""
-
-#: Template/Files/nsfw.ctp:9
-#: Template/Notes/nsfw.ctp:9
-#: Template/Posts/nsfw.ctp:9
-#: Template/Projects/nsfw.ctp:9
-msgid "This content is not suitable for everyone."
-msgstr ""
-
-#: Template/Files/nsfw.ctp:11
-#: Template/Notes/nsfw.ctp:11
-#: Template/Posts/nsfw.ctp:11
-#: Template/Projects/nsfw.ctp:11
-msgid "If you really want to see it, please click on the \"Show NSFW\" button in the menu."
-msgstr ""
-
-#: Template/Files/view.ctp:29
-msgid "Creator:"
-msgstr ""
-
-#: Template/Files/view.ctp:31
+#: Template/Files/view.ctp:34
 msgid "Mime type:"
 msgstr ""
 
-#: Template/Files/view.ctp:37
-#: Template/Notes/view.ctp:34
-#: Template/Posts/view.ctp:34
-#: Template/Projects/view.ctp:32
-msgid "Safe content:"
-msgstr ""
-
-#: Template/Files/view.ctp:37
-#: Template/Notes/view.ctp:36
-#: Template/Posts/view.ctp:36
-#: Template/Projects/view.ctp:32
-#: View/Helper/ItemsAdminHelper.php:61
-msgid "Yes"
-msgstr ""
-
-#: Template/Files/view.ctp:37
-#: Template/Notes/view.ctp:36
-#: Template/Posts/view.ctp:36
-#: Template/Projects/view.ctp:32
-#: View/Helper/ItemsAdminHelper.php:66
-msgid "No"
-msgstr ""
-
-#: Template/Files/view.ctp:64
-#: Template/Projects/view.ctp:33
-msgid "Tags:"
-msgstr ""
-
-#: Template/Files/view.ctp:72
+#: Template/Files/view.ctp:99
 msgid "Download"
 msgstr ""
 
@@ -1824,52 +2020,85 @@ msgid "Number of posts"
 msgstr ""
 
 #: Template/Languages/index.ctp:24
+msgid "Number of notes"
+msgstr ""
+
+#: Template/Languages/index.ctp:25
 #: Template/Licenses/index.ctp:24
 msgid "Number of projects"
 msgstr ""
 
-#: Template/Languages/index.ctp:25
+#: Template/Languages/index.ctp:26
 #: Template/Licenses/index.ctp:25
 msgid "Number of files"
 msgstr ""
 
-#: Template/Languages/view.ctp:12
+#: Template/Languages/index.ctp:27
+msgid "Number of albums"
+msgstr ""
+
+#: Template/Languages/index.ctp:37
+#: Template/User/Notes/index.ctp:35;44
+#: Template/User/Posts/index.ctp:37;46
+msgid "Show all"
+msgstr ""
+
+#: Template/Languages/index.ctp:39
+msgid "Hide languages with no content"
+msgstr ""
+
+#: Template/Languages/view.ctp:13
 msgid "Language: {0}"
 msgstr ""
 
-#: Template/Languages/view.ctp:17
+#: Template/Languages/view.ctp:18
 msgid "Content in \"{0}\""
 msgstr ""
 
-#: Template/Languages/view.ctp:25
+#: Template/Languages/view.ctp:26
 msgid "Available translation:"
 msgstr ""
 
-#: Template/Languages/view.ctp:26
+#: Template/Languages/view.ctp:27
 msgid "iso639-1 code:"
 msgstr ""
 
-#: Template/Languages/view.ctp:27
-msgid "iso639-2 code:"
+#: Template/Languages/view.ctp:46
+msgid "Display all articles in this language"
 msgstr ""
 
-#: Template/Languages/view.ctp:37
-#: Template/Licenses/view.ctp:41
+#: Template/Languages/view.ctp:56
+msgid "Display all notes in this language"
+msgstr ""
+
+#: Template/Languages/view.ctp:66
+msgid "Display all projects in this language"
+msgstr ""
+
+#: Template/Languages/view.ctp:76
+msgid "Display all files in this language"
+msgstr ""
+
+#: Template/Languages/view.ctp:86
+msgid "Display all albums in this language"
+msgstr ""
+
+#: Template/Languages/view.ctp:96
+msgid "Last {0} elements in this language"
+msgstr ""
+
+#: Template/Languages/view.ctp:102
+#: Template/Licenses/view.ctp:96
+#: Template/Projects/view.ctp:126
+#: Template/Users/view.ctp:109
 msgid "Some entries may be hidden, depending on your NSFW settings."
 msgstr ""
 
-#: Template/Languages/view.ctp:43
-#: Template/Licenses/view.ctp:47
-#: Template/Projects/view.ctp:65
-#: Template/Users/view.ctp:51
-msgid "Notes {0}"
-msgstr ""
-
-#: Template/Layout/default.ctp:82
+#: Template/Layout/default.ctp:78
 msgid "Login/Register"
 msgstr ""
 
-#: Template/Layout/err400.ctp:52
+#: Template/Layout/error.ctp:52
 msgid "Back"
 msgstr ""
 
@@ -1877,28 +2106,52 @@ msgstr ""
 msgid "Number of articles"
 msgstr ""
 
-#: Template/Licenses/view.ctp:12
+#: Template/Licenses/view.ctp:13
 msgid "License: {0}"
 msgstr ""
 
-#: Template/Licenses/view.ctp:17
+#: Template/Licenses/view.ctp:18
 msgid "Content with the {0} license"
 msgstr ""
 
-#: Template/Licenses/view.ctp:32
+#: Template/Licenses/view.ctp:38
 msgid "More info online"
+msgstr ""
+
+#: Template/Licenses/view.ctp:50
+msgid "Display all articles with this license"
+msgstr ""
+
+#: Template/Licenses/view.ctp:60
+msgid "Display all notes with this license"
+msgstr ""
+
+#: Template/Licenses/view.ctp:70
+msgid "Display all projects with this license"
+msgstr ""
+
+#: Template/Licenses/view.ctp:80
+msgid "Display all files with this license"
+msgstr ""
+
+#: Template/Licenses/view.ctp:90
+msgid "Last {0} elements with this license"
 msgstr ""
 
 #: Template/Notes/index.ctp:14
 msgid "Notes in \"{0}\""
 msgstr ""
 
-#: Template/Notes/index.ctp:19
+#: Template/Notes/index.ctp:23
 msgid "Notes with license \"{0}\""
 msgstr ""
 
-#: Template/Notes/index.ctp:24
+#: Template/Notes/index.ctp:28
 msgid "Notes by {0}"
+msgstr ""
+
+#: Template/Notes/index.ctp:33
+msgid "Notes in project \"{0}\""
 msgstr ""
 
 #: Template/Pages/about.ctp:20
@@ -1917,11 +2170,15 @@ msgstr ""
 msgid "Articles by {0}"
 msgstr ""
 
-#: Template/Posts/index.ctp:29;32
+#: Template/Posts/index.ctp:29
+msgid "Articles in project \"{0}\""
+msgstr ""
+
+#: Template/Posts/index.ctp:34;37
 msgid "Articles list"
 msgstr ""
 
-#: Template/Posts/view.ctp:29
+#: Template/Posts/view.ctp:28
 msgid "Publication date:"
 msgstr ""
 
@@ -1941,25 +2198,133 @@ msgstr ""
 msgid "Projects list"
 msgstr ""
 
-#: Template/Projects/view.ctp:36
+#: Template/Projects/view.ctp:49
 msgid "Members"
 msgstr ""
 
-#: Template/Projects/view.ctp:48
-#: Template/User/Users/edit.ctp:44
-#: Template/Users/view.ctp:31
+#: Template/Projects/view.ctp:61
+#: Template/User/Users/edit.ctp:46
+#: Template/Users/view.ctp:37
 msgid "Website"
+msgstr ""
+
+#: Template/Projects/view.ctp:80
+msgid "Display all posts in this project"
+msgstr ""
+
+#: Template/Projects/view.ctp:90
+msgid "Display all notes in this project"
+msgstr ""
+
+#: Template/Projects/view.ctp:100
+msgid "Display all files in this project"
+msgstr ""
+
+#: Template/Projects/view.ctp:110
+msgid "Display all albums in this project"
+msgstr ""
+
+#: Template/Projects/view.ctp:120
+msgid "Last {0} elements added to project"
+msgstr ""
+
+#: Template/User/Albums/add.ctp:11
+#: Template/User/Albums/edit.ctp:29
+msgid "New album"
+msgstr ""
+
+#: Template/User/Albums/add.ctp:21
+#: Template/User/Albums/edit.ctp:27
+#: Template/User/Albums/index.ctp:12
+msgid "Your albums"
+msgstr ""
+
+#: Template/User/Albums/add.ctp:22
+#: Template/User/Files/add.ctp:22
+#: Template/User/Files/edit.ctp:28
+#: Template/User/Files/index.ctp:12
+msgid "Your files"
+msgstr ""
+
+#: Template/User/Albums/add.ctp:23
+#: Template/User/Albums/edit.ctp:28
+#: Template/User/Projects/add.ctp:22
+#: Template/User/Projects/edit.ctp:28
+#: Template/User/Projects/index.ctp:12
+msgid "Your projects"
+msgstr ""
+
+#: Template/User/Albums/add.ctp:32
+#: Template/User/Albums/edit.ctp:38
+#: Template/User/Projects/add.ctp:33
+#: Template/User/Projects/edit.ctp:41
+msgid "Full description"
+msgstr ""
+
+#: Template/User/Albums/add.ctp:48
+#: Template/User/Albums/edit.ctp:54
+#: Template/User/Files/add.ctp:42
+#: Template/User/Files/edit.ctp:48
+#: Template/User/Notes/add.ctp:47
+#: Template/User/Notes/edit.ctp:53
+#: Template/User/Posts/add.ctp:50
+#: Template/User/Posts/edit.ctp:56
+#: Template/User/Projects/add.ctp:48
+#: Template/User/Projects/edit.ctp:55
+msgid "This is SFW"
+msgstr ""
+
+#: Template/User/Albums/add.ctp:51
+msgid "Create the album"
+msgstr ""
+
+#: Template/User/Albums/edit.ctp:57
+#: Template/User/Files/edit.ctp:60
+msgid "Update"
+msgstr ""
+
+#: Template/User/Albums/index.ctp:22
+#: Template/User/Files/index.ctp:23
+msgid "Addition date"
+msgstr ""
+
+#: Template/User/Albums/index.ctp:32
+#: Template/User/Files/index.ctp:33
+#: Template/User/Notes/index.ctp:30
+#: Template/User/Posts/index.ctp:32
+#: Template/User/Projects/index.ctp:31
+msgid "Clear filters"
+msgstr ""
+
+#: Template/User/Albums/index.ctp:37
+#: Template/User/Files/index.ctp:38;47
+#: Template/User/Projects/index.ctp:36;45
+msgid "All"
+msgstr ""
+
+#: Template/User/Albums/index.ctp:39
+#: Template/User/Files/index.ctp:40
+#: Template/User/Notes/index.ctp:37
+#: Template/User/Posts/index.ctp:39
+#: Template/User/Projects/index.ctp:38
+msgid "Safe only"
+msgstr ""
+
+#: Template/User/Albums/index.ctp:41
+#: Template/User/Files/index.ctp:42
+#: Template/User/Notes/index.ctp:39
+#: Template/User/Posts/index.ctp:41
+#: Template/User/Projects/index.ctp:40
+msgid "Unsafe only"
+msgstr ""
+
+#: Template/User/Albums/index.ctp:47
+msgid "Add an album"
 msgstr ""
 
 #: Template/User/Files/add.ctp:12
 #: Template/User/Files/index.ctp:55
 msgid "Add a file"
-msgstr ""
-
-#: Template/User/Files/add.ctp:22
-#: Template/User/Files/edit.ctp:28
-#: Template/User/Files/index.ctp:12
-msgid "Your files"
 msgstr ""
 
 #: Template/User/Files/add.ctp:23
@@ -1978,18 +2343,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: Template/User/Files/add.ctp:47
-#: Template/User/Files/edit.ctp:53
-#: Template/User/Notes/add.ctp:47
-#: Template/User/Notes/edit.ctp:53
-#: Template/User/Posts/add.ctp:50
-#: Template/User/Posts/edit.ctp:56
-#: Template/User/Projects/add.ctp:48
-#: Template/User/Projects/edit.ctp:55
-msgid "This is SFW"
-msgstr ""
-
-#: Template/User/Files/add.ctp:50
+#: Template/User/Files/add.ctp:53
 msgid "Add the file"
 msgstr ""
 
@@ -1997,49 +2351,15 @@ msgstr ""
 msgid "New file"
 msgstr ""
 
-#: Template/User/Files/edit.ctp:56
+#: Template/User/Files/edit.ctp:59
 #: Template/User/Notes/edit.ctp:56
 #: Template/User/Posts/edit.ctp:62
 #: Template/User/Projects/edit.ctp:58
 msgid "Minor update"
 msgstr ""
 
-#: Template/User/Files/edit.ctp:59
-msgid "Update"
-msgstr ""
-
 #: Template/User/Files/index.ctp:22
 msgid "File size"
-msgstr ""
-
-#: Template/User/Files/index.ctp:23
-msgid "Addition date"
-msgstr ""
-
-#: Template/User/Files/index.ctp:33
-#: Template/User/Notes/index.ctp:30
-#: Template/User/Posts/index.ctp:32
-#: Template/User/Projects/index.ctp:31
-msgid "Clear filters"
-msgstr ""
-
-#: Template/User/Files/index.ctp:38;47
-#: Template/User/Projects/index.ctp:36;45
-msgid "All"
-msgstr ""
-
-#: Template/User/Files/index.ctp:40
-#: Template/User/Notes/index.ctp:37
-#: Template/User/Posts/index.ctp:39
-#: Template/User/Projects/index.ctp:38
-msgid "Safe only"
-msgstr ""
-
-#: Template/User/Files/index.ctp:42
-#: Template/User/Notes/index.ctp:39
-#: Template/User/Posts/index.ctp:41
-#: Template/User/Projects/index.ctp:40
-msgid "Unsafe only"
 msgstr ""
 
 #: Template/User/Files/index.ctp:49
@@ -2072,11 +2392,6 @@ msgstr ""
 #: Template/User/Posts/index.ctp:23
 #: Template/User/Projects/index.ctp:22
 msgid "Update date"
-msgstr ""
-
-#: Template/User/Notes/index.ctp:35;44
-#: Template/User/Posts/index.ctp:37;46
-msgid "Show all"
 msgstr ""
 
 #: Template/User/Posts/add.ctp:12
@@ -2118,20 +2433,9 @@ msgstr ""
 msgid "New project"
 msgstr ""
 
-#: Template/User/Projects/add.ctp:22
-#: Template/User/Projects/edit.ctp:28
-#: Template/User/Projects/index.ctp:12
-msgid "Your projects"
-msgstr ""
-
 #: Template/User/Projects/add.ctp:32
 #: Template/User/Projects/edit.ctp:39
 msgid "Short description"
-msgstr ""
-
-#: Template/User/Projects/add.ctp:33
-#: Template/User/Projects/edit.ctp:41
-msgid "Full description"
 msgstr ""
 
 #: Template/User/Projects/add.ctp:35
@@ -2151,64 +2455,88 @@ msgstr ""
 msgid "Project name"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:12
+#: Template/User/Users/edit.ctp:14
 msgid "Update your profile"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:21
+#: Template/User/Users/edit.ctp:23
 msgid "View your profile online"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:30
+#: Template/User/Users/edit.ctp:32
 msgid "General informations"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:31
+#: Template/User/Users/edit.ctp:33
 msgid "Preferences"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:32
+#: Template/User/Users/edit.ctp:34
 msgid "Change password"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:33
+#: Template/User/Users/edit.ctp:35
 msgid "Close account"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:66
+#: Template/User/Users/edit.ctp:68
 msgid "Default site language"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:72
+#: Template/User/Users/edit.ctp:74
 msgid "Default language for new content"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:78
+#: Template/User/Users/edit.ctp:80
 msgid "Default license for new content"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:83
+#: Template/User/Users/edit.ctp:85
 msgid "Display NSFW content"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:96;109
+#: Template/User/Users/edit.ctp:98;111
 msgid "Current password"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:97
+#: Template/User/Users/edit.ctp:99
 msgid "New password"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:98
+#: Template/User/Users/edit.ctp:100
 msgid "Confirmation"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:101
+#: Template/User/Users/edit.ctp:103
 msgid "Update password"
 msgstr ""
 
-#: Template/User/Users/edit.ctp:112
+#: Template/User/Users/edit.ctp:114
 msgid "Close your account"
+msgstr ""
+
+#: Template/Users/view.ctp:63
+msgid "Display all posts for this author"
+msgstr ""
+
+#: Template/Users/view.ctp:71
+msgid "Display all notes for this author"
+msgstr ""
+
+#: Template/Users/view.ctp:79
+msgid "Display all projects for this author"
+msgstr ""
+
+#: Template/Users/view.ctp:87
+msgid "Display all files for this author"
+msgstr ""
+
+#: Template/Users/view.ctp:95
+msgid "Display all albums for this author"
+msgstr ""
+
+#: Template/Users/view.ctp:103
+msgid "Last {0} elements posted by {1}"
 msgstr ""
 
 #: View/Helper/AppHtmlHelper.php:69;71
