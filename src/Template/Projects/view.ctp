@@ -7,6 +7,7 @@
  * Layout element:
  *   defaultview.ctp
  */
+use Cake\Core\Configure;
 
 // Page title
 $this->assign('title', h($project->name));
@@ -36,6 +37,12 @@ $this->start('pageInfos');
             <?php echo $project->sfw ? $this->Html->iconT('check-circle', __d('elabs', 'Yes')) : $this->Html->iconT('circle-o', __d('elabs', 'No')); ?>
         </span>
     </li>
+    <li class="separator"></li>
+    <li><strong><?php echo $this->Html->iconT('font', __dn('elabs', '{0} article', '{0} articles', $project->post_count, [$project->post_count])) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('sticky-note', __dn('elabs', '{0} note', '{0} notes', $project->note_count, $project->note_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('file-o', __dn('elabs', '{0} file','{0} files', $project->file_count, $project->file_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('book', __dn('elabs', '{0} album', '{0} albums', $project->album_count, $project->album_count)) ?></strong></li>
+    <li class="separator"></li>
     <li><strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
 </ul>
 
@@ -75,7 +82,7 @@ $this->start('pageContent');
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
-            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . count($project->posts) . '</span>') ?></a>
+            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles') ?></a>
         </li>
         <li>
             <?php
@@ -85,7 +92,7 @@ $this->start('pageContent');
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
-            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . count($project->notes) . '</span>') ?></a>
+            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes') ?></a>
         </li>
         <li>
             <?php
@@ -95,7 +102,7 @@ $this->start('pageContent');
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
-            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . count($project->files) . '</span>') ?></a>
+            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files') ?></a>
         </li>
         <li>
             <?php
@@ -105,10 +112,20 @@ $this->start('pageContent');
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
-            <a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . count($project->albums) . '</span>') ?></a>
+            <a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums') ?></a>
         </li>
     </ul>
     <div class="tab-content">
+        <h4>
+            <?php echo __d('elabs', 'Last {0} elements added to project', [Configure::read('cms.maxRelatedData')]) ?>
+        </h4>
+        <?php
+        if (!$seeNSFW):
+            ?>
+            <div class="alert alert-info alert-sm">
+                <?php echo $this->Html->iconT('info', __d('elabs','Some entries may be hidden, depending on your NSFW settings.')) ?>
+            </div>
+        <?php endif; ?>
         <div class="tab-pane fade active in" id="posts-tab">
             <?php
             if (!empty($project->posts)):

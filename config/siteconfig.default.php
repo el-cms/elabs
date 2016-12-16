@@ -28,6 +28,7 @@ return ['cms' => [
         'defaultMinUserNameLenght' => 6,
         'defaultSiteLang' => '', // Null for no specific lang.
         'escapeMarkdown' => true,
+        'maxRelatedData' =>6,
         'adminCVUrl' => '#',
     ]
 ];

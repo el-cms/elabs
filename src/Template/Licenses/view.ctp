@@ -7,6 +7,7 @@
  * Layout element:
  *   defaultview.ctp
  */
+use Cake\Core\Configure;
 
 // Page title
 $this->assign('title', __d('elabs', 'License: {0}', h($license->name)));
@@ -22,6 +23,11 @@ $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
     <li><strong><?php echo $this->Html->iconT('font', __d('elabs', 'Name:')) ?></strong> <?php echo $this->Html->iconT(h($license->icon), h($license->name)) ?></li>
+    <li class="separator"></li>
+    <li><strong><?php echo $this->Html->iconT('font', __dn('elabs', '{0} article', '{0} articles', $license->post_count, [$license->post_count])) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('sticky-note', __dn('elabs', '{0} note', '{0} notes', $license->note_count, $license->note_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('file-o', __dn('elabs', '{0} file','{0} files', $license->file_count, $license->file_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('cogs', __dn('elabs', '{0} project', '{0} projects', $license->project_count, $license->project_count)) ?></strong></li>
 </ul>
 <?php
 $this->end();
@@ -35,12 +41,7 @@ $this->end();
 // Block: Page content
 // -------------------
 $this->start('pageContent');
-if (!$seeNSFW):
-    ?>
-    <div class="alert alert-info alert-sm">
-        <?php echo __d('elabs', 'Some entries may be hidden, depending on your NSFW settings.') ?>
-    </div>
-<?php endif; ?>
+?>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
         <li class="active">
@@ -51,7 +52,7 @@ if (!$seeNSFW):
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
-            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $this->Number->format($license->post_count) . '</span>') ?></a>
+            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles') ?></a>
         </li>
         <li>
             <?php
@@ -61,7 +62,7 @@ if (!$seeNSFW):
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
-            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $this->Number->format($license->note_count) . '</span>') ?></a>
+            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes') ?></a>
         </li>
         <li>
             <?php
@@ -71,7 +72,7 @@ if (!$seeNSFW):
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
-            <a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $this->Number->format($license->project_count) . '</span>') ?></a>
+            <a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects') ?></a>
         </li>
         <li>
             <?php
@@ -81,10 +82,20 @@ if (!$seeNSFW):
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
-            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $this->Number->format($license->file_count) . '</span>') ?></a>
+            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files') ?></a>
         </li>
     </ul>
     <div class="tab-content">
+        <h4>
+            <?php echo __d('elabs', 'Last {0} elements with this license', [Configure::read('cms.maxRelatedData')]) ?>
+        </h4>
+        <?php
+        if (!$seeNSFW):
+            ?>
+            <div class="alert alert-info alert-sm">
+                <?php echo $this->Html->iconT('info', __d('elabs','Some entries may be hidden, depending on your NSFW settings.')) ?>
+            </div>
+        <?php endif; ?>
         <div class="tab-pane fade active in" id="posts-tab">
             <?php
             if (!empty($license->posts)):
