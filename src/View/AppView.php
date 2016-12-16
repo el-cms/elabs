@@ -40,7 +40,11 @@ class AppView extends View
     {
         parent::initialize();
 
-        $this->loadHelper('Html', ['className' => 'AppHtml', 'App' => \Cake\Core\Configure::read('App')]);
+        $this->loadHelper('Html', [
+            'className' => 'AppHtml',
+            'App' => \Cake\Core\Configure::read('App'),
+            'pageLanguage' => $this->request->session()->read('language'),
+        ]);
         $this->loadHelper('Form', [
             'className' => 'Form',
             'templates' => [
