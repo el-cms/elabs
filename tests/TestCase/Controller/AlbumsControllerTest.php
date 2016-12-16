@@ -48,6 +48,8 @@ class AlbumsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        $this->get('/albums');
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -58,36 +60,9 @@ class AlbumsControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
+        $this->get('/albums/view/1727fe48-2825-4fd1-a5a1-357d5bd09531');
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
-    /**
-     * Test add method
-     *
-     * @return void
-     */
-    public function testAdd()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
 }
