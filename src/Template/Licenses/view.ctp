@@ -43,10 +43,46 @@ if (!$seeNSFW):
 <?php endif; ?>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $this->Number->format($license->post_count) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $this->Number->format($license->note_count) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $this->Number->format($license->project_count) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $this->Number->format($license->file_count) . '</span>') ?></a></li>
+        <li class="active">
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all articles with this license')]), 
+                    ['controller' => 'posts', 'action' => 'index', 'license', $license->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $this->Number->format($license->post_count) . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all notes with this license')]), 
+                    ['controller' => 'notes', 'action' => 'index', 'license', $license->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $this->Number->format($license->note_count) . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all projects with this license')]), 
+                    ['controller' => 'projects', 'action' => 'index', 'license', $license->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $this->Number->format($license->project_count) . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all files with this license')]), 
+                    ['controller' => 'files', 'action' => 'index', 'license', $license->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $this->Number->format($license->file_count) . '</span>') ?></a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">

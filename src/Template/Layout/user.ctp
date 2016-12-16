@@ -1,10 +1,6 @@
 <?php
 // Define the lang attribute for titles
 $contentLanguage = $this->fetch('contentLanguage');
-$langAttribute = '';
-if (!empty($contentLanguage)):
-    $langAttribute = ' lang="' . $contentLanguage . '"';
-endif;
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $siteLanguage ?>">
@@ -12,7 +8,7 @@ endif;
         <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta content="initial-scale=1.0, width=device-width" name="viewport">
-        <title<?php echo $langAttribute ?>>
+        <title<?php echo $this->Html->langAttr($contentLanguage) ?>>
             <?php echo strip_tags($this->fetch('title')) . ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
         </title>
         <?php echo $this->Html->meta('icon') ?>
@@ -97,7 +93,7 @@ endif;
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Title -->
-                            <h1<?php echo $langAttribute ?>><?php echo $this->fetch('title') ?></h1>
+                            <h1<?php echo $this->Html->langAttr($contentLanguage) ?>><?php echo $this->fetch('title') ?></h1>
                             <!-- / Title -->
 
                             <!-- Breadcrumbs -->
@@ -126,29 +122,29 @@ endif;
             ?>
             <!-- / Toolbar -->
         </div>
-    <div class="container page-content">
-        <!-- Content -->
-        <?php echo $this->fetch('content') ?>
-        <!-- / Content -->
-    </div>
-    <!-- / Main content -->
-
-    <!-- Report modal -->
-    <?php echo $this->element('reports/add_modal'); ?>
-    <!-- / Report modal -->
-
-    <!-- Footer -->
-    <footer class="footer footer-user">
-        <div class="container">
-            <?php echo $this->element('layout/footer'); ?>
+        <div class="container page-content">
+            <!-- Content -->
+            <?php echo $this->fetch('content') ?>
+            <!-- / Content -->
         </div>
-    </footer>
-    <!-- Javascript at the end -->
-    <?php echo $this->Html->script('lib/jquery.min.js') ?>
-    <?php echo $this->Html->script('bootstrap.min.js') ?>
-    <?php echo $this->Html->script('bootstrap-tagsinput.min.js') ?>
-    <!-- Custom scripts -->
-    <?php echo $this->fetch('pageBottomScripts') ?>
-    <?php echo $this->Html->script('custom.js') ?>
-</body>
+        <!-- / Main content -->
+
+        <!-- Report modal -->
+        <?php echo $this->element('reports/add_modal'); ?>
+        <!-- / Report modal -->
+
+        <!-- Footer -->
+        <footer class="footer footer-user">
+            <div class="container">
+                <?php echo $this->element('layout/footer'); ?>
+            </div>
+        </footer>
+        <!-- Javascript at the end -->
+        <?php echo $this->Html->script('lib/jquery.min.js') ?>
+        <?php echo $this->Html->script('bootstrap.min.js') ?>
+        <?php echo $this->Html->script('bootstrap-tagsinput.min.js') ?>
+        <!-- Custom scripts -->
+        <?php echo $this->fetch('pageBottomScripts') ?>
+        <?php echo $this->Html->script('custom.js') ?>
+    </body>
 </html>

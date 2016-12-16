@@ -47,11 +47,56 @@ if (!empty($user->bio)):
 <?php endif; ?>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $user->post_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $user->note_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $user->project_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $user->file_count . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . $user->album_count . '</span>') ?></a></li>
+        <li class="active">
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all posts for this author')]), 
+                    ['controller' => 'Posts', 'action' => 'index', 'user', $user->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . $user->post_count . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all notes for this author')]), 
+                    ['controller' => 'Notes', 'action' => 'index', 'user', $user->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . $user->note_count . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all projects for this author')]), 
+                    ['controller' => 'Projects', 'action' => 'index', 'user', $user->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#projects-tab"><?php echo __d('elabs', 'Projects {0}', '<span class="badge">' . $user->project_count . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all files for this author')]), 
+                    ['controller' => 'Files', 'action' => 'index', 'user', $user->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . $user->file_count . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all albums for this author')]), 
+                    ['controller' => 'Albums', 'action' => 'index', 'user', $user->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . $user->album_count . '</span>') ?></a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">

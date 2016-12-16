@@ -62,7 +62,7 @@
                         </dd>
                     </dl>
                 </div>
-                <div class="col-sm-8"  lang="<?php echo $file->language->iso639_1 ?>">
+                <div class="col-sm-8"<?php echo $this->Html->langAttr($file->language->iso639_1) ?>>
                     <?php echo $this->element('files/view_content_' . $config['element'], ['data' => $file]); ?>
                 </div>
             </div>

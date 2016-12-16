@@ -83,7 +83,7 @@ $this->start('pageContent');
         <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('elabs', 'Related items') ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
-        <div class="tab-pane fade active in" id="tab-content" lang="<?php echo $project->language->iso639_1 ?>">
+        <div class="tab-pane fade active in" id="tab-content"<?php echo $this->Html->langAttr($project->language->iso639_1) ?>>
             <?php
             echo $this->Html->displayMD($project->short_description);
             echo $this->Html->displayMD($project->description);

@@ -28,7 +28,7 @@
             <?php endif; ?>
             <span class="label label-language"><?php echo $album->language->id; ?></span>
             &nbsp;
-            <span id="h-<?php echo $tileGroupId . $album->id ?>" lang="<?php echo $album->language->iso639_1 ?>"><?php echo h($album->name) ?></span>
+            <span id="h-<?php echo $tileGroupId . $album->id ?>"<?php echo $this->Html->langAttr($album->language->iso639_1) ?>><?php echo h($album->name) ?></span>
         </span>
         <!-- / Badges and title -->
     </div>
@@ -58,7 +58,7 @@
                         <dd><?php echo $this->element('layout/dev_inline') ?></dd>
                     </dl>
                 </div>
-                <div class="col-sm-8 rendered-text" lang="<?php echo $album->language->iso639_1 ?>">
+                <div class="col-sm-8 rendered-text"<?php echo $this->Html->langAttr($album->language->iso639_1) ?>>
                     <?php echo $this->Html->displayMD($album->description); ?>
                     <h3><?php echo __d('elabs', 'Files') ?></h3>
                     <?php

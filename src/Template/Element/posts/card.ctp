@@ -5,7 +5,9 @@
             <!-- Report link -->
             <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
             <!-- Language pill -->
-            <li><a class="language-pill" lang="<?php echo $data['language']['iso639_1'] ?>"><?php echo $data['language']['name'] ?></a></li>
+            <?php if (!isset($languageInfo) || $languageInfo): ?>
+            <li><a class="language-pill"<?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>><?php echo $data['language']['name'] ?></a></li>
+            <?php endif ?>
             <!-- SFW pill-->
             <?php if (!$data['sfw']): ?>
                 <li><a class="nsfw-pill"><?php echo __d('elabs', 'NSFW') ?></a></li>
@@ -20,7 +22,7 @@
             <!-- Header -->
             <div class="card-header">
                 <!-- Title -->
-                <h3 lang="<?php echo $data['language']['iso639_1'] ?>"><?php echo $this->Html->link(h($data['title']), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $data['id']]) ?></h3>
+                <h3<?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>><?php echo $this->Html->link(h($data['title']), ['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $data['id']]) ?></h3>
                 <ul class="card-informations">
                     <?php if (!isset($userInfo) || $userInfo): ?>
                         <li>
@@ -72,7 +74,7 @@
             </div>
         </div>
         <!-- Content -->
-        <div class="card-content" lang="<?php echo $data['language']['iso639_1'] ?>">
+        <div class="card-content"<?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>>
             <?php echo $this->Html->displayMD($data['excerpt']) ?>
         </div>
     </div>

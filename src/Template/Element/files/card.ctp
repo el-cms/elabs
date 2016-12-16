@@ -8,7 +8,9 @@ $config = $this->Items->fileConfig($data['filename']);
             <!-- Report link -->
             <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Files', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
             <!-- Language pill -->
-            <li><a class="language-pill" lang="<?php echo $data['language']['iso639_1'] ?>"><?php echo $data['language']['name'] ?></a></li>
+            <?php if (!isset($languageInfo) || $languageInfo): ?>
+                    <li><a class="language-pill"<?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>><?php echo $data['language']['name'] ?></a></li>
+            <?php endif; ?>
             <!-- SFW pill-->
             <?php if (!$data['sfw']): ?>
                 <li><a class="nsfw-pill"><?php echo __d('elabs', 'NSFW') ?></a></li>
@@ -88,7 +90,7 @@ $config = $this->Items->fileConfig($data['filename']);
             </div>
         </div>
         <!-- Content -->
-        <div class="card-content" lang="<?php echo $data['language']['iso639_1'] ?>">
+        <div class="card-content"<?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>>
             <?php
             echo $this->element('files/card_content_' . $config['element'], ['data' => $data]);
             echo $this->Html->displayMD($data['description'])

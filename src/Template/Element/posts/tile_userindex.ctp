@@ -34,7 +34,7 @@
             <?php else: ?>
                 <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
-            <span id="h-<?php echo $tileGroupId . $post->id ?>" lang="<?php echo $post->language->iso639_1 ?>"><?php echo h($post->title) ?></span>
+            <span id="h-<?php echo $tileGroupId . $post->id ?>"<?php echo $this->Html->langAttr($post->language->iso639_1) ?>><?php echo h($post->title) ?></span>
         </span>
         <!-- / Badges and title -->
     </div>
@@ -70,7 +70,7 @@
                         <dd><?php echo $this->element('layout/dev_inline') ?></dd>
                     </dl>
                 </div>
-                <div class="col-sm-8 rendered-text" lang="<?php echo $post->language->iso639_1 ?>">
+                <div class="col-sm-8 rendered-text"<?php echo $this->Html->langAttr($post->language->iso639_1) ?>>
                     <?php echo $this->Html->displayMD($post->excerpt) ?>
                 </div>
             </div>

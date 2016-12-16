@@ -30,7 +30,7 @@
             <?php if ($project->status === STATUS_LOCKED): ?>
                 <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
-            <span id="h-<?php echo $tileGroupId . $project->id ?>" lang="<?php echo $project->language->iso639_1 ?>"><?php echo h($project->name) ?></span>
+            <span id="h-<?php echo $tileGroupId . $project->id ?>"<?php echo $this->Html->langAttr($project->language->iso639_1) ?>><?php echo h($project->name) ?></span>
         </span>
         <!-- / Badges and title -->
     </div>

@@ -70,7 +70,7 @@ $this->end();
 // -------------------
 $this->start('pageContent');
 ?>
-<div lang="<?php echo $post->language->id ?>">
+<div<?php echo $this->Html->langAttr($post->language->id) ?>>
     <?php
     echo $this->Html->displayMD($post->excerpt);
     echo $this->Html->displayMD($post->text);

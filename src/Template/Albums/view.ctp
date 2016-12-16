@@ -66,7 +66,7 @@ $this->end();
 // -------------------
 $this->start('pageContent');
 ?>
-<div lang="<?php echo $album->language->iso639_1 ?>">
+<div<?php echo $this->Html->langAttr($album->language->iso639_1) ?>>
     <?php
     echo $this->Html->displayMD($album->description);
     ?>

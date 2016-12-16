@@ -79,7 +79,7 @@ $this->start('pageContent');
         <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('elabs', 'Related items') ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
-        <div class="tab-pane fade active in" id="tab-content" lang="<?php echo $album->language->iso639_1 ?>">
+        <div class="tab-pane fade active in" id="tab-content"<?php echo $this->Html->langAttr($album->language->iso639_1) ?>>
             <?php
             echo $this->Html->displayMD($album->description);
             ?>

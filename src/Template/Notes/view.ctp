@@ -70,7 +70,7 @@ $this->end();
 // -------------------
 $this->start('pageContent');
 ?>
-<div lang="<?php echo $note->language->id ?>">
+<div <?php echo $this->Html->langAttr($note->language->id) ?>>
     <?php echo $this->Html->displayMD($note->text); ?>
 </div>
 <?php

@@ -74,7 +74,7 @@
                         <dd><?php echo $this->element('layout/dev_inline') ?></dd>
                     </dl>
                 </div>
-                <div class="col-sm-8 rendered-text" lang="<?php echo $note->language->iso639_1 ?>">
+                <div class="col-sm-8 rendered-text"<?php echo $this->Html->langAttr($note->language->iso639_1)?>>
                     <?php echo $this->Html->displayMD($note->text) ?>
                 </div>
             </div>

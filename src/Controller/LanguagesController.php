@@ -53,7 +53,7 @@ class LanguagesController extends AppController
     public function view($id = null)
     {
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
-        $languageConfig = ['fields' => ['id', 'name', 'iso639_1']];
+        $languageConfig = ['fields' => ['id', 'iso639_1']];
         $userConfig = ['fields' => ['id', 'username']];
         $options = [
             'contain' => [
@@ -64,6 +64,7 @@ class LanguagesController extends AppController
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
+                    'Languages' => $languageConfig,
                 ],
                 'Notes' => [
                     'fields' => ['id', 'text', 'sfw', 'modified', 'created', 'user_id', 'license_id', 'language_id'],
@@ -72,6 +73,7 @@ class LanguagesController extends AppController
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
+                    'Languages' => $languageConfig,
                 ],
                 'Projects' => [
                     'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
@@ -80,6 +82,7 @@ class LanguagesController extends AppController
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
+                    'Languages' => $languageConfig,
                 ],
                 'Files' => [
                     'fields' => ['id', 'name', 'description', 'filename', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
@@ -88,6 +91,17 @@ class LanguagesController extends AppController
                     ],
                     'Users' => $userConfig,
                     'Licenses' => $licenseConfig,
+                    'Languages' => $languageConfig,
+                ],
+                'Albums' => [
+                    'fields' => ['id', 'name', 'description', 'sfw', 'created', 'modified', 'user_id', 'language_id'],
+                    'conditions' => [// SFW is made after
+                        'status' => STATUS_PUBLISHED,
+                    ],
+                    'Files' => [
+                        'fields' => ['id', 'name', 'filename', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'AlbumsFiles.album_id'],
+                    ],
+                    'Languages' => $languageConfig,
                 ],
             ],
         ];

@@ -59,7 +59,7 @@ endif;
 // -------------------
 $this->start('pageContent');
 ?>
-<div lang="<?php echo $project->language->id ?>">
+<div<?php echo $this->Html->langAttr($project->language->iso369_1) ?>>
     <?php
     echo $this->Html->displayMD($project->short_description);
     echo $this->Html->displayMD($project->description);
@@ -67,10 +67,46 @@ $this->start('pageContent');
 </div>
 <div class="panel">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . count($project->posts) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . count($project->notes) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . count($project->files) . '</span>') ?></a></li>
-        <li><a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . count($project->albums) . '</span>') ?></a></li>
+        <li class="active">
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all posts in this project')]), 
+                    ['controller' => 'posts', 'action' => 'index', 'project', $project->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#posts-tab"><?php echo __d('elabs', 'Articles {0}', '<span class="badge">' . count($project->posts) . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all notes in this project')]), 
+                    ['controller' => 'notes', 'action' => 'index', 'project', $project->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes {0}', '<span class="badge">' . count($project->notes) . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all files in this project')]), 
+                    ['controller' => 'files', 'action' => 'index', 'project', $project->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files {0}', '<span class="badge">' . count($project->files) . '</span>') ?></a>
+        </li>
+        <li>
+            <?php
+            echo $this->Html->link(
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all albums in this project')]), 
+                    ['controller' => 'albums', 'action' => 'index', 'project', $project->id], 
+                    ['escape' => false, 'class' => 'tab-btn-right']
+            )
+            ?>
+            <a data-toggle="tab" href="#albums-tab"><?php echo __d('elabs', 'Albums {0}', '<span class="badge">' . count($project->albums) . '</span>') ?></a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="posts-tab">
