@@ -51,7 +51,7 @@ class CommentsController extends UserAppController
                     'fields' => ['id', 'name', 'user_id', 'language_id'],
                     'Languages' => $languageConfig,
                 ],
-                'Users'=>$userConfig,
+                'Users' => $userConfig,
             ],
             'limit' => 30,
             'order' => [
