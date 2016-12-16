@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c9a0b093ce6db418cad3a5c34a84366",
+    "content-hash": "af47f6190a00fb9cf080dd85b14d99a1",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -1328,7 +1328,7 @@
                 "codesniffer",
                 "framework"
             ],
-            "time": "2016-11-26T15:40:49+00:00"
+            "time": "2016-11-26 15:40:49"
         },
         {
             "name": "cakephp/debug_kit",
@@ -3087,7 +3087,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.16"
+        "php": ">=7.0"
     },
     "platform-dev": []
 }
