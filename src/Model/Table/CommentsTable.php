@@ -61,6 +61,10 @@ class CommentsTable extends Table
             'foreignKey' => 'fkid',
             'conditions' => ['Comments.model' => 'Projects'],
         ]);
+        $this->belongsTo('Albums', [
+            'foreignKey' => 'fkid',
+            'conditions' => ['Comments.model' => 'Albums'],
+        ]);
     }
 
     /**

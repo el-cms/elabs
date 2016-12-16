@@ -22,7 +22,6 @@ $this->start('mainMenu');
 <li>
     <?php echo $this->Html->link(__d('elabs', 'Notes'), ['prefix' => 'user', 'plugin' => null, 'controller' => 'notes', 'action' => 'index']) ?>
 </li>
-<li class="separator"></li>
 <li>
     <?php echo $this->Html->link(__d('elabs', 'Comments'), ['prefix' => 'user', 'plugin' => null, 'controller' => 'comments', 'action' => 'index']) ?>
 </li>

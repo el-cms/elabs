@@ -68,7 +68,7 @@ class AlbumsTable extends Table
         ]);
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',
-            'conditions' => ['Acts.model' => 'Album']
+            'conditions' => ['Acts.model' => 'Albums']
         ]);
     }
 

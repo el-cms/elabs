@@ -59,7 +59,7 @@ $contentType = strtolower(\Cake\Utility\Inflector::singularize($data['model']));
                             $authorName = $data['name'];
                         endif;
 
-                        echo $this->Html->iconT('user', __d('elabs', 'Author: {1}', $authorName));
+                        echo $this->Html->iconT('user', __d('elabs', 'Author: {0}', $authorName));
                         ?>
                     </li>
                     <li>

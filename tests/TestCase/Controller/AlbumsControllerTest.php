@@ -20,25 +20,7 @@ class AlbumsControllerTest extends IntegrationTestCase
         'app.users',
         'app.files',
         'app.languages',
-        'app.notes',
-        'app.licenses',
-        'app.posts',
-        'app.tags',
-        'app.files_tags',
-        'app.notes_tags',
-        'app.posts_tags',
-        'app.projects',
-        'app.projects_files',
-        'app.projects_notes',
-        'app.projects_posts',
-        'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
-        'app.acts',
-        'app.projects_albums',
-        'app.albums_files',
-        'app.reports'
+        'app.comments',
     ];
 
     /**
@@ -64,5 +46,4 @@ class AlbumsControllerTest extends IntegrationTestCase
         $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
-
 }
