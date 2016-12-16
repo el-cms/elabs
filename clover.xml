@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1481907544">
-  <project timestamp="1481907544">
+<coverage generated="1481911845">
+  <project timestamp="1481911845">
     <package name="App">
       <file name="/var/www/html/src/Application.php">
         <class name="Application" namespace="App">
@@ -2964,22 +2964,22 @@
         <class name="AppView" namespace="App\View">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="15" coveredelements="15"/>
         </class>
-        <line num="39" type="method" name="initialize" visibility="public" complexity="1" crap="1" count="59"/>
-        <line num="41" type="stmt" count="59"/>
-        <line num="43" type="stmt" count="59"/>
+        <line num="40" type="method" name="initialize" visibility="public" complexity="1" crap="1" count="59"/>
+        <line num="42" type="stmt" count="59"/>
         <line num="44" type="stmt" count="59"/>
         <line num="45" type="stmt" count="59"/>
         <line num="46" type="stmt" count="59"/>
-        <line num="48" type="stmt" count="59"/>
+        <line num="47" type="stmt" count="59"/>
         <line num="49" type="stmt" count="59"/>
-        <line num="56" type="stmt" count="59"/>
+        <line num="50" type="stmt" count="59"/>
         <line num="57" type="stmt" count="59"/>
-        <line num="62" type="stmt" count="59"/>
+        <line num="58" type="stmt" count="59"/>
         <line num="63" type="stmt" count="59"/>
-        <line num="65" type="stmt" count="59"/>
-        <line num="78" type="stmt" count="59"/>
-        <line num="84" type="stmt" count="59"/>
-        <metrics loc="85" ncloc="29" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="15" coveredelements="15"/>
+        <line num="64" type="stmt" count="59"/>
+        <line num="66" type="stmt" count="59"/>
+        <line num="79" type="stmt" count="59"/>
+        <line num="85" type="stmt" count="59"/>
+        <metrics loc="86" ncloc="30" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="15" coveredelements="15"/>
       </file>
     </package>
     <package name="App\View\Cell">
@@ -3290,6 +3290,6 @@
         <metrics loc="82" ncloc="54" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="18" elements="20" coveredelements="18"/>
       </file>
     </package>
-    <metrics files="106" loc="10195" ncloc="6398" classes="106" methods="212" coveredmethods="131" conditionals="0" coveredconditionals="0" statements="2415" coveredstatements="1536" elements="2627" coveredelements="1667"/>
+    <metrics files="106" loc="10196" ncloc="6399" classes="106" methods="212" coveredmethods="131" conditionals="0" coveredconditionals="0" statements="2415" coveredstatements="1536" elements="2627" coveredelements="1667"/>
   </project>
 </coverage>

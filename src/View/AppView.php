@@ -15,6 +15,7 @@
 
 namespace App\View;
 
+use Cake\Core\Configure;
 use Cake\View\View;
 
 /**
@@ -42,7 +43,7 @@ class AppView extends View
 
         $this->loadHelper('Html', [
             'className' => 'AppHtml',
-            'App' => \Cake\Core\Configure::read('App'),
+            'App' => Configure::read('App'),
             'pageLanguage' => $this->request->session()->read('language'),
         ]);
         $this->loadHelper('Form', [
@@ -59,7 +60,7 @@ class AppView extends View
             'element' => 'Flash/default',
         ]);
 //        $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
-        $this->loadHelper('Gravatar.Gravatar');
+        $this->loadHelper('Gravatar.Gravatar', ['secure' => Configure::read('cms.useGravatarSecureUrls')]);
         $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
 
         $this->Paginator->templates([
