@@ -15,6 +15,10 @@ use Cake\ORM\Entity;
  * @property int $status
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @propertu int $album_count
+ * @propertu int $file_count
+ * @propertu int $note_count
+ * @propertu int $post_count
  * @property int $license_id
  * @property string $user_id
  * @property string $language_id

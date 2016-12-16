@@ -37,6 +37,12 @@ class ProjectsPostsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Projects' => ['post_count' => [
+                'contain' => ['Posts'],
+                'conditions' => ['Posts.status' => STATUS_PUBLISHED]]],
+        ]);
+
         $this->belongsTo('Projects', [
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'
