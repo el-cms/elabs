@@ -42,7 +42,7 @@ class UsersController extends AppController
             'sortWhiteList' => ['username', 'realname', 'created'],
             'order' => ['Users.realname' => 'asc'],
             'conditions' => [
-                'OR' => [['status' => STATUS_PUBLISHED], ['status' => STATUS_LOCKED]]
+                'OR' => [['status' => STATUS_ACTIVE], ['status' => STATUS_LOCKED]]
             ],
             'sortWhitelist' => ['username', 'realname', 'created'],
             // Email should only be used for Gravatar.
@@ -112,7 +112,7 @@ class UsersController extends AppController
                     ],
                 ],
             ],
-            'conditions' => ['OR' => [['status' => STATUS_PUBLISHED], ['status' => STATUS_LOCKED]]],
+            'conditions' => ['OR' => [['status' => STATUS_ACTIVE], ['status' => STATUS_LOCKED]]],
         ];
 
         // SFW options

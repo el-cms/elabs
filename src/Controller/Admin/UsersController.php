@@ -105,7 +105,7 @@ class UsersController extends AdminAppController
         $bit = STATUS_LOCKED; // Lock by default
         if ($action === 'unlock') {
             $successMessage = __d('elabs', 'The account has been unlocked.');
-            $bit = 1;
+            $bit = STATUS_ACTIVE;
         }
         $user = $this->Users->get($id, [
             'fields' => ['id', 'status'],
@@ -143,7 +143,6 @@ class UsersController extends AdminAppController
         ]);
         $user->status = STATUS_DELETED;
         if ($this->Users->save($user)) {
-//            $this->Act->removeAll($id);
             if (!$this->request->is('ajax')) {
                 $this->Flash->Success(__d('elabs', 'The account has been closed.'));
             }

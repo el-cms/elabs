@@ -194,7 +194,7 @@ Configure::load('siteconfig', 'default');
  * advanced ways of loading plugins
  */
 //Plugin::loadAll(); // Loads all plugins at once
-Plugin::load('Migrations'); //Loads a single plugin named Migrations
+//Plugin::load('Migrations'); //Loads a single plugin named Migrations
 
 /*
  * Custom data types
@@ -217,5 +217,3 @@ Plugin::load('BootstrapUI');
 
 // Markdown renderer
 Plugin::load('Tanuck/Markdown');
-//Plugin::load('Ajax', ['bootstrap' => true]);
-//Plugin::load('Search');
