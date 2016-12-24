@@ -126,5 +126,24 @@ class UsersFixture extends TestFixture
             'album_count' => 0,
             'preferences' => '{"showNSFW":"1","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'
         ],
+        [
+            'id' => 'fbb4c82b-3e99-4fe3-9b5f-dd71fac997aa',
+            'email' => 'locked@example.com',
+            'username' => 'locked',
+            'realname' => 'I\'m locked',
+            'password' => '$2y$10$GxcIuTXH6.Ty2mDk7juaPOABxdTA7XW1MHfxnrr7AL2q/3VGiZRGC',
+            'website' => null,
+            'bio' => 'Some text',
+            'created' => '2016-08-09 01:17:16',
+            'modified' => '2016-08-09 01:17:16',
+            'role' => 'author',
+            'status' => 2,
+            'file_count' => 0,
+            'note_count' => 0,
+            'post_count' => 0,
+            'project_count' => 0,
+            'album_count' => 0,
+            'preferences' => '{"showNSFW":"1","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'
+        ],
     ];
 }
