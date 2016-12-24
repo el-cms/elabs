@@ -8,7 +8,6 @@
 
 namespace App\Test\TestCase;
 
-
 use Cake\TestSuite\IntegrationTestCase;
 
 class BaseTextCase extends IntegrationTestCase
@@ -27,7 +26,7 @@ class BaseTextCase extends IntegrationTestCase
      * @param array $data  Data
      * @param string $dataName Data name
      */
-    public function __construct($name = null, array $data = array(), $dataName = '')
+    public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
         $userFixtures = new \App\Test\Fixture\UsersFixture();

@@ -137,7 +137,6 @@ class ProjectsControllerTest extends BaseTextCase
         // Set session data
         // ----------------
         $this->session($this->userCreds['author']);
-        $Projects = \Cake\ORM\TableRegistry::get('Projects');
         $Acts = \Cake\ORM\TableRegistry::get('Acts');
         // Not published, not safe
         $projectId = 'e5e2988e-2f1c-4902-ba1a-e0f577413f23';

@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\ReportsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**

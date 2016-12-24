@@ -14,13 +14,8 @@
  */
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\PagesController;
-use Cake\Core\App;
 use Cake\Core\Configure;
-use Cake\Network\Request;
-use Cake\Network\Response;
 use Cake\TestSuite\IntegrationTestCase;
-use Cake\View\Exception\MissingTemplateException;
 
 /**
  * PagesControllerTest class

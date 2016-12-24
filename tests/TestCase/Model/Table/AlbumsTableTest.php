@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\AlbumsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
