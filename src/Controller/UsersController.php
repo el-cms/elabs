@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
 use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
 

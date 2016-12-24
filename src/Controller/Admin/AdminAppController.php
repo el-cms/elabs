@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
-use \Cake\Network\Exception\ForbiddenException;
+use Cake\Network\Exception\ForbiddenException;
 
 /**
  * Admin controller. All the admin controllers inherits from it.

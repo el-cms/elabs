@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
 use App\Model\Table\ActsTable;
-use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 
 /**

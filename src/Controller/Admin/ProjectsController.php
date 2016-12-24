@@ -2,8 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AdminAppController;
-
 /**
  * Projects Controller
  *

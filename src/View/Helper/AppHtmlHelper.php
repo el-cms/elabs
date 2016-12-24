@@ -2,8 +2,6 @@
 
 namespace App\View\Helper;
 
-use Cake\Core\Configure;
-
 /**
  * CakePHP AppHtmlHelper
  * @author mtancoigne

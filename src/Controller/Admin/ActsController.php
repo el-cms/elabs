@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AdminAppController;
 use Cake\Datasource\ConnectionManager;
 use Cake\ORM\TableRegistry;
 
