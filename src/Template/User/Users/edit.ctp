@@ -42,7 +42,7 @@ $this->start('pageContent');
             <fieldset>
                 <?php
                 echo $this->Form->input('email', ['label' => __d('elabs', 'E-mail')]);
-                echo $this->Form->input('realname', ['label' => __d('elabs', 'Real name')]);
+                echo $this->Form->input('real_name', ['label' => __d('elabs', 'Real name')]);
                 echo $this->Form->input('website', ['label' => __d('elabs', 'Website'), 'placeholder' => 'http://']);
                 echo $this->Form->input('bio', ['label' => __d('elabs', 'About you'), 'id' => 'bioArea']);
                 echo $this->element('layout/loader_codemirror', ['textareas' => ['bioArea']]);

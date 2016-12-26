@@ -8,7 +8,7 @@ $linkConfig = ['escape' => false];
     <?php echo $this->Html->link($this->Html->iconT('pencil', __d('elabs', 'Update profile')), ['plugin' => null, 'prefix' => 'user', 'controller' => 'users', 'action' => 'edit'], $linkConfig) ?>
 </li>
 <li>
-    <?php echo $this->Html->link($this->Html->iconT('sign-out', __d('elabs', 'Logout')), ['plugin' => null, 'prefix' => false, 'controller' => 'users', 'action' => 'logout'], $linkConfig) ?>
+    <?php echo $this->Html->link($this->Html->iconT('sign-out', __d('elabs', 'Logout')), ['plugin' => 'CakeDC/Users', 'prefix' => false, 'controller' => 'users', 'action' => 'logout'], $linkConfig) ?>
 </li>
 <li class="dropdown-header">
     <?php echo __d('elabs', 'Articles:') ?>
