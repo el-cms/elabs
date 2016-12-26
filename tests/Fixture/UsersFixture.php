@@ -50,6 +50,7 @@ class UsersFixture extends TestFixture
      * @var array
      */
     public $records = [
+        // Deleted author
         [
             'id' => '38bffe56-5406-4f18-a9d2-f3b2a59608a5',
             'email' => 'another@example.com',
@@ -69,6 +70,7 @@ class UsersFixture extends TestFixture
             'album_count' => 0,
             'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'
         ],
+        // Active admin
         [
             'id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
             'email' => 'admin@example.com',
@@ -88,6 +90,7 @@ class UsersFixture extends TestFixture
             'album_count' => 0,
             'preferences' => '{"showNSFW":"1","defaultSiteLanguage":"fr_FR","defaultWritingLanguage":"fra","defaultWritingLicense":"3"}'
         ],
+        // Active author
         [
             'id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'email' => 'test@example.com',
@@ -107,6 +110,7 @@ class UsersFixture extends TestFixture
             'album_count' => 0,
             'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"hin","defaultWritingLicense":"2"}'
         ],
+        // Inactive author
         [
             'id' => 'e0b4c82b-3e99-4fe3-9b5f-dd71fac997e3',
             'email' => 'locked@example.com',
@@ -126,6 +130,7 @@ class UsersFixture extends TestFixture
             'album_count' => 0,
             'preferences' => '{"showNSFW":"1","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'
         ],
+        // Locked author
         [
             'id' => 'fbb4c82b-3e99-4fe3-9b5f-dd71fac997aa',
             'email' => 'locked@example.com',

@@ -25,10 +25,7 @@ class UserAppControllerTest extends BaseTextCase
      */
     public function testBeforeFilterBadCreds()
     {
-        // Non logged user
-        $this->session([]);
-        $this->get('/user/dashboard/index');
-        // User should be redirected to login page
-        $this->assertRedirect('/users/login', 'Failed to reject non-logged user');
+        // Runs the test for all types of users in $this->usersCreds
+        $this->assertAuthIsOkFor(['admin', 'author'], '/user/dashboard', ['get']);
     }
 }
