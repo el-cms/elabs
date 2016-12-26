@@ -6,7 +6,7 @@
 
 use Cake\Core\Configure;
 
-echo $this->Form->create('User', ['url' => ['plugin' => null, 'prefix' => false, 'controller' => 'Users', 'action' => 'login'], 'idPrefix' => 'login']);
+echo $this->Form->create('User', ['url' => ['plugin' => 'CakeDC/Users', 'prefix' => false, 'controller' => 'Users', 'action' => 'login'], 'idPrefix' => 'login']);
 echo $this->Form->input('email', ['label' => __d('elabs', 'Email')]);
 echo $this->Form->input('password', ['label' => __d('elabs', 'Password')]);
 if (Configure::read('Users.reCaptcha.login')) {
@@ -23,7 +23,7 @@ echo implode(' ', $this->User->socialLoginList());
 $registrationActive = Configure::read('Users.Registration.active');
 
 if (Configure::read('Users.Email.required')) {
-    echo $this->Html->link(__d('CakeDC/Users', 'Reset Password'), ['action' => 'requestResetPassword']);
+    echo $this->Html->link(__d('elabs', 'Reset Password'), ['action' => 'requestResetPassword']);
 }
 echo $this->Form->submit(__d('elabs', 'Login'), ['class' => 'btn-block btn-primary']);
 echo $this->Form->end();
@@ -32,7 +32,7 @@ if ($registrationActive) :
     ?>
     <div class="text-center"><?php echo __d('elabs', 'or') ?></div>
     <?php
-    echo $this->Html->link(__d('CakeDC/Users', 'Register'), ['prefix'=>null, 'plugin'=>null, 'controller'=>'Users', 'action' => 'register'], ['class' => 'btn btn-block']);
+    echo $this->Html->link(__d('elabs', 'Register'), ['prefix'=>null, 'plugin'=>'CakeDC/Users', 'controller'=>'Users', 'action' => 'register'], ['class' => 'btn btn-block']);
 else:
     ?>
     <div class="alert alert-warning margin-top-lg"><?php echo __d('elabs', 'Registrations are closed for now... Come back later.') ?></div>

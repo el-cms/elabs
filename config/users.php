@@ -100,7 +100,7 @@ $config = [
     //default configuration used to auto-load the Auth Component, override to change the way Auth works
     'Auth' => [
         'loginAction' => [
-            'plugin' => null,
+            'plugin' => 'CakeDC/Users',
             'controller' => 'Users',
             'action' => 'login',
             'prefix' => null,
