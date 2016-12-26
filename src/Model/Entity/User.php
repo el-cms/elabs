@@ -3,6 +3,7 @@
 namespace App\Model\Entity;
 
 use CakeDC\Users\Model\Entity\User as BaseUserEntity;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * User Entity
@@ -58,5 +59,16 @@ class User extends BaseUserEntity
     protected function _getRealName()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * Compare two hashed passwords
+     *
+     * @param string $password Password to check
+     * @return int
+     */
+    public function comparePassword($password)
+    {
+        return (new DefaultPasswordHasher)->check($password, $this->password);
     }
 }
