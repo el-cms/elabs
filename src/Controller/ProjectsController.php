@@ -33,7 +33,7 @@ class ProjectsController extends AppController
             ],
             'sortWithelist' => ['created', 'modified', 'name'],
             'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon', 'link']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             ],
@@ -86,14 +86,14 @@ class ProjectsController extends AppController
         $containConfig = [
             'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             'Licenses' => ['fields' => ['id', 'name', 'icon']],
-            'Users' => ['fields' => ['id', 'username', 'realname']],
+            'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
         ];
 
         $query = $this->Projects->find();
         $query->select()
                 ->where(['Projects.status' => STATUS_PUBLISHED, 'Projects.id' => $id])
                 ->contain([
-                    'Users' => ['fields' => ['id', 'username', 'realname']],
+                    'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                     'Licenses',
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'Files' => function ($q) use ($seeNSFW, $containConfig) {

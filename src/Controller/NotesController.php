@@ -32,7 +32,7 @@ class NotesController extends AppController
         $query->select(['id', 'text', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'])
                 ->where(['Notes.status' => STATUS_PUBLISHED])
                 ->contain([
-                    'Users' => ['fields' => ['id', 'username', 'realname']],
+                    'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                     'Licenses' => ['fields' => ['id', 'name', 'icon']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
@@ -92,7 +92,7 @@ class NotesController extends AppController
         $note = $this->Notes->get($id, [
             'fields' => ['id', 'text', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
             'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],

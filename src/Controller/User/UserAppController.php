@@ -24,6 +24,7 @@ class UserAppController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        
         if (in_array($this->Auth->user('role'), ['author', 'admin'])) {
             $this->Auth->allow();
         } else {

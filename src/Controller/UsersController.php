@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
+use App\Model\Table\UsersTable;
 
 /**
  * Users Controller
@@ -13,22 +14,10 @@ use Cake\Network\Exception\ForbiddenException;
 class UsersController extends AppController
 {
 
-    /**
-     * Before filter callback
-     *
-     * @param \Cake\Event\Event $event The beforeFilter event.
-     * @return void
-     */
-    public function beforeFilter(\Cake\Event\Event $event)
-    {
-        parent::beforeFilter($event);
-        if (in_array($this->request->action, ['register', 'login']) && !empty($this->Auth->user('id'))) {
-            throw new ForbiddenException(__d('elabs', 'You are already logged in'));
-        }
-        if (!Configure::read('cms.isRegistrationOpen') && $this->request->action === 'register') {
-            throw new ForbiddenException(__d('elabs', 'Registrations are closed for now... Come back later...'), 403);
-        }
-    }
+    use \CakeDC\Users\Controller\Traits\LoginTrait;
+    use \CakeDC\Users\Controller\Traits\RegisterTrait;
+
+
 
     /**
      * Index method
@@ -38,14 +27,14 @@ class UsersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'sortWhiteList' => ['username', 'realname', 'created'],
-            'order' => ['Users.realname' => 'asc'],
+            'sortWhiteList' => ['username', 'first_name', 'last_name', 'created'],
+            'order' => ['Users.real_name' => 'asc'],
             'conditions' => [
-                'OR' => [['status' => STATUS_ACTIVE], ['status' => STATUS_LOCKED]]
+                'OR' => [['active' => STATUS_ACTIVE], ['active' => STATUS_LOCKED]]
             ],
-            'sortWhitelist' => ['username', 'realname', 'created'],
+            'sortWhitelist' => ['username', 'first_name', 'last_name', 'created'],
             // Email should only be used for Gravatar.
-            'fields' => ['id', 'username', 'realname', 'email', 'website', 'created', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count']
+            'fields' => ['id', 'username', 'first_name', 'last_name', 'email', 'website', 'created', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count']
         ];
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
@@ -63,7 +52,7 @@ class UsersController extends AppController
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
         $languageConfig = ['fields' => ['id', 'name', 'iso639_1']];
         $options = [
-            'fields' => ['id', 'username', 'realname', 'email', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count'],
+            'fields' => ['id', 'username', 'first_name', 'last_name', 'email', 'bio', 'website', 'created', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count'],
             'contain' => [
                 'Posts' => [
                     'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'license_id'],
@@ -111,7 +100,7 @@ class UsersController extends AppController
                     ],
                 ],
             ],
-            'conditions' => ['OR' => [['status' => STATUS_ACTIVE], ['status' => STATUS_LOCKED]]],
+            'conditions' => ['OR' => [['active' => STATUS_ACTIVE], ['active' => STATUS_LOCKED]]],
         ];
 
         // SFW options
@@ -128,73 +117,4 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
-    /**
-     * Register method
-     *
-     * @return void (Redirection)
-     */
-    public function register()
-    {
-        $user = $this->Users->newEntity();
-        if ($this->request->is('post')) {
-            //Adding defaults
-            $this->request->data['see_nsfw'] = Configure::read('cms.defaultSeeNSFW');
-            $this->request->data['role'] = Configure::read('cms.defaultRole');
-            $this->request->data['status'] = Configure::read('cms.defaultUserStatus');
-            $this->request->data['locked'] = Configure::read('cms.defaultLockedUser');
-            $this->request->data['file_count'] = 0;
-            $this->request->data['note_count'] = 0;
-            $this->request->data['post_count'] = 0;
-            $this->request->data['project_count'] = 0;
-            $this->request->data['preferences'] = json_encode(Configure::read('cms.defaultPreferences'));
-
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__d('elabs', 'Your account has been created. An email will be sent to you when active'));
-                $this->redirect(['action' => 'index']);
-            } else {
-                $errors = $user->errors();
-                $errorMessages = [];
-                array_walk_recursive($errors, function ($a) use (&$errorMessages) {
-                    $errorMessages[] = $a;
-                });
-                $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
-            }
-        }
-        $this->set(compact('user'));
-        $this->set('_serialize', ['user']);
-    }
-
-    /**
-     * Simple user login
-     *
-     * @return void (Redirection)
-     */
-    public function login()
-    {
-        if ($this->request->is('post')) {
-            $user = $this->Auth->identify();
-            if ($user) {
-                $this->Auth->setUser($user);
-                // Overwrite preferences:
-                $this->_setUserPreferences();
-                $this->redirect($this->Auth->redirectUrl());
-            } else {
-                $this->Flash->error(__d('elabs', 'Invalid username or password, try again. Is your accound active ?'));
-            }
-        }
-    }
-
-    /**
-     * User logout
-     *
-     * @return void (redirection)
-     */
-    public function logout()
-    {
-        // Remove user preferences
-        $this->_clearUserPreferences();
-        $this->Flash->success(__d('elabs', 'You are logged out. See you later !'));
-        $this->redirect($this->Auth->logout());
-    }
 }

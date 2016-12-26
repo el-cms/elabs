@@ -20,7 +20,7 @@ class CommentsController extends UserAppController
         $userId = $this->Auth->user('id');
 
         // Commons fields to get from Licenses table
-        $userConfig = ['fields' => ['id', 'realname', 'username']];
+        $userConfig = ['fields' => ['id', 'first_name', 'last_name', 'username']];
         $languageConfig = ['fields' => ['id', 'name', 'iso639_1']];
 
         // Get the list of items
