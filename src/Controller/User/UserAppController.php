@@ -27,11 +27,11 @@ class UserAppController extends AppController
         if (in_array($this->Auth->user('role'), ['author', 'admin'])) {
             $this->Auth->allow();
         } else {
+            $this->Auth->deny();
             if (is_null($this->Auth->user('id'))) {
-                $this->Flash->Error(__d('elabs', 'You should be logged in to access this page.'));
-                $this->redirect($this->Auth->config('loginAction'));
+                throw new ForbiddenException(__d('elabs', 'You should be logged in to access this page.'));
             } else {
-                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this ressource.'));
+                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this resource .'));
             }
         }
     }
