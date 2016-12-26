@@ -64,7 +64,7 @@ class UsersControllerTest extends BaseTextCase
         // ----
         $this->get('admin/users/lock/' . $userPK . '/lock');
         // Verify state
-        $nb = $Users->find('all', ['conditions' => ['id' => $userPK, 'status' => 2]])->count();
+        $nb = $Users->find('all', ['conditions' => ['id' => $userPK, 'active' => 2]])->count();
         $this->assertEquals(1, $nb);
         $this->assertRedirect('admin/users');
 
@@ -72,7 +72,7 @@ class UsersControllerTest extends BaseTextCase
         // ------
         $this->get('admin/users/lock/' . $userPK . '/unlock');
         // Verify state
-        $nb = $Users->find('all', ['conditions' => ['id' => $userPK, 'status' => 1]])->count();
+        $nb = $Users->find('all', ['conditions' => ['id' => $userPK, 'active' => 1]])->count();
         $this->assertEquals(1, $nb);
         $this->assertRedirect('admin/users');
 
@@ -94,7 +94,7 @@ class UsersControllerTest extends BaseTextCase
         $this->session($this->userCreds['admin']);
         $this->get('admin/users/close/' . $userPK);
         // Verify state
-        $nb = $Users->find('all', ['conditions' => ['id' => $userPK, 'status' => 3]])->count();
+        $nb = $Users->find('all', ['conditions' => ['id' => $userPK, 'active' => 3]])->count();
         $this->assertEquals(1, $nb);
         $this->assertRedirect('admin/users');
 
@@ -115,7 +115,7 @@ class UsersControllerTest extends BaseTextCase
         $this->session($this->userCreds['admin']);
         $this->get('admin/users/activate/' . $userPK);
         // Verify state
-        $nb = $Users->find('all', ['conditions' => ['id' => $userPK, 'status' => 1]])->count();
+        $nb = $Users->find('all', ['conditions' => ['id' => $userPK, 'active' => 1]])->count();
         $this->assertEquals(1, $nb);
         $this->assertRedirect('admin/users');
 

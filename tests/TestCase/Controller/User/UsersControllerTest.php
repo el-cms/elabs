@@ -89,9 +89,9 @@ class UsersControllerTest extends BaseTextCase
         // -------
         $postData = ['current_password' => 'adminadmin'];
         $this->post('/user/users/close_account', $postData);
-        // Checke for users state
+        // Check for users state
         $Users = \Cake\ORM\TableRegistry::get('Users');
-        $nb = $Users->find('all', ['conditions' => ['id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'status' => 3]])->count();
+        $nb = $Users->find('all', ['conditions' => ['id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'active' => 3]])->count();
         $this->assertEquals(1, $nb);
         $this->assertRedirect('/');
     }

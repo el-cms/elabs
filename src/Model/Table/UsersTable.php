@@ -2,9 +2,9 @@
 
 namespace App\Model\Table;
 
+use CakeDC\Users\Model\Table\UsersTable as BaseTable;
 use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
-use CakeDC\Users\Model\Table\UsersTable as BaseTable;
 
 /**
  * Users Model

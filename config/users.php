@@ -105,6 +105,7 @@ $config = [
             'action' => 'login',
             'prefix' => null,
         ],
+        'logoutRedirect' => '/',
         'authorize' => null,
     ],
 //    'OAuth' => [

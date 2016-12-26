@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\Table\UsersTable;
 use Cake\Core\Configure;
 use Cake\Network\Exception\ForbiddenException;
-use App\Model\Table\UsersTable;
 
 /**
  * Users Controller
@@ -16,8 +16,6 @@ class UsersController extends AppController
 
     use \CakeDC\Users\Controller\Traits\LoginTrait;
     use \CakeDC\Users\Controller\Traits\RegisterTrait;
-
-
 
     /**
      * Index method
@@ -116,5 +114,4 @@ class UsersController extends AppController
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
     }
-
 }
