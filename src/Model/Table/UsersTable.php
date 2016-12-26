@@ -94,9 +94,7 @@ class UsersTable extends \CakeDC\Users\Model\Table\UsersTable
             ->allowEmpty('album_count')
             ->allowEmpty('project_count');
 
-        $validator
-            ->requirePresence('preferences', 'create')
-            ->notEmpty('preferences');
+        $validator->allowEmpty('preferences');
 
         return $validator;
     }
