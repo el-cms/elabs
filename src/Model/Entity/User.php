@@ -2,6 +2,8 @@
 
 namespace App\Model\Entity;
 
+use CakeDC\Users\Model\Entity\User as BaseUserEntity;
+
 /**
  * User Entity
  *
@@ -47,7 +49,7 @@ namespace App\Model\Entity;
  * @property \App\Model\Entity\Report[] $reports
  * @property \App\Model\Entity\Team[] $teams
  */
-class User extends \CakeDC\Users\Model\Entity\User
+class User extends BaseUserEntity
 {
     /**
      * Returns the concatenation of the first and last names

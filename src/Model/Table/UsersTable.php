@@ -4,6 +4,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
+use CakeDC\Users\Model\Table\UsersTable as BaseTable;
 
 /**
  * Users Model
@@ -25,7 +26,7 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class UsersTable extends \CakeDC\Users\Model\Table\UsersTable
+class UsersTable extends BaseTable
 {
 
     /**
