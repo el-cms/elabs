@@ -20,10 +20,10 @@ $this->Html->addCrumb(__d('elabs', 'Register'));
                 <div class="row">
                     <div class="col-xs-2 text-center">
                         <span class="fa-stack fa-2x">
-                          <?php
-                          echo $this->Html->icon('circle-o stack-2x');
-                          echo $this->Html->icon('user-plus stack-1x', ['class' => 'text-primary']);
-                          ?>
+                            <?php
+                            echo $this->Html->icon('circle-o stack-2x');
+                            echo $this->Html->icon('user-plus stack-1x', ['class' => 'text-primary']);
+                            ?>
                         </span>
                     </div>
                     <div class="col-xs-10">
