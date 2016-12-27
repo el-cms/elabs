@@ -2,6 +2,8 @@
 
 namespace App\Controller\User;
 
+use Cake\Utility\Text;
+
 /**
  * Users Controller
  *
@@ -157,5 +159,19 @@ class UsersController extends UserAppController
             $this->Flash->error(__d('elabs', 'To access this page, you need to fill the form first.'));
             $this->redirect(['action' => 'edit']);
         }
+    }
+
+    public function generateApiToken()
+    {
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->get($this->Auth->user('id'));
+            $user->api_token = str_replace('-', '', Text::uuid());
+            $this->Users->save($user);
+        } else {
+            $this->Flash->error(__d('elabs', 'To access this page, you need to fill the form first.'));
+            $this->redirect(['action' => 'edit']);
+        }
+        $this->set('api_token', $user->api_token);
     }
 }

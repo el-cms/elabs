@@ -30,7 +30,7 @@ $this->start('pageContent');
 <div class="panel">
     <ul id="userTabs" class="nav nav-tabs nav-justified">
         <li class="active"><a data-toggle="tab" href="#tab-general" aria-expanded="true"><?php echo $this->Html->iconT('user', __d('elabs', 'General informations')) ?></a></li>
-        <li><a data-toggle="tab" href="#tab-preferences" aria-expanded="false"><?php echo $this->Html->iconT('cogs', __d('elabs', 'Preferences')) ?></a></li>
+        <li><a data-toggle="tab" href="#tab-preferences" aria-expanded="false"><?php echo $this->Html->iconT('sliders', __d('elabs', 'Preferences')) ?></a></li>
         <li><a data-toggle="tab" href="#tab-password" aria-expanded="false"><?php echo $this->Html->iconT('lock', __d('elabs', 'Change password')) ?></a></li>
         <li><a data-toggle="tab" href="#tab-close" aria-expanded="false"><?php echo $this->Html->iconT('times', __d('elabs', 'Close account')) ?></a></li>
     </ul>
@@ -55,6 +55,7 @@ $this->start('pageContent');
         </div>
 
         <div class="tab-pane fade" id="tab-preferences">
+            <h4><?php echo $this->Html->iconT('sliders', __d('elabs', 'General')) ?></h4>
             <?php echo $this->Form->create($user, ['class' => 'form', 'url' => ['action' => 'updatePrefs']]); ?>
             <fieldset>
                 <?php
@@ -90,6 +91,12 @@ $this->start('pageContent');
                 <?php echo $this->Form->submit(__d('elabs', 'Save the changes'), ['class' => 'btn-success']) ?>
             </div>
             <?php echo $this->Form->end() ?>
+            <h4><?php echo $this->Html->iconT('plug', __d('elabs', 'API')) ?></h4>
+            <?php
+            $btn = $this->Html->tag('button', $this->Html->icon('refresh'), ['class' => 'btn btn-default']);
+            $reloadApiTokenBtn = $this->Html->tag('span', $btn, ['class' => 'input-group-btn', 'title' => __d('elabs', 'Generate a new token'), 'onClick' => 'regenerateToken()',]);
+            echo $this->Form->input('api_token', ['id' => 'api_token', 'label' => __d('elabs', 'Your API token'), 'disabled' => true, 'value' => $user->api_token, 'append' => ['class' => 'input-group-btn', $reloadApiTokenBtn], 'help' => __d('elabs', 'If you regenerate your API token, you\'ll have to re-enter it or re-log in your clients')])
+            ?>
         </div>
 
         <div class="tab-pane fade" id="tab-password">
@@ -119,6 +126,32 @@ $this->start('pageContent');
     </div>
 
 </div>
+<?php
+$this->end();
+
+// Additionnal JS
+// --------------
+$this->append('pageBottomScripts');
+?>
+<script>
+    $(document).ajaxSend(function (e, xhr, settings) {
+      xhr.setRequestHeader('X-CSRF-Token', '<?= $this->request->params['_csrfToken'] ?>');
+    });
+    function regenerateToken() {
+      var request = $.ajax({
+        type: "POST",
+        url: "<?php echo $this->Url->build(['plugin' => null, 'prefix' => 'user', 'controller' => 'Users', 'action' => 'generateApiToken']) ?>",
+        dataType: 'json',
+        async: true
+      });
+      request.fail(function (jqXHR, textStatus) {
+        alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
+      });
+      request.success(function (response) {
+        $('#api_token').val(response.api_token);
+      });
+    }
+</script>
 <?php
 $this->end();
 // Load the custom layout element
