@@ -77,6 +77,7 @@ class NotesControllerTest extends BaseTextCase
 
         // Set session data
         $this->session($this->userCreds['author']);
+        $currentUserId=$this->userCreds['author']['Auth']['User']['id'];
         $Notes = \Cake\ORM\TableRegistry::get('Notes');
 
         // Form
@@ -92,7 +93,8 @@ class NotesControllerTest extends BaseTextCase
             'sfw' => true,
             'status' => 0,
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         $this->post('/user/notes/add', $postData);
         // Count notes after insert
@@ -110,11 +112,12 @@ class NotesControllerTest extends BaseTextCase
             'sfw' => true,
             'status' => 1,
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         // Find the note for the current user
         $this->post('/user/notes/add', $postData);
-        $nb = $Notes->find('all', ['conditions' => ['user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'text' => 'TEST POST AS ANOTHER USER']])->count();
+        $nb = $Notes->find('all', ['conditions' => ['user_id' => $currentUserId, 'text' => 'TEST POST AS ANOTHER USER']])->count();
         $this->assertEquals(1, $nb, 'Test #2');
         // Acts
         $nbActs2 = $Acts->find()->count();

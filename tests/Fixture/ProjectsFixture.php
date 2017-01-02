@@ -30,6 +30,7 @@ class ProjectsFixture extends TestFixture
         'note_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'post_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'album_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'hide_from_acts' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         'license_id' => ['type' => 'integer', 'length' => 3, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'user_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'language_id' => ['type' => 'string', 'length' => 3, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -72,6 +73,7 @@ class ProjectsFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 0,
             'album_count' => 0,
+            'hide_from_acts'=>false,
             'license_id' => 1,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'eng'
@@ -90,6 +92,7 @@ class ProjectsFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 0,
             'album_count' => 0,
+            'hide_from_acts'=>false,
             'license_id' => 4,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'epo'
@@ -108,6 +111,7 @@ class ProjectsFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 0,
             'album_count' => 0,
+            'hide_from_acts'=>false,
             'license_id' => 1,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'fra'
