@@ -14,7 +14,6 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\HasMany $Posts
  * @property \Cake\ORM\Association\HasMany $Projects
  * @property \Cake\ORM\Association\HasMany $Reports
- * @property \Cake\ORM\Association\BelongsToMany $Teams
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -62,11 +61,6 @@ class UsersTable extends BaseTable
         ]);
         $this->hasMany('Albums', [
             'foreignKey' => 'user_id'
-        ]);
-        $this->belongsToMany('Teams', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'team_id',
-            'joinTable' => 'teams_users'
         ]);
     }
 

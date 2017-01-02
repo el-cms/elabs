@@ -36,24 +36,16 @@
     </div>
     <div id="<?php echo $tileGroupId . $project->id ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="h-<?php echo $tileGroupId . $project->id ?>">
         <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-4">
-                    <dl>
-                        <dt><?php echo __d('elabs', 'Creation date') ?></dt>
-                        <dd><?php echo h($project->created) ?></dd>
-                        <dt><?php echo __d('elabs', 'Updated on') ?></dt>
-                        <dd><?php echo h($project->modified) ?></dd>
-                        <dt><?php echo __d('elabs', 'License') ?></dt>
-                        <dd><?php echo $this->Html->link(h($project->license->name), ['prefix' => false, 'controller' => 'licenses', 'action' => 'view', $project->license_id]); ?></dd>
-                        <dt><?php echo __d('elabs', 'Tags') ?></dt>
-                        <dd><?php echo $this->element('layout/dev_inline') ?></dd>
-                    </dl>
-                </div>
-                <div class="col-sm-8">
-                    <div class="content-sub-heading"><?php echo __d('elabs', 'Team') ?></div>
-                    <?php echo $this->element('layout/dev_block') ?>
-                </div>
-            </div>
+            <dl>
+                <dt><?php echo __d('elabs', 'Creation date') ?></dt>
+                <dd><?php echo h($project->created) ?></dd>
+                <dt><?php echo __d('elabs', 'Updated on') ?></dt>
+                <dd><?php echo h($project->modified) ?></dd>
+                <dt><?php echo __d('elabs', 'License') ?></dt>
+                <dd><?php echo $this->Html->link(h($project->license->name), ['prefix' => false, 'controller' => 'licenses', 'action' => 'view', $project->license_id]); ?></dd>
+                <dt><?php echo __d('elabs', 'Tags') ?></dt>
+                <dd><?php echo $this->element('layout/dev_inline') ?></dd>
+            </dl>
         </div>
     </div>
 </div>

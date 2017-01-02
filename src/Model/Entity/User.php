@@ -48,7 +48,6 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Project[] $projects
  * @property \App\Model\Entity\Report[] $reports
- * @property \App\Model\Entity\Team[] $teams
  */
 class User extends BaseUserEntity
 {

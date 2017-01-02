@@ -1,0 +1,55 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2017-01-02 15:28+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Template/Element/users/loginform.ctp:18
+msgid "Remember me"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Email/html/reset_password.ctp:22
+#: Template/Plugin/CakeDC/Email/html/validation.ctp:22
+#: Template/Plugin/CakeDC/Email/text/reset_password.ctp:21
+#: Template/Plugin/CakeDC/Email/text/validation.ctp:21
+msgid "Hi {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Email/html/reset_password.ctp:25
+msgid "Reset your password here"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Email/html/reset_password.ctp:28
+msgid "If the link is not correcly displayed, please copy the following address in your web browser {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Email/html/reset_password.ctp:31
+#: Template/Plugin/CakeDC/Email/html/validation.ctp:31
+#: Template/Plugin/CakeDC/Email/text/reset_password.ctp:25
+#: Template/Plugin/CakeDC/Email/text/validation.ctp:25
+msgid "Thank you"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Email/html/validation.ctp:25
+msgid "Activate your account here"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Email/html/validation.ctp:28
+msgid "If the link is not correctly displayed, please copy the following address in your web browser {0}"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Email/text/reset_password.ctp:23
+#: Template/Plugin/CakeDC/Email/text/validation.ctp:23
+msgid "Please copy the following address in your web browser {0}"
+msgstr ""
+

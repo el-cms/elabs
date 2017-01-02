@@ -38,9 +38,6 @@ class ProjectsTableTest extends TestCase
         'app.projects_posts',
         'app.acts',
         'app.reports',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
         'app.projects_notes',
         'app.projects_files'
     ];
