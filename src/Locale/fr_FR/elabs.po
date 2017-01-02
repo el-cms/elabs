@@ -1,12 +1,12 @@
 # LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
-# Manuel Tancoigne <m.tancoigne@gmail.com>, 2016.
+# Manuel Tancoigne <m.tancoigne@gmail.com>, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-16 19:49+0000\n"
-"PO-Revision-Date: 2016-12-16 21:20+0200\n"
+"POT-Creation-Date: 2017-01-02 15:28+0000\n"
+"PO-Revision-Date: 2017-01-02 16:33+0200\n"
 "Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr\n"
@@ -16,264 +16,235 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: Controller/ActsController.php:40
+#: Controller/ActsController.php:38
 msgid "has been updated"
 msgstr "a été mis à jour"
 
-#: Controller/ActsController.php:41
+#: Controller/ActsController.php:39
 msgid "has been removed"
 msgstr "a été supprimé"
 
-#: Controller/ActsController.php:44
-#: Controller/Admin/ActsController.php:38
+#: Controller/ActsController.php:42
+#: Controller/Admin/ActsController.php:37
 msgid "File"
 msgstr "Fichier"
 
-#: Controller/ActsController.php:45
-#: Controller/Admin/ActsController.php:40
+#: Controller/ActsController.php:43
+#: Controller/Admin/ActsController.php:39
 msgid "Article"
 msgstr "Article"
 
-#: Controller/ActsController.php:46
-#: Controller/Admin/ActsController.php:41
+#: Controller/ActsController.php:44
+#: Controller/Admin/ActsController.php:40
 msgid "Project"
 msgstr "projet"
 
-#: Controller/ActsController.php:47
-#: Controller/Admin/ActsController.php:39
+#: Controller/ActsController.php:45
+#: Controller/Admin/ActsController.php:38
 msgid "Note"
 msgstr "Note"
 
-#: Controller/ActsController.php:48
-#: Controller/Admin/ActsController.php:42
+#: Controller/ActsController.php:46
+#: Controller/Admin/ActsController.php:41
 msgid "Album"
 msgstr "Album"
 
-#: Controller/AppController.php:58
-msgid "You are not allowed to view this page."
-msgstr "Vous n’êtes pas autorisé à voir cette page."
-
-#: Controller/CommentsController.php:86
+#: Controller/CommentsController.php:85
 msgid "Thank you for your comment. The author will contact you soon."
 msgstr "Merci pour votre commentaire. L'auteur vous contactera bientôt."
 
-#: Controller/CommentsController.php:88
+#: Controller/CommentsController.php:87
 msgid "Thank you for your comment."
 msgstr "Merci pour votre commentaire."
 
-#: Controller/CommentsController.php:92
+#: Controller/CommentsController.php:91
 msgid "The comment could not be saved. Please try again."
 msgstr "Le commentaire n'a pas pu être sauvegardé. Veuillez ré-essayer."
 
-#: Controller/NotesController.php:106
+#: Controller/NotesController.php:105
 #: Template/Admin/Notes/view.ctp:12;19
 #: Template/Notes/view.ctp:12
 msgid "A note"
 msgstr "Une note"
 
-#: Controller/ReportsController.php:51
+#: Controller/ReportsController.php:49
 msgid "Thank you for your feedback"
 msgstr "Merci pour votre retour."
 
-#: Controller/ReportsController.php:55
+#: Controller/ReportsController.php:53
 msgid "The report could not be saved (and that should be a good reason to report it...). Please try again."
 msgstr ""
 "Le rapport n’a pas pu être enregistré (et cela devrait être une bonne raison "
 "de le signaler...). Essayez de nouveau..."
 
-#: Controller/UsersController.php:27
-msgid "You are already logged in"
-msgstr "Vous êtes déjà identifié"
-
-#: Controller/UsersController.php:30
-msgid "Registrations are closed for now... Come back later..."
-msgstr "Les inscriptions sont fermées pour le moment... Revenez plus tard..."
-
-#: Controller/UsersController.php:154
-msgid "Your account has been created. An email will be sent to you when active"
-msgstr ""
-"Votre compte a été créé. Un email sera envoyé à vous lorsqu’il sera actif"
-
-#: Controller/UsersController.php:162
-#: Controller/User/AlbumsController.php:73
-#: Controller/User/FilesController.php:167
-#: Controller/User/NotesController.php:80;130
-#: Controller/User/PostsController.php:85;140
-#: Controller/User/ProjectsController.php:74;110
-msgid "Some errors occured. Please, try again."
-msgstr "Des erreurs se sont produites. Veuillez re-essayer."
-
-#: Controller/UsersController.php:184
-msgid "Invalid username or password, try again. Is your accound active ?"
-msgstr ""
-"Nom d'utilisateur ou mot de passe invalide, essayez à nouveau. Votre compte "
-"est-il activé ?"
-
-#: Controller/UsersController.php:198
-msgid "You are logged out. See you later !"
-msgstr "Vous êtes déconnecté. A plus tard !"
-
-#: Controller/Admin/ActsController.php:90
+#: Controller/Admin/ActsController.php:89
 msgid "Acts table has been rebuilt."
 msgstr "La table 'acts' a été reconstruite."
 
-#: Controller/Admin/ActsController.php:94
-#: Controller/Admin/MaintenanceController.php:25
+#: Controller/Admin/ActsController.php:93
+#: Controller/Admin/MaintenanceController.php:23
 msgid "Use the menu to access this functionality"
 msgstr "Utilisez le monu pour cette fonctionnalité"
 
-#: Controller/Admin/ActsController.php:88
+#: Controller/Admin/ActsController.php:87
 msgid "An error occured during the cleanup. Please, try again."
 msgid_plural "{0,number} errors occured during the cleanup. Please, try again."
 msgstr[0] "Une erreur est survenue durant le nettoyage. Veuillez ré-essayer."
 msgstr[1] "{0} erreurs sont survenues durant le nettoyage. Veuillez ré-essayer."
 
-#: Controller/Admin/AdminAppController.php:29
-#: Controller/User/UserAppController.php:31
+#: Controller/Admin/AdminAppController.php:30
+#: Controller/User/UserAppController.php:33
 msgid "You should be logged in to access this page."
 msgstr ", Vous devez être connecté pour accéder à cette page."
 
 #: Controller/Admin/AdminAppController.php:32
-#: Controller/User/UserAppController.php:34
-msgid "You don't have enough rights to access this ressource."
+msgid "You don't have enough rights to access this resource ."
 msgstr "Vous n’avez pas de droits suffisants pour accéder à cette ressource."
 
-#: Controller/Admin/AlbumsController.php:61;75
+#: Controller/Admin/AlbumsController.php:59;73
 msgid "The album has been locked."
 msgstr "L'album a été verrouillé."
 
-#: Controller/Admin/AlbumsController.php:66
+#: Controller/Admin/AlbumsController.php:64
 msgid "The album has been unlocked."
 msgstr "L'album a été déverrouillé."
 
-#: Controller/Admin/AlbumsController.php:70
+#: Controller/Admin/AlbumsController.php:68
 msgid "The album has been removed."
 msgstr "L'album a été supprimé."
 
-#: Controller/Admin/AlbumsController.php:89
-#: Controller/Admin/FilesController.php:112
-#: Controller/Admin/NotesController.php:98
-#: Controller/Admin/PostsController.php:111
-#: Controller/Admin/ProjectsController.php:112
-#: Controller/Admin/UsersController.php:121;152;182
+#: Controller/Admin/AlbumsController.php:87
+#: Controller/Admin/FilesController.php:110
+#: Controller/Admin/NotesController.php:96
+#: Controller/Admin/PostsController.php:109
+#: Controller/Admin/ProjectsController.php:110
+#: Controller/Admin/UsersController.php:119;149;179
 #: Controller/User/UsersController.php:30;63;126
 msgid "An error occured. Please try again."
 msgstr "Une erreur est survenue. Veuillez ré-essayer."
 
-#: Controller/Admin/FilesController.php:84;98
+#: Controller/Admin/FilesController.php:82;96
 msgid "The file has been locked."
 msgstr "Le fichier a été verrouillé."
 
-#: Controller/Admin/FilesController.php:89
+#: Controller/Admin/FilesController.php:87
 msgid "The file has been unlocked."
 msgstr "Le fichier a été déverrouillé."
 
-#: Controller/Admin/FilesController.php:93
+#: Controller/Admin/FilesController.php:91
 msgid "The file has been removed."
 msgstr "Le fichier a été enlevé."
 
-#: Controller/Admin/LanguagesController.php:46;72
+#: Controller/Admin/LanguagesController.php:44;70
 msgid "The language has been saved."
 msgstr "La langue a été sauvegardée."
 
-#: Controller/Admin/LanguagesController.php:50;76
+#: Controller/Admin/LanguagesController.php:48;74
 msgid "The language could not be saved. Please, try again."
 msgstr "La langue n'a pas pu être sauvegardée. Veuillez essayer à nouveau."
 
-#: Controller/Admin/LanguagesController.php:95
-#: Controller/Admin/LicensesController.php:87
+#: Controller/Admin/LanguagesController.php:93
+#: Controller/Admin/LicensesController.php:85
 msgid "This feature needs some work..."
 msgstr "Cette fonctionnalité nécessite un peu de travail..."
 
-#: Controller/Admin/LicensesController.php:43
+#: Controller/Admin/LicensesController.php:41
 msgid "The license has been saved."
 msgstr "La license a été sauvegardée."
 
-#: Controller/Admin/LicensesController.php:46
+#: Controller/Admin/LicensesController.php:44
 msgid "The license could not be saved. Please, try again."
 msgstr "La licence n'a pas pu être sauvegardée. Veuillez essayer à nouveau."
 
-#: Controller/Admin/LicensesController.php:68
+#: Controller/Admin/LicensesController.php:66
 msgid "The license has been updated."
 msgstr "La license a été mise à jour."
 
-#: Controller/Admin/LicensesController.php:71
+#: Controller/Admin/LicensesController.php:69
 msgid "The license could not be updated. Please, try again."
 msgstr "La licence n'a pas pu être mise à jour. Veuillez essayer à nouveau."
 
-#: Controller/Admin/MaintenanceController.php:22
+#: Controller/Admin/MaintenanceController.php:20
 msgid "The cache has been cleared"
 msgstr "Le cache a été vidé"
 
-#: Controller/Admin/NotesController.php:70;84
+#: Controller/Admin/NotesController.php:68;82
 msgid "The note has been locked."
 msgstr "La note a été verrouillée."
 
-#: Controller/Admin/NotesController.php:75
+#: Controller/Admin/NotesController.php:73
 msgid "The note has been unlocked."
 msgstr "La note a été déverrouillée"
 
-#: Controller/Admin/NotesController.php:79
+#: Controller/Admin/NotesController.php:77
 msgid "The note has been removed."
 msgstr "La note a été supprimée."
 
-#: Controller/Admin/PostsController.php:83;97
+#: Controller/Admin/PostsController.php:81;95
 msgid "The post has been locked."
 msgstr "Le post a été verrouillé."
 
-#: Controller/Admin/PostsController.php:88
+#: Controller/Admin/PostsController.php:86
 msgid "The post has been unlocked."
 msgstr "Le post a été déverrouillé."
 
-#: Controller/Admin/PostsController.php:92
+#: Controller/Admin/PostsController.php:90
 msgid "The post has been removed."
 msgstr "Le post a été supprimé."
 
-#: Controller/Admin/ProjectsController.php:84;98
+#: Controller/Admin/ProjectsController.php:82;96
 msgid "The project has been locked."
 msgstr "Le projet a été verrouillé."
 
-#: Controller/Admin/ProjectsController.php:89
+#: Controller/Admin/ProjectsController.php:87
 msgid "The project has been unlocked."
 msgstr "Le projet a été déverrouillé."
 
-#: Controller/Admin/ProjectsController.php:93
+#: Controller/Admin/ProjectsController.php:91
 msgid "The project has been removed."
 msgstr "Le projet a été enlevé."
 
-#: Controller/Admin/ReportsController.php:65
+#: Controller/Admin/ReportsController.php:63
 msgid "The report has been deleted."
 msgstr "Le rapport a été supprimé."
 
-#: Controller/Admin/ReportsController.php:67
+#: Controller/Admin/ReportsController.php:65
 msgid "The report could not be deleted. Please, try again."
 msgstr "Le rapport n'a pas pu être supprimé. Veuillez essayer à nouveau."
 
-#: Controller/Admin/UsersController.php:104
+#: Controller/Admin/UsersController.php:102
 msgid "The account has been locked."
 msgstr "Le compte a été verrouillé"
 
-#: Controller/Admin/UsersController.php:107
+#: Controller/Admin/UsersController.php:105
 msgid "The account has been unlocked."
 msgstr "Le compte a été déverrouillé"
 
-#: Controller/Admin/UsersController.php:148
+#: Controller/Admin/UsersController.php:145
 msgid "The account has been closed."
 msgstr "Le compte a été fermé"
 
-#: Controller/Admin/UsersController.php:178
+#: Controller/Admin/UsersController.php:175
 msgid "The account has been activated."
 msgstr "Le compte a été activé"
 
-#: Controller/User/AlbumsController.php:67
+#: Controller/User/AlbumsController.php:65
 msgid "The album could not be saved. Please, try again."
 msgstr "L'album n'a pas pu être enregitstré. Veuillez essayer à nouveau."
 
-#: Controller/User/CommentsController.php:81
+#: Controller/User/AlbumsController.php:71
+#: Controller/User/FilesController.php:167
+#: Controller/User/NotesController.php:78;128
+#: Controller/User/PostsController.php:84;139
+#: Controller/User/ProjectsController.php:72;108
+msgid "Some errors occured. Please, try again."
+msgstr "Des erreurs se sont produites. Veuillez re-essayer."
+
+#: Controller/User/CommentsController.php:82
 msgid "The comment has been deleted."
 msgstr "Le commentaire a été supprimé"
 
-#: Controller/User/CommentsController.php:83
+#: Controller/User/CommentsController.php:84
 msgid "The comment could not be deleted. Please, try again."
 msgstr "Le commentaire n'a pas pu être supprimé. Veuillez ré-essayer."
 
@@ -309,65 +280,69 @@ msgstr "Le fichier a été supprimé."
 msgid "The file could not be deleted. Please, try again."
 msgstr "Le fichier n'a pas pu être supprimé. Veuillez essayer à nouveau."
 
-#: Controller/User/NotesController.php:69;117
+#: Controller/User/NotesController.php:67;115
 msgid "The note has been saved."
 msgstr "La note a été sauvegardée"
 
-#: Controller/User/NotesController.php:74;124
+#: Controller/User/NotesController.php:72;122
 msgid "The note could not be saved. Please, try again."
 msgstr "La note n'a pas pu être sauvegardée. Veuillez essayer à nouveau."
 
-#: Controller/User/NotesController.php:113
+#: Controller/User/NotesController.php:111
 msgid "Target note not found."
 msgstr "Note non trouvée."
 
-#: Controller/User/NotesController.php:157
+#: Controller/User/NotesController.php:155
 msgid "The note has been deleted."
 msgstr "La note a été supprimée"
 
-#: Controller/User/NotesController.php:160
+#: Controller/User/NotesController.php:158
 msgid "The note could not be deleted. Please, try again."
 msgstr "La note n'a pas pu être supprimée. Veuillez essayer à nouveau."
 
-#: Controller/User/PostsController.php:74
+#: Controller/User/PostsController.php:73
 msgid "Your article has been saved."
 msgstr "Votre article a été sauvegardé."
 
-#: Controller/User/PostsController.php:121
+#: Controller/User/PostsController.php:120
 msgid "Your article has been published."
 msgstr "Votre article a été publié."
 
-#: Controller/User/PostsController.php:125
+#: Controller/User/PostsController.php:124
 msgid "Your article has been unpublished."
 msgstr "Votre article a été dé-publié."
 
-#: Controller/User/PostsController.php:131
+#: Controller/User/PostsController.php:130
 msgid "Your article has been updated."
 msgstr "Votre article a été mis à jour."
 
-#: Controller/User/PostsController.php:166
+#: Controller/User/PostsController.php:165
 msgid "Your article has been deleted."
 msgstr "Votre article a été supprimé."
 
-#: Controller/User/PostsController.php:169
+#: Controller/User/PostsController.php:168
 msgid "Your article could not be deleted. Please, try again."
 msgstr "Votre article n'a pas pu être supprimé. Veuillez essayer à nouveau."
 
-#: Controller/User/ProjectsController.php:65;98
+#: Controller/User/ProjectsController.php:63;96
 msgid "The project has been saved."
 msgstr "Le projet a été sauvegardé."
 
-#: Controller/User/ProjectsController.php:104
+#: Controller/User/ProjectsController.php:102
 msgid "The project could not be saved. Please, try again."
 msgstr "Le projet n'a pas pu être enregistré. Veuillez essayer à nouveau."
 
-#: Controller/User/ProjectsController.php:135
+#: Controller/User/ProjectsController.php:133
 msgid "The project has been deleted."
 msgstr "Le projet a été supprimé."
 
-#: Controller/User/ProjectsController.php:138
+#: Controller/User/ProjectsController.php:136
 msgid "The project could not be deleted. Please, try again."
 msgstr "Le projet n'a pas pu être supprimé. Veuillez essayer à nouveau."
+
+#: Controller/User/UserAppController.php:35
+msgid "You don't have enough rights to access this resource."
+msgstr "Vous n’avez pas de droits suffisants pour accéder à cette ressource."
 
 #: Controller/User/UsersController.php:27
 msgid "Your informations are now up to date."
@@ -385,7 +360,7 @@ msgstr "Votre mot de passe a été mis à jour."
 msgid "Sorry, you have entered the wrong password."
 msgstr "Désolé, vous avez entré le mauvais mot de passe."
 
-#: Controller/User/UsersController.php:134;159
+#: Controller/User/UsersController.php:134;159;176
 msgid "To access this page, you need to fill the form first."
 msgstr "Pour accéder à cette page, vous devez remplir le formulaire en premier."
 
@@ -394,10 +369,6 @@ msgid "Your account has been closed. If you want to re-open it, contact the admi
 msgstr ""
 "Votre compte a été fermé. Si vous souhaitez ré-ouvrir, contactez "
 "l’administrateur."
-
-#: Model/Table/UsersTable.php:118
-msgid "Your password does not match your confirm password. Please try again"
-msgstr "Vos mots de passe ne correspondent pas. Veuillez recommencer."
 
 #: Template/Acts/index.ctp:17
 msgid "Recent activity"
@@ -427,7 +398,7 @@ msgstr "Liste des fichiers"
 #: Template/Admin/Files/index.ctp:17
 #: Template/Admin/Files/view.ctp:19
 #: Template/Admin/Licenses/index.ctp:39
-#: Template/Admin/Users/index.ctp:152
+#: Template/Admin/Users/index.ctp:154
 #: Template/Element/albums/tile_userindex.ctp:63
 #: Template/Element/layout/mainmenu.ctp:14
 #: Template/Element/layout/mainmenu_admin.ctp:14
@@ -437,7 +408,7 @@ msgstr "Liste des fichiers"
 #: Template/Files/view.ctp:18
 #: Template/Languages/view.ctp:81
 #: Template/Licenses/view.ctp:85
-#: Template/Projects/view.ctp:105
+#: Template/Projects/view.ctp:100
 #: Template/User/Files/add.ctp:15
 #: Template/User/Files/edit.ctp:15
 #: Template/User/Files/index.ctp:15
@@ -450,7 +421,7 @@ msgstr "Fichiers"
 #: Template/Admin/Licenses/index.ctp:35
 #: Template/Admin/Projects/index.ctp:28
 #: Template/Admin/Tags/view.ctp:16
-#: Template/Admin/Users/index.ctp:30
+#: Template/Admin/Users/index.ctp:36
 #: Template/Albums/index.ctp:51
 #: Template/Cell/Comments/add_form.ctp:12
 #: Template/Element/reports/add_modal.ctp:19
@@ -487,7 +458,7 @@ msgstr "Sans danger"
 #: Template/Element/files/tile_userindex.ctp:42
 #: Template/Element/notes/tile_userindex.ctp:54
 #: Template/Element/posts/tile_userindex.ctp:50
-#: Template/Element/projects/tile_userindex.ctp:42
+#: Template/Element/projects/tile_userindex.ctp:40
 #: Template/Files/index.ctp:47
 #: Template/Notes/index.ctp:46
 #: Template/Projects/index.ctp:38
@@ -522,7 +493,7 @@ msgstr "Langue"
 #: Template/Admin/Notes/index.ctp:37
 #: Template/Admin/Posts/index.ctp:37
 #: Template/Admin/Projects/index.ctp:37
-#: Template/Admin/Users/index.ctp:31
+#: Template/Admin/Users/index.ctp:37
 msgid "Status"
 msgstr "Etat"
 
@@ -538,7 +509,7 @@ msgstr "Etat"
 #: Template/Admin/Tags/edit.ctp:3
 #: Template/Admin/Tags/index.ctp:3;16
 #: Template/Admin/Tags/view.ctp:3;33
-#: Template/Admin/Users/index.ctp:33
+#: Template/Admin/Users/index.ctp:39
 #: Template/Element/layouts/adminform.ctp:6
 #: Template/Element/layouts/adminindex.ctp:23
 #: Template/Element/layouts/adminview.ctp:19
@@ -554,7 +525,7 @@ msgstr "Actions"
 #: Template/Admin/Posts/index.ctp:58
 #: Template/Admin/Projects/index.ctp:58
 #: Template/Admin/Reports/index.ctp:57
-#: Template/Admin/Users/index.ctp:82
+#: Template/Admin/Users/index.ctp:88
 msgid "Full details"
 msgstr "Détails complets"
 
@@ -568,7 +539,7 @@ msgstr "Détails complets"
 #: Template/Admin/Posts/view.ctp:45
 #: Template/Admin/Projects/index.ctp:63
 #: Template/Admin/Projects/view.ctp:45
-#: Template/Admin/Users/index.ctp:87
+#: Template/Admin/Users/index.ctp:18
 #: Template/Admin/Users/view.ctp:44
 msgid "Unlock"
 msgstr "Déverouiller"
@@ -583,7 +554,7 @@ msgstr "Déverouiller"
 #: Template/Admin/Posts/view.ctp:46
 #: Template/Admin/Projects/index.ctp:64
 #: Template/Admin/Projects/view.ctp:46
-#: Template/Admin/Users/index.ctp:88
+#: Template/Admin/Users/index.ctp:19
 #: Template/Admin/Users/view.ctp:46
 msgid "Lock"
 msgstr "Vérouiller"
@@ -593,7 +564,7 @@ msgstr "Vérouiller"
 #: Template/Admin/Notes/index.ctp:82
 #: Template/Admin/Posts/index.ctp:82
 #: Template/Admin/Projects/index.ctp:82
-#: Template/Admin/Users/index.ctp:117
+#: Template/Admin/Users/index.ctp:119
 #: Template/Admin/Users/view.ctp:51
 msgid "Close"
 msgstr "Fremer"
@@ -611,7 +582,7 @@ msgstr "Êtes-vous sur(e) de vouloir fermer"
 #: Template/Element/layout/mainmenu_admin.ctp:17
 #: Template/Element/layout/mainmenu_user.ctp:20
 #: Template/Languages/view.ctp:91
-#: Template/Projects/view.ctp:115
+#: Template/Projects/view.ctp:110
 #: Template/User/Albums/add.ctp:14
 #: Template/User/Albums/edit.ctp:14
 #: Template/User/Albums/index.ctp:15
@@ -747,7 +718,7 @@ msgstr "Taille"
 #: Template/Element/files/tile_userindex.ctp:46
 #: Template/Element/notes/tile_userindex.ctp:58
 #: Template/Element/posts/tile_userindex.ctp:54
-#: Template/Element/projects/tile_userindex.ctp:46
+#: Template/Element/projects/tile_userindex.ctp:44
 msgid "License"
 msgstr "Licence"
 
@@ -903,7 +874,7 @@ msgstr "Ajouter une langue"
 #: Template/Admin/Licenses/edit.ctp:45
 #: Template/User/Notes/edit.ctp:59
 #: Template/User/Posts/edit.ctp:65
-#: Template/User/Users/edit.ctp:52;90
+#: Template/User/Users/edit.ctp:52;91
 msgid "Save the changes"
 msgstr "Enregistrer les changements"
 
@@ -969,7 +940,7 @@ msgstr "Lien"
 #: Template/Admin/Licenses/index.ctp:37
 #: Template/Admin/Posts/index.ctp:17
 #: Template/Admin/Posts/view.ctp:18
-#: Template/Admin/Users/index.ctp:148
+#: Template/Admin/Users/index.ctp:150
 #: Template/Element/layout/mainmenu.ctp:8
 #: Template/Element/layout/mainmenu_admin.ctp:8
 #: Template/Element/layout/mainmenu_user.ctp:11
@@ -978,7 +949,7 @@ msgstr "Lien"
 #: Template/Posts/index.ctp:35
 #: Template/Posts/nsfw.ctp:6
 #: Template/Posts/view.ctp:18
-#: Template/Projects/view.ctp:85
+#: Template/Projects/view.ctp:80
 #: Template/User/Posts/add.ctp:15
 #: Template/User/Posts/edit.ctp:15
 #: Template/User/Posts/index.ctp:15
@@ -989,7 +960,7 @@ msgstr "Articles"
 #: Template/Admin/Licenses/index.ctp:38
 #: Template/Admin/Projects/index.ctp:17
 #: Template/Admin/Projects/view.ctp:18
-#: Template/Admin/Users/index.ctp:150
+#: Template/Admin/Users/index.ctp:152
 #: Template/Albums/index.ctp:38
 #: Template/Albums/nsfw.ctp:6
 #: Template/Element/albums/tile_userindex.ctp:44
@@ -1033,7 +1004,7 @@ msgstr "Liste de notes"
 #: Template/Notes/index.ctp:39
 #: Template/Notes/nsfw.ctp:6
 #: Template/Notes/view.ctp:18
-#: Template/Projects/view.ctp:95
+#: Template/Projects/view.ctp:90
 #: Template/User/Notes/add.ctp:15
 #: Template/User/Notes/edit.ctp:15
 #: Template/User/Notes/index.ctp:15
@@ -1109,8 +1080,7 @@ msgstr "Rapports"
 #: Template/Admin/Reports/index.ctp:29
 #: Template/Cell/Comments/add_form.ctp:21
 #: Template/Element/reports/add_modal.ctp:24
-#: Template/Element/users/loginform.ctp:3
-#: Template/Element/users/registerform.ctp:4
+#: Template/Element/users/registerform.ctp:10
 #: Template/User/Users/edit.ctp:44
 msgid "E-mail"
 msgstr "E-mail"
@@ -1187,7 +1157,7 @@ msgstr ""
 #: Template/Element/layout/mainmenu_admin.ctp:32
 #: Template/Element/notes/tile_userindex.ctp:73
 #: Template/Element/posts/tile_userindex.ctp:69
-#: Template/Element/projects/tile_userindex.ctp:48
+#: Template/Element/projects/tile_userindex.ctp:46
 msgid "Tags"
 msgstr "Tags"
 
@@ -1233,51 +1203,52 @@ msgstr ""
 msgid "List of users"
 msgstr "Liste des utilisateurs"
 
-#: Template/Admin/Users/index.ctp:17
+#: Template/Admin/Users/index.ctp:20
+#: Template/Admin/Users/view.ctp:41
+msgid "Activate"
+msgstr "Activer"
+
+#: Template/Admin/Users/index.ctp:23
 #: Template/Admin/Users/view.ctp:15
 #: Template/Element/layout/mainmenu_admin.ctp:23
 msgid "Users"
 msgstr "Utilisateurs :"
 
-#: Template/Admin/Users/index.ctp:28
+#: Template/Admin/Users/index.ctp:34
 msgid "Role"
 msgstr "Rôles"
 
-#: Template/Admin/Users/index.ctp:29
+#: Template/Admin/Users/index.ctp:35
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: Template/Admin/Users/index.ctp:32
+#: Template/Admin/Users/index.ctp:38
 #: Template/Users/index.ctp:22
 msgid "Join date"
 msgstr "Date d'inscription"
 
-#: Template/Admin/Users/index.ctp:74
+#: Template/Admin/Users/index.ctp:80
 msgid "Quick details"
 msgstr "Détails rapides"
 
-#: Template/Admin/Users/index.ctp:89
-#: Template/Admin/Users/view.ctp:41
-msgid "Activate"
-msgstr "Activer"
-
-#: Template/Admin/Users/index.ctp:146
+#: Template/Admin/Users/index.ctp:148
 msgid "Last update"
 msgstr "Dernière mise à jour"
 
-#: Template/Admin/Users/index.ctp:154
+#: Template/Admin/Users/index.ctp:156
 msgid "Bio"
 msgstr "Bio"
 
-#: Template/Admin/Users/index.ctp:193;218;250;280
+#: Template/Admin/Users/index.ctp:195;220;252;282
+#: Template/User/Users/edit.ctp:148
 msgid "\"Request failed: \" + textStatus"
 msgstr "\"Echec de la requête : \" + textStatus"
 
-#: Template/Admin/Users/index.ctp:202
+#: Template/Admin/Users/index.ctp:204
 msgid "An error occured when you tried to close this account."
 msgstr "Une erreur est survenue lors de la fermeture du compte."
 
-#: Template/Admin/Users/index.ctp:232
+#: Template/Admin/Users/index.ctp:234
 msgid "Unknown user status"
 msgstr "Statut d'utilisateur inconnu."
 
@@ -1506,7 +1477,7 @@ msgstr "SFW"
 #: Template/Element/files/tile_userindex.ctp:44
 #: Template/Element/notes/tile_userindex.ctp:56
 #: Template/Element/posts/tile_userindex.ctp:52
-#: Template/Element/projects/tile_userindex.ctp:44
+#: Template/Element/projects/tile_userindex.ctp:42
 msgid "Updated on"
 msgstr "Modifié le"
 
@@ -1526,8 +1497,8 @@ msgid "Posted on: {0}"
 msgstr "Posté le"
 
 #: Template/Element/comments/card.ctp:62
-msgid "Author: {1}"
-msgstr "Auteur : {1}"
+msgid "Author: {0}"
+msgstr "Auteur : {0}"
 
 #: Template/Element/files/card.ctp:83
 #: Template/Files/view.ctp:74
@@ -1715,7 +1686,7 @@ msgid "Show NSFW"
 msgstr "Montrer NSFW"
 
 #: Template/Element/layout/mainmenu.ctp:35
-#: Template/Element/layout/mainmenu_user.ctp:36
+#: Template/Element/layout/mainmenu_user.ctp:35
 msgid "Report this page"
 msgstr "Rapporter cette page"
 
@@ -1744,7 +1715,7 @@ msgstr "Déconnexion "
 msgid "Back to website"
 msgstr "Retours au site"
 
-#: Template/Element/layout/mainmenu_user.ctp:27
+#: Template/Element/layout/mainmenu_user.ctp:26
 #: Template/User/Comments/index.ctp:17;20
 msgid "Comments"
 msgstr "Commentaires"
@@ -1799,7 +1770,7 @@ msgstr "Créez un album !"
 
 #: Template/Element/layout/nsfw_block.ctp:3
 msgid "This element may not be safe."
-msgstr ""
+msgstr "Cet élément peut ne pas être adapté."
 
 #: Template/Element/layout/pageloader.ctp:3
 msgid "Page is loading..."
@@ -1877,10 +1848,6 @@ msgstr "Date de publication"
 msgid "Manager: "
 msgstr "Manager : "
 
-#: Template/Element/projects/tile_userindex.ctp:53
-msgid "Team"
-msgstr "Équipe"
-
 #: Template/Element/reports/add_modal.ctp:6
 msgid "Report something"
 msgstr "Rapporter quelque chose"
@@ -1908,74 +1875,76 @@ msgstr "﻿Annuler"
 msgid "Since {0}"
 msgstr "Depuis {0}"
 
-#: Template/Element/users/loginform.ctp:4
+#: Template/Element/users/loginform.ctp:10
+msgid "Email"
+msgstr "E-mail"
+
+#: Template/Element/users/loginform.ctp:11
 msgid "Password"
 msgstr "Mot de passe"
 
-#: Template/Element/users/loginform.ctp:5
+#: Template/Element/users/loginform.ctp:26
+msgid "Reset Password"
+msgstr "Réinitialiser le mot de passe"
+
+#: Template/Element/users/loginform.ctp:28
 #: Template/Element/users/loginmodal.ctp:6
-#: Template/Users/login.ctp:11;14
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:6
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:11;14
 msgid "Login"
 msgstr "Identification"
 
-#: Template/Element/users/loginform.ctp:10
+#: Template/Element/users/loginform.ctp:33
 msgid "or"
 msgstr "ou"
 
-#: Template/Element/users/loginform.ctp:12
-#: Template/Element/users/registerform.ctp:10
-#: Template/Users/register.ctp:11;14
+#: Template/Element/users/loginform.ctp:35
+#: Template/Element/users/registerform.ctp:20
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:11;14
 msgid "Register"
 msgstr "S’inscrire"
 
-#: Template/Element/users/loginform.ctp:15
+#: Template/Element/users/loginform.ctp:38
 msgid "Registrations are closed for now... Come back later."
 msgstr "Les inscriptions sont fermées pour le moment... Revenez plus tard."
 
-#: Template/Element/users/registerform.ctp:4
-msgid "Your e-mail won't be given/sold to third-parties"
-msgstr "Votre adresse e-mail ne sera pas donnée ou vendue à des tiers"
+#: Template/Element/users/registerform.ctp:7
+msgid "Accept these conditions?"
+msgstr "Accepter ces conditions ?"
 
-#: Template/Element/users/registerform.ctp:5
+#: Template/Element/users/registerform.ctp:9
 #: Template/Users/index.ctp:21
 msgid "User name"
 msgstr "Nom d'utilisateur"
 
-#: Template/Element/users/registerform.ctp:5
+#: Template/Element/users/registerform.ctp:9
 msgid "User name should be small caps, alphanumeric and underscores only"
 msgstr ""
 "Le nom d'utilisateur doit être en miniuscules, avec des caractères "
 "alphanumériques et souligné (_) seulement."
 
-#: Template/Element/users/registerform.ctp:6
-#: Template/Licenses/index.ctp:22
-#: Template/User/Users/edit.ctp:45
-#: Template/Users/index.ctp:20
-msgid "Real name"
-msgstr "Nom réel"
+#: Template/Element/users/registerform.ctp:10
+msgid "Your e-mail won't be given/sold to third-parties"
+msgstr "Votre adresse e-mail ne sera pas donnée ou vendue à des tiers"
 
-#: Template/Element/users/registerform.ctp:6
-msgid "Your real name, if you don't mind"
-msgstr "Votre vrai nom, si cela ne vous dérange pas"
-
-#: Template/Element/users/registerform.ctp:7
-msgid "A strong password is a good start."
-msgstr "Un mot de passe fort est un bon début."
-
-#: Template/Element/users/registerform.ctp:8
+#: Template/Element/users/registerform.ctp:12
 msgid "Password confirmation"
 msgstr "Confirmez le mot de passe"
 
-#: Template/Element/users/registerform.ctp:8
-msgid "Verify you didn't made a typo"
-msgstr "Vérifiez que vous ne l'avez pas fait une faute de frappe"
+#: Template/Element/users/registerform.ctp:13
+msgid "First name"
+msgstr "Prénom"
 
-#: Template/Element/users/registerform.ctp:9
+#: Template/Element/users/registerform.ctp:14
+msgid "Last name"
+msgstr "Nom"
+
+#: Template/Element/users/registerform.ctp:15
 #: Template/User/Users/edit.ctp:47
 msgid "About you"
 msgstr "A propos de vous"
 
-#: Template/Element/users/registerform.ctp:9
+#: Template/Element/users/registerform.ctp:15
 msgid "Tell us why you want to come here"
 msgstr "Dites-nous pourquoi vous voulez venir ici"
 
@@ -2105,7 +2074,7 @@ msgstr "Derniers {0} éléments dans cette langue"
 
 #: Template/Languages/view.ctp:102
 #: Template/Licenses/view.ctp:96
-#: Template/Projects/view.ctp:126
+#: Template/Projects/view.ctp:121
 #: Template/Users/view.ctp:109
 msgid "Some entries may be hidden, depending on your NSFW settings."
 msgstr ""
@@ -2118,6 +2087,12 @@ msgstr "Identification / Inscription"
 #: Template/Layout/error.ctp:52
 msgid "Back"
 msgstr "Précédent"
+
+#: Template/Licenses/index.ctp:22
+#: Template/User/Users/edit.ctp:45
+#: Template/Users/index.ctp:20
+msgid "Real name"
+msgstr "Nom réel"
 
 #: Template/Licenses/index.ctp:23
 msgid "Number of articles"
@@ -2175,6 +2150,36 @@ msgstr "Notes du projet \"{0}\""
 msgid "Elabs on Github"
 msgstr "Elabs sur Github"
 
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:3
+#: Template/User/Users/edit.ctp:106
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:20
+msgid "Please enter the new password"
+msgstr "Veuillez entrer le nouveau mot de passe"
+
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:24
+msgid "Cancel and login"
+msgstr "Annuler et se connecter"
+
+#: Template/Plugin/CakeDC/Users/Users/change_password.ctp:25
+msgid "Change the password"
+msgstr "Modifier le mot de passe"
+
+#: Template/Plugin/CakeDC/Users/Users/request_reset_password.ctp:11;14
+msgid "Password reset"
+msgstr "Changement de mot de passe"
+
+#: Template/Plugin/CakeDC/Users/Users/request_reset_password.ctp:29
+msgid "Please enter your email to reset your password"
+msgstr ""
+"Veuillez entrer votre adresse e-mail pour réinitialiser votre mot de passe"
+
+#: Template/Plugin/CakeDC/Users/Users/request_reset_password.ctp:32
+msgid "Send new password"
+msgstr "Envoyer un nouveau mot de passe"
+
 #: Template/Posts/index.ctp:14
 msgid "Articles in \"{0}\""
 msgstr "Articles en \"{0}\""
@@ -2215,33 +2220,29 @@ msgstr "Projets de {0}"
 msgid "Projects list"
 msgstr "Liste des projets"
 
-#: Template/Projects/view.ctp:49
-msgid "Members"
-msgstr "Membres"
-
-#: Template/Projects/view.ctp:61
+#: Template/Projects/view.ctp:56
 #: Template/User/Users/edit.ctp:46
 #: Template/Users/view.ctp:37
 msgid "Website"
 msgstr "Site internet "
 
-#: Template/Projects/view.ctp:80
+#: Template/Projects/view.ctp:75
 msgid "Display all posts in this project"
 msgstr "Afficher tous les articles de ce projet"
 
-#: Template/Projects/view.ctp:90
+#: Template/Projects/view.ctp:85
 msgid "Display all notes in this project"
 msgstr "Afficher toutes les notes de ce projet"
 
-#: Template/Projects/view.ctp:100
+#: Template/Projects/view.ctp:95
 msgid "Display all files in this project"
 msgstr "Afficher tous les fichiers de ce projet"
 
-#: Template/Projects/view.ctp:110
+#: Template/Projects/view.ctp:105
 msgid "Display all albums in this project"
 msgstr "Afficher tous les albums de ce projet"
 
-#: Template/Projects/view.ctp:120
+#: Template/Projects/view.ctp:115
 msgid "Last {0} elements added to project"
 msgstr "Derniers {0} éléments de ce projet"
 
@@ -2296,6 +2297,14 @@ msgid "Create the album"
 msgstr "Créer l'album"
 
 #: Template/User/Albums/edit.ctp:57
+#: Template/User/Files/edit.ctp:59
+#: Template/User/Notes/edit.ctp:56
+#: Template/User/Posts/edit.ctp:62
+#: Template/User/Projects/edit.ctp:58
+msgid "Minor update"
+msgstr "Mise à jour mineure"
+
+#: Template/User/Albums/edit.ctp:58
 #: Template/User/Files/edit.ctp:60
 msgid "Update"
 msgstr "Mettre à jour  "
@@ -2367,13 +2376,6 @@ msgstr "Ajouter le fichier"
 #: Template/User/Files/edit.ctp:29
 msgid "New file"
 msgstr "Nouveau fichier"
-
-#: Template/User/Files/edit.ctp:59
-#: Template/User/Notes/edit.ctp:56
-#: Template/User/Posts/edit.ctp:62
-#: Template/User/Projects/edit.ctp:58
-msgid "Minor update"
-msgstr "Mise à jour mineure"
 
 #: Template/User/Files/index.ctp:22
 msgid "File size"
@@ -2496,39 +2498,57 @@ msgstr "Modifier le mot de passe "
 msgid "Close account"
 msgstr "Fermer le compte"
 
-#: Template/User/Users/edit.ctp:68
+#: Template/User/Users/edit.ctp:58
+msgid "General"
+msgstr "Général"
+
+#: Template/User/Users/edit.ctp:69
 msgid "Default site language"
 msgstr "Langue du site par défaut"
 
-#: Template/User/Users/edit.ctp:74
+#: Template/User/Users/edit.ctp:75
 msgid "Default language for new content"
 msgstr "Langue par défaut pour les nouveaux contenus"
 
-#: Template/User/Users/edit.ctp:80
+#: Template/User/Users/edit.ctp:81
 msgid "Default license for new content"
 msgstr "Licence par défaut pour les nouveaux contenus"
 
-#: Template/User/Users/edit.ctp:85
+#: Template/User/Users/edit.ctp:86
 msgid "Display NSFW content"
 msgstr "Afficher le contenu NSFW"
 
-#: Template/User/Users/edit.ctp:98;111
+#: Template/User/Users/edit.ctp:94
+msgid "API"
+msgstr "API"
+
+#: Template/User/Users/edit.ctp:97
+msgid "Generate a new token"
+msgstr "Générer un nouveau jeton"
+
+#: Template/User/Users/edit.ctp:98
+msgid "Your API token"
+msgstr "Votre jeton pour l'API"
+
+#: Template/User/Users/edit.ctp:98
+msgid "If you regenerate your API token, you'll have to re-enter it or re-log in your clients"
+msgstr ""
+"Si vous régénérez votre jeton d'accès, vous allez devoir le remettre à jour "
+"sur tous vos clients"
+
+#: Template/User/Users/edit.ctp:105;118
 msgid "Current password"
 msgstr "Mot de passe actuel"
 
-#: Template/User/Users/edit.ctp:99
-msgid "New password"
-msgstr "Nouveau mot de passe"
-
-#: Template/User/Users/edit.ctp:100
+#: Template/User/Users/edit.ctp:107
 msgid "Confirmation"
 msgstr "Confirmation"
 
-#: Template/User/Users/edit.ctp:103
+#: Template/User/Users/edit.ctp:110
 msgid "Update password"
 msgstr "Mise à jour de mot de passe"
 
-#: Template/User/Users/edit.ctp:114
+#: Template/User/Users/edit.ctp:121
 msgid "Close your account"
 msgstr "Fermer votre compte"
 
@@ -2556,15 +2576,15 @@ msgstr "Afficher tous les albums de cet auteur"
 msgid "Last {0} elements posted by {1}"
 msgstr "Derniers {0} éléments postés par {1}"
 
-#: View/Helper/AppHtmlHelper.php:69;71
+#: View/Helper/AppHtmlHelper.php:67;69
 msgid "{0}&nbsp;{1}"
 msgstr "{0}&nbsp;{1}"
 
-#: View/Helper/AppHtmlHelper.php:102
+#: View/Helper/AppHtmlHelper.php:100
 msgid " {0} "
 msgstr " {0} "
 
-#: View/Helper/AppHtmlHelper.php:129
+#: View/Helper/AppHtmlHelper.php:127
 msgid "Report this"
 msgstr "Rapporter ceci"
 
@@ -2592,6 +2612,51 @@ msgstr "Approuvé"
 #: View/Helper/UsersAdminHelper.php:73
 msgid "Closed"
 msgstr "Fermé"
+
+#~ msgid "You are not allowed to view this page."
+#~ msgstr "Vous n’êtes pas autorisé à voir cette page."
+
+#~ msgid "You are already logged in"
+#~ msgstr "Vous êtes déjà identifié"
+
+#~ msgid "Registrations are closed for now... Come back later..."
+#~ msgstr "Les inscriptions sont fermées pour le moment... Revenez plus tard..."
+
+#~ msgid "Your account has been created. An email will be sent to you when active"
+#~ msgstr ""
+#~ "Votre compte a été créé. Un email sera envoyé à vous lorsqu’il sera actif"
+
+#~ msgid "Invalid username or password, try again. Is your accound active ?"
+#~ msgstr ""
+#~ "Nom d'utilisateur ou mot de passe invalide, essayez à nouveau. Votre compte "
+#~ "est-il activé ?"
+
+#~ msgid "You are logged out. See you later !"
+#~ msgstr "Vous êtes déconnecté. A plus tard !"
+
+#~ msgid "You don't have enough rights to access this ressource."
+#~ msgstr "Vous n’avez pas de droits suffisants pour accéder à cette ressource."
+
+#~ msgid "Your password does not match your confirm password. Please try again"
+#~ msgstr "Vos mots de passe ne correspondent pas. Veuillez recommencer."
+
+#~ msgid "Author: {1}"
+#~ msgstr "Auteur : {1}"
+
+#~ msgid "Team"
+#~ msgstr "Équipe"
+
+#~ msgid "Your real name, if you don't mind"
+#~ msgstr "Votre vrai nom, si cela ne vous dérange pas"
+
+#~ msgid "A strong password is a good start."
+#~ msgstr "Un mot de passe fort est un bon début."
+
+#~ msgid "Verify you didn't made a typo"
+#~ msgstr "Vérifiez que vous ne l'avez pas fait une faute de frappe"
+
+#~ msgid "Members"
+#~ msgstr "Membres"
 
 #~ msgid "iso639-2 code:"
 #~ msgstr "Code iso639-2 :"

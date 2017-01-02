@@ -32,7 +32,7 @@ class UserAppController extends AppController
             if (is_null($this->Auth->user('id'))) {
                 throw new ForbiddenException(__d('elabs', 'You should be logged in to access this page.'));
             } else {
-                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this resource .'));
+                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this resource.'));
             }
         }
     }

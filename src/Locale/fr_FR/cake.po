@@ -1,12 +1,12 @@
 # LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
-# Manuel Tancoigne <m.tancoigne@gmail.com>, 2016.
+# Manuel Tancoigne <m.tancoigne@gmail.com>, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-16 19:49+0000\n"
-"PO-Revision-Date: 2016-12-16 21:06+0200\n"
+"POT-Creation-Date: 2017-01-02 15:22+0000\n"
+"PO-Revision-Date: 2017-01-02 16:24+0200\n"
 "Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: Controller/Component/AuthComponent.php:464
 msgid "You are not authorized to access that location."
-msgstr "You are not authorized to access that location."
+msgstr "Vous n'êtes pas autorisé à accéder à cette page."
 
 #: Controller/Component/CsrfComponent.php:155
 msgid "Missing CSRF token cookie"
