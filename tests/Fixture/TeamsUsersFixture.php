@@ -21,8 +21,8 @@ class TeamsUsersFixture extends TestFixture
         'team_id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'user_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'team_id' => ['type' => 'index', 'columns' => ['team_id'], 'length' => []],
-            'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+            'teams_users_team_id' => ['type' => 'index', 'columns' => ['team_id'], 'length' => []],
+            'teams_users_user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

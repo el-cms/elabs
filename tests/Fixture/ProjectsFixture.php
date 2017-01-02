@@ -34,9 +34,9 @@ class ProjectsFixture extends TestFixture
         'user_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'language_id' => ['type' => 'string', 'length' => 3, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
-            'language_id' => ['type' => 'index', 'columns' => ['language_id'], 'length' => []],
-            'license_id' => ['type' => 'index', 'columns' => ['license_id'], 'length' => []],
-            'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+            'projects_language_id' => ['type' => 'index', 'columns' => ['language_id'], 'length' => []],
+            'projects_license_id' => ['type' => 'index', 'columns' => ['license_id'], 'length' => []],
+            'projects_user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

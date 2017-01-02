@@ -21,8 +21,8 @@ class TeamsProjectsFixture extends TestFixture
         'team_id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'project_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
-            'team_id' => ['type' => 'index', 'columns' => ['team_id'], 'length' => []],
+            'teams_projects_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
+            'teams_projects_team_id' => ['type' => 'index', 'columns' => ['team_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

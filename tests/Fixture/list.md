@@ -4,8 +4,7 @@ Acts:
     - 2 posts edit (same post)
     - 3 projetcs
     - 3 files
-    - 2 albums
-
+    - 0 albums
 ---
 Albums:
   - 2 albums

@@ -21,8 +21,8 @@ class FilesTagsFixture extends TestFixture
         'file_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'tag_id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
-            'file_id' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
-            'tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
+            'files_tags_file_id' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
+            'files_tags_tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

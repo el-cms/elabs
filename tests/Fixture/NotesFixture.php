@@ -27,9 +27,9 @@ class NotesFixture extends TestFixture
         'language_id' => ['type' => 'string', 'length' => 3, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'license_id' => ['type' => 'integer', 'length' => 3, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
-            'language_id' => ['type' => 'index', 'columns' => ['language_id'], 'length' => []],
-            'license_id' => ['type' => 'index', 'columns' => ['license_id'], 'length' => []],
-            'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+            'notes_language_id' => ['type' => 'index', 'columns' => ['language_id'], 'length' => []],
+            'notes_license_id' => ['type' => 'index', 'columns' => ['license_id'], 'length' => []],
+            'notes_user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
