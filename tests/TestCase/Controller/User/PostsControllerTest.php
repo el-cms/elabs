@@ -89,7 +89,7 @@ class PostsControllerTest extends BaseTextCase
 
         // Set session data
         $this->session($this->userCreds['author']);
-        $currentUserId=$this->userCreds['author']['Auth']['User']['id'];
+        $currentUserId = $this->userCreds['author']['Auth']['User']['id'];
         $Posts = \Cake\ORM\TableRegistry::get('Posts');
 
         // Form

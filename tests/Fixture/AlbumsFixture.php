@@ -49,7 +49,7 @@ class AlbumsFixture extends TestFixture
      * @var array
      */
     public $records = [
-            [
+        [
             //Author
             'id' => '1727fe48-2825-4fd1-a5a1-357d5bd09531',
             'name' => 'Lorem ipsum dolor sit amet',
@@ -58,11 +58,11 @@ class AlbumsFixture extends TestFixture
             'status' => 1,
             'created' => '2016-12-02 01:42:17',
             'modified' => '2016-12-10 01:42:17',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => '38bffe56-5406-4f18-a9d2-f3b2a59608a5',
             'language_id' => 'fra'
-            ],
-            [
+        ],
+        [
             //Author
             'id' => '1727fe48-2825-4fd1-a5a1-357d5bd09532',
             'name' => 'Hidden Album',
@@ -71,11 +71,11 @@ class AlbumsFixture extends TestFixture
             'status' => 1,
             'created' => '2016-12-02 02:42:17',
             'modified' => '2016-12-10 08:42:17',
-            'hide_from_acts'=>true,
+            'hide_from_acts' => true,
             'user_id' => '38bffe56-5406-4f18-a9d2-f3b2a59608a5',
             'language_id' => 'fra'
-            ],
-            [
+        ],
+        [
             // Admin
             'id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
             'name' => 'Lorem ipsum dolor sit amet',
@@ -84,9 +84,9 @@ class AlbumsFixture extends TestFixture
             'status' => 1,
             'created' => '2016-12-02 01:42:17',
             'modified' => '2016-12-02 01:42:17',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => '38bffe56-5406-4f18-a9d2-f3b2a59608a5',
             'language_id' => 'eng'
-            ],
+        ],
     ];
 }

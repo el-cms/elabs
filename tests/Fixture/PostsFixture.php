@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
@@ -9,7 +10,6 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class PostsFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -64,7 +64,7 @@ class PostsFixture extends TestFixture
             'publication_date' => '2016-08-09 00:42:25',
             'created' => '2016-08-09 00:42:25',
             'modified' => '2016-08-09 00:42:25',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
             'license_id' => 1,
             'language_id' => 'eng'
@@ -79,7 +79,7 @@ class PostsFixture extends TestFixture
             'publication_date' => null,
             'created' => '2016-08-09 00:43:00',
             'modified' => '2016-08-09 00:43:00',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
             'license_id' => 2,
             'language_id' => 'eng'
@@ -94,7 +94,7 @@ class PostsFixture extends TestFixture
             'publication_date' => null,
             'created' => '2016-08-09 01:20:41',
             'modified' => '2016-08-09 01:20:41',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'license_id' => 1,
             'language_id' => 'eng'
@@ -109,7 +109,7 @@ class PostsFixture extends TestFixture
             'publication_date' => '2016-08-09 01:21:23',
             'created' => '2016-08-09 01:21:23',
             'modified' => '2016-08-09 03:21:23',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'license_id' => 1,
             'language_id' => 'eng'
@@ -124,7 +124,7 @@ class PostsFixture extends TestFixture
             'publication_date' => null,
             'created' => '2016-08-09 00:43:53',
             'modified' => '2016-08-09 00:43:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
             'license_id' => 1,
             'language_id' => 'fra'
@@ -139,7 +139,7 @@ class PostsFixture extends TestFixture
             'publication_date' => null,
             'created' => '2016-08-09 00:43:53',
             'modified' => '2016-08-09 00:43:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'license_id' => 1,
             'language_id' => 'fra'
@@ -154,7 +154,7 @@ class PostsFixture extends TestFixture
             'publication_date' => null,
             'created' => '2016-08-09 00:43:53',
             'modified' => '2016-08-09 00:43:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'license_id' => 1,
             'language_id' => 'fra'
@@ -169,7 +169,7 @@ class PostsFixture extends TestFixture
             'publication_date' => null,
             'created' => '2016-08-09 00:43:53',
             'modified' => '2016-08-09 00:43:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'license_id' => 1,
             'language_id' => 'fra'
@@ -184,7 +184,7 @@ class PostsFixture extends TestFixture
             'publication_date' => null,
             'created' => '2016-08-09 00:43:53',
             'modified' => '2016-08-09 00:43:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'license_id' => 1,
             'language_id' => 'fra'

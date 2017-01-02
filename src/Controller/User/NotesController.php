@@ -68,6 +68,7 @@ class NotesController extends UserAppController
                 if (!$note->hide_from_acts) {
                     $this->Act->add($note->id, 'add', 'Notes', $note->created);
                 }
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('elabs', 'The note could not be saved. Please, try again.'));

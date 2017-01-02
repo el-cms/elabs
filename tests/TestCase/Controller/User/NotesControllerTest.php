@@ -77,7 +77,7 @@ class NotesControllerTest extends BaseTextCase
 
         // Set session data
         $this->session($this->userCreds['author']);
-        $currentUserId=$this->userCreds['author']['Auth']['User']['id'];
+        $currentUserId = $this->userCreds['author']['Auth']['User']['id'];
         $Notes = \Cake\ORM\TableRegistry::get('Notes');
 
         // Form

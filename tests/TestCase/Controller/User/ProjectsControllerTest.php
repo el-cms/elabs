@@ -75,7 +75,7 @@ class ProjectsControllerTest extends BaseTextCase
 
         // Set session data
         $this->session($this->userCreds['author']);
-        $currentUserId=$this->userCreds['author']['Auth']['User']['id'];
+        $currentUserId = $this->userCreds['author']['Auth']['User']['id'];
         $Project = \Cake\ORM\TableRegistry::get('Projects');
 
         // Form

@@ -61,6 +61,7 @@ class AlbumsController extends UserAppController
                 if (!$album->hide_from_acts) {
                     $this->Act->add($album->id, 'add', 'Albums', $album->created);
                 }
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('elabs', 'The album could not be saved. Please, try again.'));

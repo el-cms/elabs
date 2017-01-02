@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
@@ -9,7 +10,6 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class NotesFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -58,7 +58,7 @@ class NotesFixture extends TestFixture
             'status' => 1,
             'created' => '2016-08-13 08:13:53',
             'modified' => '2016-08-13 08:13:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
             'language_id' => 'aar',
             'license_id' => 1
@@ -70,7 +70,7 @@ class NotesFixture extends TestFixture
             'status' => 1,
             'created' => '2016-08-13 08:13:53',
             'modified' => '2016-08-13 09:13:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'aar',
             'license_id' => 1
@@ -82,7 +82,7 @@ class NotesFixture extends TestFixture
             'status' => 2,
             'created' => '2016-08-13 08:13:53',
             'modified' => '2016-08-13 08:13:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'aar',
             'license_id' => 1
@@ -94,7 +94,7 @@ class NotesFixture extends TestFixture
             'status' => 1,
             'created' => '2016-08-13 08:13:53',
             'modified' => '2016-08-13 08:13:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'aar',
             'license_id' => 1
@@ -106,7 +106,7 @@ class NotesFixture extends TestFixture
             'status' => 1,
             'created' => '2016-08-13 08:13:53',
             'modified' => '2016-08-13 08:13:53',
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'aar',
             'license_id' => 1

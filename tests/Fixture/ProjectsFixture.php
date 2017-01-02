@@ -58,7 +58,7 @@ class ProjectsFixture extends TestFixture
      * @var array
      */
     public $records = [
-            [
+        [
             'id' => '47a35a14-62ac-4f68-b617-01fea96ffa30',
             'name' => 'Aother nice project',
             'short_description' => 'This is a short thing !',
@@ -73,12 +73,12 @@ class ProjectsFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 0,
             'album_count' => 0,
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'license_id' => 1,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'eng'
-            ],
-            [
+        ],
+        [
             'id' => '9a9b6e60-6572-4b47-a161-e37ae81e16a8',
             'name' => 'Very unsafe project',
             'short_description' => 'Some unsafe stuff',
@@ -92,12 +92,12 @@ class ProjectsFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 0,
             'album_count' => 0,
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'license_id' => 4,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'epo'
-            ],
-            [
+        ],
+        [
             'id' => 'e5e2988e-2f1c-4902-ba1a-e0f577413f23',
             'name' => 'A test project',
             'short_description' => '__With a bold desc__',
@@ -111,10 +111,10 @@ class ProjectsFixture extends TestFixture
             'note_count' => 0,
             'post_count' => 0,
             'album_count' => 0,
-            'hide_from_acts'=>false,
+            'hide_from_acts' => false,
             'license_id' => 1,
             'user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32',
             'language_id' => 'fra'
-            ],
+        ],
     ];
 }

@@ -109,7 +109,7 @@ class PostsController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Old publication state
             $oldState = $post->status;
-            $oldActState=$post->hide_from_acts;
+            $oldActState = $post->hide_from_acts;
             if ($oldState === STATUS_DRAFT && $this->request->data['status'] == STATUS_PUBLISHED) {
                 $this->request->data['publication_date'] = Time::now();
             }
@@ -133,7 +133,7 @@ class PostsController extends UserAppController
                     $this->Flash->success(__d('elabs', 'Your article has been updated.'));
                 }
 
-                if($oldActState===true && $post->hide_from_acts){
+                if ($oldActState === true && $post->hide_from_acts) {
                     $this->Flash->success(__d('elabs', 'The post has been removed from front page.'));
                     $this->Act->remove($post->id);
                 }
