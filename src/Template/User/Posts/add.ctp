@@ -53,6 +53,7 @@ $this->CodeMirror->add('textArea');
         <?php echo $this->Form->input('status', ['required' => false, 'type' => 'checkbox', 'label' => __d('elabs', 'Published')]); ?>
     </div>
     <div class="col-sm-4">
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
         <?php echo $this->Form->submit(__d('elabs', 'Save the article'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>

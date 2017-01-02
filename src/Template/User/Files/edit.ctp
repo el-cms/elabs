@@ -56,6 +56,7 @@ $this->CodeMirror->add('descArea');
         <?php echo $this->Form->input('albums._ids', ['options' => $albums]); ?>
     </div>
     <div class="col-sm-4">
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
         <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
         <?php echo $this->Form->submit(__d('elabs', 'Update'), ['class' => 'btn-primary btn-block']); ?>
     </div>

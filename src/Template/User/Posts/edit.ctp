@@ -60,6 +60,7 @@ $this->CodeMirror->add('textArea');
     </div>
     <div class="col-sm-3">
         <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
     </div>
     <div class="col-sm-3">
         <?php echo $this->Form->submit(__d('elabs', 'Save the changes'), ['class' => 'btn btn-primary']); ?>
