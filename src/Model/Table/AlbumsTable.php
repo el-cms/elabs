@@ -95,6 +95,11 @@ class AlbumsTable extends Table
             ->requirePresence('sfw', 'create')
             ->notEmpty('sfw');
 
+        $validator
+            ->boolean('hide_from_acts')
+            ->requirePresence('hide_from_acts', 'create')
+            ->notEmpty('hide_from_acts');
+
         return $validator;
     }
 

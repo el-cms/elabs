@@ -100,6 +100,11 @@ class NotesTable extends Table
             ->requirePresence('status', 'create')
             ->notEmpty('status');
 
+        $validator
+            ->boolean('hide_from_acts')
+            ->requirePresence('hide_from_acts', 'create')
+            ->notEmpty('hide_from_acts');
+
         return $validator;
     }
 

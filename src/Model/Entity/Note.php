@@ -12,6 +12,7 @@ use Cake\ORM\Entity;
  * @property int $status
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @property bool $hide_from_acts
  * @property string $user_id
  * @property string $language_id
  * @property int $license_id

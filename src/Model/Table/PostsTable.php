@@ -123,6 +123,11 @@ class PostsTable extends Table
             ->dateTime('publication_date')
             ->allowEmpty('publication_date');
 
+        $validator
+            ->boolean('hide_from_acts')
+            ->requirePresence('hide_from_acts', 'create')
+            ->notEmpty('hide_from_acts');
+
         return $validator;
     }
 
