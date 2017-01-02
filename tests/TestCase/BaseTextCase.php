@@ -51,7 +51,7 @@ class BaseTextCase extends IntegrationTestCase
      *
      * @return void
      */
-    public function assertAuthIsOkFor($statuses = [], string $path, $methods = [])
+    public function assertAuthIsOkFor(array $statuses, string $path, array $methods)
     {
         foreach ($this->userCreds as $status => $credentials) {
             if (in_array($status, $statuses)) {

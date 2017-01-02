@@ -29,7 +29,7 @@ class PostsController extends AppController
         $query->select(['id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id', 'language_id'])
                 ->where(['Posts.status' => STATUS_PUBLISHED])
                 ->contain([
-                    'Users' => ['fields' => ['id', 'username', 'realname']],
+                    'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                     'Licenses' => ['fields' => ['id', 'name', 'icon']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
@@ -85,7 +85,7 @@ class PostsController extends AppController
     {
         $post = $this->Posts->get($id, [
             'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                 'Licenses' => ['fields' => ['id', 'name', 'icon']],
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],

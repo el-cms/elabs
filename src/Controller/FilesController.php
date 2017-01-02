@@ -30,7 +30,7 @@ class FilesController extends AppController
         $query->select(['id', 'name', 'filename', 'weight', 'description', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'mime'])
                 ->where(['Files.status' => STATUS_PUBLISHED])
                 ->contain([
-                    'Users' => ['fields' => ['id', 'username', 'realname']],
+                    'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                     'Licenses' => ['fields' => ['id', 'name', 'icon']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
@@ -87,7 +87,7 @@ class FilesController extends AppController
     {
         $file = $this->Files->get($id, [
             'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
+                'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                 'Licenses',
                 'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],

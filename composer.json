@@ -12,7 +12,8 @@
         "mobiledetect/mobiledetectlib": "2.*",
         "php": ">=7.0",
         "tanuck/cakephp-markdown": "dev-master",
-        "lowg33kdev/cakephp-gravatar-plugin": "1.1.0"
+        "lowg33kdev/cakephp-gravatar-plugin": "1.1.0",
+        "cakedc/users": "^3.2"
     },
     "require-dev": {
         "psy/psysh": "@stable",

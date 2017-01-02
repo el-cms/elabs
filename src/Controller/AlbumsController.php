@@ -30,7 +30,7 @@ class AlbumsController extends AppController
         $query->select(['id', 'name', 'description', 'created', 'modified', 'sfw', 'status', 'user_id'])
                 ->where(['Albums.status' => STATUS_PUBLISHED])
                 ->contain([
-                    'Users' => ['fields' => ['id', 'username', 'realname']],
+                    'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
                     'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
                     'Projects' => ['fields' => ['id', 'name', 'ProjectsAlbums.album_id']],
                     'Files' => [

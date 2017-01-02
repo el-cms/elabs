@@ -2,9 +2,8 @@
 
 namespace App\Model\Table;
 
-use Cake\Core\Configure;
+use CakeDC\Users\Model\Table\UsersTable as BaseTable;
 use Cake\ORM\RulesChecker;
-use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
@@ -27,7 +26,7 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class UsersTable extends Table
+class UsersTable extends BaseTable
 {
 
     /**
@@ -79,95 +78,24 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->uuid('id')
-            ->allowEmpty('id', 'create');
+        $validator = parent::validationDefault($validator);
 
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email', 'Your email is needed for login');
-
-        $validator
-            ->requirePresence('username', 'create')
-            ->notEmpty('username', 'You should provide a user name')
-            ->add('username', [
-                'minLength' => [
-                    'rule' => ['minLength', Configure::read('cms.defaultMinUserNameLenght')],
-                    'message' => sprintf('User names must be %d characters min.', Configure::read('cms.defaultMinUserNameLenght')),
-                ]
-            ]);
-
-        $validator
-            ->allowEmpty('realname');
-
-        $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password', 'Without a password, you can\'t login.')
-            ->add('password', [
-                'minLength' => [
-                    'rule' => ['minLength', Configure::read('cms.defaultMinPassLenght')],
-                    'message' => sprintf('Passwords must be %d characters min.', Configure::read('cms.defaultMinPassLenght')),
-                ]
-            ])
-            ->add('password', 'compare', [
-                'rule' => function ($value, $context) {
-                    return ($value === $context['data']['password_confirm']);
-                },
-                'message' => __d('elabs', 'Your password does not match your confirm password. Please try again'),
-                'on' => ['create', 'update'],
-                'allowEmpty' => false
-            ]);
-
-        $validator
-            ->requirePresence('password_confirm', 'create')
-            ->notEmpty('password_confirm');
-
+        /*
+         * Only the fields that differs from the CakeDC/Users plugin are validated here.
+         */
         $validator
             ->allowEmpty('website');
 
         $validator
             ->allowEmpty('bio');
 
-        $validator
-            ->requirePresence('role', 'create')
-            ->notEmpty('role', 'A valid role is required.')
-            ->add('role', 'inlist', ['rule' => ['inList', ['admin', 'author', 'user']],
-                'message' => 'Please enter a valid role']);
+        $validator->allowEmpty('file_count')
+            ->allowEmpty('note_count')
+            ->allowEmpty('post_count')
+            ->allowEmpty('album_count')
+            ->allowEmpty('project_count');
 
-        $validator
-            ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
-
-        $validator
-            ->integer('file_count')
-            ->requirePresence('file_count', 'create')
-            ->notEmpty('file_count');
-
-        $validator
-            ->integer('note_count')
-            ->requirePresence('note_count', 'create')
-            ->notEmpty('note_count');
-
-        $validator
-            ->integer('post_count')
-            ->requirePresence('post_count', 'create')
-            ->notEmpty('post_count');
-
-        $validator
-            ->integer('album_count')
-            ->requirePresence('album_count', 'create')
-            ->notEmpty('album_count');
-
-        $validator
-            ->integer('project_count')
-            ->requirePresence('project_count', 'create')
-            ->notEmpty('project_count');
-
-        $validator
-            ->requirePresence('preferences', 'create')
-            ->notEmpty('preferences');
+        $validator->allowEmpty('preferences');
 
         return $validator;
     }

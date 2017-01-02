@@ -10,11 +10,11 @@
 use Cake\Core\Configure;
 
 // Page title
-$this->assign('title', h($user->realname));
+$this->assign('title', h($user->real_name));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Authors'), ['action' => 'index']);
-$this->Html->addCrumb(h($user->realname));
+$this->Html->addCrumb(h($user->real_name));
 
 // Block: Item informations
 // ------------------------
@@ -26,7 +26,7 @@ $this->start('pageInfos');
     </div>
     <div class="col-sm-8">
         <ul class="list-unstyled">
-            <li><strong><?php echo $this->Html->iconT('user', h($user->realname)) ?></strong></li>
+            <li><strong><?php echo $this->Html->iconT('user', h($user->real_name)) ?></strong></li>
             <li><?php echo $this->Html->iconT('user', h($user->username)) ?></li>
         </ul>
     </div>

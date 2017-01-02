@@ -7,7 +7,7 @@
             <!-- Header -->
             <div class="card-header">
                 <!-- Title -->
-                <h3><?php echo $this->Html->link(h($user->realname), ['action' => 'view', $user->id]) ?></h3>
+                <h3><?php echo $this->Html->link(h($user->real_name), ['action' => 'view', $user->id]) ?></h3>
                 <ul class="card-informations">
                     <li class="subtitle">@<?php echo h($user->username) ?></li>
                     <li class="subtitle"><?php echo __d('elabs', 'Since {0}', [$user->created]) ?></li>
