@@ -94,8 +94,9 @@ class AlbumsController extends UserAppController
             $album = $this->Albums->patchEntity($album, $this->request->data);
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__('The album has been saved.'));
-                $this->Act->add($album->id, 'edit', 'Albums', $album->created);
-
+                if ($this->request->data['isMinor'] == '0') {
+                    $this->Act->add($album->id, 'edit', 'Albums', $album->modified);
+                }
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The album could not be saved. Please, try again.'));

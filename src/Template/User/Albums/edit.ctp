@@ -54,6 +54,7 @@ $this->CodeMirror->add('descriptionArea');
         <?php echo $this->Form->input('sfw', ['label' => __d('elabs', 'This is SFW')]); ?>
     </div>
     <div class="col-sm-6">
+        <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
         <?php echo $this->Form->submit(__d('elabs', 'Update'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>
