@@ -31,7 +31,6 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Tag[] $tags
- * @property \App\Model\Entity\Team[] $teams
  * @property \App\Model\Entity\Act[] $acts
  */
 class Project extends Entity

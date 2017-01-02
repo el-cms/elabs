@@ -38,9 +38,6 @@ class LicensesTableTest extends TestCase
         'app.projects_notes',
         'app.projects_posts',
         'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
         'app.acts',
         'app.reports'
     ];

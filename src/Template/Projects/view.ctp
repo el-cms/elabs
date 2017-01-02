@@ -46,11 +46,6 @@ $this->start('pageInfos');
     <li><strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
 </ul>
 
-<h5 class="list-group-item-heading"><?php echo __d('elabs', 'Members') ?></h5>
-<ul class="list-unstyled">
-    <li><?php echo $project->has('user') ? $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) : '' ?></li>
-    <li><?php echo $this->element('layout/dev_inline') ?></li>
-</ul>
 <?php
 $this->end();
 
@@ -77,8 +72,8 @@ $this->start('pageContent');
         <li class="active">
             <?php
             echo $this->Html->link(
-                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all posts in this project')]), 
-                    ['controller' => 'posts', 'action' => 'index', 'project', $project->id], 
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all posts in this project')]),
+                    ['controller' => 'posts', 'action' => 'index', 'project', $project->id],
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
@@ -87,8 +82,8 @@ $this->start('pageContent');
         <li>
             <?php
             echo $this->Html->link(
-                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all notes in this project')]), 
-                    ['controller' => 'notes', 'action' => 'index', 'project', $project->id], 
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all notes in this project')]),
+                    ['controller' => 'notes', 'action' => 'index', 'project', $project->id],
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
@@ -97,8 +92,8 @@ $this->start('pageContent');
         <li>
             <?php
             echo $this->Html->link(
-                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all files in this project')]), 
-                    ['controller' => 'files', 'action' => 'index', 'project', $project->id], 
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all files in this project')]),
+                    ['controller' => 'files', 'action' => 'index', 'project', $project->id],
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>
@@ -107,8 +102,8 @@ $this->start('pageContent');
         <li>
             <?php
             echo $this->Html->link(
-                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all albums in this project')]), 
-                    ['controller' => 'albums', 'action' => 'index', 'project', $project->id], 
+                    $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all albums in this project')]),
+                    ['controller' => 'albums', 'action' => 'index', 'project', $project->id],
                     ['escape' => false, 'class' => 'tab-btn-right']
             )
             ?>

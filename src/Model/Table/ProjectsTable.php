@@ -17,7 +17,6 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsToMany $Notes
  * @property \Cake\ORM\Association\BelongsToMany $Posts
  * @property \Cake\ORM\Association\BelongsToMany $Tags
- * @property \Cake\ORM\Association\BelongsToMany $Teams
  * @property \Cake\ORM\Association\HasMany $Acts
  *
  * @method \App\Model\Entity\Project get($primaryKey, $options = [])
@@ -87,11 +86,6 @@ class ProjectsTable extends Table
             'foreignKey' => 'project_id',
             'targetForeignKey' => 'tag_id',
             'joinTable' => 'projects_tags'
-        ]);
-        $this->belongsToMany('Teams', [
-            'foreignKey' => 'project_id',
-            'targetForeignKey' => 'team_id',
-            'joinTable' => 'teams_projects'
         ]);
         $this->belongsToMany('Albums', [
             'foreignKey' => 'project_id',

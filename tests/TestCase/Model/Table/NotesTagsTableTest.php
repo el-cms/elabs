@@ -38,9 +38,6 @@ class NotesTagsTableTest extends TestCase
         'app.files_tags',
         'app.posts_tags',
         'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
         'app.acts',
         'app.reports'
     ];

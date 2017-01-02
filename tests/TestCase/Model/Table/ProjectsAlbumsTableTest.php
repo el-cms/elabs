@@ -41,9 +41,6 @@ class ProjectsAlbumsTableTest extends TestCase
         'app.albums',
         'app.albums_files',
         'app.reports',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
         'app.projects_notes',
         'app.projects_files'
     ];
