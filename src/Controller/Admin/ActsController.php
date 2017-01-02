@@ -55,12 +55,12 @@ class ActsController extends AdminAppController
      */
     public function clean()
     {
-//        $done = [];
+//        $done=[];
         $errors = 0;
         if ($this->request->is('POST')) {
             // Get connection:
             $connection = ConnectionManager::get('default');
-            $truncate = $connection->query('truncate acts;');
+            $this->Acts->deleteAll('1=1');
             $models = ['Files', 'Posts', 'Projects', 'Notes', 'Albums'];
             foreach ($models as $model) {
 //                $done[$model]=['add'=>0, 'edit'=>0];
