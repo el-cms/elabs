@@ -58,8 +58,9 @@ class AlbumsController extends UserAppController
             $album = $this->Albums->patchEntity($album, $dataSent);
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__('The album has been saved.'));
-                $this->Act->add($album->id, 'add', 'Albums', $album->created);
-
+                if (!$album->hide_from_acts) {
+                    $this->Act->add($album->id, 'add', 'Albums', $album->created);
+                }
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('elabs', 'The album could not be saved. Please, try again.'));
@@ -91,11 +92,16 @@ class AlbumsController extends UserAppController
             'contain' => ['Files', 'Projects']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $oldActState = $album->hide_from_acts;
             $album = $this->Albums->patchEntity($album, $this->request->data);
             if ($this->Albums->save($album)) {
-                $this->Flash->success(__('The album has been saved.'));
-                if ($this->request->data['isMinor'] == '0') {
+                $this->Flash->success(__d('elabs', 'The album has been saved.'));
+                if ($this->request->data['isMinor'] == '0' && !$album->hide_from_acts) {
                     $this->Act->add($album->id, 'edit', 'Albums', $album->modified);
+                }
+                if ($oldActState === false && $album->hide_from_acts) {
+                    $this->Flash->success(__d('elabs', 'The album has been removed from front page.'));
+                    $this->Act->remove($album->id);
                 }
 
                 return $this->redirect(['action' => 'index']);

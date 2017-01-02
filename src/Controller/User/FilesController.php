@@ -114,7 +114,9 @@ class FilesController extends UserAppController
 //                    debug($file);die;
                     if ($this->Files->save($file)) {
                         $this->Flash->success(__d('elabs', 'The file has been saved.'));
-                        $this->Act->add($file->id, 'add', 'Files', $file->created);
+                        if (!$file->hide_from_acts) {
+                            $this->Act->add($file->id, 'add', 'Files', $file->created);
+                        }
                         $this->redirect(['action' => 'index']);
                     } else {
 //                        debug($file->errors());die;
@@ -150,11 +152,17 @@ class FilesController extends UserAppController
             ]
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $oldActState = $file->hide_from_acts;
             $file = $this->Files->patchEntity($file, $this->request->data);
             if ($this->Files->save($file)) {
                 $this->Flash->success(__d('elabs', 'The file has been saved.'));
-                if ($this->request->data['isMinor'] == '0') {
+                if ($this->request->data['isMinor'] == '0' && !$file->hide_from_acts) {
                     $this->Act->add($file->id, 'edit', 'Files', $file->modified);
+                }
+
+                if ($oldActState === false && $file->hide_from_acts) {
+                    $this->Flash->success(__d('elabs', 'The file has been removed from front page.'));
+                    $this->Act->remove($file->id);
                 }
                 $this->redirect(['action' => 'index']);
             } else {

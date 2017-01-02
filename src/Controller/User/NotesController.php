@@ -65,8 +65,9 @@ class NotesController extends UserAppController
             $note = $this->Notes->patchEntity($note, $dataSent);
             if ($this->Notes->save($note)) {
                 $this->Flash->success(__d('elabs', 'The note has been saved.'));
-                $this->Act->add($note->id, 'add', 'Notes', $note->created);
-
+                if (!$note->hide_from_acts) {
+                    $this->Act->add($note->id, 'add', 'Notes', $note->created);
+                }
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__d('elabs', 'The note could not be saved. Please, try again.'));
@@ -103,6 +104,7 @@ class NotesController extends UserAppController
             'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $oldActState = $note->hide_from_acts;
             if ($note->status != STATUS_DELETED) {
                 // Force note status
                 $this->request->data['status'] = STATUS_PUBLISHED;
@@ -113,8 +115,13 @@ class NotesController extends UserAppController
             $note = $this->Notes->patchEntity($note, $this->request->data);
             if ($this->Notes->save($note)) {
                 $this->Flash->success(__d('elabs', 'The note has been saved.'));
-                if ($this->request->data['isMinor'] == '0') {
+                if ($this->request->data['isMinor'] == '0' && !$note->hide_from_acts) {
                     $this->Act->add($note->id, 'edit', 'Notes', $note->modified);
+                }
+
+                if ($oldActState === false && $note->hide_from_acts) {
+                    $this->Flash->success(__d('elabs', 'The note has been removed from front page.'));
+                    $this->Act->remove($note->id);
                 }
 
                 return $this->redirect(['action' => 'index']);

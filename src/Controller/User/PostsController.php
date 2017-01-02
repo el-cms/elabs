@@ -71,7 +71,7 @@ class PostsController extends UserAppController
             $post = $this->Posts->patchEntity($post, $dataSent);
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__d('elabs', 'Your article has been saved.'));
-                if ($post->status === STATUS_PUBLISHED) {
+                if ($post->status === STATUS_PUBLISHED && !$post->hide_from_acts) {
                     $this->Act->add($post->id, 'add', 'Posts', $post->created);
                 }
                 $this->redirect(['action' => 'index']);
@@ -109,6 +109,7 @@ class PostsController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Old publication state
             $oldState = $post->status;
+            $oldActState=$post->hide_from_acts;
             if ($oldState === STATUS_DRAFT && $this->request->data['status'] == STATUS_PUBLISHED) {
                 $this->request->data['publication_date'] = Time::now();
             }
@@ -116,7 +117,9 @@ class PostsController extends UserAppController
             if ($this->Posts->save($post)) {
                 if ($oldState === STATUS_DRAFT && $post->status === STATUS_PUBLISHED) {
                     // New publication
-                    $this->Act->add($post->id, 'add', 'Posts', $post->created);
+                    if (!$post->hide_from_acts) {
+                        $this->Act->add($post->id, 'add', 'Posts', $post->created);
+                    }
                     $this->Flash->success(__d('elabs', 'Your article has been published.'));
                 } elseif ($oldState === STATUS_PUBLISHED && $post->status === STATUS_DRAFT) {
                     // Removed from publication
@@ -124,11 +127,17 @@ class PostsController extends UserAppController
                     $this->Flash->success(__d('elabs', 'Your article has been unpublished.'));
                 } else {
                     // Updated
-                    if ($this->request->data['isMinor'] == '0') {
+                    if ($this->request->data['isMinor'] == '0' && !$post->hide_from_acts) {
                         $this->Act->add($post->id, 'edit', 'Posts', $post->modified);
                     }
                     $this->Flash->success(__d('elabs', 'Your article has been updated.'));
                 }
+
+                if($oldActState===true && $post->hide_from_acts){
+                    $this->Flash->success(__d('elabs', 'The post has been removed from front page.'));
+                    $this->Act->remove($post->id);
+                }
+
                 $this->redirect(['action' => 'index']);
             } else {
                 $errors = $post->errors();

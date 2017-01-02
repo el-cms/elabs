@@ -61,7 +61,9 @@ class ProjectsController extends UserAppController
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__d('elabs', 'The project has been saved.'));
-                $this->Act->add($project->id, 'add', 'Projects', $project->created);
+                if (!$project->hide_from_acts) {
+                    $this->Act->add($project->id, 'add', 'Projects', $project->created);
+                }
                 $this->redirect(['action' => 'index']);
             } else {
                 $errors = $project->errors();
@@ -91,11 +93,16 @@ class ProjectsController extends UserAppController
             'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $oldActState = $project->hide_from_acts;
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__d('elabs', 'The project has been saved.'));
-                if ($this->request->data['isMinor'] == '0') {
+                if ($this->request->data['isMinor'] == '0' && !$project->hide_from_acts) {
                     $this->Act->add($project->id, 'edit', 'Projects', $project->modified);
+                }
+                if ($oldActState === false && $project->hide_from_acts) {
+                    $this->Flash->success(__d('elabs', 'The album has been removed from front page.'));
+                    $this->Act->remove($project->id);
                 }
                 $this->redirect(['action' => 'index']);
             } else {
