@@ -265,13 +265,12 @@ return [
          */
         'test' => [
             'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',
-            'persistent' => false,
-            'host' => '127.0.0.1',
+            'driver' => 'Cake\Database\Driver\Sqlite',
+            'host' => 'localhost',
             //'port' => 'non_standard_port_number',
-            'username' => 'root',
-            'password' => '',
-            'database' => 'test_myapp',
+            'username' => null,
+            'password' => null,
+            'database' => ':memory:',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,

@@ -75,6 +75,7 @@ class ProjectsControllerTest extends BaseTextCase
 
         // Set session data
         $this->session($this->userCreds['author']);
+        $currentUserId = $this->userCreds['author']['Auth']['User']['id'];
         $Project = \Cake\ORM\TableRegistry::get('Projects');
 
         // Form
@@ -95,7 +96,8 @@ class ProjectsControllerTest extends BaseTextCase
             'created' => '2016-08-09 00:46:17',
             'modified' => '2016-08-09 00:46:17',
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         $this->post('/user/projects/add', $postData);
         // Count projects after insert
@@ -118,11 +120,12 @@ class ProjectsControllerTest extends BaseTextCase
             'modified' => '2016-08-09 00:46:17',
             'license_id' => 1,
             'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         // Find the project for the current user
         $this->post('/user/projects/add', $postData);
-        $nb = $Project->find('all', ['conditions' => ['user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'name' => 'TEST PROJECT AS ANOTHER USER']])->count();
+        $nb = $Project->find('all', ['conditions' => ['user_id' => $currentUserId, 'name' => 'TEST PROJECT AS ANOTHER USER']])->count();
         $this->assertEquals(1, $nb, 'Test #2');
         // Acts
         $nbActs2 = $Acts->find()->count();

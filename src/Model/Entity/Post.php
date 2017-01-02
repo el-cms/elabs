@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $publication_date
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @property bool $hide_from_acts
  * @property string $user_id
  * @property int $license_id
  * @property string $language_id

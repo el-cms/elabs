@@ -89,6 +89,7 @@ class PostsControllerTest extends BaseTextCase
 
         // Set session data
         $this->session($this->userCreds['author']);
+        $currentUserId = $this->userCreds['author']['Auth']['User']['id'];
         $Posts = \Cake\ORM\TableRegistry::get('Posts');
 
         // Form
@@ -106,7 +107,8 @@ class PostsControllerTest extends BaseTextCase
             'sfw' => true,
             'status' => 0,
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         $this->post('/user/posts/add', $postData);
         // Count posts after insert
@@ -126,11 +128,12 @@ class PostsControllerTest extends BaseTextCase
             'sfw' => true,
             'status' => 1,
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         // Find the post for the current user
         $this->post('/user/posts/add', $postData);
-        $nb = $Posts->find('all', ['conditions' => ['user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'title' => 'TEST POST AS ANOTHER USER']])->count();
+        $nb = $Posts->find('all', ['conditions' => ['user_id' => $currentUserId, 'title' => 'TEST POST AS ANOTHER USER']])->count();
         $this->assertEquals(1, $nb, 'Test #2');
         // Acts
         $nbActs2 = $Acts->find()->count();

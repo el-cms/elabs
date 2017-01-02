@@ -50,6 +50,7 @@ $this->CodeMirror->add('descArea');
         <?php echo $this->Form->input('albums._ids', ['options' => $albums]); ?>
     </div>
     <div class="col-sm-4">
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
         <?php echo $this->Form->submit(__d('elabs', 'Add the file'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>

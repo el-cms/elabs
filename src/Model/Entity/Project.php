@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property int $status
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @property bool $hide_from_acts
  * @propertu int $album_count
  * @propertu int $file_count
  * @propertu int $note_count

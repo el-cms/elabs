@@ -44,10 +44,13 @@ $this->CodeMirror->add('descriptionArea');
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
+    </div>
+    <div class="col-sm-4">
         <?php echo $this->Form->submit(__d('elabs', 'Save this project'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>
