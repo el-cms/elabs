@@ -31,7 +31,5 @@ class DashboardControllerTest extends BaseTextCase
         $this->get('/admin/dashboard');
         // Exception
         $this->assertResponseOk();
-
-        $this->markTestIncomplete();
     }
 }

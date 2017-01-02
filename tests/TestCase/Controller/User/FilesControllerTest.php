@@ -19,6 +19,10 @@ class FilesControllerTest extends BaseTextCase
         'app.languages', // Needed for some layout vars
         'app.licenses',
         'app.users',
+        'app.projects',
+        'app.projects_files',
+        'app.albums',
+        'app.albums_files',
     ];
 
     /**

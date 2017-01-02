@@ -20,6 +20,8 @@ class NotesControllerTest extends BaseTextCase
         'app.licenses',
         'app.users',
         'app.acts',
+        'app.projects',
+        'app.projects_notes',
     ];
 
     /**
@@ -69,6 +71,10 @@ class NotesControllerTest extends BaseTextCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['author']);
         $Notes = \Cake\ORM\TableRegistry::get('Notes');
@@ -124,8 +130,11 @@ class NotesControllerTest extends BaseTextCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
-        // ----------------
         $this->session($this->userCreds['author']);
         $Notes = \Cake\ORM\TableRegistry::get('Notes');
         $Acts = \Cake\ORM\TableRegistry::get('Acts');

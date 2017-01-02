@@ -42,6 +42,9 @@ class UsersControllerTest extends BaseTextCase
             'bio' => 'Some other things',
             'role' => 'author',
             'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'];
+
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
         $this->post('/user/users/edit', $postData);
         $this->assertRedirect('/user/users/edit');
         $this->assertEquals('Some other things', $this->_controller->viewVars['user']['bio']);
@@ -56,6 +59,9 @@ class UsersControllerTest extends BaseTextCase
             'bio' => 'Some things',
             'role' => 'author',
             'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}'];
+
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
         $this->post('/user/users/edit', $postData);
         $this->assertNotEquals($adminId, $this->_controller->viewVars['user']['id']);
         $this->assertRedirect('/user/users/edit');
@@ -88,6 +94,9 @@ class UsersControllerTest extends BaseTextCase
         // Edition
         // -------
         $postData = ['current_password' => 'adminadmin'];
+
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
         $this->post('/user/users/close_account', $postData);
         // Check for users state
         $Users = \Cake\ORM\TableRegistry::get('Users');

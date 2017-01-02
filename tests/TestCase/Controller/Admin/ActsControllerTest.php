@@ -42,6 +42,8 @@ class ActsControllerTest extends BaseTextCase
 
         // POST method
         // -----------
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
         $this->post('/admin/acts/clean');
 
         // Take a look at the fixtures/list.md for counts

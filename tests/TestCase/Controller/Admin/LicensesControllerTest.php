@@ -44,6 +44,9 @@ class LicensesControllerTest extends BaseTextCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
         // Set session data
         $this->session($this->userCreds['admin']);
         $Licenses = \Cake\ORM\TableRegistry::get('Licenses');
@@ -77,6 +80,9 @@ class LicensesControllerTest extends BaseTextCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
         // Set session data
         $this->session($this->userCreds['admin']);
         $Languages = \Cake\ORM\TableRegistry::get('Licenses');
@@ -107,8 +113,12 @@ class LicensesControllerTest extends BaseTextCase
      */
     public function testDelete()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
         // Set session data
         $this->session($this->userCreds['admin']);
+
         $this->post('/admin/licenses/delete/1');
 
         $this->assertResponseFailure();

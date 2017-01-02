@@ -69,6 +69,10 @@ class ProjectsControllerTest extends BaseTextCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['author']);
         $Project = \Cake\ORM\TableRegistry::get('Projects');
@@ -134,10 +138,14 @@ class ProjectsControllerTest extends BaseTextCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
-        // ----------------
         $this->session($this->userCreds['author']);
         $Acts = \Cake\ORM\TableRegistry::get('Acts');
+
         // Not published, not safe
         $projectId = 'e5e2988e-2f1c-4902-ba1a-e0f577413f23';
 
