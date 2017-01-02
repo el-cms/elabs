@@ -20,6 +20,8 @@ class PostsControllerTest extends BaseTextCase
         'app.licenses',
         'app.users',
         'app.acts',
+        'app.projects',
+        'app.projects_posts',
     ];
 
     /**
@@ -81,6 +83,10 @@ class PostsControllerTest extends BaseTextCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['author']);
         $Posts = \Cake\ORM\TableRegistry::get('Posts');
@@ -140,11 +146,15 @@ class PostsControllerTest extends BaseTextCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
-        // ----------------
         $this->session($this->userCreds['author']);
         $Posts = \Cake\ORM\TableRegistry::get('Posts');
         $Acts = \Cake\ORM\TableRegistry::get('Acts');
+
         // Not published, not safe
         $postId = 'fffe1c4a-6edc-4a2b-aaf5-457a3151a13c';
 

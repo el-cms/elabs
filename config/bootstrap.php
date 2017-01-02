@@ -217,3 +217,8 @@ Plugin::load('BootstrapUI');
 
 // Markdown renderer
 Plugin::load('Tanuck/Markdown');
+
+// CakeDC/Users (no routes)
+Configure::write('Users.config', ['users']);
+Plugin::load('CakeDC/Users', ['routes' => false, 'bootstrap' => true]);
+Configure::write('Auth.authenticate.Form.fields.username', 'email');

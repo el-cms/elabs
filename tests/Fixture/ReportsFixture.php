@@ -26,7 +26,7 @@ class ReportsFixture extends TestFixture
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'user_id' => ['type' => 'uuid', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+            'reports_user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

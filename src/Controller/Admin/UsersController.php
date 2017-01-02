@@ -42,8 +42,8 @@ class UsersController extends AdminAppController
     public function index()
     {
         $this->paginate = [
-            'fields' => ['id', 'username', 'realname', 'role', 'status', 'created'],
-            'sortWhitelist' => ['username', 'realname', 'role', 'status', 'created'],
+            'fields' => ['id', 'username', 'first_name', 'last_name', 'role', 'active', 'created'],
+            'sortWhitelist' => ['username', 'first_name', 'last_name', 'role', 'active', 'created'],
             'order' => [
                 'username' => 'asc',
             ]
@@ -65,11 +65,11 @@ class UsersController extends AdminAppController
     {
         if ($this->request->is('ajax')) {
             $user = $this->Users->get($id, [
-                'fields' => ['id', 'username', 'realname', 'created', 'modified', 'status', 'bio', 'post_count', 'project_count', 'file_count'],
+                'fields' => ['id', 'username', 'first_name', 'last_name', 'created', 'modified', 'active', 'bio', 'post_count', 'project_count', 'file_count'],
             ]);
         } else {
             $user = $this->Users->get($id, [
-                'fields' => ['id', 'username', 'realname', 'website', 'created', 'modified', 'status', 'post_count', 'project_count', 'file_count'],
+                'fields' => ['id', 'username', 'first_name', 'last_name', 'website', 'created', 'modified', 'active', 'post_count', 'project_count', 'file_count'],
                 'contain' => [
                     'Posts' => [
                         'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
@@ -106,10 +106,10 @@ class UsersController extends AdminAppController
             $bit = STATUS_ACTIVE;
         }
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => STATUS_DELETED]
+            'fields' => ['id', 'active'],
+            'conditions' => ['active !=' => STATUS_DELETED]
         ]);
-        $user->status = $bit;
+        $user->active = $bit;
         if ($this->Users->save($user)) {
             if (!$this->request->is('ajax')) {
                 $this->Flash->Success($successMessage);
@@ -136,10 +136,10 @@ class UsersController extends AdminAppController
     public function close($id)
     {
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => STATUS_DELETED]
+            'fields' => ['id', 'active'],
+            'conditions' => ['active !=' => STATUS_DELETED]
         ]);
-        $user->status = STATUS_DELETED;
+        $user->active = STATUS_DELETED;
         if ($this->Users->save($user)) {
             if (!$this->request->is('ajax')) {
                 $this->Flash->Success(__d('elabs', 'The account has been closed.'));
@@ -166,10 +166,10 @@ class UsersController extends AdminAppController
     public function activate($id)
     {
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status'],
-            'conditions' => ['status' => STATUS_INACTIVE]
+            'fields' => ['id', 'active'],
+            'conditions' => ['active' => STATUS_INACTIVE]
         ]);
-        $user->status = 1;
+        $user->active = 1;
         if ($this->Users->save($user)) {
             if (!$this->request->is('ajax')) {
                 $this->Flash->Success(__d('elabs', 'The account has been activated.'));

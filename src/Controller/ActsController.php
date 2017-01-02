@@ -64,7 +64,7 @@ class ActsController extends AppController
     {
         // Commons fields to get from Licenses table
         $licenseConfig = ['fields' => ['id', 'name', 'icon', 'link']];
-        $userConfig = ['fields' => ['id', 'realname', 'username']];
+        $userConfig = ['fields' => ['id', 'first_name', 'last_name', 'username']];
         $languageConfig = ['fields' => ['id', 'name', 'iso639_1']];
 
         // Get the list of items

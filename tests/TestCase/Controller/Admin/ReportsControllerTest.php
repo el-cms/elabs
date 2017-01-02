@@ -55,8 +55,12 @@ class ReportsControllerTest extends BaseTextCase
      */
     public function testDelete()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
         // Set session data
         $this->session($this->userCreds['admin']);
+
         // Count items
         $Reports = \Cake\ORM\TableRegistry::get('Reports');
         $nb = $Reports->find()->count();

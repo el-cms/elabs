@@ -98,22 +98,20 @@
             <?php foreach ($team->users as $users): ?>
             <tr>
                 <td><?= h($users->id) ?></td>
-                <td><?= h($users->email) ?></td>
+                
                 <td><?= h($users->username) ?></td>
-                <td><?= h($users->realname) ?></td>
-                <td><?= h($users->password) ?></td>
+                <td><?= h($users->real_name) ?></td>
+
                 <td><?= h($users->website) ?></td>
                 <td><?= h($users->bio) ?></td>
                 <td><?= h($users->created) ?></td>
                 <td><?= h($users->modified) ?></td>
                 <td><?= h($users->role) ?></td>
-                <td><?= h($users->see_nsfw) ?></td>
                 <td><?= h($users->status) ?></td>
                 <td><?= h($users->file_count) ?></td>
                 <td><?= h($users->note_count) ?></td>
                 <td><?= h($users->post_count) ?></td>
                 <td><?= h($users->project_count) ?></td>
-                <td><?= h($users->preferences) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>

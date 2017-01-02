@@ -28,13 +28,15 @@ class UsersSeed extends AbstractSeed
                 'id' => Text::uuid(),
                 'email' => 'admin@example.com',
                 'username' => 'administrator',
-                'realname' => 'Administrator',
+                'first_name' => 'Administrator',
+                'last_name' => 'of the website',
                 'password' => (new DefaultPasswordHasher)->hash('adminadmin'),
                 'created' => $time,
                 'modified' => $time,
                 'role' => 'admin',
-                'status' => '1',
-                'preferences' => json_encode(Cake\Core\Configure::read('cms.defaultUserPreferences'))
+                'active' => '1',
+                'preferences' => json_encode(Cake\Core\Configure::read('cms.defaultUserPreferences')),
+                'is_superuser' => true,
             ]
         ];
 

@@ -44,6 +44,10 @@ class LanguagesControllerTest extends BaseTextCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['admin']);
         $Languages = \Cake\ORM\TableRegistry::get('Languages');
@@ -79,6 +83,10 @@ class LanguagesControllerTest extends BaseTextCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['admin']);
         $Languages = \Cake\ORM\TableRegistry::get('Languages');
@@ -110,9 +118,14 @@ class LanguagesControllerTest extends BaseTextCase
      */
     public function testDelete()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['admin']);
-        $this->get('/admin/languages/delete/eng');
+
+        $this->post('/admin/languages/delete/eng');
 
         $this->assertResponseFailure();
     }

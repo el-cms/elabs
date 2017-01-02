@@ -62,7 +62,7 @@ class AppView extends View
 //        $this->loadHelper('Paginator', ['className' => 'BootstrapUI.Paginator']);
         $this->loadHelper('Gravatar.Gravatar', ['secure' => Configure::read('cms.useGravatarSecureUrls')]);
         $this->loadHelper('Tanuck/Markdown.Markdown', ['parser' => 'GithubMarkdown']);
-
+        $this->loadHelper('CakeDC/Users.User');
         $this->Paginator->templates([
 // Templates kept here as comments for reference
 //            'nextActive' => '<li class="next"><a rel="next" href="{{url}}">{{text}}</a></li>',

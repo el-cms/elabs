@@ -33,8 +33,8 @@ $this->start('pageContent');
             <tr>
                 <th><?php echo $this->Paginator->sort('role', __d('elabs', 'Role')) ?></th>
                 <th><?php echo $this->Paginator->sort('username', __d('elabs', 'Username')) ?></th>
-                <th><?php echo $this->Paginator->sort('realname', __d('elabs', 'Name')) ?></th>
-                <th><?php echo $this->Paginator->sort('status', __d('elabs', 'Status')) ?></th>
+                <th><?php echo $this->Paginator->sort('real_name', __d('elabs', 'Name')) ?></th>
+                <th><?php echo $this->Paginator->sort('active', __d('elabs', 'Status')) ?></th>
                 <th><?php echo $this->Paginator->sort('created', __d('elabs', 'Join date')) ?></th>
                 <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
             </tr>
@@ -42,7 +42,7 @@ $this->start('pageContent');
         <tbody>
             <?php
             foreach ($users as $user):
-                switch ($user->status):
+                switch ($user->active):
                     case 0: // Waiting for approval
                         $style = 'warning';
                         break;
@@ -71,8 +71,8 @@ $this->start('pageContent');
                 <tr id="userLine<?php echo $user->id ?>" class="<?php echo $style ?>">
                     <td><?php echo $this->Html->iconT($roleIcon, ucfirst(h($user->role))) ?></td>
                     <td><?php echo h($user->username) ?></td>
-                    <td><?php echo h($user->realname) ?></td>
-                    <td id="userStatus<?php echo $user->id ?>"><?php echo $this->UsersAdmin->statusLabel($user->status) ?></td>
+                    <td><?php echo h($user->real_name) ?></td>
+                    <td id="userStatus<?php echo $user->id ?>"><?php echo $this->UsersAdmin->statusLabel($user->active) ?></td>
                     <td><?php echo h($user->created) ?></td>
                     <td>
                         <div class="btn-group btn-group-xs">
@@ -89,21 +89,21 @@ $this->start('pageContent');
                                 'class' => 'btn btn-primary',
                                 'escape' => false
                             ]);
-                            if ($user->status === STATUS_LOCKED):
+                            if ($user->active === STATUS_LOCKED):
                                 echo $this->Html->link($unlockIcon, '#', [
                                     'onClick' => "lock('{$user->id}', 'unlock')",
                                     'class' => 'btn btn-warning',
                                     'escape' => false,
                                     'id' => 'btnLockLnk' . $user->id
                                 ]);
-                            elseif ($user->status === STATUS_ACTIVE):
+                            elseif ($user->active === STATUS_ACTIVE):
                                 echo $this->Html->link($lockIcon, '#', [
                                     'onClick' => "lock('{$user->id}', 'lock')",
                                     'class' => 'btn btn-warning',
                                     'escape' => false,
                                     'id' => 'btnLockLnk' . $user->id
                                 ]);
-                            elseif ($user->status === STATUS_INACTIVE):
+                            elseif ($user->active === STATUS_INACTIVE):
                                 echo $this->Html->link($activateIcon, '#', [
                                     'onClick' => "activate('{$user->id}')",
                                     'class' => 'btn btn-warning',
@@ -115,7 +115,7 @@ $this->start('pageContent');
                                 <a class="btn disabled"><?php echo $this->Html->icon('fw', ['fixed' => false]) ?></a>
                             <?php
                             endif;
-                            if ($user->status != STATUS_DELETED):
+                            if ($user->active != STATUS_DELETED):
                                 echo $this->Html->link($this->Html->icon('times', ['title' => __d('elabs', 'Close')]), '#', [
                                     'onClick' => "closeAccount('{$user->id}')",
                                     'class' => 'btn btn-danger',
@@ -196,7 +196,7 @@ $this->append('pageBottomScripts');
       });
       request.success(function (response) {
         console.log(response);
-        if (response.user.status === <?php echo STATUS_DELETED ?>) {
+        if (response.user.active === <?php echo STATUS_DELETED ?>) {
           $('#userLine' + id).removeClass();
           $('#userLine' + id).addClass('disabled');
           $('#userStatus' + id).html('<?php echo $this->UsersAdmin->statusLabel(STATUS_DELETED) ?>');
@@ -220,12 +220,12 @@ $this->append('pageBottomScripts');
         alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
-        if (response.user.status === <?php echo STATUS_ACTIVE ?>) {
+        if (response.user.active === <?php echo STATUS_ACTIVE ?>) {
           lineColor = 'success';
           statusLabel = '<?php echo $this->UsersAdmin->statusLabel(STATUS_ACTIVE) ?>';
           lnkIcon = '<?php echo $lockIcon ?>';
           lnkAction = 'lock(\'' + id + '\', \'lock\')';
-        } else if (response.user.status === <?php echo STATUS_LOCKED?>) {
+        } else if (response.user.active === <?php echo STATUS_LOCKED?>) {
           lineColor = 'danger';
           statusLabel = '<?php echo $this->UsersAdmin->statusLabel(STATUS_LOCKED) ?>';
           lnkIcon = '<?php echo $unlockIcon ?>';
@@ -252,7 +252,7 @@ $this->append('pageBottomScripts');
         alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
-        if (response.user.status === <?php echo STATUS_ACTIVE ?>) {
+        if (response.user.active === <?php echo STATUS_ACTIVE ?>) {
           lineColor = 'success';
           statusLabel = '<?php echo $this->UsersAdmin->statusLabel(STATUS_ACTIVE) ?>';
           lnkIcon = '<?php echo $lockIcon ?>';
@@ -282,7 +282,7 @@ $this->append('pageBottomScripts');
         alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
-        $('#uModTitle').html(response.user.realname);
+        $('#uModTitle').html(response.user.real_name);
         $('#uModBio').html(response.user.bio);
         $('#uModArticleCount').html(response.user.post_count);
         $('#uModProjectCount').html((response.user.project_count));

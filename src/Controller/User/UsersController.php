@@ -2,6 +2,8 @@
 
 namespace App\Controller\User;
 
+use Cake\Utility\Text;
+
 /**
  * Users Controller
  *
@@ -78,13 +80,13 @@ class UsersController extends UserAppController
             'id' => $user->id,
             'email' => $user->email,
             'username' => $user->username,
-            'realname' => $user->realname,
+            'real_name' => $user->real_name,
             'website' => $user->website,
             'bio' => $user->bio,
             'created' => $user->created,
             'modified' => $user->modified,
             'role' => $user->role,
-            'status' => $user->status,
+            'active' => $user->active,
             'file_count' => $user->file_count,
             'note_count' => $user->note_count,
             'post_count' => $user->post_count,
@@ -144,7 +146,7 @@ class UsersController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->get($this->Auth->user('id'));
             if ($user->comparePassword($this->request->data['current_password'])) {
-                $user->status = STATUS_DELETED;
+                $user->active = STATUS_DELETED;
                 $this->Users->save($user);
                 $this->Flash->Success(__d('elabs', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
 //                $this->Act->removeAll();
@@ -157,5 +159,23 @@ class UsersController extends UserAppController
             $this->Flash->error(__d('elabs', 'To access this page, you need to fill the form first.'));
             $this->redirect(['action' => 'edit']);
         }
+    }
+
+    /**
+     * Generates a new api token
+     *
+     * @return void Redirects
+     */
+    public function generateApiToken()
+    {
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->get($this->Auth->user('id'));
+            $user->api_token = str_replace('-', '', Text::uuid());
+            $this->Users->save($user);
+        } else {
+            $this->Flash->error(__d('elabs', 'To access this page, you need to fill the form first.'));
+            $this->redirect(['action' => 'edit']);
+        }
+        $this->set('api_token', $user->api_token);
     }
 }

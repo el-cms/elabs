@@ -31,9 +31,9 @@ class FilesFixture extends TestFixture
         'license_id' => ['type' => 'integer', 'length' => 3, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'user_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'language_id' => ['type' => 'index', 'columns' => ['language_id'], 'length' => []],
-            'license_id' => ['type' => 'index', 'columns' => ['license_id'], 'length' => []],
-            'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+            'files_language_id' => ['type' => 'index', 'columns' => ['language_id'], 'length' => []],
+            'files_license_id' => ['type' => 'index', 'columns' => ['license_id'], 'length' => []],
+            'files_user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

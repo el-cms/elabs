@@ -17,6 +17,7 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\I18n\I18n;
 
@@ -47,26 +48,14 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Act');
         $this->loadComponent('Flash');
-        $this->loadComponent('Auth', [
-            'authenticate' => [
-                'Form' => [
-                    'fields' => ['username' => 'email'],
-                    'scope' => ['status' => STATUS_ACTIVE],
-                ],
-            ],
-            'loginAction' => ['prefix' => false, 'controller' => 'Users', 'action' => 'login'],
-            'authError' => __d('elabs', 'You are not allowed to view this page.'),
-            'flash' => ['key' => 'flash', 'params' => ['class' => 'danger alert']],
-            'loginRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index'],
-            'logoutRedirect' => ['prefix' => false, 'controller' => 'acts', 'action' => 'index']
-        ]);
+        $this->loadComponent('CakeDC/Users.UsersAuth');
 
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see http://book.cakephp.org/3.0/en/controllers/components/security.html
          */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
+        $this->loadComponent('Security');
+        $this->loadComponent('Csrf');
 
         /*
          * Safe for work option

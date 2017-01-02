@@ -19,9 +19,9 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 use Cake\Core\Plugin;
+use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
-use Cake\Routing\Route\DashedRoute;
 
 /**
  * The default class to use for all routes
@@ -55,6 +55,27 @@ Router::scope('/', function (RouteBuilder $routes) {
      * Custom pages
      */
     $routes->connect('/about', ['controller' => 'Pages', 'action' => 'display', 'about']);
+
+    /**
+     * CakeDC routes
+     *
+     * All the routes are overriden
+     */
+    Router::connect('/logout', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout']);
+    Router::connect('/login', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'login']);
+    Router::connect('/login/lost-password', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'requestResetPassword']);
+    Router::connect('/login/reset-password/*', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'resetPassword']);
+    Router::connect('/login/change-password/', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'changePassword']);
+    Router::connect('/register', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'register']);
+    Router::connect('/register/email-validate/*', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'validateEmail']);
+
+    /*
+     * Social login
+     *
+     * Uncomment if you plan to use OAuth
+     */
+    //Router::connect('/auth/twitter', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'twitterLogin', 'provider' => 'twitter']);
+    //Router::connect('/accounts/validate/*', ['plugin' => 'CakeDC/Users', 'controller' => 'SocialAccounts', 'action' => 'validate']);
 
     /**
      * Connect catchall routes for all controllers.
