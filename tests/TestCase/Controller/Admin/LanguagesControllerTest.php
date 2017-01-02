@@ -121,7 +121,7 @@ class LanguagesControllerTest extends BaseTextCase
         // Enable CSRF related mocks
         $this->enableCsrfToken();
         $this->enableSecurityToken();
-        
+
         // Set session data
         $this->session($this->userCreds['admin']);
 

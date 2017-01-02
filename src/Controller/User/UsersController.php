@@ -161,9 +161,13 @@ class UsersController extends UserAppController
         }
     }
 
+    /**
+     * Generates a new api token
+     *
+     * @return void Redirects
+     */
     public function generateApiToken()
     {
-
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->get($this->Auth->user('id'));
             $user->api_token = str_replace('-', '', Text::uuid());

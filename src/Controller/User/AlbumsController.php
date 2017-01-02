@@ -97,6 +97,7 @@ class AlbumsController extends UserAppController
                 if ($this->request->data['isMinor'] == '0') {
                     $this->Act->add($album->id, 'edit', 'Albums', $album->modified);
                 }
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The album could not be saved. Please, try again.'));
