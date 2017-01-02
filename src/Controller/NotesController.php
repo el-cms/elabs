@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
 use App\Model\Table\NotesTable;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Network\Exception\NotFoundException;

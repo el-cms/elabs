@@ -1,5 +1,8 @@
 <?php
-
+if(!is_array($params['class'])){
+    $params['class']=preg_replace('/((^|\s)(danger|info|success|warning))/', '$2alert-$3', $params['class']);
+    $params['class']=explode(' ', $params['class']);
+}
 $class = array_unique((array) $params['class']);
 $message = (isset($params['escape']) && $params['escape'] === false) ? $message : h($message);
 
@@ -16,6 +19,7 @@ if (isset($params) AND isset($params['errors'])) :
 endif;
 
 // Button
+$button=null;
 if (in_array('alert-dismissible', $class)) {
     $button = <<<BUTTON
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

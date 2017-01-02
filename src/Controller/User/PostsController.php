@@ -2,7 +2,6 @@
 
 namespace App\Controller\User;
 
-use App\Controller\AppController;
 use Cake\i18n\Time;
 
 /**

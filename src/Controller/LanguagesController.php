@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
 use App\Model\Table\LanguagesTable;
 use Cake\Core\Configure;
 use Cake\Datasource\Exception\RecordNotFoundException;

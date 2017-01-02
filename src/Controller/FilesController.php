@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
 use App\Model\Table\FilesTable;
 use Cake\Network\Exception\NotFoundException;
 use Cake\Network\Response;

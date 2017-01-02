@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
 use App\Model\Table\PostsTable;
 use Cake\Network\Exception\NotFoundException;
 use Cake\ORM\TableRegistry;

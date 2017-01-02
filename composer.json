@@ -5,12 +5,10 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "cakephp/cakephp": "~3.1",
+        "cakephp/cakephp": "3.3.*",
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
-        "dereuromark/cakephp-ajax": "dev-master",
         "friendsofcake/bootstrap-ui": "^0.5.0",
-        "friendsofcake/search": "master",
         "mobiledetect/mobiledetectlib": "2.*",
         "php": ">=7.0",
         "tanuck/cakephp-markdown": "dev-master",
@@ -24,13 +22,11 @@
         "phpunit/phpunit": "^5.5"
     },
     "suggest": {
-        "phpunit/phpunit": "Allows automated tests to be run without system-wide install.",
-        "cakephp/cakephp-codesniffer": "Allows to check the code against the coding standards used in CakePHP."
+        "markstory/asset_compress": "An asset compression plugin which provides file concatenation and a flexible filter system for preprocessing and minification."
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src",
-            "Gravatar\\": "./plugins/Gravatar/src"
+            "App\\": "src"
         }
     },
     "autoload-dev": {

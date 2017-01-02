@@ -13,6 +13,12 @@
 // Page title
 $this->assign('title', __d('elabs', 'List of users'));
 
+// Variables needed everywhere in the view
+// Icons vars are used in JS too.
+$unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('elabs', 'Unlock')]);
+$lockIcon = $this->Html->icon('lock', ['title' => __d('elabs', 'Lock')]);
+$activateIcon = $this->Html->icon('check', ['title' => __d('elabs', 'Activate')]);
+
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Users'), ['action' => 'index']);
 $this->Html->addCrumb($this->fetch('title'));
@@ -83,10 +89,6 @@ $this->start('pageContent');
                                 'class' => 'btn btn-primary',
                                 'escape' => false
                             ]);
-                            // Icons vars are used in JS too.
-                            $unlockIcon = $this->Html->icon('unlock-alt', ['title' => __d('elabs', 'Unlock')]);
-                            $lockIcon = $this->Html->icon('lock', ['title' => __d('elabs', 'Lock')]);
-                            $activateIcon = $this->Html->icon('check', ['title' => __d('elabs', 'Activate')]);
                             if ($user->status === STATUS_LOCKED):
                                 echo $this->Html->link($unlockIcon, '#', [
                                     'onClick' => "lock('{$user->id}', 'unlock')",

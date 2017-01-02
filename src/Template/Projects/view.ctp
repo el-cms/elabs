@@ -56,7 +56,7 @@ $this->end();
 
 // Block: Actions
 // --------------
-if ($project->has('mainurl')):
+if (!empty($project->mainurl)):
     $this->start('pageActions');
     echo $this->Html->link($this->Html->iconT('external-link', __d('elabs', 'Website')), $project->mainurl, ['escape' => false, 'class' => 'btn btn-block']);
     $this->end();

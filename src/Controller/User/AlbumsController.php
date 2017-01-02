@@ -2,8 +2,6 @@
 
 namespace App\Controller\User;
 
-use App\Controller\Admin\AdminAppController;
-
 /**
  * Albums Controller
  *

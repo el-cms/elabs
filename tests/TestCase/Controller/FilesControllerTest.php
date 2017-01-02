@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\FilesController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**

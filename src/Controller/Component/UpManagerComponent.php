@@ -3,7 +3,6 @@
 namespace App\Controller\Component;
 
 use Cake\Controller\Component;
-use Cake\Filesystem\File;
 use Cake\Filesystem\Folder;
 
 /**

@@ -2,8 +2,6 @@
 
 namespace App\Controller\User;
 
-use App\Controller\AppController;
-
 /**
  * Projects Controller
  *
