@@ -61,10 +61,10 @@ class AppController extends Controller
         /*
          * Safe for work option
          */
-        if (is_null($this->seeNSFW)) {
+        if (is_null($this->request->session()->read('seeNSFW'))) {
             $this->_setSFWState('hide');
         }
-        $this->seeNSFW = $this->seeNSFW;
+        $this->seeNSFW = $this->request->session()->read('seeNSFW');
 
         /*
          * Site language option
