@@ -147,7 +147,7 @@ class AlbumsTable extends Table
         if ($options['sfw'] === true) {
             $where['Albums.sfw'] = true;
         }
-        $query->select(['id', 'name', 'description','created', 'modified', 'sfw', 'user_id', 'language_id',])
+        $query->select(['id', 'name', 'description', 'created', 'modified', 'sfw', 'user_id', 'language_id',])
                 ->where($where);
 
         if ($options['withFiles']) {
@@ -193,5 +193,12 @@ class AlbumsTable extends Table
         }
 
         return $query->select($fields);
+    }
+
+    public function getWithContain($primaryKey, array $options = [])
+    {
+        $query = $this->find('withContain', $options)
+                ->where(['Albums.id' => $primaryKey]);
+        return $query->firstOrFail();
     }
 }
