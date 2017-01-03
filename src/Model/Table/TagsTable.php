@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
@@ -68,17 +69,17 @@ class TagsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+                ->requirePresence('name', 'create')
+                ->notEmpty('name');
 
         $validator
-            ->integer('itemtag_count')
-            ->requirePresence('itemtag_count', 'create')
-            ->notEmpty('itemtag_count');
+                ->integer('itemtag_count')
+                ->requirePresence('itemtag_count', 'create')
+                ->notEmpty('itemtag_count');
 
         return $validator;
     }

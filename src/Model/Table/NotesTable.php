@@ -126,15 +126,15 @@ class NotesTable extends Table
     }
 
     /**
-     * Finds all data for a contained note (in a list of notes)
+     * Finds all data for a note
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
-     *   - sfw bool, default false. Limits the result to sfw notes
-     *   - withUsers bool, default true. Select the user
+     *   - sfw bool, default false. Limits the result to sfw items
      *   - withLanguages bool, dafault true. Select the language
      *   - withLicenses bool, dafault true. Select the license
      *   - withProjects bool, default false. Select the projects
+     *   - withUsers bool, default true. Select the user
      *
      * @return \Cake\ORM\Query
      */
@@ -159,29 +159,40 @@ class NotesTable extends Table
         if ($options['withLanguages']) {
             $query->contain(['Languages' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withLicenses']) {
             $query->contain(['Licenses' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withProjects']) {
-            $query->contain(['Projects' => function($q) {
+            $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsNotes.note_id']);
-                }]);
+            }]);
         }
         if ($options['withUsers']) {
             $query->contain(['Users' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
 
         return $query;
     }
 
+    /**
+     * Gets a record with associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *
+     * @return \Cake\ORM\Entity
+     */
     public function getWithContain($primaryKey, array $options = [])
     {
+        $options += ['sfw' => true];
+
         return $this->find('withContain', $options)
                         ->where(['Notes.id' => $primaryKey])
                         ->firstOrFail();

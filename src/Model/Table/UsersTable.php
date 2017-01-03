@@ -121,8 +121,10 @@ class UsersTable extends BaseTable
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
+        $options += ['pivot' => null, ];
+
         $fields = ['id', 'first_name', 'last_name', 'username'];
-        if (isset($options['pivot']) && !empty($options['pivot'])) {
+        if (!is_null($options['pivot'])) {
             $fields[] = $options['pivot'];
         }
 

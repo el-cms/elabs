@@ -120,11 +120,11 @@ class AlbumsTable extends Table
     }
 
     /**
-     * Finds all data for a contained album (in a list of albums)
+     * Finds all data for an album
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
-     *   - sfw bool, default false. Limits the result to sfw albums
+     *   - sfw bool, default false. Limits the result to sfw items
      *   - withFiles bool, default true. Select the files
      *   - withLanguages bool, default true. Select the language
      *   - withProjects bool, default false. Select the projects
@@ -147,37 +147,37 @@ class AlbumsTable extends Table
         if ($options['sfw'] === true) {
             $where['Albums.sfw'] = true;
         }
-        $query->select(['id', 'name', 'description', 'created', 'modified', 'sfw', 'user_id', 'language_id',])
+        $query->select(['id', 'name', 'description', 'created', 'modified', 'sfw', 'user_id', 'language_id', ])
                 ->where($where);
 
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'AlbumsFiles.file_id']);
-                }]);
+            }]);
         }
         if ($options['withLanguages']) {
             $query->contain(['Languages' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
 
         if ($options['withProjects']) {
-            $query->contain(['Projects' => function($q) {
+            $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsAlbums.album_id']);
-                }]);
+            }]);
         }
 
         if ($options['withUsers']) {
             $query->contain(['Users' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
+
         return $query;
     }
 
     /**
-     * Used to fetch minimal data about albums on contained items
-     * (i.e: albums in a project of an user)
+     * Used to fetch minimal data about albums
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options. Don't forget to add the 'pivot'
@@ -187,16 +187,29 @@ class AlbumsTable extends Table
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
+        $options += ['pivot' => null, ];
+
         $fields = ['id', 'name', 'created', 'modified', 'sfw', 'user_id', 'language_id'];
-        if (isset($options['pivot']) && !empty($options['pivot'])) {
+        if (!is_null($options['pivot'])) {
             $fields[] = $options['pivot'];
         }
 
         return $query->select($fields);
     }
 
+    /**
+     * Gets a record with associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *
+     * @return \Cake\ORM\Entity
+     */
     public function getWithContain($primaryKey, array $options = [])
     {
+        $options += ['sfw' => true];
+
         return $this->find('withContain', $options)
                         ->where(['Albums.id' => $primaryKey])
                         ->firstOrFail();

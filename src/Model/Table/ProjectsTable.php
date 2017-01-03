@@ -163,7 +163,7 @@ class ProjectsTable extends Table
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
      *   - complete bool, default false. Select all the fields
-     *   - sfw bool, default false. Limits the result to sfw albums
+     *   - sfw bool, default false. Limits the result to sfw items
      *   - withAlbums bool, default true. Select the albums
      *   - withFiles bool, default true. Select the files
      *   - withLanguages bool, default true. Select the language
@@ -189,7 +189,7 @@ class ProjectsTable extends Table
         ];
 
         $sfw = $options['sfw'];
-        
+
         $where = ['Projects.status' => STATUS_PUBLISHED];
 
         if ($options['sfw'] === true) {
@@ -203,40 +203,41 @@ class ProjectsTable extends Table
         }
 
         if ($options['withAlbums']) {
-            $query->contain(['Albums' => function ($q) use($sfw) {
+            $query->contain(['Albums' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withFiles']) {
-            $query->contain(['Files' => function ($q) use($sfw) {
+            $query->contain(['Files' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withLanguages']) {
             $query->contain(['Languages' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withLicenses']) {
             $query->contain(['Licenses' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withNotes']) {
-            $query->contain(['Notes' => function ($q) use($sfw) {
+            $query->contain(['Notes' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withPosts']) {
-            $query->contain(['Posts' => function ($q) use($sfw) {
+            $query->contain(['Posts' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withUsers']) {
             $query->contain(['Users' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
+
         return $query;
     }
 
@@ -252,17 +253,30 @@ class ProjectsTable extends Table
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
+        $options += ['pivot' => null, ];
+
         $fields = ['id', 'name'];
-        if (isset($options['pivot']) && !empty($options['pivot'])) {
+        if (!is_null($options['pivot'])) {
             $fields[] = $options['pivot'];
         }
 
         return $query->select($fields);
     }
 
+    /**
+     * Gets a record with associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *   - complete bool default true Select all the fields
+     *
+     * @return \Cake\ORM\Entity
+     */
     public function getWithContain($primaryKey, array $options = [])
     {
         $options += [
+            'sfw' => true,
             'complete' => true,
         ];
 

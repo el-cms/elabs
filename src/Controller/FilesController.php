@@ -71,7 +71,7 @@ class FilesController extends AppController
      */
     public function view($id = null)
     {
-        $file = $this->Files->getWithContain($id, ['sfw' => $sfw]);
+        $file = $this->Files->getWithContain($id, ['sfw' => !$this->seeNSFW]);
 
         if (!$file->sfw && !$this->seeNSFW) {
             $this->set('name', $file->name);

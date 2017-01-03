@@ -151,11 +151,11 @@ class FilesTable extends Table
     }
 
     /**
-     * Finds all data for a contained file (in a list of files)
+     * Finds all data for a file
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
-     *   - sfw bool, default false. Limits the result to sfw files
+     *   - sfw bool, default false. Limits the result to sfw items
      *   - withAlbums bool, default true. Select the albums
      *   - withLanguages bool, dafault true. Select the language
      *   - withLicenses bool, dafault true. Select the license
@@ -186,47 +186,44 @@ class FilesTable extends Table
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'AlbumsFiles.album_id']);
-                }]);
+            }]);
         }
         if ($options['withLanguages']) {
             $query->contain(['Languages' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withLicenses']) {
             $query->contain(['Licenses' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withProjects']) {
-            $query->contain(['Projects' => function($q) {
+            $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsFiles.file_id']);
-                }]);
+            }]);
         }
         if ($options['withUsers']) {
             $query->contain(['Users' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
 
         return $query;
     }
 
     /**
-     * Used to fetch minimal data about projects on contained items
-     * (i.e: files in an album of an user)
+     * Used to fetch minimal data about files
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options. Don't forget to add the 'pivot'
-     *        field name
+     *        field name if necessary
      *
      * @return \Cake\ORM\Query
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
-        $options+=[
-            'pivot'=>null,
-        ];
+        $options += ['pivot' => null, ];
 
         $fields = ['id', 'name', 'description', 'filename', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'];
         if (!is_null($options['pivot'])) {
@@ -236,8 +233,19 @@ class FilesTable extends Table
         return $query;
     }
 
+    /**
+     * Gets a record with associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *
+     * @return \Cake\ORM\Entity
+     */
     public function getWithContain($primaryKey, array $options = [])
     {
+        $options += ['sfw' => true];
+
         return $this->find('withContain', $options)
                         ->where(['Files.id' => $primaryKey])
                         ->firstOrFail();

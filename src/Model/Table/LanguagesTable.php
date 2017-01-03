@@ -107,6 +107,20 @@ class LanguagesTable extends Table
         return $validator;
     }
 
+    /**
+     * Finds all data for a language
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options:
+     *   - sfw bool, default false. Limits the result to sfw items
+     *   - withAlbums bool, default true. Select the albums
+     *   - withFiles bool, default true. Select the files
+     *   - withNotes bool, default true. Select the notes
+     *   - withPosts bool, default true. Select the posts
+     *   - withProjects bool, default false. Select the projects
+     *
+     * @return \Cake\ORM\Query
+     */
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
@@ -121,40 +135,57 @@ class LanguagesTable extends Table
         $query->select(['id', 'iso639_1', 'name', 'has_site_translation', 'file_count', 'note_count', 'album_count', 'post_count', 'project_count']);
 
         if ($options['withAlbums'] === true) {
-            $query->contain(['Albums' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
-                }]);
+            $query->contain(['Albums' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false]);
+            }]);
         }
         if ($options['withFiles'] === true) {
-            $query->contain(['Files' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
-                }]);
+            $query->contain(['Files' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false]);
+            }]);
         }
         if ($options['withNotes'] === true) {
-            $query->contain(['Notes' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
-                }]);
+            $query->contain(['Notes' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false]);
+            }]);
         }
         if ($options['withPosts'] === true) {
-            $query->contain(['Posts' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
-                }]);
+            $query->contain(['Posts' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false]);
+            }]);
         }
         if ($options['withProjects'] === true) {
-            $query->contain(['Projects' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
-                }]);
+            $query->contain(['Projects' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false]);
+            }]);
         }
+
         return $query;
     }
 
+    /**
+     * Used to fetch minimal data about languages
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. Don't forget to add the 'pivot'
+     *        field name if necessary
+     *
+     * @return \Cake\ORM\Query
+     */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
-        $query = $this->find('all');
-
         return $query->select(['id', 'name', 'iso639_1']);
     }
 
+    /**
+     * Gets a record with associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *
+     * @return \Cake\ORM\Entity
+     */
     public function getWithContain($primaryKey, array $options = [])
     {
         $options += ['sfw' => true];

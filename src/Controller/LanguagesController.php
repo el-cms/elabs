@@ -31,15 +31,15 @@ class LanguagesController extends AppController
         // Filters
         if ($filter === 'hideEmpties') {
             $query->where([
-                    ['OR' =>
-                        [
+                ['OR' =>
+                    [
                         'album_count >' => '0',
                         'file_count >' => '0',
                         'note_count >' => '0',
                         'post_count >' => '0',
                         'project_count >' => '0',
-                        ]
                     ]
+                ]
             ]);
         }
 
@@ -57,8 +57,7 @@ class LanguagesController extends AppController
      */
     public function view($id = null)
     {
-
-        $query = $this->Languages->getWithContain($id, ['sfw'=> !$this->seeNSFW]);
+        $query = $this->Languages->getWithContain($id, ['sfw' => !$this->seeNSFW]);
 
         $this->set('language', $query);
         $this->set('_serialize', ['language']);

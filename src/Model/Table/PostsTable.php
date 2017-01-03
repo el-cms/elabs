@@ -104,7 +104,7 @@ class PostsTable extends Table
                         'rule' => ['maxLength', 250],
                         'message' => 'Excerpts cannot be too long.'
                     ]
-        ]);
+                ]);
 
         $validator
                 ->allowEmpty('text');
@@ -147,15 +147,29 @@ class PostsTable extends Table
         return $rules;
     }
 
+    /**
+     * Finds all data for a post
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options:
+     *   - sfw bool, default false. Limits the result to sfw items
+     *   - complete bool, default false. Select all the fields
+     *   - withLicenses bool, default true. Select the license
+     *   - withLanguages bool, default true. Select the language
+     *   - withProjects bool, default false. Select the projects
+     *   - withUsers bool, default true. Select the user
+     *
+     * @return \Cake\ORM\Query
+     */
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
             'sfw' => true,
-            'complete'=>false,
-            'withUsers' => true,
+            'complete' => false,
             'withLicenses' => true,
             'withLanguages' => true,
             'withProjects' => true,
+            'withUsers' => true,
         ];
 
         $where = ['Posts.status' => STATUS_PUBLISHED];
@@ -166,37 +180,51 @@ class PostsTable extends Table
         $query->select(['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'created', 'license_id', 'language_id'])
                 ->where($where);
 
-        if($options['complete']===true){
+        if ($options['complete'] === true) {
             $query->select(['text']);
         }
 
         if ($options['withLicenses']) {
             $query->contain(['Licenses' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withLanguages']) {
             $query->contain(['Languages' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withUsers']) {
             $query->contain(['Users' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withProjects']) {
-            $query->contain(['Projects' => function($q) {
+            $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsPosts.post_id']);
-                }]);
+            }]);
         }
 
         return $query;
     }
 
+    /**
+     * Gets a record with associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *   - complete bool default true Select all the fields
+     *
+     * @return \Cake\ORM\Entity
+     */
     public function getWithContain($primaryKey, array $options = [])
     {
-        $options+=['complete'=>true];
+        $options += [
+            'sfw' => true,
+            'complete' => true
+        ];
+
         return $this->find('withContain', $options)
                         ->where(['Posts.id' => $primaryKey])
                         ->firstOrFail();

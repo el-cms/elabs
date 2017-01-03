@@ -76,7 +76,7 @@ class NotesController extends AppController
      */
     public function view($id = null)
     {
-        $note = $this->Notes->getWithContain($id, ['sfw'=>!$this->seeNSFW]);
+        $note = $this->Notes->getWithContain($id, ['sfw' => !$this->seeNSFW]);
 
         if (!$note->sfw && !$this->seeNSFW) {
             $this->set('title', __d('elabs', 'A note'));

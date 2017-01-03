@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\RulesChecker;
@@ -43,8 +44,8 @@ class ProjectsFilesTable extends Table
 
         $this->addBehavior('CounterCache', [
             'Projects' => ['file_count' => [
-                'contain' => ['Files'],
-                'conditions' => ['Files.status' => STATUS_PUBLISHED]]],
+                    'contain' => ['Files'],
+                    'conditions' => ['Files.status' => STATUS_PUBLISHED]]],
         ]);
 
         $this->belongsTo('Files', [
@@ -62,8 +63,8 @@ class ProjectsFilesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         return $validator;
     }

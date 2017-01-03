@@ -38,9 +38,8 @@ class LicensesController extends AppController
      */
     public function view($id = null)
     {
-
         $query = $this->Licenses->getWithContain($id, ['sfw' => !$this->seeNSFW]);
-        
+
         $this->set('license', $query);
         $this->set('_serialize', ['license']);
     }

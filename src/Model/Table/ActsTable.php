@@ -103,19 +103,19 @@ class ActsTable extends Table
         ];
 
         return $query->contain([
-                    'Albums' => function(\Cake\ORM\Query $q) use ($options) {
+                    'Albums' => function (\Cake\ORM\Query $q) use ($options) {
                         return $q->find('withContain', ['sfw' => $options['sfw']]);
                     },
-                    'Files' => function(\Cake\ORM\Query $q) use ($options) {
+                    'Files' => function (\Cake\ORM\Query $q) use ($options) {
                         return $q->find('withContain', ['sfw' => $options['sfw']]);
                     },
-                    'Notes' => function(\Cake\ORM\Query $q) use ($options) {
+                    'Notes' => function (\Cake\ORM\Query $q) use ($options) {
                         return $q->find('withContain', ['sfw' => $options['sfw']]);
                     },
-                    'Posts' => function(\Cake\ORM\Query $q) use ($options) {
+                    'Posts' => function (\Cake\ORM\Query $q) use ($options) {
                         return $q->find('withContain', ['sfw' => $options['sfw']]);
                     },
-                    'Projects' => function(\Cake\ORM\Query $q) use ($options) {
+                    'Projects' => function (\Cake\ORM\Query $q) use ($options) {
                         return $q->find('withContain', [
                                     'sfw' => $options['sfw'],
                                     'withAlbums' => false,
