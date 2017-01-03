@@ -26,50 +26,35 @@ class ProjectsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $findOptions = [
-            'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
-            'conditions' => [
-                'Projects.status' => STATUS_PUBLISHED,
-            ],
-            'sortWithelist' => ['created', 'modified', 'name'],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon', 'link']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ],
-            'order' => ['created' => 'desc'],
+        $this->paginate = [
+            'order' => ['created' => 'desc']
         ];
-
-        // Sfw condition
-        if (!$this->seeNSFW) {
-            $findOptions['conditions']['sfw'] = true;
-        }
+        $query = $this->Projects->find('withContain', ['sfw' => !$this->seeNSFW]);
 
         // Other conditions:
         if (!is_null($filter)) {
             switch ($filter) {
                 case 'language':
-                    $findOptions['conditions']['Languages.id'] = $id;
+                    $query->where(['Languages.id' => $id]);
                     break;
                 case 'license':
-                    $findOptions['conditions']['Licenses.id'] = $id;
+                    $query->where(['Licenses.id' => $id]);
                     break;
                 case 'user':
-                    $findOptions['conditions']['Users.id'] = $id;
+                    $query->where(['Users.id' => $id]);
                     break;
                 default:
                     throw new NotFoundException;
             }
             // Get additionnal infos infos
             $modelName = Inflector::camelize(Inflector::pluralize($filter));
-            $FilterModel = TableRegistry::get($modelName);
+            $FilterModel = TableRegistry::getSimple($modelName);
             $filterData = $FilterModel->get($id);
 
             $this->set('filterData', $filterData);
         }
         $this->set('filter', $filter);
-        $this->paginate = $findOptions;
-        $this->set('projects', $this->paginate($this->Projects));
+        $this->set('projects', $this->paginate($query));
         $this->set('_serialize', ['projects']);
     }
 
@@ -82,73 +67,7 @@ class ProjectsController extends AppController
      */
     public function view($id = null)
     {
-        $seeNSFW = $this->seeNSFW;
-        $containConfig = [
-            'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            'Licenses' => ['fields' => ['id', 'name', 'icon']],
-            'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
-        ];
-
-        $query = $this->Projects->find();
-        $query->select()
-                ->where(['Projects.status' => STATUS_PUBLISHED, 'Projects.id' => $id])
-                ->contain([
-                    'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
-                    'Licenses',
-                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    'Files' => function ($q) use ($seeNSFW, $containConfig) {
-                        $q = $q
-                                ->where(['Files.status' => STATUS_PUBLISHED])
-                                ->contain($containConfig)
-                                ->limit(Configure::read('cms.maxRelatedData'));
-                        if (!$seeNSFW) {
-                            $q = $q->where(['sfw' => true]);
-                        }
-
-                        return $q;
-                    },
-                    'Notes' => function ($q) use ($seeNSFW, $containConfig) {
-                        $q = $q->select()
-                                ->where(['Notes.status' => STATUS_PUBLISHED])
-                                ->contain($containConfig)
-                                ->limit(Configure::read('cms.maxRelatedData'));
-                        if (!$seeNSFW) {
-                            $q = $q->where(['sfw' => true]);
-                        }
-
-                        return $q;
-                    },
-                    'Posts' => function ($q) use ($seeNSFW, $containConfig) {
-                        $q = $q->select()
-                                ->where(['Posts.status' => STATUS_PUBLISHED])
-                                ->contain($containConfig)
-                                ->limit(Configure::read('cms.maxRelatedData'));
-                        if (!$seeNSFW) {
-                            $q = $q->where(['sfw' => true]);
-                        }
-
-                        return $q;
-                    },
-                    'Albums' => function ($q) use ($seeNSFW, $containConfig) {
-                        $q = $q->select()
-                                ->where(['Albums.status' => STATUS_PUBLISHED])
-                                ->contain([
-                                    'Languages' => $containConfig['Languages'],
-                                    'Users' => $containConfig['Users'],
-                                    'Files' => [
-                                        'fields' => ['id', 'name', 'filename', 'sfw', 'AlbumsFiles.album_id'],
-                                    ]
-                                ])
-                                ->limit(Configure::read('cms.maxRelatedData'));
-                        if (!$seeNSFW) {
-                            $q = $q->where(['sfw' => true]);
-                        }
-
-                        return $q;
-                    }
-                ]);
-
-        $project = $query->firstOrFail();
+        $project=$this->Projects->getWithContain($id, ['sfw'=>!$this->seeNSFW]);
 
         //SFW state
         if (!$project->sfw && !$this->seeNSFW) {

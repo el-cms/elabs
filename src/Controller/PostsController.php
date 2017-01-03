@@ -25,6 +25,9 @@ class PostsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
+        $this->paginate = [
+            'order' => ['publication_date' => 'desc']
+        ];
         $query = $this->Posts->find('withContain', ['sfw' => !$this->seeNSFW]);
 
         // Filters:

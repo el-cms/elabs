@@ -226,17 +226,11 @@ class FilesTable extends Table
     {
         $options+=[
             'pivot'=>null,
-            'sfw'=>true,
         ];
 
         $fields = ['id', 'name', 'description', 'filename', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'];
         if (!is_null($options['pivot'])) {
             $fields[] = $options['pivot'];
-        }
-
-        $query->select($fields);
-        if($options['sfw']===true){
-            $query->where(['Files.sfw'=>true]);
         }
 
         return $query;

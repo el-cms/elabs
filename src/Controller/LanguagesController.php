@@ -23,6 +23,9 @@ class LanguagesController extends AppController
      */
     public function index($filter = 'hideEmpties')
     {
+        $this->paginate = [
+            'order' => ['name' => 'asc']
+        ];
         $query = $this->Languages->find();
 
         // Filters

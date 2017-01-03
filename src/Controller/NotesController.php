@@ -27,6 +27,9 @@ class NotesController extends AppController
      */
     public function index($filter = null, $id = null)
     {
+        $this->paginate = [
+            'order' => ['created' => 'desc']
+        ];
         $query = $this->Notes->find('withContain', ['sfw' => !$this->seeNSFW]);
 
         if (!is_null($filter)) {

@@ -162,6 +162,7 @@ class ProjectsTable extends Table
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
+     *   - complete bool, default false. Select all the fields
      *   - sfw bool, default false. Limits the result to sfw albums
      *   - withAlbums bool, default true. Select the albums
      *   - withFiles bool, default true. Select the files
@@ -176,7 +177,8 @@ class ProjectsTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
-            'sfw' => false,
+            'complete' => false,
+            'sfw' => true,
             'withAlbums' => true,
             'withFiles' => true,
             'withLanguages' => true,
@@ -186,6 +188,8 @@ class ProjectsTable extends Table
             'withUsers' => true,
         ];
 
+        $sfw = $options['sfw'];
+        
         $where = ['Projects.status' => STATUS_PUBLISHED];
 
         if ($options['sfw'] === true) {
@@ -194,14 +198,18 @@ class ProjectsTable extends Table
         $query->select(['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'])
                 ->where($where);
 
+        if ($options['complete'] === true) {
+            $query->select(['description', 'album_count', 'file_count', 'note_count', 'post_count']);
+        }
+
         if ($options['withAlbums']) {
-            $query->contain(['Albums' => function ($q) {
-                    return $q->find('asContain', ['pivot' => 'ProjectsAlbums.album_id']);
+            $query->contain(['Albums' => function ($q) use($sfw) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw]);
                 }]);
         }
         if ($options['withFiles']) {
-            $query->contain(['Files' => function ($q) {
-                    return $q->find('asContain', ['pivot' => 'ProjectsFiles.file_id']);
+            $query->contain(['Files' => function ($q) use($sfw) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw]);
                 }]);
         }
         if ($options['withLanguages']) {
@@ -212,6 +220,16 @@ class ProjectsTable extends Table
         if ($options['withLicenses']) {
             $query->contain(['Licenses' => function ($q) {
                     return $q->find('asContain');
+                }]);
+        }
+        if ($options['withNotes']) {
+            $query->contain(['Notes' => function ($q) use($sfw) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw]);
+                }]);
+        }
+        if ($options['withPosts']) {
+            $query->contain(['Posts' => function ($q) use($sfw) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw]);
                 }]);
         }
         if ($options['withUsers']) {
@@ -240,5 +258,16 @@ class ProjectsTable extends Table
         }
 
         return $query->select($fields);
+    }
+
+    public function getWithContain($primaryKey, array $options = [])
+    {
+        $options += [
+            'complete' => true,
+        ];
+
+        return $this->find('withContain', $options)
+                        ->where(['Projects.id' => $primaryKey])
+                        ->firstOrFail();
     }
 }
