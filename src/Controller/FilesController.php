@@ -90,7 +90,7 @@ class FilesController extends AppController
      */
     public function download($id)
     {
-        $file = $this->Files->get($id);
+        $file = $this->Files->get($id, ['fields' => ['id', 'filename', 'name']]);
         $this->response->file('uploads/' . $file['filename'], ['download' => true, 'name' => $file['name']]);
 
         // Return response object to prevent controller from trying to render a view.

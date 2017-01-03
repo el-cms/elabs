@@ -71,16 +71,16 @@
                 <!-- Scrollbar -->
                 <div class="scrollbar-buttons">
                     <!-- Left button -->
-                    <div 
-                        class="scrollbar-direction-left" 
-                        id="scrollButton-<?php echo $data['id'] ?>-L" 
+                    <div
+                        class="scrollbar-direction-left"
+                        id="scrollButton-<?php echo $data['id'] ?>-L"
                         onmouseover="scroll('#scrollButton-<?php echo $data['id'] ?>-L', '#scrollbar-<?php echo $data['id'] ?>', 'left')"
                         >
                             <?php echo $this->Html->icon('chevron-left', ['fixed' => false]) ?>
                     </div>
                     <!-- Right button -->
-                    <div 
-                        class="scrollbar-direction-right" 
+                    <div
+                        class="scrollbar-direction-right"
                         id="scrollButton-<?php echo $data['id'] ?>-R"
                         onmouseover="scroll('#scrollButton-<?php echo $data['id'] ?>-R', '#scrollbar-<?php echo $data['id'] ?>', 'right')"
                         >
