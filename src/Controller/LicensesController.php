@@ -39,8 +39,8 @@ class LicensesController extends AppController
     public function view($id = null)
     {
 
-        $query = $this->Licenses->getWithContain($id, ['sfw' => !$this->request->session()->read('seeNSFW')]);
-//        $seeNSFW = $this->request->session()->read('seeNSFW');
+        $query = $this->Licenses->getWithContain($id, ['sfw' => !$this->seeNSFW]);
+//        $seeNSFW = $this->seeNSFW;
 //        $contains = [
 //            'Languages' => ['fields' => ['id', 'iso639_1', 'name']],
 //            'Users' => ['fields' => ['id', 'username']]

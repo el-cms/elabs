@@ -75,7 +75,7 @@ class ActsController extends AppController
             $this->paginate['conditions']['type'] = 'add';
         }
 
-        $acts = $this->paginate($this->Acts->find('default', ['sfw' => !$this->request->session()->read('seeNSFW')]));
+        $acts = $this->paginate($this->Acts->find('default', ['sfw' => !$this->seeNSFW]));
 
         // Pass variables to view
         $this->set('filterUpdates', $updateFilter);

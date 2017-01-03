@@ -41,7 +41,7 @@ class ProjectsController extends AppController
         ];
 
         // Sfw condition
-        if (!$this->request->session()->read('seeNSFW')) {
+        if (!$this->seeNSFW) {
             $findOptions['conditions']['sfw'] = true;
         }
 
@@ -82,7 +82,7 @@ class ProjectsController extends AppController
      */
     public function view($id = null)
     {
-        $seeNSFW = $this->request->session()->read('seeNSFW');
+        $seeNSFW = $this->seeNSFW;
         $containConfig = [
             'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
             'Licenses' => ['fields' => ['id', 'name', 'icon']],
@@ -151,7 +151,7 @@ class ProjectsController extends AppController
         $project = $query->firstOrFail();
 
         //SFW state
-        if (!$project->sfw && !$this->request->session()->read('seeNSFW')) {
+        if (!$project->sfw && !$this->seeNSFW) {
             $this->set('name', $project->name);
             $this->viewBuilder()->template('nsfw');
         } else {

@@ -102,7 +102,7 @@ class UsersController extends AppController
         ];
 
         // SFW options
-        if ($this->request->session()->read('seeNSFW') === false) {
+        if ($this->seeNSFW === false) {
             $options['contain']['Files']['conditions']['Files.sfw'] = true;
             $options['contain']['Notes']['conditions']['Notes.sfw'] = true;
             $options['contain']['Posts']['conditions']['Posts.sfw'] = true;

@@ -55,7 +55,7 @@ class LanguagesController extends AppController
     public function view($id = null)
     {
 
-        $query = $this->Languages->getWithContain($id, ['sfw'=> !$this->request->session()->read('seeNSFW')]);
+        $query = $this->Languages->getWithContain($id, ['sfw'=> !$this->seeNSFW]);
 
         $this->set('language', $query);
         $this->set('_serialize', ['language']);

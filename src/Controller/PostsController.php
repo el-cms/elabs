@@ -37,7 +37,7 @@ class PostsController extends AppController
                 ->order(['publication_date' => 'desc']);
 
         // Sfw condition
-        if (!$this->request->session()->read('seeNSFW')) {
+        if (!$this->seeNSFW) {
             $query->where(['Posts.sfw' => true]);
         }
 
@@ -94,7 +94,7 @@ class PostsController extends AppController
         ]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors
-        if (!$post->sfw && !$this->request->session()->read('seeNSFW')) {
+        if (!$post->sfw && !$this->seeNSFW) {
             $this->set('title', $post->title);
             // And make a proper common error page
             $this->viewBuilder()->template('nsfw');

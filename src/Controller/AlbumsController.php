@@ -28,7 +28,7 @@ class AlbumsController extends AppController
     public function index($filter = null, $id = null)
     {
 
-        $query = $this->Albums->find('withContain', ['sfw'=>!$this->request->session()->read('seeNSFW')])
+        $query = $this->Albums->find('withContain', ['sfw'=>!$this->seeNSFW])
                 ->order(['Albums.created' => 'desc']);
 
         // Filter:
@@ -69,7 +69,7 @@ class AlbumsController extends AppController
      */
     public function view($id = null)
     {
-        $sfw = !$this->request->session()->read('seeNSFW');
+        $sfw = !$this->seeNSFW;
         $album = $this->Albums->getWithContain($id, ['sfw' => $sfw]);
 
         //SFW state

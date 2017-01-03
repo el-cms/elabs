@@ -26,7 +26,7 @@ class FilesController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $query = $this->Files->find('withContain', ['sfw' => !$this->request->session()->read('seeNSFW')]);
+        $query = $this->Files->find('withContain', ['sfw' => !$this->seeNSFW]);
         $query->order(['Files.created' => 'desc']);
 
         // Filters:
@@ -73,7 +73,7 @@ class FilesController extends AppController
     {
         $file = $this->Files->getWithContain($id, ['sfw' => $sfw]);
 
-        if (!$file->sfw && !$this->request->session()->read('seeNSFW')) {
+        if (!$file->sfw && !$this->seeNSFW) {
             $this->set('name', $file->name);
             $this->viewBuilder()->template('nsfw');
         } else {
