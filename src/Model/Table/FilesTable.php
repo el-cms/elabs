@@ -167,7 +167,7 @@ class FilesTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
-            'sfw' => false,
+            'sfw' => true,
             'withAlbums' => true,
             'withLanguages' => true,
             'withLicenses' => true,
@@ -224,18 +224,28 @@ class FilesTable extends Table
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
+        $options+=[
+            'pivot'=>null,
+            'sfw'=>true,
+        ];
+
         $fields = ['id', 'name', 'description', 'filename', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'];
-        if (isset($options['pivot']) && !empty($options['pivot'])) {
+        if (!is_null($options['pivot'])) {
             $fields[] = $options['pivot'];
         }
 
-        return $query->select($fields);
+        $query->select($fields);
+        if($options['sfw']===true){
+            $query->where(['Files.sfw'=>true]);
+        }
+
+        return $query;
     }
 
     public function getWithContain($primaryKey, array $options = [])
     {
-        $query = $this->find('withContain', $options)
-                ->where(['Files.id' => $primaryKey]);
-        return $query->firstOrFail();
+        return $this->find('withContain', $options)
+                        ->where(['Files.id' => $primaryKey])
+                        ->firstOrFail();
     }
 }

@@ -150,7 +150,7 @@ class PostsTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
-            'sfw' => false,
+            'sfw' => true,
             'withUsers' => true,
             'withLicenses' => true,
             'withLanguages' => true,
@@ -161,7 +161,7 @@ class PostsTable extends Table
         if ($options['sfw'] === true) {
             $where['Posts.sfw'] = true;
         }
-
+        
         $query->select(['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'created', 'license_id', 'language_id'])
                 ->where($where);
 

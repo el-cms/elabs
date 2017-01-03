@@ -107,10 +107,61 @@ class LanguagesTable extends Table
         return $validator;
     }
 
+    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $options += [
+            'sfw' => true,
+            'withAlbums' => true,
+            'withFiles' => true,
+            'withNotes' => true,
+            'withPosts' => true,
+            'withProjects' => true,
+        ];
+        $sfw = $options['sfw'];
+        $query->select(['id', 'iso639_1', 'name', 'has_site_translation', 'file_count', 'note_count', 'album_count', 'post_count', 'project_count']);
+
+        if ($options['withAlbums'] === true) {
+            $query->contain(['Albums' => function($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+                }]);
+        }
+        if ($options['withFiles'] === true) {
+            $query->contain(['Files' => function($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+                }]);
+        }
+        if ($options['withNotes'] === true) {
+            $query->contain(['Notes' => function($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+                }]);
+        }
+        if ($options['withPosts'] === true) {
+            $query->contain(['Posts' => function($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+                }]);
+        }
+        if ($options['withProjects'] === true) {
+            $query->contain(['Projects' => function($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+                }]);
+        }
+        return $query;
+    }
+
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
         $query = $this->find('all');
 
         return $query->select(['id', 'name', 'iso639_1']);
+    }
+
+    public function getWithContain($primaryKey, array $options = [])
+    {
+        $options += ['sfw' => true];
+
+        $query = $this->find('withContain', $options)
+                ->where(['Languages.id' => $primaryKey]);
+        
+        return $query->firstOrFail();
     }
 }

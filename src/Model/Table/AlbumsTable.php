@@ -135,7 +135,7 @@ class AlbumsTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
-            'sfw' => false,
+            'sfw' => true,
             'withFiles' => true,
             'withLanguages' => true,
             'withProjects' => true,
@@ -197,8 +197,8 @@ class AlbumsTable extends Table
 
     public function getWithContain($primaryKey, array $options = [])
     {
-        $query = $this->find('withContain', $options)
-                ->where(['Albums.id' => $primaryKey]);
-        return $query->firstOrFail();
+        return $this->find('withContain', $options)
+                        ->where(['Albums.id' => $primaryKey])
+                        ->firstOrFail();
     }
 }
