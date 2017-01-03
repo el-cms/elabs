@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\RulesChecker;
@@ -80,25 +81,25 @@ class AlbumsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->uuid('id')
-            ->allowEmpty('id', 'create');
+                ->uuid('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+                ->requirePresence('name', 'create')
+                ->notEmpty('name');
 
         $validator
-            ->allowEmpty('description');
+                ->allowEmpty('description');
 
         $validator
-            ->boolean('sfw')
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->boolean('sfw')
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->boolean('hide_from_acts')
-            ->requirePresence('hide_from_acts', 'create')
-            ->notEmpty('hide_from_acts');
+                ->boolean('hide_from_acts')
+                ->requirePresence('hide_from_acts', 'create')
+                ->notEmpty('hide_from_acts');
 
         return $validator;
     }
@@ -116,5 +117,81 @@ class AlbumsTable extends Table
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
 
         return $rules;
+    }
+
+    /**
+     * Finds all data for a contained album (in a list of albums)
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options:
+     *   - sfw bool, default false. Limits the result to sfw albums
+     *   - withFiles bool, default true. Select the files
+     *   - withLanguages bool, default true. Select the language
+     *   - withProjects bool, default false. Select the projects
+     *   - withUsers bool, default true. Select the user
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $options += [
+            'sfw' => false,
+            'withFiles' => true,
+            'withLanguages' => true,
+            'withProjects' => true,
+            'withUsers' => true,
+        ];
+
+        $where = ['Albums.status' => STATUS_PUBLISHED];
+
+        if ($options['sfw'] === true) {
+            $where['Albums.sfw'] = true;
+        }
+        $query->select(['id', 'name', 'description','created', 'modified', 'sfw', 'user_id', 'language_id',])
+                ->where($where);
+
+        if ($options['withFiles']) {
+            $query->contain(['Files' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'AlbumsFiles.file_id']);
+                }]);
+        }
+        if ($options['withLanguages']) {
+            $query->contain(['Languages' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+
+        if ($options['withProjects']) {
+            $query->contain(['Projects' => function($q) {
+                    return $q->find('asContain', ['pivot' => 'ProjectsAlbums.album_id']);
+                }]);
+        }
+
+        if ($options['withUsers']) {
+            $query->contain(['Users' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        return $query;
+    }
+
+    /**
+     * Used to fetch minimal data about albums on contained items
+     * (i.e: albums in a project of an user)
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. Don't forget to add the 'pivot'
+     *        field name if necessary
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $fields = ['id', 'name', 'created', 'modified', 'sfw', 'user_id', 'language_id'];
+        if (isset($options['pivot']) && !empty($options['pivot'])) {
+            $fields[] = $options['pivot'];
+        }
+
+        return $query->select($fields);
     }
 }

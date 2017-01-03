@@ -117,19 +117,19 @@ class FilesTable extends Table
                 ->notEmpty('mime');
 
         $validator
-            ->boolean('sfw')
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->boolean('sfw')
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+                ->integer('status')
+                ->requirePresence('status', 'create')
+                ->notEmpty('status');
 
         $validator
-            ->boolean('hide_from_acts')
-            ->requirePresence('hide_from_acts', 'create')
-            ->notEmpty('hide_from_acts');
+                ->boolean('hide_from_acts')
+                ->requirePresence('hide_from_acts', 'create')
+                ->notEmpty('hide_from_acts');
 
         return $validator;
     }
@@ -148,5 +148,87 @@ class FilesTable extends Table
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
+    }
+
+    /**
+     * Finds all data for a contained file (in a list of files)
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options:
+     *   - sfw bool, default false. Limits the result to sfw files
+     *   - withAlbums bool, default true. Select the albums
+     *   - withLanguages bool, dafault true. Select the language
+     *   - withLicenses bool, dafault true. Select the license
+     *   - withProjects bool, default false. Select the projects
+     *   - withUsers bool, default true. Select the user
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $options += [
+            'sfw' => false,
+            'withAlbums' => true,
+            'withLanguages' => true,
+            'withLicenses' => true,
+            'withProjects' => true,
+            'withUsers' => true,
+        ];
+
+        $where = ['Files.status' => STATUS_PUBLISHED];
+        if ($options['sfw'] === true) {
+            $where['Files.sfw'] = true;
+        }
+
+        $query->select(['id', 'name', 'description', 'filename', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'])
+                ->where($where);
+
+        if ($options['withAlbums']) {
+            $query->contain(['Albums' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'AlbumsFiles.album_id']);
+                }]);
+        }
+        if ($options['withLanguages']) {
+            $query->contain(['Languages' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withLicenses']) {
+            $query->contain(['Licenses' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withProjects']) {
+            $query->contain(['Projects' => function($q) {
+                    return $q->find('asContain', ['pivot' => 'ProjectsFiles.file_id']);
+                }]);
+        }
+        if ($options['withUsers']) {
+            $query->contain(['Users' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Used to fetch minimal data about projects on contained items
+     * (i.e: files in an album of an user)
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. Don't forget to add the 'pivot'
+     *        field name
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $fields = ['id', 'name', 'description', 'filename', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'];
+        if (isset($options['pivot']) && !empty($options['pivot'])) {
+            $fields[] = $options['pivot'];
+        }
+
+        return $query->select($fields);
     }
 }

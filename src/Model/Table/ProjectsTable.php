@@ -107,8 +107,8 @@ class ProjectsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->uuid('id')
-            ->allowEmpty('id', 'create');
+                ->uuid('id')
+                ->allowEmpty('id', 'create');
 
         $validator
                 ->requirePresence('name', 'create')
@@ -121,22 +121,22 @@ class ProjectsTable extends Table
                 ->allowEmpty('description');
 
         $validator
-            ->allowEmpty('mainurl');
+                ->allowEmpty('mainurl');
 
         $validator
-            ->boolean('sfw')
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->boolean('sfw')
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+                ->integer('status')
+                ->requirePresence('status', 'create')
+                ->notEmpty('status');
 
         $validator
-            ->boolean('hide_from_acts')
-            ->requirePresence('hide_from_acts', 'create')
-            ->notEmpty('hide_from_acts');
+                ->boolean('hide_from_acts')
+                ->requirePresence('hide_from_acts', 'create')
+                ->notEmpty('hide_from_acts');
 
         return $validator;
     }
@@ -155,5 +155,90 @@ class ProjectsTable extends Table
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
 
         return $rules;
+    }
+
+    /**
+     * Finds all data for a contained album (in a list of albums)
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options:
+     *   - sfw bool, default false. Limits the result to sfw albums
+     *   - withAlbums bool, default true. Select the albums
+     *   - withFiles bool, default true. Select the files
+     *   - withLanguages bool, default true. Select the language
+     *   - withLicenses bool, default false. Select the licesense
+     *   - withNotes bool, default false. Select the notess
+     *   - withPosts bool, default false. Select the posts
+     *   - withUsers bool, default true. Select the user
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $options += [
+            'sfw' => false,
+            'withAlbums' => true,
+            'withFiles' => true,
+            'withLanguages' => true,
+            'withLicenses' => true,
+            'withNotes' => true,
+            'withPosts' => true,
+            'withUsers' => true,
+        ];
+
+        $where = ['Projects.status' => STATUS_PUBLISHED];
+
+        if ($options['sfw'] === true) {
+            $where['Projects.sfw'] = true;
+        }
+        $query->select(['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'])
+                ->where($where);
+
+        if ($options['withAlbums']) {
+            $query->contain(['Albums' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'ProjectsAlbums.album_id']);
+                }]);
+        }
+        if ($options['withFiles']) {
+            $query->contain(['Files' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'ProjectsFiles.file_id']);
+                }]);
+        }
+        if ($options['withLanguages']) {
+            $query->contain(['Languages' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withLicenses']) {
+            $query->contain(['Licenses' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withUsers']) {
+            $query->contain(['Users' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        return $query;
+    }
+
+    /**
+     * Used to fetch minimal data about projects on contained items
+     * (i.e: projects of the albums of an user)
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. Don't forget to add the 'pivot'
+     *        field name
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $fields = ['id', 'name'];
+        if (isset($options['pivot']) && !empty($options['pivot'])) {
+            $fields[] = $options['pivot'];
+        }
+
+        return $query->select($fields);
     }
 }

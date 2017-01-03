@@ -77,33 +77,40 @@ class LanguagesTable extends Table
                 ->notEmpty('name');
 
         $validator
-            ->boolean('has_site_translation')
-            ->requirePresence('has_site_translation', 'create')
-            ->notEmpty('has_site_translation');
+                ->boolean('has_site_translation')
+                ->requirePresence('has_site_translation', 'create')
+                ->notEmpty('has_site_translation');
 
         $validator
-            ->allowEmpty('translation_folder');
+                ->allowEmpty('translation_folder');
 
         $validator
-            ->integer('file_count')
-            ->requirePresence('file_count', 'create')
-            ->notEmpty('file_count');
+                ->integer('file_count')
+                ->requirePresence('file_count', 'create')
+                ->notEmpty('file_count');
 
         $validator
-            ->integer('note_count')
-            ->requirePresence('note_count', 'create')
-            ->notEmpty('note_count');
+                ->integer('note_count')
+                ->requirePresence('note_count', 'create')
+                ->notEmpty('note_count');
 
         $validator
-            ->integer('post_count')
-            ->requirePresence('post_count', 'create')
-            ->notEmpty('post_count');
+                ->integer('post_count')
+                ->requirePresence('post_count', 'create')
+                ->notEmpty('post_count');
 
         $validator
-            ->integer('project_count')
-            ->requirePresence('project_count', 'create')
-            ->notEmpty('project_count');
+                ->integer('project_count')
+                ->requirePresence('project_count', 'create')
+                ->notEmpty('project_count');
 
         return $validator;
+    }
+
+    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $query = $this->find('all');
+
+        return $query->select(['id', 'name', 'iso639_1']);
     }
 }

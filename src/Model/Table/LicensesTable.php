@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
@@ -60,39 +61,44 @@ class LicensesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+                ->requirePresence('name', 'create')
+                ->notEmpty('name');
 
         $validator
-            ->allowEmpty('link');
+                ->allowEmpty('link');
 
         $validator
-            ->allowEmpty('icon');
+                ->allowEmpty('icon');
 
         $validator
-            ->integer('file_count')
-            ->requirePresence('file_count', 'create')
-            ->notEmpty('file_count');
+                ->integer('file_count')
+                ->requirePresence('file_count', 'create')
+                ->notEmpty('file_count');
 
         $validator
-            ->integer('post_count')
-            ->requirePresence('post_count', 'create')
-            ->notEmpty('post_count');
+                ->integer('post_count')
+                ->requirePresence('post_count', 'create')
+                ->notEmpty('post_count');
 
         $validator
-            ->integer('project_count')
-            ->requirePresence('project_count', 'create')
-            ->notEmpty('project_count');
+                ->integer('project_count')
+                ->requirePresence('project_count', 'create')
+                ->notEmpty('project_count');
 
         $validator
-            ->integer('note_count')
-            ->requirePresence('note_count', 'create')
-            ->notEmpty('note_count');
+                ->integer('note_count')
+                ->requirePresence('note_count', 'create')
+                ->notEmpty('note_count');
 
         return $validator;
+    }
+
+    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        return $query->select(['id', 'name', 'icon', 'link']);
     }
 }

@@ -123,4 +123,59 @@ class NotesTable extends Table
 
         return $rules;
     }
+
+    /**
+     * Finds all data for a contained note (in a list of notes)
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options:
+     *   - sfw bool, default false. Limits the result to sfw notes
+     *   - withUsers bool, default true. Select the user
+     *   - withLanguages bool, dafault true. Select the language
+     *   - withLicenses bool, dafault true. Select the license
+     *   - withProjects bool, default false. Select the projects
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $options += [
+            'sfw' => false,
+            'withLanguages' => true,
+            'withLicenses' => true,
+            'withProjects' => true,
+            'withUsers' => true,
+        ];
+
+        $where = ['Notes.status' => STATUS_PUBLISHED];
+        if ($options['sfw'] === true) {
+            $where['Notes.sfw'] = true;
+        }
+
+        $query->select(['id', 'text', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'])
+                ->where($where);
+
+        if ($options['withLanguages']) {
+            $query->contain(['Languages' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withLicenses']) {
+            $query->contain(['Licenses' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withProjects']) {
+            $query->contain(['Projects' => function($q) {
+                    return $q->find('asContain', ['pivot' => 'ProjectsNotes.note_id']);
+                }]);
+        }
+        if ($options['withUsers']) {
+            $query->contain(['Users' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+
+        return $query;
+    }
 }

@@ -78,16 +78,16 @@ class UsersTable extends BaseTable
          * Only the fields that differs from the CakeDC/Users plugin are validated here.
          */
         $validator
-            ->allowEmpty('website');
+                ->allowEmpty('website');
 
         $validator
-            ->allowEmpty('bio');
+                ->allowEmpty('bio');
 
         $validator->allowEmpty('file_count')
-            ->allowEmpty('note_count')
-            ->allowEmpty('post_count')
-            ->allowEmpty('album_count')
-            ->allowEmpty('project_count');
+                ->allowEmpty('note_count')
+                ->allowEmpty('post_count')
+                ->allowEmpty('album_count')
+                ->allowEmpty('project_count');
 
         $validator->allowEmpty('preferences');
 
@@ -107,5 +107,25 @@ class UsersTable extends BaseTable
         $rules->add($rules->isUnique(['username']));
 
         return $rules;
+    }
+
+    /**
+     * Used to fetch minimal data about users on contained items
+     * (i.e: user of a file in an album)
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. Don't forget to add the 'pivot'
+     *        field name if necessary
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $fields = ['id', 'first_name', 'last_name', 'username'];
+        if (isset($options['pivot']) && !empty($options['pivot'])) {
+            $fields[] = $options['pivot'];
+        }
+
+        return $query->select($fields);
     }
 }

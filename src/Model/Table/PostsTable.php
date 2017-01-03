@@ -89,12 +89,12 @@ class PostsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->uuid('id')
-            ->allowEmpty('id', 'create');
+                ->uuid('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('title', 'create')
-            ->notEmpty('title');
+                ->requirePresence('title', 'create')
+                ->notEmpty('title');
 
         $validator
                 ->requirePresence('excerpt', 'create')
@@ -104,29 +104,29 @@ class PostsTable extends Table
                         'rule' => ['maxLength', 250],
                         'message' => 'Excerpts cannot be too long.'
                     ]
-                ]);
+        ]);
 
         $validator
                 ->allowEmpty('text');
 
         $validator
-            ->boolean('sfw')
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->boolean('sfw')
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+                ->integer('status')
+                ->requirePresence('status', 'create')
+                ->notEmpty('status');
 
         $validator
-            ->dateTime('publication_date')
-            ->allowEmpty('publication_date');
+                ->dateTime('publication_date')
+                ->allowEmpty('publication_date');
 
         $validator
-            ->boolean('hide_from_acts')
-            ->requirePresence('hide_from_acts', 'create')
-            ->notEmpty('hide_from_acts');
+                ->boolean('hide_from_acts')
+                ->requirePresence('hide_from_acts', 'create')
+                ->notEmpty('hide_from_acts');
 
         return $validator;
     }
@@ -145,5 +145,47 @@ class PostsTable extends Table
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
 
         return $rules;
+    }
+
+    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $options += [
+            'sfw' => false,
+            'withUsers' => true,
+            'withLicenses' => true,
+            'withLanguages' => true,
+            'withProjects' => true,
+        ];
+
+        $where = ['Posts.status' => STATUS_PUBLISHED];
+        if ($options['sfw'] === true) {
+            $where['Posts.sfw'] = true;
+        }
+
+        $query->select(['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'created', 'license_id', 'language_id'])
+                ->where($where);
+
+        if ($options['withLicenses']) {
+            $query->contain(['Licenses' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withLanguages']) {
+            $query->contain(['Languages' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withUsers']) {
+            $query->contain(['Users' => function ($q) {
+                    return $q->find('asContain');
+                }]);
+        }
+        if ($options['withProjects']) {
+            $query->contain(['Projects' => function($q) {
+                    return $q->find('asContain', ['pivot' => 'ProjectsPosts.post_id']);
+                }]);
+        }
+
+        return $query;
     }
 }
