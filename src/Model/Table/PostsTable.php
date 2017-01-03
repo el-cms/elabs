@@ -151,6 +151,7 @@ class PostsTable extends Table
     {
         $options += [
             'sfw' => true,
+            'complete'=>false,
             'withUsers' => true,
             'withLicenses' => true,
             'withLanguages' => true,
@@ -161,9 +162,13 @@ class PostsTable extends Table
         if ($options['sfw'] === true) {
             $where['Posts.sfw'] = true;
         }
-        
+
         $query->select(['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'created', 'license_id', 'language_id'])
                 ->where($where);
+
+        if($options['complete']===true){
+            $query->select(['text']);
+        }
 
         if ($options['withLicenses']) {
             $query->contain(['Licenses' => function ($q) {
@@ -187,5 +192,13 @@ class PostsTable extends Table
         }
 
         return $query;
+    }
+
+    public function getWithContain($primaryKey, array $options = [])
+    {
+        $options+=['complete'=>true];
+        return $this->find('withContain', $options)
+                        ->where(['Posts.id' => $primaryKey])
+                        ->firstOrFail();
     }
 }
