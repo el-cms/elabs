@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\RulesChecker;
@@ -83,27 +84,27 @@ class NotesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->uuid('id')
-            ->allowEmpty('id', 'create');
+                ->uuid('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('text', 'create')
-            ->notEmpty('text');
+                ->requirePresence('text', 'create')
+                ->notEmpty('text');
 
         $validator
-            ->boolean('sfw')
-            ->requirePresence('sfw', 'create')
-            ->notEmpty('sfw');
+                ->boolean('sfw')
+                ->requirePresence('sfw', 'create')
+                ->notEmpty('sfw');
 
         $validator
-            ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+                ->integer('status')
+                ->requirePresence('status', 'create')
+                ->notEmpty('status');
 
         $validator
-            ->boolean('hide_from_acts')
-            ->requirePresence('hide_from_acts', 'create')
-            ->notEmpty('hide_from_acts');
+                ->boolean('hide_from_acts')
+                ->requirePresence('hide_from_acts', 'create')
+                ->notEmpty('hide_from_acts');
 
         return $validator;
     }
@@ -177,5 +178,12 @@ class NotesTable extends Table
         }
 
         return $query;
+    }
+
+    public function getWithContain($primaryKey, array $options = [])
+    {
+        return $this->find('withContain', $options)
+                        ->where(['Notes.id' => $primaryKey])
+                        ->firstOrFail();
     }
 }
