@@ -231,4 +231,11 @@ class FilesTable extends Table
 
         return $query->select($fields);
     }
+
+    public function getWithContain($primaryKey, array $options = [])
+    {
+        $query = $this->find('withContain', $options)
+                ->where(['Files.id' => $primaryKey]);
+        return $query->firstOrFail();
+    }
 }
