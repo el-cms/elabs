@@ -31,7 +31,19 @@ use Cake\I18n\I18n;
  */
 class AppController extends Controller
 {
+    /**
+     * User preference to display nsfw content
+     * @var bool
+     */
     public $seeNSFW = null;
+
+    /**
+     * Default options for pagination
+     * @var array
+     */
+    public $paginate = [
+        'order' => ['created' => 'desc'],
+    ];
 
     /**
      * Initialization hook method.
