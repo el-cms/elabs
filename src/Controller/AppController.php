@@ -31,6 +31,7 @@ use Cake\I18n\I18n;
  */
 class AppController extends Controller
 {
+    public $seeNSFW = null;
 
     /**
      * Initialization hook method.
@@ -60,9 +61,10 @@ class AppController extends Controller
         /*
          * Safe for work option
          */
-        if (is_null($this->request->session()->read('seeNSFW'))) {
+        if (is_null($this->seeNSFW)) {
             $this->_setSFWState('hide');
         }
+        $this->seeNSFW = $this->seeNSFW;
 
         /*
          * Site language option
@@ -88,7 +90,7 @@ class AppController extends Controller
         // "Public" AppController, so all actions allowed
         $this->Auth->allow();
         // Making the seeNSFW variable available in view
-        $this->set('seeNSFW', $this->request->session()->read('seeNSFW'));
+        $this->set('seeNSFW', $this->seeNSFW);
         // Making language list and current language variables available in views
         $lang = $this->request->session()->read('language');
         $this->set('availableLanguages', $this->request->session()->read('languages'));
