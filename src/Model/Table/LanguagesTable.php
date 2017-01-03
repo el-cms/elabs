@@ -122,27 +122,27 @@ class LanguagesTable extends Table
 
         if ($options['withAlbums'] === true) {
             $query->contain(['Albums' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
                 }]);
         }
         if ($options['withFiles'] === true) {
             $query->contain(['Files' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
                 }]);
         }
         if ($options['withNotes'] === true) {
             $query->contain(['Notes' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
                 }]);
         }
         if ($options['withPosts'] === true) {
             $query->contain(['Posts' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
                 }]);
         }
         if ($options['withProjects'] === true) {
             $query->contain(['Projects' => function($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages'=>false]);
                 }]);
         }
         return $query;
@@ -161,7 +161,7 @@ class LanguagesTable extends Table
 
         $query = $this->find('withContain', $options)
                 ->where(['Languages.id' => $primaryKey]);
-        
+
         return $query->firstOrFail();
     }
 }
