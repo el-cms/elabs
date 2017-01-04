@@ -177,8 +177,9 @@ class FilesTable extends Table
             'withUsers' => true,
         ];
 
-        $where=[];
+        $where = [];
 
+        // Conditions
         if ($options['allStatuses'] === false) {
             $where = ['Files.status' => STATUS_PUBLISHED];
         }
@@ -186,9 +187,11 @@ class FilesTable extends Table
             $where['Files.sfw'] = true;
         }
 
+        // Fields
         $query->select(['id', 'name', 'description', 'filename', 'weight', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'language_id'])
                 ->where($where);
 
+        // Relations
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'AlbumsFiles.album_id']);
@@ -215,21 +218,8 @@ class FilesTable extends Table
                 }]);
         }
 
+        // Returns the query
         return $query;
-    }
-
-    /**
-     * Runs findWithContain with all statuses and nsfw entries
-     *
-     * @param \Cake\ORM\Query $query The query
-     * @param array $options An array of options. See findWithContain()
-     * @return \Cake\ORM\Query
-     */
-    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
-    {
-        $options['sfw'] = false;
-        $options['allStatuses'] = true;
-        return $this->findWithContain($query, $options);
     }
 
     /**
@@ -250,7 +240,7 @@ class FilesTable extends Table
             $fields[] = $options['pivot'];
         }
 
-        return $query;
+        return $query->select($fields);
     }
 
     /**
@@ -271,6 +261,28 @@ class FilesTable extends Table
                         ->firstOrFail();
     }
 
+    /**
+     * Runs findWithContain with all statuses and nsfw entries
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     * @return \Cake\ORM\Query
+     */
+    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Force options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->findWithContain($query, $options);
+    }
+
+    /**
+     * Runs getWithContain with all statuses and nsfw entries
+     * @param type $primaryKey
+     * @param array $options
+     * @return type
+     */
     public function getAdminWithContain($primaryKey, array $options = [])
     {
         //Override passed options

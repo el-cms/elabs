@@ -124,6 +124,7 @@ class AlbumsTable extends Table
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
+     *   - allStatuses bool, default true. Overrides status limitation
      *   - sfw bool, default false. Limits the result to sfw items
      *   - withFiles bool, default true. Select the files
      *   - withLanguages bool, default true. Select the language
@@ -136,43 +137,50 @@ class AlbumsTable extends Table
     {
         $options += [
             'sfw' => true,
+            'allStatuses' => false,
             'withFiles' => true,
             'withLanguages' => true,
             'withProjects' => true,
             'withUsers' => true,
         ];
 
-        $where = ['Albums.status' => STATUS_PUBLISHED];
+        $where = [];
 
+        // Conditions
+        if ($options['allStatuses'] === false) {
+            $where = ['Albums.status' => STATUS_PUBLISHED];
+        }
         if ($options['sfw'] === true) {
             $where['Albums.sfw'] = true;
         }
-        $query->select(['id', 'name', 'description', 'created', 'modified', 'sfw', 'user_id', 'language_id', ])
+
+        // Fields
+        $query->select(['id', 'name', 'description', 'status', 'created', 'modified', 'sfw', 'user_id', 'language_id',])
                 ->where($where);
 
+        // Relations
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'AlbumsFiles.file_id']);
-            }]);
+                }]);
         }
         if ($options['withLanguages']) {
             $query->contain(['Languages' => function ($q) {
                     return $q->find('asContain');
-            }]);
+                }]);
         }
-
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsAlbums.album_id']);
-            }]);
+                }]);
         }
-
         if ($options['withUsers']) {
             $query->contain(['Users' => function ($q) {
                     return $q->find('asContain');
-            }]);
+                }]);
         }
 
+        // Returns the query
         return $query;
     }
 
@@ -187,7 +195,7 @@ class AlbumsTable extends Table
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
-        $options += ['pivot' => null, ];
+        $options += ['pivot' => null,];
 
         $fields = ['id', 'name', 'created', 'modified', 'sfw', 'user_id', 'language_id'];
         if (!is_null($options['pivot'])) {
@@ -213,5 +221,36 @@ class AlbumsTable extends Table
         return $this->find('withContain', $options)
                         ->where(['Albums.id' => $primaryKey])
                         ->firstOrFail();
+    }
+
+    /**
+     * Runs findWithContain with all statuses and nsfw entries
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     * @return \Cake\ORM\Query
+     */
+    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Force options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->findWithContain($query, $options);
+    }
+
+    /**
+     * Runs getWithContain with all statuses and nsfw entries
+     * @param type $primaryKey
+     * @param array $options
+     * @return type
+     */
+    public function getAdminWithContain($primaryKey, array $options = [])
+    {
+        //Override passed options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->getWithContain($primaryKey, $options);
     }
 }
