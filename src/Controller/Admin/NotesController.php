@@ -17,16 +17,8 @@ class NotesController extends AdminAppController
      */
     public function index()
     {
-        $this->paginate = [
-            'fields' => ['id', 'text', 'sfw', 'status', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ],
-            'order' => ['created' => 'desc']
-        ];
-        $this->set('notes', $this->paginate($this->Notes));
+
+        $this->set('notes', $this->paginate($this->Notes->find('adminWithContain')));
         $this->set('_serialize', ['notes']);
     }
 
@@ -39,14 +31,7 @@ class NotesController extends AdminAppController
      */
     public function view($id = null)
     {
-        $note = $this->Notes->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                //, 'Tags', 'Projects']
-            ]
-        ]);
+        $note = $this->Notes->getAdminWithContain($id);
 
         $this->set('note', $note);
         $this->set('_serialize', ['note']);

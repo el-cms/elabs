@@ -130,6 +130,7 @@ class NotesTable extends Table
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
+     *   - allStatuses bool, default true. Overrides status limitation
      *   - sfw bool, default false. Limits the result to sfw items
      *   - withLanguages bool, dafault true. Select the language
      *   - withLicenses bool, dafault true. Select the license
@@ -141,6 +142,7 @@ class NotesTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
+            'allStatuses' => false,
             'sfw' => false,
             'withLanguages' => true,
             'withLicenses' => true,
@@ -148,14 +150,21 @@ class NotesTable extends Table
             'withUsers' => true,
         ];
 
-        $where = ['Notes.status' => STATUS_PUBLISHED];
+        $where = [];
+
+        // Conditions
+        if ($options['allStatuses'] === false) {
+            $where = ['Notes.status' => STATUS_PUBLISHED];
+        }
         if ($options['sfw'] === true) {
             $where['Notes.sfw'] = true;
         }
 
-        $query->select(['id', 'text', 'created', 'modified', 'sfw', 'user_id', 'license_id', 'language_id'])
+        // Fields
+        $query->select(['id', 'text', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'language_id'])
                 ->where($where);
 
+        // Relations
         if ($options['withLanguages']) {
             $query->contain(['Languages' => function ($q) {
                     return $q->find('asContain');
@@ -177,6 +186,7 @@ class NotesTable extends Table
             }]);
         }
 
+        // Returns the query
         return $query;
     }
 
@@ -196,5 +206,36 @@ class NotesTable extends Table
         return $this->find('withContain', $options)
                         ->where(['Notes.id' => $primaryKey])
                         ->firstOrFail();
+    }
+
+    /**
+     * Runs findWithContain with all statuses and nsfw entries
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     * @return \Cake\ORM\Query
+     */
+    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Force options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->findWithContain($query, $options);
+    }
+
+    /**
+     * Runs getWithContain with all statuses and nsfw entries
+     * @param type $primaryKey
+     * @param array $options
+     * @return type
+     */
+    public function getAdminWithContain($primaryKey, array $options = [])
+    {
+        //Override passed options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->getWithContain($primaryKey, $options);
     }
 }
