@@ -48,7 +48,6 @@ class ProjectsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-
         $this->addBehavior('CounterCache', [
             'Users' => ['project_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
             'Licenses' => ['project_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
@@ -162,6 +161,7 @@ class ProjectsTable extends Table
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
+     *   - allStatuses bool, default true. Overrides status limitation
      *   - complete bool, default false. Select all the fields
      *   - sfw bool, default false. Limits the result to sfw items
      *   - withAlbums bool, default true. Select the albums
@@ -177,6 +177,7 @@ class ProjectsTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
+            'allStatuses' => false,
             'complete' => false,
             'sfw' => true,
             'withAlbums' => true,
@@ -190,18 +191,24 @@ class ProjectsTable extends Table
 
         $sfw = $options['sfw'];
 
-        $where = ['Projects.status' => STATUS_PUBLISHED];
+        $where = [];
 
+        // Conditions
+        if ($options['allStatuses'] === false) {
+            $where = ['Projects.status' => STATUS_PUBLISHED];
+        }
         if ($options['sfw'] === true) {
             $where['Projects.sfw'] = true;
         }
-        $query->select(['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id', 'license_id', 'language_id'])
-                ->where($where);
 
+        // fields;
+        $query->select(['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id', 'language_id'])
+                ->where($where);
         if ($options['complete'] === true) {
             $query->select(['description', 'album_count', 'file_count', 'note_count', 'post_count']);
         }
 
+        // Relations
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw]);
@@ -238,16 +245,16 @@ class ProjectsTable extends Table
             }]);
         }
 
+        // Returns the query
         return $query;
     }
 
     /**
-     * Used to fetch minimal data about projects on contained items
-     * (i.e: projects of the albums of an user)
+     * Used to fetch minimal data about projects
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options. Don't forget to add the 'pivot'
-     *        field name
+     *        field name if necessary
      *
      * @return \Cake\ORM\Query
      */
@@ -283,5 +290,36 @@ class ProjectsTable extends Table
         return $this->find('withContain', $options)
                         ->where(['Projects.id' => $primaryKey])
                         ->firstOrFail();
+    }
+
+    /**
+     * Runs findWithContain with all statuses and nsfw entries
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     * @return \Cake\ORM\Query
+     */
+    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Force options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->findWithContain($query, $options);
+    }
+
+    /**
+     * Runs getWithContain with all statuses and nsfw entries
+     * @param type $primaryKey
+     * @param array $options
+     * @return type
+     */
+    public function getAdminWithContain($primaryKey, array $options = [])
+    {
+        //Override passed options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->getWithContain($primaryKey, $options);
     }
 }
