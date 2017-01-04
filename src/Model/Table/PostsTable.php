@@ -45,7 +45,6 @@ class PostsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-
         $this->addBehavior('CounterCache', [
             'Users' => ['post_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
             'Licenses' => ['post_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
@@ -152,6 +151,7 @@ class PostsTable extends Table
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
+     *   - allStatuses bool, default true. Overrides status limitation
      *   - sfw bool, default false. Limits the result to sfw items
      *   - complete bool, default false. Select all the fields
      *   - withLicenses bool, default true. Select the license
@@ -164,6 +164,7 @@ class PostsTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
+            'allStatuses' => false,
             'sfw' => true,
             'complete' => false,
             'withLicenses' => true,
@@ -172,18 +173,24 @@ class PostsTable extends Table
             'withUsers' => true,
         ];
 
-        $where = ['Posts.status' => STATUS_PUBLISHED];
+        $where = [];
+
+        // Conditions
+        if ($options['allStatuses'] === false) {
+            $where = ['Posts.status' => STATUS_PUBLISHED];
+        }
         if ($options['sfw'] === true) {
             $where['Posts.sfw'] = true;
         }
 
-        $query->select(['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id', 'created', 'license_id', 'language_id'])
+        // Fields
+        $query->select(['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'status', 'user_id', 'created', 'license_id', 'language_id'])
                 ->where($where);
-
         if ($options['complete'] === true) {
             $query->select(['text']);
         }
 
+        // Relations
         if ($options['withLicenses']) {
             $query->contain(['Licenses' => function ($q) {
                     return $q->find('asContain');
@@ -194,17 +201,18 @@ class PostsTable extends Table
                     return $q->find('asContain');
             }]);
         }
-        if ($options['withUsers']) {
-            $query->contain(['Users' => function ($q) {
-                    return $q->find('asContain');
-            }]);
-        }
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsPosts.post_id']);
             }]);
         }
+        if ($options['withUsers']) {
+            $query->contain(['Users' => function ($q) {
+                    return $q->find('asContain');
+            }]);
+        }
 
+        // Return the query
         return $query;
     }
 
@@ -228,5 +236,36 @@ class PostsTable extends Table
         return $this->find('withContain', $options)
                         ->where(['Posts.id' => $primaryKey])
                         ->firstOrFail();
+    }
+
+    /**
+     * Runs findWithContain with all statuses and nsfw entries
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     * @return \Cake\ORM\Query
+     */
+    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Force options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->findWithContain($query, $options);
+    }
+
+    /**
+     * Runs getWithContain with all statuses and nsfw entries
+     * @param type $primaryKey
+     * @param array $options
+     * @return type
+     */
+    public function getAdminWithContain($primaryKey, array $options = [])
+    {
+        //Override passed options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->getWithContain($primaryKey, $options);
     }
 }
