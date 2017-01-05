@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7eef368e8a0928a902309eba968f796b",
+    "content-hash": "dbf637a5e083755c8d27aeb9b2702b05",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -193,16 +193,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.3.10",
+            "version": "3.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "135dd3b7e2dcd09a887f472ceb6bdee3fa39ada6"
+                "reference": "e5e3dfbc48e3db858fa2adb4dcd7957a688bc61d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/135dd3b7e2dcd09a887f472ceb6bdee3fa39ada6",
-                "reference": "135dd3b7e2dcd09a887f472ceb6bdee3fa39ada6",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/e5e3dfbc48e3db858fa2adb4dcd7957a688bc61d",
+                "reference": "e5e3dfbc48e3db858fa2adb4dcd7957a688bc61d",
                 "shasum": ""
             },
             "require": {
@@ -222,6 +222,7 @@
                 "cakephp/datasource": "self.version",
                 "cakephp/event": "self.version",
                 "cakephp/filesystem": "self.version",
+                "cakephp/form": "self.version",
                 "cakephp/i18n": "self.version",
                 "cakephp/log": "self.version",
                 "cakephp/orm": "self.version",
@@ -262,7 +263,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-12-12T03:46:25+00:00"
+            "time": "2016-12-27T21:17:03+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -321,22 +322,22 @@
         },
         {
             "name": "cakephp/migrations",
-            "version": "1.6.4",
+            "version": "1.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/migrations.git",
-                "reference": "a7d36f1e3897f05a4d70eef82ce188d74befa8cc"
+                "reference": "bed3b4d4957a04b355f85a49cf80440092a6c23f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/migrations/zipball/a7d36f1e3897f05a4d70eef82ce188d74befa8cc",
-                "reference": "a7d36f1e3897f05a4d70eef82ce188d74befa8cc",
+                "url": "https://api.github.com/repos/cakephp/migrations/zipball/bed3b4d4957a04b355f85a49cf80440092a6c23f",
+                "reference": "bed3b4d4957a04b355f85a49cf80440092a6c23f",
                 "shasum": ""
             },
             "require": {
                 "cakephp/cakephp": "~3.1",
                 "php": ">=5.4",
-                "robmorgan/phinx": "0.5.3"
+                "robmorgan/phinx": "0.6.5"
             },
             "require-dev": {
                 "cakephp/bake": "@stable",
@@ -367,7 +368,7 @@
                 "cakephp",
                 "migrations"
             ],
-            "time": "2016-11-14T21:54:46+00:00"
+            "time": "2017-01-01T17:29:48+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -471,16 +472,16 @@
         },
         {
             "name": "friendsofcake/bootstrap-ui",
-            "version": "v0.5.1",
+            "version": "v0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfCake/bootstrap-ui.git",
-                "reference": "8da53d632361c5cfe39dc51e0418614be627f16d"
+                "reference": "aebc4794d63c4e2b2956de7d500746099776fbf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfCake/bootstrap-ui/zipball/8da53d632361c5cfe39dc51e0418614be627f16d",
-                "reference": "8da53d632361c5cfe39dc51e0418614be627f16d",
+                "url": "https://api.github.com/repos/FriendsOfCake/bootstrap-ui/zipball/aebc4794d63c4e2b2956de7d500746099776fbf4",
+                "reference": "aebc4794d63c4e2b2956de7d500746099776fbf4",
                 "shasum": ""
             },
             "require": {
@@ -518,53 +519,23 @@
                 "cakephp",
                 "twitter"
             ],
-            "time": "2016-09-23T06:49:59+00:00"
+            "time": "2017-01-02T09:41:34+00:00"
         },
         {
             "name": "lowg33kdev/cakephp-gravatar-plugin",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LowG33kDev/cakephp-gravatar-plugin.git",
-                "reference": "f40a24f7175548ce23956830cfc309fc43daf5f6"
-            },
+            "version": "1.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LowG33kDev/cakephp-gravatar-plugin/zipball/f40a24f7175548ce23956830cfc309fc43daf5f6",
-                "reference": "f40a24f7175548ce23956830cfc309fc43daf5f6",
-                "shasum": ""
+                "url": "https://github.com/el-cms/cakephp-gravatar-plugin/archive/Cake-3.X.zip",
+                "reference": null,
+                "shasum": null
             },
-            "require": {
-                "cakephp/cakephp": "~3.0"
-            },
-            "require-dev": {
-                "cakephp/cakephp-codesniffer": "dev-master",
-                "phpunit/phpunit": "4.1.*"
-            },
-            "type": "cakephp-plugin",
+            "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Gravatar\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Loïc Marchand",
-                    "homepage": "https://github.com/LowG33kDev",
-                    "role": "Author"
-                }
-            ],
-            "description": "CakePHP Gravatar plugin",
-            "homepage": "https://github.com/LowG33kDev/cakephp-gravatar-plugin",
-            "keywords": [
-                "cakephp",
-                "gravatar"
-            ],
-            "time": "2015-03-26T23:20:57+00:00"
+                "classmap": [
+                    "src/"
+                ]
+            }
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -719,16 +690,16 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "v0.5.3",
+            "version": "v0.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robmorgan/phinx.git",
-                "reference": "4e7fee7792f4bf3dbf55ee29001850ba26c86a88"
+                "reference": "6943cb4bb78bf9d3964967a032220b7c793b97b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/4e7fee7792f4bf3dbf55ee29001850ba26c86a88",
-                "reference": "4e7fee7792f4bf3dbf55ee29001850ba26c86a88",
+                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/6943cb4bb78bf9d3964967a032220b7c793b97b7",
+                "reference": "6943cb4bb78bf9d3964967a032220b7c793b97b7",
                 "shasum": ""
             },
             "require": {
@@ -738,7 +709,7 @@
                 "symfony/yaml": "~2.8|~3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^3.7|^4.0|^5.0"
+                "phpunit/phpunit": "^4.8.26|^5.0"
             },
             "bin": [
                 "bin/phinx"
@@ -755,15 +726,20 @@
             ],
             "authors": [
                 {
-                    "name": "Rob Morgan",
-                    "email": "robbym@gmail.com",
-                    "homepage": "http://robmorgan.id.au",
-                    "role": "Lead Developer"
-                },
-                {
                     "name": "Woody Gilk",
                     "email": "woody.gilk@gmail.com",
                     "homepage": "http://shadowhand.me",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Rob Morgan",
+                    "email": "robbym@gmail.com",
+                    "homepage": "https://robmorgan.id.au",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
                     "role": "Developer"
                 }
             ],
@@ -776,7 +752,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2016-03-07T14:09:22+00:00"
+            "time": "2016-10-27T10:16:12+00:00"
         },
         {
             "name": "symfony/config",
@@ -1214,16 +1190,16 @@
     "packages-dev": [
         {
             "name": "cakephp/bake",
-            "version": "1.2.9",
+            "version": "1.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/bake.git",
-                "reference": "e0bf5c06712e21b20e9503e3d04b1cb8011499e6"
+                "reference": "5a76999b2379895a1581912500673da9c112429f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/e0bf5c06712e21b20e9503e3d04b1cb8011499e6",
-                "reference": "e0bf5c06712e21b20e9503e3d04b1cb8011499e6",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/5a76999b2379895a1581912500673da9c112429f",
+                "reference": "5a76999b2379895a1581912500673da9c112429f",
                 "shasum": ""
             },
             "require": {
@@ -1257,7 +1233,7 @@
                 "bake",
                 "cakephp"
             ],
-            "time": "2016-12-20T01:46:26+00:00"
+            "time": "2016-12-26T04:29:56+00:00"
         },
         {
             "name": "cakephp/cakephp-codesniffer",
@@ -2128,16 +2104,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.4",
+            "version": "5.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "af91da3f2671006ff5d0628023de3b7ac4d1ef09"
+                "reference": "50fd2be8f3e23e91da825f36f08e5f9633076ffe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/af91da3f2671006ff5d0628023de3b7ac4d1ef09",
-                "reference": "af91da3f2671006ff5d0628023de3b7ac4d1ef09",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/50fd2be8f3e23e91da825f36f08e5f9633076ffe",
+                "reference": "50fd2be8f3e23e91da825f36f08e5f9633076ffe",
                 "shasum": ""
             },
             "require": {
@@ -2206,7 +2182,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-13T16:19:44+00:00"
+            "time": "2016-12-28T07:18:51+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

@@ -12,8 +12,8 @@
         "mobiledetect/mobiledetectlib": "2.*",
         "php": ">=7.0",
         "tanuck/cakephp-markdown": "dev-master",
-        "lowg33kdev/cakephp-gravatar-plugin": "1.1.0",
-        "cakedc/users": "^3.2"
+        "cakedc/users": "^3.2",
+        "lowg33kdev/cakephp-gravatar-plugin": "^1.1"
     },
     "require-dev": {
         "psy/psysh": "@stable",
@@ -38,8 +38,31 @@
     },
     "scripts": {
         "post-install-cmd": "App\\Console\\Installer::postInstall",
-        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
+        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",
+        "check": [
+            "@phpunit",
+            "@phpcs"
+        ],
+        "phpunit": "phpunit",
+        "phpcs": "vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot",
+        "phpcbf": "vendor/bin/phpcbf --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "lowg33kdev/cakephp-gravatar-plugin",
+                "version": "1.1.1",
+                "dist": {
+                    "url": "https://github.com/el-cms/cakephp-gravatar-plugin/archive/Cake-3.X.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+					"classmap": ["src/"]
+				}
+            }
+        }
+    ]
 }
