@@ -157,17 +157,18 @@ class ProjectsTable extends Table
     }
 
     /**
-     * Finds all data for a contained album (in a list of albums)
+     * Finds all data for a project. By default, relation as posts, albums,... are
+     * not included in the result.
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
      *   - complete bool, default false. Select all the fields
      *   - sfw bool, default false. Limits the result to sfw items
-     *   - withAlbums bool, default true. Select the albums
-     *   - withFiles bool, default true. Select the files
+     *   - withAlbums bool, default false. Select the albums
+     *   - withFiles bool, default false. Select the files
      *   - withLanguages bool, default true. Select the language
-     *   - withLicenses bool, default false. Select the licesense
+     *   - withLicenses bool, default true. Select the licenses
      *   - withNotes bool, default false. Select the notess
      *   - withPosts bool, default false. Select the posts
      *   - withUsers bool, default true. Select the user
@@ -180,12 +181,12 @@ class ProjectsTable extends Table
             'allStatuses' => false,
             'complete' => false,
             'sfw' => true,
-            'withAlbums' => true,
-            'withFiles' => true,
+            'withAlbums' => false,
+            'withFiles' => false,
             'withLanguages' => true,
             'withLicenses' => true,
-            'withNotes' => true,
-            'withPosts' => true,
+            'withNotes' => false,
+            'withPosts' => false,
             'withUsers' => true,
         ];
 

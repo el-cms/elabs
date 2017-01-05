@@ -35,7 +35,7 @@ class AlbumsController extends AdminAppController
     {
         $album = $this->Albums->getAdminWithContain($id);
 
-        $this->set('album', $album);
+        $this->set(compact('album'));
         $this->set('_serialize', ['album']);
     }
 

@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Languages
  * @property \Cake\ORM\Association\BelongsToMany $Files
  * @property \Cake\ORM\Association\BelongsToMany $Projects
+ * @property \Cake\ORM\Association\HasMany $Acts
  *
  * @method \App\Model\Entity\Album get($primaryKey, $options = [])
  * @method \App\Model\Entity\Album newEntity($data = null, array $options = [])
@@ -23,6 +24,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Album findOrCreate($search, callable $callback = null)
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \Cake\ORM\Behavior\CounterCacheBehavior
  */
 class AlbumsTable extends Table
 {
@@ -42,7 +44,6 @@ class AlbumsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
-
         $this->addBehavior('CounterCache', [
             'Users' => ['album_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
             'Languages' => ['album_count' => ['conditions' => ['status' => STATUS_PUBLISHED]]],
@@ -136,8 +137,8 @@ class AlbumsTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
-            'sfw' => true,
             'allStatuses' => false,
+            'sfw' => true,
             'withFiles' => true,
             'withLanguages' => true,
             'withProjects' => true,
@@ -197,7 +198,7 @@ class AlbumsTable extends Table
     {
         $options += ['pivot' => null,];
 
-        $fields = ['id', 'name', 'created', 'modified', 'sfw', 'user_id', 'language_id'];
+        $fields = ['id', 'name'];//, 'created', 'modified', 'sfw', 'user_id', 'language_id'];
         if (!is_null($options['pivot'])) {
             $fields[] = $options['pivot'];
         }

@@ -158,7 +158,7 @@ class UsersTable extends BaseTable
         }
 
         // fields;
-        $query->select(['id', 'username', 'first_name', 'last_name', 'email', 'website', 'created', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count'])
+        $query->select(['id', 'username', 'first_name', 'last_name', 'email', 'website', 'created', 'active', 'role', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count'])
                 ->where($where);
         if ($options['complete'] === true) {
             $query->select(['bio']);
@@ -238,5 +238,36 @@ class UsersTable extends BaseTable
         return $this->find('withContain', $options)
                         ->where(['Users.id' => $primaryKey])
                         ->firstOrFail();
+    }
+
+    /**
+     * Runs findWithContain with all statuses and nsfw entries
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     * @return \Cake\ORM\Query
+     */
+    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Force options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->findWithContain($query, $options);
+    }
+
+    /**
+     * Runs getWithContain with all statuses and nsfw entries
+     * @param type $primaryKey
+     * @param array $options
+     * @return type
+     */
+    public function getAdminWithContain($primaryKey, array $options = [])
+    {
+        //Override passed options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->getWithContain($primaryKey, $options);
     }
 }
