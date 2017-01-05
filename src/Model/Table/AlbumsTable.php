@@ -186,6 +186,29 @@ class AlbumsTable extends Table
     }
 
     /**
+     * Runs findWithContain with all statuses and nsfw entries, for content owned
+     * by an user. The uid option is required.
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     *   - uid string, default null
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findUsers(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Override options
+        $queryOptions = [
+            'sfw' => false,
+            'allStatuses' => true,
+                ] + $options + [
+            'uid' => null
+        ];
+
+        return $this->findWithContain($query, $queryOptions);
+    }
+
+    /**
      * Used to fetch minimal data about albums
      *
      * @param \Cake\ORM\Query $query The query
