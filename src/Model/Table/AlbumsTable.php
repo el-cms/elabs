@@ -156,7 +156,7 @@ class AlbumsTable extends Table
         if ($options['sfw'] === true) {
             $where['Albums.sfw'] = true;
         }
-        if(!is_null($options['uid'])){
+        if (!is_null($options['uid'])) {
             $where['Albums.user_id'] = $options['uid'];
         }
 
@@ -206,9 +206,9 @@ class AlbumsTable extends Table
         $queryOptions = [
             'sfw' => false,
             'allStatuses' => true,
-                ] + $options + [
-            'uid' => null
-        ];
+            ] + $options + [
+                'uid' => null
+                ];
 
         return $this->findWithContain($query, $queryOptions);
     }

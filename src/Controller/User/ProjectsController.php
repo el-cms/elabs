@@ -19,7 +19,7 @@ class ProjectsController extends UserAppController
      */
     public function index($nsfw = 'all', $status = 'all')
     {
-        $projects=$this->Projects->find('users', ['uid'=>$this->Auth->user('id')]);
+        $projects = $this->Projects->find('users', ['uid' => $this->Auth->user('id')]);
 
         $this->paginate = [
             'order' => ['created' => 'desc'],

@@ -22,7 +22,7 @@ class PostsController extends UserAppController
      */
     public function index($nsfw = 'all', $published = 'all')
     {
-        $posts=$this->Posts->find('users', ['uid'=>$this->Auth->user('id')]);
+        $posts = $this->Posts->find('users', ['uid' => $this->Auth->user('id')]);
 
         $this->paginate = [
             'order' => ['created' => 'desc'],

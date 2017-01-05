@@ -20,13 +20,13 @@ class NotesController extends UserAppController
      */
     public function index($nsfw = 'all', $status = 'all')
     {
-        $notes=$this->Notes->find('users', ['uid'=>$this->Auth->user('id')]);
+        $notes = $this->Notes->find('users', ['uid' => $this->Auth->user('id')]);
 
         $this->paginate = [
             'order' => ['created' => 'desc'],
             'sorWhiteList' => ['text', 'created', 'modified'],
         ];
-        
+
         if ($nsfw === 'safe') {
             $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {

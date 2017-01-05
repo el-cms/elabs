@@ -203,7 +203,7 @@ class ProjectsTable extends Table
         if ($options['sfw'] === true) {
             $where['Projects.sfw'] = true;
         }
-        if(!is_null($options['uid'])){
+        if (!is_null($options['uid'])) {
             $where['Projects.user_id'] = $options['uid'];
         }
 
@@ -271,9 +271,9 @@ class ProjectsTable extends Table
         $queryOptions = [
             'sfw' => false,
             'allStatuses' => true,
-                ] + $options + [
-            'uid' => null
-        ];
+            ] + $options + [
+                'uid' => null
+                ];
 
         return $this->findWithContain($query, $queryOptions);
     }

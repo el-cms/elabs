@@ -97,7 +97,7 @@ class FilesController extends UserAppController
                     'language_id' => $this->request->data['language_id'],
                     'projects' => $this->request->data['projects'],
                     'albums' => $this->request->data['albums'],
-                    'hide_from_acts'=>$this->request->data['hide_from_acts'],
+                    'hide_from_acts' => $this->request->data['hide_from_acts'],
                     'status' => STATUS_PUBLISHED
                 ];
 

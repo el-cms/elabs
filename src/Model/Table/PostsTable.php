@@ -184,7 +184,7 @@ class PostsTable extends Table
         if ($options['sfw'] === true) {
             $where['Posts.sfw'] = true;
         }
-        if(!is_null($options['uid'])){
+        if (!is_null($options['uid'])) {
             $where['Posts.user_id'] = $options['uid'];
         }
 
@@ -237,9 +237,9 @@ class PostsTable extends Table
         $queryOptions = [
             'sfw' => false,
             'allStatuses' => true,
-                ] + $options + [
-            'uid' => null
-        ];
+            ] + $options + [
+                'uid' => null
+                ];
 
         return $this->findWithContain($query, $queryOptions);
     }
