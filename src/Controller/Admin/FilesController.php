@@ -32,15 +32,9 @@ class FilesController extends AdminAppController
     public function index()
     {
         $this->paginate = [
-            'fields' => ['id', 'name', 'filename', 'weight', 'filename', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']]
-            ],
-            'order' => ['created' => 'desc']
+            'order' => ['created' => 'desc'],
         ];
-        $this->set('files', $this->paginate($this->Files));
+        $this->set('files', $this->paginate($this->Files->find('adminWithContain')));
         $this->set('_serialize', ['files']);
     }
 
@@ -55,13 +49,7 @@ class FilesController extends AdminAppController
      */
     public function view($id = null)
     {
-        $file = $this->Files->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ]
-        ]);
+        $file = $this->Files->getAdminWithContain($id);
         $this->set('file', $file);
         $this->set('_serialize', ['file']);
     }

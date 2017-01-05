@@ -153,6 +153,10 @@ $this->start('pageContent');
                     <dd id="uModProjectCount"></dd>
                     <dt><?php echo __d('elabs', 'Files') ?></dt>
                     <dd id="uModFileCount"></dd>
+                    <dt><?php echo __d('elabs', 'Notes') ?></dt>
+                    <dd id="uModNoteCount"></dd>
+                    <dt><?php echo __d('elabs', 'Albums') ?></dt>
+                    <dd id="uModAlbumCount"></dd>
                     <dt><?php echo __d('elabs', 'Bio') ?></dt>
                     <dd id="uModBio"></dd>
                 </dl>
@@ -225,7 +229,7 @@ $this->append('pageBottomScripts');
           statusLabel = '<?php echo $this->UsersAdmin->statusLabel(STATUS_ACTIVE) ?>';
           lnkIcon = '<?php echo $lockIcon ?>';
           lnkAction = 'lock(\'' + id + '\', \'lock\')';
-        } else if (response.user.active === <?php echo STATUS_LOCKED?>) {
+        } else if (response.user.active === <?php echo STATUS_LOCKED ?>) {
           lineColor = 'danger';
           statusLabel = '<?php echo $this->UsersAdmin->statusLabel(STATUS_LOCKED) ?>';
           lnkIcon = '<?php echo $unlockIcon ?>';
@@ -282,11 +286,15 @@ $this->append('pageBottomScripts');
         alert(<?php echo __d('elabs', '"Request failed: " + textStatus') ?>);
       });
       request.success(function (response) {
-        $('#uModTitle').html(response.user.real_name);
+          console.log(response.user);
+        $('#uModTitle').html(response.user.first_name + ' ' + response.user.last_name + ' (' + response.user.username + ')');
         $('#uModBio').html(response.user.bio);
+        $('#uModUpdated').html(response.user.modified);
         $('#uModArticleCount').html(response.user.post_count);
         $('#uModProjectCount').html((response.user.project_count));
         $('#uModFileCount').html(response.user.file_count);
+        $('#uModNoteCount').html(response.user.note_count);
+        $('#uModAlbumCount').html(response.user.album_count);
       });
     }
 </script>

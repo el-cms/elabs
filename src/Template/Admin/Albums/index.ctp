@@ -11,10 +11,10 @@
  */
 
 // Page title
-$this->assign('title', __d('elabs', 'List of files'));
+$this->assign('title', __d('elabs', 'List of albums'));
 
 // Breadcrumbs
-$this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
+$this->Html->addCrumb(__d('elabs', 'Albums'), ['action' => 'index']);
 $this->Html->addCrumb($this->fetch('title'));
 
 // Block: Page content

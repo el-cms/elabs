@@ -78,7 +78,7 @@ $this->start('pageContent');
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 thumbnail-col">
                 <div class="thumbnail thumbnail-square">
                     <?php
-                    if ($file->sfw):
+                    if ($file->sfw || $seeNSFW === true):
                         echo $this->element('files/card_minimal_' . $config['element'], ['data' => $file]);
                     else:
                         echo $this->element('layout/nsfw_block');

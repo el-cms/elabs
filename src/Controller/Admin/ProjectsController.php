@@ -31,16 +31,9 @@ class ProjectsController extends AdminAppController
      */
     public function index()
     {
-        $this->paginate = [
-            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ],
-            'order' => ['created' => 'desc']
-        ];
-        $this->set('projects', $this->paginate($this->Projects));
+        $projects = $this->paginate($this->Projects->find('adminWithContain'));
+
+        $this->set(compact('projects'));
         $this->set('_serialize', ['projects']);
     }
 
@@ -55,14 +48,9 @@ class ProjectsController extends AdminAppController
      */
     public function view($id = null)
     {
-        $project = $this->Projects->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ]
-        ]);
-        $this->set('project', $project);
+        $project = $this->Projects->getAdminWithContain($id);
+
+        $this->set(compact('project'));
         $this->set('_serialize', ['project']);
     }
 

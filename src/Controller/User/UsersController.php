@@ -54,7 +54,7 @@ class UsersController extends UserAppController
             foreach ($defaults as $k => $v) {
                 $userPrefs[$k] = $this->request->data['preferences'][$k];
             }
-            $user = $this->Users->patchEntity($user, ['preferences' => json_encode($userPrefs)]);
+            $user = $this->Users->patchEntity($user, ['preferences' => $userPrefs]);
             if ($this->Users->save($user)) {
                 $this->updateAuthUser($user);
                 $this->Flash->success(__d('elabs', 'Your preferences have been updated.'));
@@ -63,7 +63,7 @@ class UsersController extends UserAppController
                 $this->Flash->error(__d('elabs', 'An error occured. Please try again.'));
             }
         } else {
-            die('nope');
+            throw new \Cake\Network\Exception\MethodNotAllowedException(__d('elabs', 'Please use the form to update your preferences'));
         }
     }
 
@@ -149,7 +149,6 @@ class UsersController extends UserAppController
                 $user->active = STATUS_DELETED;
                 $this->Users->save($user);
                 $this->Flash->Success(__d('elabs', 'Your account has been closed. If you want to re-open it, contact the administrator.'));
-//                $this->Act->removeAll();
                 $this->redirect($this->Auth->logout());
             } else {
                 $this->Flash->error(__d('elabs', 'Sorry, you have entered the wrong password.'));

@@ -19,14 +19,8 @@ class AlbumsController extends UserAppController
      */
     public function index($nsfw = 'all')
     {
+        $albums = $this->Albums->find('users', ['uid' => $this->Auth->user('id')]);
         $this->paginate = [
-            'fields' => ['id', 'name', 'description', 'sfw', 'created', 'modified'],
-            'contain' => [
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Files' => ['fields' => ['id', 'name', 'AlbumsFiles.album_id']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsAlbums.album_id']],
-            ],
-            'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['name' => 'desc'],
             'sortWhitelist' => ['name', 'created', 'modified', 'sfw'],
         ];
@@ -39,7 +33,7 @@ class AlbumsController extends UserAppController
 
         $this->set('filterNSFW', $nsfw);
 
-        $this->set('albums', $this->paginate($this->Albums));
+        $this->set('albums', $this->paginate($albums));
         $this->set('_serialize', ['albums']);
     }
 
@@ -74,8 +68,8 @@ class AlbumsController extends UserAppController
             }
         }
         $languages = $this->Albums->Languages->find('list', ['limit' => 200]);
-        $files = $this->Albums->Files->find('list', ['limit' => 200, ['condition' => ['user_id' => $this->Auth->user('id')]]]);
-        $projects = $this->Albums->Projects->find('list', ['limit' => 200, ['condition' => ['user_id' => $this->Auth->user('id')]]]);
+        $files = $this->Albums->Files->find('list', ['limit' => 200, 'conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $projects = $this->Albums->Projects->find('list', ['limit' => 200, 'conditions' => ['Projects.user_id' => $this->Auth->user('id')]]);
         $this->set(compact('album', 'languages', 'files', 'projects'));
         $this->set('_serialize', ['album']);
     }
@@ -111,8 +105,8 @@ class AlbumsController extends UserAppController
             }
         }
         $languages = $this->Albums->Languages->find('list', ['limit' => 200]);
-        $files = $this->Albums->Files->find('list', ['limit' => 200, ['condition' => ['user_id' => $this->Auth->user('id')]]]);
-        $projects = $this->Albums->Projects->find('list', ['limit' => 200, ['condition' => ['user_id' => $this->Auth->user('id')]]]);
+        $files = $this->Albums->Files->find('list', ['limit' => 200, 'conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $projects = $this->Albums->Projects->find('list', ['limit' => 200, 'conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('album', 'languages', 'files', 'projects'));
         $this->set('_serialize', ['album']);
     }

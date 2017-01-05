@@ -25,23 +25,12 @@ class PostsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $query = $this->Posts->find();
-        $query->select(['id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id', 'language_id'])
-                ->where(['Posts.status' => STATUS_PUBLISHED])
-                ->contain([
-                    'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
-                    'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-                ])
-                ->order(['publication_date' => 'desc']);
+        $this->paginate = [
+            'order' => ['publication_date' => 'desc']
+        ];
+        $query = $this->Posts->find('withContain', ['sfw' => !$this->seeNSFW]);
 
-        // Sfw condition
-        if (!$this->request->session()->read('seeNSFW')) {
-            $query->where(['Posts.sfw' => true]);
-        }
-
-        // Other conditions:
+        // Filters:
         if (!is_null($filter)) {
             switch ($filter) {
                 case 'language':
@@ -63,7 +52,7 @@ class PostsController extends AppController
             }
             // Get additionnal infos infos
             $modelName = Inflector::camelize(Inflector::pluralize($filter));
-            $FilterModel = TableRegistry::get($modelName);
+            $FilterModel = TableRegistry::getSimple($modelName);
             $filterData = $FilterModel->get($id);
 
             $this->set('filterData', $filterData);
@@ -83,18 +72,10 @@ class PostsController extends AppController
      */
     public function view($id = null)
     {
-        $post = $this->Posts->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-            ],
-            'conditions' => ['Posts.status' => STATUS_PUBLISHED],
-        ]);
+        $post = $this->Posts->getWithContain($id, ['sfw' => !$this->seeNSFW]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors
-        if (!$post->sfw && !$this->request->session()->read('seeNSFW')) {
+        if (!$post->sfw && !$this->seeNSFW) {
             $this->set('title', $post->title);
             // And make a proper common error page
             $this->viewBuilder()->template('nsfw');

@@ -68,22 +68,65 @@ class ActsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('model', 'create')
-            ->notEmpty('model');
+                ->requirePresence('model', 'create')
+                ->notEmpty('model');
 
         $validator
-            ->uuid('fkid')
-            ->requirePresence('fkid', 'create')
-            ->notEmpty('fkid');
+                ->uuid('fkid')
+                ->requirePresence('fkid', 'create')
+                ->notEmpty('fkid');
 
         $validator
-            ->requirePresence('type', 'create')
-            ->notEmpty('type');
+                ->requirePresence('type', 'create')
+                ->notEmpty('type');
 
         return $validator;
+    }
+
+    /**
+     * Select All acts with their respective relations
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options :
+     *   - sfw bool, default false. Limit to safe only items
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findDefault(\Cake\ORM\Query $query, array $options)
+    {
+        $options += [
+            'sfw' => false,
+        ];
+
+        return $query->contain([
+                    'Albums' => function (\Cake\ORM\Query $q) use ($options) {
+                        return $q->find('withContain', ['sfw' => $options['sfw']]);
+                    },
+                    'Files' => function (\Cake\ORM\Query $q) use ($options) {
+                        return $q->find('withContain', ['sfw' => $options['sfw']]);
+                    },
+                    'Notes' => function (\Cake\ORM\Query $q) use ($options) {
+                        return $q->find('withContain', ['sfw' => $options['sfw']]);
+                    },
+                    'Posts' => function (\Cake\ORM\Query $q) use ($options) {
+                        return $q->find('withContain', ['sfw' => $options['sfw']]);
+                    },
+                    'Projects' => function (\Cake\ORM\Query $q) use ($options) {
+                        return $q->find('withContain', [
+                                    'sfw' => $options['sfw'],
+                                    'withAlbums' => false,
+                                    'withFiles' => false,
+                                    'withLanguages' => true,
+                                    'withLicenses' => true,
+                                    'withNotes' => false,
+                                    'withPosts' => false,
+                                    'withUsers' => true,
+                        ]);
+                    },
+        ]);
     }
 }

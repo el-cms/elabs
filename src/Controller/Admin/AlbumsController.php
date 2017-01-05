@@ -17,10 +17,7 @@ class AlbumsController extends AdminAppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Languages']
-        ];
-        $albums = $this->paginate($this->Albums);
+        $albums = $this->paginate($this->Albums->find('adminWithContain'));
 
         $this->set(compact('albums'));
         $this->set('_serialize', ['albums']);
@@ -35,11 +32,9 @@ class AlbumsController extends AdminAppController
      */
     public function view($id = null)
     {
-        $album = $this->Albums->get($id, [
-            'contain' => ['Users', 'Languages', 'Files', 'Projects']
-        ]);
+        $album = $this->Albums->getAdminWithContain($id);
 
-        $this->set('album', $album);
+        $this->set(compact('album'));
         $this->set('_serialize', ['album']);
     }
 

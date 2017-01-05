@@ -26,24 +26,10 @@ class FilesController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $query = $this->Files->find();
-        $query->select(['id', 'name', 'filename', 'weight', 'description', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'mime'])
-                ->where(['Files.status' => STATUS_PUBLISHED])
-                ->contain([
-                    'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
-                    'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                    'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
-                    'Albums' => ['fields' => ['id', 'name', 'AlbumsFiles.file_id']],
-                ])
-                ->order(['Files.created' => 'desc']);
+        $query = $this->Files->find('withContain', ['sfw' => !$this->seeNSFW]);
+        $query->order(['Files.created' => 'desc']);
 
-        // Sfw condition
-        if (!$this->request->session()->read('seeNSFW')) {
-            $query->where(['Files.sfw' => true]);
-        }
-
-        // Other conditions:
+        // Filters:
         if (!is_null($filter)) {
             switch ($filter) {
                 case 'language':
@@ -66,7 +52,7 @@ class FilesController extends AppController
             // Get additionnal infos infos
             $modelName = Inflector::camelize(Inflector::pluralize($filter));
             $FilterModel = TableRegistry::get($modelName);
-            $filterData = $FilterModel->get($id);
+            $filterData = $FilterModel->getSimple($id);
 
             $this->set('filterData', $filterData);
         }
@@ -85,19 +71,10 @@ class FilesController extends AppController
      */
     public function view($id = null)
     {
-        $file = $this->Files->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'first_name', 'last_name']],
-                'Licenses',
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
-                'Albums' => ['fields' => ['id', 'name', 'AlbumsFiles.file_id']],
-            ]
-        ]);
-        // It will be great when i'll find a way to nicely handle exceptions/errors
-        if (!$file->sfw && !$this->request->session()->read('seeNSFW')) {
+        $file = $this->Files->getWithContain($id, ['sfw' => !$this->seeNSFW]);
+
+        if (!$file->sfw && !$this->seeNSFW) {
             $this->set('name', $file->name);
-            // And make a proper common error page
             $this->viewBuilder()->template('nsfw');
         } else {
             $this->set('file', $file);
@@ -113,7 +90,7 @@ class FilesController extends AppController
      */
     public function download($id)
     {
-        $file = $this->Files->get($id);
+        $file = $this->Files->get($id, ['fields' => ['id', 'filename', 'name']]);
         $this->response->file('uploads/' . $file['filename'], ['download' => true, 'name' => $file['name']]);
 
         // Return response object to prevent controller from trying to render a view.

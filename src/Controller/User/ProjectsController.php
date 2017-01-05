@@ -19,13 +19,9 @@ class ProjectsController extends UserAppController
      */
     public function index($nsfw = 'all', $status = 'all')
     {
+        $projects = $this->Projects->find('users', ['uid' => $this->Auth->user('id')]);
+
         $this->paginate = [
-            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
-            'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ],
-            'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
             'sorWhiteList' => ['name', 'created', 'published'],
         ];
@@ -39,7 +35,7 @@ class ProjectsController extends UserAppController
             $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
 
-        $this->set('projects', $this->paginate($this->Projects));
+        $this->set('projects', $this->paginate($projects));
         $this->set('filterNSFW', $nsfw);
         $this->set('filterStatus', $status);
         $this->set('_serialize', ['projects']);

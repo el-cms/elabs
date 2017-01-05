@@ -40,13 +40,28 @@ $this->start('pageContent');
             echo $this->Form->create($user, ['class' => 'form']);
             ?>
             <fieldset>
-                <?php
-                echo $this->Form->input('email', ['label' => __d('elabs', 'E-mail')]);
-                echo $this->Form->input('real_name', ['label' => __d('elabs', 'Real name')]);
-                echo $this->Form->input('website', ['label' => __d('elabs', 'Website'), 'placeholder' => 'http://']);
-                echo $this->Form->input('bio', ['label' => __d('elabs', 'About you'), 'id' => 'bioArea']);
-                echo $this->element('layout/loader_codemirror', ['textareas' => ['bioArea']]);
-                ?>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <?php echo $this->Form->input('email', ['label' => __d('elabs', 'E-mail')]); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <?php echo $this->Form->input('first_name', ['label' => __d('elabs', 'First name')]); ?>
+                    </div>
+                    <div class="col-sm-6">
+                        <?php echo $this->Form->input('last_name', ['label' => __d('elabs', 'Last name')]); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <?php
+                        echo $this->Form->input('website', ['label' => __d('elabs', 'Website'), 'placeholder' => 'http://']);
+                        echo $this->Form->input('bio', ['label' => __d('elabs', 'About you'), 'id' => 'bioArea']);
+                        echo $this->element('layout/loader_codemirror', ['textareas' => ['bioArea']]);
+                        ?>
+                    </div>
+                </div>
             </fieldset>
             <div class="form-group-btn">
                 <?php echo $this->Form->submit(__d('elabs', 'Save the changes'), ['class' => 'btn-success']) ?>
@@ -59,8 +74,7 @@ $this->start('pageContent');
             <?php echo $this->Form->create($user, ['class' => 'form', 'url' => ['action' => 'updatePrefs']]); ?>
             <fieldset>
                 <?php
-                $userPrefs = json_decode($authUser['preferences'], true);
-                $userPrefs = $userPrefs + Configure::read('cms.defaultUserPreferences');
+                $userPrefs = $authUser['preferences'] + Configure::read('cms.defaultUserPreferences');
                 // Default site lang
                 echo $this->Form->input('preferences[defaultSiteLanguage]', [
                     'type' => 'select',

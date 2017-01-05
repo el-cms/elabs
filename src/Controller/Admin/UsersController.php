@@ -41,14 +41,9 @@ class UsersController extends AdminAppController
      */
     public function index()
     {
-        $this->paginate = [
-            'fields' => ['id', 'username', 'first_name', 'last_name', 'role', 'active', 'created'],
-            'sortWhitelist' => ['username', 'first_name', 'last_name', 'role', 'active', 'created'],
-            'order' => [
-                'username' => 'asc',
-            ]
-        ];
-        $this->set('users', $this->paginate($this->Users));
+        $users = $this->paginate($this->Users->find('adminWithContain'));
+
+        $this->set(compact('users'));
         $this->set('_serialize', ['users']);
     }
 
@@ -64,28 +59,11 @@ class UsersController extends AdminAppController
     public function view($id = null)
     {
         if ($this->request->is('ajax')) {
-            $user = $this->Users->get($id, [
-                'fields' => ['id', 'username', 'first_name', 'last_name', 'created', 'modified', 'active', 'bio', 'post_count', 'project_count', 'file_count'],
-            ]);
+            $user = $this->Users->getAdminWithContain($id);
         } else {
-            $user = $this->Users->get($id, [
-                'fields' => ['id', 'username', 'first_name', 'last_name', 'website', 'created', 'modified', 'active', 'post_count', 'project_count', 'file_count'],
-                'contain' => [
-                    'Posts' => [
-                        'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
-                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    ],
-                    'Projects' => [
-                        'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id'],
-                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    ],
-                    'Files' => [
-                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    ],
-                ],
-            ]);
+            $user = $this->Users->getAdminWithContain($id, ['allContain' => true]);
         }
-        $this->set('user', $user);
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
 

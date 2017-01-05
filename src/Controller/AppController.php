@@ -31,6 +31,19 @@ use Cake\I18n\I18n;
  */
 class AppController extends Controller
 {
+    /**
+     * User preference to display nsfw content
+     * @var bool
+     */
+    public $seeNSFW = null;
+
+    /**
+     * Default options for pagination
+     * @var array
+     */
+    public $paginate = [
+        'order' => ['created' => 'desc'],
+    ];
 
     /**
      * Initialization hook method.
@@ -63,6 +76,7 @@ class AppController extends Controller
         if (is_null($this->request->session()->read('seeNSFW'))) {
             $this->_setSFWState('hide');
         }
+        $this->seeNSFW = $this->request->session()->read('seeNSFW');
 
         /*
          * Site language option
@@ -88,7 +102,7 @@ class AppController extends Controller
         // "Public" AppController, so all actions allowed
         $this->Auth->allow();
         // Making the seeNSFW variable available in view
-        $this->set('seeNSFW', $this->request->session()->read('seeNSFW'));
+        $this->set('seeNSFW', $this->seeNSFW);
         // Making language list and current language variables available in views
         $lang = $this->request->session()->read('language');
         $this->set('availableLanguages', $this->request->session()->read('languages'));
@@ -138,7 +152,7 @@ class AppController extends Controller
      */
     protected function _setUserPreferences()
     {
-        $preferences = json_decode($this->Auth->user('preferences'), true);
+        $preferences = $this->Auth->user('preferences');
         $preferences += \Cake\Core\Configure::read('cms.defaultUserPreferences');
         $this->_setLanguage($preferences['defaultSiteLanguage']);
         $this->_setSFWState(($preferences['showNSFW'] === '1') ? 'show' : 'hide');
