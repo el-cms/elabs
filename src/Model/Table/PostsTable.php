@@ -152,8 +152,9 @@ class PostsTable extends Table
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
-     *   - sfw bool, default false. Limits the result to sfw items
      *   - complete bool, default false. Select all the fields
+     *   - sfw bool, default false. Limits the result to sfw items
+     *   - uid string, default null. Select only items for this user
      *   - withLicenses bool, default true. Select the license
      *   - withLanguages bool, default true. Select the language
      *   - withProjects bool, default false. Select the projects
@@ -165,8 +166,9 @@ class PostsTable extends Table
     {
         $options += [
             'allStatuses' => false,
-            'sfw' => true,
             'complete' => false,
+            'sfw' => true,
+            'uid' => null,
             'withLicenses' => true,
             'withLanguages' => true,
             'withProjects' => true,
@@ -181,6 +183,9 @@ class PostsTable extends Table
         }
         if ($options['sfw'] === true) {
             $where['Posts.sfw'] = true;
+        }
+        if(!is_null($options['uid'])){
+            $where['Posts.user_id'] = $options['uid'];
         }
 
         // Fields
@@ -214,6 +219,29 @@ class PostsTable extends Table
 
         // Return the query
         return $query;
+    }
+
+    /**
+     * Runs findWithContain with all statuses and nsfw entries, for content owned
+     * by an user. The uid option is required.
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     *   - uid string, default null
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findUsers(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Override options
+        $queryOptions = [
+            'sfw' => false,
+            'allStatuses' => true,
+                ] + $options + [
+            'uid' => null
+        ];
+
+        return $this->findWithContain($query, $queryOptions);
     }
 
     /**

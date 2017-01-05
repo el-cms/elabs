@@ -22,14 +22,9 @@ class PostsController extends UserAppController
      */
     public function index($nsfw = 'all', $published = 'all')
     {
+        $posts=$this->Posts->find('users', ['uid'=>$this->Auth->user('id')]);
+
         $this->paginate = [
-            'fields' => ['id', 'title', 'excerpt', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
-            'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-            ],
-            'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['title', 'status', 'publication_date', 'created', 'modified', 'sfw'],
         ];
@@ -45,7 +40,7 @@ class PostsController extends UserAppController
         } elseif ($published === 'locked') {
             $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
-        $this->set('posts', $this->paginate($this->Posts));
+        $this->set('posts', $this->paginate($posts));
         $this->set('filterNSFW', $nsfw);
         $this->set('filterPub', $published);
         $this->set('_serialize', ['posts']);
@@ -84,9 +79,9 @@ class PostsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Posts->Languages->find('list', ['limit' => 200]);
-        $projects = $this->Posts->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $licenses = $this->Posts->Licenses->find('list');
+        $languages = $this->Posts->Languages->find('list');
+        $projects = $this->Posts->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('post', 'licenses', 'languages', 'projects'));
         $this->set('_serialize', ['post']);
     }
@@ -148,9 +143,9 @@ class PostsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Posts->Languages->find('list', ['limit' => 200]);
-        $projects = $this->Posts->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $licenses = $this->Posts->Licenses->find('list');
+        $languages = $this->Posts->Languages->find('list');
+        $projects = $this->Posts->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('post', 'users', 'licenses', 'languages', 'projects'));
         $this->set('_serialize', ['post']);
     }
