@@ -39,6 +39,7 @@ use Cake\Auth\DefaultPasswordHasher;
  * Virtual properties
  *
  * @property string $real_name
+ * @property string $email_hash
  *
  * Relations
  *
@@ -51,6 +52,7 @@ use Cake\Auth\DefaultPasswordHasher;
  */
 class User extends BaseUserEntity
 {
+
     /**
      * Returns the concatenation of the first and last names
      * @return string
@@ -58,6 +60,19 @@ class User extends BaseUserEntity
     protected function _getRealName()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * Hashes the email adress.
+     * @return string
+     */
+    protected function _getEmailHash()
+    {
+        if (isset($this->_properties['email_hash'])) {
+            return md5($this->_properties['email_hash']);
+        }
+
+        throw new \Cake\Error\FatalErrorException(__d('elabs', 'You should have selected the email_hash field as email alias.'));
     }
 
     /**
