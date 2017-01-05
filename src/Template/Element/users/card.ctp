@@ -2,7 +2,7 @@
     <div class="card card-user">
         <div class="card-heading">
             <div class="card-heading-side">
-                <?php echo $this->Gravatar->generate($user->email, ['image-options' => ['class' => 'img-rounded']]) ?>
+                <?php echo $this->Gravatar->generate($user->email_hash, ['image-options' => ['class' => 'img-rounded']]) ?>
             </div>
             <!-- Header -->
             <div class="card-header">

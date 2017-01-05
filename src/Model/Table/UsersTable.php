@@ -178,7 +178,7 @@ class UsersTable extends BaseTable
         }
 
         // fields;
-        $query->select(['id', 'username', 'first_name', 'last_name', 'email', 'website', 'created', 'active', 'role', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count'])
+        $query->select(['id', 'username', 'first_name', 'last_name', 'email_hash' => 'email', 'website', 'created', 'active', 'role', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count'])
                 ->where($where);
         if ($options['complete'] === true) {
             $query->select(['bio']);
