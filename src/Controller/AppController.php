@@ -152,7 +152,7 @@ class AppController extends Controller
      */
     protected function _setUserPreferences()
     {
-        $preferences = json_decode($this->Auth->user('preferences'), true);
+        $preferences = $this->Auth->user('preferences');
         $preferences += \Cake\Core\Configure::read('cms.defaultUserPreferences');
         $this->_setLanguage($preferences['defaultSiteLanguage']);
         $this->_setSFWState(($preferences['showNSFW'] === '1') ? 'show' : 'hide');

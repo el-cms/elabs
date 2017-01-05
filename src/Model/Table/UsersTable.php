@@ -2,26 +2,32 @@
 
 namespace App\Model\Table;
 
+use App\Model\Entity\User;
 use CakeDC\Users\Model\Table\UsersTable as BaseTable;
+use Cake\Database\Schema\Table as Schema;
+use Cake\Datasource\EntityInterface;
+use Cake\ORM\Association\HasMany;
+use Cake\ORM\Entity;
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
 
 /**
  * Users Model
  *
- * @property \Cake\ORM\Association\HasMany $Files
- * @property \Cake\ORM\Association\HasMany $Notes
- * @property \Cake\ORM\Association\HasMany $Posts
- * @property \Cake\ORM\Association\HasMany $Projects
- * @property \Cake\ORM\Association\HasMany $Reports
+ * @property HasMany $Files
+ * @property HasMany $Notes
+ * @property HasMany $Posts
+ * @property HasMany $Projects
+ * @property HasMany $Reports
  *
- * @method \App\Model\Entity\User get($primaryKey, $options = [])
- * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null)
+ * @method User get($primaryKey, $options = [])
+ * @method User newEntity($data = null, array $options = [])
+ * @method User[] newEntities(array $data, array $options = [])
+ * @method User|bool save(EntityInterface $entity, $options = [])
+ * @method User patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method User[] patchEntities($entities, array $data, array $options = [])
+ * @method User findOrCreate($search, callable $callback = null)
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
@@ -67,8 +73,8 @@ class UsersTable extends BaseTable
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {
@@ -98,8 +104,8 @@ class UsersTable extends BaseTable
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
     public function buildRules(RulesChecker $rules)
     {
@@ -110,9 +116,23 @@ class UsersTable extends BaseTable
     }
 
     /**
+     * Define some extra types to fields
+     *
+     * @param Schema $schema The schema
+     *
+     * @return Schema
+     */
+    protected function _initializeSchema(Schema $schema)
+    {
+        $schema->columnType('preferences', 'json');
+
+        return $schema;
+    }
+
+    /**
      * Finds all data for an user
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options:
      *   - allContain bool, default false. Selects all relationships
      *   - allStatuses bool, default true. Overrides status limitation
@@ -124,9 +144,9 @@ class UsersTable extends BaseTable
      *   - withPosts bool, default false. Select the posts
      *   - withProjects bool, default false. Select the projects
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    public function findWithContain(Query $query, array $options = [])
     {
         $options += [
             'allContain' => false,
@@ -200,13 +220,13 @@ class UsersTable extends BaseTable
      * Used to fetch minimal data about users on contained items
      * (i.e: user of a file)
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options. Don't forget to add the 'pivot'
      *        field name if necessary
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    public function findAsContain(Query $query, array $options = [])
     {
         $options += ['pivot' => null];
 
@@ -226,7 +246,7 @@ class UsersTable extends BaseTable
      *   - sfw bool, default true Limit to sfw data
      *   - complete bool default true Select all the fields
      *
-     * @return \Cake\ORM\Entity
+     * @return Entity
      */
     public function getWithContain($primaryKey, array $options = [])
     {
@@ -243,12 +263,12 @@ class UsersTable extends BaseTable
     /**
      * Runs findWithContain with all statuses and nsfw entries
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options. See findWithContain()
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
+    public function findAdminWithContain(Query $query, array $options = [])
     {
         // Force options
         $options['sfw'] = false;
@@ -263,7 +283,7 @@ class UsersTable extends BaseTable
      * @param type $primaryKey The primary key to fetch
      * @param array $options An array of options
      *
-     * @return \Cake\ORM\Entity
+     * @return Entity
      */
     public function getAdminWithContain($primaryKey, array $options = [])
     {

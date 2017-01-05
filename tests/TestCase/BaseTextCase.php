@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: mtancoigne
@@ -40,6 +41,10 @@ class BaseTextCase extends IntegrationTestCase
 //            'locked' => ['Auth' => ['User' => $userFixtures->records[4]]],
             'public' => ['Auth' => ['User' => []]],
         ];
+
+        // Converting json data to arrays
+        $this->userCreds['admin']['Auth']['User']['preferences'] = json_decode($userFixtures->records[1]['preferences'], true);
+        $this->userCreds['author']['Auth']['User']['preferences'] = json_decode($userFixtures->records[2]['preferences'], true);
     }
 
     /**
