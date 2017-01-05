@@ -63,7 +63,7 @@ class UsersController extends UserAppController
                 $this->Flash->error(__d('elabs', 'An error occured. Please try again.'));
             }
         } else {
-            die('nope');
+            throw new \Cake\Network\Exception\MethodNotAllowedException(__d('elabs', 'Please use the form to update your preferences'));
         }
     }
 

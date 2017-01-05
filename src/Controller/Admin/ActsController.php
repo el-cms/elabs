@@ -43,7 +43,7 @@ class ActsController extends AdminAppController
         ];
 
         // Load models
-        foreach ($this->config['models'] as $model => $item) {
+        foreach (array_keys($this->config['models']) as $model) {
             $this->$model = TableRegistry::get($model);
         }
     }
@@ -58,8 +58,7 @@ class ActsController extends AdminAppController
 //        $done=[];
         $errors = 0;
         if ($this->request->is('POST')) {
-            // Get connection:
-            $connection = ConnectionManager::get('default');
+            // "truncate" the table.
             $this->Acts->deleteAll('1=1');
             $models = ['Files', 'Posts', 'Projects', 'Notes', 'Albums'];
             foreach ($models as $model) {
