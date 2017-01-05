@@ -127,6 +127,7 @@ class AlbumsTable extends Table
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
      *   - sfw bool, default false. Limits the result to sfw items
+     *   - uid string, default null. Select only items for this user
      *   - withFiles bool, default true. Select the files
      *   - withLanguages bool, default true. Select the language
      *   - withProjects bool, default false. Select the projects
@@ -139,6 +140,7 @@ class AlbumsTable extends Table
         $options += [
             'allStatuses' => false,
             'sfw' => true,
+            'uid' => null,
             'withFiles' => true,
             'withLanguages' => true,
             'withProjects' => true,
@@ -153,6 +155,9 @@ class AlbumsTable extends Table
         }
         if ($options['sfw'] === true) {
             $where['Albums.sfw'] = true;
+        }
+        if(!is_null($options['uid'])){
+            $where['Albums.user_id'] = $options['uid'];
         }
 
         // Fields
