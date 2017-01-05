@@ -20,20 +20,13 @@ class NotesController extends UserAppController
      */
     public function index($nsfw = 'all', $status = 'all')
     {
+        $notes=$this->Notes->find('users', ['uid'=>$this->Auth->user('id')]);
+
         $this->paginate = [
-            'fields' => ['id', 'text', 'sfw', 'status', 'created', 'modified', 'user_id', 'language_id', 'license_id'],
-            'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
-            ],
-            'conditions' => [
-                'user_id' => $this->Auth->user('id'),
-                'status !=' => STATUS_DELETED
-            ],
             'order' => ['created' => 'desc'],
             'sorWhiteList' => ['text', 'created', 'modified'],
         ];
+        
         if ($nsfw === 'safe') {
             $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {
@@ -43,7 +36,7 @@ class NotesController extends UserAppController
             $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
 
-        $this->set('notes', $this->paginate($this->Notes));
+        $this->set('notes', $this->paginate($notes));
         $this->set('filterNSFW', $nsfw);
         $this->set('filterStatus', $status);
         $this->set('_serialize', ['notes']);
@@ -80,10 +73,10 @@ class NotesController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
-        $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
+        $languages = $this->Notes->Languages->find('list');
+        $licenses = $this->Notes->Licenses->find('list');
 //        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-        $projects = $this->Notes->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $projects = $this->Notes->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('note', 'languages', 'licenses', 'projects')); //, 'tags'));
         $this->set('_serialize', ['note']);
     }
@@ -136,10 +129,10 @@ class NotesController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
-        $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
+        $languages = $this->Notes->Languages->find('list');
+        $licenses = $this->Notes->Licenses->find('list');
 //        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-        $projects = $this->Notes->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $projects = $this->Notes->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('note', 'languages', 'licenses', 'projects')); //, 'tags'));
         $this->set('_serialize', ['note']);
     }
