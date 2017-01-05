@@ -17,7 +17,6 @@ class AlbumsController extends AdminAppController
      */
     public function index()
     {
-
         $albums = $this->paginate($this->Albums->find('adminWithContain'));
 
         $this->set(compact('albums'));

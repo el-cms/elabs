@@ -91,3 +91,16 @@ $this->end();
         ?>
     </div>
 </div>
+
+<?php
+// Additionnal JS
+// --------------
+$this->append('pageBottomScripts');
+?>
+<script>
+    $(document).ajaxSend(function (e, xhr, settings) {
+      xhr.setRequestHeader('X-CSRF-Token', '<?= $this->request->params['_csrfToken'] ?>');
+    });
+</script>
+<?php
+$this->end();

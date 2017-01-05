@@ -17,8 +17,9 @@ class NotesController extends AdminAppController
      */
     public function index()
     {
+        $notes = $this->paginate($this->Notes->find('adminWithContain'));
 
-        $this->set('notes', $this->paginate($this->Notes->find('adminWithContain')));
+        $this->set(compact('notes'));
         $this->set('_serialize', ['notes']);
     }
 

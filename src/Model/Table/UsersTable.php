@@ -169,27 +169,27 @@ class UsersTable extends BaseTable
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withNotes']) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withPosts']) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['sfw' => $sfw]);
-                }]);
+            }]);
         }
 
         // Returns the query
@@ -208,7 +208,7 @@ class UsersTable extends BaseTable
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
-        $options += ['pivot' => null,];
+        $options += ['pivot' => null];
 
         $fields = ['id', 'first_name', 'last_name', 'username'];
         if (!is_null($options['pivot'])) {
@@ -245,6 +245,7 @@ class UsersTable extends BaseTable
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options. See findWithContain()
+     *
      * @return \Cake\ORM\Query
      */
     public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
@@ -258,9 +259,11 @@ class UsersTable extends BaseTable
 
     /**
      * Runs getWithContain with all statuses and nsfw entries
-     * @param type $primaryKey
-     * @param array $options
-     * @return type
+     *
+     * @param type $primaryKey The primary key to fetch
+     * @param array $options An array of options
+     *
+     * @return \Cake\ORM\Entity
      */
     public function getAdminWithContain($primaryKey, array $options = [])
     {

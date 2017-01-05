@@ -33,7 +33,7 @@ class PostsController extends AdminAppController
     public function view($id = null)
     {
         $post = $this->Posts->getAdminWithContain($id);
-        
+
         $this->set('post', $post);
         $this->set('_serialize', ['post']);
     }

@@ -243,6 +243,7 @@ class PostsTable extends Table
      *
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options. See findWithContain()
+     *
      * @return \Cake\ORM\Query
      */
     public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
@@ -256,9 +257,11 @@ class PostsTable extends Table
 
     /**
      * Runs getWithContain with all statuses and nsfw entries
-     * @param type $primaryKey
-     * @param array $options
-     * @return type
+     *
+     * @param type $primaryKey The primary key to fetch
+     * @param array $options An array of options
+     *
+     * @return \Cake\ORM\Entity
      */
     public function getAdminWithContain($primaryKey, array $options = [])
     {

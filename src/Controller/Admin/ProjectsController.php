@@ -31,7 +31,7 @@ class ProjectsController extends AdminAppController
      */
     public function index()
     {
-        $projects=$this->paginate($this->Projects->find('adminWithContain'));
+        $projects = $this->paginate($this->Projects->find('adminWithContain'));
 
         $this->set(compact('projects'));
         $this->set('_serialize', ['projects']);
@@ -49,7 +49,7 @@ class ProjectsController extends AdminAppController
     public function view($id = null)
     {
         $project = $this->Projects->getAdminWithContain($id);
-        
+
         $this->set(compact('project'));
         $this->set('_serialize', ['project']);
     }
