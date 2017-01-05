@@ -157,6 +157,7 @@ class FilesTable extends Table
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
      *   - sfw bool, default false. Limits the result to sfw items
+     *   - uid string, default null. Select only items for this user
      *   - withAlbums bool, default true. Select the albums
      *   - withLanguages bool, dafault true. Select the language
      *   - withLicenses bool, dafault true. Select the license
@@ -168,8 +169,9 @@ class FilesTable extends Table
     public function findWithContain(\Cake\ORM\Query $query, array $options = [])
     {
         $options += [
-            'sfw' => true,
             'allStatuses' => false,
+            'sfw' => true,
+            'uid' => null,
             'withAlbums' => true,
             'withLanguages' => true,
             'withLicenses' => true,
@@ -185,6 +187,9 @@ class FilesTable extends Table
         }
         if ($options['sfw'] === true) {
             $where['Files.sfw'] = true;
+        }
+        if(!is_null($options['uid'])){
+            $where['Files.user_id'] = $options['uid'];
         }
 
         // Fields
@@ -220,6 +225,29 @@ class FilesTable extends Table
 
         // Returns the query
         return $query;
+    }
+
+    /**
+     * Runs findWithContain with all statuses and nsfw entries, for content owned
+     * by an user. The uid option is required.
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     *   - uid string, default null
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findUsers(\Cake\ORM\Query $query, array $options = [])
+    {
+        // Override options
+        $queryOptions = [
+            'sfw' => false,
+            'allStatuses' => true,
+                ] + $options + [
+            'uid' => null
+        ];
+
+        return $this->findWithContain($query, $queryOptions);
     }
 
     /**

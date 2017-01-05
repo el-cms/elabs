@@ -32,15 +32,9 @@ class FilesController extends UserAppController
      */
     public function index($nsfw = 'all', $status = 'all')
     {
+        $files = $this->Files->find('users', ['uid' => $this->Auth->user('id')]);
+
         $this->paginate = [
-            'fields' => ['id', 'name', 'filename', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
-            'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
-            ],
-            'conditions' => ['user_id' => $this->Auth->user('id')],
-            'order' => ['created' => 'desc'],
             'sorWhiteList' => ['name', 'created', 'modified', 'weight'],
         ];
 
@@ -53,7 +47,7 @@ class FilesController extends UserAppController
             $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
 
-        $this->set('files', $this->paginate($this->Files));
+        $this->set('files', $this->paginate($files));
         $this->set('filterNSFW', $nsfw);
         $this->set('filterStatus', $status);
         $this->set('_serialize', ['files']);
@@ -103,6 +97,7 @@ class FilesController extends UserAppController
                     'language_id' => $this->request->data['language_id'],
                     'projects' => $this->request->data['projects'],
                     'albums' => $this->request->data['albums'],
+                    'hide_from_acts'=>$this->request->data['hide_from_acts'],
                     'status' => STATUS_PUBLISHED
                 ];
 
@@ -125,10 +120,10 @@ class FilesController extends UserAppController
                 }
             }
         }
-        $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
+        $licenses = $this->Files->Licenses->find('list');
         $languages = $this->Files->Languages->find('list');
-        $projects = $this->Files->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
-        $albums = $this->Files->Albums->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $projects = $this->Files->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $albums = $this->Files->Albums->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('file', 'licenses', 'languages', 'projects', 'albums'));
         $this->set('_serialize', ['file']);
     }
@@ -175,10 +170,10 @@ class FilesController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Files->Licenses->find('list', ['limit' => 200]);
+        $licenses = $this->Files->Licenses->find('list');
         $languages = $this->Files->Languages->find('list');
-        $projects = $this->Files->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
-        $albums = $this->Files->Albums->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $projects = $this->Files->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $albums = $this->Files->Albums->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('file', 'licenses', 'languages', 'projects', 'albums'));
         $this->set('_serialize', ['file']);
     }
