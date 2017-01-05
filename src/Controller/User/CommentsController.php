@@ -27,27 +27,22 @@ class CommentsController extends UserAppController
         $this->paginate = [
             'contain' => [
                 'Posts' => [
-                    'conditions' => ['Posts.user_id' => $userId],
                     'fields' => ['id', 'title', 'user_id', 'language_id'],
                     'Languages' => $languageConfig,
                 ],
                 'Projects' => [
-                    'conditions' => ['Projects.user_id' => $userId],
                     'fields' => ['id', 'name', 'user_id', 'language_id'],
                     'Languages' => $languageConfig,
                 ],
                 'Files' => [
-                    'conditions' => ['Files.user_id' => $userId],
                     'fields' => ['id', 'name', 'user_id', 'language_id'],
                     'Languages' => $languageConfig,
                 ],
                 'Notes' => [
-                    'conditions' => ['Notes.user_id' => $userId],
                     'fields' => ['id', 'text', 'user_id', 'language_id'],
                     'Languages' => $languageConfig,
                 ],
                 'Albums' => [
-                    'conditions' => ['Albums.user_id' => $userId],
                     'fields' => ['id', 'name', 'user_id', 'language_id'],
                     'Languages' => $languageConfig,
                 ],
@@ -56,6 +51,14 @@ class CommentsController extends UserAppController
             'limit' => 30,
             'order' => [
                 'Comments.created' => 'desc'
+            ],
+            'conditions' => ['OR' => [
+                    ['Albums.user_id' => $userId],
+                    ['Notes.user_id' => $userId],
+                    ['Files.user_id' => $userId],
+                    ['Projects.user_id' => $userId],
+                    ['Posts.user_id' => $userId],
+                ]
             ],
             'sortWhiteList' => [],
         ];
