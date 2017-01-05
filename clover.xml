@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1483643198">
-  <project timestamp="1483643198">
+<coverage generated="1483647043">
+  <project timestamp="1483647043">
     <package name="App">
       <file name="/var/www/html/src/Application.php">
         <class name="Application" namespace="App">
@@ -1735,13 +1735,17 @@
       </file>
       <file name="/var/www/html/src/Model/Entity/User.php">
         <class name="User" namespace="App\Model\Entity">
-          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+          <metrics complexity="4" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="8" coveredelements="6"/>
         </class>
-        <line num="58" type="method" name="_getRealName" visibility="protected" complexity="1" crap="1" count="5"/>
-        <line num="60" type="stmt" count="5"/>
-        <line num="69" type="method" name="comparePassword" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="60" type="method" name="_getRealName" visibility="protected" complexity="1" crap="1" count="5"/>
+        <line num="62" type="stmt" count="5"/>
+        <line num="69" type="method" name="_getEmailHash" visibility="protected" complexity="2" crap="2.15" count="1"/>
         <line num="71" type="stmt" count="1"/>
-        <metrics loc="73" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="84" type="method" name="comparePassword" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="86" type="stmt" count="1"/>
+        <metrics loc="88" ncloc="29" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="8" coveredelements="6"/>
       </file>
     </package>
     <package name="App\Model\Table">
@@ -3065,6 +3069,6 @@
         <metrics loc="82" ncloc="54" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="18" elements="20" coveredelements="18"/>
       </file>
     </package>
-    <metrics files="97" loc="10059" ncloc="6092" classes="76" methods="234" coveredmethods="168" conditionals="0" coveredconditionals="0" statements="2222" coveredstatements="1552" elements="2456" coveredelements="1720"/>
+    <metrics files="97" loc="10074" ncloc="6102" classes="76" methods="235" coveredmethods="168" conditionals="0" coveredconditionals="0" statements="2225" coveredstatements="1554" elements="2460" coveredelements="1722"/>
   </project>
 </coverage>
