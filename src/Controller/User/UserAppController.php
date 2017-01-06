@@ -54,5 +54,6 @@ class UserAppController extends AppController
     {
         parent::beforeRender($event);
         $this->viewBuilder()->layout('user');
+        $this->viewBuilder()->helpers(['TagList']);
     }
 }

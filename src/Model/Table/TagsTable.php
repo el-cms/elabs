@@ -35,7 +35,7 @@ class TagsTable extends Table
         parent::initialize($config);
 
         $this->table('tags');
-        $this->displayField('name');
+        $this->displayField('id');
         $this->primaryKey('id');
 
         $this->belongsToMany('Files', [
