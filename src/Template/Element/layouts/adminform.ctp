@@ -57,6 +57,15 @@ echo $this->Html->script('lib/jquery.fs.selecter.min');
 <script>
     $(document).ready(function () {
       $('select:not([data-role="tagsinput"])').selecter();
+      $('select[multiple][data-role=tagsinput]').tagsinput({
+        confirmKeys: [13, 188]
+      });
+      $('.bootstrap-tagsinput input').on('keypress', function (event) {
+        if (event.keyCode === 13) {
+          event.keyCode = 188;
+          event.preventDefault();
+        }
+      });
     });
 </script>
 <?php
