@@ -158,6 +158,7 @@ class PostsTable extends Table
      *   - withLicenses bool, default true. Select the license
      *   - withLanguages bool, default true. Select the language
      *   - withProjects bool, default false. Select the projects
+     *   - withTags bool, default false. Select the tags
      *   - withUsers bool, default true. Select the user
      *
      * @return \Cake\ORM\Query
@@ -172,6 +173,7 @@ class PostsTable extends Table
             'withLicenses' => true,
             'withLanguages' => true,
             'withProjects' => true,
+            'withTags' => true,
             'withUsers' => true,
         ];
 
@@ -209,6 +211,11 @@ class PostsTable extends Table
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsPosts.post_id']);
+            }]);
+        }
+        if ($options['withTags']) {
+            $query->contain(['Tags' => function ($q) {
+                    return $q->find('asContain');
             }]);
         }
         if ($options['withUsers']) {

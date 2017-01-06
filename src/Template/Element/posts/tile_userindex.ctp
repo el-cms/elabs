@@ -67,7 +67,17 @@
                             ?>
                         </dd>
                         <dt><?php echo __d('elabs', 'Tags') ?></dt>
-                        <dd><?php echo $this->element('layout/dev_inline') ?></dd>
+                        <dd>
+                            <?php
+                            if (count($post->tags) > 0):
+                                echo $this->Html->arrayToString(array_map(function($tag) {
+                                            return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                        }, $post->tags));
+                            else:
+                                echo __d('elabs', 'No tags');
+                            endif;
+                            ?>
+                        </dd>
                     </dl>
                 </div>
                 <div class="col-sm-8 rendered-text"<?php echo $this->Html->langAttr($post->language->iso639_1) ?>>

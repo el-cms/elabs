@@ -74,4 +74,96 @@ class TagsTable extends Table
 
         return $validator;
     }
+
+    /**
+     * Finds all data for a tag
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options:
+     *   - allStatuses bool, default true. Overrides status limitation
+     *   - sfw bool, default false. Limits the result to sfw items
+     *   - uid string, default null. Select only items for this user
+     *   - withAlbums bool, default true. Select the albums
+     *   - withFiles bool, default true. Select the files
+     *   - withNotes bool, default true. Select the notes
+     *   - withPosts bool, default true. Select the posts
+     *   - withProjects bool, default false. Select the projects
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $options += [
+//            'allStatuses' => false,
+//            'complete' => false,
+//            'sfw' => true,
+//            'uid' => null,
+            'withProjects' => true,
+            'withUsers' => true,
+        ];
+
+        $where = [];
+
+        // Conditions
+//        if ($options['allStatuses'] === false) {
+//            $where = ['Posts.status' => STATUS_PUBLISHED];
+//        }
+//        if ($options['sfw'] === true) {
+//            $where['Posts.sfw'] = true;
+//        }
+//        if (!is_null($options['uid'])) {
+//            $where['Posts.user_id'] = $options['uid'];
+//        }
+
+        // Fields
+        $query->select(['id'])
+                ->where($where);
+//        if ($options['complete'] === true) {
+//            $query->select(['text']);
+//        }
+
+        // Relations
+        if ($options['withAlbums']) {
+            $query->contain(['Albums' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'AlbumsTags.tag_id']);
+            }]);
+        }
+        if ($options['withFiles']) {
+            $query->contain(['Files' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'FilesTags.tag_id']);
+            }]);
+        }
+        if ($options['withNotes']) {
+            $query->contain(['Notes' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'NotesTags.tag_id']);
+            }]);
+        }
+        if ($options['withPosts']) {
+            $query->contain(['Posts' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'PostsTags.tag_id']);
+            }]);
+        }
+        if ($options['withProjects']) {
+            $query->contain(['Projects' => function ($q) {
+                    return $q->find('asContain', ['pivot' => 'ProjectsTags.tag_id']);
+            }]);
+        }
+
+        // Return the query
+        return $query;
+    }
+
+    /**
+     * Used to fetch minimal data about tags
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. Don't forget to add the 'pivot'
+     *        field name if necessary
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        return $query->select(['id']);
+    }
 }
