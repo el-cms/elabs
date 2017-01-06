@@ -46,6 +46,11 @@ $this->CodeMirror->add('textArea');
     </div>
 </div>
 <div class="row">
+    <div class="col-sm-12">
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => $tags, 'data-role' => 'tagsinput']); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <?php echo $this->Form->input('sfw', ['label' => __d('elabs', 'This is SFW')]); ?>
     </div>

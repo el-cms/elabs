@@ -57,6 +57,8 @@ class PostsController extends UserAppController
         if ($this->request->is('post')) {
             // Assigning values:
             $dataSent = $this->request->data;
+            // Manage tags
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($dataSent['tags']['_ids']);
             $dataSent['user_id'] = $this->Auth->user('id');
             if ($dataSent['status'] == STATUS_PUBLISHED) {
                 $dataSent['publication_date'] = Time::now();
@@ -82,7 +84,8 @@ class PostsController extends UserAppController
         $licenses = $this->Posts->Licenses->find('list');
         $languages = $this->Posts->Languages->find('list');
         $projects = $this->Posts->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('post', 'licenses', 'languages', 'projects'));
+        $tags = $this->Posts->Tags->find('list');
+        $this->set(compact('post', 'licenses', 'languages', 'projects', 'tags'));
         $this->set('_serialize', ['post']);
     }
 

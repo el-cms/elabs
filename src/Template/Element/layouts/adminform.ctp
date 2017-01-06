@@ -46,7 +46,7 @@ endif;
 ?>
 <div class="col-sm-<?php echo ($haveLeftCol) ? 9 : 12 ?>">
     <?php echo $this->fetch('pageContent'); ?>
-</div>   
+</div>
 <?php
 // Custom scripts
 // --------------
@@ -56,7 +56,7 @@ echo $this->Html->script('lib/jquery.fs.selecter.min');
 ?>
 <script>
     $(document).ready(function () {
-      $('select').selecter();
+      $('select:not([data-role="tagsinput"])').selecter();
     });
 </script>
 <?php

@@ -12,6 +12,12 @@ use Cake\Network\Exception\ForbiddenException;
 class UserAppController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('TagManager');
+    }
+
     /**
      * Before filter callback
      *
