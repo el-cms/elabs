@@ -6,8 +6,7 @@ use Cake\ORM\Entity;
 /**
  * Tag Entity
  *
- * @property int $id
- * @property string $name
+ * @property string $id
  * @property int $itemtag_count
  *
  * @property \App\Model\Entity\File[] $files
