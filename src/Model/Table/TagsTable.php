@@ -72,11 +72,6 @@ class TagsTable extends Table
                 ->integer('id')
                 ->allowEmpty('id', 'create');
 
-        $validator
-                ->integer('itemtag_count')
-                ->requirePresence('itemtag_count', 'create')
-                ->notEmpty('itemtag_count');
-
         return $validator;
     }
 }

@@ -102,7 +102,7 @@ class PostsController extends UserAppController
             'conditions' => ['user_id' => $this->Auth->user('id')],
             'contain' => [
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-                'Tags' => ['fields' => ['id', 'itemtag_count', 'PostsTags.post_id']],
+                'Tags' => ['fields' => ['id', 'PostsTags.post_id']],
             ]
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {

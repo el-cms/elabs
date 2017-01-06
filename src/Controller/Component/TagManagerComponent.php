@@ -47,7 +47,6 @@ class TagManagerComponent extends Component
             // Search for tag in db or create it
             $this->Tags->findOrCreate(['Tags.id' => $tag], function($tagEntity) use($tag){
                 $tagEntity->id=$tag;
-                $tagEntity->itemtag_count = 0;
 
                 return $tagEntity;
             });

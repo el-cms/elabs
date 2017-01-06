@@ -7,7 +7,6 @@ use Cake\ORM\Entity;
  * Tag Entity
  *
  * @property string $id
- * @property int $itemtag_count
  *
  * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Note[] $notes

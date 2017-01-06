@@ -26,6 +26,7 @@ class UpdateTags extends AbstractMigration
 
         $this->table('tags')
                 ->removeColumn('name')
+                ->removeColumn('itemtag_count')
                 ->changeColumn('id', 'string', ['default' => null, 'limit' => 15, 'null' => false])
                 ->update();
     }
