@@ -46,9 +46,12 @@ class AlbumsController extends UserAppController
     {
         $album = $this->Albums->newEntity();
         if ($this->request->is('post')) {
+            // Assigning values:
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
             $dataSent['status'] = STATUS_PUBLISHED;
+            // Manage tags
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($dataSent['tags']['_ids']);
             $album = $this->Albums->patchEntity($album, $dataSent);
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__('The album has been saved.'));
@@ -67,10 +70,11 @@ class AlbumsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $languages = $this->Albums->Languages->find('list', ['limit' => 200]);
-        $files = $this->Albums->Files->find('list', ['limit' => 200, 'conditions' => ['user_id' => $this->Auth->user('id')]]);
-        $projects = $this->Albums->Projects->find('list', ['limit' => 200, 'conditions' => ['Projects.user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('album', 'languages', 'files', 'projects'));
+        $languages = $this->Albums->Languages->find('list');
+        $files = $this->Albums->Files->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $projects = $this->Albums->Projects->find('list', ['conditions' => ['Projects.user_id' => $this->Auth->user('id')]]);
+        $tags = $this->Albums->Tags->find('list');
+        $this->set(compact('album', 'languages', 'files', 'projects', 'tags'));
         $this->set('_serialize', ['album']);
     }
 
@@ -84,10 +88,17 @@ class AlbumsController extends UserAppController
     public function edit($id = null)
     {
         $album = $this->Albums->get($id, [
-            'contain' => ['Files', 'Projects']
+            'contain' => [
+                'Files'=>['fields'=>['id', 'name', 'AlbumsFiles.album_id']],
+                'Projects'=>['fields'=>['id', 'name', 'ProjectsAlbums.album_id']],
+                'Tags' => ['fields' => ['id', 'AlbumsTags.album_id']],
+                ],
+
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $oldActState = $album->hide_from_acts;
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data['tags']['_ids']);
             $album = $this->Albums->patchEntity($album, $this->request->data);
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__d('elabs', 'The album has been saved.'));
@@ -104,9 +115,9 @@ class AlbumsController extends UserAppController
                 $this->Flash->error(__('The album could not be saved. Please, try again.'));
             }
         }
-        $languages = $this->Albums->Languages->find('list', ['limit' => 200]);
-        $files = $this->Albums->Files->find('list', ['limit' => 200, 'conditions' => ['user_id' => $this->Auth->user('id')]]);
-        $projects = $this->Albums->Projects->find('list', ['limit' => 200, 'conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $languages = $this->Albums->Languages->find('list');
+        $files = $this->Albums->Files->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $projects = $this->Albums->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('album', 'languages', 'files', 'projects'));
         $this->set('_serialize', ['album']);
     }

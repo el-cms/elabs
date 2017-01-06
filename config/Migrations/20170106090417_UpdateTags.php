@@ -29,6 +29,20 @@ class UpdateTags extends AbstractMigration
                 ->removeColumn('itemtag_count')
                 ->changeColumn('id', 'string', ['default' => null, 'limit' => 15, 'null' => false])
                 ->update();
+
+        $this->table('albums_tags')
+                ->addColumn('id', 'integer', ['autoIncrement' => true, 'default' => null, 'limit' => 5, 'null' => false, 'signed' => false])
+                ->addPrimaryKey(['id'])
+                ->addColumn('album_id', 'uuid', ['default' => null, 'limit' => null, 'null' => false])
+                ->addColumn('tag_id', 'string', ['default' => null, 'limit' => 15, 'null' => false])
+                ->addIndex(['album_id'])
+                ->addIndex(['tag_id'])
+                ->create();
+
+        $this->table('albums_tags')
+                ->addForeignKey('album_id', 'albums', 'id', ['update' => 'NO_ACTION', 'delete' => 'NO_ACTION'])
+                ->addForeignKey('tag_id', 'tags', 'id', ['update' => 'NO_ACTION', 'delete' => 'NO_ACTION'])
+                ->update();
     }
 
     public function down()
@@ -51,8 +65,15 @@ class UpdateTags extends AbstractMigration
                 ->update();
 
         $this->table('tags')
-                ->addColumn('name', 'string', ['after' => 'id', 'default' => null, 'length' => 50, 'null' => true])
+                ->addColumn('name', 'string', ['default' => null, 'limit' => 50, 'null' => true])
+                ->addColumn('itemtag_count', 'integer', ['default' => 0, 'limit' => 5, 'null' => false])
                 ->changeColumn('id', 'integer', ['autoIncrement' => true, 'default' => null, 'length' => 5, 'null' => false])
                 ->update();
+
+        $this->table('albums_tags')
+                ->dropForeignKey('album_id')
+                ->dropForeignKey('tag_id');
+
+        $this->dropTable('albums_tags');
     }
 }

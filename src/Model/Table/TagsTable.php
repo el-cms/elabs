@@ -38,6 +38,11 @@ class TagsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->belongsToMany('Albums', [
+            'foreignKey' => 'tag_id',
+            'targetForeignKey' => 'album_id',
+            'joinTable' => 'albums_tags'
+        ]);
         $this->belongsToMany('Files', [
             'foreignKey' => 'tag_id',
             'targetForeignKey' => 'file_id',
