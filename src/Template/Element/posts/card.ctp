@@ -6,7 +6,7 @@
             <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
             <!-- Language pill -->
             <?php if (!isset($languageInfo) || $languageInfo): ?>
-            <li><a class="language-pill"<?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>><?php echo $data['language']['name'] ?></a></li>
+                <li><a class="language-pill"<?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>><?php echo $data['language']['name'] ?></a></li>
             <?php endif ?>
             <!-- SFW pill-->
             <?php if (!$data['sfw']): ?>
@@ -70,6 +70,18 @@
                         <?php
                     endif;
                     ?>
+                    <li>
+                        <?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')); ?>
+                        <?php
+                        if (count($data->tags) > 0):
+                            echo $this->Html->arrayToString(array_map(function($tag) {
+                                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                    }, $data->tags));
+                        else:
+                            echo __d('elabs', 'No tags');
+                        endif;
+                        ?>
+                    </li>
                 </ul>
             </div>
         </div>

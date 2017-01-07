@@ -57,13 +57,25 @@
                         <?php
                     endif;
                     ?>
+                    <li>
+                        <?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')); ?>
+                        <?php
+                        if (count($data->tags) > 0):
+                            echo $this->Html->arrayToString(array_map(function($tag) {
+                                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                    }, $data->tags));
+                        else:
+                            echo __d('elabs', 'No tags');
+                        endif;
+                        ?>
+                    </li>
                 </ul>
             </div>
         </div>
         <!-- Content -->
         <div class="card-content">
             <div <?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>>
-            <?php echo $this->Html->displayMD($data['description']) ?>
+                <?php echo $this->Html->displayMD($data['description']) ?>
             </div>
             <?php
             if (count($data['files'] > 0)):
