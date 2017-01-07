@@ -15,14 +15,17 @@ class FilesControllerTest extends BaseTextCase
      * @var array
      */
     public $fixtures = [
-        'app.files',
-        'app.languages', // Needed for some layout vars
-        'app.licenses',
-        'app.users',
-        'app.projects',
-        'app.projects_files',
+        'app.acts',
         'app.albums',
         'app.albums_files',
+        'app.files',
+        'app.files_tags',
+        'app.languages', // Needed for some layout vars
+        'app.licenses',
+        'app.projects',
+        'app.projects_files',
+        'app.tags',
+        'app.users',
     ];
 
     /**

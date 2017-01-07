@@ -27,7 +27,6 @@ class AlbumsTagsTableTest extends TestCase
         'app.albums_tags',
         'app.albums',
         'app.users',
-        'app.social_accounts',
         'app.files',
         'app.languages',
         'app.notes',
