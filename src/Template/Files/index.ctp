@@ -34,6 +34,12 @@ switch ($filter):
         $this->Html->addCrumb(__d('elabs', 'Projects'), ['controller' => 'Projects', 'action' => 'index']);
         $this->Html->addCrumb($filterData->name, ['controller' => 'Projects', 'action' => 'view', $filterData->id]);
         break;
+    case 'tag':
+        $this->assign('title', __d('elabs', 'Files tagged with {0}', h($filterData->id)));
+        $this->Html->addCrumb(__d('elabs', 'Tags'), ['controller' => 'Tags', 'action' => 'index']);
+        $this->Html->addCrumb(h($filterData->id), ['controller' => 'Tags', 'action' => 'view', h($filterData->id)]);
+        $showUserInfo = false;
+        break;
     default:
         $this->assign('title', __d('elabs', 'Files list'));
         $this->Html->addCrumb(__d('elabs', 'Files'), ['action' => 'index']);
