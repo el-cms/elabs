@@ -215,7 +215,7 @@ class PostsTable extends Table
         }
         if ($options['withTags']) {
             $query->contain(['Tags' => function ($q) {
-                    return $q->find('asContain');
+                    return $q->find('asContain', ['pivot' => 'PostsTags.post_id']);
             }]);
         }
         if ($options['withUsers']) {

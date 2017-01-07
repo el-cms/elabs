@@ -53,6 +53,8 @@ class ProjectsController extends UserAppController
             // New values :
             $this->request->data['user_id'] = $this->Auth->user('id');
             $this->request->data['status'] = STATUS_PUBLISHED;
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data['tags']['_ids']);
             // Preparing data
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
@@ -70,8 +72,8 @@ class ProjectsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Projects->Languages->find('list', ['limit' => 200]);
+        $licenses = $this->Projects->Licenses->find('list');
+        $languages = $this->Projects->Languages->find('list');
         $this->set(compact('project', 'licenses', 'languages'));
         $this->set('_serialize', ['project']);
     }
@@ -87,9 +89,14 @@ class ProjectsController extends UserAppController
     {
         $project = $this->Projects->get($id, [
             'conditions' => ['user_id' => $this->Auth->user('id')],
+            'contain' => [
+                'Tags' => ['fields' => ['id', 'AlbumsTags.album_id']],
+            ],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $oldActState = $project->hide_from_acts;
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data['tags']['_ids']);
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__d('elabs', 'The project has been saved.'));
@@ -111,8 +118,8 @@ class ProjectsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Projects->Languages->find('list', ['limit' => 200]);
+        $licenses = $this->Projects->Licenses->find('list');
+        $languages = $this->Projects->Languages->find('list');
         $this->set(compact('project', 'licenses', 'languages'));
         $this->set('_serialize', ['project']);
     }

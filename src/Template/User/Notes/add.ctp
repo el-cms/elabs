@@ -32,6 +32,11 @@ echo $this->Form->input('text', ['type' => 'textarea', 'required' => 'false', 'i
 $this->CodeMirror->add('noteArea', [], ['%s.setSize(null, "150")']);
 ?>
 <div class="row">
+    <div class="col-sm-12">
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => [], 'data-role' => 'tagsinput']); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <?php echo $this->Form->input('license_id', ['options' => $licenses, 'default' => $this->request->session()->read('defaultWritingLicense')]); ?>
     </div>

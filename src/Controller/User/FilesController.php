@@ -100,6 +100,8 @@ class FilesController extends UserAppController
                     'hide_from_acts' => $this->request->data['hide_from_acts'],
                     'status' => STATUS_PUBLISHED
                 ];
+                // Manage tags
+                $fileItem['tags']['_ids'] = $this->TagManager->merge($this->request->data['tags']['_ids']);
 
                 if (!move_uploaded_file($fileInfos['tmp_name'], WWW_ROOT . $this->UpManager->baseDir . $currentFilePath)) {
                     $this->Flash->error(__d('elabs', 'The file could not be saved in the destination folder. Please, try again.'));
@@ -140,13 +142,16 @@ class FilesController extends UserAppController
     public function edit($id = null)
     {
         $file = $this->Files->get($id, [
-            'conditions' => ['user_id' => $this->Auth->user('id')],
             'contain' => [
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsFiles.file_id']],
                 'Albums' => ['fields' => ['id', 'name', 'AlbumsFiles.file_id']],
-            ]
+                'Tags' => ['fields' => ['id', 'FilesTags.file_id']],
+            ],
+            'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data['tags']['_ids']);
             $oldActState = $file->hide_from_acts;
             $file = $this->Files->patchEntity($file, $this->request->data);
             if ($this->Files->save($file)) {

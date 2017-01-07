@@ -190,7 +190,7 @@ class AlbumsTable extends Table
         }
         if ($options['withTags']) {
             $query->contain(['Tags' => function ($q) {
-                    return $q->find('asContain', ['pivot'=>['AlbumsTags.tags_id']]);
+                    return $q->find('asContain', ['pivot'=>['AlbumsTags.tag_id']]);
             }]);
         }
         if ($options['withUsers']) {

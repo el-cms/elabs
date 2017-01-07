@@ -172,6 +172,7 @@ class ProjectsTable extends Table
      *   - withLicenses bool, default true. Select the licenses
      *   - withNotes bool, default false. Select the notess
      *   - withPosts bool, default false. Select the posts
+     *   - withTags bool, default false. Select the tags
      *   - withUsers bool, default true. Select the user
      *
      * @return \Cake\ORM\Query
@@ -189,6 +190,7 @@ class ProjectsTable extends Table
             'withLicenses' => true,
             'withNotes' => false,
             'withPosts' => false,
+            'withTags' => true,
             'withUsers' => true,
         ];
 
@@ -243,6 +245,11 @@ class ProjectsTable extends Table
         if ($options['withPosts']) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw]);
+            }]);
+        }
+        if ($options['withTags']) {
+            $query->contain(['Tags' => function ($q) {
+                    return $q->find('asContain', ['pivot'=>['ProjectsTags.project_id']]);
             }]);
         }
         if ($options['withUsers']) {

@@ -136,6 +136,7 @@ class NotesTable extends Table
      *   - withLanguages bool, dafault true. Select the language
      *   - withLicenses bool, dafault true. Select the license
      *   - withProjects bool, default false. Select the projects
+     *   - withTags bool, default false. Select the tags
      *   - withUsers bool, default true. Select the user
      *
      * @return \Cake\ORM\Query
@@ -149,6 +150,7 @@ class NotesTable extends Table
             'withLanguages' => true,
             'withLicenses' => true,
             'withProjects' => true,
+            'withTags' => true,
             'withUsers' => true,
         ];
 
@@ -183,6 +185,11 @@ class NotesTable extends Table
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsNotes.note_id']);
+            }]);
+        }
+        if ($options['withTags']) {
+            $query->contain(['Tags' => function ($q) {
+                    return $q->find('asContain', ['pivot'=>['NotesTags.note_id']]);
             }]);
         }
         if ($options['withUsers']) {

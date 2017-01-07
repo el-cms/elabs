@@ -73,8 +73,7 @@ class AlbumsController extends UserAppController
         $languages = $this->Albums->Languages->find('list');
         $files = $this->Albums->Files->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $projects = $this->Albums->Projects->find('list', ['conditions' => ['Projects.user_id' => $this->Auth->user('id')]]);
-        $tags = $this->Albums->Tags->find('list');
-        $this->set(compact('album', 'languages', 'files', 'projects', 'tags'));
+        $this->set(compact('album', 'languages', 'files', 'projects'));
         $this->set('_serialize', ['album']);
     }
 
@@ -89,11 +88,11 @@ class AlbumsController extends UserAppController
     {
         $album = $this->Albums->get($id, [
             'contain' => [
-                'Files'=>['fields'=>['id', 'name', 'AlbumsFiles.album_id']],
-                'Projects'=>['fields'=>['id', 'name', 'ProjectsAlbums.album_id']],
+                'Files' => ['fields' => ['id', 'name', 'AlbumsFiles.album_id']],
+                'Projects' => ['fields' => ['id', 'name', 'ProjectsAlbums.album_id']],
                 'Tags' => ['fields' => ['id', 'AlbumsTags.album_id']],
-                ],
-
+            ],
+            'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $oldActState = $album->hide_from_acts;

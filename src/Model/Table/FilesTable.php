@@ -162,6 +162,7 @@ class FilesTable extends Table
      *   - withLanguages bool, dafault true. Select the language
      *   - withLicenses bool, dafault true. Select the license
      *   - withProjects bool, default false. Select the projects
+     *   - withTags bool, default false. Select the tags
      *   - withUsers bool, default true. Select the user
      *
      * @return \Cake\ORM\Query
@@ -176,6 +177,7 @@ class FilesTable extends Table
             'withLanguages' => true,
             'withLicenses' => true,
             'withProjects' => true,
+            'withTags' => true,
             'withUsers' => true,
         ];
 
@@ -215,6 +217,11 @@ class FilesTable extends Table
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsFiles.file_id']);
+            }]);
+        }
+        if ($options['withTags']) {
+            $query->contain(['Tags' => function ($q) {
+                    return $q->find('asContain', ['pivot'=>['FilesTags.file_id']]);
             }]);
         }
         if ($options['withUsers']) {

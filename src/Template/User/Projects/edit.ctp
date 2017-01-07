@@ -43,6 +43,11 @@ $this->CodeMirror->add('descriptionArea');
 echo $this->Form->input('mainurl', ['label' => __d('elabs', 'Main URL')]);
 ?>
 <div class="row">
+    <div class="col-sm-12">
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => $this->TagList->tagsToList($project->tags), 'data-role' => 'tagsinput']); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-6">
         <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
     </div>
