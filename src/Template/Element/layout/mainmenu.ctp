@@ -22,6 +22,9 @@ $this->start('mainMenu');
 <li>
     <?php echo $this->Html->link(__d('elabs', 'Authors'), ['prefix' => false, 'plugin' => null, 'controller' => 'users', 'action' => 'index']) ?>
 </li>
+<li>
+    <?php echo $this->Html->link(__d('elabs', 'Tags'), ['prefix' => false, 'plugin' => null, 'controller' => 'Tags', 'action' => 'index']) ?>
+</li>
 
 <?php
 $this->end();

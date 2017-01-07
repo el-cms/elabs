@@ -1,49 +1,65 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Tag'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Files'), ['controller' => 'Files', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New File'), ['controller' => 'Files', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Notes'), ['controller' => 'Notes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Note'), ['controller' => 'Notes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Projects'), ['controller' => 'Projects', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Project'), ['controller' => 'Projects', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="tags index large-9 medium-8 columns content">
-    <h3><?= __('Tags') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
+<?php
+/*
+ * File:
+ *   src/Templates/Tags/index.ctp
+ * Description:
+ *   List of tags, sortable
+ * Layout element:
+ *   defaultindex.ctp
+ */
+
+// Page title
+$this->assign('title', __d('elabs', 'Tags'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Tags'), ['action' => 'index']);
+$this->Html->addCrumb(__d('elabs', 'List of tags'));
+
+
+// Block: Pagination order links
+// -----------------------------
+$this->start('pageOrderBy');
+echo $this->Paginator->sort('name', __d('elabs', 'Name'));
+echo $this->Paginator->sort('album_count', __d('elabs', 'Number of albums'));
+echo $this->Paginator->sort('file_count', __d('elabs', 'Number of files'));
+echo $this->Paginator->sort('note_count', __d('elabs', 'Number of notes'));
+echo $this->Paginator->sort('post_count', __d('elabs', 'Number of articles'));
+echo $this->Paginator->sort('project_count', __d('elabs', 'Number of projects'));
+$this->end();
+// Block: Page content
+// -------------------
+$this->start('pageContent');
+?>
+<table>
+    <thead>
+        <tr>
+            <th scope="col"><?php echo __d('elabs', 'Name') ?></th>
+            <th scope="col"><?php echo __d('elabs', 'Number of albums') ?></th>
+            <th scope="col"><?php echo __d('elabs', 'Number of files') ?></th>
+            <th scope="col"><?php echo __d('elabs', 'Number of notes') ?></th>
+            <th scope="col"><?php echo __d('elabs', 'Number of articles') ?></th>
+            <th scope="col"><?php echo __d('elabs', 'Number of projects') ?></th>
+            <th scope="col"><?php echo __d('elabs', 'Total') ?></th>
+        </tr>
+    </thead>
+    <tbody class="table-hover">
+        <?php foreach ($tags as $tag): ?>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('name') ?></th>
-                <th><?= $this->Paginator->sort('itemtag_count') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
+                <td><?php echo $this->Html->link(h($tag->id), ['action' => 'view', h($tag->id)]) ?></td>
+                <td><?php echo $this->Html->link($this->Number->format($tag->album_count), ['controller' => 'Albums', 'action' => 'index', 'tag', h($tag->id)]) ?></td>
+                <td><?php echo $this->Html->link($this->Number->format($tag->file_count), ['controller' => 'Files', 'action' => 'index', 'tag', h($tag->id)]) ?></td>
+                <td><?php echo $this->Html->link($this->Number->format($tag->note_count), ['controller' => 'Notes', 'action' => 'index', 'tag', h($tag->id)]) ?></td>
+                <td><?php echo $this->Html->link($this->Number->format($tag->post_count), ['controller' => 'Posts', 'action' => 'index', 'tag', h($tag->id)]) ?></td>
+                <td><?php echo $this->Html->link($this->Number->format($tag->project_count), ['controller' => 'Project', 'action' => 'index', 'tag', h($tag->id)]) ?></td>
+                <td><?php echo $this->Number->format($tag->total_items) ?></td>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($tags as $tag): ?>
-            <tr>
-                <td><?= $this->Number->format($tag->id) ?></td>
-                <td><?= h($tag->name) ?></td>
-                <td><?= $this->Number->format($tag->itemtag_count) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $tag->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tag->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $tag->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
-    </div>
-</div>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php
+$this->end();
+
+// Load the layout element
+// -----------------------
+echo $this->element('layouts/defaultindex');
+

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Controller\AppController;
+
 /**
  * Tags Controller
  *
@@ -13,12 +15,16 @@ class TagsController extends AppController
     /**
      * Index method
      *
-     * @return void
+     * @return \Cake\Network\Response|null
      */
     public function index()
     {
-        $this->paginate = ['order' => ['created' => 'desc']];
-        $this->set('tags', $this->paginate($this->Tags));
+        $this->paginate = [
+            'order' => ['id' => 'asc']
+        ];
+        $tags = $this->paginate($this->Tags);
+
+        $this->set(compact('tags'));
         $this->set('_serialize', ['tags']);
     }
 
@@ -26,14 +32,13 @@ class TagsController extends AppController
      * View method
      *
      * @param string|null $id Tag id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @return \Cake\Network\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $tag = $this->Tags->get($id, [
-            'contain' => ['Itemtags']
-        ]);
+        $tag = $this->Tags->getWithContain($id, ['sfw' => !$this->seeNSFW]);
+
         $this->set('tag', $tag);
         $this->set('_serialize', ['tag']);
     }
