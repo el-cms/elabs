@@ -43,7 +43,18 @@ $this->start('pageInfos');
     <li><strong><?php echo $this->Html->iconT('file-o', __dn('elabs', '{0} file','{0} files', $project->file_count, $project->file_count)) ?></strong></li>
     <li><strong><?php echo $this->Html->iconT('book', __dn('elabs', '{0} album', '{0} albums', $project->album_count, $project->album_count)) ?></strong></li>
     <li class="separator"></li>
-    <li><strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong>
+        <?php
+        if (count($project->tags) > 0):
+            echo $this->Html->arrayToString(array_map(function($tag) {
+                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                    }, $project->tags));
+        else:
+            echo __d('elabs', 'No tags');
+        endif;
+        ?>
+    </li>
 </ul>
 
 <?php

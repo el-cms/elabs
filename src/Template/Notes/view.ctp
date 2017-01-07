@@ -38,11 +38,12 @@ $this->start('pageInfos');
     </li>
     <?php
     $nbProj = count($note->projects);
-    if ($nbProj > 0):
-        ?>
-        <li>
-            <strong><?php echo $this->Html->iconT('cogs', __dn('elabs', 'Project:', 'Projects:', $nbProj)) ?></strong>
-            <?php
+    ?>
+    <li class="separator"></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('cogs', __dn('elabs', 'Project:', 'Projects:', $nbProj)) ?></strong>
+        <?php
+        if ($nbProj > 0):
             if ($nbProj === 1):
                 echo $this->Html->link(h($note->projects[0]->name), ['controller' => 'Projects', 'action' => 'view', $note->projects[0]->id]);
             else:
@@ -57,11 +58,24 @@ $this->start('pageInfos');
                 </ul>
             <?php
             endif;
-            ?>
-        </li>
+        else:
+            echo __d('elabs', 'No projects');
+        endif;
+        ?>
+    </li>
+    <li class="separator"></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong>
         <?php
-    endif;
-    ?>
+        if (count($note->tags) > 0):
+            echo $this->Html->arrayToString(array_map(function($tag) {
+                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                    }, $note->tags));
+        else:
+            echo __d('elabs', 'No tags');
+        endif;
+        ?>
+    </li>
 </ul>
 <?php
 $this->end();

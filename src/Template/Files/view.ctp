@@ -42,11 +42,12 @@ $config = $this->Items->fileConfig($file['filename']);
     </li>
     <?php
     $nbProj = count($file->projects);
-    if ($nbProj > 0):
-        ?>
-        <li>
-            <strong><?php echo $this->Html->iconT('cogs', __dn('elabs', 'Project:', 'Projects:', $nbProj)) ?></strong>
-            <?php
+    ?>
+    <li class="separator"></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('cogs', __dn('elabs', 'Project:', 'Projects:', $nbProj)) ?></strong>
+        <?php
+        if ($nbProj > 0):
             if ($nbProj === 1):
                 echo $this->Html->link(h($file->projects[0]->name), ['controller' => 'Projects', 'action' => 'view', $file->projects[0]->id]);
             else:
@@ -61,18 +62,32 @@ $config = $this->Items->fileConfig($file['filename']);
                 </ul>
             <?php
             endif;
-            ?>
-        </li>
+        else:
+            echo __d('elabs', 'No projects');
+        endif;
+        ?>
+    </li>
+    <li class="separator"></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong>
         <?php
-    endif;
-    ?>
+        if (count($file->tags) > 0):
+            echo $this->Html->arrayToString(array_map(function($tag) {
+                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                    }, $file->tags));
+        else:
+            echo __d('elabs', 'No tags');
+        endif;
+        ?>
+    </li>
+    <li class="separator"></li>
     <?php
     $nbAlbs = count($file->albums);
-    if ($nbAlbs > 0):
-        ?>
-        <li>
-            <strong><?php echo $this->Html->iconT('book', __dn('elabs', 'Album:', 'Albums:', $nbAlbs)) ?></strong>
-            <?php
+    ?>
+    <li>
+        <strong><?php echo $this->Html->iconT('book', __dn('elabs', 'Album:', 'Albums:', $nbAlbs)) ?></strong>
+        <?php
+        if ($nbAlbs > 0):
             if ($nbAlbs === 1):
                 echo $this->Html->link(h($file->albums[0]->name), ['controller' => 'Albums', 'action' => 'view', $file->albums[0]->id]);
             else:
@@ -82,13 +97,11 @@ $config = $this->Items->fileConfig($file['filename']);
                         <li><?php echo $this->Html->link(h($album->name), ['controller' => 'Albums', 'action' => 'view', $album->id]); ?></li>
                     <?php endforeach; ?>
                 </ul>
-            <?php endif; ?>
-        </li>
-        <?php
-    endif;
-    ?>
-
-    <li><strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
+            <?php
+            endif;
+        endif;
+        ?>
+    </li>
 </ul>
 <?php
 $this->end();

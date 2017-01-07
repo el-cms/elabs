@@ -33,11 +33,12 @@ $this->start('pageInfos');
     <li><strong><?php echo $this->Html->iconT('info', __d('elabs', 'Safe content:')) ?></strong> <span class="label label-<?php echo $album->sfw ? 'success' : 'danger'; ?>"><?php echo $album->sfw ? __d('elabs', 'Yes') : __d('elabs', 'No'); ?></span></li>
     <?php
     $nbProj = count($album->projects);
-    if ($nbProj > 0):
-        ?>
-        <li>
-            <strong><?php echo $this->Html->iconT('cogs', __dn('elabs', 'Project:', 'Projects:', $nbProj)) ?></strong>
-            <?php
+    ?>
+    <li class="separator"></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('cogs', __dn('elabs', 'Project:', 'Projects:', $nbProj)) ?></strong>
+        <?php
+        if ($nbProj > 0):
             if ($nbProj === 1):
                 echo $this->Html->link(h($album->projects[0]->name), ['controller' => 'Projects', 'action' => 'view', $album->projects[0]->id]);
             else:
@@ -52,12 +53,24 @@ $this->start('pageInfos');
                 </ul>
             <?php
             endif;
-            ?>
-        </li>
+        else:
+            echo __d('elabs', 'No projects');
+        endif;
+        ?>
+    </li>
+    <li class="separator"></li>
+    <li>
+        <strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong>
         <?php
-    endif;
-    ?>
-    <li><strong><?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')) ?></strong> <?php echo $this->element('layout/dev_inline') ?></li>
+        if (count($album->tags) > 0):
+            echo $this->Html->arrayToString(array_map(function($tag) {
+                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                    }, $album->tags));
+        else:
+            echo __d('elabs', 'No tags');
+        endif;
+        ?>
+    </li>
 </ul>
 <?php
 $this->end();
