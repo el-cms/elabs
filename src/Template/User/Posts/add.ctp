@@ -36,7 +36,7 @@ $this->CodeMirror->add('textArea');
 ?>
 <div class="row">
     <div class="col-sm-12">
-        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => $tags, 'data-role' => 'tagsinput']); ?>
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'data-role' => 'tagsinput']); ?>
     </div>
 </div>
 <div class="row">
