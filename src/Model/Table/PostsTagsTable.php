@@ -37,6 +37,13 @@ class PostsTagsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Tags' => ['post_count' => [
+                    'contain' => ['Posts' => ['fields' => ['id', 'status']]],
+                    'conditions' => ['Posts.status' => STATUS_PUBLISHED]]
+            ],
+        ]);
+
         $this->belongsTo('Posts', [
             'foreignKey' => 'post_id',
             'joinType' => 'INNER'

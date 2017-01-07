@@ -37,6 +37,13 @@ class NotesTagsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Tags' => ['note_count' => [
+                    'contain' => ['Notes' => ['fields' => ['id', 'status']]],
+                    'conditions' => ['Notes.status' => STATUS_PUBLISHED]]
+            ],
+        ]);
+
         $this->belongsTo('Notes', [
             'foreignKey' => 'note_id',
             'joinType' => 'INNER'

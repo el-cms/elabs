@@ -37,6 +37,10 @@ class AlbumsTagsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Tags' => ['album_count' => ['conditions' => ['Albums.status' => STATUS_PUBLISHED]]],
+        ]);
+
         $this->belongsTo('Albums', [
             'foreignKey' => 'album_id',
             'joinType' => 'INNER'

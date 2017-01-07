@@ -37,6 +37,10 @@ class FilesTagsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Tags' => ['file_count' => ['conditions' => ['Files.status' => STATUS_PUBLISHED]]],
+        ]);
+
         $this->belongsTo('Files', [
             'foreignKey' => 'file_id',
             'joinType' => 'INNER'
