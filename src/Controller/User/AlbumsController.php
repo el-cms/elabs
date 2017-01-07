@@ -6,6 +6,7 @@ namespace App\Controller\User;
  * Albums Controller
  *
  * @property \App\Model\Table\AlbumsTable $Albums
+ * @property \App\Controller\Component\TagManagerComponent $TagManager
  */
 class AlbumsController extends UserAppController
 {
@@ -51,7 +52,7 @@ class AlbumsController extends UserAppController
             $dataSent['user_id'] = $this->Auth->user('id');
             $dataSent['status'] = STATUS_PUBLISHED;
             // Manage tags
-            $dataSent['tags']['_ids'] = $this->TagManager->merge($dataSent['tags']['_ids']);
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $album = $this->Albums->patchEntity($album, $dataSent);
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__('The album has been saved.'));
@@ -97,7 +98,7 @@ class AlbumsController extends UserAppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $oldActState = $album->hide_from_acts;
             // Manage tags
-            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data['tags']['_ids']);
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $album = $this->Albums->patchEntity($album, $this->request->data);
             if ($this->Albums->save($album)) {
                 $this->Flash->success(__d('elabs', 'The album has been saved.'));

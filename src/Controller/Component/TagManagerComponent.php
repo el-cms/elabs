@@ -31,31 +31,28 @@ class TagManagerComponent extends Component
     }
 
     /**
-     * Adds an element to the Acts table
+     * Creates tags if they don't exist and return the request data
      *
-     * @param mixed $foreignKey Target foreign key
-     * @param string $type Target action
-     * @param string $model Target model
-     * @param date $created Creation date
-     *
-     * @return bool
+     * @param array $tags
+     * @return array
      */
-    public function merge(array $tags, $model = null)
+    public function merge(array $tags = null)
     {
         $tagList = [];
-        foreach ($tags as $tag) {
-            // Search for tag in db or create it
-            $this->Tags->findOrCreate(['Tags.id' => $tag], function($tagEntity) use($tag){
-                $tagEntity->id=$tag;
+        if (!is_null($tags)) {
+            foreach ($tags as $tag) {
+                // Search for tag in db or create it
+                $this->Tags->findOrCreate(['Tags.id' => $tag], function($tagEntity) use($tag) {
+                    $tagEntity->id = $tag;
 
-                return $tagEntity;
-            });
+                    return $tagEntity;
+                });
 
-            // Add tag to list
-            $tagList[]=$tag;
+                // Add tag to list
+                $tagList[] = $tag;
+            }
         }
 
         return $tagList;
     }
-
 }

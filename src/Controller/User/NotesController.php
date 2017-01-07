@@ -6,6 +6,7 @@ namespace App\Controller\User;
  * Notes Controller
  *
  * @property \App\Model\Table\NotesTable $Notes
+ * @property \App\Controller\Component\TagManagerComponent $TagManager
  */
 class NotesController extends UserAppController
 {
@@ -56,7 +57,7 @@ class NotesController extends UserAppController
             $dataSent['user_id'] = $this->Auth->user('id');
             $dataSent['status'] = STATUS_PUBLISHED;
             // Manage tags
-            $dataSent['tags']['_ids'] = $this->TagManager->merge($dataSent['tags']['_ids']);
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $note = $this->Notes->patchEntity($note, $dataSent);
             if ($this->Notes->save($note)) {
                 $this->Flash->success(__d('elabs', 'The note has been saved.'));
@@ -100,7 +101,7 @@ class NotesController extends UserAppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Manage tags
-            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data['tags']['_ids']);
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $oldActState = $note->hide_from_acts;
             if ($note->status != STATUS_DELETED) {
                 // Force note status

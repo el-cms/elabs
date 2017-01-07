@@ -59,7 +59,7 @@ class PostsController extends UserAppController
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
             // Manage tags
-            $dataSent['tags']['_ids'] = $this->TagManager->merge($dataSent['tags']['_ids']);
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             if ($dataSent['status'] == STATUS_PUBLISHED) {
                 $dataSent['publication_date'] = Time::now();
             }
@@ -112,7 +112,7 @@ class PostsController extends UserAppController
                 $this->request->data['publication_date'] = Time::now();
             }
             // Manage tags
-            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data['tags']['_ids']);
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $post = $this->Posts->patchEntity($post, $this->request->data);
             if ($this->Posts->save($post)) {
                 if ($oldState === STATUS_DRAFT && $post->status === STATUS_PUBLISHED) {
