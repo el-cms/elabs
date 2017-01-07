@@ -175,4 +175,26 @@ class TagsTable extends Table
                         ->where(['Tags.id' => $primaryKey])
                         ->firstOrFail();
     }
+
+
+     /**
+     * Gets a record without associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *   - complete bool default true Select all the fields
+     *
+     * @return \Cake\ORM\Entity
+     */
+    public function getWithoutContain($primaryKey, array $options = [])
+    {
+        $options += [
+            'sfw' => true,
+        ];
+
+        return $this->find('asContain', $options)
+                        ->where(['Tags.id' => $primaryKey])
+                        ->firstOrFail();
+    }
 }

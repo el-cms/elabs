@@ -38,7 +38,10 @@ class AlbumsTagsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('CounterCache', [
-            'Tags' => ['album_count' => ['conditions' => ['Albums.status' => STATUS_PUBLISHED]]],
+            'Tags' => ['album_count' => [
+                'contain' => ['Albums' => ['fields' => ['id', 'status']]],
+                'conditions' => ['Albums.status' => STATUS_PUBLISHED]]
+            ],
         ]);
 
         $this->belongsTo('Albums', [
