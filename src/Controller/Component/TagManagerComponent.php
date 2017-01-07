@@ -33,11 +33,14 @@ class TagManagerComponent extends Component
     /**
      * Creates tags if they don't exist and return the request data
      *
-     * @param array $tags
+     * @param mixed $tags
      * @return array
      */
-    public function merge(array $tags = null)
+    public function merge($tags = null)
     {
+        if (!is_array($tags)){
+            return [];
+        }
         $tagList = [];
         if (!is_null($tags)) {
             foreach ($tags as $tag) {
