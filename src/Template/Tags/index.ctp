@@ -29,6 +29,7 @@ $this->end();
 // Block: Page content
 // -------------------
 $this->start('pageContent');
+if (!$tags->isEmpty()):
 ?>
 <table>
     <thead>
@@ -57,6 +58,9 @@ $this->start('pageContent');
     </tbody>
 </table>
 <?php
+else:
+    echo $this->element('layout/empty');
+endif;
 $this->end();
 
 // Load the layout element
