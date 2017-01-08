@@ -84,7 +84,7 @@ $this->end();
 // -------------------
 $this->start('pageContent');
 ?>
-<div <?php echo $this->Html->langAttr($note->language->id) ?>>
+<div <?php echo $this->Html->langAttr($note->language->iso639_1) ?>>
     <?php echo $this->Html->displayMD($note->text); ?>
 </div>
 <?php
