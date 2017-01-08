@@ -6,6 +6,7 @@ namespace App\Controller\User;
  * Notes Controller
  *
  * @property \App\Model\Table\NotesTable $Notes
+ * @property \App\Controller\Component\TagManagerComponent $TagManager
  */
 class NotesController extends UserAppController
 {
@@ -55,6 +56,8 @@ class NotesController extends UserAppController
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
             $dataSent['status'] = STATUS_PUBLISHED;
+            // Manage tags
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $note = $this->Notes->patchEntity($note, $dataSent);
             if ($this->Notes->save($note)) {
                 $this->Flash->success(__d('elabs', 'The note has been saved.'));
@@ -75,9 +78,8 @@ class NotesController extends UserAppController
         }
         $languages = $this->Notes->Languages->find('list');
         $licenses = $this->Notes->Licenses->find('list');
-//        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
         $projects = $this->Notes->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('note', 'languages', 'licenses', 'projects')); //, 'tags'));
+        $this->set(compact('note', 'languages', 'licenses', 'projects'));
         $this->set('_serialize', ['note']);
     }
 
@@ -93,11 +95,13 @@ class NotesController extends UserAppController
         $note = $this->Notes->get($id, [
             'contain' => [
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
-            //'Tags',
+                'Tags' => ['fields' => ['id', 'NotesTags.note_id']],
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $oldActState = $note->hide_from_acts;
             if ($note->status != STATUS_DELETED) {
                 // Force note status
@@ -131,7 +135,6 @@ class NotesController extends UserAppController
         }
         $languages = $this->Notes->Languages->find('list');
         $licenses = $this->Notes->Licenses->find('list');
-//        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
         $projects = $this->Notes->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('note', 'languages', 'licenses', 'projects')); //, 'tags'));
         $this->set('_serialize', ['note']);

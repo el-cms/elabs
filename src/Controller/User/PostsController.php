@@ -58,6 +58,8 @@ class PostsController extends UserAppController
             // Assigning values:
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
+            // Manage tags
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             if ($dataSent['status'] == STATUS_PUBLISHED) {
                 $dataSent['publication_date'] = Time::now();
             }
@@ -82,7 +84,7 @@ class PostsController extends UserAppController
         $licenses = $this->Posts->Licenses->find('list');
         $languages = $this->Posts->Languages->find('list');
         $projects = $this->Posts->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('post', 'licenses', 'languages', 'projects'));
+        $this->set(compact('post', 'licenses', 'languages', 'projects', 'tags'));
         $this->set('_serialize', ['post']);
     }
 
@@ -96,10 +98,11 @@ class PostsController extends UserAppController
     public function edit($id = null)
     {
         $post = $this->Posts->get($id, [
-            'conditions' => ['user_id' => $this->Auth->user('id')],
             'contain' => [
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-            ]
+                'Tags' => ['fields' => ['id', 'PostsTags.post_id']],
+            ],
+            'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Old publication state
@@ -108,6 +111,8 @@ class PostsController extends UserAppController
             if ($oldState === STATUS_DRAFT && $this->request->data['status'] == STATUS_PUBLISHED) {
                 $this->request->data['publication_date'] = Time::now();
             }
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $post = $this->Posts->patchEntity($post, $this->request->data);
             if ($this->Posts->save($post)) {
                 if ($oldState === STATUS_DRAFT && $post->status === STATUS_PUBLISHED) {
@@ -146,7 +151,7 @@ class PostsController extends UserAppController
         $licenses = $this->Posts->Licenses->find('list');
         $languages = $this->Posts->Languages->find('list');
         $projects = $this->Posts->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('post', 'users', 'licenses', 'languages', 'projects'));
+        $this->set(compact('post', 'users', 'licenses', 'languages', 'projects', 'tags'));
         $this->set('_serialize', ['post']);
     }
 

@@ -6,12 +6,12 @@ class RemoveTeams extends AbstractMigration
 
     public function up()
     {
-
-        $this->dropTable('teams');
-
         $this->dropTable('teams_projects');
 
         $this->dropTable('teams_users');
+
+        $this->dropTable('teams');
+
     }
 
     public function down()

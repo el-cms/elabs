@@ -44,6 +44,11 @@ class AlbumsController extends AppController
                         return $q->where(['Projects.id' => $id]);
                     });
                     break;
+                case 'tag':
+                    $query->matching('Tags', function ($q) use ($id) {
+                        return $q->where(['Tags.id' => $id]);
+                    });
+                    break;
                 default:
                     throw new NotFoundException;
             }
@@ -51,7 +56,7 @@ class AlbumsController extends AppController
             // Get additionnal infos
             $modelName = Inflector::camelize(Inflector::pluralize($filter));
             $FilterModel = TableRegistry::get($modelName);
-            $filterData = $FilterModel->getSimple($id);
+            $filterData = $FilterModel->getWithoutContain($id);
             $this->set('filterData', $filterData);
         }
         $this->set('filter', $filter);

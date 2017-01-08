@@ -13,6 +13,19 @@ class UserAppController extends AppController
 {
 
     /**
+     * Initialization hook method.
+     *
+     * Use this method to add common initialization code like loading components.
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('TagManager');
+    }
+
+    /**
      * Before filter callback
      *
      * @param \Cake\Event\Event $event The beforeFilter event.
@@ -48,5 +61,6 @@ class UserAppController extends AppController
     {
         parent::beforeRender($event);
         $this->viewBuilder()->layout('user');
+        $this->viewBuilder()->helpers(['TagList']);
     }
 }

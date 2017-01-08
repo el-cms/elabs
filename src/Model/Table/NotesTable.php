@@ -136,6 +136,7 @@ class NotesTable extends Table
      *   - withLanguages bool, dafault true. Select the language
      *   - withLicenses bool, dafault true. Select the license
      *   - withProjects bool, default false. Select the projects
+     *   - withTags bool, default false. Select the tags
      *   - withUsers bool, default true. Select the user
      *
      * @return \Cake\ORM\Query
@@ -149,6 +150,7 @@ class NotesTable extends Table
             'withLanguages' => true,
             'withLicenses' => true,
             'withProjects' => true,
+            'withTags' => true,
             'withUsers' => true,
         ];
 
@@ -183,6 +185,11 @@ class NotesTable extends Table
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) {
                     return $q->find('asContain', ['pivot' => 'ProjectsNotes.note_id']);
+            }]);
+        }
+        if ($options['withTags']) {
+            $query->contain(['Tags' => function ($q) {
+                    return $q->find('asContain', ['pivot' => ['NotesTags.note_id']]);
             }]);
         }
         if ($options['withUsers']) {
@@ -232,6 +239,29 @@ class NotesTable extends Table
         $options += ['sfw' => true];
 
         return $this->find('withContain', $options)
+                        ->where(['Notes.id' => $primaryKey])
+                        ->firstOrFail();
+    }
+
+
+
+    /**
+     * Gets a record without associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *   - complete bool default true Select all the fields
+     *
+     * @return \Cake\ORM\Entity
+     */
+    public function getWithoutContain($primaryKey, array $options = [])
+    {
+        $options += [
+            'sfw' => true,
+        ];
+
+        return $this->find('asContain', $options)
                         ->where(['Notes.id' => $primaryKey])
                         ->firstOrFail();
     }

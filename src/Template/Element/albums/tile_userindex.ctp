@@ -47,7 +47,7 @@
                             $nbProj = count($album->projects);
                             if ($nbProj > 0):
                                 echo $this->Html->arrayToString(array_map(function($project) {
-                                            return $this->Html->Link($project->name, ['prefix'=>false, 'controller' => 'Projects', 'action' => 'view', $project->id]);
+                                            return $this->Html->Link($project->name, ['prefix' => false, 'controller' => 'Projects', 'action' => 'view', $project->id]);
                                         }, $album->projects));
                             else:
                                 echo __d('elabs', 'No projects');
@@ -55,11 +55,23 @@
                             ?>
                         </dd>
                         <dt><?php echo __d('elabs', 'Tags') ?></dt>
-                        <dd><?php echo $this->element('layout/dev_inline') ?></dd>
+                        <dd>
+                            <?php
+                            if (count($album->tags) > 0):
+                                echo $this->Html->arrayToString(array_map(function($tag) {
+                                            return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                        }, $album->tags));
+                            else:
+                                echo __d('elabs', 'No tags');
+                            endif;
+                            ?>
+                        </dd>
                     </dl>
                 </div>
-                <div class="col-sm-8 rendered-text"<?php echo $this->Html->langAttr($album->language->iso639_1) ?>>
-                    <?php echo $this->Html->displayMD($album->description); ?>
+                <div class="col-sm-8 rendered-text">
+                    <div<?php echo $this->Html->langAttr($album->language->iso639_1) ?>>
+                        <?php echo $this->Html->displayMD($album->description); ?>
+                    </div>
                     <h3><?php echo __d('elabs', 'Files') ?></h3>
                     <?php
                     $nbFiles = count($album->files);
@@ -67,7 +79,7 @@
                         ?>
                         <?php
                         echo $this->Html->arrayToString(array_map(function($file) {
-                                    return $this->Html->Link($file->name, ['prefix'=>false, 'controller' => 'Files', 'action' => 'view', $file->id]);
+                                    return $this->Html->Link($file->name, ['prefix' => false, 'controller' => 'Files', 'action' => 'view', $file->id]);
                                 }, $album->files));
                     else:
                         echo __d('elabs', 'No files');

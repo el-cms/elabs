@@ -36,6 +36,11 @@ echo $this->Form->input('mainurl', ['label' => __d('elabs', 'Main URL')]);
 $this->CodeMirror->add('descriptionArea');
 ?>
 <div class="row">
+    <div class="col-sm-12">
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => [], 'data-role' => 'tagsinput']); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-6">
         <?php echo $this->Form->input('license_id', ['options' => $licenses, 'default' => $this->request->session()->read('defaultWritingLicense')]); ?>
     </div>

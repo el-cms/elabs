@@ -15,12 +15,17 @@ class FilesControllerTest extends BaseTextCase
      * @var array
      */
     public $fixtures = [
-        'app.languages', // Needed for some layout vars
-        'app.files',
-        // Relations
         'app.acts',
+        'app.albums',
+        'app.albums_files',
+        'app.files',
+        'app.files_tags',
+        'app.languages', // Needed for some layout vars
         'app.languages',
         'app.licenses',
+        'app.projects',
+        'app.projects_files',
+        'app.tags',
         'app.users',
     ];
 
@@ -32,7 +37,6 @@ class FilesControllerTest extends BaseTextCase
         // Set session data
         $this->session($this->userCreds['admin']);
         $this->get('/admin/files');
-
         // No error
         $this->assertResponseOk();
     }
@@ -97,8 +101,5 @@ class FilesControllerTest extends BaseTextCase
 
         // Error
         $this->assertResponseError();
-
-        // Ajax
-        $this->markTestIncomplete('Missing ajax test');
     }
 }

@@ -15,12 +15,12 @@ class ProjectsControllerTest extends BaseTextCase
      * @var array
      */
     public $fixtures = [
-        'app.languages', // Needed for some layout vars
-        'app.projects',
-        // Relations
         'app.acts',
-        'app.languages',
+        'app.languages', // Needed for some layout vars
         'app.licenses',
+        'app.projects',
+        'app.projects_tags',
+        'app.tags',
         'app.users',
     ];
 
@@ -97,8 +97,5 @@ class ProjectsControllerTest extends BaseTextCase
 
         // Error
         $this->assertResponseError();
-
-        // Ajax
-        $this->markTestIncomplete('Missing ajax test');
     }
 }

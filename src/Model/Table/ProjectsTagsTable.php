@@ -37,6 +37,13 @@ class ProjectsTagsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Tags' => ['project_count' => [
+                    'contain' => ['Projects' => ['fields' => ['id', 'status']]],
+                    'conditions' => ['Projects.status' => STATUS_PUBLISHED]]
+            ],
+        ]);
+
         $this->belongsTo('Projects', [
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'

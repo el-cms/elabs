@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsTo $Languages
  * @property \Cake\ORM\Association\BelongsToMany $Files
+ * @property \Cake\ORM\Association\BelongsToMany $Tags
  * @property \Cake\ORM\Association\BelongsToMany $Projects
  * @property \Cake\ORM\Association\HasMany $Acts
  *
@@ -66,6 +67,11 @@ class AlbumsTable extends Table
             'foreignKey' => 'album_id',
             'targetForeignKey' => 'project_id',
             'joinTable' => 'projects_albums'
+        ]);
+        $this->belongsToMany('Tags', [
+            'foreignKey' => 'album_id',
+            'targetForeignKey' => 'tag_id',
+            'joinTable' => 'albums_tags'
         ]);
         $this->hasMany('Acts', [
             'foreignKey' => 'fkid',
@@ -131,6 +137,7 @@ class AlbumsTable extends Table
      *   - withFiles bool, default true. Select the files
      *   - withLanguages bool, default true. Select the language
      *   - withProjects bool, default false. Select the projects
+     *   - withTags bool, default false. Select the tags
      *   - withUsers bool, default true. Select the user
      *
      * @return \Cake\ORM\Query
@@ -144,6 +151,7 @@ class AlbumsTable extends Table
             'withFiles' => true,
             'withLanguages' => true,
             'withProjects' => true,
+            'withTags' => true,
             'withUsers' => true,
         ];
 
@@ -177,7 +185,12 @@ class AlbumsTable extends Table
         }
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) {
-                    return $q->find('asContain', ['pivot' => 'ProjectsAlbums.album_id']);
+                    return $q->find('asContain', ['pivot' => 'ProjectsAlbums.project_id']);
+            }]);
+        }
+        if ($options['withTags']) {
+            $query->contain(['Tags' => function ($q) {
+                    return $q->find('asContain', ['pivot' => ['AlbumsTags.tag_id']]);
             }]);
         }
         if ($options['withUsers']) {
@@ -186,7 +199,7 @@ class AlbumsTable extends Table
             }]);
         }
 
-        // Returns the query
+        // Return the query
         return $query;
     }
 
@@ -248,6 +261,29 @@ class AlbumsTable extends Table
         $options += ['sfw' => true];
 
         return $this->find('withContain', $options)
+                        ->where(['Albums.id' => $primaryKey])
+                        ->firstOrFail();
+    }
+
+
+
+    /**
+     * Gets a record without associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *   - complete bool default true Select all the fields
+     *
+     * @return \Cake\ORM\Entity
+     */
+    public function getWithoutContain($primaryKey, array $options = [])
+    {
+        $options += [
+            'sfw' => true,
+        ];
+
+        return $this->find('asContain', $options)
                         ->where(['Albums.id' => $primaryKey])
                         ->firstOrFail();
     }

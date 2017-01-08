@@ -1,26 +1,26 @@
 <?php
-
 namespace App\Model\Table;
 
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * PostsTags Model
+ * AlbumsTags Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Posts
+ * @property \Cake\ORM\Association\BelongsTo $Albums
  * @property \Cake\ORM\Association\BelongsTo $Tags
  *
- * @method \App\Model\Entity\PostsTag get($primaryKey, $options = [])
- * @method \App\Model\Entity\PostsTag newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\PostsTag[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\PostsTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\PostsTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\PostsTag[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\PostsTag findOrCreate($search, callable $callback = null)
+ * @method \App\Model\Entity\AlbumsTag get($primaryKey, $options = [])
+ * @method \App\Model\Entity\AlbumsTag newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\AlbumsTag[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\AlbumsTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\AlbumsTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\AlbumsTag[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\AlbumsTag findOrCreate($search, callable $callback = null)
  */
-class PostsTagsTable extends Table
+class AlbumsTagsTable extends Table
 {
 
     /**
@@ -33,19 +33,19 @@ class PostsTagsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('posts_tags');
+        $this->table('albums_tags');
         $this->displayField('id');
         $this->primaryKey('id');
 
         $this->addBehavior('CounterCache', [
-            'Tags' => ['post_count' => [
-                    'contain' => ['Posts' => ['fields' => ['id', 'status']]],
-                    'conditions' => ['Posts.status' => STATUS_PUBLISHED]]
+            'Tags' => ['album_count' => [
+                'contain' => ['Albums' => ['fields' => ['id', 'status']]],
+                'conditions' => ['Albums.status' => STATUS_PUBLISHED]]
             ],
         ]);
 
-        $this->belongsTo('Posts', [
-            'foreignKey' => 'post_id',
+        $this->belongsTo('Albums', [
+            'foreignKey' => 'album_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Tags', [
@@ -63,8 +63,8 @@ class PostsTagsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-                ->integer('id')
-                ->allowEmpty('id', 'create');
+            ->integer('id')
+            ->allowEmpty('id', 'create');
 
         return $validator;
     }
@@ -78,7 +78,7 @@ class PostsTagsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['post_id'], 'Posts'));
+        $rules->add($rules->existsIn(['album_id'], 'Albums'));
         $rules->add($rules->existsIn(['tag_id'], 'Tags'));
 
         return $rules;

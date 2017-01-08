@@ -35,9 +35,14 @@ class TagsTable extends Table
         parent::initialize($config);
 
         $this->table('tags');
-        $this->displayField('name');
+        $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->belongsToMany('Albums', [
+            'foreignKey' => 'tag_id',
+            'targetForeignKey' => 'album_id',
+            'joinTable' => 'albums_tags'
+        ]);
         $this->belongsToMany('Files', [
             'foreignKey' => 'tag_id',
             'targetForeignKey' => 'file_id',
@@ -72,15 +77,124 @@ class TagsTable extends Table
                 ->integer('id')
                 ->allowEmpty('id', 'create');
 
-        $validator
-                ->requirePresence('name', 'create')
-                ->notEmpty('name');
-
-        $validator
-                ->integer('itemtag_count')
-                ->requirePresence('itemtag_count', 'create')
-                ->notEmpty('itemtag_count');
-
         return $validator;
+    }
+
+    /**
+     * Finds all data for a tag
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options:
+     *   - sfw bool, default false. Limits the result to sfw items
+     *   - withAlbums bool, default true. Select the albums
+     *   - withFiles bool, default true. Select the files
+     *   - withNotes bool, default true. Select the notes
+     *   - withPosts bool, default true. Select the posts
+     *   - withProjects bool, default false. Select the projects
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        $options += [
+            'sfw' => true,
+            'withAlbums' => true,
+            'withFiles' => true,
+            'withNotes' => true,
+            'withPosts' => true,
+            'withProjects' => true,
+            'withUsers' => true,
+        ];
+        $sfw = $options['sfw'];
+
+        // Fields
+        $query->select(['id', 'album_count', 'file_count', 'note_count', 'post_count', 'project_count']);
+
+        // Relations
+        if ($options['withAlbums']) {
+            $query->contain(['Albums' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+            }]);
+        }
+        if ($options['withFiles']) {
+            $query->contain(['Files' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+            }]);
+        }
+        if ($options['withNotes']) {
+            $query->contain(['Notes' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+            }]);
+        }
+        if ($options['withPosts']) {
+            $query->contain(['Posts' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+            }]);
+        }
+        if ($options['withProjects']) {
+            $query->contain(['Projects' => function ($q) use ($sfw) {
+                    return $q->find('withContain', ['sfw' => $sfw]);
+            }]);
+        }
+
+        // Return the query
+        return $query;
+    }
+
+    /**
+     * Used to fetch minimal data about tags
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options. Don't forget to add the 'pivot'
+     *        field name if necessary
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    {
+        return $query->select(['id']);
+    }
+
+    /**
+     * Gets a record with associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *   - complete bool default true Select all the fields
+     *
+     * @return \Cake\ORM\Entity
+     */
+    public function getWithContain($primaryKey, array $options = [])
+    {
+        $options += [
+            'sfw' => true,
+        ];
+
+        return $this->find('withContain', $options)
+                        ->where(['Tags.id' => $primaryKey])
+                        ->firstOrFail();
+    }
+
+
+    /**
+     * Gets a record without associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *   - complete bool default true Select all the fields
+     *
+     * @return \Cake\ORM\Entity
+     */
+    public function getWithoutContain($primaryKey, array $options = [])
+    {
+        $options += [
+            'sfw' => true,
+        ];
+
+        return $this->find('asContain', $options)
+                        ->where(['Tags.id' => $primaryKey])
+                        ->firstOrFail();
     }
 }

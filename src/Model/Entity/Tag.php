@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -6,9 +7,12 @@ use Cake\ORM\Entity;
 /**
  * Tag Entity
  *
- * @property int $id
- * @property string $name
- * @property int $itemtag_count
+ * @property string $id
+ * @property int $album_count
+ * @property int $file_count
+ * @property int $note_count
+ * @property int $post_count
+ * @property int $project_count
  *
  * @property \App\Model\Entity\File[] $files
  * @property \App\Model\Entity\Note[] $notes
@@ -17,7 +21,6 @@ use Cake\ORM\Entity;
  */
 class Tag extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -31,4 +34,14 @@ class Tag extends Entity
         '*' => true,
         'id' => false
     ];
+
+    /**
+     * Returns the sum of all counters
+     *
+     * @return int
+     */
+    protected function _getTotalItems()
+    {
+        return $this->_properties['album_count'] + $this->_properties['file_count'] + $this->_properties['note_count'] + $this->_properties['post_count'] + $this->_properties['project_count'];
+    }
 }

@@ -15,14 +15,18 @@ class FilesControllerTest extends BaseTextCase
      * @var array
      */
     public $fixtures = [
-        'app.files',
-        'app.languages', // Needed for some layout vars
-        'app.licenses',
-        'app.users',
-        'app.projects',
-        'app.projects_files',
+        'app.acts',
         'app.albums',
         'app.albums_files',
+        'app.albums_tags',
+        'app.files',
+        'app.files_tags',
+        'app.languages', // Needed for some layout vars
+        'app.licenses',
+        'app.projects',
+        'app.projects_files',
+        'app.tags',
+        'app.users',
     ];
 
     /**
@@ -40,6 +44,7 @@ class FilesControllerTest extends BaseTextCase
         $this->get('/user/files');
         $nb = count($this->_controller->viewVars['files']);
         $this->assertEquals(5, $nb);
+//        $this->assertResponseEquals('');
         $this->assertResponseOk();
 
         // Sfw filter

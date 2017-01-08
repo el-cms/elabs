@@ -15,13 +15,15 @@ class NotesControllerTest extends BaseTextCase
      * @var array
      */
     public $fixtures = [
+        'app.acts',
         'app.notes',
+        'app.notes_tags',
         'app.languages', // Needed for some layout vars
         'app.licenses',
-        'app.users',
-        'app.acts',
         'app.projects',
         'app.projects_notes',
+        'app.tags',
+        'app.users',
     ];
 
     /**

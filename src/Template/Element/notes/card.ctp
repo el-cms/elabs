@@ -23,11 +23,11 @@
             <div class="card-header">
                 <!-- Title -->
                 <ul class="card-informations">
+                    <li>
+                        <?php echo $this->Html->icon('link') ?>
+                        <?php echo $this->Html->link(__d('elabs', 'Permalink'), ['controller' => 'Notes', 'action' => 'view', $data['id']], ['escape' => false]) ?>
+                    </li>
                     <?php if (!isset($userInfo) || $userInfo): ?>
-                        <li>
-                            <?php echo $this->Html->icon('link') ?>
-                            <?php echo $this->Html->link(__d('elabs', 'Permalink'), ['controller' => 'Notes', 'action' => 'view', $data['id']], ['escape' => false]) ?>
-                        </li>
                         <li>
                             <?php echo $this->Html->iconT('user', __d('elabs', 'Author:')) ?>
                             <?php echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
@@ -73,6 +73,18 @@
                         <?php
                     endif;
                     ?>
+                    <li>
+                        <?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')); ?>
+                        <?php
+                        if (count($data->tags) > 0):
+                            echo $this->Html->arrayToString(array_map(function($tag) {
+                                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                    }, $data->tags));
+                        else:
+                            echo __d('elabs', 'No tags');
+                        endif;
+                        ?>
+                    </li>
                 </ul>
             </div>
         </div>

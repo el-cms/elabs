@@ -18,17 +18,23 @@ class ActsControllerTest extends IntegrationTestCase
         'app.acts',
         'app.albums',
         'app.albums_files',
+        'app.albums_tags',
         'app.files',
         'app.languages',
+        'app.files_tags',
         'app.notes',
+        'app.notes_tags',
         'app.users',
         'app.posts',
+        'app.posts_tags',
         'app.licenses',
         'app.projects',
         'app.projects_albums',
         'app.projects_files',
         'app.projects_notes',
         'app.projects_posts',
+        'app.projects_tags',
+        'app.tags',
     ];
 
     /**

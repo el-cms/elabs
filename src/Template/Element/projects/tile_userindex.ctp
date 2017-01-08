@@ -44,7 +44,17 @@
                 <dt><?php echo __d('elabs', 'License') ?></dt>
                 <dd><?php echo $this->Html->link(h($project->license->name), ['prefix' => false, 'controller' => 'licenses', 'action' => 'view', $project->license_id]); ?></dd>
                 <dt><?php echo __d('elabs', 'Tags') ?></dt>
-                <dd><?php echo $this->element('layout/dev_inline') ?></dd>
+                <dd>
+                    <?php
+                    if (count($project->tags) > 0):
+                        echo $this->Html->arrayToString(array_map(function($tag) {
+                                    return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                }, $project->tags));
+                    else:
+                        echo __d('elabs', 'No tags');
+                    endif;
+                    ?>
+                </dd>
             </dl>
         </div>
     </div>

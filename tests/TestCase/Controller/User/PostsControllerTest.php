@@ -15,13 +15,15 @@ class PostsControllerTest extends BaseTextCase
      * @var array
      */
     public $fixtures = [
-        'app.posts',
+        'app.acts',
         'app.languages', // Needed for some layout vars
         'app.licenses',
-        'app.users',
-        'app.acts',
+        'app.posts',
+        'app.posts_tags',
         'app.projects',
         'app.projects_posts',
+        'app.tags',
+        'app.users',
     ];
 
     /**
