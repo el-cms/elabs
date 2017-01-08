@@ -78,7 +78,7 @@
                 <?php echo $this->Html->displayMD($data['description']) ?>
             </div>
             <?php
-            if (count($data['files'] > 0)):
+            if (count($data['files']) > 0):
                 ?>
                 <!-- Scrollbar -->
                 <div class="scrollbar-buttons">
@@ -127,7 +127,7 @@
                 </div>
                 <?php
             else:
-                echo $this->element('layout/dev_block');
+                echo $this->element('layout/empty');
             endif;
             ?>
         </div>
