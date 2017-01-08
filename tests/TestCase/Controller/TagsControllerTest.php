@@ -19,7 +19,6 @@ class TagsControllerTest extends IntegrationTestCase
         'app.tags',
         'app.albums',
         'app.users',
-        'app.social_accounts',
         'app.files',
         'app.languages',
         'app.notes',

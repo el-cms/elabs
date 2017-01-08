@@ -17,10 +17,13 @@ class PostsControllerTest extends BaseTextCase
     public $fixtures = [
         'app.languages', // Needed for some layout vars
         'app.posts',
-        // Relations
+        'app.posts_tags',
         'app.acts',
         'app.languages',
         'app.licenses',
+        'app.projects',
+        'app.projects_posts',
+        'app.tags',
         'app.users',
     ];
 
@@ -98,8 +101,5 @@ class PostsControllerTest extends BaseTextCase
 
         // Error
         $this->assertResponseError();
-
-        // Ajax
-        $this->markTestIncomplete('Missing ajax test');
     }
 }
