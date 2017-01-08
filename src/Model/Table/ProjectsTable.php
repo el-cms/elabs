@@ -220,42 +220,42 @@ class ProjectsTable extends Table
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withLanguages']) {
             $query->contain(['Languages' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withLicenses']) {
             $query->contain(['Licenses' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
         if ($options['withNotes']) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withPosts']) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withTags']) {
             $query->contain(['Tags' => function ($q) {
                     return $q->find('asContain', ['pivot' => ['ProjectsTags.project_id']]);
-                }]);
+            }]);
         }
         if ($options['withUsers']) {
             $query->contain(['Users' => function ($q) {
                     return $q->find('asContain');
-                }]);
+            }]);
         }
 
         // Returns the query
@@ -279,8 +279,8 @@ class ProjectsTable extends Table
             'sfw' => false,
             'allStatuses' => true,
                 ] + $options + [
-            'uid' => null
-        ];
+                    'uid' => null
+                ];
 
         return $this->findWithContain($query, $queryOptions);
     }
@@ -328,7 +328,7 @@ class ProjectsTable extends Table
                         ->firstOrFail();
     }
 
-     /**
+    /**
      * Gets a record without associated data. Throw an exception if the record is not found.
      *
      * @param mixed $primaryKey The primary key to fetch

@@ -189,7 +189,7 @@ class NotesTable extends Table
         }
         if ($options['withTags']) {
             $query->contain(['Tags' => function ($q) {
-                    return $q->find('asContain', ['pivot'=>['NotesTags.note_id']]);
+                    return $q->find('asContain', ['pivot' => ['NotesTags.note_id']]);
             }]);
         }
         if ($options['withUsers']) {
@@ -245,7 +245,7 @@ class NotesTable extends Table
 
 
 
-     /**
+    /**
      * Gets a record without associated data. Throw an exception if the record is not found.
      *
      * @param mixed $primaryKey The primary key to fetch

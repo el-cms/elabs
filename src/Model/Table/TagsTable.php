@@ -114,27 +114,27 @@ class TagsTable extends Table
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withNotes']) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withPosts']) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['sfw' => $sfw]);
-                }]);
+            }]);
         }
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) use ($sfw) {
                     return $q->find('withContain', ['sfw' => $sfw]);
-                }]);
+            }]);
         }
 
         // Return the query
@@ -177,7 +177,7 @@ class TagsTable extends Table
     }
 
 
-     /**
+    /**
      * Gets a record without associated data. Throw an exception if the record is not found.
      *
      * @param mixed $primaryKey The primary key to fetch

@@ -25,10 +25,11 @@ class TagListHelper extends Helper
      */
     public function tagsToList(array $tags)
     {
-        $out=[];
-        foreach($tags as $tag){
-            $out[$tag->id]=$tag->id;
+        $out = [];
+        foreach ($tags as $tag) {
+            $out[$tag->id] = $tag->id;
         }
+
         return $out;
     }
 }

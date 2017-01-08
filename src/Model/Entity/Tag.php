@@ -35,7 +35,12 @@ class Tag extends Entity
         'id' => false
     ];
 
-    protected function getTotalItems()
+    /**
+     * Returns the sum of all counters
+     *
+     * @return int
+     */
+    protected function _getTotalItems()
     {
         return $this->_properties['album_count'] + $this->_properties['file_count'] + $this->_properties['note_count'] + $this->_properties['post_count'] + $this->_properties['project_count'];
     }

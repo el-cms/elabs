@@ -33,27 +33,28 @@ class TagManagerComponent extends Component
     /**
      * Creates tags if they don't exist and return the request data
      *
-     * @param mixed $tags
+     * @param mixed $tags Tag list. If the var is not an array, an empty array
+     * will be returned
+     *
      * @return array
      */
     public function merge($tags = null)
     {
-        if (!is_array($tags)){
+        if (!is_array($tags) || is_null($tags)) {
             return [];
         }
+
         $tagList = [];
-        if (!is_null($tags)) {
-            foreach ($tags as $tag) {
-                // Search for tag in db or create it
-                $this->Tags->findOrCreate(['Tags.id' => $tag], function($tagEntity) use($tag) {
-                    $tagEntity->id = $tag;
+        foreach ($tags as $tag) {
+            // Search for tag in db or create it
+            $this->Tags->findOrCreate(['Tags.id' => $tag], function ($tagEntity) use ($tag) {
+                $tagEntity->id = $tag;
 
-                    return $tagEntity;
-                });
+                return $tagEntity;
+            });
 
-                // Add tag to list
-                $tagList[] = $tag;
-            }
+            // Add tag to list
+            $tagList[] = $tag;
         }
 
         return $tagList;

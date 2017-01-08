@@ -12,6 +12,13 @@ use Cake\Network\Exception\ForbiddenException;
 class UserAppController extends AppController
 {
 
+    /**
+     * Initialization hook method.
+     *
+     * Use this method to add common initialization code like loading components.
+     *
+     * @return void
+     */
     public function initialize()
     {
         parent::initialize();

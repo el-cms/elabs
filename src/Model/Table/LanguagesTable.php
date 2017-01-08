@@ -198,7 +198,7 @@ class LanguagesTable extends Table
 
 
 
-     /**
+    /**
      * Gets a record without associated data. Throw an exception if the record is not found.
      *
      * @param mixed $primaryKey The primary key to fetch

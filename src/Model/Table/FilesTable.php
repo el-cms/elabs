@@ -221,7 +221,7 @@ class FilesTable extends Table
         }
         if ($options['withTags']) {
             $query->contain(['Tags' => function ($q) {
-                    return $q->find('asContain', ['pivot'=>['FilesTags.file_id']]);
+                    return $q->find('asContain', ['pivot' => ['FilesTags.file_id']]);
             }]);
         }
         if ($options['withUsers']) {
@@ -298,7 +298,7 @@ class FilesTable extends Table
 
 
 
-     /**
+    /**
      * Gets a record without associated data. Throw an exception if the record is not found.
      *
      * @param mixed $primaryKey The primary key to fetch

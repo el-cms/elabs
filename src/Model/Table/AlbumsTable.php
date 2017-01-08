@@ -190,7 +190,7 @@ class AlbumsTable extends Table
         }
         if ($options['withTags']) {
             $query->contain(['Tags' => function ($q) {
-                    return $q->find('asContain', ['pivot'=>['AlbumsTags.tag_id']]);
+                    return $q->find('asContain', ['pivot' => ['AlbumsTags.tag_id']]);
             }]);
         }
         if ($options['withUsers']) {
@@ -267,7 +267,7 @@ class AlbumsTable extends Table
 
 
 
-     /**
+    /**
      * Gets a record without associated data. Throw an exception if the record is not found.
      *
      * @param mixed $primaryKey The primary key to fetch
