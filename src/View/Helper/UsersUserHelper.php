@@ -2,8 +2,8 @@
 
 namespace App\View\Helper;
 
-use Cake\View\Helper;
 use Cake\Core\Configure;
+use Cake\View\Helper;
 
 /**
  * CakePHP UsersUserHelper
@@ -11,16 +11,18 @@ use Cake\Core\Configure;
  */
 class UsersUserHelper extends Helper
 {
+
     /**
      * Merges the user's preferences with the defaults
      *
      * @param array $preferences Users prefs
      *
-     * @return type
+     * @return array
      */
-    public function getPreferences(array $preferences=null){
-        if(is_null($preferences)){
-            $preferences=[];
+    public function getPreferences(array $preferences = null)
+    {
+        if (is_null($preferences)) {
+            $preferences = [];
         }
 
         return $preferences + Configure::read('cms.defaultUserPreferences');
