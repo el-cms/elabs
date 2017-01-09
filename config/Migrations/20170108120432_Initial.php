@@ -35,7 +35,7 @@ class Initial extends AbstractMigration
                 ->create();
 
         $this->table('albums_files')
-                ->addColumn('id', 'integer', ['autoIncrement' => true, 'default' => null, 'limit' => 11, 'null' => false,])
+                ->addColumn('id', 'integer', ['autoIncrement' => true, 'default' => null, 'limit' => 5, 'null' => false,])
                 ->addPrimaryKey(['id'])
                 ->addColumn('album_id', 'uuid', ['default' => null, 'limit' => null, 'null' => false,])
                 ->addColumn('file_id', 'uuid', ['default' => null, 'limit' => null, 'null' => false,])
@@ -202,7 +202,7 @@ class Initial extends AbstractMigration
                 ->create();
 
         $this->table('projects_albums')
-                ->addColumn('id', 'integer', ['autoIncrement' => true, 'default' => null, 'limit' => 11, 'null' => false,])
+                ->addColumn('id', 'integer', ['autoIncrement' => true, 'default' => null, 'limit' => 5, 'null' => false,])
                 ->addPrimaryKey(['id'])
                 ->addColumn('project_id', 'uuid', ['default' => null, 'limit' => null, 'null' => false,])
                 ->addColumn('album_id', 'uuid', ['default' => null, 'limit' => null, 'null' => false,])
