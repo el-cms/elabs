@@ -113,27 +113,27 @@ class TagsTable extends Table
         // Relations
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withNotes']) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withPosts']) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
 
@@ -152,7 +152,9 @@ class TagsTable extends Table
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
-        return $query->select(['id']);
+        return $query->select(['id'])
+                        // Define order as there may be multiple results
+                        ->order(['Tags.id' => 'desc']);
     }
 
     /**

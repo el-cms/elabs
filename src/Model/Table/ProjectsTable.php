@@ -164,6 +164,8 @@ class ProjectsTable extends Table
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
      *   - complete bool, default false. Select all the fields
+     *   - forceOrder bool, default true. If true, no order will be applied
+     *   - order array, default created, desc. Default sort order
      *   - sfw bool, default false. Limits the result to sfw items
      *   - uid string, default null. Select only items for this user
      *   - withAlbums bool, default false. Select the albums
@@ -182,6 +184,8 @@ class ProjectsTable extends Table
         $options += [
             'allStatuses' => false,
             'complete' => false,
+            'forceOrder' => false,
+            'order' => ['Projects.created' => 'desc'],
             'sfw' => true,
             'uid' => null,
             'withAlbums' => false,
@@ -214,6 +218,11 @@ class ProjectsTable extends Table
                 ->where($where);
         if ($options['complete'] === true) {
             $query->select(['description', 'album_count', 'file_count', 'note_count', 'post_count']);
+        }
+
+        // Order
+        if($options['forceOrder']){
+            $query->order($options['order']);
         }
 
         // Relations
@@ -303,7 +312,9 @@ class ProjectsTable extends Table
             $fields[] = $options['pivot'];
         }
 
-        return $query->select($fields);
+        return $query->select($fields)
+                        // Define order as there may be multiple results
+                        ->order(['Projects.created' => 'desc']);
     }
 
     /**

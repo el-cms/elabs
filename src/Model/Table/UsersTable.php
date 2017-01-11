@@ -188,27 +188,27 @@ class UsersTable extends BaseTable
         // Relations
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withNotes']) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withPosts']) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withProjects']) {
             $query->contain(['Projects' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
 
@@ -235,7 +235,9 @@ class UsersTable extends BaseTable
             $fields[] = $options['pivot'];
         }
 
-        return $query->select($fields);
+        return $query->select($fields)
+                        // Define order as there may be multiple results
+                        ->order(['Users.username' => 'desc']);;
     }
 
     /**
