@@ -203,7 +203,7 @@ class FilesTable extends Table
                 ->where($where);
 
         // Order
-        if($options['forceOrder']){
+        if ($options['forceOrder']) {
             $query->order($options['order']);
         }
 
@@ -286,7 +286,7 @@ class FilesTable extends Table
 
         return $query->select($fields)
                     // Define order as there may be multiple results
-                    ->order(['Files.created'=>'desc']);
+                    ->order(['Files.created' => 'desc']);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
+use CakeDC\Users\Model\Table\UsersTable as BaseTable;
 use Cake\Core\Configure;
 use Cake\Database\Schema\Table as Schema;
 use Cake\Datasource\EntityInterface;
@@ -11,7 +12,6 @@ use Cake\ORM\Entity;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
-use CakeDC\Users\Model\Table\UsersTable as BaseTable;
 
 /**
  * Users Model
@@ -187,7 +187,7 @@ class UsersTable extends BaseTable
 
         // Relations
         $sfw = $options['sfw'];
-        $containLimit= Configure::read('cms.maxRelatedData');
+        $containLimit = Configure::read('cms.maxRelatedData');
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw, $containLimit) {
                     return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw, 'forceOrder' => true])
@@ -244,7 +244,7 @@ class UsersTable extends BaseTable
 
         return $query->select($fields)
                         // Define order as there may be multiple results
-                        ->order(['Users.username' => 'desc']);;
+                        ->order(['Users.username' => 'desc']);
     }
 
     /**

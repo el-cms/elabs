@@ -176,7 +176,7 @@ class NotesTable extends Table
                 ->where($where);
 
         // Order
-        if($options['forceOrder']){
+        if ($options['forceOrder']) {
             $query->order($options['order']);
         }
 

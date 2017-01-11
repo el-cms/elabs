@@ -65,8 +65,8 @@ class ActsController extends AppController
         // Prepare the pagination and filter
         $this->paginate = [
             'maxLimit' => 30,
-            'limit'=>30,
-            'sortWhitelist'=>[]
+            'limit' => 30,
+            'sortWhitelist' => []
         ];
 
         if ($updateFilter === 'hideUpdates') {
@@ -74,13 +74,11 @@ class ActsController extends AppController
         }
 
         // Order is defined here to limit manual order
-        $acts = $this->paginate($this->Acts->find('default', ['sfw' => !$this->seeNSFW])
-                        ->order(['Acts.created' => 'desc'])
-        );
+        $query = $this->Acts->find('default', ['sfw' => !$this->seeNSFW])->order(['Acts.created' => 'desc']);
 
         // Pass variables to view
         $this->set('filterUpdates', $updateFilter);
-        $this->set('acts', $acts);
+        $this->set('acts', $this->paginate($query));
         $this->set('config', $this->config);
         $this->set('_serialize', ['acts']);
     }

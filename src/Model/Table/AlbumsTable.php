@@ -158,7 +158,7 @@ class AlbumsTable extends Table
             'allStatuses' => false,
             'sfw' => true,
             'forceOrder' => false,
-            'order' => ['Albums.created'=>'desc'],
+            'order' => ['Albums.created' => 'desc'],
             'uid' => null,
             'withFiles' => true,
             'withLanguages' => true,
@@ -185,12 +185,12 @@ class AlbumsTable extends Table
                 ->where($where);
 
         // Order
-        if($options['forceOrder']){
+        if ($options['forceOrder']) {
             $query->order($options['order']);
         }
 
         // Relations
-        $containLimit= Configure::read('cms.maxRelatedData');
+        $containLimit = Configure::read('cms.maxRelatedData');
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) use ($containLimit) {
                     return $q->find('asContain', ['pivot' => 'AlbumsFiles.file_id']);

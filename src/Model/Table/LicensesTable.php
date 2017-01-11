@@ -125,22 +125,22 @@ class LicensesTable extends Table
 
         if ($options['withFiles'] === true) {
             $query->contain(['Files' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder'=>true]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder' => true]);
             }]);
         }
         if ($options['withNotes'] === true) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder'=>true]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder' => true]);
             }]);
         }
         if ($options['withPosts'] === true) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder'=>true]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder' => true]);
             }]);
         }
         if ($options['withProjects'] === true) {
             $query->contain(['Projects' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder'=>true]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder' => true]);
             }]);
         }
 

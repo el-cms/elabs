@@ -171,7 +171,7 @@ class PostsTable extends Table
             'allStatuses' => false,
             'complete' => false,
             'forceOrder' => false,
-            'order' => ['Posts.publication_date'=>'desc'],
+            'order' => ['Posts.publication_date' => 'desc'],
             'sfw' => true,
             'uid' => null,
             'withLicenses' => true,
@@ -202,7 +202,7 @@ class PostsTable extends Table
         }
 
         // Order
-        if($options['forceOrder']){
+        if ($options['forceOrder']) {
             $query->order($options['order']);
         }
 

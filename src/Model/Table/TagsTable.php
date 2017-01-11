@@ -117,7 +117,7 @@ class TagsTable extends Table
 
         // Relations
         $sfw = $options['sfw'];
-        $containLimit=Configure::read('cms.maxRelatedData');
+        $containLimit = Configure::read('cms.maxRelatedData');
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw, $containLimit) {
                     return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true])

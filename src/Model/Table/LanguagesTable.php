@@ -143,34 +143,34 @@ class LanguagesTable extends Table
 
         // Relations
         $sfw = $options['sfw'];
-        $containLimit=Configure::read('cms.maxRelatedData');
+        $containLimit = Configure::read('cms.maxRelatedData');
         if ($options['withAlbums'] === true) {
             $query->contain(['Albums' => function ($q) use ($sfw, $containLimit) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder'=>true])
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder' => true])
                             ->limit($containLimit);
             }]);
         }
         if ($options['withFiles'] === true) {
             $query->contain(['Files' => function ($q) use ($sfw, $containLimit) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder'=>true])
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder' => true])
                             ->limit($containLimit);
             }]);
         }
         if ($options['withNotes'] === true) {
             $query->contain(['Notes' => function ($q) use ($sfw, $containLimit) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder'=>true])
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder' => true])
                             ->limit($containLimit);
             }]);
         }
         if ($options['withPosts'] === true) {
             $query->contain(['Posts' => function ($q) use ($sfw, $containLimit) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder'=>true])
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder' => true])
                             ->limit($containLimit);
             }]);
         }
         if ($options['withProjects'] === true) {
             $query->contain(['Projects' => function ($q) use ($sfw, $containLimit) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder'=>true])
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLanguages' => false, 'forceOrder' => true])
                             ->limit($containLimit);
             }]);
         }
