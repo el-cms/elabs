@@ -3,7 +3,7 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\User;
-use CakeDC\Users\Model\Table\UsersTable as BaseTable;
+use Cake\Core\Configure;
 use Cake\Database\Schema\Table as Schema;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Association\HasMany;
@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\Validation\Validator;
+use CakeDC\Users\Model\Table\UsersTable as BaseTable;
 
 /**
  * Users Model
@@ -184,31 +185,37 @@ class UsersTable extends BaseTable
             $query->select(['bio']);
         }
 
-        $sfw = $options['sfw'];
         // Relations
+        $sfw = $options['sfw'];
+        $containLimit= Configure::read('cms.maxRelatedData');
         if ($options['withAlbums']) {
-            $query->contain(['Albums' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw, 'forceOrder' => true]);
+            $query->contain(['Albums' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
         if ($options['withFiles']) {
-            $query->contain(['Files' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw, 'forceOrder' => true]);
+            $query->contain(['Files' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
         if ($options['withNotes']) {
-            $query->contain(['Notes' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw, 'forceOrder' => true]);
+            $query->contain(['Notes' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
         if ($options['withPosts']) {
-            $query->contain(['Posts' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw, 'forceOrder' => true]);
+            $query->contain(['Posts' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
         if ($options['withProjects']) {
-            $query->contain(['Projects' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true]);
+            $query->contain(['Projects' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
 
