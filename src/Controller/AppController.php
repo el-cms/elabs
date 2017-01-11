@@ -43,6 +43,7 @@ class AppController extends Controller
      */
     public $paginate = [
         'order' => ['created' => 'desc'],
+        'maxLimit'=> 10,
     ];
 
     /**

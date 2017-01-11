@@ -26,9 +26,7 @@ class ProjectsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $this->paginate = [
-            'order' => ['created' => 'desc']
-        ];
+        $this->paginate['sortWhitelist'] = ['name', 'created', 'modified'];
         $query = $this->Projects->find('withContain', ['sfw' => !$this->seeNSFW]);
 
         // Other conditions:
