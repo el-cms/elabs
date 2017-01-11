@@ -39,6 +39,9 @@
             background-color: darken($navbar-default-bg, 15%);
             color: darken($navbar-default-bg, 30%);
         }
+        .admin-link{
+            background-color:mix($navbar-default-bg, $navbar-admin-bg, 75%);
+        }
     }
 }
 
@@ -68,6 +71,9 @@
         .dropdown-header{
             background-color: darken($navbar-admin-bg, 15%);
             color: darken($navbar-admin-bg, 30%);
+        }
+        .admin-link{
+            background-color:$navbar-admin-bg;
         }
     }
 }
@@ -99,6 +105,9 @@
         .dropdown-header{
             background-color: darken($navbar-user-bg, 15%);
             color: darken($navbar-user-bg, 30%);
+        }
+        .admin-link{
+            background-color:mix($navbar-user-bg, $navbar-admin-bg, 75%);
         }
     }
 }
