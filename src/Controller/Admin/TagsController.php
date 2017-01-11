@@ -37,9 +37,9 @@ class TagsController extends AdminAppController
         $this->request->allowMethod(['post', 'delete']);
         $tag = $this->Tags->get($id);
         if ($this->Tags->delete($tag)) {
-            $this->Flash->success(__('The tag has been deleted.'));
+            $this->Flash->success(__d('elabs', 'The tag has been deleted.'));
         } else {
-            $this->Flash->error(__('The tag could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('elabs', 'The tag could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
