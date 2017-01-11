@@ -393,4 +393,18 @@ class ProjectsTable extends Table
 
         return $this->getWithContain($primaryKey, $options);
     }
+
+    /**
+     * Returns a list sorted by name
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findList(\Cake\ORM\Query $query, array $options)
+    {
+        return parent::findList($query, $options)
+                ->order('name', 'desc');
+    }
 }
