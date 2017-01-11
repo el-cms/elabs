@@ -1,36 +1,23 @@
 # Change Log
 All notable changes to this project will be documented in this file.
-This project will adhere to [Semantic Versioning](http://semver.org/) as soon as possible.
 
 ## [Unreleased]
+_Nothing for now_
 
-  - [ ] **Auth mechanism**
-    - [ ] **User registration**
-      - [ ] Account activation
-    - [ ] **Login**
-      - [ ] Persistent login (for a week/month/year ?)
-      - [x] Simple login
-    - [ ] **Close account*
-      - [ ] Proper messages on login
-      - [x] Lock and deactivate user
-    - [x] Auth check on actions (via `$this->Auth->allow()` for now)
-    - [x] User logout
-  - [x] **Flow control mechanism** (_Acts_, may be changed for something more understandable, as _Activities_)
-    - [x] Handle deleted/unpublished items
-    - [x] Component to add items to flow
-  - [ ] **Article management**
-    - [x] Filters for indexes
-    - [ ] Markdown support
-      - [ ] File export from DB
-      - [x] Render markdown properly (almost)
-    - [ ] Tool to link to projects and/or files
-  - [ ] **Projects management**
-    - [ ] Team management
-  - [ ] **Files management**
-  - [ ] **Licenses management**
-  - [ ] **Tags management**
-  - [ ] **Report management**
-  - [ ] **General ideas**
-    - [ ] **NSFW mechanism**
-    - [ ] **...**
-  - [ ] :red_circle: Make this CHANGELOG follow Semantic versioning as soon as possible
+## [0.1.0] - 2017-01-12
+First notable version with all base features working:
+  - User management
+  - Administration section
+  - User section to
+    - Manage albums (groups of _files_)
+    - Manage files (images, text, video, sounds)
+    - Manage notes (short texts)
+    - Manage posts (articles)
+    - Manage projects (a project can have related albums, files, notes and posts)
+  - "Safe For Work" state for the above items
+  - Tagging system
+  - Content reporting
+  - Comments (private)
+  - Internationalization support
+  - Licenses support
+
