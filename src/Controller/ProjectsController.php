@@ -70,7 +70,13 @@ class ProjectsController extends AppController
      */
     public function view($id = null)
     {
-        $project = $this->Projects->getWithContain($id, ['sfw' => !$this->seeNSFW]);
+        $project = $this->Projects->getWithContain($id, [
+            'sfw' => !$this->seeNSFW,
+            'withAlbums' => true,
+            'withFiles' => true,
+            'withNotes' => true,
+            'withPosts' => true,
+            ]);
 
         //SFW state
         if (!$project->sfw && !$this->seeNSFW) {

@@ -228,12 +228,12 @@ class ProjectsTable extends Table
         // Relations
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withLanguages']) {
@@ -248,17 +248,17 @@ class ProjectsTable extends Table
         }
         if ($options['withNotes']) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withPosts']) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withTags']) {
             $query->contain(['Tags' => function ($q) {
-                    return $q->find('asContain', ['pivot' => ['ProjectsTags.project_id']]);
+                    return $q->find('asContain', ['pivot' => ['ProjectsTags.project_id'], 'forceOrder' => true]);
             }]);
         }
         if ($options['withUsers']) {
