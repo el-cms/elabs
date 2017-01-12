@@ -74,7 +74,7 @@ $this->start('pageContent');
             <?php echo $this->Form->create($user, ['class' => 'form', 'url' => ['action' => 'updatePrefs']]); ?>
             <fieldset>
                 <?php
-                $userPrefs = $authUser['preferences'] + Configure::read('cms.defaultUserPreferences');
+                $userPrefs = $this->UsersUser->getPreferences($authUser['preferences']);
                 // Default site lang
                 echo $this->Form->input('preferences[defaultSiteLanguage]', [
                     'type' => 'select',

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-02 15:22+0000\n"
-"PO-Revision-Date: 2017-01-02 16:24+0200\n"
+"POT-Creation-Date: 2017-01-11 20:01+0000\n"
+"PO-Revision-Date: 2017-01-11 21:27+0200\n"
 "Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr\n"
@@ -30,11 +30,11 @@ msgstr "Cookie de jeton CRSF manquant"
 msgid "CSRF token mismatch."
 msgstr "Jeton CSRF invalide."
 
-#: Error/ExceptionRenderer.php:251
+#: Error/ExceptionRenderer.php:252
 msgid "Not Found"
 msgstr "Non trouvé"
 
-#: Error/ExceptionRenderer.php:253
+#: Error/ExceptionRenderer.php:254
 msgid "An Internal Error Has Occurred."
 msgstr "﻿Une erreur interne s’est produite."
 
@@ -218,19 +218,19 @@ msgstr "Ce champs est requis"
 msgid "This field cannot be left empty"
 msgstr "Ce champ ne peut pas être vide"
 
-#: Validation/Validator.php:1712
+#: Validation/Validator.php:1752
 msgid "The provided value is invalid"
 msgstr "La valeur fournie n’est pas valide"
 
-#: View/Helper/FormHelper.php:973
+#: View/Helper/FormHelper.php:950
 msgid "New %s"
 msgstr "Nouveau %s "
 
-#: View/Helper/FormHelper.php:976
+#: View/Helper/FormHelper.php:953
 msgid "Edit %s"
 msgstr "Modifier %s"
 
-#: View/Helper/FormHelper.php:1822
+#: View/Helper/FormHelper.php:1799
 msgid "Submit"
 msgstr "Soumettre  "
 

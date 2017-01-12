@@ -125,22 +125,22 @@ class LicensesTable extends Table
 
         if ($options['withFiles'] === true) {
             $query->contain(['Files' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder' => true]);
             }]);
         }
         if ($options['withNotes'] === true) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder' => true]);
             }]);
         }
         if ($options['withPosts'] === true) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder' => true]);
             }]);
         }
         if ($options['withProjects'] === true) {
             $query->contain(['Projects' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false]);
+                    return $q->find('withContain', ['sfw' => $sfw, 'withLicenses' => false, 'forceOrder' => true]);
             }]);
         }
 
@@ -158,7 +158,9 @@ class LicensesTable extends Table
      */
     public function findAsContain(\Cake\ORM\Query $query, array $options = [])
     {
-        return $query->select(['id', 'name', 'icon', 'link']);
+        return $query->select(['id', 'name', 'icon', 'link'])
+                        // Define order as there may be multiple results
+                        ->order(['Licenses.name' => 'desc']);
     }
 
     /**
@@ -198,5 +200,19 @@ class LicensesTable extends Table
         return $this->find('asContain', $options)
                         ->where(['Licenses.id' => $primaryKey])
                         ->firstOrFail();
+    }
+
+    /**
+     * Returns a list sorted by name
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findList(\Cake\ORM\Query $query, array $options)
+    {
+        return parent::findList($query, $options)
+                ->order('name', 'desc');
     }
 }

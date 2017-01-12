@@ -43,6 +43,7 @@ class AppController extends Controller
      */
     public $paginate = [
         'order' => ['created' => 'desc'],
+        'maxLimit' => 10,
     ];
 
     /**
@@ -231,7 +232,7 @@ class AppController extends Controller
 
     /**
      * Returns the translation folder name for a given language iso639-1 code.
-     * Note that the 'language' entry in session array should have been previously
+     * Note that the 'languages' entry in session array should have been previously
      * populated by `_setLanguagesList()`
      *
      * @param string $langCode Language iso639-1 code.

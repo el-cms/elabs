@@ -47,6 +47,7 @@ $this->Html->addCrumb(__d('elabs', 'Articles list'));
 $this->start('pageOrderBy');
 echo $this->Paginator->sort('title', __d('elabs', 'Title'));
 echo $this->Paginator->sort('publication_date', __d('elabs', 'Publication date'));
+echo $this->Paginator->sort('modified', __d('elabs', 'Modification date'));
 $this->end();
 
 // Block: Page content

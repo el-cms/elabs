@@ -21,8 +21,8 @@ class ProjectsFilesFixture extends TestFixture
         'project_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'file_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'project_files_file_id' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
-            'project_files_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
+            'projectsfiles_file_id' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
+            'projectsfiles_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

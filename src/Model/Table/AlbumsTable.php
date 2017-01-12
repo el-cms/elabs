@@ -2,6 +2,14 @@
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Album;
+use Cake\Core\Configure;
+use Cake\Datasource\EntityInterface;
+use Cake\ORM\Association\BelongsTo;
+use Cake\ORM\Association\BelongsToMany;
+use Cake\ORM\Association\HasMany;
+use Cake\ORM\Entity;
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -9,20 +17,20 @@ use Cake\Validation\Validator;
 /**
  * Albums Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Users
- * @property \Cake\ORM\Association\BelongsTo $Languages
- * @property \Cake\ORM\Association\BelongsToMany $Files
- * @property \Cake\ORM\Association\BelongsToMany $Tags
- * @property \Cake\ORM\Association\BelongsToMany $Projects
- * @property \Cake\ORM\Association\HasMany $Acts
+ * @property BelongsTo $Users
+ * @property BelongsTo $Languages
+ * @property BelongsToMany $Files
+ * @property BelongsToMany $Tags
+ * @property BelongsToMany $Projects
+ * @property HasMany $Acts
  *
- * @method \App\Model\Entity\Album get($primaryKey, $options = [])
- * @method \App\Model\Entity\Album newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Album[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Album|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Album patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Album[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Album findOrCreate($search, callable $callback = null)
+ * @method Album get($primaryKey, $options = [])
+ * @method Album newEntity($data = null, array $options = [])
+ * @method Album[] newEntities(array $data, array $options = [])
+ * @method Album|bool save(EntityInterface $entity, $options = [])
+ * @method Album patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Album[] patchEntities($entities, array $data, array $options = [])
+ * @method Album findOrCreate($search, callable $callback = null)
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  * @mixin \Cake\ORM\Behavior\CounterCacheBehavior
@@ -82,8 +90,8 @@ class AlbumsTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {
@@ -115,8 +123,8 @@ class AlbumsTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
     public function buildRules(RulesChecker $rules)
     {
@@ -129,9 +137,11 @@ class AlbumsTable extends Table
     /**
      * Finds all data for an album
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
+     *   - forceOrder bool, default true. If true, no order will be applied
+     *   - order array, default created, desc. Default sort order
      *   - sfw bool, default false. Limits the result to sfw items
      *   - uid string, default null. Select only items for this user
      *   - withFiles bool, default true. Select the files
@@ -140,13 +150,15 @@ class AlbumsTable extends Table
      *   - withTags bool, default false. Select the tags
      *   - withUsers bool, default true. Select the user
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    public function findWithContain(Query $query, array $options = [])
     {
         $options += [
             'allStatuses' => false,
             'sfw' => true,
+            'forceOrder' => false,
+            'order' => ['Albums.created' => 'desc'],
             'uid' => null,
             'withFiles' => true,
             'withLanguages' => true,
@@ -172,9 +184,15 @@ class AlbumsTable extends Table
         $query->select(['id', 'name', 'description', 'status', 'created', 'modified', 'sfw', 'user_id', 'language_id'])
                 ->where($where);
 
+        // Order
+        if ($options['forceOrder']) {
+            $query->order($options['order']);
+        }
+
         // Relations
+        $containLimit = Configure::read('cms.maxRelatedData');
         if ($options['withFiles']) {
-            $query->contain(['Files' => function ($q) {
+            $query->contain(['Files' => function ($q) use ($containLimit) {
                     return $q->find('asContain', ['pivot' => 'AlbumsFiles.file_id']);
             }]);
         }
@@ -207,13 +225,13 @@ class AlbumsTable extends Table
      * Runs findWithContain with all statuses and nsfw entries, for content owned
      * by an user. The uid option is required.
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options. See findWithContain()
      *   - uid string, default null
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findUsers(\Cake\ORM\Query $query, array $options = [])
+    public function findUsers(Query $query, array $options = [])
     {
         // Override options
         $queryOptions = [
@@ -229,13 +247,13 @@ class AlbumsTable extends Table
     /**
      * Used to fetch minimal data about albums
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options. Don't forget to add the 'pivot'
      *        field name if necessary
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    public function findAsContain(Query $query, array $options = [])
     {
         $options += ['pivot' => null];
 
@@ -244,7 +262,9 @@ class AlbumsTable extends Table
             $fields[] = $options['pivot'];
         }
 
-        return $query->select($fields);
+        return $query->select($fields)
+                        // Define order as there may be multiple results
+                        ->order(['Albums.created' => 'desc']);
     }
 
     /**
@@ -254,7 +274,7 @@ class AlbumsTable extends Table
      * @param array $options An array of options:
      *   - sfw bool, default true Limit to sfw data
      *
-     * @return \Cake\ORM\Entity
+     * @return Entity
      */
     public function getWithContain($primaryKey, array $options = [])
     {
@@ -275,7 +295,7 @@ class AlbumsTable extends Table
      *   - sfw bool, default true Limit to sfw data
      *   - complete bool default true Select all the fields
      *
-     * @return \Cake\ORM\Entity
+     * @return Entity
      */
     public function getWithoutContain($primaryKey, array $options = [])
     {
@@ -291,12 +311,12 @@ class AlbumsTable extends Table
     /**
      * Runs findWithContain with all statuses and nsfw entries
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options. See findWithContain()
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findAdminWithContain(\Cake\ORM\Query $query, array $options = [])
+    public function findAdminWithContain(Query $query, array $options = [])
     {
         // Force options
         $options['sfw'] = false;
@@ -311,7 +331,7 @@ class AlbumsTable extends Table
      * @param type $primaryKey The primary key to fetch
      * @param array $options An array of options
      *
-     * @return \Cake\ORM\Entity
+     * @return Entity
      */
     public function getAdminWithContain($primaryKey, array $options = [])
     {
@@ -320,5 +340,19 @@ class AlbumsTable extends Table
         $options['allStatuses'] = true;
 
         return $this->getWithContain($primaryKey, $options);
+    }
+
+    /**
+     * Returns a list sorted by name
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findList(\Cake\ORM\Query $query, array $options)
+    {
+        return parent::findList($query, $options)
+                ->order('name', 'desc');
     }
 }

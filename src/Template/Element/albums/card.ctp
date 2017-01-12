@@ -1,3 +1,7 @@
+<?php
+
+use Cake\Core\Configure;
+?>
 <div class="card<?php echo ($event ? ' card-event' : '') ?><?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-main">
         <!-- Card toolbar -->
@@ -74,11 +78,16 @@
         </div>
         <!-- Content -->
         <div class="card-content">
-            <div <?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>>
-                <?php echo $this->Html->displayMD($data['description']) ?>
-            </div>
             <?php
-            if (count($data['files'] > 0)):
+            if (!empty($data['description'])):
+                ?>
+                <div <?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>>
+                    <?php echo $this->Html->displayMD($data['description']) ?>
+                </div>
+                <?php
+            endif;
+            $filesCount = count($data['files']);
+            if ($filesCount > 0):
                 ?>
                 <!-- Scrollbar -->
                 <div class="scrollbar-buttons">
@@ -106,7 +115,12 @@
                         <!-- Scrollbar -->
                         <div class="scrollbar-content">
                             <!-- Item list -->
-                            <?php foreach ($data['files'] as $file): ?>
+                            <?php
+                            $limit = Configure::read('cms.maxRelatedData');
+                            $forLimit = ($limit > $filesCount) ? $filesCount : $limit;
+                            for ($i = 0; $i < $forLimit; $i++):
+                                $file = $data['files'][$i];
+                                ?>
                                 <div class="scrollbar-item card-mini-item">
                                     <div class="card-mini-item-content">
                                         <?php
@@ -120,14 +134,23 @@
                                     </div>
                                 </div>
                                 <?php
-                            endforeach;
+                            endfor;
+                            if ($filesCount > $limit):
+                                ?>
+                                <div class="scrollbar-item more-item">
+                                    <div class="card-mini-item-content">
+                                        <?php echo $this->element('layout/more_block', ['number' => $filesCount - $limit]); ?>
+                                    </div>
+                                </div>
+                                <?php
+                            endif;
                             ?>
                         </div>
                     </div>
                 </div>
                 <?php
             else:
-                echo $this->element('layout/dev_block');
+                echo $this->element('layout/empty');
             endif;
             ?>
         </div>

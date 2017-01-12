@@ -27,8 +27,11 @@ class AlbumsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $query = $this->Albums->find('withContain', ['sfw' => !$this->seeNSFW])
-                ->order(['Albums.created' => 'desc']);
+        // Pagination options
+        $this->paginate['sortWhitelist'] = ['name', 'created', 'modified'];
+
+        // Query
+        $query = $this->Albums->find('withContain', ['sfw' => !$this->seeNSFW]);
 
         // Filter:
         if (!is_null($filter)) {

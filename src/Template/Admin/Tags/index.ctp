@@ -1,41 +1,47 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?php echo __d('elabs', 'Actions') ?></li>
-        <li><?php echo $this->Html->link(__d('elabs', 'New Tag'), ['action' => 'add']) ?></li>
-        <li><?php echo $this->Html->link(__d('elabs', 'List Itemtags'), ['controller' => 'Itemtags', 'action' => 'index']) ?></li>
-        <li><?php echo $this->Html->link(__d('elabs', 'New Itemtag'), ['controller' => 'Itemtags', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="tags index large-9 medium-8 columns content">
-    <h3><?php echo __d('elabs', 'Tags') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th><?php echo $this->Paginator->sort('id') ?></th>
-                <th><?php echo $this->Paginator->sort('name') ?></th>
-                <th class="actions"><?php echo __d('elabs', 'Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($tags as $tag): ?>
-            <tr>
-                <td><?php echo $tag->id ?></td>
-                <td><?php echo h($tag->name) ?></td>
-                <td class="actions">
-                    <?php echo $this->Html->link(__d('elabs', 'View'), ['action' => 'view', $tag->id]) ?>
-                    <?php echo $this->Html->link(__d('elabs', 'Edit'), ['action' => 'edit', $tag->id]) ?>
-                    <?php echo $this->Form->postLink(__d('elabs', 'Delete'), ['action' => 'delete', $tag->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $tag->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?php echo $this->Paginator->prev('< ' . __d('elabs', 'previous')) ?>
-            <?php echo $this->Paginator->numbers() ?>
-            <?php echo $this->Paginator->next(__d('elabs', 'next') . ' >') ?>
+<?php
+/*
+ * File:
+ *   src/Templates/Admin/Tags/index.ctp
+ * Description:
+ *   Administration - List of tags, sortable
+ * Layout element:
+ *   adminindex.ctp
+ * @todo: add filters
+ * Notes: paginations links are in the table, not in a block.
+ */
+
+// Page title
+$this->assign('title', __d('elabs', 'List of tags'));
+
+// Breadcrumbs
+$this->Html->addCrumb(__d('elabs', 'Tags'), ['action' => 'index']);
+$this->Html->addCrumb($this->fetch('title'));
+
+// Order by:
+$this->start('pageOrderBy');
+echo $this->Paginator->sort('id', __d('elabs', 'Tag'));
+$this->end();
+
+// Block: Page content
+// -------------------
+$this->start('pageContent');
+foreach ($tags as $tag):
+    ?>
+    <div class="tag-item">
+        <span class="tag-name"><?php echo h($tag->id) ?></span>
+        <ul class="tag-counts">
+            <li><?php echo $this->Html->iconT('book', $tag->album_count) ?></li>
+            <li><?php echo $this->Html->iconT('file-o', $tag->file_count) ?></li>
+            <li><?php echo $this->Html->iconT('sticky-note-o', $tag->note_count) ?></li>
+            <li><?php echo $this->Html->iconT('font', $tag->post_count) ?></li>
+            <li><?php echo $this->Html->iconT('cogs', $tag->project_count) ?></li>
         </ul>
-        <p><?php echo $this->Paginator->counter() ?></p>
+        <?php echo $this->Form->postLink($this->Html->icon('times'), ['action' => 'delete', $tag->id], ['confirm' => __d('elabs', 'Are you sure you want to delete # {0}?', $tag->id), 'class' => 'btn btn-danger btn-xs', 'escape' => false]) ?>
     </div>
-</div>
+    <?php
+endforeach;
+$this->end();
+
+// Load the layout element
+// -----------------------
+echo $this->element('layouts/adminindex');

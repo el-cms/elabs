@@ -133,7 +133,7 @@ class PostsController extends UserAppController
                     $this->Flash->success(__d('elabs', 'Your article has been updated.'));
                 }
 
-                if ($oldActState === true && $post->hide_from_acts) {
+                if ($oldActState === false && $post->hide_from_acts) {
                     $this->Flash->success(__d('elabs', 'The post has been removed from front page.'));
                     $this->Act->remove($post->id);
                 }

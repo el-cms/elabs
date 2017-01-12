@@ -39,8 +39,8 @@ echo $this->Form->Create($model, ['url' => ['controller' => 'Comments', 'action'
         <?php echo $this->Form->submit(__d('elabs', 'Send'), ['class' => 'btn-primary']) ?>
     </div>
 </div>
-<div hidden aria-hidde="true">
-    <?php echo $this->Form->input('body', ['type' => 'text', 'id' => 'reportsbody', 'label' => __d('elabs', 'This field must stay empty. It will prove us that you\'re an human.')]); ?>
+<div hidden aria-hidden="true">
+    <?php echo $this->Form->input('body', ['type' => 'text', 'id' => 'commentsbody', 'label' => __d('elabs', 'This field must stay empty. It will prove us that you\'re an human.')]); ?>
 </div>
 <?php
 echo $this->Form->end();

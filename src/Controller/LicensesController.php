@@ -22,9 +22,10 @@ class LicensesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'sortWhiteList' => ['name', 'post_count', 'project_count', 'file_count'],
+            'sortWhitelist' => ['name', 'album_count', 'file_count', 'note_count', 'post_count', 'project_count'],
             'order' => ['name' => 'asc']
-        ];
+                ] + $this->paginate;
+
         $this->set('licenses', $this->paginate($this->Licenses));
         $this->set('_serialize', ['licenses']);
     }

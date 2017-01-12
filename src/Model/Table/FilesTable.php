@@ -156,6 +156,8 @@ class FilesTable extends Table
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
+     *   - forceOrder bool, default true. If true, no order will be applied
+     *   - order array, default created, desc. Default sort order
      *   - sfw bool, default false. Limits the result to sfw items
      *   - uid string, default null. Select only items for this user
      *   - withAlbums bool, default true. Select the albums
@@ -171,6 +173,8 @@ class FilesTable extends Table
     {
         $options += [
             'allStatuses' => false,
+            'forceOrder' => false,
+            'order' => ['Files.created' => 'desc'],
             'sfw' => true,
             'uid' => null,
             'withAlbums' => true,
@@ -197,6 +201,11 @@ class FilesTable extends Table
         // Fields
         $query->select(['id', 'name', 'description', 'filename', 'weight', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'language_id'])
                 ->where($where);
+
+        // Order
+        if ($options['forceOrder']) {
+            $query->order($options['order']);
+        }
 
         // Relations
         if ($options['withAlbums']) {
@@ -275,7 +284,9 @@ class FilesTable extends Table
             $fields[] = $options['pivot'];
         }
 
-        return $query->select($fields);
+        return $query->select($fields)
+                    // Define order as there may be multiple results
+                    ->order(['Files.created' => 'desc']);
     }
 
     /**
