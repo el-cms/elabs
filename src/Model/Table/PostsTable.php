@@ -153,6 +153,8 @@ class PostsTable extends Table
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
      *   - complete bool, default false. Select all the fields
+     *   - forceOrder bool, default true. If true, no order will be applied
+     *   - order array, default publication_date, desc. Default sort order
      *   - sfw bool, default false. Limits the result to sfw items
      *   - uid string, default null. Select only items for this user
      *   - withLicenses bool, default true. Select the license
@@ -168,6 +170,8 @@ class PostsTable extends Table
         $options += [
             'allStatuses' => false,
             'complete' => false,
+            'forceOrder' => false,
+            'order' => ['Posts.publication_date' => 'desc'],
             'sfw' => true,
             'uid' => null,
             'withLicenses' => true,
@@ -195,6 +199,11 @@ class PostsTable extends Table
                 ->where($where);
         if ($options['complete'] === true) {
             $query->select(['text']);
+        }
+
+        // Order
+        if ($options['forceOrder']) {
+            $query->order($options['order']);
         }
 
         // Relations

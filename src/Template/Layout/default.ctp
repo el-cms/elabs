@@ -8,7 +8,7 @@ $contentLanguage = $this->fetch('contentLanguage');
         <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta content="initial-scale=1.0, width=device-width" name="viewport">
-        <title<?php echo $this->Html->langAttr($contentLanguage)?>>
+        <title<?php echo $this->Html->langAttr($contentLanguage) ?>>
             <?php echo strip_tags($this->fetch('title')) . ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
         </title>
         <?php echo $this->Html->meta('icon') ?>
@@ -75,7 +75,8 @@ $contentLanguage = $this->fetch('contentLanguage');
                                         echo $this->element('layout/mainmenu_usermenu');
                                     else:
                                         ?>
-                                        <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo $this->Html->iconT('sign-in', __d('elabs', 'Login/Register')) ?></a></li>
+                                        <li><a href="#" data-toggle="modal" data-target="#loginModal"><?php echo $this->Html->iconT('user-plus', __d('elabs', 'Login')) ?></a></li>
+                                        <li><?php echo $this->Html->link($this->Html->iconT('sign-in', __d('elabs', 'Register')), ['prefix' => null, 'plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'register'], ['escape' => false]) ?></li>
                                     <?php
                                     endif;
                                     ?>
@@ -99,7 +100,7 @@ $contentLanguage = $this->fetch('contentLanguage');
                 <div class="container">
                     <!-- Flash messages -->
                     <div class="row flash-messages">
-                        <div class="alert alert-warning"<?php echo $this->Html->langAttr('en')?>>
+                        <div class="alert alert-warning"<?php echo $this->Html->langAttr('en') ?>>
                             <strong>Note that this website is still under contruction (<a href="https://github.com/el-cms/elabs">sources are on <i class="fa fa-github"></i> Github</a>). Some features may not work or not be implemented. And there are bugs. Thank you.</strong>
                         </div>
                         <?php echo $this->Flash->render() ?>
@@ -110,7 +111,7 @@ $contentLanguage = $this->fetch('contentLanguage');
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Title -->
-                            <h1<?php echo $this->Html->langAttr($contentLanguage)?>><?php echo $this->fetch('title') ?></h1>
+                            <h1<?php echo $this->Html->langAttr($contentLanguage) ?>><?php echo $this->fetch('title') ?></h1>
                             <!-- / Title -->
 
                             <!-- Breadcrumbs -->

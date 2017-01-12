@@ -40,12 +40,44 @@ class TagsFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => '5554a22f-b36c-476a-a461-ff80eec8c291',
-            'album_count' => 1,
+            'id' => 'new tag',
+            'album_count' => 0,
             'file_count' => 1,
+            'note_count' => 0,
+            'post_count' => 0,
+            'project_count' => 0
+        ],
+        [
+            'id' => 'random name',
+            'album_count' => 0,
+            'file_count' => 0,
+            'note_count' => 0,
+            'post_count' => 1,
+            'project_count' => 0
+        ],
+        [
+            'id' => 'tag1',
+            'album_count' => 1,
+            'file_count' => 2,
             'note_count' => 1,
             'post_count' => 1,
             'project_count' => 1
+        ],
+        [
+            'id' => 'tag2',
+            'album_count' => 1,
+            'file_count' => 0,
+            'note_count' => 0,
+            'post_count' => 0,
+            'project_count' => 1
+        ],
+        [
+            'id' => 'tag3',
+            'album_count' => 1,
+            'file_count' => 0,
+            'note_count' => 0,
+            'post_count' => 0,
+            'project_count' => 0
         ],
     ];
 }

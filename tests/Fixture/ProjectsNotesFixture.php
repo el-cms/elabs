@@ -21,8 +21,8 @@ class ProjectsNotesFixture extends TestFixture
         'project_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'note_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'projects_notes_note_id' => ['type' => 'index', 'columns' => ['note_id'], 'length' => []],
-            'projects_notes_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
+            'projectsnotes_note_id' => ['type' => 'index', 'columns' => ['note_id'], 'length' => []],
+            'projectsnotes_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

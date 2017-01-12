@@ -21,13 +21,13 @@ class AlbumsFilesFixture extends TestFixture
         'album_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'file_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'fk_albums_has_files_files1_idx' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
-            'fk_albums_has_files_albums1_idx' => ['type' => 'index', 'columns' => ['album_id'], 'length' => []],
+            'albumsfiles_album_id' => ['type' => 'index', 'columns' => ['album_id'], 'length' => []],
+            'albumsfiles_file_id' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'fk_albums_has_files_albums1' => ['type' => 'foreign', 'columns' => ['album_id'], 'references' => ['albums', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
-            'fk_albums_has_files_files1' => ['type' => 'foreign', 'columns' => ['file_id'], 'references' => ['files', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'albums_files_ibfk_1' => ['type' => 'foreign', 'columns' => ['album_id'], 'references' => ['albums', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'albums_files_ibfk_2' => ['type' => 'foreign', 'columns' => ['file_id'], 'references' => ['files', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',

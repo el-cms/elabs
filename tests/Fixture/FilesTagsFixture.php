@@ -19,10 +19,10 @@ class FilesTagsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'file_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'tag_id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'tag_id' => ['type' => 'string', 'length' => 15, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
-            'files_tags_file_id' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
-            'files_tags_tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
+            'filestags_file_id' => ['type' => 'index', 'columns' => ['file_id'], 'length' => []],
+            'filestags_tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
@@ -42,5 +42,20 @@ class FilesTagsFixture extends TestFixture
      * @var array
      */
     public $records = [
+        [
+            'id' => 1,
+            'file_id' => '4aa59eb5-35c6-42c1-91e2-f8c6a6cb8539',
+            'tag_id' => 'new tag'
+        ],
+        [
+            'id' => 2,
+            'file_id' => '4aa59eb5-35c6-42c1-91e2-f8c6a6cb8539',
+            'tag_id' => 'tag1'
+        ],
+        [
+            'id' => 3,
+            'file_id' => '63c22253-9f07-41de-abcf-c9e0a9eaf7e9',
+            'tag_id' => 'tag1'
+        ],
     ];
 }

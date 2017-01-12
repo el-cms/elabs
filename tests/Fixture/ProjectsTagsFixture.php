@@ -19,10 +19,10 @@ class ProjectsTagsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'project_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'tag_id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'tag_id' => ['type' => 'string', 'length' => 15, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
-            'project_tags_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
-            'project_tags_tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
+            'projectstags_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
+            'projectstags_tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

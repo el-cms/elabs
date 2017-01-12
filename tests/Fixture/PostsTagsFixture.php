@@ -19,10 +19,10 @@ class PostsTagsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'post_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'tag_id' => ['type' => 'integer', 'length' => 5, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'tag_id' => ['type' => 'string', 'length' => 15, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
-            'posts_tags_post_id' => ['type' => 'index', 'columns' => ['post_id'], 'length' => []],
-            'posts_tags_tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
+            'poststags_post_id' => ['type' => 'index', 'columns' => ['post_id'], 'length' => []],
+            'poststags_tag_id' => ['type' => 'index', 'columns' => ['tag_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
@@ -42,5 +42,15 @@ class PostsTagsFixture extends TestFixture
      * @var array
      */
     public $records = [
+        [
+            'id' => 1,
+            'post_id' => '6e0c6123-2dbd-47d3-868b-9797cd9f3039',
+            'tag_id' => 'random name'
+        ],
+        [
+            'id' => 2,
+            'post_id' => '6e0c6123-2dbd-47d3-868b-9797cd9f3039',
+            'tag_id' => 'tag1'
+        ],
     ];
 }

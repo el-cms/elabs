@@ -164,6 +164,8 @@ class ProjectsTable extends Table
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
      *   - complete bool, default false. Select all the fields
+     *   - forceOrder bool, default true. If true, no order will be applied
+     *   - order array, default created, desc. Default sort order
      *   - sfw bool, default false. Limits the result to sfw items
      *   - uid string, default null. Select only items for this user
      *   - withAlbums bool, default false. Select the albums
@@ -182,6 +184,8 @@ class ProjectsTable extends Table
         $options += [
             'allStatuses' => false,
             'complete' => false,
+            'forceOrder' => false,
+            'order' => ['Projects.created' => 'desc'],
             'sfw' => true,
             'uid' => null,
             'withAlbums' => false,
@@ -216,15 +220,20 @@ class ProjectsTable extends Table
             $query->select(['description', 'album_count', 'file_count', 'note_count', 'post_count']);
         }
 
+        // Order
+        if ($options['forceOrder']) {
+            $query->order($options['order']);
+        }
+
         // Relations
         if ($options['withAlbums']) {
             $query->contain(['Albums' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withFiles']) {
             $query->contain(['Files' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withLanguages']) {
@@ -239,17 +248,17 @@ class ProjectsTable extends Table
         }
         if ($options['withNotes']) {
             $query->contain(['Notes' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withPosts']) {
             $query->contain(['Posts' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw]);
+                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw, 'forceOrder' => true]);
             }]);
         }
         if ($options['withTags']) {
             $query->contain(['Tags' => function ($q) {
-                    return $q->find('asContain', ['pivot' => ['ProjectsTags.project_id']]);
+                    return $q->find('asContain', ['pivot' => ['ProjectsTags.project_id'], 'forceOrder' => true]);
             }]);
         }
         if ($options['withUsers']) {
@@ -303,7 +312,9 @@ class ProjectsTable extends Table
             $fields[] = $options['pivot'];
         }
 
-        return $query->select($fields);
+        return $query->select($fields)
+                        // Define order as there may be multiple results
+                        ->order(['Projects.created' => 'desc']);
     }
 
     /**
@@ -381,5 +392,19 @@ class ProjectsTable extends Table
         $options['allStatuses'] = true;
 
         return $this->getWithContain($primaryKey, $options);
+    }
+
+    /**
+     * Returns a list sorted by name
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findList(\Cake\ORM\Query $query, array $options)
+    {
+        return parent::findList($query, $options)
+                ->order('name', 'desc');
     }
 }

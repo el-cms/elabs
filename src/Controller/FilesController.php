@@ -26,8 +26,11 @@ class FilesController extends AppController
      */
     public function index($filter = null, $id = null)
     {
+        // Pagination options
+        $this->paginate['sortWhitelist'] = ['name', 'created', 'modified'];
+
+        // Query
         $query = $this->Files->find('withContain', ['sfw' => !$this->seeNSFW]);
-        $query->order(['Files.created' => 'desc']);
 
         // Filters:
         if (!is_null($filter)) {

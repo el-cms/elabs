@@ -85,21 +85,27 @@ $this->start('pageContent');
     ?>
     <div class="row">
         <?php
-        foreach ($album->files as $file):
-            $config = $this->Items->fileConfig($file['filename']);
-            ?>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 thumbnail-col">
-                <div class="thumbnail thumbnail-square">
-                    <?php
-                    if ($file->sfw || $seeNSFW === true):
-                        echo $this->element('files/card_minimal_' . $config['element'], ['data' => $file]);
-                    else:
-                        echo $this->element('layout/nsfw_block');
-                    endif;
-                    ?>
+        if (count($album->files) > 0):
+            foreach ($album->files as $file):
+                $config = $this->Items->fileConfig($file['filename']);
+                ?>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 thumbnail-col">
+                    <div class="thumbnail thumbnail-square">
+                        <?php
+                        if ($file->sfw || $seeNSFW === true):
+                            echo $this->element('files/card_minimal_' . $config['element'], ['data' => $file]);
+                        else:
+                            echo $this->element('layout/nsfw_block');
+                        endif;
+                        ?>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+                <?php
+            endforeach;
+        else:
+            echo $this->element('layout/empty');
+        endif;
+        ?>
     </div>
 </div>
 <?php

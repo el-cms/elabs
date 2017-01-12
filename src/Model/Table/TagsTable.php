@@ -2,24 +2,30 @@
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Tag;
+use Cake\Core\Configure;
+use Cake\Datasource\EntityInterface;
+use Cake\ORM\Association\BelongsToMany;
+use Cake\ORM\Entity;
+use Cake\ORM\Query;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
  * Tags Model
  *
- * @property \Cake\ORM\Association\BelongsToMany $Files
- * @property \Cake\ORM\Association\BelongsToMany $Notes
- * @property \Cake\ORM\Association\BelongsToMany $Posts
- * @property \Cake\ORM\Association\BelongsToMany $Projects
+ * @property BelongsToMany $Files
+ * @property BelongsToMany $Notes
+ * @property BelongsToMany $Posts
+ * @property BelongsToMany $Projects
  *
- * @method \App\Model\Entity\Tag get($primaryKey, $options = [])
- * @method \App\Model\Entity\Tag newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Tag[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Tag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Tag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Tag[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Tag findOrCreate($search, callable $callback = null)
+ * @method Tag get($primaryKey, $options = [])
+ * @method Tag newEntity($data = null, array $options = [])
+ * @method Tag[] newEntities(array $data, array $options = [])
+ * @method Tag|bool save(EntityInterface $entity, $options = [])
+ * @method Tag patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Tag[] patchEntities($entities, array $data, array $options = [])
+ * @method Tag findOrCreate($search, callable $callback = null)
  */
 class TagsTable extends Table
 {
@@ -68,8 +74,8 @@ class TagsTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {
@@ -83,7 +89,7 @@ class TagsTable extends Table
     /**
      * Finds all data for a tag
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options:
      *   - sfw bool, default false. Limits the result to sfw items
      *   - withAlbums bool, default true. Select the albums
@@ -92,9 +98,9 @@ class TagsTable extends Table
      *   - withPosts bool, default true. Select the posts
      *   - withProjects bool, default false. Select the projects
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findWithContain(\Cake\ORM\Query $query, array $options = [])
+    public function findWithContain(Query $query, array $options = [])
     {
         $options += [
             'sfw' => true,
@@ -105,35 +111,41 @@ class TagsTable extends Table
             'withProjects' => true,
             'withUsers' => true,
         ];
-        $sfw = $options['sfw'];
 
         // Fields
         $query->select(['id', 'album_count', 'file_count', 'note_count', 'post_count', 'project_count']);
 
         // Relations
+        $sfw = $options['sfw'];
+        $containLimit = Configure::read('cms.maxRelatedData');
         if ($options['withAlbums']) {
-            $query->contain(['Albums' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+            $query->contain(['Albums' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
         if ($options['withFiles']) {
-            $query->contain(['Files' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+            $query->contain(['Files' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
         if ($options['withNotes']) {
-            $query->contain(['Notes' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+            $query->contain(['Notes' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
         if ($options['withPosts']) {
-            $query->contain(['Posts' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+            $query->contain(['Posts' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
         if ($options['withProjects']) {
-            $query->contain(['Projects' => function ($q) use ($sfw) {
-                    return $q->find('withContain', ['sfw' => $sfw]);
+            $query->contain(['Projects' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
             }]);
         }
 
@@ -144,15 +156,17 @@ class TagsTable extends Table
     /**
      * Used to fetch minimal data about tags
      *
-     * @param \Cake\ORM\Query $query The query
+     * @param Query $query The query
      * @param array $options An array of options. Don't forget to add the 'pivot'
      *        field name if necessary
      *
-     * @return \Cake\ORM\Query
+     * @return Query
      */
-    public function findAsContain(\Cake\ORM\Query $query, array $options = [])
+    public function findAsContain(Query $query, array $options = [])
     {
-        return $query->select(['id']);
+        return $query->select(['id'])
+                        // Define order as there may be multiple results
+                        ->order(['Tags.id' => 'desc']);
     }
 
     /**
@@ -163,7 +177,7 @@ class TagsTable extends Table
      *   - sfw bool, default true Limit to sfw data
      *   - complete bool default true Select all the fields
      *
-     * @return \Cake\ORM\Entity
+     * @return Entity
      */
     public function getWithContain($primaryKey, array $options = [])
     {
@@ -185,7 +199,7 @@ class TagsTable extends Table
      *   - sfw bool, default true Limit to sfw data
      *   - complete bool default true Select all the fields
      *
-     * @return \Cake\ORM\Entity
+     * @return Entity
      */
     public function getWithoutContain($primaryKey, array $options = [])
     {
@@ -196,5 +210,19 @@ class TagsTable extends Table
         return $this->find('asContain', $options)
                         ->where(['Tags.id' => $primaryKey])
                         ->firstOrFail();
+    }
+
+    /**
+     * Returns a list sorted by name
+     *
+     * @param \Cake\ORM\Query $query The query
+     * @param array $options An array of options
+     *
+     * @return \Cake\ORM\Query
+     */
+    public function findList(\Cake\ORM\Query $query, array $options)
+    {
+        return parent::findList($query, $options)
+                ->order('id', 'desc');
     }
 }

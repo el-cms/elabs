@@ -21,8 +21,8 @@ class ProjectsPostsFixture extends TestFixture
         'project_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'post_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
-            'projects_posts_post_id' => ['type' => 'index', 'columns' => ['post_id'], 'length' => []],
-            'projects_posts_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
+            'projectsposts_post_id' => ['type' => 'index', 'columns' => ['post_id'], 'length' => []],
+            'projectsposts_project_id' => ['type' => 'index', 'columns' => ['project_id'], 'length' => []],
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],

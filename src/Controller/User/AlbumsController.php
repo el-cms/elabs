@@ -55,7 +55,7 @@ class AlbumsController extends UserAppController
             $dataSent['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $album = $this->Albums->patchEntity($album, $dataSent);
             if ($this->Albums->save($album)) {
-                $this->Flash->success(__('The album has been saved.'));
+                $this->Flash->success(__d('elabs', 'The album has been saved.'));
                 if (!$album->hide_from_acts) {
                     $this->Act->add($album->id, 'add', 'Albums', $album->created);
                 }
@@ -112,7 +112,7 @@ class AlbumsController extends UserAppController
 
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The album could not be saved. Please, try again.'));
+                $this->Flash->error(__d('elabs', 'The album could not be saved. Please, try again.'));
             }
         }
         $languages = $this->Albums->Languages->find('list');
@@ -134,9 +134,9 @@ class AlbumsController extends UserAppController
         $this->request->allowMethod(['post', 'delete']);
         $album = $this->Albums->get($id);
         if ($this->Albums->delete($album)) {
-            $this->Flash->success(__('The album has been deleted.'));
+            $this->Flash->success(__d('elabs', 'The album has been deleted.'));
         } else {
-            $this->Flash->error(__('The album could not be deleted. Please, try again.'));
+            $this->Flash->error(__d('elabs', 'The album could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

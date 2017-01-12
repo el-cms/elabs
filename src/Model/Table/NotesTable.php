@@ -131,6 +131,8 @@ class NotesTable extends Table
      * @param \Cake\ORM\Query $query The query
      * @param array $options An array of options:
      *   - allStatuses bool, default true. Overrides status limitation
+     *   - forceOrder bool, default true. If true, no order will be applied
+     *   - order array, default created, desc. Default sort order
      *   - sfw bool, default false. Limits the result to sfw items
      *   - uid string, default null. Select only items for this user
      *   - withLanguages bool, dafault true. Select the language
@@ -145,6 +147,8 @@ class NotesTable extends Table
     {
         $options += [
             'allStatuses' => false,
+            'forceOrder' => false,
+            'order' => ['Notes.created' => 'desc'],
             'sfw' => false,
             'uid' => null,
             'withLanguages' => true,
@@ -170,6 +174,11 @@ class NotesTable extends Table
         // Fields
         $query->select(['id', 'text', 'created', 'modified', 'sfw', 'status', 'user_id', 'license_id', 'language_id'])
                 ->where($where);
+
+        // Order
+        if ($options['forceOrder']) {
+            $query->order($options['order']);
+        }
 
         // Relations
         if ($options['withLanguages']) {

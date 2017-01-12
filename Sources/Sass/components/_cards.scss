@@ -191,3 +191,37 @@
     }
 
 }
+
+.more-item {
+    vertical-align: middle;
+    padding: 0 2em;
+    opacity: .5;
+}
+
+/**
+    "Card" for tag management in admin 
+*/
+.tag-item {
+    display: inline-block;
+    box-shadow:$panel-shadow;
+    padding: 0;
+    margin-left: 5px;
+    background-color:$well-background-color;
+    .tag-name{
+        font-weight:bold;
+        padding:0 $padding-small-horizontal;
+    }
+    .tag-counts{
+        display: inline;
+        list-style-type:none;
+        margin:0;
+        padding:0 $padding-small-horizontal;
+        border-left: 1px solid #CCC;
+        color:lighten($text-color, 50%);
+        li{
+            display:inline;
+            padding:0;
+            margin:0;
+        }
+    }
+}

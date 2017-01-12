@@ -7,6 +7,7 @@
  * Layout element:
  *   defaultview.ctp
  */
+
 use Cake\Core\Configure;
 
 // Page title
@@ -24,23 +25,24 @@ $this->Html->addCrumb($this->Html->langLabel($project->name, $project->language-
 $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
+    <li><strong><?php echo $this->Html->iconT('user', __d('elabs', 'Author:')) ?></strong><?php echo $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) ?></li>
     <li><strong><?php echo $this->Html->iconT('font', __d('elabs', 'Name:')) ?></strong> <?php echo $project->name ?></li>
     <li><strong><?php echo $this->Html->iconT('copyright', __d('elabs', 'License:')) ?></strong> <?php echo $this->Html->link($this->Html->iconT($project->license->icon, $project->license->name), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
     <li><strong><?php echo $this->Html->iconT('calendar', __d('elabs', 'Created on:')) ?></strong> <?php echo h($project->created) ?></li>
     <?php if ($project->has('modified')): ?>
         <li><strong><?php echo $this->Html->iconT('calendar', __d('elabs', 'Updated on:')) ?></strong> <?php echo h($project->modified) ?></li>
-    <?php endif; ?>
+<?php endif; ?>
     <li><strong><?php echo $this->Html->iconT('language', __d('elabs', 'Language:')) ?></strong> <?php echo $this->Html->langLabel($project->language->name, $project->language->iso639_1) ?></li>
     <li>
         <strong><?php echo $this->Html->iconT('info', __d('elabs', 'Safe content:')) ?></strong>
         <span class="label label-<?php echo $project->sfw ? 'success' : 'danger'; ?>">
-            <?php echo $project->sfw ? $this->Html->iconT('check-circle', __d('elabs', 'Yes')) : $this->Html->iconT('circle-o', __d('elabs', 'No')); ?>
+<?php echo $project->sfw ? $this->Html->iconT('check-circle', __d('elabs', 'Yes')) : $this->Html->iconT('circle-o', __d('elabs', 'No')); ?>
         </span>
     </li>
     <li class="separator"></li>
     <li><strong><?php echo $this->Html->iconT('font', __dn('elabs', '{0} article', '{0} articles', $project->post_count, [$project->post_count])) ?></strong></li>
     <li><strong><?php echo $this->Html->iconT('sticky-note', __dn('elabs', '{0} note', '{0} notes', $project->note_count, $project->note_count)) ?></strong></li>
-    <li><strong><?php echo $this->Html->iconT('file-o', __dn('elabs', '{0} file','{0} files', $project->file_count, $project->file_count)) ?></strong></li>
+    <li><strong><?php echo $this->Html->iconT('file-o', __dn('elabs', '{0} file', '{0} files', $project->file_count, $project->file_count)) ?></strong></li>
     <li><strong><?php echo $this->Html->iconT('book', __dn('elabs', '{0} album', '{0} albums', $project->album_count, $project->album_count)) ?></strong></li>
     <li class="separator"></li>
     <li>
@@ -101,13 +103,13 @@ $this->start('pageContent');
             <a data-toggle="tab" href="#notes-tab"><?php echo __d('elabs', 'Notes') ?></a>
         </li>
         <li>
-            <?php
-            echo $this->Html->link(
+<?php
+echo $this->Html->link(
                     $this->Html->icon('chevron-right', ['title' => __d('elabs', 'Display all files in this project')]),
                     ['controller' => 'files', 'action' => 'index', 'project', $project->id],
                     ['escape' => false, 'class' => 'tab-btn-right']
-            )
-            ?>
+)
+?>
             <a data-toggle="tab" href="#files-tab"><?php echo __d('elabs', 'Files') ?></a>
         </li>
         <li>
@@ -129,19 +131,19 @@ $this->start('pageContent');
         if (!$seeNSFW):
             ?>
             <div class="alert alert-info alert-sm">
-                <?php echo $this->Html->iconT('info', __d('elabs','Some entries may be hidden, depending on your NSFW settings.')) ?>
+                <?php echo $this->Html->iconT('info', __d('elabs', 'Some entries may be hidden, depending on your NSFW settings.')) ?>
             </div>
         <?php endif; ?>
         <div class="tab-pane fade active in" id="posts-tab">
-            <?php
-            if (!empty($project->posts)):
-                foreach ($project->posts as $posts):
-                    echo $this->element('posts/card', ['data' => $posts, 'projectInfos' => false, 'event' => false]);
-                endforeach;
-            else:
-                echo $this->element('layout/empty', ['alternative' => false]);
-            endif;
-            ?>
+        <?php
+        if (!empty($project->posts)):
+            foreach ($project->posts as $posts):
+                echo $this->element('posts/card', ['data' => $posts, 'projectInfos' => false, 'event' => false]);
+            endforeach;
+        else:
+            echo $this->element('layout/empty', ['alternative' => false]);
+        endif;
+        ?>
         </div>
 
         <div class="tab-pane" id="notes-tab">

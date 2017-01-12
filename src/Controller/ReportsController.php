@@ -21,6 +21,8 @@ class ReportsController extends AppController
         parent::beforeFilter($event);
 
         $this->Auth->allow('add');
+
+         $this->Security->config('unlockedActions', ['add']);
     }
 
     /**

@@ -19,7 +19,7 @@ $this->Html->addCrumb(__d('elabs', 'List of tags'));
 // Block: Pagination order links
 // -----------------------------
 $this->start('pageOrderBy');
-echo $this->Paginator->sort('name', __d('elabs', 'Name'));
+echo $this->Paginator->sort('id', __d('elabs', 'Name'));
 echo $this->Paginator->sort('album_count', __d('elabs', 'Number of albums'));
 echo $this->Paginator->sort('file_count', __d('elabs', 'Number of files'));
 echo $this->Paginator->sort('note_count', __d('elabs', 'Number of notes'));
@@ -29,6 +29,7 @@ $this->end();
 // Block: Page content
 // -------------------
 $this->start('pageContent');
+if (!$tags->isEmpty()):
 ?>
 <table>
     <thead>
@@ -57,6 +58,9 @@ $this->start('pageContent');
     </tbody>
 </table>
 <?php
+else:
+    echo $this->element('layout/empty');
+endif;
 $this->end();
 
 // Load the layout element

@@ -43,9 +43,9 @@
             "@phpunit",
             "@phpcs"
         ],
-        "phpunit": "phpunit",
-        "phpcs": "vendor/bin/phpcs -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot",
-        "phpcbf": "vendor/bin/phpcbf --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot"
+        "phpunit": "phpunit --colors=always",
+        "phpcs": "vendor/bin/phpcs --colors -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot",
+        "phpcbf": "vendor/bin/phpcbf  --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
