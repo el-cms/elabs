@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\AlbumsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
@@ -40,9 +39,6 @@ class AlbumsTableTest extends TestCase
         'app.projects_notes',
         'app.projects_posts',
         'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
         'app.acts',
         'app.reports',
         'app.albums_files',

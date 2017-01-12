@@ -1,0 +1,59 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Manuel Tancoigne <m.tancoigne@gmail.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2017-01-02 15:28+0000\n"
+"PO-Revision-Date: 2017-01-02 16:51+0200\n"
+"Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+#: Template/Element/users/loginform.ctp:18
+msgid "Remember me"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Email/html/reset_password.ctp:22
+#: Template/Plugin/CakeDC/Email/html/validation.ctp:22
+#: Template/Plugin/CakeDC/Email/text/reset_password.ctp:21
+#: Template/Plugin/CakeDC/Email/text/validation.ctp:21
+msgid "Hi {0}"
+msgstr "Bonjour {0}"
+
+#: Template/Plugin/CakeDC/Email/html/reset_password.ctp:25
+msgid "Reset your password here"
+msgstr "Réinitialisez votre mot de passe ici"
+
+#: Template/Plugin/CakeDC/Email/html/reset_password.ctp:28
+msgid "If the link is not correcly displayed, please copy the following address in your web browser {0}"
+msgstr ""
+"Si le lien n'est pas affiché correctement, veuillez copier l'adresse "
+"suivante dans votre navigateur : {0}"
+
+#: Template/Plugin/CakeDC/Email/html/reset_password.ctp:31
+#: Template/Plugin/CakeDC/Email/html/validation.ctp:31
+#: Template/Plugin/CakeDC/Email/text/reset_password.ctp:25
+#: Template/Plugin/CakeDC/Email/text/validation.ctp:25
+msgid "Thank you"
+msgstr "Merci"
+
+#: Template/Plugin/CakeDC/Email/html/validation.ctp:25
+msgid "Activate your account here"
+msgstr "Activez votre compte ici"
+
+#: Template/Plugin/CakeDC/Email/html/validation.ctp:28
+msgid "If the link is not correctly displayed, please copy the following address in your web browser {0}"
+msgstr ""
+"Si le lien n'est pas affiché correctement, veuillez copier l'adresse "
+"suivante dans votre navigateur : {0}"
+
+#: Template/Plugin/CakeDC/Email/text/reset_password.ctp:23
+#: Template/Plugin/CakeDC/Email/text/validation.ctp:23
+msgid "Please copy the following address in your web browser {0}"
+msgstr "Veuillez copier le lien suivant dans votre navigateur : {0}"

@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\TagsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
@@ -36,9 +35,6 @@ class TagsTableTest extends TestCase
         'app.projects_notes',
         'app.projects_posts',
         'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
         'app.acts',
         'app.posts_tags',
         'app.reports',

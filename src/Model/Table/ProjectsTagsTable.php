@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -37,6 +37,13 @@ class ProjectsTagsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Tags' => ['project_count' => [
+                    'contain' => ['Projects' => ['fields' => ['id', 'status']]],
+                    'conditions' => ['Projects.status' => STATUS_PUBLISHED]]
+            ],
+        ]);
+
         $this->belongsTo('Projects', [
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'
@@ -56,8 +63,8 @@ class ProjectsTagsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         return $validator;
     }

@@ -9,7 +9,7 @@
  */
 
 // Page title
-$this->assign('title', h($user->realname));
+$this->assign('title', h($user->real_name));
 
 // Breadcrumbs
 $this->Html->addCrumb(__d('elabs', 'Users'), ['action' => 'index']);
@@ -21,11 +21,11 @@ $this->start('pageInfos');
 ?>
 <ul class="list-unstyled">
     <li><strong><?php echo __d('elabs', 'Username:') ?></strong> <?php echo h($user->username) ?></li>
-    <li><strong><?php echo __d('elabs', 'Name:') ?></strong> <?php echo h($user->realname) ?></li>
+    <li><strong><?php echo __d('elabs', 'Name:') ?></strong> <?php echo h($user->real_name) ?></li>
     <li><strong><?php echo __d('elabs', 'Website:') ?></strong> <?php echo h($user->website) ?></li>
     <li><strong><?php echo __d('elabs', 'Member since:') ?></strong> <?php echo h($user->created) ?></li>
     <li><strong><?php echo __d('elabs', 'Last update:') ?></strong> <?php echo h($user->modified) ?></li>
-    <li><strong><?php echo __d('elabs', 'Status:') ?></strong> <?php echo $this->UsersAdmin->statusLabel($user->status) ?></li>
+    <li><strong><?php echo __d('elabs', 'Status:') ?></strong> <?php echo $this->UsersAdmin->statusLabel($user->active) ?></li>
 </ul>
 <?php
 $this->end();
@@ -36,18 +36,18 @@ $this->start('pageActions');
 ?>
 <div class="btn-group btn-group-vertical btn-block">
     <?php
-    if ($user->status != 3):
-        if ($user->status === 0):
-            echo $this->Html->link($this->Html->iconT('check', _d('elabs', 'Activate')), ['action' => 'activate', $user->id], ['class' => 'btn btn-warning', 'escape' => false]);
+    if ($user->active != STATUS_DELETED):
+        if ($user->active === STATUS_ACTIVE):
+            echo $this->Html->link($this->Html->iconT('check', __d('elabs', 'Activate')), ['action' => 'activate', $user->id], ['class' => 'btn btn-warning', 'escape' => false]);
         endif;
-        if ($user->status === 2):
+        if ($user->active === STATUS_LOCKED):
             echo $this->Html->link($this->Html->iconT('unlock', __d('elabs', 'Unlock')), ['action' => 'lock', $user->id, 'unlock'], ['class' => 'btn btn-warning', 'escape' => false]);
-        elseif ($user->status === 1):
+        elseif ($user->active === STATUS_ACTIVE):
             echo $this->Html->link($this->Html->iconT('lock', __d('elabs', 'Lock')), ['action' => 'lock', $user->id, 'lock'], ['class' => 'btn btn-warning', 'escape' => false]);
         else:
             echo $this->Html->link($this->Html->iconT('lock', __d('elabs', 'Lock/unlock')), '#', ['class' => 'text-sec btn-warning disabled', 'escape' => false]);
         endif;
-        if ($user->status != 3):
+        if ($user->active != STATUS_DELETED):
             echo $this->Html->link($this->Html->iconT('times', __d('elabs', 'Close')), ['action' => 'close', $user->id], ['confirm' => __d('elabs', 'Are you sure you want to close this account ?'), 'class' => 'btn btn-danger', 'escape' => false]);
         endif;
     else:

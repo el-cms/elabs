@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
-
 /**
  * Reports Controller
  *
@@ -23,6 +21,8 @@ class ReportsController extends AppController
         parent::beforeFilter($event);
 
         $this->Auth->allow('add');
+
+         $this->Security->config('unlockedActions', ['add']);
     }
 
     /**

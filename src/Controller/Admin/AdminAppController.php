@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
-use \Cake\Network\Exception\ForbiddenException;
+use Cake\Network\Exception\ForbiddenException;
 
 /**
  * Admin controller. All the admin controllers inherits from it.
@@ -13,7 +13,7 @@ class AdminAppController extends AppController
 {
 
     /**
-     * Before filder callback.
+     * Before filter callback.
      *
      * @param \Cake\Event\Event $event The beforeFilter event.
      *
@@ -25,11 +25,11 @@ class AdminAppController extends AppController
         if ($this->Auth->user('role') === 'admin') {
             $this->Auth->allow();
         } else {
+            $this->Auth->deny();
             if (is_null($this->Auth->user('id'))) {
-                $this->Flash->Error(__d('elabs', 'You should be logged in to access this page.'));
-                $this->redirect($this->Auth->config('loginAction'));
+                throw new ForbiddenException(__d('elabs', 'You should be logged in to access this page.'));
             } else {
-                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this ressource.'));
+                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this resource .'));
             }
         }
     }

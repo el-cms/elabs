@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -37,6 +37,13 @@ class FilesTagsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('CounterCache', [
+            'Tags' => ['file_count' => [
+                'contain' => ['Files' => ['fields' => ['id', 'status']]],
+                'conditions' => ['Files.status' => STATUS_PUBLISHED]]
+            ],
+        ]);
+
         $this->belongsTo('Files', [
             'foreignKey' => 'file_id',
             'joinType' => 'INNER'
@@ -56,8 +63,8 @@ class FilesTagsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         return $validator;
     }

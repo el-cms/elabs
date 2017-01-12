@@ -38,6 +38,11 @@ echo $this->Form->input('description', ['type' => 'textarea', 'required' => fals
 $this->CodeMirror->add('descArea');
 ?>
 <div class="row">
+    <div class="col-sm-12">
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => $this->TagList->tagsToList($file->tags), 'data-role' => 'tagsinput']); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
     </div>
@@ -56,6 +61,7 @@ $this->CodeMirror->add('descArea');
         <?php echo $this->Form->input('albums._ids', ['options' => $albums]); ?>
     </div>
     <div class="col-sm-4">
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
         <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
         <?php echo $this->Form->submit(__d('elabs', 'Update'), ['class' => 'btn-primary btn-block']); ?>
     </div>

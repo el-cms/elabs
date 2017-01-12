@@ -22,9 +22,9 @@ class LicensesFixture extends TestFixture
         'link' => ['type' => 'string', 'length' => 150, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'icon' => ['type' => 'string', 'length' => 20, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'file_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'note_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'post_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'project_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'note_count' => ['type' => 'integer', 'length' => 5, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -47,9 +47,9 @@ class LicensesFixture extends TestFixture
             'link' => 'http://creativecommons.org/licenses/by/',
             'icon' => 'creative-commons',
             'file_count' => 3,
+            'note_count' => 5,
             'post_count' => 2,
             'project_count' => 2,
-            'note_count' => 5
         ],
         [
             'id' => 2,
@@ -57,9 +57,9 @@ class LicensesFixture extends TestFixture
             'link' => 'http://creativecommons.org/licenses/by-nc/',
             'icon' => 'creative-commons',
             'file_count' => 0,
+            'note_count' => 0,
             'post_count' => 0,
             'project_count' => 0,
-            'note_count' => 0
         ],
         [
             'id' => 3,
@@ -67,9 +67,9 @@ class LicensesFixture extends TestFixture
             'link' => 'http://creativecommons.org/licenses/by-nc-sa/',
             'icon' => 'creative-commons',
             'file_count' => 0,
+            'note_count' => 0,
             'post_count' => 0,
             'project_count' => 0,
-            'note_count' => 0
         ],
         [
             'id' => 4,
@@ -77,9 +77,9 @@ class LicensesFixture extends TestFixture
             'link' => 'https://tldrlegal.com/license/mit-license',
             'icon' => 'copyright',
             'file_count' => 0,
+            'note_count' => 0,
             'post_count' => 0,
             'project_count' => 1,
-            'note_count' => 0
         ],
     ];
 }

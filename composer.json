@@ -5,16 +5,15 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "cakephp/cakephp": "~3.1",
+        "cakephp/cakephp": "3.3.*",
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
-        "dereuromark/cakephp-ajax": "dev-master",
         "friendsofcake/bootstrap-ui": "^0.5.0",
-        "friendsofcake/search": "master",
         "mobiledetect/mobiledetectlib": "2.*",
-        "php": ">=5.4.16",
+        "php": ">=7.0",
         "tanuck/cakephp-markdown": "dev-master",
-        "lowg33kdev/cakephp-gravatar-plugin": "1.1.0"
+        "cakedc/users": "^3.2",
+        "lowg33kdev/cakephp-gravatar-plugin": "^1.1"
     },
     "require-dev": {
         "psy/psysh": "@stable",
@@ -24,13 +23,11 @@
         "phpunit/phpunit": "^5.5"
     },
     "suggest": {
-        "phpunit/phpunit": "Allows automated tests to be run without system-wide install.",
-        "cakephp/cakephp-codesniffer": "Allows to check the code against the coding standards used in CakePHP."
+        "markstory/asset_compress": "An asset compression plugin which provides file concatenation and a flexible filter system for preprocessing and minification."
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src",
-            "Gravatar\\": "./plugins/Gravatar/src"
+            "App\\": "src"
         }
     },
     "autoload-dev": {
@@ -41,8 +38,31 @@
     },
     "scripts": {
         "post-install-cmd": "App\\Console\\Installer::postInstall",
-        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
+        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",
+        "check": [
+            "@phpunit",
+            "@phpcs"
+        ],
+        "phpunit": "phpunit --colors=always",
+        "phpcs": "vendor/bin/phpcs --colors -p --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot",
+        "phpcbf": "vendor/bin/phpcbf  --extensions=php --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests ./webroot"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "lowg33kdev/cakephp-gravatar-plugin",
+                "version": "1.1.1",
+                "dist": {
+                    "url": "https://github.com/el-cms/cakephp-gravatar-plugin/archive/Cake-3.X.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+					"classmap": ["src/"]
+				}
+            }
+        }
+    ]
 }

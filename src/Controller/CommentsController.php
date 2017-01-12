@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 use Cake\Routing\Router;
 
@@ -34,7 +33,7 @@ class CommentsController extends AppController
 
         // Create config strings
         $this->config = [
-            'models' => [ 'Files', 'Posts', 'Projects', 'Notes']
+            'models' => ['Files', 'Posts', 'Projects', 'Notes']
         ];
 
         // Load models

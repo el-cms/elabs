@@ -2,7 +2,6 @@
 
 namespace App\Controller\User;
 
-use App\Controller\AppController;
 use Cake\i18n\Time;
 
 /**
@@ -23,30 +22,25 @@ class PostsController extends UserAppController
      */
     public function index($nsfw = 'all', $published = 'all')
     {
+        $posts = $this->Posts->find('users', ['uid' => $this->Auth->user('id')]);
+
         $this->paginate = [
-            'fields' => ['id', 'title', 'excerpt', 'sfw', 'status', 'publication_date', 'created', 'modified', 'license_id'],
-            'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-            ],
-            'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
             'sortWhitelist' => ['title', 'status', 'publication_date', 'created', 'modified', 'sfw'],
         ];
         if ($nsfw === 'safe') {
-            $this->paginate['conditions']['sfw'] = 1;
+            $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {
-            $this->paginate['conditions']['sfw'] = 0;
+            $this->paginate['conditions']['sfw'] = SFW_UNSAFE;
         }
         if ($published === 'drafts') {
-            $this->paginate['conditions']['status'] = 0;
+            $this->paginate['conditions']['status'] = STATUS_DRAFT;
         } elseif ($published === 'published') {
-            $this->paginate['conditions']['status'] = 1;
+            $this->paginate['conditions']['status'] = STATUS_PUBLISHED;
         } elseif ($published === 'locked') {
-            $this->paginate['conditions']['status'] = 2;
+            $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
-        $this->set('posts', $this->paginate($this->Posts));
+        $this->set('posts', $this->paginate($posts));
         $this->set('filterNSFW', $nsfw);
         $this->set('filterPub', $published);
         $this->set('_serialize', ['posts']);
@@ -64,7 +58,9 @@ class PostsController extends UserAppController
             // Assigning values:
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
-            if ($dataSent['status'] === '1') {
+            // Manage tags
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
+            if ($dataSent['status'] == STATUS_PUBLISHED) {
                 $dataSent['publication_date'] = Time::now();
             }
 
@@ -72,7 +68,7 @@ class PostsController extends UserAppController
             $post = $this->Posts->patchEntity($post, $dataSent);
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__d('elabs', 'Your article has been saved.'));
-                if ($post->status === 1) {
+                if ($post->status === STATUS_PUBLISHED && !$post->hide_from_acts) {
                     $this->Act->add($post->id, 'add', 'Posts', $post->created);
                 }
                 $this->redirect(['action' => 'index']);
@@ -85,10 +81,10 @@ class PostsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Posts->Languages->find('list', ['limit' => 200]);
-        $projects = $this->Posts->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('post', 'licenses', 'languages', 'projects'));
+        $licenses = $this->Posts->Licenses->find('list');
+        $languages = $this->Posts->Languages->find('list');
+        $projects = $this->Posts->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('post', 'licenses', 'languages', 'projects', 'tags'));
         $this->set('_serialize', ['post']);
     }
 
@@ -102,34 +98,46 @@ class PostsController extends UserAppController
     public function edit($id = null)
     {
         $post = $this->Posts->get($id, [
-            'conditions' => ['user_id' => $this->Auth->user('id')],
             'contain' => [
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-            ]
+                'Tags' => ['fields' => ['id', 'PostsTags.post_id']],
+            ],
+            'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             // Old publication state
             $oldState = $post->status;
-            if ($oldState === 0 && $this->request->data['status'] === '1') {
+            $oldActState = $post->hide_from_acts;
+            if ($oldState === STATUS_DRAFT && $this->request->data['status'] == STATUS_PUBLISHED) {
                 $this->request->data['publication_date'] = Time::now();
             }
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $post = $this->Posts->patchEntity($post, $this->request->data);
             if ($this->Posts->save($post)) {
-                if ($oldState === 0 && $post->status === 1) {
+                if ($oldState === STATUS_DRAFT && $post->status === STATUS_PUBLISHED) {
                     // New publication
-                    $this->Act->add($post->id, 'add', 'Posts', $post->created);
+                    if (!$post->hide_from_acts) {
+                        $this->Act->add($post->id, 'add', 'Posts', $post->created);
+                    }
                     $this->Flash->success(__d('elabs', 'Your article has been published.'));
-                } elseif ($oldState === 1 && $post->status === 0) {
+                } elseif ($oldState === STATUS_PUBLISHED && $post->status === STATUS_DRAFT) {
                     // Removed from publication
                     $this->Act->remove($post->id);
                     $this->Flash->success(__d('elabs', 'Your article has been unpublished.'));
                 } else {
                     // Updated
-                    if ($this->request->data['isMinor'] == '0') {
+                    if ($this->request->data['isMinor'] == '0' && !$post->hide_from_acts) {
                         $this->Act->add($post->id, 'edit', 'Posts', $post->modified);
                     }
                     $this->Flash->success(__d('elabs', 'Your article has been updated.'));
                 }
+
+                if ($oldActState === false && $post->hide_from_acts) {
+                    $this->Flash->success(__d('elabs', 'The post has been removed from front page.'));
+                    $this->Act->remove($post->id);
+                }
+
                 $this->redirect(['action' => 'index']);
             } else {
                 $errors = $post->errors();
@@ -140,10 +148,10 @@ class PostsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Posts->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Posts->Languages->find('list', ['limit' => 200]);
-        $projects = $this->Posts->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('post', 'users', 'licenses', 'languages', 'projects'));
+        $licenses = $this->Posts->Licenses->find('list');
+        $languages = $this->Posts->Languages->find('list');
+        $projects = $this->Posts->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('post', 'users', 'licenses', 'languages', 'projects', 'tags'));
         $this->set('_serialize', ['post']);
     }
 

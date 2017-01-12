@@ -2,7 +2,6 @@
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -55,26 +54,26 @@ class ReportsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('name');
+                ->allowEmpty('name');
 
         $validator
-            ->email('email')
-            ->allowEmpty('email');
+                ->email('email')
+                ->allowEmpty('email');
 
         $validator
-            ->requirePresence('url', 'create')
-            ->notEmpty('url');
+                ->requirePresence('url', 'create')
+                ->notEmpty('url');
 
         $validator
-            ->requirePresence('reason', 'create')
-            ->notEmpty('reason');
+                ->requirePresence('reason', 'create')
+                ->notEmpty('reason');
 
         $validator
-            ->allowEmpty('session');
+                ->allowEmpty('session');
 
         return $validator;
     }

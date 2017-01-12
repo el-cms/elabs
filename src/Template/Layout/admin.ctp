@@ -1,10 +1,6 @@
 <?php
 // Define the lang attribute for titles
 $contentLanguage = $this->fetch('contentLanguage');
-$langAttribute = '';
-if (!empty($contentLanguage)):
-    $langAttribute = ' lang="' . $contentLanguage . '"';
-endif;
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $siteLanguage ?>">
@@ -12,7 +8,7 @@ endif;
         <?php echo $this->Html->charset() ?>
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta content="initial-scale=1.0, width=device-width" name="viewport">
-        <title<?php echo $langAttribute ?>>
+        <title<?php echo $this->Html->langAttr($contentLanguage) ?>>
             <?php echo strip_tags($this->fetch('title')). ' &#8212; ' . Cake\Core\Configure::read('cms.siteName') ?>
         </title>
         <?php echo $this->Html->meta('icon') ?>
@@ -93,7 +89,7 @@ endif;
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- Title -->
-                        <h1<?php echo $langAttribute ?>><?php echo $this->fetch('title') ?></h1>
+                        <h1<?php echo $this->Html->langAttr($contentLanguage)?>><?php echo $this->fetch('title') ?></h1>
                         <!-- / Title -->
 
                         <!-- Breadcrumbs -->

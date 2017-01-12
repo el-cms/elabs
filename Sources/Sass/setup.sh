@@ -16,10 +16,11 @@ SASS_LIBS_DIR=$SASS_DIR"/lib"
 function remove_sources(){
     echo -e "";
     echo "...Removing downloaded sources";
-    rm -rf "bootstrap-sass";
-    rm -rf "Font-Awesome-master";
-    rm -rf "codemirror";
-    rm -rf "bootflat.github.io-master";
+    rm -rf "$SASS_LIBS_DIR/bootstrap-sass";
+    rm -rf "$SASS_LIBS_DIR/Font-Awesome-master";
+    rm -rf "$SASS_LIBS_DIR/codemirror";
+    rm -rf "$SASS_LIBS_DIR/bootflat.github.io-master";
+    rm -rf "$SASS_LIBS_DIR/bootstrap-tagsinput-latest";
     # rm -rf "bootstrap-tagsinput-latest";
 }
 
@@ -132,13 +133,14 @@ cp bootflat.github.io-master/bootflat/js/jquery.fs.selecter.min.js $WEBROOT/js/l
 # =========
 # wget -q "http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js" -O "$WEBROOT/js/lib/typeahead.bundle.js"
 
-# TagInput
+# TagsInput
 # ========
-# wget -q "https://codeload.github.com/bootstrap-tagsinput/bootstrap-tagsinput/zip/latest"
-# unzip -u -q latest
-# rm -f latest
-# mv "bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css" "bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.scss"
-# cp "bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js" "$WEBROOT/js/"
+ echo " > Getting latest TagsInput files";
+ wget -q "https://codeload.github.com/bootstrap-tagsinput/bootstrap-tagsinput/zip/latest"
+ unzip -u -q latest
+ rm -f latest
+ mv "bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css" "bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.scss"
+ cp "bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js" "$WEBROOT/js/"
 
 # Remove the sources
 # ==================

@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ProjectsFilesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
@@ -40,9 +39,6 @@ class ProjectsFilesTableTest extends TestCase
         'app.projects_posts',
         'app.acts',
         'app.reports',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
         'app.projects_notes'
     ];
 

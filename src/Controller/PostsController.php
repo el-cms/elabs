@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
+use App\Model\Table\PostsTable;
+use Cake\Network\Exception\NotFoundException;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
 
 /**
  * Posts Controller
  *
- * @property \App\Model\Table\PostsTable $Posts
+ * @property PostsTable $Posts
  */
 class PostsController extends AppController
 {
@@ -22,51 +25,55 @@ class PostsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $findOptions = [
-            'fields' => [
-                'id', 'title', 'excerpt', 'sfw', 'modified', 'publication_date', 'user_id', 'license_id', 'language_id',
-            ],
-            'conditions' => ['Posts.status' => 1],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-            ],
+        // Pagination options
+        $this->paginate = [
             'order' => ['publication_date' => 'desc'],
-            'sortWhitelist' => ['publication_date', 'title'],
-        ];
+            'sortWhitelist' => ['title', 'publication_date', 'modified']
+                ] + $this->paginate;
 
-        // Sfw condition
-        if (!$this->request->session()->read('seeNSFW')) {
-            $findOptions['conditions']['sfw'] = true;
-        }
+        // Query
+        $query = $this->Posts->find('withContain', ['sfw' => !$this->seeNSFW]);
 
-        // Other conditions:
+        // Filters:
         if (!is_null($filter)) {
             switch ($filter) {
                 case 'language':
-                    $findOptions['conditions']['Languages.id'] = $id;
+                    $query->where(['Languages.id' => $id]);
                     break;
                 case 'license':
-                    $findOptions['conditions']['Licenses.id'] = $id;
+                    $query->where(['Licenses.id' => $id]);
                     break;
                 case 'user':
-                    $findOptions['conditions']['Users.id'] = $id;
+                    $query->where(['Users.id' => $id]);
+                    break;
+                case 'project':
+                    $query->matching('Projects', function ($q) use ($id) {
+                        return $q->where(['Projects.id' => $id]);
+                    });
+                    break;
+                case 'tag':
+                    $query->matching('Tags', function ($q) use ($id) {
+                        return $q->where(['Tags.id' => $id]);
+                    });
+                    break;
+                case 'tag':
+                    $query->matching('Tags', function ($q) use ($id) {
+                        return $q->where(['Tags.id' => $id]);
+                    });
                     break;
                 default:
-                    throw new \Cake\Network\Exception\NotFoundException;
+                    throw new NotFoundException;
             }
             // Get additionnal infos infos
-            $modelName = \Cake\Utility\Inflector::camelize(\Cake\Utility\Inflector::pluralize($filter));
-            $FilterModel = \Cake\ORM\TableRegistry::get($modelName);
-            $filterData = $FilterModel->get($id);
+            $modelName = Inflector::camelize(Inflector::pluralize($filter));
+            $FilterModel = TableRegistry::get($modelName);
+            $filterData = $FilterModel->getWithoutContain($id);
 
             $this->set('filterData', $filterData);
         }
+
         $this->set('filter', $filter);
-        $this->paginate = $findOptions;
-        $this->set('posts', $this->paginate($this->Posts));
+        $this->set('posts', $this->paginate($query));
         $this->set('_serialize', ['posts']);
     }
 
@@ -75,22 +82,14 @@ class PostsController extends AppController
      *
      * @param string|null $id Post id.
      * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws NotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $post = $this->Posts->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsPosts.post_id']],
-            ],
-            'conditions' => ['Posts.status' => 1],
-        ]);
+        $post = $this->Posts->getWithContain($id, ['sfw' => !$this->seeNSFW]);
 
         // It will be great when i'll find a way to nicely handle exceptions/errors
-        if (!$post->sfw && !$this->request->session()->read('seeNSFW')) {
+        if (!$post->sfw && !$this->seeNSFW) {
             $this->set('title', $post->title);
             // And make a proper common error page
             $this->viewBuilder()->template('nsfw');

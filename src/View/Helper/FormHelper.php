@@ -7,8 +7,6 @@
 
 namespace App\View\Helper;
 
-use Cake\View\Helper;
-
 /**
  * CakePHP FormHelper
  * @author mtancoigne

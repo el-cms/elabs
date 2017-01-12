@@ -2,12 +2,12 @@
 
 namespace App\Test\TestCase\Controller\User;
 
-use Cake\TestSuite\IntegrationTestCase;
+use App\Test\TestCase\BaseTextCase;
 
 /**
  * App\Controller\User\ProjectsController Test Case
  */
-class ProjectsControllerTest extends IntegrationTestCase
+class ProjectsControllerTest extends BaseTextCase
 {
     /**
      * Fixtures
@@ -15,20 +15,13 @@ class ProjectsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.projects',
+        'app.acts',
         'app.languages', // Needed for some layout vars
         'app.licenses',
+        'app.projects',
+        'app.projects_tags',
+        'app.tags',
         'app.users',
-        'app.acts',
-    ];
-
-    /**
-     * Users credentials to put in session in order to create a fake authentication
-     *
-     * @var array
-     */
-    public $userCreds = [
-        'author' => ['Auth' => ['User' => ['id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'email' => 'test@example.com', 'username' => 'real_test', 'realname' => 'The real tester', 'password' => '$2y$10$wpJrqUvcAlUbLUxLnP8P5.OU7TXtfjT4/K5RYGdjJVkh6BqNEh3XC', 'website' => null, 'bio' => 'Some things', 'created' => '2016-08-09 01:15:26', 'modified' => '2016-08-09 01:18:01', 'role' => 'author', 'status' => 1, 'file_count' => 0, 'note_count' => 0, 'post_count' => 1, 'project_count' => 0, 'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}']]],
     ];
 
     /**
@@ -78,8 +71,13 @@ class ProjectsControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['author']);
+        $currentUserId = $this->userCreds['author']['Auth']['User']['id'];
         $Project = \Cake\ORM\TableRegistry::get('Projects');
 
         // Form
@@ -100,7 +98,8 @@ class ProjectsControllerTest extends IntegrationTestCase
             'created' => '2016-08-09 00:46:17',
             'modified' => '2016-08-09 00:46:17',
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         $this->post('/user/projects/add', $postData);
         // Count projects after insert
@@ -123,11 +122,12 @@ class ProjectsControllerTest extends IntegrationTestCase
             'modified' => '2016-08-09 00:46:17',
             'license_id' => 1,
             'user_id' => '70c8fff0-1338-48d2-b93b-942a26e4d685',
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         // Find the project for the current user
         $this->post('/user/projects/add', $postData);
-        $nb = $Project->find('all', ['conditions' => ['user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'name' => 'TEST PROJECT AS ANOTHER USER']])->count();
+        $nb = $Project->find('all', ['conditions' => ['user_id' => $currentUserId, 'name' => 'TEST PROJECT AS ANOTHER USER']])->count();
         $this->assertEquals(1, $nb, 'Test #2');
         // Acts
         $nbActs2 = $Acts->find()->count();
@@ -143,11 +143,14 @@ class ProjectsControllerTest extends IntegrationTestCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
-        // ----------------
         $this->session($this->userCreds['author']);
-        $Projects = \Cake\ORM\TableRegistry::get('Projects');
         $Acts = \Cake\ORM\TableRegistry::get('Acts');
+
         // Not published, not safe
         $projectId = 'e5e2988e-2f1c-4902-ba1a-e0f577413f23';
 

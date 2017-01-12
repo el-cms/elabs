@@ -2,8 +2,6 @@
 
 namespace App\Controller\User;
 
-use App\Controller\AppController;
-
 /**
  * Projects Controller
  *
@@ -21,27 +19,23 @@ class ProjectsController extends UserAppController
      */
     public function index($nsfw = 'all', $status = 'all')
     {
+        $projects = $this->Projects->find('users', ['uid' => $this->Auth->user('id')]);
+
         $this->paginate = [
-            'fields' => ['id', 'name', 'sfw', 'created', 'modified', 'status', 'license_id', 'user_id'],
-            'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ],
-            'conditions' => ['user_id' => $this->Auth->user('id')],
             'order' => ['created' => 'desc'],
             'sorWhiteList' => ['name', 'created', 'published'],
         ];
 
         if ($nsfw === 'safe') {
-            $this->paginate['conditions']['sfw'] = 1;
+            $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {
-            $this->paginate['conditions']['sfw'] = 0;
+            $this->paginate['conditions']['sfw'] = SFW_UNSAFE;
         }
         if ($status === 'locked') {
-            $this->paginate['conditions']['status'] = 2;
+            $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
 
-        $this->set('projects', $this->paginate($this->Projects));
+        $this->set('projects', $this->paginate($projects));
         $this->set('filterNSFW', $nsfw);
         $this->set('filterStatus', $status);
         $this->set('_serialize', ['projects']);
@@ -58,12 +52,16 @@ class ProjectsController extends UserAppController
         if ($this->request->is('post')) {
             // New values :
             $this->request->data['user_id'] = $this->Auth->user('id');
-            $this->request->data['status'] = 1;
+            $this->request->data['status'] = STATUS_PUBLISHED;
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             // Preparing data
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__d('elabs', 'The project has been saved.'));
-                $this->Act->add($project->id, 'add', 'Projects', $project->created);
+                if (!$project->hide_from_acts) {
+                    $this->Act->add($project->id, 'add', 'Projects', $project->created);
+                }
                 $this->redirect(['action' => 'index']);
             } else {
                 $errors = $project->errors();
@@ -74,8 +72,8 @@ class ProjectsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Projects->Languages->find('list', ['limit' => 200]);
+        $licenses = $this->Projects->Licenses->find('list');
+        $languages = $this->Projects->Languages->find('list');
         $this->set(compact('project', 'licenses', 'languages'));
         $this->set('_serialize', ['project']);
     }
@@ -91,13 +89,23 @@ class ProjectsController extends UserAppController
     {
         $project = $this->Projects->get($id, [
             'conditions' => ['user_id' => $this->Auth->user('id')],
+            'contain' => [
+                'Tags' => ['fields' => ['id', 'ProjectsTags.project_id']],
+            ],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $oldActState = $project->hide_from_acts;
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $project = $this->Projects->patchEntity($project, $this->request->data);
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__d('elabs', 'The project has been saved.'));
-                if ($this->request->data['isMinor'] == '0') {
+                if ($this->request->data['isMinor'] == '0' && !$project->hide_from_acts) {
                     $this->Act->add($project->id, 'edit', 'Projects', $project->modified);
+                }
+                if ($oldActState === false && $project->hide_from_acts) {
+                    $this->Flash->success(__d('elabs', 'The album has been removed from front page.'));
+                    $this->Act->remove($project->id);
                 }
                 $this->redirect(['action' => 'index']);
             } else {
@@ -110,8 +118,8 @@ class ProjectsController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $licenses = $this->Projects->Licenses->find('list', ['limit' => 200]);
-        $languages = $this->Projects->Languages->find('list', ['limit' => 200]);
+        $licenses = $this->Projects->Licenses->find('list');
+        $languages = $this->Projects->Languages->find('list');
         $this->set(compact('project', 'licenses', 'languages'));
         $this->set('_serialize', ['project']);
     }

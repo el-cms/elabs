@@ -3,7 +3,6 @@
 namespace App\Controller\Component;
 
 use Cake\Controller\Component;
-use Cake\Filesystem\File;
 use Cake\Filesystem\Folder;
 
 /**
@@ -21,7 +20,7 @@ class UpManagerComponent extends Component
         'text' => ['md', 'markdown', 'mdown', 'txt', 'odt', 'pdf', 'tex', 'nfo'],
         'other' => ['blend', 'dwg', 'dxf', 'sql']
     ];
-    public $maxSize = 1024 * 1024 * 3;
+    public $maxSize = 6217728; // 3 Mb
     public $filePath = '{DS}{y}{DS}{m}';
     public $thumbPath = 'thumbs{DS}{y}{DS}{m}';
     public $baseDir = 'uploads';

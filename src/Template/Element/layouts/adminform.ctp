@@ -46,7 +46,7 @@ endif;
 ?>
 <div class="col-sm-<?php echo ($haveLeftCol) ? 9 : 12 ?>">
     <?php echo $this->fetch('pageContent'); ?>
-</div>   
+</div>
 <?php
 // Custom scripts
 // --------------
@@ -56,7 +56,16 @@ echo $this->Html->script('lib/jquery.fs.selecter.min');
 ?>
 <script>
     $(document).ready(function () {
-      $('select').selecter();
+      $('select:not([data-role="tagsinput"])').selecter();
+      $('select[multiple][data-role=tagsinput]').tagsinput({
+        confirmKeys: [13, 188]
+      });
+      $('.bootstrap-tagsinput input').on('keypress', function (event) {
+        if (event.keyCode === 13) {
+          event.keyCode = 188;
+          event.preventDefault();
+        }
+      });
     });
 </script>
 <?php

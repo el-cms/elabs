@@ -2,7 +2,6 @@
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\UsersController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -47,38 +46,5 @@ class UsersControllerTest extends IntegrationTestCase
     {
         $this->get('users/view/70c8fff0-1338-48d2-b93b-942a26e4d685');
         $this->assertResponseOk();
-    }
-
-    /**
-     * Test register method
-     *
-     * @return void
-     */
-    public function testRegister()
-    {
-        $this->get('/users/register');
-        $this->assertResponseOk();
-    }
-
-    /**
-     * Test login method
-     *
-     * @return void
-     */
-    public function testLogin()
-    {
-        $this->get('/users/login');
-        $this->assertResponseOk();
-    }
-
-    /**
-     * Test logout method
-     *
-     * @return void
-     */
-    public function testLogout()
-    {
-        $this->get('/users/logout');
-        $this->assertRedirect();
     }
 }

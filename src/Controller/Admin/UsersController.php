@@ -2,8 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AdminAppController;
-
 /**
  * Users Controller
  *
@@ -43,14 +41,9 @@ class UsersController extends AdminAppController
      */
     public function index()
     {
-        $this->paginate = [
-            'fields' => ['id', 'username', 'realname', 'role', 'status', 'created'],
-            'sortWhitelist' => ['username', 'realname', 'role', 'status', 'created'],
-            'order' => [
-                'username' => 'asc',
-            ]
-        ];
-        $this->set('users', $this->paginate($this->Users));
+        $users = $this->paginate($this->Users->find('adminWithContain'));
+
+        $this->set(compact('users'));
         $this->set('_serialize', ['users']);
     }
 
@@ -66,28 +59,11 @@ class UsersController extends AdminAppController
     public function view($id = null)
     {
         if ($this->request->is('ajax')) {
-            $user = $this->Users->get($id, [
-                'fields' => ['id', 'username', 'realname', 'created', 'modified', 'status', 'bio', 'post_count', 'project_count', 'file_count'],
-            ]);
+            $user = $this->Users->getAdminWithContain($id);
         } else {
-            $user = $this->Users->get($id, [
-                'fields' => ['id', 'username', 'realname', 'website', 'created', 'modified', 'status', 'post_count', 'project_count', 'file_count'],
-                'contain' => [
-                    'Posts' => [
-                        'fields' => ['id', 'title', 'excerpt', 'modified', 'publication_date', 'sfw', 'user_id'],
-                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    ],
-                    'Projects' => [
-                        'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'user_id'],
-                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    ],
-                    'Files' => [
-                        'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                    ],
-                ],
-            ]);
+            $user = $this->Users->getAdminWithContain($id, ['allContain' => true]);
         }
-        $this->set('user', $user);
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
 
@@ -102,16 +78,16 @@ class UsersController extends AdminAppController
     public function lock($id, $action = 'lock')
     {
         $successMessage = __d('elabs', 'The account has been locked.');
-        $bit = 2; // Lock by default
+        $bit = STATUS_LOCKED; // Lock by default
         if ($action === 'unlock') {
             $successMessage = __d('elabs', 'The account has been unlocked.');
-            $bit = 1;
+            $bit = STATUS_ACTIVE;
         }
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => 3]
+            'fields' => ['id', 'active'],
+            'conditions' => ['active !=' => STATUS_DELETED]
         ]);
-        $user->status = $bit;
+        $user->active = $bit;
         if ($this->Users->save($user)) {
             if (!$this->request->is('ajax')) {
                 $this->Flash->Success($successMessage);
@@ -138,12 +114,11 @@ class UsersController extends AdminAppController
     public function close($id)
     {
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => 3]
+            'fields' => ['id', 'active'],
+            'conditions' => ['active !=' => STATUS_DELETED]
         ]);
-        $user->status = 3;
+        $user->active = STATUS_DELETED;
         if ($this->Users->save($user)) {
-//            $this->Act->removeAll($id);
             if (!$this->request->is('ajax')) {
                 $this->Flash->Success(__d('elabs', 'The account has been closed.'));
             }
@@ -169,10 +144,10 @@ class UsersController extends AdminAppController
     public function activate($id)
     {
         $user = $this->Users->get($id, [
-            'fields' => ['id', 'status'],
-            'conditions' => ['status' => 0]
+            'fields' => ['id', 'active'],
+            'conditions' => ['active' => STATUS_INACTIVE]
         ]);
-        $user->status = 1;
+        $user->active = 1;
         if ($this->Users->save($user)) {
             if (!$this->request->is('ajax')) {
                 $this->Flash->Success(__d('elabs', 'The account has been activated.'));

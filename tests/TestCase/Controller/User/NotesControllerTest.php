@@ -2,12 +2,12 @@
 
 namespace App\Test\TestCase\Controller\User;
 
-use Cake\TestSuite\IntegrationTestCase;
+use App\Test\TestCase\BaseTextCase;
 
 /**
  * App\Controller\User\NotesController Test Case
  */
-class NotesControllerTest extends IntegrationTestCase
+class NotesControllerTest extends BaseTextCase
 {
     /**
      * Fixtures
@@ -15,20 +15,15 @@ class NotesControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
+        'app.acts',
         'app.notes',
+        'app.notes_tags',
         'app.languages', // Needed for some layout vars
         'app.licenses',
+        'app.projects',
+        'app.projects_notes',
+        'app.tags',
         'app.users',
-        'app.acts',
-    ];
-
-    /**
-     * Users credentials to put in session in order to create a fake authentication
-     *
-     * @var array
-     */
-    public $userCreds = [
-        'author' => ['Auth' => ['User' => ['id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'email' => 'test@example.com', 'username' => 'real_test', 'realname' => 'The real tester', 'password' => '$2y$10$wpJrqUvcAlUbLUxLnP8P5.OU7TXtfjT4/K5RYGdjJVkh6BqNEh3XC', 'website' => null, 'bio' => 'Some things', 'created' => '2016-08-09 01:15:26', 'modified' => '2016-08-09 01:18:01', 'role' => 'author', 'status' => 1, 'file_count' => 0, 'note_count' => 0, 'note_count' => 1, 'project_count' => 0, 'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}']]],
     ];
 
     /**
@@ -78,8 +73,13 @@ class NotesControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['author']);
+        $currentUserId = $this->userCreds['author']['Auth']['User']['id'];
         $Notes = \Cake\ORM\TableRegistry::get('Notes');
 
         // Form
@@ -95,7 +95,8 @@ class NotesControllerTest extends IntegrationTestCase
             'sfw' => true,
             'status' => 0,
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         $this->post('/user/notes/add', $postData);
         // Count notes after insert
@@ -113,11 +114,12 @@ class NotesControllerTest extends IntegrationTestCase
             'sfw' => true,
             'status' => 1,
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         // Find the note for the current user
         $this->post('/user/notes/add', $postData);
-        $nb = $Notes->find('all', ['conditions' => ['user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'text' => 'TEST POST AS ANOTHER USER']])->count();
+        $nb = $Notes->find('all', ['conditions' => ['user_id' => $currentUserId, 'text' => 'TEST POST AS ANOTHER USER']])->count();
         $this->assertEquals(1, $nb, 'Test #2');
         // Acts
         $nbActs2 = $Acts->find()->count();
@@ -133,8 +135,11 @@ class NotesControllerTest extends IntegrationTestCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
-        // ----------------
         $this->session($this->userCreds['author']);
         $Notes = \Cake\ORM\TableRegistry::get('Notes');
         $Acts = \Cake\ORM\TableRegistry::get('Acts');

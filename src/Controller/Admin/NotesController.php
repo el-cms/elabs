@@ -2,8 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AdminAppController;
-
 /**
  * Notes Controller
  *
@@ -19,16 +17,9 @@ class NotesController extends AdminAppController
      */
     public function index()
     {
-        $this->paginate = [
-            'fields' => ['id', 'text', 'sfw', 'status', 'created', 'modified', 'user_id', 'license_id', 'language_id'],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ],
-            'order' => ['created' => 'desc']
-        ];
-        $this->set('notes', $this->paginate($this->Notes));
+        $notes = $this->paginate($this->Notes->find('adminWithContain'));
+
+        $this->set(compact('notes'));
         $this->set('_serialize', ['notes']);
     }
 
@@ -41,14 +32,7 @@ class NotesController extends AdminAppController
      */
     public function view($id = null)
     {
-        $note = $this->Notes->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                //, 'Tags', 'Projects']
-            ]
-        ]);
+        $note = $this->Notes->getAdminWithContain($id);
 
         $this->set('note', $note);
         $this->set('_serialize', ['note']);
@@ -69,24 +53,24 @@ class NotesController extends AdminAppController
             case 'lock':
                 $successMessage = __d('elabs', 'The note has been locked.');
                 $this->Act->remove($id);
-                $bit = 2;
+                $bit = STATUS_LOCKED;
                 break;
             case 'unlock':
                 $successMessage = __d('elabs', 'The note has been unlocked.');
-                $bit = 1;
+                $bit = STATUS_PUBLISHED;
                 break;
             case 'remove':
                 $successMessage = __d('elabs', 'The note has been removed.');
-                $bit = 3;
+                $bit = STATUS_DELETED;
                 $this->Act->remove($id, 'Projects', false);
                 break;
             default:
                 $successMessage = __d('elabs', 'The note has been locked.');
-                $bit = 2;
+                $bit = STATUS_LOCKED;
         }
         $note = $this->Notes->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => '3'],
+            'conditions' => ['status !=' => STATUS_DELETED],
         ]);
         $note->status = $bit;
         if ($this->Notes->save($note)) {

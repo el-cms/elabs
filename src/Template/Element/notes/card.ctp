@@ -5,7 +5,9 @@
             <!-- Report link -->
             <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Notes', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
             <!-- Language pill -->
-            <li><a class="language-pill" lang="<?php echo $data['language']['iso639_1'] ?>"><?php echo $data['language']['name'] ?></a></li>
+            <?php if (!isset($languageInfo) || $languageInfo): ?>
+                <li><a class="language-pill" <?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>><?php echo $data['language']['name'] ?></a></li>
+            <?php endif; ?>
             <!-- SFW pill-->
             <?php if (!$data['sfw']): ?>
                 <li><a class="nsfw-pill"><?php echo __d('elabs', 'NSFW') ?></a></li>
@@ -21,11 +23,11 @@
             <div class="card-header">
                 <!-- Title -->
                 <ul class="card-informations">
+                    <li>
+                        <?php echo $this->Html->icon('link') ?>
+                        <?php echo $this->Html->link(__d('elabs', 'Permalink'), ['controller' => 'Notes', 'action' => 'view', $data['id']], ['escape' => false]) ?>
+                    </li>
                     <?php if (!isset($userInfo) || $userInfo): ?>
-                        <li>
-                            <?php echo $this->Html->icon('link') ?>
-                            <?php echo $this->Html->link(__d('elabs', 'Permalink'), ['controller' => 'Notes', 'action' => 'view', $data['id']], ['escape' => false]) ?>
-                        </li>
                         <li>
                             <?php echo $this->Html->iconT('user', __d('elabs', 'Author:')) ?>
                             <?php echo $this->Html->link($data['user']['username'], ['prefix' => false, 'controller' => 'Users', 'action' => 'view', $data['user']['id']]) ?>
@@ -71,11 +73,23 @@
                         <?php
                     endif;
                     ?>
+                    <li>
+                        <?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')); ?>
+                        <?php
+                        if (count($data->tags) > 0):
+                            echo $this->Html->arrayToString(array_map(function($tag) {
+                                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                    }, $data->tags));
+                        else:
+                            echo __d('elabs', 'No tags');
+                        endif;
+                        ?>
+                    </li>
                 </ul>
             </div>
         </div>
         <!-- Content -->
-        <div class="card-content" lang="<?php echo $data['language']['iso639_1'] ?>">
+        <div class="card-content" <?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>>
             <?php echo $this->Html->displayMD($data['text']) ?>
         </div>
     </div>

@@ -27,14 +27,14 @@
                 <span class="label text-monospace label-danger"><?php echo __d('elabs', 'NSFW') ?></span>
             <?php endif; ?>
             <span class="label label-language"><?php echo $post->language->id; ?></span>
-            <?php if ($post->status === 1): ?>
+            <?php if ($post->status === STATUS_ACTIVE): ?>
                 <span class="label label-success"><?php echo __d('elabs', 'Published') ?></span>
-            <?php elseif ($post->status === 0): ?>
+            <?php elseif ($post->status === STATUS_DRAFT): ?>
                 <span class="label label-default"><?php echo __d('elabs', 'Draft') ?></span>
             <?php else: ?>
                 <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
-            <span id="h-<?php echo $tileGroupId . $post->id ?>" lang="<?php echo $post->language->iso639_1 ?>"><?php echo h($post->title) ?></span>
+            <span id="h-<?php echo $tileGroupId . $post->id ?>"<?php echo $this->Html->langAttr($post->language->iso639_1) ?>><?php echo h($post->title) ?></span>
         </span>
         <!-- / Badges and title -->
     </div>
@@ -67,10 +67,20 @@
                             ?>
                         </dd>
                         <dt><?php echo __d('elabs', 'Tags') ?></dt>
-                        <dd><?php echo $this->element('layout/dev_inline') ?></dd>
+                        <dd>
+                            <?php
+                            if (count($post->tags) > 0):
+                                echo $this->Html->arrayToString(array_map(function($tag) {
+                                            return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                        }, $post->tags));
+                            else:
+                                echo __d('elabs', 'No tags');
+                            endif;
+                            ?>
+                        </dd>
                     </dl>
                 </div>
-                <div class="col-sm-8 rendered-text" lang="<?php echo $post->language->iso639_1 ?>">
+                <div class="col-sm-8 rendered-text"<?php echo $this->Html->langAttr($post->language->iso639_1) ?>>
                     <?php echo $this->Html->displayMD($post->excerpt) ?>
                 </div>
             </div>

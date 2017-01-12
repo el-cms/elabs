@@ -37,7 +37,7 @@ echo -e "|                                                                   |${
 echo -e "| \e[34mNow, the installer will download some js and css files.\e[39m           |${EL_BOX_SHADOW_LIGHT}"
 echo -e "| -------------------------------------------------------           |${EL_BOX_SHADOW_LIGHT}"
 # Css/JS sources
-./Sources/Sass/setup.sh;
+./Sources/Sass/setup.sh $1;
 
 echo "";
 echo -e "${EL_BOX_TOP_LINE}";

@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\FilesController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -17,15 +16,19 @@ class FilesControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.comments',
+        'app.albums',
+        'app.albums_files',
         'app.files',
+        'app.files_tags',
         'app.languages',
         'app.users',
         'app.licenses',
         'app.tags',
         'app.files_tags',
         'app.projects',
-        'app.projects_files'
-
+        'app.projects_files',
+        'app.projects_tags',
+        'app.tags',
     ];
 
     /**

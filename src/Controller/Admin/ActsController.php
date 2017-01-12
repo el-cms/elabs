@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AdminAppController;
 use Cake\Datasource\ConnectionManager;
 use Cake\ORM\TableRegistry;
 
@@ -44,7 +43,7 @@ class ActsController extends AdminAppController
         ];
 
         // Load models
-        foreach ($this->config['models'] as $model => $item) {
+        foreach (array_keys($this->config['models']) as $model) {
             $this->$model = TableRegistry::get($model);
         }
     }
@@ -56,16 +55,15 @@ class ActsController extends AdminAppController
      */
     public function clean()
     {
-//        $done = [];
+//        $done=[];
         $errors = 0;
         if ($this->request->is('POST')) {
-            // Get connection:
-            $connection = ConnectionManager::get('default');
-            $truncate = $connection->query('truncate acts;');
+            // "truncate" the table.
+            $this->Acts->deleteAll('1=1');
             $models = ['Files', 'Posts', 'Projects', 'Notes', 'Albums'];
             foreach ($models as $model) {
 //                $done[$model]=['add'=>0, 'edit'=>0];
-                $query = $this->$model->find('all', ['conditions' => ['status' => 1]]);
+                $query = $this->$model->find('all', ['conditions' => ['status' => STATUS_PUBLISHED, 'hide_from_acts' => false]]);
                 foreach ($query as $item) {
                     // Add
                     $act = $this->Acts->patchEntity($this->Acts->newEntity(), ['fkid' => $item->id, 'model' => $model, 'type' => 'add', 'created' => $item->created]); //, 'user_id' => $uid]);

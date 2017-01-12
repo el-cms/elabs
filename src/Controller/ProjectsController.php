@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
+use App\Model\Table\ProjectsTable;
+use Cake\Core\Configure;
+use Cake\Network\Exception\NotFoundException;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
 
 /**
  * Projects Controller
  *
- * @property \App\Model\Table\ProjectsTable $Projects
+ * @property ProjectsTable $Projects
  */
 class ProjectsController extends AppController
 {
@@ -22,50 +26,38 @@ class ProjectsController extends AppController
      */
     public function index($filter = null, $id = null)
     {
-        $findOptions = [
-            'fields' => ['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'license_id', 'user_id'],
-            'conditions' => [
-                'Projects.status' => 1,
-            ],
-            'sortWithelist' => ['created', 'modified', 'name'],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon', 'link']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ],
-            'order' => ['created' => 'desc'],
-        ];
-
-        // Sfw condition
-        if (!$this->request->session()->read('seeNSFW')) {
-            $findOptions['conditions']['sfw'] = true;
-        }
+        $this->paginate['sortWhitelist'] = ['name', 'created', 'modified'];
+        $query = $this->Projects->find('withContain', ['sfw' => !$this->seeNSFW]);
 
         // Other conditions:
         if (!is_null($filter)) {
             switch ($filter) {
                 case 'language':
-                    $findOptions['conditions']['Languages.id'] = $id;
+                    $query->where(['Languages.id' => $id]);
                     break;
                 case 'license':
-                    $findOptions['conditions']['Licenses.id'] = $id;
+                    $query->where(['Licenses.id' => $id]);
                     break;
                 case 'user':
-                    $findOptions['conditions']['Users.id'] = $id;
+                    $query->where(['Users.id' => $id]);
+                    break;
+                case 'tag':
+                    $query->matching('Tags', function ($q) use ($id) {
+                        return $q->where(['Tags.id' => $id]);
+                    });
                     break;
                 default:
-                    throw new \Cake\Network\Exception\NotFoundException;
+                    throw new NotFoundException;
             }
             // Get additionnal infos infos
-            $modelName = \Cake\Utility\Inflector::camelize(\Cake\Utility\Inflector::pluralize($filter));
-            $FilterModel = \Cake\ORM\TableRegistry::get($modelName);
-            $filterData = $FilterModel->get($id);
+            $modelName = Inflector::camelize(Inflector::pluralize($filter));
+            $FilterModel = TableRegistry::get($modelName);
+            $filterData = $FilterModel->getWithoutContain($id);
 
             $this->set('filterData', $filterData);
         }
         $this->set('filter', $filter);
-        $this->paginate = $findOptions;
-        $this->set('projects', $this->paginate($this->Projects));
+        $this->set('projects', $this->paginate($query));
         $this->set('_serialize', ['projects']);
     }
 
@@ -74,38 +66,20 @@ class ProjectsController extends AppController
      *
      * @param string|null $id Project id.
      * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws NotFoundException When record not found.
      */
     public function view($id = null)
     {
-        $containConfig = [
-            'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            'Licenses' => ['fields' => ['id', 'name']],
-            'Users' => ['fields' => ['id', 'username', 'realname']],
-        ];
-        $project = $this->Projects->get($id, [
-            'contain' => [
-                'Licenses',
-                'Users' => ['fields' => ['id', 'username', 'realname']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Files' => $containConfig,
-                'Notes' => $containConfig,
-                'Posts' => $containConfig,
-                'Albums' => [
-                    'Languages' => $containConfig['Languages'],
-                    'Users' => $containConfig['Users'],
-                    'Files' => [
-                        'fields' => ['id', 'name', 'filename', 'AlbumsFiles.album_id'],
-                    ],
-                ]
-            ],
-            'conditions' => [
-                'Projects.status' => 1,
-            ],
-        ]);
+        $project = $this->Projects->getWithContain($id, [
+            'sfw' => !$this->seeNSFW,
+            'withAlbums' => true,
+            'withFiles' => true,
+            'withNotes' => true,
+            'withPosts' => true,
+            ]);
 
         //SFW state
-        if (!$project->sfw && !$this->request->session()->read('seeNSFW')) {
+        if (!$project->sfw && !$this->seeNSFW) {
             $this->set('name', $project->name);
             $this->viewBuilder()->template('nsfw');
         } else {

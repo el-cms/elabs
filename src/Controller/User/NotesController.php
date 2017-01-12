@@ -2,12 +2,11 @@
 
 namespace App\Controller\User;
 
-use App\Controller\User\UserAppController;
-
 /**
  * Notes Controller
  *
  * @property \App\Model\Table\NotesTable $Notes
+ * @property \App\Controller\Component\TagManagerComponent $TagManager
  */
 class NotesController extends UserAppController
 {
@@ -22,30 +21,23 @@ class NotesController extends UserAppController
      */
     public function index($nsfw = 'all', $status = 'all')
     {
+        $notes = $this->Notes->find('users', ['uid' => $this->Auth->user('id')]);
+
         $this->paginate = [
-            'fields' => ['id', 'text', 'sfw', 'status', 'created', 'modified', 'user_id', 'language_id', 'license_id'],
-            'contain' => [
-                'Licenses' => ['fields' => ['id', 'name']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-                'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
-            ],
-            'conditions' => [
-                'user_id' => $this->Auth->user('id'),
-                'status !=' => STATUS_DELETED
-            ],
             'order' => ['created' => 'desc'],
             'sorWhiteList' => ['text', 'created', 'modified'],
         ];
+
         if ($nsfw === 'safe') {
-            $this->paginate['conditions']['sfw'] = 1;
+            $this->paginate['conditions']['sfw'] = SFW_SAFE;
         } elseif ($nsfw === 'unsafe') {
-            $this->paginate['conditions']['sfw'] = 0;
+            $this->paginate['conditions']['sfw'] = SFW_UNSAFE;
         }
         if ($status === 'locked') {
             $this->paginate['conditions']['status'] = STATUS_LOCKED;
         }
 
-        $this->set('notes', $this->paginate($this->Notes));
+        $this->set('notes', $this->paginate($notes));
         $this->set('filterNSFW', $nsfw);
         $this->set('filterStatus', $status);
         $this->set('_serialize', ['notes']);
@@ -64,10 +56,14 @@ class NotesController extends UserAppController
             $dataSent = $this->request->data;
             $dataSent['user_id'] = $this->Auth->user('id');
             $dataSent['status'] = STATUS_PUBLISHED;
+            // Manage tags
+            $dataSent['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
             $note = $this->Notes->patchEntity($note, $dataSent);
             if ($this->Notes->save($note)) {
                 $this->Flash->success(__d('elabs', 'The note has been saved.'));
-                $this->Act->add($note->id, 'add', 'Notes', $note->created);
+                if (!$note->hide_from_acts) {
+                    $this->Act->add($note->id, 'add', 'Notes', $note->created);
+                }
 
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -80,11 +76,10 @@ class NotesController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
-        $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
-//        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-        $projects = $this->Notes->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
-        $this->set(compact('note', 'languages', 'licenses', 'projects')); //, 'tags'));
+        $languages = $this->Notes->Languages->find('list');
+        $licenses = $this->Notes->Licenses->find('list');
+        $projects = $this->Notes->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
+        $this->set(compact('note', 'languages', 'licenses', 'projects'));
         $this->set('_serialize', ['note']);
     }
 
@@ -100,11 +95,14 @@ class NotesController extends UserAppController
         $note = $this->Notes->get($id, [
             'contain' => [
                 'Projects' => ['fields' => ['id', 'name', 'ProjectsNotes.note_id']],
-            //'Tags',
+                'Tags' => ['fields' => ['id', 'NotesTags.note_id']],
             ],
             'conditions' => ['user_id' => $this->Auth->user('id')],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            // Manage tags
+            $this->request->data['tags']['_ids'] = $this->TagManager->merge($this->request->data('tags._ids'));
+            $oldActState = $note->hide_from_acts;
             if ($note->status != STATUS_DELETED) {
                 // Force note status
                 $this->request->data['status'] = STATUS_PUBLISHED;
@@ -115,8 +113,13 @@ class NotesController extends UserAppController
             $note = $this->Notes->patchEntity($note, $this->request->data);
             if ($this->Notes->save($note)) {
                 $this->Flash->success(__d('elabs', 'The note has been saved.'));
-                if ($this->request->data['isMinor'] == '0') {
+                if ($this->request->data['isMinor'] == '0' && !$note->hide_from_acts) {
                     $this->Act->add($note->id, 'edit', 'Notes', $note->modified);
+                }
+
+                if ($oldActState === false && $note->hide_from_acts) {
+                    $this->Flash->success(__d('elabs', 'The note has been removed from front page.'));
+                    $this->Act->remove($note->id);
                 }
 
                 return $this->redirect(['action' => 'index']);
@@ -130,10 +133,9 @@ class NotesController extends UserAppController
                 $this->Flash->error(__d('elabs', 'Some errors occured. Please, try again.'), ['params' => ['errors' => $errorMessages]]);
             }
         }
-        $languages = $this->Notes->Languages->find('list', ['limit' => 200]);
-        $licenses = $this->Notes->Licenses->find('list', ['limit' => 200]);
-//        $tags = $this->Notes->Tags->find('list', ['limit' => 200]);
-        $projects = $this->Notes->Projects->find('list', ['condition' => ['user_id' => $this->Auth->user('id')]]);
+        $languages = $this->Notes->Languages->find('list');
+        $licenses = $this->Notes->Licenses->find('list');
+        $projects = $this->Notes->Projects->find('list', ['conditions' => ['user_id' => $this->Auth->user('id')]]);
         $this->set(compact('note', 'languages', 'licenses', 'projects')); //, 'tags'));
         $this->set('_serialize', ['note']);
     }

@@ -38,6 +38,11 @@ echo $this->Form->input('text', ['type' => 'textarea', 'required' => 'false', 'i
 $this->CodeMirror->add('noteArea', [], ['%s.setSize(null, "150")']);
 ?>
 <div class="row">
+    <div class="col-sm-12">
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => $this->TagList->tagsToList($note->tags), 'data-role' => 'tagsinput']); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
     </div>
@@ -52,10 +57,11 @@ $this->CodeMirror->add('noteArea', [], ['%s.setSize(null, "150")']);
     <div class="col-sm-4">
         <?php echo $this->Form->input('sfw', ['label' => __d('elabs', 'This is SFW')]); ?>
     </div>
-    <div class="col-sm-3">
-        <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
     </div>
     <div class="col-sm-4">
+        <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
         <?php echo $this->Form->submit(__d('elabs', 'Save the changes'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>

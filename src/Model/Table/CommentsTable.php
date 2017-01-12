@@ -2,8 +2,6 @@
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -60,6 +58,10 @@ class CommentsTable extends Table
         $this->belongsTo('Projects', [
             'foreignKey' => 'fkid',
             'conditions' => ['Comments.model' => 'Projects'],
+        ]);
+        $this->belongsTo('Albums', [
+            'foreignKey' => 'fkid',
+            'conditions' => ['Comments.model' => 'Albums'],
         ]);
     }
 

@@ -2,12 +2,12 @@
 
 namespace App\Test\TestCase\Controller\User;
 
-use Cake\TestSuite\IntegrationTestCase;
+use App\Test\TestCase\BaseTextCase;
 
 /**
  * App\Controller\User\FilesController Test Case
  */
-class FilesControllerTest extends IntegrationTestCase
+class FilesControllerTest extends BaseTextCase
 {
     /**
      * Fixtures
@@ -15,19 +15,18 @@ class FilesControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
+        'app.acts',
+        'app.albums',
+        'app.albums_files',
+        'app.albums_tags',
         'app.files',
+        'app.files_tags',
         'app.languages', // Needed for some layout vars
         'app.licenses',
+        'app.projects',
+        'app.projects_files',
+        'app.tags',
         'app.users',
-    ];
-
-    /**
-     * Users credentials to put in session in order to create a fake authentication
-     *
-     * @var array
-     */
-    public $userCreds = [
-        'author' => ['Auth' => ['User' => ['id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'email' => 'test@example.com', 'username' => 'real_test', 'realname' => 'The real tester', 'password' => '$2y$10$wpJrqUvcAlUbLUxLnP8P5.OU7TXtfjT4/K5RYGdjJVkh6BqNEh3XC', 'website' => null, 'bio' => 'Some things', 'created' => '2016-08-09 01:15:26', 'modified' => '2016-08-09 01:18:01', 'role' => 'author', 'status' => 1, 'file_count' => 0, 'note_count' => 0, 'post_count' => 1, 'project_count' => 0, 'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}']]],
     ];
 
     /**
@@ -45,6 +44,7 @@ class FilesControllerTest extends IntegrationTestCase
         $this->get('/user/files');
         $nb = count($this->_controller->viewVars['files']);
         $this->assertEquals(5, $nb);
+//        $this->assertResponseEquals('');
         $this->assertResponseOk();
 
         // Sfw filter

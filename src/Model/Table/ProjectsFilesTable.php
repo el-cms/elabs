@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -41,6 +41,13 @@ class ProjectsFilesTable extends Table
             'foreignKey' => 'project_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->addBehavior('CounterCache', [
+            'Projects' => ['file_count' => [
+                    'contain' => ['Files'],
+                    'conditions' => ['Files.status' => STATUS_PUBLISHED]]],
+        ]);
+
         $this->belongsTo('Files', [
             'foreignKey' => 'file_id',
             'joinType' => 'INNER'
@@ -56,8 +63,8 @@ class ProjectsFilesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+                ->integer('id')
+                ->allowEmpty('id', 'create');
 
         return $validator;
     }

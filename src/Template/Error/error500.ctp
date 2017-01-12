@@ -1,15 +1,16 @@
 <?php
+
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
-$this->assign('title', __d('elabs', 'Error: {0}', $message));
-
-// Breadcrumbs
-$this->Html->addCrumb($this->fetch('title'));
-
+/*
+ * Dev view
+ */
 if (Configure::read('debug')):
     $this->layout = 'dev_error';
 
+    $this->assign('title', $message);
+    $this->assign('pageTitle', 'Error 5xx');
     $this->assign('templateName', 'error500.ctp');
 
     $this->start('file');
@@ -17,12 +18,16 @@ if (Configure::read('debug')):
     <?php if (!empty($error->queryString)) : ?>
         <p class="notice">
             <strong>SQL Query: </strong>
-            <?php echo h($error->queryString) ?>
+            <?= h($error->queryString) ?>
         </p>
     <?php endif; ?>
     <?php if (!empty($error->params)) : ?>
         <strong>SQL Query Params: </strong>
-        <?php echo Debugger::dump($error->params) ?>
+        <?php Debugger::dump($error->params) ?>
+    <?php endif; ?>
+    <?php if ($error instanceof Error) : ?>
+        <strong>Error in: </strong>
+        <?= sprintf('%s, line %s', str_replace(ROOT, 'ROOT', $error->getFile()), $error->getLine()) ?>
     <?php endif; ?>
     <?php
     echo $this->element('auto_table_warning');
@@ -32,11 +37,25 @@ if (Configure::read('debug')):
     endif;
 
     $this->end();
-endif;
-?>
-<div class="text-center">
-    <?php
-    $string = __d('elabs', 'Error:') . "\n" . $message;
-    echo $this->CowSays->sayError($string);
+/*
+ * Production view
+ */
+else:
+    $this->assign('title', __d('elabs', 'Error: {0}', $message));
+
+    // Breadcrumbs
+    $this->Html->addCrumb($this->fetch('title'));
+
+    // Helpers
+    $this->loadHelper('CowSays');
+
+    // Layout
+    $this->layout = 'error';
     ?>
-</div>
+    <div class="text-center">
+        <?php
+        $string = __d('elabs', 'Error:') . "\n" . $message;
+        echo $this->CowSays->sayError($string);
+        ?>
+    </div>
+<?php endif;

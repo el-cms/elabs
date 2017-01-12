@@ -2,8 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AdminAppController;
-
 /**
  * Posts Controller
  *
@@ -13,36 +11,13 @@ class PostsController extends AdminAppController
 {
 
     /**
-     * Before render callback.
-     *
-     * @param \Cake\Event\Event $event The beforeRender event.
-     *
-     * @return void
-     */
-    public function beforeRender(\Cake\Event\Event $event)
-    {
-        parent::beforeRender($event);
-        $this->viewBuilder()->helpers(['ItemsAdmin']);
-        $this->viewBuilder()->helpers(['License']);
-    }
-
-    /**
      * Index method
      *
      * @return void
      */
     public function index()
     {
-        $this->paginate = [
-            'fields' => ['id', 'title', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ],
-            'order' => ['created' => 'desc']
-        ];
-        $this->set('posts', $this->paginate($this->Posts));
+        $this->set('posts', $this->paginate($this->Posts->find('adminWithContain')));
         $this->set('_serialize', ['posts']);
     }
 
@@ -57,13 +32,8 @@ class PostsController extends AdminAppController
      */
     public function view($id = null)
     {
-        $post = $this->Posts->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ]
-        ]);
+        $post = $this->Posts->getAdminWithContain($id);
+
         $this->set('post', $post);
         $this->set('_serialize', ['post']);
     }
@@ -82,24 +52,24 @@ class PostsController extends AdminAppController
             case 'lock':
                 $successMessage = __d('elabs', 'The post has been locked.');
                 $this->Act->remove($id);
-                $bit = 2;
+                $bit = STATUS_LOCKED;
                 break;
             case 'unlock':
                 $successMessage = __d('elabs', 'The post has been unlocked.');
-                $bit = 1;
+                $bit = STATUS_PUBLISHED;
                 break;
             case 'remove':
                 $successMessage = __d('elabs', 'The post has been removed.');
-                $bit = 3;
+                $bit = STATUS_DELETED;
                 $this->Act->remove($id, 'Posts', false);
                 break;
             default:
                 $successMessage = __d('elabs', 'The post has been locked.');
-                $bit = 2;
+                $bit = STATUS_LOCKED;
         }
         $post = $this->Posts->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => '3'],
+            'conditions' => ['status !=' => STATUS_DELETED],
         ]);
         $post->status = $bit;
         if ($this->Posts->save($post)) {

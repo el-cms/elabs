@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\CommentsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
@@ -40,9 +39,6 @@ class CommentsTableTest extends TestCase
         'app.notes_tags',
         'app.posts_tags',
         'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
         'app.acts',
         'app.reports'
     ];

@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\AlbumsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -20,25 +19,7 @@ class AlbumsControllerTest extends IntegrationTestCase
         'app.users',
         'app.files',
         'app.languages',
-        'app.notes',
-        'app.licenses',
-        'app.posts',
-        'app.tags',
-        'app.files_tags',
-        'app.notes_tags',
-        'app.posts_tags',
-        'app.projects',
-        'app.projects_files',
-        'app.projects_notes',
-        'app.projects_posts',
-        'app.projects_tags',
-        'app.teams',
-        'app.teams_projects',
-        'app.teams_users',
-        'app.acts',
-        'app.projects_albums',
-        'app.albums_files',
-        'app.reports'
+        'app.comments',
     ];
 
     /**
@@ -48,6 +29,8 @@ class AlbumsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
+        $this->get('/albums');
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 
@@ -58,36 +41,8 @@ class AlbumsControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test add method
-     *
-     * @return void
-     */
-    public function testAdd()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     */
-    public function testEdit()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     */
-    public function testDelete()
-    {
+        $this->get('/albums/view/1727fe48-2825-4fd1-a5a1-357d5bd09531');
+        $this->assertResponseOk();
         $this->markTestIncomplete('Not implemented yet.');
     }
 }

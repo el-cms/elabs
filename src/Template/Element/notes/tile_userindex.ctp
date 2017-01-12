@@ -29,18 +29,18 @@
             <span class="label label-language"><?php echo $note->language->id; ?></span>
             <?php
             switch ($note->status):
-                case 0:
+                case STATUS_DRAFT:
                     ?><span class="label label-default"><?php echo __d('elabs', 'Draft') ?></span><?php
                     break;
-                case 1:
+                case STATUS_ACTIVE:
                     ?><span class="label label-success"><?php echo __d('elabs', 'Published') ?></span><?php
                     break;
-                case 2:
+                case STATUS_LOCKED:
                     ?><span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span><?php
-                        break;
-                    case 3:
-                        ?><span class="label label-danger"><?php echo __d('elabs', 'Deleted') ?></span><?php
-                        break;
+                    break;
+                case STATUS_DELETED:
+                    ?><span class="label label-danger"><?php echo __d('elabs', 'Deleted') ?></span><?php
+                    break;
                 endswitch;
                 ?>
         </span>
@@ -71,10 +71,20 @@
                             ?>
                         </dd>
                         <dt><?php echo __d('elabs', 'Tags') ?></dt>
-                        <dd><?php echo $this->element('layout/dev_inline') ?></dd>
+                        <dd>
+                            <?php
+                            if (count($note->tags) > 0):
+                                echo $this->Html->arrayToString(array_map(function($tag) {
+                                            return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                        }, $note->tags));
+                            else:
+                                echo __d('elabs', 'No tags');
+                            endif;
+                            ?>
+                        </dd>
                     </dl>
                 </div>
-                <div class="col-sm-8 rendered-text" lang="<?php echo $note->language->iso639_1 ?>">
+                <div class="col-sm-8 rendered-text"<?php echo $this->Html->langAttr($note->language->iso639_1)?>>
                     <?php echo $this->Html->displayMD($note->text) ?>
                 </div>
             </div>

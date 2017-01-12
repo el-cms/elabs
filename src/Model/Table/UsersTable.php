@@ -2,33 +2,37 @@
 
 namespace App\Model\Table;
 
+use App\Model\Entity\User;
+use CakeDC\Users\Model\Table\UsersTable as BaseTable;
 use Cake\Core\Configure;
+use Cake\Database\Schema\Table as Schema;
+use Cake\Datasource\EntityInterface;
+use Cake\ORM\Association\HasMany;
+use Cake\ORM\Entity;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
-use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
  * Users Model
  *
- * @property \Cake\ORM\Association\HasMany $Files
- * @property \Cake\ORM\Association\HasMany $Notes
- * @property \Cake\ORM\Association\HasMany $Posts
- * @property \Cake\ORM\Association\HasMany $Projects
- * @property \Cake\ORM\Association\HasMany $Reports
- * @property \Cake\ORM\Association\BelongsToMany $Teams
+ * @property HasMany $Files
+ * @property HasMany $Notes
+ * @property HasMany $Posts
+ * @property HasMany $Projects
+ * @property HasMany $Reports
  *
- * @method \App\Model\Entity\User get($primaryKey, $options = [])
- * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\User[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\User findOrCreate($search, callable $callback = null)
+ * @method User get($primaryKey, $options = [])
+ * @method User newEntity($data = null, array $options = [])
+ * @method User[] newEntities(array $data, array $options = [])
+ * @method User|bool save(EntityInterface $entity, $options = [])
+ * @method User patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method User[] patchEntities($entities, array $data, array $options = [])
+ * @method User findOrCreate($search, callable $callback = null)
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class UsersTable extends Table
+class UsersTable extends BaseTable
 {
 
     /**
@@ -65,110 +69,34 @@ class UsersTable extends Table
         $this->hasMany('Albums', [
             'foreignKey' => 'user_id'
         ]);
-        $this->belongsToMany('Teams', [
-            'foreignKey' => 'user_id',
-            'targetForeignKey' => 'team_id',
-            'joinTable' => 'teams_users'
-        ]);
     }
 
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
     public function validationDefault(Validator $validator)
     {
+        $validator = parent::validationDefault($validator);
+
+        /*
+         * Only the fields that differs from the CakeDC/Users plugin are validated here.
+         */
         $validator
-            ->uuid('id')
-            ->allowEmpty('id', 'create');
+                ->allowEmpty('website');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email', 'Your email is needed for login');
+                ->allowEmpty('bio');
 
-        $validator
-            ->requirePresence('username', 'create')
-            ->notEmpty('username', 'You should provide a user name')
-            ->add('username', [
-                'minLength' => [
-                    'rule' => ['minLength', Configure::read('cms.defaultMinUserNameLenght')],
-                    'message' => sprintf('User names must be %d characters min.', Configure::read('cms.defaultMinUserNameLenght')),
-                ]
-            ]);
+        $validator->allowEmpty('file_count')
+                ->allowEmpty('note_count')
+                ->allowEmpty('post_count')
+                ->allowEmpty('album_count')
+                ->allowEmpty('project_count');
 
-        $validator
-            ->allowEmpty('realname');
-
-        $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password', 'Without a password, you can\'t login.')
-            ->add('password', [
-                'minLength' => [
-                    'rule' => ['minLength', Configure::read('cms.defaultMinPassLenght')],
-                    'message' => sprintf('Passwords must be %d characters min.', Configure::read('cms.defaultMinPassLenght')),
-                ]
-            ])
-            ->add('password', 'compare', [
-                'rule' => function ($value, $context) {
-                    return ($value === $context['data']['password_confirm']);
-                },
-                'message' => __d('elabs', 'Your password does not match your confirm password. Please try again'),
-                'on' => ['create', 'update'],
-                'allowEmpty' => false
-            ]);
-
-        $validator
-            ->requirePresence('password_confirm', 'create')
-            ->notEmpty('password_confirm');
-
-        $validator
-            ->allowEmpty('website');
-
-        $validator
-            ->allowEmpty('bio');
-
-        $validator
-            ->requirePresence('role', 'create')
-            ->notEmpty('role', 'A valid role is required.')
-            ->add('role', 'inlist', ['rule' => ['inList', ['admin', 'author', 'user']],
-                'message' => 'Please enter a valid role']);
-
-        $validator
-            ->integer('status')
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
-
-        $validator
-            ->integer('file_count')
-            ->requirePresence('file_count', 'create')
-            ->notEmpty('file_count');
-
-        $validator
-            ->integer('note_count')
-            ->requirePresence('note_count', 'create')
-            ->notEmpty('note_count');
-
-        $validator
-            ->integer('post_count')
-            ->requirePresence('post_count', 'create')
-            ->notEmpty('post_count');
-
-        $validator
-            ->integer('album_count')
-            ->requirePresence('album_count', 'create')
-            ->notEmpty('album_count');
-
-        $validator
-            ->integer('project_count')
-            ->requirePresence('project_count', 'create')
-            ->notEmpty('project_count');
-
-        $validator
-            ->requirePresence('preferences', 'create')
-            ->notEmpty('preferences');
+        $validator->allowEmpty('preferences');
 
         return $validator;
     }
@@ -177,8 +105,8 @@ class UsersTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
     public function buildRules(RulesChecker $rules)
     {
@@ -186,5 +114,192 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['username']));
 
         return $rules;
+    }
+
+    /**
+     * Define some extra types to fields
+     *
+     * @param Schema $schema The schema
+     *
+     * @return Schema
+     */
+    protected function _initializeSchema(Schema $schema)
+    {
+        $schema->columnType('preferences', 'json');
+
+        return $schema;
+    }
+
+    /**
+     * Finds all data for an user
+     *
+     * @param Query $query The query
+     * @param array $options An array of options:
+     *   - allContain bool, default false. Selects all relationships
+     *   - allStatuses bool, default true. Overrides status limitation
+     *   - complete bool, default false. Select all the fields
+     *   - sfw bool, default false. Limits the result to sfw items
+     *   - withAlbums bool, default true. Select the albums
+     *   - withFiles bool, default true. Select the files
+     *   - withNotes bool, default false. Select the notess
+     *   - withPosts bool, default false. Select the posts
+     *   - withProjects bool, default false. Select the projects
+     *
+     * @return Query
+     */
+    public function findWithContain(Query $query, array $options = [])
+    {
+        $options += [
+            'allContain' => false,
+            'allStatuses' => false,
+            'complete' => false,
+            'sfw' => true,
+            'withAlbums' => false,
+            'withFiles' => false,
+            'withNotes' => false,
+            'withPosts' => false,
+            'withProjects' => false,
+        ];
+
+        if ($options['allContain'] === true) {
+            $options = [
+                'withAlbums' => true,
+                'withFiles' => true,
+                'withNotes' => true,
+                'withPosts' => true,
+                'withProjects' => true,
+                    ] + $options;
+        }
+
+        $where = [];
+
+        // Conditions
+        if ($options['allStatuses'] === false) {
+            $where = ['OR' => [['active' => STATUS_ACTIVE], ['active' => STATUS_LOCKED]]];
+        }
+
+        // fields;
+        $query->select(['id', 'username', 'first_name', 'last_name', 'email_hash' => 'email', 'website', 'created', 'active', 'role', 'post_count', 'project_count', 'file_count', 'note_count', 'album_count'])
+                ->where($where);
+        if ($options['complete'] === true) {
+            $query->select(['bio']);
+        }
+
+        // Relations
+        $sfw = $options['sfw'];
+        $containLimit = Configure::read('cms.maxRelatedData');
+        if ($options['withAlbums']) {
+            $query->contain(['Albums' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsAlbums.album_id', 'sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
+            }]);
+        }
+        if ($options['withFiles']) {
+            $query->contain(['Files' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsFiles.file_id', 'sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
+            }]);
+        }
+        if ($options['withNotes']) {
+            $query->contain(['Notes' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsNotes.note_id', 'sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
+            }]);
+        }
+        if ($options['withPosts']) {
+            $query->contain(['Posts' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['pivot' => 'ProjectsPosts.post_id', 'sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
+            }]);
+        }
+        if ($options['withProjects']) {
+            $query->contain(['Projects' => function ($q) use ($sfw, $containLimit) {
+                    return $q->find('withContain', ['sfw' => $sfw, 'forceOrder' => true])
+                            ->limit($containLimit);
+            }]);
+        }
+
+        // Returns the query
+        return $query;
+    }
+
+    /**
+     * Used to fetch minimal data about users on contained items
+     * (i.e: user of a file)
+     *
+     * @param Query $query The query
+     * @param array $options An array of options. Don't forget to add the 'pivot'
+     *        field name if necessary
+     *
+     * @return Query
+     */
+    public function findAsContain(Query $query, array $options = [])
+    {
+        $options += ['pivot' => null];
+
+        $fields = ['id', 'first_name', 'last_name', 'username'];
+        if (!is_null($options['pivot'])) {
+            $fields[] = $options['pivot'];
+        }
+
+        return $query->select($fields)
+                        // Define order as there may be multiple results
+                        ->order(['Users.username' => 'desc']);
+    }
+
+    /**
+     * Gets a record with associated data. Throw an exception if the record is not found.
+     *
+     * @param mixed $primaryKey The primary key to fetch
+     * @param array $options An array of options:
+     *   - sfw bool, default true Limit to sfw data
+     *   - complete bool default true Select all the fields
+     *
+     * @return Entity
+     */
+    public function getWithContain($primaryKey, array $options = [])
+    {
+        $options += [
+            'sfw' => true,
+            'complete' => true,
+        ];
+
+        return $this->find('withContain', $options)
+                        ->where(['Users.id' => $primaryKey])
+                        ->firstOrFail();
+    }
+
+    /**
+     * Runs findWithContain with all statuses and nsfw entries
+     *
+     * @param Query $query The query
+     * @param array $options An array of options. See findWithContain()
+     *
+     * @return Query
+     */
+    public function findAdminWithContain(Query $query, array $options = [])
+    {
+        // Force options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->findWithContain($query, $options);
+    }
+
+    /**
+     * Runs getWithContain with all statuses and nsfw entries
+     *
+     * @param type $primaryKey The primary key to fetch
+     * @param array $options An array of options
+     *
+     * @return Entity
+     */
+    public function getAdminWithContain($primaryKey, array $options = [])
+    {
+        //Override passed options
+        $options['sfw'] = false;
+        $options['allStatuses'] = true;
+
+        return $this->getWithContain($primaryKey, $options);
     }
 }

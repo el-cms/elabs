@@ -1,3 +1,7 @@
+<?php
+
+use Cake\Core\Configure;
+?>
 <div class="card<?php echo ($event ? ' card-event' : '') ?><?php echo ($data['sfw'] === false) ? ' nsfw' : '' ?>">
     <div class="card-main">
         <!-- Card toolbar -->
@@ -5,7 +9,7 @@
             <!-- Report link -->
             <li><?php echo $this->Html->reportLink($this->Url->build(['prefix' => false, 'controller' => 'Files', 'action' => 'view', $data['id']], true), ['class' => 'report-link', 'icon' => true]) ?></li>
             <!-- Language pill -->
-            <li><a class="language-pill" lang="<?php echo $data['language']['iso639_1'] ?>"><?php echo $data['language']['name'] ?></a></li>
+            <li><a class="language-pill"<?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>><?php echo $data['language']['name'] ?></a></li>
             <!-- SFW pill-->
             <?php if (!$data['sfw']): ?>
                 <li><a class="nsfw-pill"><?php echo __d('elabs', 'NSFW') ?></a></li>
@@ -57,28 +61,47 @@
                         <?php
                     endif;
                     ?>
+                    <li>
+                        <?php echo $this->Html->iconT('tags', __d('elabs', 'Tags:')); ?>
+                        <?php
+                        if (count($data->tags) > 0):
+                            echo $this->Html->arrayToString(array_map(function($tag) {
+                                        return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                    }, $data->tags));
+                        else:
+                            echo __d('elabs', 'No tags');
+                        endif;
+                        ?>
+                    </li>
                 </ul>
             </div>
         </div>
         <!-- Content -->
-        <div class="card-content" lang="<?php echo $data['language']['iso639_1'] ?>">
+        <div class="card-content">
             <?php
-            echo $this->Html->displayMD($data['description']);
-            if (count($data['files'] > 0)):
+            if (!empty($data['description'])):
+                ?>
+                <div <?php echo $this->Html->langAttr($data['language']['iso639_1']) ?>>
+                    <?php echo $this->Html->displayMD($data['description']) ?>
+                </div>
+                <?php
+            endif;
+            $filesCount = count($data['files']);
+            if ($filesCount > 0):
                 ?>
                 <!-- Scrollbar -->
                 <div class="scrollbar-buttons">
                     <!-- Left button -->
-                    <div 
-                        class="scrollbar-direction-left" 
-                        id="scrollButton-<?php echo $data['id'] ?>-L" 
+                    <div
+                        class="scrollbar-direction-left"
+                        id="scrollButton-<?php echo $data['id'] ?>-L"
                         onmouseover="scroll('#scrollButton-<?php echo $data['id'] ?>-L', '#scrollbar-<?php echo $data['id'] ?>', 'left')"
                         >
                             <?php echo $this->Html->icon('chevron-left', ['fixed' => false]) ?>
                     </div>
                     <!-- Right button -->
-                    <div 
-                        class="scrollbar-direction-right" 
+                    <div
+                        class="scrollbar-direction-right"
                         id="scrollButton-<?php echo $data['id'] ?>-R"
                         onmouseover="scroll('#scrollButton-<?php echo $data['id'] ?>-R', '#scrollbar-<?php echo $data['id'] ?>', 'right')"
                         >
@@ -92,7 +115,12 @@
                         <!-- Scrollbar -->
                         <div class="scrollbar-content">
                             <!-- Item list -->
-                            <?php foreach ($data['files'] as $file): ?>
+                            <?php
+                            $limit = Configure::read('cms.maxRelatedData');
+                            $forLimit = ($limit > $filesCount) ? $filesCount : $limit;
+                            for ($i = 0; $i < $forLimit; $i++):
+                                $file = $data['files'][$i];
+                                ?>
                                 <div class="scrollbar-item card-mini-item">
                                     <div class="card-mini-item-content">
                                         <?php
@@ -106,14 +134,23 @@
                                     </div>
                                 </div>
                                 <?php
-                            endforeach;
+                            endfor;
+                            if ($filesCount > $limit):
+                                ?>
+                                <div class="scrollbar-item more-item">
+                                    <div class="card-mini-item-content">
+                                        <?php echo $this->element('layout/more_block', ['number' => $filesCount - $limit]); ?>
+                                    </div>
+                                </div>
+                                <?php
+                            endif;
                             ?>
                         </div>
                     </div>
                 </div>
                 <?php
             else:
-                echo $this->element('layout/dev_block');
+                echo $this->element('layout/empty');
             endif;
             ?>
         </div>

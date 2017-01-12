@@ -43,6 +43,11 @@ $this->CodeMirror->add('descriptionArea');
 echo $this->Form->input('mainurl', ['label' => __d('elabs', 'Main URL')]);
 ?>
 <div class="row">
+    <div class="col-sm-12">
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => $this->TagList->tagsToList($project->tags), 'data-role' => 'tagsinput']); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-6">
         <?php echo $this->Form->input('license_id', ['options' => $licenses]); ?>
     </div>
@@ -55,9 +60,10 @@ echo $this->Form->input('mainurl', ['label' => __d('elabs', 'Main URL')]);
         <?php echo $this->Form->input('sfw', ['class' => 'access_hide', 'label' => __d('elabs', 'This is SFW')]); ?>
     </div>
     <div class="col-sm-4">
-        <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
     </div>
     <div class="col-sm-4">
+        <?php echo $this->Form->input('isMinor', ['type' => 'checkbox', 'checked' => true, 'label' => __d('elabs', 'Minor update')]); ?>
         <?php echo $this->Form->submit(__d('elabs', 'Update the project'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>

@@ -2,12 +2,12 @@
 
 namespace App\Test\TestCase\Controller\Admin;
 
-use Cake\TestSuite\IntegrationTestCase;
+use App\Test\TestCase\BaseTextCase;
 
 /**
  * App\Controller\Admin\LanguagesController Test Case
  */
-class LanguagesControllerTest extends IntegrationTestCase
+class LanguagesControllerTest extends BaseTextCase
 {
     /**
      * Fixtures
@@ -21,15 +21,6 @@ class LanguagesControllerTest extends IntegrationTestCase
         'app.posts',
         'app.users',
         'app.notes',
-    ];
-
-    /**
-     * Users credentials to put in session in order to create a fake authentication
-     *
-     * @var array
-     */
-    public $userCreds = [
-        'admin' => ['Auth' => ['User' => ['id' => '70c8fff0-1338-48d2-b93b-942a26e4d685', 'email' => 'admin@example.com', 'username' => 'administrator', 'realname' => 'Administrator', 'website' => null, 'bio' => null, 'created' => null, 'modified' => null, 'role' => 'admin', 'status' => 1, 'file_count' => 3, 'note_count' => 0, 'post_count' => 1, 'project_count' => 3, 'preferences' => '{}']]],
     ];
 
     /**
@@ -53,6 +44,10 @@ class LanguagesControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['admin']);
         $Languages = \Cake\ORM\TableRegistry::get('Languages');
@@ -88,6 +83,10 @@ class LanguagesControllerTest extends IntegrationTestCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['admin']);
         $Languages = \Cake\ORM\TableRegistry::get('Languages');
@@ -119,9 +118,14 @@ class LanguagesControllerTest extends IntegrationTestCase
      */
     public function testDelete()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['admin']);
-        $this->get('/admin/languages/delete/eng');
+
+        $this->post('/admin/languages/delete/eng');
 
         $this->assertResponseFailure();
     }

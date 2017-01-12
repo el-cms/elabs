@@ -1,6 +1,7 @@
 # Cake PHP
 /vendor/*
 /config/app.php
+/config/siteconfig.php
 /tmp/*
 /logs/*
 /config/Migrations/schema-dump-default.lock
@@ -8,8 +9,9 @@
 # Upload dir
 /webroot/uploads
 
-# Netbeans IDE project dir
+# IDE project dir
 /nbproject/private/
+/.idea
 
 # Sass external sources
 /Sources/Sass/lib

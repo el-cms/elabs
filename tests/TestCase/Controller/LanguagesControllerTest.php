@@ -1,7 +1,6 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\LanguagesController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
@@ -33,6 +32,7 @@ class LanguagesControllerTest extends IntegrationTestCase
     public function testIndex()
     {
         $this->get('/languages');
+//        $this->assertResponseEquals('');
         $this->assertResponseOk();
     }
 

@@ -2,12 +2,12 @@
 
 namespace App\Test\TestCase\Controller\User;
 
-use Cake\TestSuite\IntegrationTestCase;
+use App\Test\TestCase\BaseTextCase;
 
 /**
  * App\Controller\User\PostsController Test Case
  */
-class PostsControllerTest extends IntegrationTestCase
+class PostsControllerTest extends BaseTextCase
 {
     /**
      * Fixtures
@@ -15,20 +15,15 @@ class PostsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.posts',
+        'app.acts',
         'app.languages', // Needed for some layout vars
         'app.licenses',
+        'app.posts',
+        'app.posts_tags',
+        'app.projects',
+        'app.projects_posts',
+        'app.tags',
         'app.users',
-        'app.acts',
-    ];
-
-    /**
-     * Users credentials to put in session in order to create a fake authentication
-     *
-     * @var array
-     */
-    public $userCreds = [
-        'author' => ['Auth' => ['User' => ['id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'email' => 'test@example.com', 'username' => 'real_test', 'realname' => 'The real tester', 'password' => '$2y$10$wpJrqUvcAlUbLUxLnP8P5.OU7TXtfjT4/K5RYGdjJVkh6BqNEh3XC', 'website' => null, 'bio' => 'Some things', 'created' => '2016-08-09 01:15:26', 'modified' => '2016-08-09 01:18:01', 'role' => 'author', 'status' => 1, 'file_count' => 0, 'note_count' => 0, 'post_count' => 1, 'project_count' => 0, 'preferences' => '{"showNSFW":"0","defaultSiteLanguage":"","defaultWritingLanguage":"eng","defaultWritingLicense":"1"}']]],
     ];
 
     /**
@@ -90,8 +85,13 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
         $this->session($this->userCreds['author']);
+        $currentUserId = $this->userCreds['author']['Auth']['User']['id'];
         $Posts = \Cake\ORM\TableRegistry::get('Posts');
 
         // Form
@@ -109,7 +109,8 @@ class PostsControllerTest extends IntegrationTestCase
             'sfw' => true,
             'status' => 0,
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         $this->post('/user/posts/add', $postData);
         // Count posts after insert
@@ -129,11 +130,12 @@ class PostsControllerTest extends IntegrationTestCase
             'sfw' => true,
             'status' => 1,
             'license_id' => 1,
-            'language_id' => 'eng'
+            'language_id' => 'eng',
+            'hide_from_acts' => 0,
         ];
         // Find the post for the current user
         $this->post('/user/posts/add', $postData);
-        $nb = $Posts->find('all', ['conditions' => ['user_id' => 'c5fba703-fd07-4a1c-b7b0-345a77106c32', 'title' => 'TEST POST AS ANOTHER USER']])->count();
+        $nb = $Posts->find('all', ['conditions' => ['user_id' => $currentUserId, 'title' => 'TEST POST AS ANOTHER USER']])->count();
         $this->assertEquals(1, $nb, 'Test #2');
         // Acts
         $nbActs2 = $Acts->find()->count();
@@ -149,11 +151,15 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public function testEdit()
     {
+        // Enable CSRF related mocks
+        $this->enableCsrfToken();
+        $this->enableSecurityToken();
+
         // Set session data
-        // ----------------
         $this->session($this->userCreds['author']);
         $Posts = \Cake\ORM\TableRegistry::get('Posts');
         $Acts = \Cake\ORM\TableRegistry::get('Acts');
+
         // Not published, not safe
         $postId = 'fffe1c4a-6edc-4a2b-aaf5-457a3151a13c';
 

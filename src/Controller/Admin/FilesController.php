@@ -2,8 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AdminAppController;
-
 /**
  * Files Controller
  *
@@ -34,15 +32,9 @@ class FilesController extends AdminAppController
     public function index()
     {
         $this->paginate = [
-            'fields' => ['id', 'name', 'filename', 'weight', 'filename', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id'],
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']]
-            ],
-            'order' => ['created' => 'desc']
+            'order' => ['created' => 'desc'],
         ];
-        $this->set('files', $this->paginate($this->Files));
+        $this->set('files', $this->paginate($this->Files->find('adminWithContain')));
         $this->set('_serialize', ['files']);
     }
 
@@ -57,13 +49,7 @@ class FilesController extends AdminAppController
      */
     public function view($id = null)
     {
-        $file = $this->Files->get($id, [
-            'contain' => [
-                'Users' => ['fields' => ['id', 'username']],
-                'Licenses' => ['fields' => ['id', 'name', 'icon']],
-                'Languages' => ['fields' => ['id', 'name', 'iso639_1']],
-            ]
-        ]);
+        $file = $this->Files->getAdminWithContain($id);
         $this->set('file', $file);
         $this->set('_serialize', ['file']);
     }
@@ -83,24 +69,24 @@ class FilesController extends AdminAppController
             case 'lock':
                 $successMessage = __d('elabs', 'The file has been locked.');
                 $this->Act->remove($id);
-                $bit = 2;
+                $bit = STATUS_LOCKED;
                 break;
             case 'unlock':
                 $successMessage = __d('elabs', 'The file has been unlocked.');
-                $bit = 1;
+                $bit = STATUS_PUBLISHED;
                 break;
             case 'remove':
                 $successMessage = __d('elabs', 'The file has been removed.');
-                $bit = 3;
+                $bit = STATUS_DELETED;
                 $this->Act->remove($id, 'Files', false);
                 break;
             default:
                 $successMessage = __d('elabs', 'The file has been locked.');
-                $bit = 2;
+                $bit = STATUS_LOCKED;
         }
         $file = $this->Files->get($id, [
             'fields' => ['id', 'status'],
-            'conditions' => ['status !=' => '3'],
+            'conditions' => ['status !=' => STATUS_DELETED],
         ]);
         $file->status = $bit;
         if ($this->Files->save($file)) {

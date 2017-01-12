@@ -15,6 +15,11 @@ use Cake\ORM\Entity;
  * @property int $status
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @property bool $hide_from_acts
+ * @propertu int $album_count
+ * @propertu int $file_count
+ * @propertu int $note_count
+ * @propertu int $post_count
  * @property int $license_id
  * @property string $user_id
  * @property string $language_id
@@ -27,7 +32,6 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Note[] $notes
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Tag[] $tags
- * @property \App\Model\Entity\Team[] $teams
  * @property \App\Model\Entity\Act[] $acts
  */
 class Project extends Entity

@@ -13,6 +13,19 @@ class UserAppController extends AppController
 {
 
     /**
+     * Initialization hook method.
+     *
+     * Use this method to add common initialization code like loading components.
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('TagManager');
+    }
+
+    /**
      * Before filter callback
      *
      * @param \Cake\Event\Event $event The beforeFilter event.
@@ -24,14 +37,15 @@ class UserAppController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+
         if (in_array($this->Auth->user('role'), ['author', 'admin'])) {
             $this->Auth->allow();
         } else {
+            $this->Auth->deny();
             if (is_null($this->Auth->user('id'))) {
-                $this->Flash->Error(__d('elabs', 'You should be logged in to access this page.'));
-                $this->redirect($this->Auth->config('loginAction'));
+                throw new ForbiddenException(__d('elabs', 'You should be logged in to access this page.'));
             } else {
-                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this ressource.'));
+                throw new ForbiddenException(__d('elabs', 'You don\'t have enough rights to access this resource.'));
             }
         }
     }
@@ -47,5 +61,6 @@ class UserAppController extends AppController
     {
         parent::beforeRender($event);
         $this->viewBuilder()->layout('user');
+        $this->viewBuilder()->helpers(['TagList', 'UsersUser']);
     }
 }

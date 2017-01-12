@@ -33,6 +33,11 @@ echo $this->Form->input('description', ['required' => false, 'id' => 'descriptio
 $this->CodeMirror->add('descriptionArea');
 ?>
 <div class="row">
+    <div class="col-sm-12">
+        <?php echo $this->Form->input('tags._ids', ['label' => __d('elabs', 'Tags'), 'options' => [], 'data-role' => 'tagsinput']); ?>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <?php echo $this->Form->input('language_id', ['options' => $languages, 'default' => $this->request->session()->read('defaultWritingLanguage')]); ?>
     </div>
@@ -44,10 +49,13 @@ $this->CodeMirror->add('descriptionArea');
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <?php echo $this->Form->input('sfw', ['label' => __d('elabs', 'This is SFW')]); ?>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
+        <?php echo $this->Form->input('hide_from_acts', ['label' => __d('elabs', 'Skip front page')]); ?>
+    </div>
+    <div class="col-sm-4">
         <?php echo $this->Form->submit(__d('elabs', 'Create the album'), ['class' => 'btn-primary btn-block']); ?>
     </div>
 </div>

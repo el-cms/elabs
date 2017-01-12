@@ -44,9 +44,9 @@ $this->start('pageActions');
     // Lock/unlock
     $unlockIcon = $this->Html->iconT('unlock-alt', __d('elabs', 'Unlock'));
     $lockIcon = $this->Html->iconT('lock', __d('elabs', 'Lock'));
-    if ($post->status === 2):
+    if ($post->status === STATUS_LOCKED):
         echo $this->Html->link($unlockIcon, ['action' => 'changeState', $post->id, 'unlock'], ['escape' => false, 'class' => 'btn btn-warning']);
-    elseif ($post->status === 1):
+    elseif ($post->status === STATUS_PUBLISHED):
         echo $this->Html->link($lockIcon, ['action' => 'changeState', $post->id, 'lock'], ['escape' => false, 'class' => 'btn btn-warning']);
     else:
         echo $this->Html->link($lockIcon, '#', ['class' => 'btn btn-warning disabled', 'escape' => false]);
@@ -54,7 +54,7 @@ $this->start('pageActions');
     // Close
     $class = 'btn btn-danger';
     $link = ['action' => 'changeState', $post->id, 'remove'];
-    if ($post->status === 3):
+    if ($post->status === STATUS_DELETED):
         $class .= ' disabled';
         $link = '#';
     endif;
@@ -83,7 +83,7 @@ $this->start('pageContent');
         <li><a data-toggle="tab" href="#tab-related" aria-expanded="false"><?php echo __d('elabs', 'Related items') ?></a></li>
     </ul>
     <div id = "userTabsContent" class = "tab-content">
-        <div class="tab-pane fade active in" id="tab-content" lang="<?php echo $post->language->iso639_1 ?>">
+        <div class="tab-pane fade active in" id="tab-content"<?php echo $this->Html->langAttr($post->language->iso639_1) ?>>
             <?php
             echo $this->Html->displayMD($post->excerpt);
             echo $this->Html->displayMD($post->text);

@@ -27,7 +27,7 @@
                 <span class="label text-monospace label-danger"><?php echo __d('elabs', 'NSFW') ?></span>
             <?php endif; ?>
             <?php echo $this->Html->langLabel($file->language->id, $file->language->iso639_1) ?>
-            <?php if ($file->status === 2): ?>
+            <?php if ($file->status === STATUS_LOCKED): ?>
                 <span class="label label-danger"><?php echo __d('elabs', 'Locked') ?></span>
             <?php endif; ?>&nbsp;
             <span id="h-<?php echo $tileGroupId . $file->id ?>"><?php echo h($file->name) ?></span>
@@ -46,7 +46,17 @@
                         <dt><?php echo __d('elabs', 'License') ?></dt>
                         <dd><?php echo $this->Html->link(h($file->license->name), ['prefix' => false, 'controller' => 'licenses', 'action' => 'view', $file->license_id]); ?></dd>
                         <dt><?php echo __d('elabs', 'Tags') ?></dt>
-                        <dd><?php echo $this->element('layout/dev_inline') ?></dd>
+                        <dd>
+                            <?php
+                            if (count($file->tags) > 0):
+                                echo $this->Html->arrayToString(array_map(function($tag) {
+                                            return $this->Html->Link($tag->id, ['prefix' => false, 'controller' => 'Tags', 'action' => 'view', $tag->id]);
+                                        }, $file->tags));
+                            else:
+                                echo __d('elabs', 'No tags');
+                            endif;
+                            ?>
+                        </dd>
                         <dt><?php echo __d('elabs', 'Projects') ?></dt>
                         <dd>
                             <?php
@@ -62,7 +72,7 @@
                         </dd>
                     </dl>
                 </div>
-                <div class="col-sm-8"  lang="<?php echo $file->language->iso639_1 ?>">
+                <div class="col-sm-8"<?php echo $this->Html->langAttr($file->language->iso639_1) ?>>
                     <?php echo $this->element('files/view_content_' . $config['element'], ['data' => $file]); ?>
                 </div>
             </div>
