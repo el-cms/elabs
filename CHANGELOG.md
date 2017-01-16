@@ -2,7 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-_Nothing for now_
+
+### Changed
+  - Fixed error when listing projects with filters (users, licenses, etc...)
 
 ## [0.1.0] - 2017-01-12
 First notable version with all base features working:
