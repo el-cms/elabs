@@ -52,7 +52,7 @@ class ProjectsController extends AppController
             // Get additionnal infos infos
             $modelName = Inflector::camelize(Inflector::pluralize($filter));
             $FilterModel = TableRegistry::get($modelName);
-            $filterData = $FilterModel->getWithoutContain($id);
+            $filterData = $FilterModel->getWithContain($id);
 
             $this->set('filterData', $filterData);
         }
