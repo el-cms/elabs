@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+  - Projects URLS on project pages
 ### Changed
   - Fixed error when listing projects with filters (users, licenses, etc...)
 

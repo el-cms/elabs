@@ -28,6 +28,7 @@ $this->start('pageInfos');
     <li><strong><?php echo $this->Html->iconT('user', __d('elabs', 'Author:')) ?></strong><?php echo $this->Html->link($project->user->username, ['controller' => 'Users', 'action' => 'view', $project->user->id]) ?></li>
     <li><strong><?php echo $this->Html->iconT('font', __d('elabs', 'Name:')) ?></strong> <?php echo $project->name ?></li>
     <li><strong><?php echo $this->Html->iconT('copyright', __d('elabs', 'License:')) ?></strong> <?php echo $this->Html->link($this->Html->iconT($project->license->icon, $project->license->name), ['controller' => 'Licenses', 'action' => 'view', $project->license->id], ['escape' => false]) ?></li>
+    <li><strong><?php echo $this->Html->iconT('globe', __d('elabs', 'Site:')) ?></strong> <?php echo $project->mainurl ? $this->Html->link(__d('elabs', 'Homepage'), $project->mainurl, ['target'=>'_blank']) : '--' ?></li>
     <li><strong><?php echo $this->Html->iconT('calendar', __d('elabs', 'Created on:')) ?></strong> <?php echo h($project->created) ?></li>
     <?php if ($project->has('modified')): ?>
         <li><strong><?php echo $this->Html->iconT('calendar', __d('elabs', 'Updated on:')) ?></strong> <?php echo h($project->modified) ?></li>

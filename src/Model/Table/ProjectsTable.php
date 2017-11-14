@@ -217,7 +217,7 @@ class ProjectsTable extends Table
         $query->select(['id', 'name', 'short_description', 'sfw', 'created', 'modified', 'status', 'user_id', 'license_id', 'language_id'])
                 ->where($where);
         if ($options['complete'] === true) {
-            $query->select(['description', 'album_count', 'file_count', 'note_count', 'post_count']);
+            $query->select(['description', 'album_count', 'file_count', 'note_count', 'post_count', 'mainurl']);
         }
 
         // Order

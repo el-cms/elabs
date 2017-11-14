@@ -15,7 +15,7 @@ if (Configure::read('Users.reCaptcha.login')) {
 if (Configure::read('Users.RememberMe.active')) {
     echo $this->Form->input(Configure::read('Users.Key.Data.rememberMe'), [
         'type' => 'checkbox',
-        'label' => __d('CakeDC/Users', 'Remember me'),
+        'label' => __d('elabs', 'Remember me'),
         'checked' => 'checked'
     ]);
 }

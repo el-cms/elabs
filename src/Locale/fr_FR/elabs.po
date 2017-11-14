@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 20:03+0000\n"
-"PO-Revision-Date: 2017-01-11 21:36+0200\n"
+"POT-Creation-Date: 2017-11-14 01:17+0000\n"
+"PO-Revision-Date: 2017-11-14 02:26+0200\n"
 "Last-Translator: Manuel Tancoigne <m.tancoigne@gmail.com>\n"
 "Language-Team: EMAIL@ADDRESS\n"
 "Language: fr\n"
@@ -448,7 +448,7 @@ msgstr "Liste des albums"
 #: Template/Element/layout/mainmenu_admin.ctp:17
 #: Template/Element/layout/mainmenu_user.ctp:20
 #: Template/Languages/view.ctp:91
-#: Template/Projects/view.ctp:121
+#: Template/Projects/view.ctp:124
 #: Template/Tags/view.ctp:91
 #: Template/User/Albums/add.ctp:14
 #: Template/User/Albums/edit.ctp:14
@@ -627,7 +627,7 @@ msgstr "Propriétaire :"
 #: Template/Files/view.ctp:27
 #: Template/Languages/view.ctp:25
 #: Template/Licenses/view.ctp:25
-#: Template/Projects/view.ctp:27
+#: Template/Projects/view.ctp:29
 #: Template/Tags/view.ctp:26
 msgid "Name:"
 msgstr "Nom :"
@@ -638,7 +638,7 @@ msgstr "Nom :"
 #: Template/Admin/Posts/view.ctp:28
 #: Template/Admin/Projects/view.ctp:29
 #: Template/Notes/view.ctp:29
-#: Template/Projects/view.ctp:29
+#: Template/Projects/view.ctp:32
 msgid "Created on:"
 msgstr "Créé le :"
 
@@ -651,7 +651,7 @@ msgstr "Créé le :"
 #: Template/Files/view.ctp:32
 #: Template/Notes/view.ctp:31
 #: Template/Posts/view.ctp:30
-#: Template/Projects/view.ctp:31
+#: Template/Projects/view.ctp:34
 msgid "Updated on:"
 msgstr "Modifié le :"
 
@@ -664,7 +664,7 @@ msgstr "Modifié le :"
 #: Template/Files/view.ctp:36
 #: Template/Notes/view.ctp:28
 #: Template/Posts/view.ctp:32
-#: Template/Projects/view.ctp:33
+#: Template/Projects/view.ctp:36
 msgid "Language:"
 msgstr "Langue :"
 
@@ -743,7 +743,7 @@ msgstr "Liste des fichiers"
 #: Template/Files/view.ctp:18
 #: Template/Languages/view.ctp:81
 #: Template/Licenses/view.ctp:85
-#: Template/Projects/view.ctp:111
+#: Template/Projects/view.ctp:114
 #: Template/Tags/view.ctp:81
 #: Template/User/Files/add.ctp:15
 #: Template/User/Files/edit.ctp:15
@@ -791,7 +791,7 @@ msgstr "Taille du fichier :"
 #: Template/Files/view.ctp:29
 #: Template/Notes/view.ctp:27
 #: Template/Posts/view.ctp:27
-#: Template/Projects/view.ctp:28
+#: Template/Projects/view.ctp:30
 msgid "License:"
 msgstr "Licence :"
 
@@ -991,7 +991,7 @@ msgstr "Lien"
 #: Template/Posts/index.ctp:41
 #: Template/Posts/nsfw.ctp:6
 #: Template/Posts/view.ctp:18
-#: Template/Projects/view.ctp:91
+#: Template/Projects/view.ctp:94
 #: Template/Tags/view.ctp:51
 #: Template/User/Posts/add.ctp:15
 #: Template/User/Posts/edit.ctp:15
@@ -1020,7 +1020,7 @@ msgstr "Articles"
 #: Template/Posts/index.ctp:30
 #: Template/Projects/index.ctp:36
 #: Template/Projects/nsfw.ctp:6
-#: Template/Projects/view.ctp:19
+#: Template/Projects/view.ctp:20
 #: Template/Tags/view.ctp:71
 #: Template/User/Projects/add.ctp:15
 #: Template/User/Projects/edit.ctp:15
@@ -1049,7 +1049,7 @@ msgstr "Liste de notes"
 #: Template/Notes/index.ctp:45
 #: Template/Notes/nsfw.ctp:6
 #: Template/Notes/view.ctp:18
-#: Template/Projects/view.ctp:101
+#: Template/Projects/view.ctp:104
 #: Template/Tags/view.ctp:61
 #: Template/User/Notes/add.ctp:15
 #: Template/User/Notes/edit.ctp:15
@@ -1083,6 +1083,7 @@ msgstr "Date de màj"
 #: Template/Element/posts/card.ctp:29
 #: Template/Notes/view.ctp:26
 #: Template/Posts/view.ctp:26
+#: Template/Projects/view.ctp:28
 msgid "Author:"
 msgstr "Auteur :"
 
@@ -1350,7 +1351,7 @@ msgstr "Créateur:"
 #: Template/Files/view.ctp:38
 #: Template/Notes/view.ctp:34
 #: Template/Posts/view.ctp:34
-#: Template/Projects/view.ctp:35
+#: Template/Projects/view.ctp:38
 msgid "Safe content:"
 msgstr "Contenu sans danger :"
 
@@ -1358,7 +1359,7 @@ msgstr "Contenu sans danger :"
 #: Template/Files/view.ctp:40
 #: Template/Notes/view.ctp:36
 #: Template/Posts/view.ctp:36
-#: Template/Projects/view.ctp:37
+#: Template/Projects/view.ctp:40
 #: View/Helper/ItemsAdminHelper.php:61
 msgid "Yes"
 msgstr "Oui"
@@ -1367,7 +1368,7 @@ msgstr "Oui"
 #: Template/Files/view.ctp:40
 #: Template/Notes/view.ctp:36
 #: Template/Posts/view.ctp:36
-#: Template/Projects/view.ctp:37
+#: Template/Projects/view.ctp:40
 #: View/Helper/ItemsAdminHelper.php:66
 msgid "No"
 msgstr "Non"
@@ -1392,7 +1393,7 @@ msgstr "Pas de projets"
 #: Template/Files/view.ctp:72
 #: Template/Notes/view.ctp:68
 #: Template/Posts/view.ctp:68
-#: Template/Projects/view.ctp:47
+#: Template/Projects/view.ctp:50
 msgid "Tags:"
 msgstr "Tags :"
 
@@ -1410,7 +1411,7 @@ msgstr "Tags :"
 #: Template/Files/view.ctp:79
 #: Template/Notes/view.ctp:75
 #: Template/Posts/view.ctp:75
-#: Template/Projects/view.ctp:54
+#: Template/Projects/view.ctp:57
 msgid "No tags"
 msgstr "Pas de tags"
 
@@ -1564,7 +1565,7 @@ msgstr "Vérrouillé"
 #: Template/Element/users/card.ctp:20
 #: Template/Languages/view.ctp:29
 #: Template/Licenses/view.ctp:27
-#: Template/Projects/view.ctp:41
+#: Template/Projects/view.ctp:44
 #: Template/Tags/view.ctp:28
 #: Template/Users/view.ctp:40
 msgid "{0} article"
@@ -1589,7 +1590,7 @@ msgstr[1] "{0} projets"
 #: Template/Element/users/card.ctp:24
 #: Template/Languages/view.ctp:31
 #: Template/Licenses/view.ctp:29
-#: Template/Projects/view.ctp:43
+#: Template/Projects/view.ctp:46
 #: Template/Tags/view.ctp:30
 #: Template/Users/view.ctp:42
 msgid "{0} file"
@@ -1602,7 +1603,7 @@ msgstr[1] "{0} fichiers"
 #: Template/Element/users/card.ctp:26
 #: Template/Languages/view.ctp:30
 #: Template/Licenses/view.ctp:28
-#: Template/Projects/view.ctp:42
+#: Template/Projects/view.ctp:45
 #: Template/Tags/view.ctp:29
 #: Template/Users/view.ctp:41
 msgid "{0} note"
@@ -1613,7 +1614,7 @@ msgstr[1] "{0} notes"
 #: Template/Element/languages/card.ctp:22
 #: Template/Element/users/card.ctp:28
 #: Template/Languages/view.ctp:33
-#: Template/Projects/view.ctp:44
+#: Template/Projects/view.ctp:47
 #: Template/Tags/view.ctp:32
 #: Template/Users/view.ctp:44
 msgid "{0} album"
@@ -1927,6 +1928,10 @@ msgstr "E-mail"
 msgid "Password"
 msgstr "Mot de passe"
 
+#: Template/Element/users/loginform.ctp:18
+msgid "Remember me"
+msgstr "Se souvenir de moi"
+
 #: Template/Element/users/loginform.ctp:26
 msgid "Reset Password"
 msgstr "Réinitialiser le mot de passe"
@@ -2130,7 +2135,7 @@ msgstr "Derniers {0} éléments dans cette langue"
 
 #: Template/Languages/view.ctp:102
 #: Template/Licenses/view.ctp:96
-#: Template/Projects/view.ctp:132
+#: Template/Projects/view.ctp:135
 #: Template/Tags/view.ctp:102
 #: Template/Users/view.ctp:109
 msgid "Some entries may be hidden, depending on your NSFW settings."
@@ -2280,29 +2285,37 @@ msgstr "Projets avec le tag {0}"
 msgid "Projects list"
 msgstr "Liste des projets"
 
-#: Template/Projects/view.ctp:67
+#: Template/Projects/view.ctp:31
+msgid "Site:"
+msgstr "Site :"
+
+#: Template/Projects/view.ctp:31
+msgid "Homepage"
+msgstr "Page d'accueil"
+
+#: Template/Projects/view.ctp:70
 #: Template/User/Users/edit.ctp:59
 #: Template/Users/view.ctp:37
 msgid "Website"
 msgstr "Site internet "
 
-#: Template/Projects/view.ctp:86
+#: Template/Projects/view.ctp:89
 msgid "Display all posts in this project"
 msgstr "Afficher tous les articles de ce projet"
 
-#: Template/Projects/view.ctp:96
+#: Template/Projects/view.ctp:99
 msgid "Display all notes in this project"
 msgstr "Afficher toutes les notes de ce projet"
 
-#: Template/Projects/view.ctp:106
+#: Template/Projects/view.ctp:109
 msgid "Display all files in this project"
 msgstr "Afficher tous les fichiers de ce projet"
 
-#: Template/Projects/view.ctp:116
+#: Template/Projects/view.ctp:119
 msgid "Display all albums in this project"
 msgstr "Afficher tous les albums de ce projet"
 
-#: Template/Projects/view.ctp:126
+#: Template/Projects/view.ctp:129
 msgid "Last {0} elements added to project"
 msgstr "Derniers {0} éléments de ce projet"
 
